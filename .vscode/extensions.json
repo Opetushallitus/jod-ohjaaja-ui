@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "deque-systems.vscode-axe-linter",
+    "Lokalise.i18n-ally",
+    "vitest.explorer",
+    "GitHub.vscode-github-actions",
+    "GitHub.vscode-pull-request-github",
+    "bradlc.vscode-tailwindcss"
+  ]
+}
