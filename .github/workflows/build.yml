@@ -67,3 +67,29 @@ jobs:
         with:
           name: dist
           path: dist/
+
+  deploy-development:
+    name: Deploy to development
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    needs: build
+    uses: ./.github/workflows/deploy.yml
+    permissions:
+      id-token: write # Needed to interact with GitHub's OIDC Token endpoint
+      contents: read
+      actions: read
+    secrets: inherit
+    with:
+      environment: 'development'
+
+  deploy-test:
+    name: Deploy to testing
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    uses: ./.github/workflows/deploy.yml
+    permissions:
+      id-token: write # Needed to interact with GitHub's OIDC Token endpoint
+      contents: read
+      actions: read
+    secrets: inherit
+    with:
+      environment: 'test'
