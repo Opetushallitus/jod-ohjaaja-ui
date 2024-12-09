@@ -1,13 +1,15 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Metric } from 'web-vitals';
 import './i18n/config';
 import './index.css';
 import { routes } from './routes';
 
-const router = createBrowserRouter(routes, { basename: '/ohjaaja' });
+const router = createBrowserRouter(routes, {
+  basename: '/ohjaaja',
+});
 
 const root = createRoot(document.getElementById('root')!);
 
@@ -32,12 +34,7 @@ if (process.env.NODE_ENV !== 'production') {
 root.render(
   <StrictMode>
     <HelmetProvider>
-      <RouterProvider
-        router={router}
-        future={{
-          v7_startTransition: true,
-        }}
-      />
+      <RouterProvider router={router} />
     </HelmetProvider>
   </StrictMode>,
 );

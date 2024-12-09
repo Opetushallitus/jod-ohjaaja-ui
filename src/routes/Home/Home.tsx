@@ -1,7 +1,7 @@
 import { Title } from '@/components';
 import { HeroCard, useMediaQueries } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface CardsProps {
   className?: string;
