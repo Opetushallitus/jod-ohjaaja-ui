@@ -1,5 +1,5 @@
 import i18n from '@/i18n/config';
-import { RouteObject, redirect } from 'react-router-dom';
+import { RouteObject, redirect } from 'react-router';
 import { Home } from './Home';
 import { NoMatch, Root } from './Root';
 

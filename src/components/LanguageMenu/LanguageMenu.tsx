@@ -2,7 +2,7 @@ import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
 import { langLabels, supportedLanguageCodes } from '@/i18n/config';
 import { PopupList, cx } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 export interface LanguageMenuProps {
   inline?: boolean;

@@ -4,7 +4,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { MdClose, MdMenu } from 'react-icons/md';
-import { NavLink, Outlet, ScrollRestoration } from 'react-router-dom';
+import { NavLink, Outlet, ScrollRestoration } from 'react-router';
 import {
   LogoEuEn,
   LogoEuFi,
