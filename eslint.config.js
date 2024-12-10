@@ -28,6 +28,8 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       '@singlestore/react-hooks-disable-import/react-hooks-disable-import': 'error',
+      'react/no-unstable-nested-components': 'warn',
+      'react/no-array-index-key': 'warn',
     },
   },
   eslintConfigPrettier,
