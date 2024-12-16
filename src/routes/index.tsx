@@ -1,6 +1,6 @@
 import i18n from '@/i18n/config';
 import { RouteObject, redirect } from 'react-router';
-import { Home } from './Home';
+import { Home, homeLoader } from './Home';
 import { NoMatch, Root } from './Root';
 
 const rootRoute: RouteObject = {
@@ -11,6 +11,7 @@ const rootRoute: RouteObject = {
     {
       index: true,
       element: <Home />,
+      loader: homeLoader,
     },
   ],
 };

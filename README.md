@@ -22,7 +22,8 @@ npm install
 ```
 
 5. Take the steps in JOD Design System repository to get components of the design system work in hot reload mode.
-6. Once the installation is complete, run the following command to start the development server:
+6. Create a `.env.local` file and put the required environment variables there in order to get the connection to the CMS working. The required variable names are in `.env` file. See the following wiki page for further instructions: https://wiki.eduuni.fi/pages/viewpage.action?pageId=539867888
+7. Once the installation is complete, run the following command to start the development server:
 
 ```shell
 npm run dev
