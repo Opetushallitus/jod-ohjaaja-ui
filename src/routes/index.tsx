@@ -1,4 +1,5 @@
 import i18n from '@/i18n/config';
+import { ContentDetails, contentDetailsLoader } from '@/routes/ContentDetails';
 import { RouteObject, redirect } from 'react-router';
 import { Home, homeLoader } from './Home';
 import { NoMatch, Root } from './Root';
@@ -12,6 +13,11 @@ const rootRoute: RouteObject = {
       index: true,
       element: <Home />,
       loader: homeLoader,
+    },
+    {
+      path: `${i18n.t('slugs.content-details')}/:id`,
+      element: <ContentDetails />,
+      loader: contentDetailsLoader,
     },
   ],
 };

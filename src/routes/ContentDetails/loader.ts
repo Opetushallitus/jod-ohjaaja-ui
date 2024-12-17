@@ -1,18 +1,20 @@
 import i18n, { type LangCode } from '@/i18n/config';
-import { StructuredContentPage } from '@/types/cms-content';
+import { StructuredContent } from '@/types/cms-content';
 import { getAcceptLanguageHeader } from '@/utils/cms';
 import { LoaderFunction } from 'react-router';
 
-const loader = (async () => {
-  const queryParams = new URLSearchParams();
-  queryParams.set('sort', 'dateCreated:desc');
-  const response = await fetch(`/ohjaaja/cms/o/headless-delivery/v1.0/sites/20117/structured-contents?${queryParams}`, {
+const loader = (async ({ params }) => {
+  if (!params.id) {
+    throw new Response('Bad request', { status: 400 });
+  }
+
+  const response = await fetch(`/ohjaaja/cms/o/headless-delivery/v1.0/structured-contents/${params.id}`, {
     headers: {
       Accept: 'application/json',
       ...getAcceptLanguageHeader(i18n.language as LangCode),
     },
   });
-  const data: StructuredContentPage = await response.json();
+  const data: StructuredContent = await response.json();
 
   return { data };
 }) satisfies LoaderFunction;
