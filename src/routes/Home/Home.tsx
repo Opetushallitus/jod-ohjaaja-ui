@@ -66,7 +66,10 @@ interface CardData {
 }
 
 const Home = () => {
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
   const { sm } = useMediaQueries();
   const { data } = useLoaderData<LoaderData>();
   const [newContent, setNewContent] = React.useState<CardData[]>([]);
@@ -74,10 +77,10 @@ const Home = () => {
   React.useEffect(() => {
     const items = data.items.map((item) => {
       const imageContent = findContentValueByLabel(item, 'Kuva')?.image;
-      const ingress = findContentValueByLabel(item, 'Tiivistelmä')?.data ?? '';
+      const ingress = findContentValueByLabel(item, 'Tiivistelmä')?.data;
 
       return {
-        id: item.uuid ?? '',
+        id: `${item.id ?? ''}`,
         title: item.title ?? '',
         description: ingress ?? '',
         imageSrc: imageContent?.contentUrl ?? '',
@@ -107,6 +110,8 @@ const Home = () => {
                   description={c.description}
                   imageSrc={c.imageSrc}
                   imageAlt={c.imageAlt}
+                  to={`/${language}/${t('slugs.content-details')}/${c.id}`}
+                  linkComponent={Link}
                   tags={c.tags}
                 />
               ))}
