@@ -37,7 +37,7 @@ const ContentDetails = () => {
             <img src={image.contentUrl} alt={image.description} />
           </div>
         )}
-        <div className="flex gap-y-1">
+        <div className="flex flex-wrap gap-3">
           {taxonomies?.map((taxonomy) => (
             <Tag key={taxonomy} label={taxonomy} variant="presentation" title={taxonomy} />
           ))}
