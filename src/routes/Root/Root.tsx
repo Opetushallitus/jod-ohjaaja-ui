@@ -145,7 +145,7 @@ const Root = () => {
     <>
       <Helmet>
         <html lang={language} />
-        <link rel="manifest" href={`/manifest-${language}.json`} crossOrigin="use-credentials" />
+        <link rel="manifest" href={`/ohjaaja/manifest-${language}.json`} crossOrigin="use-credentials" />
         <body className="bg-bg-gray" />
       </Helmet>
       <header role="banner" className="sticky top-0 z-30 print:hidden">
