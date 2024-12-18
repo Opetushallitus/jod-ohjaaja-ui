@@ -1,6 +1,6 @@
 import i18n from '@/i18n/config';
 import { ContentDetails, contentDetailsLoader } from '@/routes/ContentDetails';
-import { RouteObject, redirect } from 'react-router';
+import { RouteObject, replace } from 'react-router';
 import { Home, homeLoader } from './Home';
 import { NoMatch, Root } from './Root';
 
@@ -25,7 +25,7 @@ const rootRoute: RouteObject = {
 export const routes: RouteObject[] = [
   {
     path: '/',
-    loader: () => redirect(`/${i18n.language}`),
+    loader: () => replace(`/${i18n.language}`),
   },
   rootRoute,
   { path: '*', element: <NoMatch /> },
