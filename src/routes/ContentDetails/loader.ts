@@ -8,7 +8,7 @@ const loader = (async ({ params }) => {
     throw new Response('Bad request', { status: 400 });
   }
 
-  const response = await fetch(`/cms/o/headless-delivery/v1.0/structured-contents/${params.id}`, {
+  const response = await fetch(`/ohjaaja/cms/o/headless-delivery/v1.0/structured-contents/${params.id}`, {
     headers: {
       Accept: 'application/json',
       ...getAcceptLanguageHeader(i18n.language as LangCode),
