@@ -6,7 +6,7 @@ import { LoaderFunction } from 'react-router';
 const loader = (async () => {
   const queryParams = new URLSearchParams();
   queryParams.set('sort', 'dateCreated:desc');
-  const response = await fetch(`/cms/o/headless-delivery/v1.0/sites/20117/structured-contents?${queryParams}`, {
+  const response = await fetch(`/ohjaaja/cms/o/headless-delivery/v1.0/sites/20117/structured-contents?${queryParams}`, {
     headers: {
       Accept: 'application/json',
       ...getAcceptLanguageHeader(i18n.language as LangCode),

@@ -31,7 +31,7 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 8080,
       proxy: {
-        '/cms': {
+        '/ohjaaja/cms': {
           target: env.CMSURL,
           changeOrigin: true,
           headers: {
