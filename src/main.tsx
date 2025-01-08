@@ -1,6 +1,5 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { HelmetProvider } from 'react-helmet-async';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Metric } from 'web-vitals';
 import './i18n/config';
@@ -33,8 +32,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 root.render(
   <StrictMode>
-    <HelmetProvider>
-      <RouterProvider router={router} />
-    </HelmetProvider>
+    <RouterProvider router={router} />
   </StrictMode>,
 );
