@@ -1,7 +1,7 @@
 import { LanguageMenu, LogoIconRgb, LogoRgbEn, LogoRgbFi, LogoRgbSv, NavigationBar } from '@/components';
+import i18n from '@/i18n/config';
 import { Footer, SkipLink, useMediaQueries } from '@jod/design-system';
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { MdClose, MdMenu } from 'react-icons/md';
 import { NavLink, Outlet, ScrollRestoration } from 'react-router';
@@ -141,13 +141,14 @@ const Root = () => {
     setMegaMenuOpen(false);
   };
 
+  React.useEffect(() => {
+    document.documentElement.setAttribute('lang', i18n.language);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language]);
+
   return (
-    <>
-      <Helmet>
-        <html lang={language} />
-        <link rel="manifest" href={`/ohjaaja/manifest-${language}.json`} crossOrigin="use-credentials" />
-        <body className="bg-bg-gray" />
-      </Helmet>
+    <div className="bg-bg-gray">
+      <link rel="manifest" href={`/ohjaaja/manifest-${language}.json`} crossOrigin="use-credentials" />
       <header role="banner" className="sticky top-0 z-30 print:hidden">
         <SkipLink hash="#jod-main" label={t('skiplinks.main')} />
         <NavigationBar
@@ -208,7 +209,7 @@ const Root = () => {
         className={!sm ? 'py-7' : undefined}
       />
       <ScrollRestoration />
-    </>
+    </div>
   );
 };
 
