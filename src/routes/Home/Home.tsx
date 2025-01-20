@@ -1,7 +1,7 @@
 import { Title } from '@/components';
 import { LoaderData } from '@/routes/Home/loader';
 import { findContentValueByLabel } from '@/utils/cms';
-import { HeroCard, MediaCard, useMediaQueries } from '@jod/design-system';
+import { CardCarousel, CardCarouselItem, HeroCard, MediaCard, useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLoaderData } from 'react-router';
@@ -56,15 +56,6 @@ const Cards = ({ className = '' }: CardsProps) => {
   );
 };
 
-interface CardData {
-  id: string;
-  title: string;
-  description: string;
-  imageSrc: string;
-  imageAlt: string;
-  tags: string[];
-}
-
 const Home = () => {
   const {
     t,
@@ -72,24 +63,31 @@ const Home = () => {
   } = useTranslation();
   const { sm } = useMediaQueries();
   const { data } = useLoaderData<LoaderData>();
-  const [newContent, setNewContent] = React.useState<CardData[]>([]);
+  const [carouselItems, setCarouselItems] = React.useState<CardCarouselItem[]>([]);
 
   React.useEffect(() => {
     const items = data.items.map((item) => {
       const imageContent = findContentValueByLabel(item, 'Kuva')?.image;
       const ingress = findContentValueByLabel(item, 'Tiivistelmä')?.data;
+      const id = `${item.id ?? ''}`;
 
       return {
-        id: `${item.id ?? ''}`,
-        title: item.title ?? '',
-        description: ingress ?? '',
-        imageSrc: imageContent?.contentUrl ?? '',
-        imageAlt: imageContent?.title ?? '',
-        tags: item.keywords ?? [],
+        id,
+        component: (
+          <MediaCard
+            label={item.title ?? ''}
+            description={ingress ?? ''}
+            imageSrc={imageContent?.contentUrl ?? ''}
+            imageAlt={imageContent?.title ?? ''}
+            to={`/${language}/${t('slugs.content-details')}/${id}`}
+            linkComponent={Link}
+            tags={item.keywords ?? []}
+          />
+        ),
       };
     });
-    setNewContent(items);
-  }, [data]);
+    setCarouselItems(items);
+  }, [data, language, t]);
 
   return (
     <main role="main" className="mx-auto w-full max-w-screen-xl" id="jod-main">
@@ -98,27 +96,22 @@ const Home = () => {
         {sm && <Cards />}
       </div>
       {!sm && <Cards className="relative -top-11" />}
-      <div className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-6 pt-8 sm:px-6 print:p-0">
+      <div className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-6 pt-8 print:p-0">
         <div className="col-span-3 print:col-span-3 flex flex-col gap-8">
           <div>
-            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">Uudet sisällöt</h2>
-            <div className="flex flex-row gap-6">
-              {newContent.map((c) => (
-                <MediaCard
-                  key={c.id}
-                  label={c.title}
-                  description={c.description}
-                  imageSrc={c.imageSrc}
-                  imageAlt={c.imageAlt}
-                  to={`/${language}/${t('slugs.content-details')}/${c.id}`}
-                  linkComponent={Link}
-                  tags={c.tags}
-                />
-              ))}
-            </div>
+            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.new-content')}</h2>
+            <CardCarousel
+              itemWidth={261}
+              items={carouselItems}
+              translations={{
+                prevTrigger: t('carousel.prev'),
+                nextTrigger: t('carousel.next'),
+                indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
+              }}
+            />
           </div>
           <div>
-            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">Suositut sisällöt</h2>
+            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.popular-content')}</h2>
             <p className="bg-todo h-[328px] flex items-center justify-center rounded">TODO</p>
           </div>
           <div>

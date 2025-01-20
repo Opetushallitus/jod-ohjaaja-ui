@@ -1,6 +1,11 @@
 {
   "about-us-and-user-guide": "Tietoa palvelusta ja käyttöohjeet",
   "accessibility-statement": "Saavutettavuusseloste",
+  "carousel": {
+    "indicator": "Siirry sivulle {{index}}",
+    "next": "Seuraava sivu",
+    "prev": "Edellinen sivu"
+  },
   "cookie-policy": "Evästekäytäntö",
   "copyright": "© JOD 2024. Kaikki oikeudet pidätetään.",
   "data-sources": "Datalähteet",
@@ -12,7 +17,9 @@
     "card-3-content": "Ohjaustyössä käytettäviä menetelmiä.",
     "card-3-title": "Asiakastyön tueksi",
     "card-4-content": "Osaamistasi vahvistavia materiaaleja.",
-    "card-4-title": "Ammatillinen kehittyminen"
+    "card-4-title": "Ammatillinen kehittyminen",
+    "new-content": "Uudet sisällöt",
+    "popular-content": "Suositut sisällöt"
   },
   "login": "Kirjaudu sisään",
   "menu": "Valikko",
@@ -31,8 +38,8 @@
   "slugs": {
     "accessibility-statement": "saavutettavuusseloste",
     "basic-information": "perustiedot",
-    "cookie-policy": "evastekaytanto",
     "content-details": "tietosisallot",
+    "cookie-policy": "evastekaytanto",
     "data-sources": "datalahteet",
     "privacy-policy": "tietosuojaseloste",
     "terms-of-service": "kayttoehdot",
