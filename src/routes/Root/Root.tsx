@@ -1,6 +1,6 @@
-import { LanguageMenu, LogoIconRgb, LogoRgbEn, LogoRgbFi, LogoRgbSv, NavigationBar } from '@/components';
+import { LanguageMenu } from '@/components';
 import i18n from '@/i18n/config';
-import { Footer, SkipLink, useMediaQueries } from '@jod/design-system';
+import { Footer, NavigationBar, SkipLink, useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdClose, MdMenu } from 'react-icons/md';
@@ -28,17 +28,6 @@ const NavigationBarItem = (to: string, text: string) => ({
     </NavLink>
   ),
 });
-
-const LogoRgb = ({ language, size }: { language: string; size: number }) => {
-  switch (language) {
-    case 'sv':
-      return <LogoRgbSv size={size} />;
-    case 'en':
-      return <LogoRgbEn size={size} />;
-    default:
-      return <LogoRgbFi size={size} />;
-  }
-};
 
 const Root = () => {
   const {
@@ -152,15 +141,11 @@ const Root = () => {
       <header role="banner" className="sticky top-0 z-30 print:hidden">
         <SkipLink hash="#jod-main" label={t('skiplinks.main')} />
         <NavigationBar
-          onLanguageClick={toggleMenu('lang')}
-          logo={
-            <NavLink to={`/${language}`} className="flex">
-              <div className="inline-flex select-none items-center p-3">
-                {sm ? <LogoRgb language={language} size={32} /> : <LogoIconRgb size={32} />}
-                <span className="sr-only">{t('osaamispolku')}</span>
-              </div>
-            </NavLink>
-          }
+          logo={{
+            to: `/${language}`,
+            language,
+            srText: t('osaamispolku'),
+          }}
           menuComponent={
             sm ? (
               <button
@@ -187,6 +172,11 @@ const Root = () => {
               </button>
             )
           }
+          renderLink={({ to, className, children }) => (
+            <NavLink to={to} className={className}>
+              {children as React.ReactNode}
+            </NavLink>
+          )}
         />
         {langMenuOpen && (
           <div className="relative xl:container mx-auto">
