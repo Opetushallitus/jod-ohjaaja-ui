@@ -22,5 +22,4 @@ export {
 } from './Logo';
 export { MainLayout } from './MainLayout/MainLayout';
 export { NavigationBar } from './NavigationBar/NavigationBar';
-export { Title } from './Title/Title';
 export { UserButton } from './UserButton/UserButton';
