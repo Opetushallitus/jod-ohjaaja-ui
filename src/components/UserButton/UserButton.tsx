@@ -1,9 +1,9 @@
-import { NavigationBarProps } from '@/components/NavigationBar/NavigationBar';
 import { useLoginLink } from '@/hooks/useLoginLink';
+import { JSX } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdOutlinePerson } from 'react-icons/md';
 
-export const UserButton = ({ user }: Pick<NavigationBarProps, 'user'>) => {
+export const UserButton = ({ user }: { user: { name: string; component: JSX.ElementType } }) => {
   const { t } = useTranslation();
   const loginLink = useLoginLink();
   const login = { url: loginLink, text: t('login') };
