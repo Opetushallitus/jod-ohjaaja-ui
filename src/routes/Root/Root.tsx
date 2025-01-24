@@ -77,7 +77,7 @@ const Root = () => {
           menuComponent={
             sm ? (
               <button
-                className="flex gap-4 justify-center items-center select-none"
+                className="cursor-pointer flex gap-4 justify-center items-center select-none"
                 aria-label={t('open-menu')}
                 onClick={toggleMenu('mega')}
               >
@@ -87,7 +87,11 @@ const Root = () => {
                 </span>
               </button>
             ) : (
-              <button className="flex justify-self-end p-3" aria-label={t('open-menu')} onClick={toggleMenu('mega')}>
+              <button
+                className="cursor-pointer flex justify-self-end p-3"
+                aria-label={t('open-menu')}
+                onClick={toggleMenu('mega')}
+              >
                 {megaMenuOpen ? (
                   <span className="size-7 flex justify-center items-center">
                     <MdClose size={24} />

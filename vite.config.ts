@@ -1,3 +1,4 @@
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react-swc';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, loadEnv } from 'vite';
@@ -9,7 +10,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: '/ohjaaja/',
-    plugins: [react()],
+    plugins: [react(), tailwindcss()],
     test: {
       environment: 'jsdom',
       globals: true,
