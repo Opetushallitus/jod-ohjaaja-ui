@@ -1,5 +1,5 @@
 import { LoaderData } from '@/routes/Home/loader';
-import { findContentValueByLabel } from '@/utils/cms';
+import { findContentValueByName } from '@/utils/cms';
 import { CardCarousel, CardCarouselItem, HeroCard, MediaCard, useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -66,8 +66,8 @@ const Home = () => {
 
   React.useEffect(() => {
     const items = data.items.map((item) => {
-      const imageContent = findContentValueByLabel(item, 'Kuva')?.image;
-      const ingress = findContentValueByLabel(item, 'Tiivistelmä')?.data;
+      const imageContent = findContentValueByName(item, 'image')?.image;
+      const ingress = findContentValueByName(item, 'ingress')?.data;
       const id = `${item.id ?? ''}`;
 
       return {
