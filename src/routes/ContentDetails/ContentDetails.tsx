@@ -1,5 +1,5 @@
 import { MainLayout } from '@/components';
-import { findContentValueByLabel } from '@/utils/cms';
+import { findContentValueByName } from '@/utils/cms';
 import { Tag, tidyClasses as tc } from '@jod/design-system';
 import DOMPurify from 'dompurify';
 import { useTranslation } from 'react-i18next';
@@ -16,8 +16,8 @@ const ContentDetails = () => {
     : '';
 
   const taxonomies = data.taxonomyCategoryBriefs?.map((taxonomy) => taxonomy.taxonomyCategoryName);
-  const image = findContentValueByLabel(data, 'Kuva')?.image;
-  const description = findContentValueByLabel(data, 'Kuvaus')?.data;
+  const image = findContentValueByName(data, 'image')?.image;
+  const description = findContentValueByName(data, 'content')?.data;
   const richTextClasses = tc([
     '[&_p]:my-5',
     '[&_li]:my-2',

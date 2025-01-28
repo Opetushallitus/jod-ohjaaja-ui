@@ -1,7 +1,7 @@
 import { LangCode } from '@/i18n/config';
 import { StructuredContent } from '@/types/cms-content';
 
-type ContentLabel = 'Tiivistelmä' | 'Kuvaus' | 'Kuva' | 'Tiedosto' | 'Linkki';
+type ContentName = 'ingress' | 'content' | 'image' | 'document' | 'link';
 
 /**
  * Finds the content value from Liferay strucured content by label
@@ -9,8 +9,8 @@ type ContentLabel = 'Tiivistelmä' | 'Kuvaus' | 'Kuva' | 'Tiedosto' | 'Linkki';
  * @param {ContentLabel} label Content label
  * @returns {ContentFieldValue | undefined} Content value
  */
-export const findContentValueByLabel = (item: StructuredContent, label: ContentLabel) => {
-  return item.contentFields?.find((field) => field.label === label)?.contentFieldValue;
+export const findContentValueByName = (item: StructuredContent, name: ContentName) => {
+  return item.contentFields?.find((field) => field.name === name)?.contentFieldValue;
 };
 
 /**
