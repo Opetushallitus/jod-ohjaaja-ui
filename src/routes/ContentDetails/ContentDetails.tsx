@@ -24,7 +24,20 @@ const ContentDetails = () => {
     '[&_li]:ml-6',
     '[&_li]:list-item',
     '[&_ul]:list-disc',
+    '[&_ol]:list-decimal',
     '[&_strong]:font-bold',
+    '[&_img]:inline',
+    '[&_table]:border-collapse',
+    '[&_table]:border',
+    '[&_table]:border-gray-400',
+    '[&_table_td]:border',
+    '[&_table_td]:border-gray-400',
+    '[&_table>caption]:font-bold',
+    '[&_table>caption]:text-left',
+    '[&_h1]:text-heading-1',
+    '[&_h2]:text-heading-2',
+    '[&_h3]:text-heading-3',
+    '[&_h4]:text-heading-4',
   ]);
 
   return (
