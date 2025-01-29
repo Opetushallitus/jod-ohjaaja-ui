@@ -1,5 +1,5 @@
 import { LoaderData } from '@/routes/Home/loader';
-import { findContentValueByName } from '@/utils/cms';
+import { findContentValueByName, getAdaptiveMediaSrc } from '@/utils/cms';
 import { CardCarousel, CardCarouselItem, HeroCard, MediaCard, useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -69,6 +69,7 @@ const Home = () => {
       const imageContent = findContentValueByName(item, 'image')?.image;
       const ingress = findContentValueByName(item, 'ingress')?.data;
       const id = `${item.id ?? ''}`;
+      const imageSrc = getAdaptiveMediaSrc(imageContent?.id, imageContent?.title, 'thumbnail');
 
       return {
         id,
@@ -76,7 +77,7 @@ const Home = () => {
           <MediaCard
             label={item.title ?? ''}
             description={ingress ?? ''}
-            imageSrc={imageContent?.contentUrl ?? ''}
+            imageSrc={imageSrc}
             imageAlt={imageContent?.title ?? ''}
             to={`/${language}/${t('slugs.content-details')}/${id}`}
             linkComponent={Link}
