@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
       ],
     },
     server: {
-      port: 8080,
+      port: 8180,
       proxy: {
         '/ohjaaja/cms': {
           target: env.CMSURL,

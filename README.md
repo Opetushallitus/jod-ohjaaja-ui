@@ -29,7 +29,7 @@ npm install
 npm run dev
 ```
 
-7. The app should now be running on http://localhost:8080/.
+7. The app should now be running on http://localhost:8180/.
 
 ## Download third-party UI assets
 
