@@ -1,12 +1,20 @@
-import i18n from '@/i18n/config';
+import i18n, { supportedLanguageCodes } from '@/i18n/config';
 import { ContentDetails, contentDetailsLoader } from '@/routes/ContentDetails';
 import { RouteObject, replace } from 'react-router';
 import { Home, homeLoader } from './Home';
-import { NoMatch, Root } from './Root';
+import { NoMatch, Root, rootLoader } from './Root';
+
+const contentDetailsRoutes: RouteObject[] = supportedLanguageCodes.map((lng) => ({
+  id: `{slugs.content-details}/:id|${lng}`,
+  path: `${i18n.t('slugs.content-details', { lng })}/:id`,
+  element: <ContentDetails />,
+  loader: contentDetailsLoader,
+}));
 
 const rootRoute: RouteObject = {
   id: 'root',
   path: '/:lng',
+  loader: rootLoader,
   element: <Root />,
   children: [
     {
@@ -14,11 +22,7 @@ const rootRoute: RouteObject = {
       element: <Home />,
       loader: homeLoader,
     },
-    {
-      path: `${i18n.t('slugs.content-details')}/:id`,
-      element: <ContentDetails />,
-      loader: contentDetailsLoader,
-    },
+    ...contentDetailsRoutes,
   ],
 };
 
