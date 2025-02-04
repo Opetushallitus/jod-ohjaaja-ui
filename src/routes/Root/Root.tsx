@@ -1,9 +1,11 @@
-import { LanguageMenu } from '@/components';
+import { LanguageButton, LanguageMenu } from '@/components';
+import { MegaMenu } from '@/components/MegaMenu/MegaMenu';
+import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import i18n from '@/i18n/config';
 import { Footer, NavigationBar, SkipLink, useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { MdClose, MdMenu } from 'react-icons/md';
+import { MdMenu } from 'react-icons/md';
 import { NavLink, Outlet, ScrollRestoration } from 'react-router';
 
 const NavigationBarItem = (to: string, text: string) => ({
@@ -22,7 +24,6 @@ const Root = () => {
   } = useTranslation();
   const { sm } = useMediaQueries();
   const [megaMenuOpen, setMegaMenuOpen] = React.useState(false);
-  const [userMenuOpen, setUserMenuOpen] = React.useState(false);
   const [langMenuOpen, setLangMenuOpen] = React.useState(false);
 
   const userGuide = t('slugs.user-guide.index');
@@ -36,16 +37,18 @@ const Root = () => {
     NavigationBarItem(`${basicInformation}/${t('slugs.privacy-policy')}`, t('privacy-policy')),
   ];
 
-  const toggleMenu = (menu: 'mega' | 'user' | 'lang') => () => {
+  const megaMenuButtonRef = React.useRef<HTMLButtonElement>(null);
+  const langMenuButtonRef = React.useRef<HTMLLIElement>(null);
+
+  const megaMenuRef = useMenuClickHandler(() => setMegaMenuOpen(false), megaMenuButtonRef);
+  const langMenuRef = useMenuClickHandler(() => setLangMenuOpen(false), langMenuButtonRef);
+
+  const toggleMenu = (menu: 'mega' | 'lang') => () => {
     setMegaMenuOpen(false);
-    setUserMenuOpen(false);
     setLangMenuOpen(false);
     switch (menu) {
       case 'mega':
         setMegaMenuOpen(!megaMenuOpen);
-        break;
-      case 'user':
-        setUserMenuOpen(!userMenuOpen);
         break;
       case 'lang':
         setLangMenuOpen(!langMenuOpen);
@@ -69,6 +72,7 @@ const Root = () => {
       <header role="banner" className="sticky top-0 z-30 print:hidden">
         <SkipLink hash="#jod-main" label={t('skiplinks.main')} />
         <NavigationBar
+          languageButtonComponent={<LanguageButton onClick={toggleMenu('lang')} />}
           logo={{
             to: `/${language}`,
             language,
@@ -78,8 +82,9 @@ const Root = () => {
             sm ? (
               <button
                 className="cursor-pointer flex gap-4 justify-center items-center select-none"
-                aria-label={t('open-menu')}
+                aria-label={megaMenuOpen ? t('close-menu') : t('open-menu')}
                 onClick={toggleMenu('mega')}
+                ref={megaMenuButtonRef}
               >
                 <span className="py-3 pl-3">{t('menu')}</span>
                 <span className="size-7 flex justify-center items-center">
@@ -87,23 +92,21 @@ const Root = () => {
                 </span>
               </button>
             ) : (
-              <button
-                className="cursor-pointer flex justify-self-end p-3"
-                aria-label={t('open-menu')}
-                onClick={toggleMenu('mega')}
-              >
-                {megaMenuOpen ? (
-                  <span className="size-7 flex justify-center items-center">
-                    <MdClose size={24} />
-                  </span>
-                ) : (
+              !megaMenuOpen && (
+                <button
+                  className="cursor-pointer flex justify-self-end p-3"
+                  aria-label={t('open-menu')}
+                  onClick={toggleMenu('mega')}
+                  ref={megaMenuButtonRef}
+                >
                   <span className="size-7 flex justify-center items-center">
                     <MdMenu size={24} />
                   </span>
-                )}
-              </button>
+                </button>
+              )
             )
           }
+          refs={{ langMenuButtonRef: langMenuButtonRef }}
           renderLink={({ to, className, children }) => (
             <NavLink to={to} className={className}>
               {children as React.ReactNode}
@@ -112,9 +115,14 @@ const Root = () => {
         />
         {langMenuOpen && (
           <div className="relative xl:container mx-auto">
-            <div className="absolute right-[50px] translate-y-7">
+            <div ref={langMenuRef} className="absolute right-[50px] translate-y-7">
               <LanguageMenu onClick={changeLanguage} />
             </div>
+          </div>
+        )}
+        {megaMenuOpen && (
+          <div ref={megaMenuRef}>
+            <MegaMenu onClose={() => setMegaMenuOpen(false)} onLanguageClick={changeLanguage} />
           </div>
         )}
       </header>

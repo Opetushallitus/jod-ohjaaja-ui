@@ -6,6 +6,7 @@
     "next": "Seuraava sivu",
     "prev": "Edellinen sivu"
   },
+  "close-menu": "Sulje valikko",
   "cookie-policy": "Evästekäytäntö",
   "copyright": "© JOD 2024. Kaikki oikeudet pidätetään.",
   "data-sources": "Datalähteet",
@@ -31,6 +32,7 @@
   "osaamispolku": "Osaamispolku",
   "privacy-policy": "Tietosuojaseloste",
   "return-home": "Palaa etusivulle",
+  "return-menu": "Palaa valikkoon",
   "select-language": "Valitse kieli",
   "skiplinks": {
     "main": "Siirry pääsisältöön"
