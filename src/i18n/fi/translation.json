@@ -8,6 +8,11 @@
   },
   "close-menu": "Sulje valikko",
   "cookie-policy": "Evästekäytäntö",
+  "content-list": {
+    "show-more": "Näytä lisää",
+    "article-count_one": "{{count}} artikkeli",
+    "article-count_other": "{{count}} artikkelia"
+  },
   "copyright": "© JOD 2024. Kaikki oikeudet pidätetään.",
   "data-sources": "Datalähteet",
   "home": {
@@ -43,6 +48,7 @@
     "content-details": "tietosisallot",
     "cookie-policy": "evastekaytanto",
     "data-sources": "datalahteet",
+    "information-resources": "tietosisallot",
     "privacy-policy": "tietosuojaseloste",
     "terms-of-service": "kayttoehdot",
     "user-guide": {

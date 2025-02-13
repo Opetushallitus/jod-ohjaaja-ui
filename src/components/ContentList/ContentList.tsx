@@ -1,0 +1,54 @@
+import { StructuredContent } from '@/types/cms-content';
+import { findContentValueByName, getAdaptiveMediaSrc } from '@/utils/cms';
+import { Button, MediaCard, Spinner } from '@jod/design-system';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router';
+
+interface ContentListProps {
+  contents: StructuredContent[];
+  totalCount: number;
+  hasMore: boolean;
+  isLoading: boolean;
+  loadMore: () => void;
+}
+
+export const ContentList = ({ contents, totalCount, hasMore, isLoading, loadMore }: ContentListProps) => {
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
+
+  return (
+    <div>
+      <div className="mb-3 sm:mb-5 text-heading-2-mobile sm:text-heading-2">
+        {t('content-list.article-count', { count: totalCount })}
+      </div>
+      <div className="flex flex-col flex-wrap gap-3 sm:gap-5">
+        {contents.map((content) => {
+          const imageContent = findContentValueByName(content, 'image')?.image;
+          const ingress = findContentValueByName(content, 'ingress')?.data;
+          const id = `${content.id ?? ''}`;
+          const imageSrc = getAdaptiveMediaSrc(imageContent?.id, imageContent?.title, 'thumbnail');
+
+          return (
+            <MediaCard
+              key={id}
+              variant="horizontal"
+              label={content.title ?? ''}
+              description={ingress ?? ''}
+              imageSrc={imageSrc}
+              imageAlt={imageContent?.title ?? ''}
+              to={`/${language}/${t('slugs.content-details')}/${id}`}
+              linkComponent={Link}
+              tags={content.keywords ?? []}
+            />
+          );
+        })}
+      </div>
+      <div className="flex flex-row pt-4 justify-center">
+        {hasMore && !isLoading && <Button onClick={loadMore} label={t('content-list.show-more')} variant="white" />}
+        {isLoading && <Spinner color="white" size={24} />}
+      </div>
+    </div>
+  );
+};

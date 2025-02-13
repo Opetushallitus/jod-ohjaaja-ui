@@ -24,7 +24,7 @@ const Cards = ({ className = '' }: CardsProps) => {
       </div>
       <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-3 sm:gap-7 md:grid-cols-3">
         <HeroCard
-          to={`/${language}`}
+          to={`${t('slugs.information-resources')}`}
           linkComponent={Link}
           size="sm"
           textColor="#000"
