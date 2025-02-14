@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@jod/design-system": "github:Opetushallitus/jod-design-system#main",
-    "dompurify": "^3.2.3",
+    "dompurify": "^3.2.4",
     "i18next": "^24.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
