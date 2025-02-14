@@ -1,23 +1,35 @@
 import { MainLayout } from '@/components';
-import { findContentValueByName } from '@/utils/cms';
-import { Tag, tidyClasses as tc } from '@jod/design-system';
+import { ContentDocument, ContentLink } from '@/types/cms-content';
+import { getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
+import { tidyClasses as tc } from '@jod/design-system';
 import DOMPurify from 'dompurify';
 import { useTranslation } from 'react-i18next';
+import { MdOutlineFileDownload, MdOutlineLink } from 'react-icons/md';
 import { useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
 
+interface DocumentsAndLinksProps {
+  documents: ContentDocument[];
+  links: ContentLink[];
+}
+
 const ContentDetails = () => {
   const { data } = useLoaderData<LoaderData>();
-  const { i18n } = useTranslation();
+  const {
+    i18n: { language },
+  } = useTranslation();
   const date = data.dateCreated
-    ? new Intl.DateTimeFormat([i18n.language], {
+    ? new Intl.DateTimeFormat([language], {
         dateStyle: 'medium',
       }).format(new Date(data.dateCreated))
     : '';
 
-  const taxonomies = data.taxonomyCategoryBriefs?.map((taxonomy) => taxonomy.taxonomyCategoryName);
-  const image = findContentValueByName(data, 'image')?.image;
-  const description = findContentValueByName(data, 'content')?.data;
+  const image = getImage(data);
+  const content = getContent(data);
+  const links = getLinks(data);
+  const documents = getDocuments(data);
+  const keywords = getKeywords(data);
+
   const richTextClasses = tc([
     '[&_p]:my-5',
     '[&_li]:my-2',
@@ -38,6 +50,7 @@ const ContentDetails = () => {
     '[&_h2]:text-heading-2',
     '[&_h3]:text-heading-3',
     '[&_h4]:text-heading-4',
+    '[&_a]:text-link',
   ]);
 
   return (
@@ -50,16 +63,55 @@ const ContentDetails = () => {
             <img src={image.contentUrl} alt={image.description} />
           </div>
         )}
-        <div className="flex flex-wrap gap-3">
-          {taxonomies?.map((taxonomy) => (
-            <Tag key={taxonomy} label={taxonomy} variant="presentation" title={taxonomy} />
-          ))}
-        </div>
-        {description && (
-          <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }} />
+        {content && (
+          <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
+        )}
+
+        <DocumentsAndLinks documents={documents} links={links} />
+        {keywords.length > 0 && (
+          <ul className="text-attrib-value flex flex-row divide-x flex-wrap pt-3 text-accent ">
+            {keywords.map((tag) => (
+              <li key={tag} className="px-2 first:pl-0 last:pr-0 border-border-gray">
+                {tag}
+              </li>
+            ))}
+          </ul>
         )}
       </div>
     </MainLayout>
+  );
+};
+
+const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
+  const hasDocumentsOrLinks = documents.length > 0 || links.length > 0;
+  const { t } = useTranslation();
+  return (
+    hasDocumentsOrLinks && (
+      <div className="w-full bg-bg-gray p-5 rounded-sm">
+        <h3 className="text-heading-4">{t('content-details.additional-content')}</h3>
+        {documents.map((document) => (
+          <a
+            key={document.id}
+            href={document.contentUrl}
+            target="_blank"
+            className="flex text-heading-4 text-accent items-center gap-3 ml-4"
+          >
+            {document.title} <MdOutlineFileDownload size={20} />
+          </a>
+        ))}
+        {links.map((link) => (
+          <a
+            key={link.url}
+            href={link.url}
+            target="_blank"
+            rel="external noopener noreferrer"
+            className="flex text-heading-4 text-accent items-center gap-3 ml-4"
+          >
+            {link.text} <MdOutlineLink size={20} />
+          </a>
+        ))}
+      </div>
+    )
   );
 };
 
