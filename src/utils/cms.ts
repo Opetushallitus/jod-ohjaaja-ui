@@ -1,5 +1,5 @@
 import { LangCode } from '@/i18n/config';
-import { StructuredContent } from '@/types/cms-content';
+import { ContentLink, StructuredContent } from '@/types/cms-content';
 
 type ContentName = 'ingress' | 'content' | 'image' | 'document' | 'link';
 const AdaptiveMediaSizes = {
@@ -53,4 +53,94 @@ export const getAdaptiveMediaSrc = (
 
   const mediaSize = AdaptiveMediaSizes[size];
   return `/ohjaaja/cms/o/adaptive-media/image/${fileId}/${mediaSize}/${fileName}`;
+};
+
+/**
+ * Get the title of the structured content
+ *
+ * @param item - The structured content
+ * @returns The title of the structured content
+ */
+export const getTitle = (item: StructuredContent) => {
+  return item.title;
+};
+
+/**
+ * Get the ingress of the structured content
+ *
+ * @param item - The structured content
+ * @returns The ingress of the structured content or an empty string if not found
+ */
+export const getIngress = (item: StructuredContent) => {
+  return findContentValueByName(item, 'ingress')?.data ?? '';
+};
+
+/**
+ * Get the image of the structured content
+ *
+ * @param item - The structured content
+ * @returns The image of the structured content or undefined if not found
+ */
+export const getImage = (item: StructuredContent) => {
+  return findContentValueByName(item, 'image')?.image;
+};
+
+/**
+ * Get the content of the structured content
+ *
+ * @param item - The structured content
+ * @returns The content of the structured content or an empty string if not found
+ */
+export const getContent = (item: StructuredContent) => {
+  return findContentValueByName(item, 'content')?.data ?? '';
+};
+
+/**
+ * Get the links of the structured content
+ *
+ * @param item - The structured content
+ * @returns The links of the structured content or an empty array if not found
+ */
+export const getLinks = (item: StructuredContent): ContentLink[] => {
+  const links = item.contentFields
+    ?.filter((field) => field.name === 'link')
+    .map((linkContentField) => {
+      const text = linkContentField.nestedContentFields.find((field) => field.name === 'linktext')?.contentFieldValue
+        ?.data;
+      const url = linkContentField.nestedContentFields.find((field) => field.name === 'linkurl')?.contentFieldValue
+        ?.data;
+
+      if (text === undefined || text.trim() === '' || url === undefined || url.trim() === '') {
+        return null;
+      }
+      return { text, url };
+    })
+    .filter((link) => link !== null);
+
+  return links ?? [];
+};
+
+/**
+ * Get the documents of the structured content
+ *
+ * @param item - The structured content
+ * @returns The documents of the structured content or an empty array if not found
+ */
+export const getDocuments = (item: StructuredContent) => {
+  const documents = item.contentFields
+    ?.filter((field) => field.name === 'document')
+    .map((documentContentField) => documentContentField.contentFieldValue.document)
+    .filter((document) => document !== undefined);
+
+  return documents ?? [];
+};
+
+/**
+ * Get the keywords of the structured content
+ *
+ * @param item - The structured content
+ * @returns The keywords of the structured content or an empty array if not found
+ */
+export const getKeywords = (item: StructuredContent) => {
+  return item.keywords ?? [];
 };

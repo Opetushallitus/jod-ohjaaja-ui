@@ -22,16 +22,17 @@ export interface ContentFieldValue {
   image?: ContentDocument;
   geo?: Record<string, unknown>;
   link?: string;
+  document?: ContentDocument;
 }
 
 // https://app.swaggerhub.com/apis/liferayinc/headless-delivery/v1.0#/ContentField
 export interface ContentField {
   contentFieldValue: ContentFieldValue;
   dataType: string;
-  inputControl: string;
+  inputControl?: string;
   label: string;
   name: string;
-  nestedContentFields: unknown[];
+  nestedContentFields: ContentField[];
   repeatable: boolean;
 }
 
@@ -73,4 +74,9 @@ export interface StructuredContentPage {
   page: number;
   pageSize: number;
   totalCount: number;
+}
+
+export interface ContentLink {
+  text: string;
+  url: string;
 }
