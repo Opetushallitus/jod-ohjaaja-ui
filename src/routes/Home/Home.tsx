@@ -1,68 +1,19 @@
+import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LoaderData } from '@/routes/Home/loader';
 import { getAdaptiveMediaSrc, getImage, getIngress, getKeywords, getTitle } from '@/utils/cms';
-import { CardCarousel, CardCarouselItem, HeroCard, MediaCard, useMediaQueries } from '@jod/design-system';
+import { CardCarousel, CardCarouselItem, ContentCard, MediaCard } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLoaderData } from 'react-router';
-
-interface CardsProps {
-  className?: string;
-}
-
-const Cards = ({ className = '' }: CardsProps) => {
-  const {
-    t,
-    i18n: { language },
-  } = useTranslation();
-
-  return (
-    <div
-      className={`mx-auto flex max-w-[1140px] flex-col gap-3 sm:gap-11 px-5 sm:px-6 hyphens-auto xl:hyphens-none ${className}`.trim()}
-    >
-      <div className="sm:mb-[40px] max-w-2xl">
-        <HeroCard backgroundColor="#00818AF2" content={t('home.card-1-content')} title={t('home.card-1-title')} />
-      </div>
-      <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-3 sm:gap-7 md:grid-cols-3">
-        <HeroCard
-          to={`${t('slugs.information-resources')}`}
-          linkComponent={Link}
-          size="sm"
-          textColor="#000"
-          backgroundColor="#339DDFF2"
-          title={t('home.card-2-title')}
-          content={t('home.card-2-content')}
-        />
-        <HeroCard
-          to={`/${language}`}
-          linkComponent={Link}
-          size="sm"
-          textColor="#000"
-          backgroundColor="#CD4EB3F2"
-          title={t('home.card-3-title')}
-          content={t('home.card-3-content')}
-        />
-        <HeroCard
-          to={`/${language}`}
-          linkComponent={Link}
-          size="sm"
-          textColor="#000"
-          backgroundColor="#EE7C45F2"
-          title={t('home.card-4-title')}
-          content={t('home.card-4-content')}
-        />
-      </div>
-    </div>
-  );
-};
 
 const Home = () => {
   const {
     t,
     i18n: { language },
   } = useTranslation();
-  const { sm } = useMediaQueries();
   const { data } = useLoaderData<LoaderData>();
   const [carouselItems, setCarouselItems] = React.useState<CardCarouselItem[]>([]);
+  const isLogged = true; // Implement authentication
 
   React.useEffect(() => {
     const items = data.items.map((item) => {
@@ -92,34 +43,154 @@ const Home = () => {
   }, [data, language, t]);
 
   return (
-    <main role="main" className="mx-auto w-full max-w-(--breakpoint-xl)" id="jod-main">
+    <main id="jod-main" className="w-full max-w-(--breakpoint-xl) mx-auto">
       <title>{t('osaamispolku')}</title>
-      <div className="h-[320px] sm:h-auto mx-auto bg-[url(@/../assets/ohjaaja-hero.avif)] bg-[length:auto_680px] bg-[top_-4rem_right_-10rem] sm:bg-[length:auto_auto] sm:bg-[top_-10rem_left_-20rem] sm:py-8">
-        {sm && <Cards />}
-      </div>
-      {!sm && <Cards className="relative -top-11" />}
-      <div className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-6 pt-8 print:p-0">
-        <div className="col-span-3 print:col-span-3 flex flex-col gap-8">
-          <div>
-            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.new-content')}</h2>
-            <CardCarousel
-              itemWidth={261}
-              items={carouselItems}
-              translations={{
-                prevTrigger: t('carousel.prev'),
-                nextTrigger: t('carousel.next'),
-                indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
-              }}
+
+      <img
+        src="@/../assets/ohjaaja-hero.avif"
+        alt=""
+        role="none"
+        className="absolute w-(--breakpoint-xl) h-[320px] md:h-[454px] object-cover object-object-[50%] lg:object-[0_20%] -z-10"
+      />
+
+      <div className="grid gap-8 grid-cols-3 max-w-[1140px] mx-auto px-5 sm:px-6 pt-[186px] md:pt-[72px] pb-7 md:pb-[40px] lg:pb-[75px]">
+        <div className="col-span-3 flex flex-col gap-3 md:gap-5 lg:gap-8">
+          <FeatureCard
+            level="h1"
+            hero
+            title={t('home.card-1-title')}
+            content={t('home.card-1-content')}
+            backgroundColor="#00A8B3BF"
+            className="md:w-min"
+          />
+          <div className="flex flex-col lg:flex-row gap-3 md:gap-5 xl:gap-7">
+            <FeatureCard
+              to={`${t('slugs.information-resources')}`}
+              linkComponent={Link}
+              level="h2"
+              title={t('home.card-2-title')}
+              content={t('home.card-2-content')}
+              backgroundColor="var(--ds-color-secondary-1)"
+              collapseOnSmallScreen={true}
+              opacity={0.95}
+              className="flex-1"
+            />
+            <FeatureCard
+              to="/"
+              linkComponent={Link}
+              level="h2"
+              title={t('home.card-3-title')}
+              content={t('home.card-3-content')}
+              backgroundColor="var(--ds-color-secondary-3)"
+              collapseOnSmallScreen={true}
+              opacity={0.95}
+              className="flex-1"
+            />
+            <FeatureCard
+              to="/"
+              linkComponent={Link}
+              level="h2"
+              title={t('home.card-4-title')}
+              content={t('home.card-4-content')}
+              backgroundColor="var(--ds-color-secondary-4)"
+              collapseOnSmallScreen={true}
+              opacity={0.95}
+              className="flex-1"
             />
           </div>
-          <div>
-            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.popular-content')}</h2>
-            <p className="bg-todo h-[328px] flex items-center justify-center rounded">TODO</p>
-          </div>
-          <div>
-            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5 bg-todo">Kirjaudu palveluun</h2>
-          </div>
         </div>
+        <div className="col-span-3">
+          <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.new-content')}</h2>
+          <CardCarousel
+            itemWidth={261}
+            items={carouselItems}
+            translations={{
+              prevTrigger: t('carousel.prev'),
+              nextTrigger: t('carousel.next'),
+              indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
+            }}
+          />
+        </div>
+
+        {isLogged && (
+          <div className="col-span-3 lg:col-span-2">
+            <FeatureCard
+              to="/"
+              linkComponent={Link}
+              level="h2"
+              title={t('home.favorites')}
+              content={t('home.favorites-content')}
+              backgroundColor="#85C4EC"
+            />
+          </div>
+        )}
+
+        <div className="col-span-3">
+          <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.popular-content')}</h2>
+          <CardCarousel
+            itemWidth={261}
+            items={carouselItems}
+            translations={{
+              prevTrigger: t('carousel.prev'),
+              nextTrigger: t('carousel.next'),
+              indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
+            }}
+          />
+        </div>
+
+        {isLogged ? (
+          <div className="col-span-3">
+            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.recently-watched-contents')}</h2>
+            <div className="grid grid-cols-3 gap-6 xl:gap-7">
+              <div className="col-span-3 lg:col-span-2 rounded bg-white p-6">
+                <ContentCard
+                  title="Lorem ipsum dolor"
+                  description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
+                  tags={['Asiasana 1', 'Asiasana 2', 'Asiasana 3']}
+                />
+                <hr className="border-border-gray" />
+                <ContentCard
+                  title="Lorem ipsum dolor"
+                  description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
+                  tags={['Asiasana 1', 'Asiasana 2', 'Asiasana 3']}
+                />
+                <hr className="border-border-gray" />
+                <ContentCard
+                  title="Lorem ipsum dolor"
+                  description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
+                  tags={['Asiasana 1', 'Asiasana 2', 'Asiasana 3']}
+                />
+                <hr className="border-border-gray" />
+                <ContentCard
+                  title="Lorem ipsum dolor"
+                  description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
+                  tags={['Asiasana 1', 'Asiasana 2', 'Asiasana 3']}
+                />
+              </div>
+              <div className="col-span-3 lg:col-span-1">
+                <FeatureCard
+                  to="/"
+                  linkComponent={Link}
+                  level="h2"
+                  title={t('home.suggest-new-content-for-the-service')}
+                  content={t('home.suggest-new-content-for-the-service-content')}
+                  backgroundColor="#EBB8E1"
+                />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="col-span-3 lg:col-span-2">
+            <FeatureCard
+              to="/"
+              linkComponent={Link}
+              level="h2"
+              title={t('log-in-to-the-service')}
+              content={t('log-in-to-the-service-content')}
+              backgroundColor="#66CBD1"
+            />
+          </div>
+        )}
       </div>
     </main>
   );
