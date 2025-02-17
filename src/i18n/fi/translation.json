@@ -13,24 +13,31 @@
     "date-modified": "Muokattu:"
   },
   "content-list": {
-    "show-more": "Näytä lisää",
     "article-count_one": "{{count}} artikkeli",
-    "article-count_other": "{{count}} artikkelia"
+    "article-count_other": "{{count}} artikkelia",
+    "show-more": "Näytä lisää"
   },
   "cookie-policy": "Evästekäytäntö",
   "copyright": "© JOD 2024. Kaikki oikeudet pidätetään.",
   "data-sources": "Datalähteet",
   "home": {
     "card-1-content": "Palvelusta löydät uraohjaustyösi tueksi ajantasaista ja laadukasta tietoa ja menetelmiä ja omaa osaamistasi vahvistavia materiaaleja.",
-    "card-1-title": "Tervetuloa ohjaajan palveluun!",
+    "card-1-title": "Tervetuloa ohjaajan osioon!",
     "card-2-content": "Tietoa ohjausalasta ja sen kehittymisestä.",
     "card-2-title": "Tietosisällöt",
     "card-3-content": "Ohjaustyössä käytettäviä menetelmiä.",
     "card-3-title": "Asiakastyön tueksi",
     "card-4-content": "Osaamistasi vahvistavia materiaaleja.",
     "card-4-title": "Ammatillinen kehittyminen",
+    "favorites": "Suosikit",
+    "favorites-content": "Kirjautuneena käyttäjänä voit tallentaa palvelun sisältöjä suosikeiksi, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa. Suosikiksi tallentaminen tapahtuu klikkaamalla sisältökortin sydänikonia.",
+    "log-in-to-the-service": "Kirjaudu palveluun",
+    "log-in-to-the-service-content": "Kirjautumalla palveluun voit keskustella sisällöistä, tallentaa niitä suosikeiksi ja kustomoida palvelussa sinulle näkyvää sisältöä omien kiinnostustesi mukaan. Palvelu käyttää suomi.fi.tunnistautumista.",
     "new-content": "Uudet sisällöt",
-    "popular-content": "Suositut sisällöt"
+    "popular-content": "Suositut sisällöt",
+    "recently-watched-contents": "Viimeksi katsomasi sisällöt",
+    "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
+    "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä."
   },
   "login": "Kirjaudu sisään",
   "menu": "Valikko",
