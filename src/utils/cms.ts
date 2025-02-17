@@ -1,5 +1,6 @@
 import { LangCode } from '@/i18n/config';
 import { ContentLink, StructuredContent } from '@/types/cms-content';
+import DOMPurify from 'dompurify';
 
 type ContentName = 'ingress' | 'content' | 'image' | 'document' | 'link';
 const AdaptiveMediaSizes = {
@@ -92,7 +93,30 @@ export const getImage = (item: StructuredContent) => {
  * @returns The content of the structured content or an empty string if not found
  */
 export const getContent = (item: StructuredContent) => {
-  return findContentValueByName(item, 'content')?.data ?? '';
+  const content = DOMPurify.sanitize(findContentValueByName(item, 'content')?.data ?? '');
+  const div = document.createElement('div');
+  div.innerHTML = content;
+  div.querySelectorAll('div.embed-responsive').forEach((embed) => {
+    const url = new URL(embed.getAttribute('data-embed-id') ?? '');
+    const style = embed.getAttribute('style');
+    if (['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtube-nocookie.com'].includes(url.hostname)) {
+      const iframeWrapper = document.createElement('div');
+      iframeWrapper.setAttribute('class', 'aspect-video');
+      iframeWrapper.setAttribute('style', style ?? '');
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('src', url.toString());
+      iframe.setAttribute('class', 'w-full h-full');
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('allowfullscreen', 'true');
+      iframe.setAttribute(
+        'allow',
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
+      );
+      iframeWrapper.appendChild(iframe);
+      embed.replaceWith(iframeWrapper);
+    }
+  });
+  return div.innerHTML;
 };
 
 /**

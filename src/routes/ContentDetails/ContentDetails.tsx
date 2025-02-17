@@ -2,7 +2,6 @@ import { MainLayout } from '@/components';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { tidyClasses as tc } from '@jod/design-system';
-import DOMPurify from 'dompurify';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineFileDownload, MdOutlineLink } from 'react-icons/md';
 import { useLoaderData } from 'react-router';
@@ -75,9 +74,7 @@ const ContentDetails = () => {
             <img src={image.contentUrl} alt={image.description} />
           </div>
         )}
-        {content && (
-          <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
-        )}
+        {content && <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: content }} />}
 
         <DocumentsAndLinks documents={documents} links={links} />
         {keywords.length > 0 && (
