@@ -8,14 +8,16 @@
   },
   "close-menu": "Sulje valikko",
   "content-details": {
-    "additional-content": "Lisätietoja"
+    "additional-content": "Lisätietoja",
+    "date-created": "Luotu:",
+    "date-modified": "Muokattu:"
   },
-  "cookie-policy": "Evästekäytäntö",
   "content-list": {
     "show-more": "Näytä lisää",
     "article-count_one": "{{count}} artikkeli",
     "article-count_other": "{{count}} artikkelia"
   },
+  "cookie-policy": "Evästekäytäntö",
   "copyright": "© JOD 2024. Kaikki oikeudet pidätetään.",
   "data-sources": "Datalähteet",
   "home": {

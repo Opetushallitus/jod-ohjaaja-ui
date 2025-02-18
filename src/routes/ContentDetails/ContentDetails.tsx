@@ -17,11 +17,16 @@ const ContentDetails = () => {
   const { data } = useLoaderData<LoaderData>();
   const {
     i18n: { language },
+    t,
   } = useTranslation();
-  const date = data.dateCreated
+
+  const dateCreated = data.dateCreated
     ? new Intl.DateTimeFormat([language], {
         dateStyle: 'medium',
       }).format(new Date(data.dateCreated))
+    : '';
+  const dateModified = data.dateModified
+    ? new Intl.DateTimeFormat([language], { dateStyle: 'medium' }).format(new Date(data.dateModified))
     : '';
 
   const image = getImage(data);
@@ -57,7 +62,14 @@ const ContentDetails = () => {
     <MainLayout navChildren={<div className="bg-todo">TODO: Navigation</div>}>
       <div className="bg-white p-7 col-span-2 flex flex-col gap-7">
         <h1 className="text-heading-1">{data.title}</h1>
-        <div className="-mt-6">{date}</div>
+        <div className="flex">
+          <div className="-mt-6 mx-1">{t('content-details.date-created')}</div>
+          <div className="-mt-6 mx-3">{dateCreated}</div>
+        </div>
+        <div className="flex">
+          <div className="-mt-7 mx-1">{t('content-details.date-modified')}</div>
+          <div className="-mt-7 mx-3">{dateModified}</div>
+        </div>
         {image && (
           <div>
             <img src={image.contentUrl} alt={image.description} />
