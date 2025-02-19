@@ -1,3 +1,4 @@
+import heroSrc from '@/../assets/ohjaaja-hero.avif';
 import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LoaderData } from '@/routes/Home/loader';
 import { getAdaptiveMediaSrc, getImage, getIngress, getKeywords, getTitle } from '@/utils/cms';
@@ -47,7 +48,7 @@ const Home = () => {
       <title>{t('osaamispolku')}</title>
 
       <img
-        src="@/../assets/ohjaaja-hero.avif"
+        src={heroSrc}
         alt=""
         role="none"
         className="absolute w-(--breakpoint-xl) h-[320px] md:h-[454px] object-cover object-object-[50%] lg:object-[0_20%] -z-10"
