@@ -110,6 +110,7 @@ const Home = () => {
               nextTrigger: t('carousel.next'),
               indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
             }}
+            className="px-5 sm:px-6 -mx-5 sm:-mx-6 py-3 -my-3"
           />
         </div>
 
@@ -136,6 +137,7 @@ const Home = () => {
               nextTrigger: t('carousel.next'),
               indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
             }}
+            className="px-5 sm:px-6 -mx-5 sm:-mx-6 py-3 -my-3"
           />
         </div>
 
