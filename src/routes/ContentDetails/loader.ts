@@ -1,23 +1,12 @@
-import i18n, { type LangCode } from '@/i18n/config';
+import { getContentByArticleKey } from '@/services/cms-api';
 import { StructuredContent } from '@/types/cms-content';
-import { getAcceptLanguageHeader } from '@/utils/cms';
 import { LoaderFunction } from 'react-router';
 
-const loader = (async ({ params }) => {
-  if (!params.id) {
-    throw new Response('Bad request', { status: 400 });
-  }
+const getContentDetailsLoader = (contentId: number) =>
+  (async () => {
+    const data: StructuredContent = await getContentByArticleKey(contentId);
+    return { data };
+  }) satisfies LoaderFunction;
 
-  const response = await fetch(`/ohjaaja/cms/o/headless-delivery/v1.0/structured-contents/${params.id}`, {
-    headers: {
-      Accept: 'application/json',
-      ...getAcceptLanguageHeader(i18n.language as LangCode),
-    },
-  });
-  const data: StructuredContent = await response.json();
-
-  return { data };
-}) satisfies LoaderFunction;
-
-export type LoaderData = Awaited<ReturnType<typeof loader>>;
-export default loader;
+export type LoaderData = Awaited<ReturnType<ReturnType<typeof getContentDetailsLoader>>>;
+export default getContentDetailsLoader;

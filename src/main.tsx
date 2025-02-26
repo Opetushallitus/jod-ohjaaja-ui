@@ -4,11 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Metric } from 'web-vitals';
 import './i18n/config';
 import './index.css';
-import { routes } from './routes';
-
-const router = createBrowserRouter(routes, {
-  basename: '/ohjaaja',
-});
+import { getRoutes } from './routes';
+import { loadNavigation } from './services/navigation-loader';
 
 const root = createRoot(document.getElementById('root')!);
 
@@ -30,8 +27,16 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-root.render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
-);
+loadNavigation()
+  .then(() => {
+    const router = createBrowserRouter(getRoutes(), { basename: '/ohjaaja' });
+
+    root.render(
+      <StrictMode>
+        <RouterProvider router={router} />
+      </StrictMode>,
+    );
+  })
+  .catch((error) => {
+    console.error('Failed to load navigation', error);
+  });

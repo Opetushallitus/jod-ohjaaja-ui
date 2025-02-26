@@ -1,4 +1,4 @@
 import ContentDetails from './ContentDetails';
-import loader from './loader';
+import getContentDetailsLoader from './loader';
 
-export { ContentDetails, loader as contentDetailsLoader };
+export { ContentDetails, getContentDetailsLoader };

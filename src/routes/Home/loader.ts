@@ -1,19 +1,9 @@
-import i18n, { type LangCode } from '@/i18n/config';
+import { getNewestContent } from '@/services/cms-api';
 import { StructuredContentPage } from '@/types/cms-content';
-import { getAcceptLanguageHeader } from '@/utils/cms';
 import { LoaderFunction } from 'react-router';
 
 const loader = (async () => {
-  const queryParams = new URLSearchParams();
-  queryParams.set('sort', 'dateCreated:desc');
-  const response = await fetch(`/ohjaaja/cms/o/headless-delivery/v1.0/sites/20117/structured-contents?${queryParams}`, {
-    headers: {
-      Accept: 'application/json',
-      ...getAcceptLanguageHeader(i18n.language as LangCode),
-    },
-  });
-  const data: StructuredContentPage = await response.json();
-
+  const data: StructuredContentPage = await getNewestContent();
   return { data };
 }) satisfies LoaderFunction;
 

@@ -1,5 +1,7 @@
+import { LangCode } from '@/i18n/config';
 import { StructuredContent } from '@/types/cms-content';
 import { findContentValueByName, getAdaptiveMediaSrc } from '@/utils/cms';
+import { getArticlePath } from '@/utils/navigation-paths';
 import { Button, MediaCard, Spinner } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
@@ -29,6 +31,7 @@ export const ContentList = ({ contents, totalCount, hasMore, isLoading, loadMore
           const ingress = findContentValueByName(content, 'ingress')?.data;
           const id = `${content.id ?? ''}`;
           const imageSrc = getAdaptiveMediaSrc(imageContent?.id, imageContent?.title, 'thumbnail');
+          const path = getArticlePath(parseInt(content.key ?? '0'), language as LangCode);
 
           return (
             <MediaCard
@@ -38,7 +41,7 @@ export const ContentList = ({ contents, totalCount, hasMore, isLoading, loadMore
               description={ingress ?? ''}
               imageSrc={imageSrc}
               imageAlt={imageContent?.title ?? ''}
-              to={`/${language}/${t('slugs.content-details')}/${id}`}
+              to={path}
               linkComponent={Link}
               tags={content.keywords ?? []}
             />
