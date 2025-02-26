@@ -1,22 +1,11 @@
-import i18n, { supportedLanguageCodes } from '@/i18n/config';
-import { ContentDetails, contentDetailsLoader } from '@/routes/ContentDetails';
+import i18n from '@/i18n/config';
+import { ContentDetails, getContentDetailsLoader } from '@/routes/ContentDetails';
+import { getNavigationTreeItems } from '@/services/navigation-loader';
+import { NavigationTreeItem } from '@/types/cms-navigation';
 import { RouteObject, replace } from 'react-router';
-import { CategoryContent } from './CategoryContent';
+import { CategoryContent, getCategoryContentLoader } from './CategoryContent';
 import { Home, homeLoader } from './Home';
 import { NoMatch, Root, rootLoader } from './Root';
-
-const contentDetailsRoutes: RouteObject[] = supportedLanguageCodes.map((lng) => ({
-  id: `{slugs.content-details}/:id|${lng}`,
-  path: `${i18n.t('slugs.content-details', { lng })}/:id`,
-  element: <ContentDetails />,
-  loader: contentDetailsLoader,
-}));
-
-const informationResourcesRoutes: RouteObject[] = supportedLanguageCodes.map((lng) => ({
-  id: `{slugs.information-resources}|${lng}`,
-  path: `${i18n.t('slugs.information-resources', { lng })}`,
-  element: <CategoryContent />,
-}));
 
 const rootRoute: RouteObject = {
   id: 'root',
@@ -29,16 +18,80 @@ const rootRoute: RouteObject = {
       element: <Home />,
       loader: homeLoader,
     },
-    ...informationResourcesRoutes,
-    ...contentDetailsRoutes,
   ],
 };
 
-export const routes: RouteObject[] = [
-  {
-    path: '/',
-    loader: () => replace(`/${i18n.language}`),
-  },
-  rootRoute,
-  { path: '*', element: <NoMatch /> },
-];
+let routes: RouteObject[] = [];
+
+export const getRoutes = (): RouteObject[] => {
+  if (routes.length === 0) {
+    routes = createRoutes();
+  }
+
+  return routes;
+};
+
+const createRoutes = (): RouteObject[] => {
+  const navigationTreeItems = getNavigationTreeItems();
+
+  const routes = navigationTreeItems.map(getRoute);
+  rootRoute.children?.push(...routes);
+  return [
+    {
+      path: '/',
+      loader: () => replace(`/${i18n.language}`),
+    },
+    rootRoute,
+    { path: '*', element: <NoMatch /> },
+  ];
+};
+
+const getRoute = (navigationTreeItem: NavigationTreeItem): RouteObject => {
+  const route = {
+    id: `${navigationTreeItem.type}|${navigationTreeItem.name}|${navigationTreeItem.lng}`,
+    path: navigationTreeItem.path,
+  };
+
+  if (navigationTreeItem.children.length === 0) {
+    return {
+      ...route,
+      loader: getLoader(navigationTreeItem),
+      element: getElement(navigationTreeItem),
+    };
+  } else {
+    return {
+      ...route,
+      children: [
+        {
+          index: true,
+          element: getElement(navigationTreeItem),
+          loader: getLoader(navigationTreeItem),
+        },
+        ...navigationTreeItem.children.map(getRoute),
+      ],
+    };
+  }
+};
+
+const getLoader = (navigationTreeItem: NavigationTreeItem) => {
+  switch (navigationTreeItem.type) {
+    case 'Main':
+      return rootLoader;
+    case 'Listing':
+      return getCategoryContentLoader(navigationTreeItem.categoryId ?? 0);
+    case 'Article':
+      return getContentDetailsLoader(navigationTreeItem.articleId ?? 0);
+  }
+};
+
+const getElement = (navigationTreeItem: NavigationTreeItem) => {
+  switch (navigationTreeItem.type) {
+    case 'Main':
+      return <Home />;
+    case 'Listing':
+      return <CategoryContent />;
+    case 'Article':
+      return <ContentDetails />;
+  }
+  return undefined;
+};

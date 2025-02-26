@@ -57,10 +57,8 @@
   "slugs": {
     "accessibility-statement": "saavutettavuusseloste",
     "basic-information": "perustiedot",
-    "content-details": "tietosisallot",
     "cookie-policy": "evastekaytanto",
     "data-sources": "datalahteet",
-    "information-resources": "tietosisallot",
     "privacy-policy": "tietosuojaseloste",
     "terms-of-service": "kayttoehdot",
     "user-guide": {

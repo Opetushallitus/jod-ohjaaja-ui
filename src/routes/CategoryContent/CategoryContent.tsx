@@ -1,20 +1,28 @@
 import { MainLayout } from '@/components';
 import { ContentList } from '@/components/ContentList/ContentList';
-import { useCategoryContentListLoader } from '@/hooks/useCategoryContentListLoader';
-import { LangCode } from '@/i18n/config';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
+import { useLoaderData } from 'react-router';
+import { LoaderData } from './loader';
+
+const VISIBLE_ITEM_COUNT = 6;
 
 /*
  *  This component is a placeholder for the CategoryContent page.
  *  It should be replaced with the actual implementation when we know how navigation and content should be displayed.
  */
 const CategoryContent = () => {
-  const { i18n } = useTranslation();
-  const { contents, totalCount, hasMore, loadMore, isLoading } = useCategoryContentListLoader(
-    undefined,
-    2, //This should be changed to 6 when we have more articles
-    i18n.language as LangCode,
-  );
+  const { data } = useLoaderData<LoaderData>();
+  const [visibleItemCount, setVisibleItemCount] = React.useState(VISIBLE_ITEM_COUNT);
+
+  const handleLoadMore = () => {
+    setVisibleItemCount((prevCount) => prevCount + VISIBLE_ITEM_COUNT);
+  };
+
+  const contents = data.items.slice(0, visibleItemCount);
+  const totalCount = data.totalCount;
+  const hasMore = data.items.length > visibleItemCount;
+  const isLoading = false;
+
   return (
     <MainLayout navChildren={<div className="bg-todo">TODO: Navigation</div>}>
       <div>
@@ -22,7 +30,7 @@ const CategoryContent = () => {
           contents={contents}
           totalCount={totalCount}
           hasMore={hasMore}
-          loadMore={loadMore}
+          loadMore={handleLoadMore}
           isLoading={isLoading}
         />
       </div>

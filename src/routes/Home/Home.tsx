@@ -1,7 +1,9 @@
 import heroSrc from '@/../assets/ohjaaja-hero.avif';
 import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
+import { LangCode } from '@/i18n/config';
 import { LoaderData } from '@/routes/Home/loader';
 import { getAdaptiveMediaSrc, getImage, getIngress, getKeywords, getTitle } from '@/utils/cms';
+import { getArticlePath, getMainCategoryPath } from '@/utils/navigation-paths';
 import { CardCarousel, CardCarouselItem, ContentCard, MediaCard } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -24,6 +26,7 @@ const Home = () => {
       const keywords = getKeywords(item);
       const id = `${item.id ?? ''}`;
       const imageSrc = getAdaptiveMediaSrc(imageContent?.id, imageContent?.title, 'thumbnail');
+      const path = getArticlePath(parseInt(item.key ?? '0'), language as LangCode);
 
       return {
         id,
@@ -33,7 +36,7 @@ const Home = () => {
             description={ingress ?? ''}
             imageSrc={imageSrc}
             imageAlt={imageContent?.title ?? ''}
-            to={`/${language}/${t('slugs.content-details')}/${id}`}
+            to={path}
             linkComponent={Link}
             tags={keywords}
           />
@@ -66,7 +69,7 @@ const Home = () => {
           />
           <div className="flex flex-col lg:flex-row gap-3 md:gap-5 xl:gap-7">
             <FeatureCard
-              to={`${t('slugs.information-resources')}`}
+              to={getMainCategoryPath(language as LangCode, 0)}
               linkComponent={Link}
               level="h2"
               title={t('home.card-2-title')}
@@ -77,7 +80,7 @@ const Home = () => {
               className="flex-1"
             />
             <FeatureCard
-              to="/"
+              to={getMainCategoryPath(language as LangCode, 1)}
               linkComponent={Link}
               level="h2"
               title={t('home.card-3-title')}
@@ -88,7 +91,7 @@ const Home = () => {
               className="flex-1"
             />
             <FeatureCard
-              to="/"
+              to={getMainCategoryPath(language as LangCode, 2)}
               linkComponent={Link}
               level="h2"
               title={t('home.card-4-title')}

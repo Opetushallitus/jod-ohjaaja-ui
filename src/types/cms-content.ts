@@ -50,7 +50,7 @@ export interface StructuredContent {
   externalReferenceCode?: string;
   friendlyUrlPath?: string;
   id?: number;
-  key?: number;
+  key?: string;
   keywords?: string[];
   neverExpire?: boolean;
   numberOfComments?: number;

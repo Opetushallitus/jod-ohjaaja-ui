@@ -1,3 +1,4 @@
+import { getItemPath } from '@/utils/navigation-paths';
 import { renderHook } from '@testing-library/react';
 import { useTranslation } from 'react-i18next';
 import { useMatches, useParams } from 'react-router';
@@ -16,9 +17,17 @@ vi.mock('react-router', () => ({
   }),
 }));
 
-vi.mock('react-i18next', () => ({
-  useTranslation: vi.fn(),
+vi.mock('@/utils/navigation-paths', () => ({
+  getItemPath: vi.fn(),
 }));
+
+vi.mock(import('react-i18next'), async (importOriginal) => {
+  const original = await importOriginal();
+  return {
+    ...original,
+    useTranslation: vi.fn(),
+  };
+});
 
 describe('useLocalizedRoutes', () => {
   beforeEach(() => {
@@ -69,5 +78,17 @@ describe('useLocalizedRoutes', () => {
 
     const path = generateLocalizedPath('en');
     expect(path).toBe('/en/slugs.job-opportunity.index-en/123/slugs.job-opportunity.overview-en');
+  });
+
+  it('should replace article path parameters with translations', () => {
+    (useMatches as Mock).mockReturnValue([{ id: 'root' }, { id: 'Article|artikkeli|${lng}' }]);
+    (useParams as Mock).mockReturnValue({});
+    (getItemPath as Mock).mockReturnValue('article');
+
+    const { result } = renderHook(() => useLocalizedRoutes());
+    const { generateLocalizedPath } = result.current;
+
+    const path = generateLocalizedPath('en');
+    expect(path).toBe('/en/article');
   });
 });
