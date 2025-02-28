@@ -113,7 +113,7 @@ const Home = () => {
               nextTrigger: t('carousel.next'),
               indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
             }}
-            className="px-5 sm:px-6 -mx-5 sm:-mx-6 py-3 -my-3"
+            className="max-[640px]:px-5 max-[640px]:-mx-5 max-[1148px]:px-6 max-[1148px]:-mx-6 p-3 -m-3"
           />
         </div>
 
