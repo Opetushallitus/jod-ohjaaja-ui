@@ -31,7 +31,7 @@ export const ContentList = ({ contents, totalCount, hasMore, isLoading, loadMore
           const ingress = findContentValueByName(content, 'ingress')?.data;
           const id = `${content.id ?? ''}`;
           const imageSrc = getAdaptiveMediaSrc(imageContent?.id, imageContent?.title, 'thumbnail');
-          const path = getArticlePath(parseInt(content.key ?? '0'), language as LangCode);
+          const path = getArticlePath(content.id ?? 0, language as LangCode);
 
           return (
             <MediaCard
