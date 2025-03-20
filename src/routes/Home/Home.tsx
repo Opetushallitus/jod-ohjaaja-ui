@@ -26,7 +26,7 @@ const Home = () => {
       const keywords = getKeywords(item);
       const id = `${item.id ?? ''}`;
       const imageSrc = getAdaptiveMediaSrc(imageContent?.id, imageContent?.title, 'thumbnail');
-      const path = getArticlePath(parseInt(item.key ?? '0'), language as LangCode);
+      const path = getArticlePath(item.id ?? 0, language as LangCode);
 
       return {
         id,

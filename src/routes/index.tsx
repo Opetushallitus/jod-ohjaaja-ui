@@ -75,9 +75,9 @@ const getRoute = (navigationTreeItem: NavigationTreeItem): RouteObject => {
 
 const getLoader = (navigationTreeItem: NavigationTreeItem) => {
   switch (navigationTreeItem.type) {
-    case 'Main':
+    case 'CategoryMain':
       return rootLoader;
-    case 'Listing':
+    case 'CategoryListing':
       return getCategoryContentLoader(navigationTreeItem.categoryId ?? 0);
     case 'Article':
       return getContentDetailsLoader(navigationTreeItem.articleId ?? 0);
@@ -86,9 +86,9 @@ const getLoader = (navigationTreeItem: NavigationTreeItem) => {
 
 const getElement = (navigationTreeItem: NavigationTreeItem) => {
   switch (navigationTreeItem.type) {
-    case 'Main':
+    case 'CategoryMain':
       return <Home />;
-    case 'Listing':
+    case 'CategoryListing':
       return <CategoryContent />;
     case 'Article':
       return <ContentDetails />;
