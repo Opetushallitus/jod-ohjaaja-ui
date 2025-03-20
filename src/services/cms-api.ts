@@ -1,6 +1,6 @@
 import i18n, { LangCode } from '@/i18n/config';
 import { StructuredContent, StructuredContentPage } from '@/types/cms-content';
-import { Navigations } from '@/types/cms-navigation';
+import { type CMSNavigationMenu } from '@/types/cms-navigation';
 import { getAcceptLanguageHeader } from '@/utils/cms';
 
 const BASE_CMS_URL = '/ohjaaja/cms/o';
@@ -22,17 +22,11 @@ const fetchFromCMS = async <T>(endpoint: string): Promise<T> => {
 };
 
 export const getNavigations = async () => {
-  const queryParams = new URLSearchParams();
-  queryParams.set('page', `1`);
-  queryParams.set('pageSize', `500`);
-  queryParams.set('fields', 'id,name,name_i18n,type,r_parent_c_navigationId,order,categoryId,articleId');
-  return fetchFromCMS<Navigations>(`/c/navigations/scopes/${SCOPE_ID}?${queryParams}`);
+  return fetchFromCMS<CMSNavigationMenu>(`/jod-navigation/${SCOPE_ID}`);
 };
 
-export const getContentByArticleKey = async (articleKey: number) => {
-  return fetchFromCMS<StructuredContent>(
-    `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents/by-key/${articleKey}`,
-  );
+export const getContentByArticleId = async (articleId: number) => {
+  return fetchFromCMS<StructuredContent>(`/headless-delivery/v1.0/structured-contents/${articleId}`);
 };
 
 export const getNewestContent = () => {
