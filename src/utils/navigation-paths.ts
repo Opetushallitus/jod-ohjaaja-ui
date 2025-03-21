@@ -37,7 +37,7 @@ export const getMainCategoryPath = (lng: string, order: number): string => {
 
   return (
     navigationItems
-      .filter((item) => item.lng === lng && item.order === order)
+      .filter((item, index) => item.lng === lng && index === order)
       .map((item) => item.path)
       .find((path) => path !== null) ?? ''
   );

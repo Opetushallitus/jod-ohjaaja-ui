@@ -12,7 +12,6 @@ const createBaseNavigationTreeItem = (
   name: string,
   path: string,
   type: NavigationItemType,
-  order: number,
   categoryId: number,
   articleId: number,
   lng: LangCode,
@@ -21,7 +20,6 @@ const createBaseNavigationTreeItem = (
     name,
     path,
     type,
-    order,
     categoryId,
     articleId,
     lng,
@@ -41,17 +39,17 @@ const createNavigationTreeItemWithChildren = (
 
 const mockTreeNavigationTreeItems = [
   createNavigationTreeItemWithChildren(
-    createBaseNavigationTreeItem('category-1', 'fi-category-1', 'Listing', 0, 1, 0, 'fi'),
+    createBaseNavigationTreeItem('category-1', 'fi-category-1', 'CategoryListing', 1, 0, 'fi'),
     [
-      createBaseNavigationTreeItem('article-1', 'fi-article-1', 'Article', 0, 0, 1, 'fi'),
-      createBaseNavigationTreeItem('article-2', 'fi-article-2', 'Article', 0, 0, 2, 'fi'),
+      createBaseNavigationTreeItem('article-1', 'fi-article-1', 'Article', 0, 1, 'fi'),
+      createBaseNavigationTreeItem('article-2', 'fi-article-2', 'Article', 0, 2, 'fi'),
     ],
   ),
   createNavigationTreeItemWithChildren(
-    createBaseNavigationTreeItem('category-1', 'en-category-1', 'Listing', 0, 1, 0, 'en'),
+    createBaseNavigationTreeItem('category-1', 'en-category-1', 'CategoryListing', 1, 0, 'en'),
     [
-      createBaseNavigationTreeItem('article-1', 'en-article-1', 'Article', 0, 0, 1, 'en'),
-      createBaseNavigationTreeItem('article-2', 'en-article-2', 'Article', 0, 0, 2, 'en'),
+      createBaseNavigationTreeItem('article-1', 'en-article-1', 'Article', 0, 1, 'en'),
+      createBaseNavigationTreeItem('article-2', 'en-article-2', 'Article', 0, 2, 'en'),
     ],
   ),
 ];
