@@ -6,6 +6,7 @@ export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangC
   const locale = getLocale(lng);
 
   return {
+    title: navigationItem.name_i18n[locale] || navigationItem.name,
     name: sluggify(navigationItem.name),
     path: sluggify(navigationItem.name_i18n[locale] || navigationItem.name),
     type: navigationItem.type,
