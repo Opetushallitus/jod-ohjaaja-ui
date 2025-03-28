@@ -9,6 +9,7 @@ vi.mock('@/services/navigation-loader', () => ({
 }));
 
 const createBaseNavigationTreeItem = (
+  title: string,
   name: string,
   path: string,
   type: NavigationItemType,
@@ -17,6 +18,7 @@ const createBaseNavigationTreeItem = (
   lng: LangCode,
 ): NavigationTreeItem => {
   return {
+    title,
     name,
     path,
     type,
@@ -39,17 +41,17 @@ const createNavigationTreeItemWithChildren = (
 
 const mockTreeNavigationTreeItems = [
   createNavigationTreeItemWithChildren(
-    createBaseNavigationTreeItem('category-1', 'fi-category-1', 'CategoryListing', 1, 0, 'fi'),
+    createBaseNavigationTreeItem('Category 1', 'category-1', 'fi-category-1', 'CategoryListing', 1, 0, 'fi'),
     [
-      createBaseNavigationTreeItem('article-1', 'fi-article-1', 'Article', 0, 1, 'fi'),
-      createBaseNavigationTreeItem('article-2', 'fi-article-2', 'Article', 0, 2, 'fi'),
+      createBaseNavigationTreeItem('Article-1', 'article-1', 'fi-article-1', 'Article', 0, 1, 'fi'),
+      createBaseNavigationTreeItem('Article-2', 'article-2', 'fi-article-2', 'Article', 0, 2, 'fi'),
     ],
   ),
   createNavigationTreeItemWithChildren(
-    createBaseNavigationTreeItem('category-1', 'en-category-1', 'CategoryListing', 1, 0, 'en'),
+    createBaseNavigationTreeItem('Category 1', 'category-1', 'en-category-1', 'CategoryListing', 1, 0, 'en'),
     [
-      createBaseNavigationTreeItem('article-1', 'en-article-1', 'Article', 0, 1, 'en'),
-      createBaseNavigationTreeItem('article-2', 'en-article-2', 'Article', 0, 2, 'en'),
+      createBaseNavigationTreeItem('Article-1', 'article-1', 'en-article-1', 'Article', 0, 1, 'en'),
+      createBaseNavigationTreeItem('Article-2', 'article-2', 'en-article-2', 'Article', 0, 2, 'en'),
     ],
   ),
 ];

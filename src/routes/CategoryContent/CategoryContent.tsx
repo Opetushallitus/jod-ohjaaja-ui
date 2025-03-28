@@ -1,5 +1,6 @@
 import { MainLayout } from '@/components';
 import { ContentList } from '@/components/ContentList/ContentList';
+import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
 import React from 'react';
 import { useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
@@ -24,7 +25,7 @@ const CategoryContent = () => {
   const isLoading = false;
 
   return (
-    <MainLayout navChildren={<div className="bg-todo">TODO: Navigation</div>}>
+    <MainLayout navChildren={<CategoryNavigation />}>
       <div>
         <ContentList
           contents={contents}

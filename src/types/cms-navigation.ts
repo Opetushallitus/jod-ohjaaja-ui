@@ -27,6 +27,7 @@ export interface CMSNavigationMenu {
 }
 
 export interface NavigationTreeItem {
+  title: string;
   name: string;
   path: string;
   type: NavigationItemType;
@@ -35,3 +36,11 @@ export interface NavigationTreeItem {
   articleId?: number;
   lng: LangCode;
 }
+
+export interface RouteMatchHandle {
+  type: NavigationItemType;
+  title: string;
+}
+
+export const isRouteMatchHandle = (value: unknown): value is RouteMatchHandle =>
+  value !== null && value !== undefined && typeof value === 'object' && 'type' in value && 'title' in value;
