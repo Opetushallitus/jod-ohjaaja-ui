@@ -1,0 +1,1 @@
+export { useCategoryRoute } from './useCategoryRoute';

@@ -52,6 +52,7 @@ describe('navigation utils', () => {
       const navigationItem: CMSNavigationItem = createCMSNavigationItem(1, 'Main', 0, 'CategoryMain', [], 1);
       const result = getNavigationItems(navigationItem, 'fi' as LangCode);
       expect(result).toEqual({
+        title: 'Main',
         name: 'main',
         path: 'main',
         type: 'CategoryMain',
@@ -84,6 +85,7 @@ describe('navigation utils', () => {
 
       expect(result.children).toHaveLength(2);
       expect(result.children[0]).toEqual({
+        title: 'Category 1',
         name: 'category-1',
         path: 'category-1',
         type: 'CategoryListing',
@@ -92,6 +94,7 @@ describe('navigation utils', () => {
             name: 'article-1',
             path: 'article-1',
             type: 'Article',
+            title: 'Article 1',
             children: [],
             categoryId: undefined,
             articleId: 1,
