@@ -50,6 +50,10 @@ const getRoute = (navigationTreeItem: NavigationTreeItem): RouteObject => {
   const route = {
     id: `${navigationTreeItem.type}|${navigationTreeItem.name}|${navigationTreeItem.lng}`,
     path: navigationTreeItem.path,
+    handle: {
+      type: navigationTreeItem.type,
+      title: navigationTreeItem.title,
+    },
   };
 
   if (navigationTreeItem.children.length === 0) {

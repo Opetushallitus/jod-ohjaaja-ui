@@ -58,7 +58,7 @@ const ContentDetails = () => {
   ]);
 
   return (
-    <MainLayout navChildren={<div className="bg-todo">TODO: Navigation</div>}>
+    <MainLayout>
       <div className="bg-white p-7 col-span-2 flex flex-col gap-7">
         <h1 className="text-heading-1">{data.title}</h1>
         <div className="flex">
