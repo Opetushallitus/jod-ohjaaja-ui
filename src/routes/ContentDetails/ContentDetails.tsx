@@ -3,9 +3,31 @@ import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { tidyClasses as tc } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
-import { MdOutlineFileDownload, MdOutlineLink } from 'react-icons/md';
+import { MdOutlineFileDownload, MdOutlineLink, MdOutlinePrint } from 'react-icons/md';
 import { useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
+
+interface ActionButtonProps {
+  label: string;
+  icon: React.ReactNode;
+  className?: string;
+  onClick: () => void;
+}
+
+export const ActionButton = ({ label, icon, className = '', onClick, ...rest }: ActionButtonProps) => {
+  return (
+    <button
+      aria-label={label}
+      className={tc(`cursor-pointer flex items-center gap-x-3 text-button-sm text-nowrap ${className}`)}
+      onClick={onClick}
+      type="button"
+      {...rest}
+    >
+      {icon}
+      {label}
+    </button>
+  );
+};
 
 interface DocumentsAndLinksProps {
   documents: ContentDocument[];
@@ -36,6 +58,7 @@ const ContentDetails = () => {
 
   const richTextClasses = tc([
     '[&_p]:my-5',
+    '[&_p]:first:my-0',
     '[&_li]:my-2',
     '[&_li]:ml-6',
     '[&_li]:list-item',
@@ -57,10 +80,14 @@ const ContentDetails = () => {
     '[&_a]:text-link',
   ]);
 
+  const doPrint = () => {
+    window.print();
+  };
+
   return (
     <MainLayout>
-      <div className="bg-white p-7 col-span-2 flex flex-col gap-7">
-        <h1 className="text-heading-1">{data.title}</h1>
+      <div className="bg-white p-7 col-span-2 flex flex-col sm:gap-7 gap-6">
+        <h1 className="text-heading-1 hyphens-auto">{data.title}</h1>
         <div className="flex">
           <div className="-mt-6 mx-1">{t('content-details.date-created')}</div>
           <div className="-mt-6 mx-3">{dateCreated}</div>
@@ -69,11 +96,23 @@ const ContentDetails = () => {
           <div className="-mt-7 mx-1">{t('content-details.date-modified')}</div>
           <div className="-mt-7 mx-3">{dateModified}</div>
         </div>
-        {image && (
-          <div>
-            <img src={image.contentUrl} alt={image.description} />
+        <div className="flex sm:flex-row flex-col sm:gap-6 gap-5 space-between">
+          {image && (
+            <div>
+              <img src={image.contentUrl} alt={image.description} />
+            </div>
+          )}
+
+          <div className="flex flex-col flex-1 place-items-end print:hidden">
+            {!!window.print && (
+              <ActionButton
+                label={t('print')}
+                icon={<MdOutlinePrint size={24} className="text-accent" />}
+                onClick={doPrint}
+              />
+            )}
           </div>
-        )}
+        </div>
         {content && <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: content }} />}
 
         <DocumentsAndLinks documents={documents} links={links} />
