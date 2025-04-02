@@ -1,5 +1,8 @@
 // https://app.swaggerhub.com/apis/liferayinc/headless-delivery/v1.0#/TaxonomyCategoryBrief
 export interface TaxonomyBrief {
+  embeddedTaxonomyCategory?: {
+    categoryType: 'CATEGORY' | 'TAG';
+  };
   taxonomyCategoryId: number;
   taxonomyCategoryName: string;
 }

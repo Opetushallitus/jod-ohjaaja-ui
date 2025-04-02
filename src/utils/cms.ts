@@ -166,5 +166,9 @@ export const getDocuments = (item: StructuredContent) => {
  * @returns The keywords of the structured content or an empty array if not found
  */
 export const getKeywords = (item: StructuredContent) => {
-  return item.keywords ?? [];
+  return (
+    item.taxonomyCategoryBriefs
+      ?.filter((categoryBrief) => categoryBrief?.embeddedTaxonomyCategory?.categoryType === 'TAG')
+      .map((categoryBrief) => categoryBrief.taxonomyCategoryName) ?? []
+  );
 };

@@ -26,12 +26,15 @@ export const getNavigations = async () => {
 };
 
 export const getContentByArticleId = async (articleId: number) => {
-  return fetchFromCMS<StructuredContent>(`/headless-delivery/v1.0/structured-contents/${articleId}`);
+  const queryParams = new URLSearchParams();
+  queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
+  return fetchFromCMS<StructuredContent>(`/headless-delivery/v1.0/structured-contents/${articleId}?${queryParams}`);
 };
 
 export const getNewestContent = () => {
   const queryParams = new URLSearchParams();
   queryParams.set('sort', 'dateCreated:desc');
+  queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
   );
@@ -41,6 +44,7 @@ export const getCategoryContent = (categoryId: number) => {
   const queryParams = new URLSearchParams();
   queryParams.set('page', `1`);
   queryParams.set('pageSize', `500`);
+  queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
   if (categoryId) {
     queryParams.set('filter', `taxonomyCategoryIds/any(t:t eq ${categoryId})`);
   }

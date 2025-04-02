@@ -1,6 +1,6 @@
 import { LangCode } from '@/i18n/config';
 import { StructuredContent } from '@/types/cms-content';
-import { findContentValueByName, getAdaptiveMediaSrc } from '@/utils/cms';
+import { findContentValueByName, getAdaptiveMediaSrc, getKeywords } from '@/utils/cms';
 import { getArticlePath } from '@/utils/navigation-paths';
 import { Button, MediaCard, Spinner } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
@@ -32,6 +32,7 @@ export const ContentList = ({ contents, totalCount, hasMore, isLoading, loadMore
           const id = `${content.id ?? ''}`;
           const imageSrc = getAdaptiveMediaSrc(imageContent?.id, imageContent?.title, 'thumbnail');
           const path = getArticlePath(content.id ?? 0, language as LangCode);
+          const keywords = getKeywords(content);
 
           return (
             <MediaCard
@@ -43,7 +44,7 @@ export const ContentList = ({ contents, totalCount, hasMore, isLoading, loadMore
               imageAlt={imageContent?.title ?? ''}
               to={path}
               linkComponent={Link}
-              tags={content.keywords ?? []}
+              tags={keywords}
             />
           );
         })}

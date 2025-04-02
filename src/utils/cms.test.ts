@@ -15,9 +15,15 @@ import {
 const createTestData = (title: string, keywords: string[] | undefined = undefined) => {
   const structuredContent: StructuredContent = {
     title,
-    keywords,
     contentFields: [],
     contentStructureId: 0,
+    taxonomyCategoryBriefs: keywords?.map((keyword, index) => ({
+      taxonomyCategoryName: keyword,
+      taxonomyCategoryId: index + 1,
+      embeddedTaxonomyCategory: {
+        categoryType: 'TAG',
+      },
+    })),
   };
   const api = {
     get() {
@@ -254,7 +260,7 @@ describe('CMS utils', () => {
     it('should return the keywords if they exist', () => {
       const keywords = ['test', 'keywords'];
       const item = createTestData('test title', keywords).get();
-      expect(getKeywords(item)).toBe(keywords);
+      expect(getKeywords(item)).toEqual(keywords);
     });
 
     it('should return an empty array if the keywords do not exist', () => {
