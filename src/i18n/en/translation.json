@@ -1,1 +1,15 @@
-{}
+{
+  "slugs": {
+    "accessibility-statement": "accessibility-statement",
+    "basic-information": "basic-information",
+    "cookie-policy": "cookie-policy",
+    "data-sources": "data-sources",
+    "privacy-policy": "privacy-policy",
+    "search": "search",
+    "terms-of-service": "terms-of-service",
+    "user-guide": {
+      "index": "user-guide",
+      "what-is-the-service": "what-is-the-service"
+    }
+  }
+}

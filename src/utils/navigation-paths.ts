@@ -32,6 +32,10 @@ export const getItemPath = (lng: string, type: NavigationItemType, name: string)
   );
 };
 
+/*
+ * Returns the path of the main category in the given language and order.
+ * If the category is not found, the function should return an empty string.
+ */
 export const getMainCategoryPath = (lng: string, order: number): string => {
   const navigationItems = getNavigationTreeItems();
 
@@ -41,6 +45,25 @@ export const getMainCategoryPath = (lng: string, order: number): string => {
       .map((item) => item.path)
       .find((path) => path !== null) ?? ''
   );
+};
+
+/*
+ * Returns the path parts of the article category with the given ID in the given language.
+ * If the article is not found, the function should return an empty array.
+ */
+export const getArticleCategoryPathParts = (articleId: number, lng: string): string[] => {
+  const navigationItems = getNavigationTreeItems();
+
+  for (const item of navigationItems) {
+    if (item.lng === lng) {
+      const path = findArticleCategoryPath(item, articleId);
+      if (path.length > 0) {
+        return path;
+      }
+    }
+  }
+
+  return [];
 };
 
 const findArticlePath = (item: NavigationTreeItem, articleId: number, lng: string): string | null => {
@@ -71,4 +94,18 @@ const findItemPath = (item: NavigationTreeItem, type: NavigationItemType, name: 
   }
 
   return null;
+};
+
+const findArticleCategoryPath = (item: NavigationTreeItem, articleId: number): string[] => {
+  for (const child of item.children) {
+    if (child.articleId === articleId) {
+      return [item.title];
+    }
+    const path = findArticleCategoryPath(child, articleId);
+    if (path.length > 0) {
+      return [item.title, ...path];
+    }
+  }
+
+  return [];
 };

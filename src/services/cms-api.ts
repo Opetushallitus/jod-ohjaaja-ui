@@ -1,5 +1,5 @@
 import i18n, { LangCode } from '@/i18n/config';
-import { StructuredContent, StructuredContentPage } from '@/types/cms-content';
+import { Category, StructuredContent, StructuredContentPage } from '@/types/cms-content';
 import { type CMSNavigationMenu } from '@/types/cms-navigation';
 import { getAcceptLanguageHeader } from '@/utils/cms';
 
@@ -51,4 +51,22 @@ export const getCategoryContent = (categoryId: number) => {
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
   );
+};
+
+export const searchContent = (searchTerm: string, tagIds: string[], page: number, pageSize: number) => {
+  const queryParams = new URLSearchParams();
+  queryParams.set('page', `${page}`);
+  queryParams.set('pageSize', `${pageSize}`);
+  queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
+  queryParams.set('search', searchTerm);
+  if (tagIds.length > 0) {
+    queryParams.set('filter', `taxonomyCategoryIds/any(t:t eq ${tagIds.join(' or t eq ')})`);
+  }
+  return fetchFromCMS<StructuredContentPage>(
+    `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
+  );
+};
+
+export const getTags = async () => {
+  return fetchFromCMS<Category[]>(`/jod-tags/${SCOPE_ID}`);
 };

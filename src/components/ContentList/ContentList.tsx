@@ -1,6 +1,7 @@
 import { LangCode } from '@/i18n/config';
 import { StructuredContent } from '@/types/cms-content';
 import { findContentValueByName, getAdaptiveMediaSrc, getKeywords } from '@/utils/cms';
+import { getSearchUrl } from '@/utils/navigation';
 import { getArticlePath } from '@/utils/navigation-paths';
 import { Button, MediaCard, Spinner } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
@@ -44,7 +45,7 @@ export const ContentList = ({ contents, totalCount, hasMore, isLoading, loadMore
               imageAlt={imageContent?.title ?? ''}
               to={path}
               linkComponent={Link}
-              tags={keywords}
+              tags={keywords.map((keyword) => ({ label: keyword.name, to: getSearchUrl(t, language, [keyword.id]) }))}
             />
           );
         })}

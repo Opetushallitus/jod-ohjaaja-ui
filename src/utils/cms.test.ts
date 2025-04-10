@@ -12,16 +12,16 @@ import {
   getTitle,
 } from './cms';
 
-const createTestData = (title: string, keywords: string[] | undefined = undefined) => {
+const createTestData = (title: string, keywords: { id: string; name: string }[] | undefined = undefined) => {
   const structuredContent: StructuredContent = {
     title,
     contentFields: [],
     contentStructureId: 0,
-    taxonomyCategoryBriefs: keywords?.map((keyword, index) => ({
-      taxonomyCategoryName: keyword,
-      taxonomyCategoryId: index + 1,
+    taxonomyCategoryBriefs: keywords?.map((keyword) => ({
+      taxonomyCategoryName: keyword.name,
+      taxonomyCategoryId: parseInt(keyword.id),
       embeddedTaxonomyCategory: {
-        categoryType: 'TAG',
+        type: 'TAG',
       },
     })),
   };
@@ -258,7 +258,10 @@ describe('CMS utils', () => {
 
   describe('getKeywords', () => {
     it('should return the keywords if they exist', () => {
-      const keywords = ['test', 'keywords'];
+      const keywords = [
+        { id: '1', name: 'test' },
+        { id: '2', name: 'keywords' },
+      ];
       const item = createTestData('test title', keywords).get();
       expect(getKeywords(item)).toEqual(keywords);
     });
