@@ -1,4 +1,4 @@
-import i18n from '@/i18n/config';
+import i18n, { supportedLanguageCodes } from '@/i18n/config';
 import { ContentDetails, getContentDetailsLoader } from '@/routes/ContentDetails';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { NavigationTreeItem } from '@/types/cms-navigation';
@@ -6,6 +6,7 @@ import { RouteObject, replace } from 'react-router';
 import { CategoryContent, getCategoryContentLoader } from './CategoryContent';
 import { Home, homeLoader } from './Home';
 import { NoMatch, Root, rootLoader } from './Root';
+import { Search, searchLoader } from './Search';
 
 const rootRoute: RouteObject = {
   id: 'root',
@@ -21,6 +22,13 @@ const rootRoute: RouteObject = {
   ],
 };
 
+const searchRoutes: RouteObject[] = supportedLanguageCodes.map((lng) => ({
+  id: `search|${lng}`,
+  path: i18n.t('slugs.search', { lng }),
+  element: <Search />,
+  loader: searchLoader,
+}));
+
 let routes: RouteObject[] = [];
 
 export const getRoutes = (): RouteObject[] => {
@@ -35,7 +43,7 @@ const createRoutes = (): RouteObject[] => {
   const navigationTreeItems = getNavigationTreeItems();
 
   const routes = navigationTreeItems.map(getRoute);
-  rootRoute.children?.push(...routes);
+  rootRoute.children?.push(...routes, ...searchRoutes);
   return [
     {
       path: '/',

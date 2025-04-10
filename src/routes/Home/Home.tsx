@@ -3,6 +3,7 @@ import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LangCode } from '@/i18n/config';
 import { LoaderData } from '@/routes/Home/loader';
 import { getAdaptiveMediaSrc, getImage, getIngress, getKeywords, getTitle } from '@/utils/cms';
+import { getSearchUrl } from '@/utils/navigation';
 import { getArticlePath, getMainCategoryPath } from '@/utils/navigation-paths';
 import { CardCarousel, CardCarouselItem, ContentCard, MediaCard } from '@jod/design-system';
 import React from 'react';
@@ -38,7 +39,7 @@ const Home = () => {
             imageAlt={imageContent?.title ?? ''}
             to={path}
             linkComponent={Link}
-            tags={keywords}
+            tags={keywords.map((keyword) => ({ label: keyword.name, to: getSearchUrl(t, language, [keyword.id]) }))}
           />
         ),
       };
@@ -152,25 +153,45 @@ const Home = () => {
                 <ContentCard
                   title="Lorem ipsum dolor"
                   description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
-                  tags={['Asiasana 1', 'Asiasana 2', 'Asiasana 3']}
+                  path={['Teema', 'Osio']}
+                  tags={[
+                    { label: 'Asiasana 1', to: '#' },
+                    { label: 'Asiasana 2', to: '#' },
+                    { label: 'Asiasana 3', to: '#' },
+                  ]}
                 />
                 <hr className="border-border-gray" />
                 <ContentCard
                   title="Lorem ipsum dolor"
                   description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
-                  tags={['Asiasana 1', 'Asiasana 2', 'Asiasana 3']}
+                  path={['Teema', 'Osio']}
+                  tags={[
+                    { label: 'Asiasana 1', to: '#' },
+                    { label: 'Asiasana 2', to: '#' },
+                    { label: 'Asiasana 3', to: '#' },
+                  ]}
                 />
                 <hr className="border-border-gray" />
                 <ContentCard
                   title="Lorem ipsum dolor"
                   description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
-                  tags={['Asiasana 1', 'Asiasana 2', 'Asiasana 3']}
+                  path={['Teema', 'Osio']}
+                  tags={[
+                    { label: 'Asiasana 1', to: '#' },
+                    { label: 'Asiasana 2', to: '#' },
+                    { label: 'Asiasana 3', to: '#' },
+                  ]}
                 />
                 <hr className="border-border-gray" />
                 <ContentCard
                   title="Lorem ipsum dolor"
                   description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
-                  tags={['Asiasana 1', 'Asiasana 2', 'Asiasana 3']}
+                  path={['Teema', 'Osio']}
+                  tags={[
+                    { label: 'Asiasana 1', to: '#' },
+                    { label: 'Asiasana 2', to: '#' },
+                    { label: 'Asiasana 3', to: '#' },
+                  ]}
                 />
               </div>
               <div className="col-span-3 lg:col-span-1">

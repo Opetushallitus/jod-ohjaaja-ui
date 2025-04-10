@@ -168,7 +168,10 @@ export const getDocuments = (item: StructuredContent) => {
 export const getKeywords = (item: StructuredContent) => {
   return (
     item.taxonomyCategoryBriefs
-      ?.filter((categoryBrief) => categoryBrief?.embeddedTaxonomyCategory?.categoryType === 'TAG')
-      .map((categoryBrief) => categoryBrief.taxonomyCategoryName) ?? []
+      ?.filter((categoryBrief) => categoryBrief?.embeddedTaxonomyCategory?.type === 'TAG')
+      .map((categoryBrief) => ({
+        id: `${categoryBrief.taxonomyCategoryId}`,
+        name: categoryBrief.taxonomyCategoryName,
+      })) ?? []
   );
 };

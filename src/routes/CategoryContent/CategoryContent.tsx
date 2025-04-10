@@ -7,10 +7,6 @@ import { LoaderData } from './loader';
 
 const VISIBLE_ITEM_COUNT = 6;
 
-/*
- *  This component is a placeholder for the CategoryContent page.
- *  It should be replaced with the actual implementation when we know how navigation and content should be displayed.
- */
 const CategoryContent = () => {
   const { data } = useLoaderData<LoaderData>();
   const [visibleItemCount, setVisibleItemCount] = React.useState(VISIBLE_ITEM_COUNT);

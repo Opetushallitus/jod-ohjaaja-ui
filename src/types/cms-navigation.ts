@@ -6,9 +6,9 @@ export const isNavigationItemType = (value: unknown): value is NavigationItemTyp
   value !== undefined && typeof value === 'string' && NavigationItemTypeArray.includes(value as NavigationItemType);
 
 export interface CMSNavigationNameI18n {
-  fi_FI: string;
-  en_US: string;
-  sv_SE: string;
+  'fi-FI': string;
+  'en-US': string;
+  'sv-SE': string;
 }
 export interface CMSNavigationItem {
   id: number;

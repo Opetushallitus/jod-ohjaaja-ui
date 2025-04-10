@@ -1,5 +1,6 @@
 import { LangCode } from '@/i18n/config';
 import { CMSNavigationItem, CMSNavigationNameI18n, NavigationTreeItem } from '@/types/cms-navigation';
+import { type TFunction } from 'i18next';
 import { sluggify } from './string-utils';
 
 export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangCode): NavigationTreeItem => {
@@ -20,12 +21,34 @@ export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangC
 export const getLocale = (lng: string): keyof CMSNavigationNameI18n => {
   switch (lng) {
     case 'fi':
-      return 'fi_FI';
+      return 'fi-FI';
     case 'en':
-      return 'en_US';
+      return 'en-US';
     case 'sv':
-      return 'sv_SE';
+      return 'sv-SE';
     default:
-      return 'fi_FI';
+      return 'fi-FI';
   }
+};
+
+export const getSearchUrl = (
+  translate: TFunction<'translation', undefined>,
+  lng: string,
+  tagIds?: string[],
+  search?: string,
+  page?: number,
+): string => {
+  const queryParams = new URLSearchParams();
+  if (search) {
+    queryParams.set('q', search);
+  }
+  if (tagIds) {
+    tagIds.forEach((tagId) => {
+      queryParams.append('t', tagId);
+    });
+  }
+  if (page) {
+    queryParams.set('p', `${page}`);
+  }
+  return `/${lng}/${translate('slugs.search')}?${queryParams.toString()}`;
 };

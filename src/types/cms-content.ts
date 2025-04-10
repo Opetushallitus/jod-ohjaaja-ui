@@ -1,7 +1,18 @@
+export interface Category {
+  id: number;
+  name: string;
+  name_i18n: {
+    'fi-FI'?: string;
+    'en-US'?: string;
+    'sv-SE'?: string;
+  };
+  type: 'CATEGORY' | 'TAG';
+}
+
 // https://app.swaggerhub.com/apis/liferayinc/headless-delivery/v1.0#/TaxonomyCategoryBrief
 export interface TaxonomyBrief {
   embeddedTaxonomyCategory?: {
-    categoryType: 'CATEGORY' | 'TAG';
+    type: 'CATEGORY' | 'TAG';
   };
   taxonomyCategoryId: number;
   taxonomyCategoryName: string;

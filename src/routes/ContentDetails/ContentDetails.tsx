@@ -1,10 +1,11 @@
 import { MainLayout } from '@/components';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
+import { getSearchUrl } from '@/utils/navigation';
 import { tidyClasses as tc } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineFileDownload, MdOutlineLink, MdOutlinePrint } from 'react-icons/md';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
 
 interface ActionButtonProps {
@@ -119,8 +120,8 @@ const ContentDetails = () => {
         {keywords.length > 0 && (
           <ul className="text-attrib-value flex flex-row divide-x flex-wrap pt-3 text-accent ">
             {keywords.map((tag) => (
-              <li key={tag} className="px-2 first:pl-0 last:pr-0 border-border-gray">
-                {tag}
+              <li key={tag.id} className="px-2 first:pl-0 last:pr-0 border-border-gray">
+                <Link to={getSearchUrl(t, language, [tag.id])}>{tag.name}</Link>
               </li>
             ))}
           </ul>

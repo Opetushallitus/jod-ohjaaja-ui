@@ -6,19 +6,19 @@ import { getLocale, getNavigationItems } from './navigation';
 describe('navigation utils', () => {
   describe('getLocale', () => {
     it('returns correct locale for Finnish', () => {
-      expect(getLocale('fi')).toBe('fi_FI');
+      expect(getLocale('fi')).toBe('fi-FI');
     });
 
     it('returns correct locale for English', () => {
-      expect(getLocale('en')).toBe('en_US');
+      expect(getLocale('en')).toBe('en-US');
     });
 
     it('returns correct locale for Swedish', () => {
-      expect(getLocale('sv')).toBe('sv_SE');
+      expect(getLocale('sv')).toBe('sv-SE');
     });
 
     it('returns Finnish locale as default for unknown language', () => {
-      expect(getLocale('unknown')).toBe('fi_FI');
+      expect(getLocale('unknown')).toBe('fi-FI');
     });
   });
 
@@ -35,9 +35,9 @@ describe('navigation utils', () => {
       id,
       name,
       name_i18n: {
-        fi_FI: name,
-        en_US: name,
-        sv_SE: name,
+        'fi-FI': name,
+        'en-US': name,
+        'sv-SE': name,
       },
       type,
       categoryId,
