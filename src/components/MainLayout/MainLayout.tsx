@@ -1,3 +1,6 @@
+import React from 'react';
+import { Breadcrumb } from '../Breadcrumb/Breadcrumb';
+
 interface MainLayoutProps {
   children: React.ReactNode;
   navChildren?: React.ReactNode;
@@ -5,7 +8,9 @@ interface MainLayoutProps {
 
 export const MainLayout = ({ children, navChildren }: MainLayoutProps) => {
   return (
-    <div className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-6 pt-8 sm:px-6 print:p-0">
+    <div className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-6 pt-5 sm:px-6 print:p-0">
+      <Breadcrumb />
+
       {navChildren && (
         <aside className="lg:order-last col-span-3 lg:col-span-1 print:hidden position-relative lg:position-static z-10 lg:z-auto h-[47px] lg:h-auto">
           <nav
