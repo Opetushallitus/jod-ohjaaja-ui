@@ -1,10 +1,11 @@
 import { MainLayout } from '@/components';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
+import { copyToClipboard } from '@/utils/clipboard';
 import { getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { tidyClasses as tc } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
-import { MdOutlineFileDownload, MdOutlineLink, MdOutlinePrint } from 'react-icons/md';
+import { MdOutlineFileDownload, MdOutlineLink, MdOutlinePrint, MdOutlineShare } from 'react-icons/md';
 import { Link, useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
 
@@ -19,7 +20,9 @@ export const ActionButton = ({ label, icon, className = '', onClick, ...rest }: 
   return (
     <button
       aria-label={label}
-      className={tc(`cursor-pointer flex items-center gap-x-3 text-button-sm text-nowrap ${className}`)}
+      className={tc(
+        `cursor-pointer flex items-center gap-x-3 p-2 text-button-sm text-nowrap focus:outline-accent ${className}`,
+      )}
       onClick={onClick}
       type="button"
       {...rest}
@@ -104,7 +107,12 @@ const ContentDetails = () => {
             </div>
           )}
 
-          <div className="flex flex-col flex-1 place-items-end print:hidden">
+          <div className="flex sm:flex-col flex-row sm:justify-start justify-end flex-1 place-items-end gap-3 print:hidden">
+            <ActionButton
+              label={t('share')}
+              icon={<MdOutlineShare size={24} className="text-accent" />}
+              onClick={() => copyToClipboard(window.location.href)}
+            />
             {!!window.print && (
               <ActionButton
                 label={t('print')}
