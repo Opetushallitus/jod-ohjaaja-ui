@@ -15,7 +15,7 @@ const NoMatch = () => {
         iconSide="left"
         label={t('return-home')}
         size="md"
-        variant="gray"
+        variant="white"
         /* eslint-disable-next-line react/no-unstable-nested-components */
         LinkComponent={({ children }: { children: React.ReactNode }) => <a href="/">{children}</a>}
       />
