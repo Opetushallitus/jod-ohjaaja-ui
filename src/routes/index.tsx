@@ -1,3 +1,4 @@
+import { withOhjaajaContext } from '@/auth';
 import i18n, { supportedLanguageCodes } from '@/i18n/config';
 import { ContentDetails, getContentDetailsLoader } from '@/routes/ContentDetails';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
@@ -5,20 +6,44 @@ import { NavigationTreeItem } from '@/types/cms-navigation';
 import { RouteObject, replace } from 'react-router';
 import { CategoryContent, getCategoryContentLoader } from './CategoryContent';
 import { Home, homeLoader } from './Home';
-import { NoMatch, Root, rootLoader } from './Root';
+import { Preferences, Profile } from './Profile';
+import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
 import { Search, searchLoader } from './Search';
+
+const profileRoutes = supportedLanguageCodes.map(
+  (lng) =>
+    ({
+      id: `{slugs.profile.index}|${lng}`,
+      path: i18n.t('slugs.profile.index', { lng }),
+      element: <Profile />,
+      loader: withOhjaajaContext(() => null),
+      children: [
+        {
+          index: true,
+          loader: () => replace(i18n.t('slugs.profile.preferences', { lng })),
+        },
+        {
+          id: `{slugs.profile.preferences}|${lng}`,
+          path: i18n.t('slugs.profile.preferences', { lng }),
+          element: <Preferences />,
+        },
+      ],
+    }) as RouteObject,
+);
 
 const rootRoute: RouteObject = {
   id: 'root',
   path: '/:lng',
-  loader: rootLoader,
+  loader: withOhjaajaContext(rootLoader, false),
   element: <Root />,
+  errorElement: <ErrorBoundary />,
   children: [
     {
       index: true,
       element: <Home />,
       loader: homeLoader,
     },
+    ...profileRoutes,
   ],
 };
 

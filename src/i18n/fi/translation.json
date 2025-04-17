@@ -21,6 +21,8 @@
   "cookie-policy": "Evästekäytäntö",
   "copyright": "© JOD 2024. Kaikki oikeudet pidätetään.",
   "current-location": "Nykyinen sijainti",
+  "delete": "Poista",
+  "cancel": "Peruuta",
   "data-sources": "Datalähteet",
   "front-page": "Etusivu",
   "home": {
@@ -45,6 +47,7 @@
   "link-copied": "Linkki kopioitu!",
   "link-copy-failed": "Linkin kopiointi epäonnistui",
   "login": "Kirjaudu sisään",
+  "logout": "Kirjaudu ulos",
   "menu": "Valikko",
   "no-match": {
     "description": "Hakemaasi sivua ei löytynyt.",
@@ -81,6 +84,42 @@
   "skiplinks": {
     "main": "Siirry pääsisältöön"
   },
+  "preferences": {
+    "title": "Asetukseni",
+    "description": "Lorem ipsum dolor sit amet, no vis verear commodo. Vix quot dicta phaedrum ad. Has eu invenire concludaturque, simul accusata no ius. Eum ad iudico eruditi, idque malorum cum no. Te nam rebum iuvaret, atqui legere admodum an pro.",
+    "delete-profile": {
+      "title": "Poista koko osaamisprofiilisi ja kaikki siihen tallennetut tiedot",
+      "description": "Kaikki osaamisprofiilisi tallennetut tiedot poistetaan pysyvästi, eikä niitä voi palauttaa.",
+      "action": "Poista osaamisprofiili",
+      "confirm": "Haluatko varmasti poistaa osaamisprofiilisi?"
+    },
+    "download": {
+      "title": "Lataa talteen kaikki osaamisprofiilisi tallennetut tietosi",
+      "description": "Voit ladata itsellesi talteen kaikki osaamisprofiilin tallennetut tiedot",
+      "action": "Lataa osaamisprofiilin tiedot"
+    }
+  },
+  "profile": {
+    "index": "Omat sivuni",
+    "landing-page": {
+      "description": "Kirjautumalla sisään saat käyttöösi henkilökohtaisen osaamispolkusi, joka auttaa sinua hallinnoimaan ja hyödyntämään osaamistasi tehokkaasti.",
+      "list-1-item-1": "Oman osaamispolun hallinta ja tietojen luvitus: Päätä, miten ja missä tietojasi käytetään.",
+      "list-1-item-2": "Työ- ja koulutushistoria: Tallenna saavutuksesi yhteen paikkaan.",
+      "list-1-item-3": "Omat osaamiset ja kiinnostuksen kohteet: Tunnista vahvuutesi ja kiinnostuksen kohteesi.",
+      "list-1-item-4": "Urasuunnitelmat: Suunnittele tulevaisuutesi ja seuraa edistymistäsi.",
+      "list-1-item-5": "Tietojen tuonti muista palveluista: tuo tietosi Työmarkkinatorista ja Oma Opintopolusta.",
+      "list-1-item-6": "Suosikkisisällöt: Tallenna ja hallitse kiinnostavimpia työ- ja koulutusvaihtoehtoja.",
+      "list-2-item-1": "Näet kaikki osaamiseesi ja kiinnostuksiisi liittyvät tiedot yhdessä paikassa.",
+      "list-2-item-2": "Voit tunnistaa vahvuutesi, myös vapaa-ajan harrastusten kautta.",
+      "list-2-item-3": "Löydät profiilisi perusteella työ- ja koulutusmahdollisuuksia, jotka sopivat juuri sinulle.",
+      "page-title": "Kirjaudu palveluun",
+      "paragraph-2": "Miten Oma Osaamispolku voi auttaa sinua?",
+      "paragraph-3": "Aloita luomalla oma osaamispolkusi ja ota ensimmäinen askel kohti uusia mahdollisuuksia!",
+      "paragraph-4": "Osaamisprofiilin tietojen käsittely perustuu Lakiin valtakunnallisesta jatkuvan oppimisen osaamistietovarannosta. Lue lisää tietojen käsittelyn perusteista tietosuojaselosteesta.",
+      "profile-includes": "Oma Osaamispolku sisältää:",
+      "title": "Tervetuloa! Luo oma osaamispolkusi ja hyödynnä monipuoliset palvelut"
+    }
+  },
   "slugs": {
     "accessibility-statement": "saavutettavuusseloste",
     "basic-information": "perustiedot",
@@ -92,7 +131,16 @@
     "user-guide": {
       "index": "ohjeet",
       "what-is-the-service": "mika-palvelu-on"
+    },
+    "profile": {
+      "index": "omat-sivuni",
+      "preferences": "asetukseni"
     }
   },
-  "terms-of-service": "Käyttöehdot"
+  "terms-of-service": "Käyttöehdot",
+  "error-boundary": {
+    "session-expired": "Istuntosi on vanhentunut. Sinun täytyy kirjautua palveluun uudelleen tai käyttää palvelua ilman kirjautumista.",
+    "title": "Tapahtui virhe",
+    "unexpected": "Tapahtui odottamaton virhe. Tämä voi johtua verkkoyhteyden katkeamisesta tai palvelun virheestä."
+  }
 }
