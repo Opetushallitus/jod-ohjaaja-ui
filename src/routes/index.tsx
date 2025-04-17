@@ -25,6 +25,9 @@ const rootRoute: RouteObject = {
 const searchRoutes: RouteObject[] = supportedLanguageCodes.map((lng) => ({
   id: `search|${lng}`,
   path: i18n.t('slugs.search', { lng }),
+  handle: {
+    title: i18n.t('search.title', { lng }),
+  },
   element: <Search />,
   loader: searchLoader,
 }));
