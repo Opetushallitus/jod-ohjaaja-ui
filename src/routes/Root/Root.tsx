@@ -1,4 +1,5 @@
-import { LanguageButton, LanguageMenu } from '@/components';
+import { components } from '@/api/schema';
+import { LanguageButton, LanguageMenu, UserButton } from '@/components';
 import { MegaMenu } from '@/components/MegaMenu/MegaMenu';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import i18n from '@/i18n/config';
@@ -6,7 +7,8 @@ import { Footer, NavigationBar, SkipLink, useMediaQueries } from '@jod/design-sy
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdMenu } from 'react-icons/md';
-import { NavLink, Outlet, ScrollRestoration } from 'react-router';
+import { NavLink, Outlet, ScrollRestoration, useLoaderData } from 'react-router';
+import { LogoutFormContext } from '.';
 
 const NavigationBarItem = (to: string, text: string) => ({
   key: to,
@@ -36,12 +38,14 @@ const Root = () => {
     NavigationBarItem(`${basicInformation}/${t('slugs.accessibility-statement')}`, t('accessibility-statement')),
     NavigationBarItem(`${basicInformation}/${t('slugs.privacy-policy')}`, t('privacy-policy')),
   ];
-
+  const logoutForm = React.useRef<HTMLFormElement>(null);
   const megaMenuButtonRef = React.useRef<HTMLButtonElement>(null);
   const langMenuButtonRef = React.useRef<HTMLLIElement>(null);
 
   const megaMenuRef = useMenuClickHandler(() => setMegaMenuOpen(false), megaMenuButtonRef);
   const langMenuRef = useMenuClickHandler(() => setLangMenuOpen(false), langMenuButtonRef);
+
+  const data = useLoaderData() as components['schemas']['OhjaajaCsrfDto'] | null;
 
   const toggleMenu = (menu: 'mega' | 'lang') => () => {
     setMegaMenuOpen(false);
@@ -61,6 +65,10 @@ const Root = () => {
     setMegaMenuOpen(false);
   };
 
+  const logout = () => {
+    logoutForm.current?.submit();
+  };
+
   React.useEffect(() => {
     document.documentElement.setAttribute('lang', i18n.language);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -71,8 +79,13 @@ const Root = () => {
       <link rel="manifest" href={`/ohjaaja/manifest-${language}.json`} crossOrigin="use-credentials" />
       <header role="banner" className="sticky top-0 z-30 print:hidden">
         <SkipLink hash="#jod-main" label={t('skiplinks.main')} />
+        <form action="/ohjaaja/logout" method="POST" hidden ref={logoutForm}>
+          <input type="hidden" name="_csrf" value={data?.csrf.token} />
+          <input type="hidden" name="lang" value={language} />
+        </form>
         <NavigationBar
           languageButtonComponent={<LanguageButton onClick={toggleMenu('lang')} />}
+          userButtonComponent={<UserButton onLogout={logout} />}
           logo={{
             to: `/${language}`,
             language,
@@ -126,7 +139,9 @@ const Root = () => {
           </div>
         )}
       </header>
-      <Outlet />
+      <LogoutFormContext.Provider value={logoutForm.current}>
+        <Outlet />
+      </LogoutFormContext.Provider>
       <Footer
         items={footerItems}
         language={language}
