@@ -1,5 +1,6 @@
 import { LanguageButton, LanguageMenu } from '@/components';
 import { MegaMenu } from '@/components/MegaMenu/MegaMenu';
+import { Toaster } from '@/components/Toaster/Toaster';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import i18n from '@/i18n/config';
 import { Footer, NavigationBar, SkipLink, useMediaQueries } from '@jod/design-system';
@@ -134,6 +135,7 @@ const Root = () => {
         variant="light"
         className={!sm ? 'py-7' : undefined}
       />
+      <Toaster />
       <ScrollRestoration />
     </>
   );

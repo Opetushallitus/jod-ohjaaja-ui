@@ -40,6 +40,8 @@
     "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
     "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä."
   },
+  "link-copied": "Linkki kopioitu!",
+  "link-copy-failed": "Linkin kopiointi epäonnistui",
   "login": "Kirjaudu sisään",
   "menu": "Valikko",
   "no-match": {
@@ -73,6 +75,7 @@
     "article-count": "Löysimme hakusanallasi {{count}} tulosta"
   },
   "select-language": "Valitse kieli",
+  "share": "Jaa",
   "skiplinks": {
     "main": "Siirry pääsisältöön"
   },
