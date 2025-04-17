@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react-swc';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, loadEnv } from 'vite';
 
+// The target API base URL
+const target = process.env.API_BASE_URL ?? 'http://localhost:9180';
+
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   // loadEnv is required to read .env files
@@ -31,6 +34,26 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 8180,
       proxy: {
+        '/ohjaaja/api': {
+          target,
+          xfwd: true,
+        },
+        '/ohjaaja/login': {
+          target,
+          xfwd: true,
+        },
+        '/ohjaaja/saml2': {
+          target,
+          xfwd: true,
+        },
+        '/ohjaaja/logout': {
+          target,
+          xfwd: true,
+        },
+        '/ohjaaja/openapi': {
+          target,
+          xfwd: true,
+        },
         '/ohjaaja/cms': {
           target: env.CMSURL,
           changeOrigin: true,
