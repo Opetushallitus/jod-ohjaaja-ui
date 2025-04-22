@@ -5,12 +5,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const DownloadLink = ({ children }: { children: React.ReactNode }) => (
-  <a href={`${import.meta.env.BASE_URL}api/profiili/yksilo/vienti`}>{children}</a>
+  <a href={`${import.meta.env.BASE_URL}api/profiili/ohjaaja/vienti`}>{children}</a>
 );
 
 const Preferences = () => {
   const { t } = useTranslation();
-  const title = t('profile.preferences.title');
   const logoutForm = React.useContext(LogoutFormContext);
 
   const deleteProfile = () => {
@@ -24,7 +23,7 @@ const Preferences = () => {
 
   return (
     <MainLayout>
-      <title>{title}</title>
+      <title>{t('profile.preferences.title')}</title>
       <h1 className="mb-5 text-heading-2 sm:text-heading-1">{t('preferences.title')}</h1>
       <div className="mb-8 text-body-md flex flex-col gap-7">
         <p className="bg-todo">{t('preferences.description')}</p>
