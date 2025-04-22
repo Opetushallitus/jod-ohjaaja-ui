@@ -118,6 +118,9 @@
       "paragraph-4": "Osaamisprofiilin tietojen käsittely perustuu Lakiin valtakunnallisesta jatkuvan oppimisen osaamistietovarannosta. Lue lisää tietojen käsittelyn perusteista tietosuojaselosteesta.",
       "profile-includes": "Oma Osaamispolku sisältää:",
       "title": "Tervetuloa! Luo oma osaamispolkusi ja hyödynnä monipuoliset palvelut"
+    },
+    "preferences": {
+      "title": "Asetukseni"
     }
   },
   "slugs": {
