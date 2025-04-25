@@ -1,6 +1,7 @@
 {
   "about-us-and-user-guide": "Tietoa palvelusta ja käyttöohjeet",
   "accessibility-statement": "Saavutettavuusseloste",
+  "add-to-favorites": "Tallenna suosikiksi",
   "carousel": {
     "indicator": "Siirry sivulle {{index}}",
     "next": "Seuraava sivu",
@@ -62,6 +63,7 @@
   },
   "print": "Tulosta",
   "privacy-policy": "Tietosuojaseloste",
+  "remove-from-favorites": "Poista suosikeista",
   "return-home": "Palaa etusivulle",
   "return-menu": "Palaa valikkoon",
   "search": {

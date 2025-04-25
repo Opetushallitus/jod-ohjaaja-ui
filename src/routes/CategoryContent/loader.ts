@@ -1,13 +1,13 @@
+import { components } from '@/api/schema';
 import { getCategoryContent } from '@/services/cms-api';
-import { StructuredContentPage } from '@/types/cms-content';
 import { LoaderFunction } from 'react-router';
 
 const getCategoryContentLoader = (categoryId: number) =>
-  (async () => {
-    const data: StructuredContentPage = await getCategoryContent(categoryId);
+  (async ({ context }) => {
+    const data = await getCategoryContent(categoryId);
 
-    return { data };
-  }) satisfies LoaderFunction;
+    return { data, isLoggedIn: !!context };
+  }) satisfies LoaderFunction<components['schemas']['OhjaajaCsrfDto'] | null>;
 
 export type LoaderData = Awaited<ReturnType<ReturnType<typeof getCategoryContentLoader>>>;
 export default getCategoryContentLoader;
