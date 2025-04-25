@@ -1,11 +1,10 @@
 import heroSrc from '@/../assets/ohjaaja-hero.avif';
+import { ArticleCard } from '@/components/ArticleCard/ArticleCard';
 import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LangCode } from '@/i18n/config';
 import { LoaderData } from '@/routes/Home/loader';
-import { getAdaptiveMediaSrc, getImage, getIngress, getKeywords, getTitle } from '@/utils/cms';
-import { getSearchUrl } from '@/utils/navigation';
-import { getArticlePath, getMainCategoryPath } from '@/utils/navigation-paths';
-import { CardCarousel, CardCarouselItem, ContentCard, MediaCard } from '@jod/design-system';
+import { getMainCategoryPath } from '@/utils/navigation-paths';
+import { CardCarousel, CardCarouselItem, ContentCard } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLoaderData } from 'react-router';
@@ -15,37 +14,18 @@ const Home = () => {
     t,
     i18n: { language },
   } = useTranslation();
-  const { data } = useLoaderData<LoaderData>();
+  const { data, isLoggedIn } = useLoaderData<LoaderData>();
   const [carouselItems, setCarouselItems] = React.useState<CardCarouselItem[]>([]);
-  const isLogged = true; // Implement authentication
 
   React.useEffect(() => {
-    const items = data.items.map((item) => {
-      const title = getTitle(item);
-      const imageContent = getImage(item);
-      const ingress = getIngress(item);
-      const keywords = getKeywords(item);
-      const id = `${item.id ?? ''}`;
-      const imageSrc = getAdaptiveMediaSrc(imageContent?.id, imageContent?.title, 'thumbnail');
-      const path = getArticlePath(item.id ?? 0, language as LangCode);
-
+    const items = data.items.map((article) => {
       return {
-        id,
-        component: (
-          <MediaCard
-            label={title}
-            description={ingress ?? ''}
-            imageSrc={imageSrc}
-            imageAlt={imageContent?.title ?? ''}
-            to={path}
-            linkComponent={Link}
-            tags={keywords.map((keyword) => ({ label: keyword.name, to: getSearchUrl(t, language, [keyword.id]) }))}
-          />
-        ),
+        id: `${article.id ?? ''}`,
+        component: <ArticleCard article={article} variant="vertical" isLoggedIn={isLoggedIn} />,
       };
     });
     setCarouselItems(items);
-  }, [data, language, t]);
+  }, [data, isLoggedIn]);
 
   return (
     <main id="jod-main" className="w-full max-w-(--breakpoint-xl) mx-auto">
@@ -118,7 +98,7 @@ const Home = () => {
           />
         </div>
 
-        {isLogged && (
+        {isLoggedIn && (
           <div className="col-span-3 lg:col-span-2">
             <FeatureCard
               to="/"
@@ -145,7 +125,7 @@ const Home = () => {
           />
         </div>
 
-        {isLogged ? (
+        {isLoggedIn ? (
           <div className="col-span-3">
             <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.recently-watched-contents')}</h2>
             <div className="grid grid-cols-3 gap-6 xl:gap-7">

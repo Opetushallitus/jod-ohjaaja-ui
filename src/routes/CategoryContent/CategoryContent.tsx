@@ -8,7 +8,7 @@ import { LoaderData } from './loader';
 const VISIBLE_ITEM_COUNT = 6;
 
 const CategoryContent = () => {
-  const { data } = useLoaderData<LoaderData>();
+  const { data, isLoggedIn } = useLoaderData<LoaderData>();
   const [visibleItemCount, setVisibleItemCount] = React.useState(VISIBLE_ITEM_COUNT);
 
   const handleLoadMore = () => {
@@ -29,6 +29,7 @@ const CategoryContent = () => {
           hasMore={hasMore}
           loadMore={handleLoadMore}
           isLoading={isLoading}
+          isLoggedIn={isLoggedIn}
         />
       </div>
     </MainLayout>

@@ -1,12 +1,21 @@
 import { MainLayout } from '@/components';
+import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { copyToClipboard } from '@/utils/clipboard';
 import { getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { tidyClasses as tc } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
-import { MdOutlineFileDownload, MdOutlineLink, MdOutlinePrint, MdOutlineShare } from 'react-icons/md';
+import {
+  MdFavorite,
+  MdFavoriteBorder,
+  MdOutlineFileDownload,
+  MdOutlineLink,
+  MdOutlinePrint,
+  MdOutlineShare,
+} from 'react-icons/md';
 import { Link, useLoaderData } from 'react-router';
+import { useShallow } from 'zustand/react/shallow';
 import { LoaderData } from './loader';
 
 interface ActionButtonProps {
@@ -39,11 +48,20 @@ interface DocumentsAndLinksProps {
 }
 
 const ContentDetails = () => {
-  const { data } = useLoaderData<LoaderData>();
+  const { data, isLoggedIn } = useLoaderData<LoaderData>();
   const {
     i18n: { language },
     t,
   } = useTranslation();
+
+  const [suosikit, toggleSuosikki] = useSuosikitStore(useShallow((state) => [state.suosikit, state.toggleSuosikki]));
+
+  const isFavorite = suosikit.some((suosikki) => suosikki.artikkeliId === data.id);
+  const handleFavoriteClick = () => {
+    if (data.id !== undefined) {
+      toggleSuosikki(data.id);
+    }
+  };
 
   const dateCreated = data.dateCreated
     ? new Intl.DateTimeFormat([language], {
@@ -108,6 +126,19 @@ const ContentDetails = () => {
           )}
 
           <div className="flex sm:flex-col flex-row sm:justify-start justify-end flex-1 place-items-end gap-3 print:hidden">
+            {isLoggedIn && (
+              <ActionButton
+                label={isFavorite ? t('remove-from-favorites') : t('add-to-favorites')}
+                icon={
+                  isFavorite ? (
+                    <MdFavorite aria-hidden size={24} className="text-accent" />
+                  ) : (
+                    <MdFavoriteBorder aria-hidden size={24} className="text-accent" />
+                  )
+                }
+                onClick={handleFavoriteClick}
+              ></ActionButton>
+            )}
             <ActionButton
               label={t('share')}
               icon={<MdOutlineShare size={24} className="text-accent" />}

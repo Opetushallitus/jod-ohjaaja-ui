@@ -41,7 +41,7 @@ const rootRoute: RouteObject = {
     {
       index: true,
       element: <Home />,
-      loader: homeLoader,
+      loader: withOhjaajaContext(homeLoader, false),
     },
     ...profileRoutes,
   ],
@@ -118,9 +118,9 @@ const getLoader = (navigationTreeItem: NavigationTreeItem) => {
     case 'CategoryMain':
       return rootLoader;
     case 'CategoryListing':
-      return getCategoryContentLoader(navigationTreeItem.categoryId ?? 0);
+      return withOhjaajaContext(getCategoryContentLoader(navigationTreeItem.categoryId ?? 0), false);
     case 'Article':
-      return getContentDetailsLoader(navigationTreeItem.articleId ?? 0);
+      return withOhjaajaContext(getContentDetailsLoader(navigationTreeItem.articleId ?? 0), false);
   }
 };
 
