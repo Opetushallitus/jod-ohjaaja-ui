@@ -39,6 +39,12 @@ describe('navigation utils', () => {
         'en-US': name,
         'sv-SE': name,
       },
+      description: '',
+      description_i18n: {
+        'fi-FI': '',
+        'en-US': '',
+        'sv-SE': '',
+      },
       type,
       categoryId,
       articleId,
@@ -54,6 +60,7 @@ describe('navigation utils', () => {
       expect(result).toEqual({
         title: 'Main',
         name: 'main',
+        description: '',
         path: 'main',
         type: 'CategoryMain',
         children: [],
@@ -87,6 +94,7 @@ describe('navigation utils', () => {
       expect(result.children[0]).toEqual({
         title: 'Category 1',
         name: 'category-1',
+        description: '',
         path: 'category-1',
         type: 'CategoryListing',
         children: [
@@ -95,6 +103,7 @@ describe('navigation utils', () => {
             path: 'article-1',
             type: 'Article',
             title: 'Article 1',
+            description: '',
             children: [],
             categoryId: undefined,
             articleId: 1,

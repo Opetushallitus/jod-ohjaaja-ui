@@ -1,5 +1,9 @@
 import { LangCode } from '@/i18n/config';
-import { CMSNavigationItem, CMSNavigationNameI18n, NavigationTreeItem } from '@/types/cms-navigation';
+import {
+  type CMSNavigationItem,
+  type CMSNavigationItemLocalization,
+  type NavigationTreeItem,
+} from '@/types/cms-navigation';
 import { type TFunction } from 'i18next';
 import { sluggify } from './string-utils';
 
@@ -9,6 +13,7 @@ export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangC
   return {
     title: navigationItem.name_i18n[locale] || navigationItem.name,
     name: sluggify(navigationItem.name),
+    description: navigationItem.description_i18n[locale] || navigationItem.description,
     path: sluggify(navigationItem.name_i18n[locale] || navigationItem.name),
     type: navigationItem.type,
     children: navigationItem.children.map((child) => getNavigationItems(child, lng)),
@@ -18,7 +23,7 @@ export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangC
   };
 };
 
-export const getLocale = (lng: string): keyof CMSNavigationNameI18n => {
+export const getLocale = (lng: string): keyof CMSNavigationItemLocalization => {
   switch (lng) {
     case 'fi':
       return 'fi-FI';

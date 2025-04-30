@@ -1,10 +1,12 @@
 import heroSrc from '@/../assets/ohjaaja-hero.avif';
 import { ArticleCard } from '@/components/ArticleCard/ArticleCard';
 import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
+import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
+import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/RecentlyWatchedContent';
 import { LangCode } from '@/i18n/config';
 import { LoaderData } from '@/routes/Home/loader';
 import { getMainCategoryPath } from '@/utils/navigation-paths';
-import { CardCarousel, CardCarouselItem, ContentCard } from '@jod/design-system';
+import { CardCarousel, CardCarouselItem } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLoaderData } from 'react-router';
@@ -126,77 +128,21 @@ const Home = () => {
         </div>
 
         {isLoggedIn ? (
-          <div className="col-span-3">
-            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.recently-watched-contents')}</h2>
-            <div className="grid grid-cols-3 gap-6 xl:gap-7">
-              <div className="col-span-3 lg:col-span-2 rounded bg-white p-6">
-                <ContentCard
-                  title="Lorem ipsum dolor"
-                  description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
-                  path={['Teema', 'Osio']}
-                  tags={[
-                    { label: 'Asiasana 1', to: '#' },
-                    { label: 'Asiasana 2', to: '#' },
-                    { label: 'Asiasana 3', to: '#' },
-                  ]}
-                />
-                <hr className="border-border-gray" />
-                <ContentCard
-                  title="Lorem ipsum dolor"
-                  description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
-                  path={['Teema', 'Osio']}
-                  tags={[
-                    { label: 'Asiasana 1', to: '#' },
-                    { label: 'Asiasana 2', to: '#' },
-                    { label: 'Asiasana 3', to: '#' },
-                  ]}
-                />
-                <hr className="border-border-gray" />
-                <ContentCard
-                  title="Lorem ipsum dolor"
-                  description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
-                  path={['Teema', 'Osio']}
-                  tags={[
-                    { label: 'Asiasana 1', to: '#' },
-                    { label: 'Asiasana 2', to: '#' },
-                    { label: 'Asiasana 3', to: '#' },
-                  ]}
-                />
-                <hr className="border-border-gray" />
-                <ContentCard
-                  title="Lorem ipsum dolor"
-                  description="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit osana ei osaa sanoa mitä accumsan dolor nonummy."
-                  path={['Teema', 'Osio']}
-                  tags={[
-                    { label: 'Asiasana 1', to: '#' },
-                    { label: 'Asiasana 2', to: '#' },
-                    { label: 'Asiasana 3', to: '#' },
-                  ]}
-                />
-              </div>
-              <div className="col-span-3 lg:col-span-1">
-                <FeatureCard
-                  to="/"
-                  linkComponent={Link}
-                  level="h2"
-                  title={t('home.suggest-new-content-for-the-service')}
-                  content={t('home.suggest-new-content-for-the-service-content')}
-                  backgroundColor="#EBB8E1"
-                />
-              </div>
+          <div className="col-span-3 grid grid-cols-3 gap-x-6 xl:gap-x-7">
+            <RecentlyWatchedContent />
+            <div className="col-span-3 lg:col-span-1 content-end">
+              <FeatureCard
+                to="/"
+                linkComponent={Link}
+                level="h2"
+                title={t('suggest-new-content-for-the-service')}
+                content={t('suggest-new-content-for-the-service-content')}
+                backgroundColor="#EBB8E1"
+              />
             </div>
           </div>
         ) : (
-          <div className="col-span-3 lg:col-span-2">
-            <FeatureCard
-              to="/"
-              linkComponent={Link}
-              level="h2"
-              title={t('log-in-to-the-service')}
-              content={t('log-in-to-the-service-content')}
-              backgroundColor="#66CBD1"
-            />
-          </div>
+          <LoginBanner />
         )}
       </div>
     </main>

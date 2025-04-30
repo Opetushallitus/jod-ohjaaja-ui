@@ -7,7 +7,7 @@ import { LoaderData } from './loader';
 
 const VISIBLE_ITEM_COUNT = 6;
 
-const CategoryContent = () => {
+const CategoryListing = () => {
   const { data, isLoggedIn } = useLoaderData<LoaderData>();
   const [visibleItemCount, setVisibleItemCount] = React.useState(VISIBLE_ITEM_COUNT);
 
@@ -36,4 +36,4 @@ const CategoryContent = () => {
   );
 };
 
-export default CategoryContent;
+export default CategoryListing;
