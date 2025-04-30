@@ -21,6 +21,7 @@ const createBaseNavigationTreeItem = (
     title,
     name,
     path,
+    description: '',
     type,
     categoryId,
     articleId,

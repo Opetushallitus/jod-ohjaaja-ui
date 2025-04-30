@@ -4,7 +4,7 @@ import { ContentDetails, getContentDetailsLoader } from '@/routes/ContentDetails
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { NavigationTreeItem } from '@/types/cms-navigation';
 import { RouteObject, replace } from 'react-router';
-import { CategoryContent, getCategoryContentLoader } from './CategoryContent';
+import { CategoryListing, CategoryMain, getCategoryContentLoader } from './Category';
 import { Home, homeLoader } from './Home';
 import { Preferences, Profile } from './Profile';
 import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
@@ -89,6 +89,7 @@ const getRoute = (navigationTreeItem: NavigationTreeItem): RouteObject => {
     handle: {
       type: navigationTreeItem.type,
       title: navigationTreeItem.title,
+      description: navigationTreeItem.description,
     },
   };
 
@@ -116,7 +117,7 @@ const getRoute = (navigationTreeItem: NavigationTreeItem): RouteObject => {
 const getLoader = (navigationTreeItem: NavigationTreeItem) => {
   switch (navigationTreeItem.type) {
     case 'CategoryMain':
-      return rootLoader;
+      return withOhjaajaContext(getCategoryContentLoader(navigationTreeItem.categoryId ?? 0), false);
     case 'CategoryListing':
       return withOhjaajaContext(getCategoryContentLoader(navigationTreeItem.categoryId ?? 0), false);
     case 'Article':
@@ -127,9 +128,9 @@ const getLoader = (navigationTreeItem: NavigationTreeItem) => {
 const getElement = (navigationTreeItem: NavigationTreeItem) => {
   switch (navigationTreeItem.type) {
     case 'CategoryMain':
-      return <Home />;
+      return <CategoryMain />;
     case 'CategoryListing':
-      return <CategoryContent />;
+      return <CategoryListing />;
     case 'Article':
       return <ContentDetails />;
   }

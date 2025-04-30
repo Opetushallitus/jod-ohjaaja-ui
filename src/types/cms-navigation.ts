@@ -5,15 +5,18 @@ export type NavigationItemType = (typeof NavigationItemTypeArray)[number];
 export const isNavigationItemType = (value: unknown): value is NavigationItemType =>
   value !== undefined && typeof value === 'string' && NavigationItemTypeArray.includes(value as NavigationItemType);
 
-export interface CMSNavigationNameI18n {
+export interface CMSNavigationItemLocalization {
   'fi-FI': string;
   'en-US': string;
   'sv-SE': string;
 }
+
 export interface CMSNavigationItem {
   id: number;
   name: string;
-  name_i18n: CMSNavigationNameI18n;
+  name_i18n: CMSNavigationItemLocalization;
+  description: string;
+  description_i18n: CMSNavigationItemLocalization;
   type: NavigationItemType;
   articleId: number | null;
   categoryId: number | null;
@@ -30,6 +33,7 @@ export interface NavigationTreeItem {
   title: string;
   name: string;
   path: string;
+  description: string;
   type: NavigationItemType;
   children: NavigationTreeItem[];
   categoryId?: number;
