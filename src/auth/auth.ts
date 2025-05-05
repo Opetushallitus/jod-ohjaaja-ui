@@ -9,18 +9,23 @@ export const authStore: {
   ohjaajaPromise: undefined,
 };
 
-export const withOhjaajaContext = (
-  load: LoaderFunction<components['schemas']['OhjaajaCsrfDto'] | null>,
-  loginRequired = true,
-) => {
+type OhjaajaCsrfDto = components['schemas']['OhjaajaCsrfDto'];
+
+export const withOhjaajaContext = (load: LoaderFunction<OhjaajaCsrfDto | null>, loginRequired = true) => {
   return async (args: LoaderFunctionArgs) => {
     authStore.ohjaajaPromise ??= client.GET('/api/profiili/ohjaaja');
 
-    const { data = null } = (await authStore.ohjaajaPromise) as { data: components['schemas']['OhjaajaCsrfDto'] };
+    const { data = null } = (await authStore.ohjaajaPromise) as { data: OhjaajaCsrfDto };
     if (data) {
       registerCsrfMiddleware(data.csrf);
     }
 
     return !loginRequired || data ? await load({ ...args, context: data }) : redirect('/');
   };
+};
+
+export const isLoggedIn = async () => {
+  return (
+    authStore.ohjaajaPromise != undefined && ((await authStore.ohjaajaPromise) as { data: OhjaajaCsrfDto }).data != null
+  );
 };

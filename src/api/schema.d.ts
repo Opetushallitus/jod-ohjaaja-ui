@@ -23,6 +23,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/artikkeli/katselu': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Adds a Katselu to the Artikkeli */
+    post: operations['artikkelinKatseluAdd'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/profiili/ohjaaja': {
     parameters: {
       query?: never;
@@ -31,6 +48,22 @@ export interface paths {
       cookie?: never;
     };
     get: operations['ohjaajaGet'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/profiili/ohjaaja/vienti': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['ohjaajaExport'];
     put?: never;
     post?: never;
     delete?: never;
@@ -51,6 +84,15 @@ export interface components {
       /** Format: date-time */
       readonly luotu?: string;
     };
+    ArtikkelinKatseluDto: {
+      /** Format: uuid */
+      id?: string;
+      /** Format: int64 */
+      artikkeliId: number;
+      /** Format: date-time */
+      luotu?: string;
+      anonyymiId?: string;
+    };
     CsrfTokenDto: {
       token: string;
       headerName: string;
@@ -60,6 +102,10 @@ export interface components {
       etunimi?: string;
       sukunimi?: string;
       csrf: components['schemas']['CsrfTokenDto'];
+    };
+    OhjaajaExportDto: {
+      /** Format: uuid */
+      id?: string;
     };
   };
   responses: never;
@@ -134,6 +180,30 @@ export interface operations {
       };
     };
   };
+  artikkelinKatseluAdd: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ArtikkelinKatseluDto'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': string;
+        };
+      };
+    };
+  };
   ohjaajaGet: {
     parameters: {
       query?: never;
@@ -150,6 +220,26 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['OhjaajaCsrfDto'];
+        };
+      };
+    };
+  };
+  ohjaajaExport: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['OhjaajaExportDto'];
         };
       };
     };
