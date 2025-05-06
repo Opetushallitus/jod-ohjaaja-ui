@@ -1,6 +1,5 @@
-import { components } from '@/api/schema';
 import { LanguageButton, UserButton } from '@/components';
-import { MegaMenu } from '@/components/MegaMenu/MegaMenu';
+import { NavMenu } from '@/components/NavMenu/NavMenu';
 import { Toaster } from '@/components/Toaster/Toaster';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import i18n from '@/i18n/config';
@@ -8,7 +7,7 @@ import { Footer, NavigationBar, SkipLink, useMediaQueries } from '@jod/design-sy
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdMenu } from 'react-icons/md';
-import { NavLink, Outlet, ScrollRestoration, useLoaderData } from 'react-router';
+import { Link, NavLink, Outlet, ScrollRestoration, useLoaderData } from 'react-router';
 import { LogoutFormContext } from '.';
 
 const NavigationBarItem = (to: string, text: string) => ({
@@ -26,7 +25,7 @@ const Root = () => {
     i18n: { language },
   } = useTranslation();
   const { sm } = useMediaQueries();
-  const [megaMenuOpen, setMegaMenuOpen] = React.useState(false);
+  const [navMenuOpen, setNavMenuOpen] = React.useState(false);
   const [langMenuOpen, setLangMenuOpen] = React.useState(false);
 
   const userGuide = t('slugs.user-guide.index');
@@ -40,18 +39,12 @@ const Root = () => {
     NavigationBarItem(`${basicInformation}/${t('slugs.privacy-policy')}`, t('privacy-policy')),
   ];
   const logoutForm = React.useRef<HTMLFormElement>(null);
-  const megaMenuButtonRef = React.useRef<HTMLButtonElement>(null);
+
   const langMenuButtonRef = React.useRef<HTMLLIElement>(null);
 
-  const megaMenuRef = useMenuClickHandler(() => setMegaMenuOpen(false), megaMenuButtonRef);
   const langMenuRef = useMenuClickHandler(() => setLangMenuOpen(false), langMenuButtonRef);
 
-  const data = useLoaderData() as components['schemas']['OhjaajaCsrfDto'] | null;
-
-  const changeLanguage = () => {
-    setLangMenuOpen(false);
-    setMegaMenuOpen(false);
-  };
+  const data = useLoaderData();
 
   const logout = () => {
     logoutForm.current?.submit();
@@ -81,7 +74,7 @@ const Root = () => {
           logo={{ to: `/${language}`, language, srText: t('osaamispolku') }}
           menuComponent={
             <button
-              onClick={() => setMegaMenuOpen(!megaMenuOpen)}
+              onClick={() => setNavMenuOpen(!navMenuOpen)}
               aria-label={t('open-menu')}
               className="flex gap-2 justify-center items-center select-none cursor-pointer"
             >
@@ -103,18 +96,14 @@ const Root = () => {
           userButtonComponent={<UserButton onLogout={logout} />}
           refs={{ langMenuButtonRef: langMenuButtonRef }}
           renderLink={({ to, className, children }) => (
-            <NavLink to={to} className={className}>
-              {children as React.ReactNode}
-            </NavLink>
+            <Link to={to} className={className}>
+              {children}
+            </Link>
           )}
         />
-        {megaMenuOpen && (
-          <div ref={megaMenuRef}>
-            <MegaMenu onClose={() => setMegaMenuOpen(false)} onLanguageClick={changeLanguage} />
-          </div>
-        )}
       </header>
       <LogoutFormContext.Provider value={logoutForm.current}>
+        <NavMenu open={navMenuOpen} onClose={() => setNavMenuOpen(false)} />
         <Outlet />
       </LogoutFormContext.Provider>
       <Footer
