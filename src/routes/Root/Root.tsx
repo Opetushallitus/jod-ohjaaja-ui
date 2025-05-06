@@ -1,5 +1,5 @@
 import { components } from '@/api/schema';
-import { LanguageButton, LanguageMenu, UserButton } from '@/components';
+import { LanguageButton, UserButton } from '@/components';
 import { MegaMenu } from '@/components/MegaMenu/MegaMenu';
 import { Toaster } from '@/components/Toaster/Toaster';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
@@ -48,19 +48,6 @@ const Root = () => {
 
   const data = useLoaderData() as components['schemas']['OhjaajaCsrfDto'] | null;
 
-  const toggleMenu = (menu: 'mega' | 'lang') => () => {
-    setMegaMenuOpen(false);
-    setLangMenuOpen(false);
-    switch (menu) {
-      case 'mega':
-        setMegaMenuOpen(!megaMenuOpen);
-        break;
-      case 'lang':
-        setLangMenuOpen(!langMenuOpen);
-        break;
-    }
-  };
-
   const changeLanguage = () => {
     setLangMenuOpen(false);
     setMegaMenuOpen(false);
@@ -68,6 +55,12 @@ const Root = () => {
 
   const logout = () => {
     logoutForm.current?.submit();
+  };
+
+  const handleBlur = (event: React.FocusEvent<HTMLDivElement>) => {
+    if (langMenuRef.current && !langMenuRef.current.contains(event.relatedTarget as Node)) {
+      setLangMenuOpen(false);
+    }
   };
 
   React.useEffect(() => {
@@ -85,41 +78,29 @@ const Root = () => {
           <input type="hidden" name="lang" value={language} />
         </form>
         <NavigationBar
-          languageButtonComponent={<LanguageButton onClick={toggleMenu('lang')} />}
-          userButtonComponent={<UserButton onLogout={logout} />}
-          logo={{
-            to: `/${language}`,
-            language,
-            srText: t('osaamispolku'),
-          }}
+          logo={{ to: `/${language}`, language, srText: t('osaamispolku') }}
           menuComponent={
-            sm ? (
-              <button
-                className="cursor-pointer flex gap-4 justify-center items-center select-none"
-                aria-label={megaMenuOpen ? t('close-menu') : t('open-menu')}
-                onClick={toggleMenu('mega')}
-                ref={megaMenuButtonRef}
-              >
-                <span className="py-3 pl-3">{t('menu')}</span>
-                <span className="size-7 flex justify-center items-center">
-                  <MdMenu size={24} />
-                </span>
-              </button>
-            ) : (
-              !megaMenuOpen && (
-                <button
-                  className="cursor-pointer flex justify-self-end p-3"
-                  aria-label={t('open-menu')}
-                  onClick={toggleMenu('mega')}
-                  ref={megaMenuButtonRef}
-                >
-                  <span className="size-7 flex justify-center items-center">
-                    <MdMenu size={24} />
-                  </span>
-                </button>
-              )
-            )
+            <button
+              onClick={() => setMegaMenuOpen(!megaMenuOpen)}
+              aria-label={t('open-menu')}
+              className="flex gap-2 justify-center items-center select-none cursor-pointer"
+            >
+              <span className="size-7 flex justify-center items-center">
+                <MdMenu size={24} />
+              </span>
+              <span className="py-3 pr-2">{t('menu')}</span>
+            </button>
           }
+          languageButtonComponent={
+            <LanguageButton
+              onClick={() => setLangMenuOpen(!langMenuOpen)}
+              langMenuOpen={langMenuOpen}
+              menuRef={langMenuRef}
+              onMenuBlur={handleBlur}
+              onMenuClick={() => setLangMenuOpen(false)}
+            />
+          }
+          userButtonComponent={<UserButton onLogout={logout} />}
           refs={{ langMenuButtonRef: langMenuButtonRef }}
           renderLink={({ to, className, children }) => (
             <NavLink to={to} className={className}>
@@ -127,13 +108,6 @@ const Root = () => {
             </NavLink>
           )}
         />
-        {langMenuOpen && (
-          <div className="relative xl:container mx-auto">
-            <div ref={langMenuRef} className="absolute right-[50px] translate-y-7">
-              <LanguageMenu onClick={changeLanguage} />
-            </div>
-          </div>
-        )}
         {megaMenuOpen && (
           <div ref={megaMenuRef}>
             <MegaMenu onClose={() => setMegaMenuOpen(false)} onLanguageClick={changeLanguage} />

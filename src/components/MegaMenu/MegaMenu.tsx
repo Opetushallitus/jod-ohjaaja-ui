@@ -1,4 +1,4 @@
-import { LanguageButton, LanguageMenu } from '@/components';
+import { LanguageMenu } from '@/components';
 import { useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -15,10 +15,6 @@ export const MegaMenu = ({ onClose, onLanguageClick }: MegaMenuProps) => {
   const { t } = useTranslation();
   const [megaMenuState, setMegaMenuState] = React.useState<'main' | 'lang'>('main');
 
-  const onLanguageButtonClick = () => {
-    setMegaMenuState('lang');
-  };
-
   const doClose = () => {
     setMegaMenuState('main');
     onClose();
@@ -27,13 +23,6 @@ export const MegaMenu = ({ onClose, onLanguageClick }: MegaMenuProps) => {
   return (
     <div className="fixed top-0 sm:top-11 left-0 right-0 m-auto max-w-[1092px] bg-white shadow-border rounded-b-lg overflow-hidden">
       <ul className="flex flex-row justify-end items-center px-5 pt-3 sm:pt-5 pb-3 sm:pb-0">
-        {!sm && megaMenuState === 'main' && (
-          <>
-            <li>
-              <LanguageButton onClick={onLanguageButtonClick} />
-            </li>
-          </>
-        )}
         {megaMenuState === 'main' && (
           <li>
             <button aria-label={t('close-menu')} onClick={doClose} className="cursor-pointer flex items-center ml-5">
