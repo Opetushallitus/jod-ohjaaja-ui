@@ -1,0 +1,103 @@
+import { useAppRoutes } from '@/hooks/useAppRoutes';
+import { getNavigationTreeItems } from '@/services/navigation-loader';
+import { NavigationTreeItem } from '@/types/cms-navigation';
+import { LinkComponent, MenuItem } from '@jod/design-system';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { NavLink, useLoaderData, useLocation } from 'react-router';
+import { NavLinkBasedOnAuth } from './NavLinkBasedOnAuth';
+
+const createMenuItem = (
+  navigationItem: NavigationTreeItem,
+  language: string,
+  onClose: () => void,
+  pathPrefix: string,
+  currentPath: string,
+): MenuItem => {
+  const path = `${pathPrefix}/${navigationItem.path}`;
+  const menuItem = {
+    label: navigationItem.title,
+    LinkComponent: ({ children, className }: LinkComponent) => (
+      <NavLink className={className} to={path} onClick={onClose} lang={language}>
+        {children}
+      </NavLink>
+    ),
+    selected: currentPath.startsWith(path),
+    childItems: navigationItem.children.map((childItem) =>
+      createMenuItem(childItem, language, onClose, path, currentPath),
+    ),
+  };
+  if (navigationItem.children.length > 0) {
+    menuItem.childItems.splice(0, 0, {
+      label: navigationItem.title,
+      LinkComponent: ({ children, className }: LinkComponent) => (
+        <NavLink className={className} to={path} onClick={onClose} lang={language}>
+          {children}
+        </NavLink>
+      ),
+      selected: currentPath === path,
+    });
+  }
+  return menuItem;
+};
+
+export const useMenuRoutes = (onClose: () => void) => {
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
+  const { pathname } = useLocation();
+  const navigationTreeItems = getNavigationTreeItems();
+  console.log('pathname', pathname);
+  const { profileRoutes } = useAppRoutes();
+  const data = useLoaderData();
+
+  const profileIndexPath = t('slugs.profile.index');
+
+  const profileMenuItems: MenuItem[] = profileRoutes.map((route) => ({
+    label: route.name,
+    LinkComponent: ({ children, className }: LinkComponent) => (
+      <NavLinkBasedOnAuth
+        to={`${profileIndexPath}/${route.path}`}
+        shouldLogin={!data}
+        className={className}
+        onClose={onClose}
+      >
+        {children}
+      </NavLinkBasedOnAuth>
+    ),
+    selected: pathname === `/${language}/${profileIndexPath}/${route.path}`,
+  }));
+
+  const createContentNavigationMenuItems = React.useCallback(() => {
+    const topLevelItems = navigationTreeItems.filter((item) => item.lng === language);
+    const menuItems: MenuItem[] = topLevelItems.map((item) =>
+      createMenuItem(item, language, onClose, `/${language}`, pathname),
+    );
+    return menuItems;
+  }, [language, onClose, pathname, navigationTreeItems]);
+
+  const mainLevelMenuItems: MenuItem[] = React.useMemo(() => {
+    return [
+      ...createContentNavigationMenuItems(),
+
+      {
+        label: t('advisors-workspace'),
+        LinkComponent: ({ children, className }: LinkComponent) => (
+          <NavLinkBasedOnAuth
+            to={`/${t('slugs.profile.index')}`}
+            shouldLogin={!data}
+            className={className}
+            onClose={onClose}
+          >
+            {children}
+          </NavLinkBasedOnAuth>
+        ),
+        childItems: profileMenuItems,
+        selected: pathname.startsWith(`/${language}/${t('slugs.profile.index')}`),
+      },
+    ];
+  }, [createContentNavigationMenuItems, t, profileMenuItems, pathname, language, data, onClose]);
+
+  return mainLevelMenuItems;
+};

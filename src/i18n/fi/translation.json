@@ -2,6 +2,8 @@
   "about-us-and-user-guide": "Tietoa palvelusta ja käyttöohjeet",
   "accessibility-statement": "Saavutettavuusseloste",
   "add-to-favorites": "Tallenna suosikiksi",
+  "advisors-workspace": "Ohjaajan työpöytä",
+  "back": "Takaisin",
   "carousel": {
     "indicator": "Siirry sivulle {{index}}",
     "next": "Seuraava sivu",
@@ -47,11 +49,27 @@
   "log-in-to-the-service-content": "Kirjautumalla palveluun voit keskustella sisällöistä, tallentaa niitä suosikeiksi ja kustomoida palvelussa sinulle näkyvää sisältöä omien kiinnostustesi mukaan. Palvelu käyttää suomi.fi.tunnistautumista. ",
   "logout": "Kirjaudu ulos",
   "menu": "Valikko",
+  "navigation": {
+    "external": {
+      "title": "Osaamispolun sisältökokonaisuudet",
+      "yksilo": {
+        "label": "Osaamispolkuni",
+        "url": "/yksilo/fi",
+        "description": "Henkilökohtainen osaamispolkusi"
+      },
+      "tietopalvelu": {
+        "label": "Tietopalvelu",
+        "url": "/tietopalvelu/fi",
+        "description": "Tietoa päätöksentekijöille"
+      }
+    }
+  },
   "no-match": {
     "description": "Hakemaasi sivua ei löytynyt.",
     "title": "Sivua ei löytynyt"
   },
   "open-menu": "Avaa valikko",
+  "open-submenu": "Avaa alivalikko",
   "osaamispolku": "Osaamispolku",
   "pagination": {
     "next": "Siirry seuraavalle sivulle",
