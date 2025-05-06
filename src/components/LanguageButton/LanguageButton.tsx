@@ -1,6 +1,6 @@
 import { langLabels } from '@/i18n/config';
 import { useTranslation } from 'react-i18next';
-import { MdExpandMore, MdLanguage } from 'react-icons/md';
+import { MdExpandLess, MdExpandMore, MdLanguage } from 'react-icons/md';
 import { LanguageMenu } from '../LanguageMenu/LanguageMenu';
 
 interface LanguageButtonProps {
@@ -23,7 +23,7 @@ export const LanguageButton = ({ onClick, langMenuOpen, menuRef, onMenuBlur, onM
         </span>
         <span className="py-3 whitespace-nowrap">{langLabels[languageKey as keyof typeof langLabels]}</span>
         <span className="size-7 flex justify-center items-center">
-          <MdExpandMore size={24} />
+          {langMenuOpen ? <MdExpandLess size={24} /> : <MdExpandMore size={24} />}
         </span>
       </button>
       {langMenuOpen && (
