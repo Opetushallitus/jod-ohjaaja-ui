@@ -1,10 +1,10 @@
 import { components } from '@/api/schema';
 import { useLoginLink } from '@/hooks/useLoginLink';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
-import { PopupList, PopupListItem, useMediaQueries } from '@jod/design-system';
+import { PopupList, PopupListItem } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { MdOutlinePerson } from 'react-icons/md';
+import { MdExpandMore, MdPersonOutline } from 'react-icons/md';
 import { NavLink, useLoaderData, useLocation } from 'react-router';
 
 interface UserButtonProps {
@@ -18,7 +18,6 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
     i18n: { language },
   } = useTranslation();
 
-  const { sm } = useMediaQueries();
   const data = useLoaderData() as components['schemas']['OhjaajaCsrfDto'] | null;
   const location = useLocation();
 
@@ -32,25 +31,28 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
   const getActiveClassNames = ({ isActive }: { isActive: boolean }) => (isActive ? 'bg-secondary-1-50 rounded-sm' : '');
 
   const fullName = `${data?.etunimi} ${data?.sukunimi}`;
-  const initials = !!data?.etunimi && !!data?.sukunimi ? data.etunimi[0] + data.sukunimi[0] : '';
 
   const state = location.state;
   const loginLink = useLoginLink({
     callbackURL: state?.callbackURL ? `/${language}/${state?.callbackURL}` : `/${language}`,
   });
 
-  const elementBasedOnScreenSize = sm ? (
+  return data?.csrf ? (
     <div className="relative">
       <button
         ref={userMenuButtonRef}
-        type="button"
-        className={`cursor-pointer h-8 w-8 rounded-full bg-secondary-3 bg-cover bg-center`}
-        onClick={sm ? () => setUserMenuOpen(!userMenuOpen) : void 0}
-        aria-label={fullName}
+        onClick={() => setUserMenuOpen(!userMenuOpen)}
+        className="ds:flex ds:gap-2 ds:justify-center ds:items-center ds:select-none ds:cursor-pointer"
       >
-        {initials}
+        <span className="ds:size-7 ds:flex ds:justify-center ds:items-center">
+          <MdPersonOutline size={24} />
+        </span>
+        <span className="ds:py-3 ds:whitespace-nowrap">{fullName}</span>
+        <span className="ds:size-7 ds:flex ds:justify-center ds:items-center">
+          <MdExpandMore size={24} />
+        </span>
       </button>
-      {sm && userMenuOpen && (
+      {userMenuOpen && (
         <div ref={userMenuRef} className="absolute right-0 min-w-max translate-y-8 transform">
           <PopupList classNames="gap-2">
             <NavLink
@@ -68,29 +70,19 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
       )}
     </div>
   ) : (
-    <span
-      role="note"
-      className={`flex justify-center content-center flex-wrap h-8 w-8 rounded-full bg-secondary-3 bg-cover bg-center`}
-      aria-label={fullName}
-    >
-      {initials}
-    </span>
-  );
-
-  return data?.csrf ? (
-    elementBasedOnScreenSize
-  ) : (
     <a
       href={loginLink}
-      className="flex h-8 w-8 items-center justify-center rounded-full bg-bg-gray-2"
-      aria-label={t('login')}
+      className="ds:flex ds:gap-2 ds:justify-center ds:items-center ds:select-none ds:cursor-pointer"
       onClick={() => {
         if (onClick) {
           onClick();
         }
       }}
     >
-      <MdOutlinePerson size={24} />
+      <span className="ds:size-7 ds:flex ds:justify-center ds:items-center">
+        <MdPersonOutline size={24} />
+      </span>
+      <span className="ds:py-3 ds:whitespace-nowrap">{t('login')}</span>
     </a>
   );
 };
