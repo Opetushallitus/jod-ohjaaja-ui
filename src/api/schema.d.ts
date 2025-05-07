@@ -80,7 +80,7 @@ export interface paths {
       cookie?: never;
     };
     /** Gets the last viewed article ids */
-    get: operations['artikkelinKatseluGetMostRecentViewedArticleIds'];
+    get: operations['artikkelinKatseluGetMostRecentViewedArtikkeliIds'];
     put?: never;
     post?: never;
     delete?: never;
@@ -133,39 +133,18 @@ export interface components {
       /** Format: int64 */
       artikkeliId?: number;
     };
-    PageLong: {
-      /** Format: int64 */
-      totalElements?: number;
-      /** Format: int32 */
-      totalPages?: number;
-      pageable?: components['schemas']['PageableObject'];
-      first?: boolean;
-      last?: boolean;
-      /** Format: int32 */
-      size?: number;
-      content?: number[];
-      /** Format: int32 */
-      number?: number;
-      sort?: components['schemas']['SortObject'];
-      /** Format: int32 */
-      numberOfElements?: number;
-      empty?: boolean;
-    };
-    PageableObject: {
-      paged?: boolean;
-      /** Format: int32 */
-      pageNumber?: number;
-      /** Format: int32 */
-      pageSize?: number;
-      unpaged?: boolean;
-      /** Format: int64 */
-      offset?: number;
-      sort?: components['schemas']['SortObject'];
-    };
-    SortObject: {
-      sorted?: boolean;
-      unsorted?: boolean;
-      empty?: boolean;
+    SivuDtoLong: {
+      sisalto: number[];
+      /**
+       * Format: int64
+       * @example 30
+       */
+      maara: number;
+      /**
+       * Format: int32
+       * @example 3
+       */
+      sivuja: number;
     };
   };
   responses: never;
@@ -304,7 +283,7 @@ export interface operations {
       };
     };
   };
-  artikkelinKatseluGetMostRecentViewedArticleIds: {
+  artikkelinKatseluGetMostRecentViewedArtikkeliIds: {
     parameters: {
       query?: {
         limit?: number;
@@ -321,7 +300,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['PageLong'];
+          'application/json': components['schemas']['SivuDtoLong'];
         };
       };
     };
