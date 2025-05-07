@@ -54,11 +54,11 @@ export const RecentlyWatchedContent = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       const data = await getMostRecentViewedArtikkeliIds();
-      if (data?.content?.length) {
+      if (data?.sisalto?.length) {
         // Fetch up to 10 articles to ensure we have enough valid ones
         // We'll display only 4, but fetch more to handle potential missing articles
-        const articles = (await getArticles(data.content.slice(0, 10)))?.items || [];
-        const cards = data.content
+        const articles = (await getArticles(data.sisalto.slice(0, 10)))?.items || [];
+        const cards = data.sisalto
           .map((articleId) => createContentCard(articleId, articles, language))
           .filter((card): card is JSX.Element => card !== null)
           .slice(0, 4); // Limit to 4 cards
