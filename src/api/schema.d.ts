@@ -72,6 +72,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/artikkeli/katselu/viimeksi-katsellut': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Gets the last viewed article ids */
+    get: operations['artikkelinKatseluGetMostRecentViewedArticleIds'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -106,6 +123,49 @@ export interface components {
     OhjaajaExportDto: {
       /** Format: uuid */
       id?: string;
+      suosikit?: components['schemas']['OhjaajanSuosikkiExportDto'][];
+    };
+    OhjaajanSuosikkiExportDto: {
+      /** Format: uuid */
+      id?: string;
+      /** Format: date-time */
+      luotu?: string;
+      /** Format: int64 */
+      artikkeliId?: number;
+    };
+    PageLong: {
+      /** Format: int64 */
+      totalElements?: number;
+      /** Format: int32 */
+      totalPages?: number;
+      pageable?: components['schemas']['PageableObject'];
+      first?: boolean;
+      last?: boolean;
+      /** Format: int32 */
+      size?: number;
+      content?: number[];
+      /** Format: int32 */
+      number?: number;
+      sort?: components['schemas']['SortObject'];
+      /** Format: int32 */
+      numberOfElements?: number;
+      empty?: boolean;
+    };
+    PageableObject: {
+      paged?: boolean;
+      /** Format: int32 */
+      pageNumber?: number;
+      /** Format: int32 */
+      pageSize?: number;
+      unpaged?: boolean;
+      /** Format: int64 */
+      offset?: number;
+      sort?: components['schemas']['SortObject'];
+    };
+    SortObject: {
+      sorted?: boolean;
+      unsorted?: boolean;
+      empty?: boolean;
     };
   };
   responses: never;
@@ -240,6 +300,28 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['OhjaajaExportDto'];
+        };
+      };
+    };
+  };
+  artikkelinKatseluGetMostRecentViewedArticleIds: {
+    parameters: {
+      query?: {
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PageLong'];
         };
       };
     };
