@@ -67,6 +67,19 @@ export const searchContent = (searchTerm: string, tagIds: string[], page: number
   );
 };
 
+export const getArticles = (articleIds: number[]) => {
+  const queryParams = new URLSearchParams();
+  queryParams.set('page', `1`);
+  queryParams.set('pageSize', `500`);
+  queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
+  const idFilters = articleIds.map((id) => `id eq '${id}'`).join(' or ');
+  queryParams.set('filter', idFilters);
+
+  return fetchFromCMS<StructuredContentPage>(
+    `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
+  );
+};
+
 export const getTags = async () => {
   return fetchFromCMS<Category[]>(`/jod-tags/${SCOPE_ID}`);
 };
