@@ -79,7 +79,7 @@ export const Breadcrumb = () => {
   }, [matches, t]);
 
   return (
-    <nav aria-label={t('current-location')} className="text-accent text-body-sm font-bold col-span-3 mb-3">
+    <nav aria-label={t('current-location')} className="text-accent text-body-sm font-bold col-span-3 mb-3 print:hidden">
       <ol className="flex flex-row flex-wrap gap-y-2">{crumbLinks()}</ol>
     </nav>
   );
