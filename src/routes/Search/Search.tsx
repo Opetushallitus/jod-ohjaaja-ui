@@ -52,6 +52,7 @@ const Search = () => {
 
   return (
     <MainLayout
+      hideSearch={true}
       navChildren={
         !tagsLoading && (
           <TagFilterList tags={tags} selectedTagIds={tagIds} onTagSelectionChange={handleTagSelectionChange} />
