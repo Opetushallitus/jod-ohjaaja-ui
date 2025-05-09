@@ -48,7 +48,7 @@ export const useMenuRoutes = (onClose: () => void) => {
   } = useTranslation();
   const { pathname } = useLocation();
   const navigationTreeItems = getNavigationTreeItems();
-  console.log('pathname', pathname);
+
   const { profileRoutes } = useAppRoutes();
   const data = useLoaderData();
 

@@ -23,7 +23,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/artikkeli/katselu': {
+  '/api/artikkeli/katselu/{artikkeliId}': {
     parameters: {
       query?: never;
       header?: never;
@@ -72,7 +72,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/artikkeli/katselu/viimeksi-katsellut': {
+  '/api/artikkeli/viimeksi-katsellut': {
     parameters: {
       query?: never;
       header?: never;
@@ -100,15 +100,6 @@ export interface components {
       artikkeliId: number;
       /** Format: date-time */
       readonly luotu?: string;
-    };
-    ArtikkelinKatseluDto: {
-      /** Format: uuid */
-      id?: string;
-      /** Format: int64 */
-      artikkeliId: number;
-      /** Format: date-time */
-      luotu?: string;
-      anonyymiId?: string;
     };
     CsrfTokenDto: {
       token: string;
@@ -223,23 +214,19 @@ export interface operations {
     parameters: {
       query?: never;
       header?: never;
-      path?: never;
+      path: {
+        artikkeliId: number;
+      };
       cookie?: never;
     };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['ArtikkelinKatseluDto'];
-      };
-    };
+    requestBody?: never;
     responses: {
       /** @description OK */
       200: {
         headers: {
           [name: string]: unknown;
         };
-        content: {
-          'application/json': string;
-        };
+        content?: never;
       };
     };
   };
@@ -286,7 +273,7 @@ export interface operations {
   artikkelinKatseluGetMostRecentViewedArtikkeliIds: {
     parameters: {
       query?: {
-        limit?: number;
+        koko?: number;
       };
       header?: never;
       path?: never;
