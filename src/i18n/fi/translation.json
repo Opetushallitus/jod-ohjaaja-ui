@@ -120,7 +120,25 @@
     }
   },
   "profile": {
-    "index": "Omat sivuni",
+    "favorites": {
+      "description": "Suosikeiksi tallentamasi artikkelisisällöt löytyvät täältä. Voit tallentaa suosikkeja artikkelinostoista tai artikkelien sivuilta. Voit poistaa tallennetun suosikin tyhjentämällä valinnan.",
+      "favorite-count_zero": "Et ole vielä tallentanut suosikkeja.",
+      "favorite-count_one": "Olet tallentanut yhden suosikin.",
+      "favorite-count_other": "Olet tallentanut {{count}} suosikkia.",
+      "filter": "Suodata",
+      "no-favorites": "Voit tallentaa artikkeleita suosikeiksi klikkaamalla sydän-ikonia. Voit tutustua sisältöihin seuraavissa osioissa:",
+      "no-tags": "Voit suodattaa tallentamiasi sisältöjä avainsanoihin perustuen.",
+      "sort": {
+        "a-z": "Aakkosittain A-Ö",
+        "label": "Järjestä",
+        "latest": "Uusimmasta vanhimpaan",
+        "latest-added": "Viimeksi tallennettu",
+        "oldest": "Vanhimmasta uusimpaan",
+        "z-a": "Aakkosittain Ö-A"
+      },
+      "title": "Suosikit"
+    },
+    "index": "Ohjaajan työpöytä",
     "landing-page": {
       "description": "Kirjautumalla sisään saat käyttöösi henkilökohtaisen osaamispolkusi, joka auttaa sinua hallinnoimaan ja hyödyntämään osaamistasi tehokkaasti.",
       "list-1-item-1": "Oman osaamispolun hallinta ja tietojen luvitus: Päätä, miten ja missä tietojasi käytetään.",
@@ -156,7 +174,8 @@
       "what-is-the-service": "mika-palvelu-on"
     },
     "profile": {
-      "index": "omat-sivuni",
+      "favorites": "suosikit",
+      "index": "ohjaajan-tyopoyta",
       "preferences": "asetukseni"
     }
   },

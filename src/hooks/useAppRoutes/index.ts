@@ -5,6 +5,10 @@ export const useAppRoutes = () => {
 
   const profileRoutes = [
     {
+      name: t('profile.favorites.title'),
+      path: t('slugs.profile.favorites'),
+    },
+    {
       name: t('profile.preferences.title'),
       path: t('slugs.profile.preferences'),
     },

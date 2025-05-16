@@ -1,49 +1,54 @@
 import { cx } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
-import { NavLink, type RouteObject } from 'react-router';
-type NavigationListProps = {
-  categoryRoute: RouteObject;
+import { NavLink } from 'react-router';
+
+type NavigationListItem = {
+  id: string;
+  path?: string;
+  title: string;
+  children?: NavigationListItem[];
 };
 
-export const NavigationList = ({ categoryRoute }: NavigationListProps) => {
-  const { i18n } = useTranslation();
-  const rootPath = `/${i18n.language}/${categoryRoute.path ?? ''}`;
+type NavigationListProps = {
+  rootItem: NavigationListItem;
+};
 
+const LinkOrSpan = ({ item, level }: { item: NavigationListItem; level: 1 | 2 }) => {
+  const { i18n } = useTranslation();
+  return item.path ? (
+    <NavLink
+      to={item.path}
+      lang={i18n.language}
+      className={({ isActive }) =>
+        cx(
+          `hyphens-auto text-black w-full block py-3 text-button-md hover:underline ${level === 2 ? 'pl-7' : 'pl-5'}`,
+          {
+            'bg-secondary-2-50 rounded-md': isActive,
+          },
+        )
+      }
+      end
+    >
+      {item.title}
+    </NavLink>
+  ) : (
+    <span className={`hyphens-auto text-black w-full block py-3 text-button-md ${level === 2 ? 'pl-7' : 'pl-5'}`}>
+      {item.title}
+    </span>
+  );
+};
+
+export const NavigationList = ({ rootItem }: NavigationListProps) => {
   return (
     <ul className="flex flex-col gap-y-2 py-3">
       <li className="flex min-h-7 items-center w-full">
-        <NavLink
-          to={rootPath}
-          lang={i18n.language}
-          className={({ isActive }) =>
-            cx('hyphens-auto text-black w-full block py-3 text-button-md hover:underline pl-5', {
-              'bg-secondary-2-50 rounded-md': isActive,
-            })
-          }
-          end
-        >
-          {categoryRoute.handle.title}
-        </NavLink>
+        <LinkOrSpan item={rootItem} level={1} />
       </li>
-      {categoryRoute.children?.map(
-        (category) =>
-          category.handle?.type.startsWith('Category') && (
-            <li key={category.id} className="flex min-h-7 items-center w-full">
-              <NavLink
-                to={`${rootPath}/${category.path ?? ''}`}
-                lang={i18n.language}
-                className={({ isActive }) =>
-                  cx('hyphens-auto text-black w-full block py-3 text-button-md hover:underline pl-7', {
-                    'bg-secondary-2-50 rounded-md': isActive,
-                  })
-                }
-                end
-              >
-                {category.handle.title}
-              </NavLink>
-            </li>
-          ),
-      )}
+      {rootItem.children?.map((category) => (
+        <li key={category.id} className="flex min-h-7 items-center w-full">
+          <LinkOrSpan item={category} level={2} />
+        </li>
+      ))}
     </ul>
   );
 };

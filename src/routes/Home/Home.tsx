@@ -4,6 +4,7 @@ import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
 import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/RecentlyWatchedContent';
 import { SearchBanner } from '@/components/SearchBanner/SearchBanner';
+import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import { LangCode } from '@/i18n/config';
 import { LoaderData } from '@/routes/Home/loader';
 import { getMainCategoryPath } from '@/utils/navigation-paths';
@@ -134,14 +135,7 @@ const Home = () => {
             <div className="col-span-3 grid grid-cols-3 gap-x-6 xl:gap-x-7">
               <RecentlyWatchedContent />
               <div className="col-span-3 lg:col-span-1 content-end">
-                <FeatureCard
-                  to="/"
-                  linkComponent={Link}
-                  level="h2"
-                  title={t('suggest-new-content-for-the-service')}
-                  content={t('suggest-new-content-for-the-service-content')}
-                  backgroundColor="#EBB8E1"
-                />
+                <SuggestNewContent />
               </div>
             </div>
           ) : (

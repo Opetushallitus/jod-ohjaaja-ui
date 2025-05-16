@@ -160,7 +160,7 @@ const ContentDetails = () => {
           <ul className="text-attrib-value flex flex-row divide-x flex-wrap pt-3 text-accent ">
             {keywords.map((tag) => (
               <li key={tag.id} className="px-2 first:pl-0 last:pr-0 border-border-gray">
-                <Link to={getSearchUrl(t, language, [tag.id])}>{tag.name}</Link>
+                <Link to={getSearchUrl(t, language, [`${tag.id}`])}>{tag.name}</Link>
               </li>
             ))}
           </ul>

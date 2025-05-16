@@ -1,15 +1,15 @@
 import { ArticleCard } from '@/components/ArticleCard/ArticleCard';
 import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
-import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
 import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/RecentlyWatchedContent';
 import { SearchBanner } from '@/components/SearchBanner/SearchBanner';
+import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
 import { CardCarousel, CardCarouselItem, tidyClasses as tc } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLoaderData } from 'react-router';
+import { useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
 
 const CategoryMain = () => {
@@ -100,14 +100,7 @@ const CategoryMain = () => {
             <div className="col-span-3 grid grid-cols-3 gap-x-6 xl:gap-x-7">
               <RecentlyWatchedContent />
               <div className="col-span-3 lg:col-span-1 content-end">
-                <FeatureCard
-                  to="/"
-                  linkComponent={Link}
-                  level="h2"
-                  title={t('suggest-new-content-for-the-service')}
-                  content={t('suggest-new-content-for-the-service-content')}
-                  backgroundColor="#EBB8E1"
-                />
+                <SuggestNewContent />
               </div>
             </div>
           </div>

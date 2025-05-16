@@ -57,3 +57,21 @@ export const getSearchUrl = (
   }
   return `/${lng}/${translate('slugs.search')}?${queryParams.toString()}`;
 };
+
+/**
+ * Get the all article IDs from a category navigation item and its child categories
+ * @param {NavigationTreeItem} navigationItem - The navigation item to search
+ * @returns {number[]} - An array of article IDs
+ */
+export const getCategoryArticleIds = (navigationItem: NavigationTreeItem): number[] => {
+  return (
+    navigationItem.children?.reduce((acc, item) => {
+      if (item.type === 'Article' && item.articleId) {
+        acc.push(item.articleId);
+      } else if (item.children) {
+        acc.push(...getCategoryArticleIds(item));
+      }
+      return acc;
+    }, [] as number[]) ?? []
+  );
+};
