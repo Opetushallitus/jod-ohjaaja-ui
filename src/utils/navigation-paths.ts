@@ -47,16 +47,36 @@ export const getMainCategoryPath = (lng: string, order: number): string => {
   );
 };
 
-/*
- * Returns the path parts of the article category with the given ID in the given language.
- * If the article is not found, the function should return an empty array.
+/**
+ * Get the main category of the navigation tree
+ * @param lng The language code
+ * @param order The order of the category
+ * @returns The main category or null if not found
  */
-export const getArticleCategoryPathParts = (articleId: number, lng: string): string[] => {
+export const getMainCategory = (lng: string, order: number): NavigationTreeItem | null => {
+  const navigationItems = getNavigationTreeItems();
+  const item = navigationItems.find((item, index) => item.lng === lng && index === order);
+  if (item) {
+    return {
+      ...item,
+    };
+  }
+  return null;
+};
+
+/**
+ * Get the path parts of the article category with the given ID in the given language.
+ * If the article is not found, the function should return an empty array.
+ * @param articleId The ID of the article
+ * @param lng The language code
+ * @returns The path parts of the article category or an empty array if not found
+ */
+export const getArticleCategoryTitlePathParts = (articleId: number, lng: string): string[] => {
   const navigationItems = getNavigationTreeItems();
 
   for (const item of navigationItems) {
     if (item.lng === lng) {
-      const path = findArticleCategoryPath(item, articleId);
+      const path = findArticleCategoryTitlePath(item, articleId);
       if (path.length > 0) {
         return path;
       }
@@ -96,12 +116,12 @@ const findItemPath = (item: NavigationTreeItem, type: NavigationItemType, name: 
   return null;
 };
 
-const findArticleCategoryPath = (item: NavigationTreeItem, articleId: number): string[] => {
+const findArticleCategoryTitlePath = (item: NavigationTreeItem, articleId: number): string[] => {
   for (const child of item.children) {
     if (child.articleId === articleId) {
       return [item.title];
     }
-    const path = findArticleCategoryPath(child, articleId);
+    const path = findArticleCategoryTitlePath(child, articleId);
     if (path.length > 0) {
       return [item.title, ...path];
     }

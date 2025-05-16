@@ -4,7 +4,7 @@ import { getArticles } from '@/services/cms-api';
 import { StructuredContent } from '@/types/cms-content';
 import { getIngress, getKeywords, getTitle } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
-import { getArticleCategoryPathParts, getArticlePath } from '@/utils/navigation-paths';
+import { getArticleCategoryTitlePathParts, getArticlePath } from '@/utils/navigation-paths';
 import { ContentCard } from '@jod/design-system';
 import React, { JSX } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,10 +18,10 @@ export const RecentlyWatchedContent = () => {
   const [contentCards, setContentCards] = React.useState<JSX.Element[]>([]);
 
   const createTagsFromKeywords = React.useCallback(
-    (keywords: Array<{ name: string; id: string }>) =>
+    (keywords: Array<{ name: string; id: number }>) =>
       keywords.map((keyword) => ({
         label: keyword.name,
-        to: getSearchUrl(t, language, [keyword.id]),
+        to: getSearchUrl(t, language, [`${keyword.id}`]),
       })),
     [t, language],
   );
@@ -35,7 +35,7 @@ export const RecentlyWatchedContent = () => {
       const title = getTitle(article);
       const to = getArticlePath(article.id ?? 0, language as LangCode);
       const keywords = getKeywords(article);
-      const path = getArticleCategoryPathParts(article.id ?? 0, language as LangCode);
+      const path = getArticleCategoryTitlePathParts(article.id ?? 0, language as LangCode);
       return (
         <ContentCard
           key={id}

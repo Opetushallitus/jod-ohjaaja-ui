@@ -1,5 +1,5 @@
 import { LangCode } from '@/i18n/config';
-import { StructuredContent } from '@/types/cms-content';
+import { Category, StructuredContent } from '@/types/cms-content';
 import { describe, expect, it } from 'vitest';
 import {
   getAcceptLanguageHeader,
@@ -12,16 +12,17 @@ import {
   getTitle,
 } from './cms';
 
-const createTestData = (title: string, keywords: { id: string; name: string }[] | undefined = undefined) => {
+const createTestData = (title: string, keywords: Category[] | undefined = undefined) => {
   const structuredContent: StructuredContent = {
     title,
     contentFields: [],
     contentStructureId: 0,
     taxonomyCategoryBriefs: keywords?.map((keyword) => ({
       taxonomyCategoryName: keyword.name,
-      taxonomyCategoryId: parseInt(keyword.id),
+      taxonomyCategoryId: keyword.id,
       embeddedTaxonomyCategory: {
-        type: 'TAG',
+        name_i18n: keyword.name_i18n,
+        type: keyword.type,
       },
     })),
   };
@@ -258,9 +259,14 @@ describe('CMS utils', () => {
 
   describe('getKeywords', () => {
     it('should return the keywords if they exist', () => {
-      const keywords = [
-        { id: '1', name: 'test' },
-        { id: '2', name: 'keywords' },
+      const keywords: Category[] = [
+        { id: 1, name: 'test', type: 'TAG', name_i18n: { 'fi-FI': 'test', 'en-US': 'test', 'sv-SE': 'test' } },
+        {
+          id: 2,
+          name: 'keywords',
+          type: 'TAG',
+          name_i18n: { 'fi-FI': 'keywords', 'en-US': 'keywords', 'sv-SE': 'keywords' },
+        },
       ];
       const item = createTestData('test title', keywords).get();
       expect(getKeywords(item)).toEqual(keywords);

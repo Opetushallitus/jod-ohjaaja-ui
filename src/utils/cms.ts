@@ -1,6 +1,10 @@
-import { LangCode } from '@/i18n/config';
-import { ContentLink, StructuredContent } from '@/types/cms-content';
+import { components } from '@/api/schema';
+import { type LangCode } from '@/i18n/config';
+import type { Category, ContentLink, StructuredContent } from '@/types/cms-content';
+import { type NavigationTreeItem } from '@/types/cms-navigation';
+import { type Sort } from '@/types/sort';
 import DOMPurify from 'dompurify';
+import { getCategoryArticleIds } from './navigation';
 
 type ContentName = 'ingress' | 'content' | 'image' | 'document' | 'link';
 const AdaptiveMediaSizes = {
@@ -165,13 +169,91 @@ export const getDocuments = (item: StructuredContent) => {
  * @param item - The structured content
  * @returns The keywords of the structured content or an empty array if not found
  */
-export const getKeywords = (item: StructuredContent) => {
+export const getKeywords = (item: StructuredContent): Category[] => {
   return (
     item.taxonomyCategoryBriefs
       ?.filter((categoryBrief) => categoryBrief?.embeddedTaxonomyCategory?.type === 'TAG')
       .map((categoryBrief) => ({
-        id: `${categoryBrief.taxonomyCategoryId}`,
+        id: categoryBrief.taxonomyCategoryId,
         name: categoryBrief.taxonomyCategoryName,
+        name_i18n: categoryBrief.embeddedTaxonomyCategory?.name_i18n ?? {},
+        type: 'TAG',
       })) ?? []
   );
+};
+
+/**
+ * Group articles by their category based on the navigation tree
+ *
+ * @param articles
+ * @param navigationTreeItems
+ * @returns An object where the keys are category titles and the values are arrays of articles
+ *          belonging to those categories
+ */
+export const groupArticlesByCategory = (articles: StructuredContent[], navigationTreeItems: NavigationTreeItem[]) => {
+  return navigationTreeItems.reduce(
+    (acc, item) => {
+      const categoryArticleIds = getCategoryArticleIds(item);
+      const categoryArticles = articles.filter((article) => article.id && categoryArticleIds.includes(article.id));
+      if (categoryArticles.length > 0) {
+        acc[item.title] = categoryArticles;
+      }
+      return acc;
+    },
+    {} as Record<string, StructuredContent[]>,
+  );
+};
+
+/**
+ * Filter articles by their tags
+ * @param articles The articles to filter
+ * @param tagIds The tags to filter by
+ * @returns The filtered articles
+ */
+export const filterArticlesByTags = (articles: StructuredContent[], tagIds: string[]) => {
+  return articles.filter((article) => {
+    const articleTags = getKeywords(article);
+    return articleTags.some((tag) => tagIds.includes(`${tag.id}`));
+  });
+};
+
+/**
+ * Sort articles based on the selected criteria
+ * @param articles The articles to sort
+ * @param sort The sorting criteria
+ * @param suosikit The user's favorite articles - optional
+ * @returns The sorted articles
+ */
+export const sortArticles = (
+  articles: StructuredContent[],
+  sort: Sort,
+  suosikit?: components['schemas']['SuosikkiDto'][],
+) => {
+  switch (sort) {
+    case 'a-z':
+      return articles.sort((a, b) => {
+        return a.title.localeCompare(b.title);
+      });
+    case 'z-a':
+      return articles.sort((a, b) => {
+        return b.title.localeCompare(a.title);
+      });
+    case 'latest':
+      return articles.sort((a, b) => {
+        return new Date(b.dateCreated ?? Date.now()).getTime() - new Date(a.dateCreated ?? Date.now()).getTime();
+      });
+    case 'oldest':
+      return articles.sort((a, b) => {
+        return new Date(a.dateCreated ?? Date.now()).getTime() - new Date(b.dateCreated ?? Date.now()).getTime();
+      });
+    case 'latest-added-to-favorites':
+      if (!suosikit) return articles;
+      return articles.sort((a, b) => {
+        const aDate = suosikit.find((suosikki) => suosikki.artikkeliId === a.id)?.luotu;
+        const bDate = suosikit.find((suosikki) => suosikki.artikkeliId === b.id)?.luotu;
+        return new Date(bDate ?? Date.now()).getTime() - new Date(aDate ?? Date.now()).getTime();
+      });
+    default:
+      return articles;
+  }
 };

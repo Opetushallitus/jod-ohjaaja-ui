@@ -52,7 +52,7 @@ export const ArticleCard = ({ article, variant, isLoggedIn }: ArticleCardProps) 
       imageAlt={imageContent?.title ?? ''}
       to={path}
       linkComponent={Link}
-      tags={keywords.map((keyword) => ({ label: keyword.name, to: getSearchUrl(t, language, [keyword.id]) }))}
+      tags={keywords.map((keyword) => ({ label: keyword.name, to: getSearchUrl(t, language, [`${keyword.id}`]) }))}
       {...favoriteButtonProps}
     />
   );

@@ -13,6 +13,11 @@ export interface Category {
 export interface TaxonomyBrief {
   embeddedTaxonomyCategory?: {
     type: 'CATEGORY' | 'TAG';
+    name_i18n: {
+      'fi-FI'?: string;
+      'en-US'?: string;
+      'sv-SE'?: string;
+    };
   };
   taxonomyCategoryId: number;
   taxonomyCategoryName: string;
