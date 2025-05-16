@@ -76,34 +76,6 @@
     "previous": "Siirry edelliselle sivulle",
     "page": "Sivu {{page}}"
   },
-  "print": "Tulosta",
-  "privacy-policy": "Tietosuojaseloste",
-  "recently-watched-contents": "Viimeksi katsomasi sisällöt",
-  "remove-from-favorites": "Poista suosikeista",
-  "return-home": "Palaa etusivulle",
-  "return-menu": "Palaa valikkoon",
-  "search": {
-    "button": "Hae",
-    "description": "Voit hakea palvelun sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan. ",
-    "placeholder": "Hae ohjaajan osioista",
-    "tag-list": {
-      "accordion-title": "Suodata",
-      "checkbox-label": "Asiasana {{tag}}",
-      "show-more": "Näytä lisää",
-      "title": "Asiasanat"
-    },
-    "title": "Etsi palvelusta"
-  },
-  "search-results": {
-    "article-count": "Löysimme hakusanallasi {{count}} tulosta"
-  },
-  "select-language": "Valitse kieli",
-  "share": "Jaa",
-  "skiplinks": {
-    "main": "Siirry pääsisältöön"
-  },
-  "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
-  "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä.",
   "preferences": {
     "title": "Asetukseni",
     "description": "Lorem ipsum dolor sit amet, no vis verear commodo. Vix quot dicta phaedrum ad. Has eu invenire concludaturque, simul accusata no ius. Eum ad iudico eruditi, idque malorum cum no. Te nam rebum iuvaret, atqui legere admodum an pro.",
@@ -119,6 +91,8 @@
       "action": "Lataa osaamisprofiilin tiedot"
     }
   },
+  "print": "Tulosta",
+  "privacy-policy": "Tietosuojaseloste",
   "profile": {
     "favorites": {
       "description": "Suosikeiksi tallentamasi artikkelisisällöt löytyvät täältä. Voit tallentaa suosikkeja artikkelinostoista tai artikkelien sivuilta. Voit poistaa tallennetun suosikin tyhjentämällä valinnan.",
@@ -161,6 +135,35 @@
       "title": "Asetukseni"
     }
   },
+  "recently-watched-contents": "Viimeksi katsomasi sisällöt",
+  "remove-from-favorites": "Poista suosikeista",
+  "return-home": "Palaa etusivulle",
+  "return-menu": "Palaa valikkoon",
+  "search": {
+    "button": "Hae",
+    "description": "Voit hakea palvelun sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan. ",
+    "filter": "Suodata",
+    "placeholder": "Hae ohjaajan osioista",
+    "tag-list": {
+      "accordion-title": "Suodata",
+      "checkbox-label": "Asiasana {{tag}}",
+      "show-more": "Näytä lisää",
+      "title": "Asiasanat"
+    },
+    "title": "Etsi palvelusta"
+  },
+  "search-results": {
+    "article-count_zero": "Ei tuloksia hakusanallasi",
+    "article-count_one": "1 tulos hakusanallasi",
+    "article-count_other": "{{count}} tulosta hakusanallasi"
+  },
+  "select-language": "Valitse kieli",
+  "share": "Jaa",
+  "skiplinks": {
+    "main": "Siirry pääsisältöön"
+  },
+  "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
+  "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä.",
   "slugs": {
     "accessibility-statement": "saavutettavuusseloste",
     "basic-information": "perustiedot",
