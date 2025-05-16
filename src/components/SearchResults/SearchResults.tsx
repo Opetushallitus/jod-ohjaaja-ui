@@ -34,7 +34,7 @@ export const SearchResults = ({
     loadPage(details.page);
   };
 
-  console.log(filterMenu);
+  const pageCount = Math.ceil(totalCount / pageSize);
 
   return (
     <div>
@@ -69,7 +69,7 @@ export const SearchResults = ({
           );
         })}
       </div>
-      {contents.length > 0 && (
+      {contents.length > 0 && pageCount > 1 && (
         <div className="pt-4">
           <Pagination
             currentPage={currentPage}
