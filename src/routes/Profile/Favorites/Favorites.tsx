@@ -105,12 +105,15 @@ const Favorites = () => {
         lg && (
           <>
             {
-              <TagFilterList
-                tags={tags ?? []}
-                selectedTagIds={selectedTagIds}
-                onTagSelectionChange={handleTagSelectionChange}
-                emptyText={t('profile.favorites.no-tags')}
-              />
+              <div className="bg-bg-gray-2 p-6 rounded">
+                <h3 className="text-heading-3-mobile sm:text-heading-3 mb-4">{t('search.tag-list.title')}</h3>
+                <TagFilterList
+                  tags={tags ?? []}
+                  selectedTagIds={selectedTagIds}
+                  onTagSelectionChange={handleTagSelectionChange}
+                  emptyText={t('profile.favorites.no-tags')}
+                />
+              </div>
             }
             <SuggestNewContent />
           </>
@@ -130,7 +133,7 @@ const Favorites = () => {
             className="justify-items-start lg:justify-items-end relative"
             menuClassName="left-0 lg:right-0"
           >
-            <div className="bg-bg-gray-2 p-6 rounded">
+            <div className="bg-bg-gray-2 px-6 pb-3 pt-0 rounded">
               <RadioButtonGroup label="" value={sort} onChange={handleSelectSort}>
                 <RadioButton label={t('profile.favorites.sort.a-z')} value="a-z" />
                 <RadioButton label={t('profile.favorites.sort.z-a')} value="z-a" />
@@ -152,6 +155,7 @@ const Favorites = () => {
               tags={tags ?? []}
               selectedTagIds={selectedTagIds}
               onTagSelectionChange={handleTagSelectionChange}
+              mode="accordion"
             />
           </ButtonMenu>
         )}

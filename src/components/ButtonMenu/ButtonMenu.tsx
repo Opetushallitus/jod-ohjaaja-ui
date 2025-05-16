@@ -1,5 +1,6 @@
 import { IconButton, tidyClasses } from '@jod/design-system';
 import React from 'react';
+import { MdClose } from 'react-icons/md';
 
 interface ButtonMenuProps {
   triggerIcon: React.ReactNode;
@@ -27,16 +28,24 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
   }, [menuRef]);
 
   return (
-    <div className={className}>
+    <div className={tidyClasses(`relative ${className}`)}>
       <IconButton icon={triggerIcon} label={triggerLabel} onClick={() => setMenuOpen(!menuOpen)} />
       {menuOpen && (
         <div
-          className={tidyClasses(`absolute translate-y-3 z-50 ${menuClassName}`)}
+          className={tidyClasses(
+            `bg-bg-gray-2 p-5 rounded absolute z-50 -translate-y-7 min-w-[250px] ${menuClassName}`,
+          )}
           role="menu"
           tabIndex={0}
           onKeyDown={(e) => e.key === 'Escape' && setMenuOpen(false)}
           ref={menuRef}
         >
+          <div className="flex flex-row items-center justify-between mb-5">
+            <p className="text-body-sm tex">{triggerLabel}</p>
+            <button onClick={() => setMenuOpen(false)} className="cursor-pointer">
+              <MdClose size={24} className="text-secondary-gray" />
+            </button>
+          </div>
           {children}
         </div>
       )}

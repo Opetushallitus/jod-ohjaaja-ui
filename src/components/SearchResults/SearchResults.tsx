@@ -14,9 +14,17 @@ interface SearchResultsProps {
   pageSize: number;
   currentPage: number;
   loadPage: (page: number) => void;
+  filterMenu?: React.ReactNode;
 }
 
-export const SearchResults = ({ contents, totalCount, pageSize, currentPage, loadPage }: SearchResultsProps) => {
+export const SearchResults = ({
+  contents,
+  totalCount,
+  pageSize,
+  currentPage,
+  loadPage,
+  filterMenu,
+}: SearchResultsProps) => {
   const {
     t,
     i18n: { language },
@@ -26,9 +34,14 @@ export const SearchResults = ({ contents, totalCount, pageSize, currentPage, loa
     loadPage(details.page);
   };
 
+  console.log(filterMenu);
+
   return (
     <div>
-      <div className="mb-2 text-body-md">{t('search-results.article-count', { count: totalCount })}</div>
+      <div className="mb-2 flex flex-row items-center justify-between">
+        <p className="text-body-md">{t('search-results.article-count', { count: totalCount })}</p>
+        {filterMenu}
+      </div>
       <div className="flex flex-col flex-wrap gap-3 sm:gap-3">
         {contents.map((content, index) => {
           const ingress = findContentValueByName(content, 'ingress')?.data;

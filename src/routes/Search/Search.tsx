@@ -1,17 +1,19 @@
 import { MainLayout } from '@/components';
+import { ButtonMenu } from '@/components/ButtonMenu/ButtonMenu';
 import { SearchResults } from '@/components/SearchResults/SearchResults';
 import { useTags } from '@/hooks/useTags';
 import { type Category } from '@/types/cms-content';
 import { getSearchUrl } from '@/utils/navigation';
-import { Button, InputField } from '@jod/design-system';
+import { Button, InputField, useMediaQueries } from '@jod/design-system';
 import React, { type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MdSearch } from 'react-icons/md';
+import { MdSearch, MdTune } from 'react-icons/md';
 import { useLoaderData, useNavigate } from 'react-router';
 import { LoaderData } from './loader';
 import TagFilterList from './TagFilterList';
 
 const Search = () => {
+  const { lg } = useMediaQueries();
   const { data, search, tagIds } = useLoaderData<LoaderData>();
   const { tags, loading: tagsLoading } = useTags();
   const {
@@ -54,8 +56,12 @@ const Search = () => {
     <MainLayout
       hideSearch
       navChildren={
+        lg &&
         !tagsLoading && (
-          <TagFilterList tags={tags} selectedTagIds={tagIds} onTagSelectionChange={handleTagSelectionChange} />
+          <div className="bg-bg-gray-2 p-6 rounded">
+            <h3 className="text-heading-3-mobile sm:text-heading-3 mb-4">{t('search.tag-list.title')}</h3>
+            <TagFilterList tags={tags} selectedTagIds={tagIds} onTagSelectionChange={handleTagSelectionChange} />
+          </div>
         )
       }
     >
@@ -86,6 +92,25 @@ const Search = () => {
           currentPage={currentPage}
           pageSize={pageSize}
           loadPage={handleLoadPage}
+          filterMenu={
+            !lg &&
+            !tagsLoading &&
+            totalCount > 0 && (
+              <ButtonMenu
+                className=""
+                triggerLabel={t('search.filter')}
+                triggerIcon={<MdTune size={18} />}
+                menuClassName="right-0"
+              >
+                <TagFilterList
+                  tags={tags}
+                  selectedTagIds={tagIds}
+                  onTagSelectionChange={handleTagSelectionChange}
+                  mode="accordion"
+                />
+              </ButtonMenu>
+            )
+          }
         />
       </div>
     </MainLayout>

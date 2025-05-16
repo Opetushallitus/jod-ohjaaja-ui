@@ -1,6 +1,6 @@
 import { type Category } from '@/types/cms-content';
 import { getLocale } from '@/utils/navigation';
-import { Checkbox } from '@jod/design-system';
+import { Accordion, Checkbox } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineExpandMore } from 'react-icons/md';
@@ -9,29 +9,38 @@ interface TagFilterListProperties {
   tags: Category[];
   selectedTagIds: string[];
   emptyText?: string;
+  mode?: 'default' | 'accordion';
+  itemsToShow?: number;
   onTagSelectionChange: (tag: Category) => void;
 }
 
-const TagFilterList = ({ tags, selectedTagIds, emptyText, onTagSelectionChange }: TagFilterListProperties) => {
+const TagFilterList = ({
+  tags,
+  selectedTagIds,
+  emptyText,
+  mode = 'default',
+  itemsToShow = 10,
+  onTagSelectionChange,
+}: TagFilterListProperties) => {
   const {
     t,
     i18n: { language },
   } = useTranslation();
 
-  const [visibleTags, setVisibleTags] = React.useState(tags.slice(0, 10));
+  const [visibleTags, setVisibleTags] = React.useState(mode == 'default' ? tags.slice(0, itemsToShow) : tags);
   const [localSelectedTagIds, setLocalSelectedTagIds] = React.useState<string[]>(selectedTagIds);
   React.useEffect(() => {
     setLocalSelectedTagIds(selectedTagIds);
   }, [selectedTagIds]);
 
   React.useEffect(() => {
-    setVisibleTags(tags.slice(0, 10));
-  }, [tags]);
+    setVisibleTags(mode == 'default' ? tags.slice(0, itemsToShow) : tags);
+  }, [tags, itemsToShow, mode]);
 
   const hasMore = visibleTags.length < tags.length;
 
   const handleShowMore = () => {
-    setVisibleTags(tags.slice(0, visibleTags.length + 10));
+    setVisibleTags(tags.slice(0, visibleTags.length + itemsToShow));
   };
 
   const handleCheckboxChange = (tag: Category) => {
@@ -44,8 +53,7 @@ const TagFilterList = ({ tags, selectedTagIds, emptyText, onTagSelectionChange }
   };
 
   return (
-    <div className="bg-bg-gray-2 p-6 rounded">
-      <h3 className="text-heading-3-mobile sm:text-heading-3 mb-4">{t('search.tag-list.title')}</h3>
+    <Wrapper mode={mode}>
       {visibleTags.map((tag) => (
         <div key={tag.id} className="my-4">
           <Checkbox
@@ -67,7 +75,26 @@ const TagFilterList = ({ tags, selectedTagIds, emptyText, onTagSelectionChange }
           {t('search.tag-list.show-more')} <MdOutlineExpandMore size={30} />
         </button>
       )}
-    </div>
+    </Wrapper>
+  );
+};
+
+const Wrapper = ({ children, mode }: { children: React.ReactNode; mode: 'default' | 'accordion' }) => {
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
+  return mode === 'default' ? (
+    <div>{children}</div>
+  ) : (
+    <Accordion
+      initialState
+      lang={language}
+      title={<span className="text-heading-4">{t('search.tag-list.title')}</span>}
+      titleText={t('search.tag-list.title')}
+    >
+      <div className="pl-5">{children}</div>
+    </Accordion>
   );
 };
 
