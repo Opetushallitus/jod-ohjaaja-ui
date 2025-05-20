@@ -107,7 +107,7 @@ const Home = () => {
           {isLoggedIn && (
             <div className="col-span-3 lg:col-span-2">
               <FeatureCard
-                to="/"
+                to={`/${language}/${t('slugs.profile.index')}/${t('slugs.profile.favorites')}`}
                 linkComponent={Link}
                 level="h2"
                 title={t('home.favorites')}
