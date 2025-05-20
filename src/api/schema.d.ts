@@ -23,6 +23,25 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/profiili/kiinnostukset': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Finds all Ohjaaja's kiinnostukset */
+    get: operations['ohjaajanKiinnostusFindAll'];
+    put?: never;
+    /** Add a new Ohjaaja's kiinnostus */
+    post: operations['ohjaajanKiinnostusAdd'];
+    /** Delete an Ohjaaja's kiinnostus */
+    delete: operations['ohjaajanKiinnostusDelete'];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/artikkeli/katselu/{artikkeliId}': {
     parameters: {
       query?: never;
@@ -101,6 +120,14 @@ export interface components {
       /** Format: date-time */
       readonly luotu?: string;
     };
+    KiinnostusDto: {
+      /** Format: uuid */
+      readonly id?: string;
+      /** Format: int64 */
+      asiasanaId?: number;
+      /** Format: date-time */
+      readonly luotu?: string;
+    };
     CsrfTokenDto: {
       token: string;
       headerName: string;
@@ -115,6 +142,15 @@ export interface components {
       /** Format: uuid */
       id?: string;
       suosikit?: components['schemas']['OhjaajanSuosikkiExportDto'][];
+      kiinnostukset?: components['schemas']['OhjaajanKiinnostusExportDto'][];
+    };
+    OhjaajanKiinnostusExportDto: {
+      /** Format: uuid */
+      id?: string;
+      /** Format: date-time */
+      luotu?: string;
+      /** Format: int64 */
+      asiasanaId?: number;
     };
     OhjaajanSuosikkiExportDto: {
       /** Format: uuid */
@@ -191,6 +227,70 @@ export interface operations {
     };
   };
   ohjaajanSuosikkiDelete: {
+    parameters: {
+      query: {
+        id: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No Content */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  ohjaajanKiinnostusFindAll: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['KiinnostusDto'][];
+        };
+      };
+    };
+  };
+  ohjaajanKiinnostusAdd: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['KiinnostusDto'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': string;
+        };
+      };
+    };
+  };
+  ohjaajanKiinnostusDelete: {
     parameters: {
       query: {
         id: string;
