@@ -94,6 +94,14 @@
   "print": "Tulosta",
   "privacy-policy": "Tietosuojaseloste",
   "profile": {
+    "details": {
+      "title": "Omat tiedot",
+      "interest": {
+        "title": "Kiinnostukseni",
+        "description": "Valitsemalla sinua kiinnostavia asiasanoja, voimme tarjota palvelussa sinulle paremmin kohdistettuja sisältöjä. Näet myös kaiken muun palvelussa tarjottavan sisällön. Valintasi tallennetaan automaattisesti. "
+      },
+      "greeting": "Hei {{firstName}} {{lastName}} - tervetuloa"
+    },
     "favorites": {
       "description": "Suosikeiksi tallentamasi artikkelisisällöt löytyvät täältä. Voit tallentaa suosikkeja artikkelinostoista tai artikkelien sivuilta. Voit poistaa tallennetun suosikin tyhjentämällä valinnan.",
       "favorite-count_zero": "Et ole vielä tallentanut suosikkeja.",
@@ -177,6 +185,7 @@
       "what-is-the-service": "mika-palvelu-on"
     },
     "profile": {
+      "details": "omat-tiedot",
       "favorites": "suosikit",
       "index": "ohjaajan-tyopoyta",
       "preferences": "asetukseni"

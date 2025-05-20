@@ -6,8 +6,8 @@ import { NavigationTreeItem } from '@/types/cms-navigation';
 import { RouteObject, replace } from 'react-router';
 import { CategoryListing, CategoryMain, getCategoryContentLoader } from './Category';
 import { Home, homeLoader } from './Home';
-import { Preferences, Profile } from './Profile';
-import { Favorites } from './Profile/Favorites';
+import { Details, Favorites, Preferences, Profile, profileDetailsLoader } from './Profile';
+
 import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
 import { Search, searchLoader } from './Search';
 
@@ -22,6 +22,12 @@ export const profileRoutes = supportedLanguageCodes.map(
         {
           index: true,
           loader: () => replace(i18n.t('slugs.profile.preferences', { lng })),
+        },
+        {
+          id: `{slugs.profile.details}|${lng}`,
+          path: i18n.t('slugs.profile.details', { lng }),
+          element: <Details />,
+          loader: withOhjaajaContext(profileDetailsLoader, true),
         },
         {
           id: `{slugs.profile.favorites}|${lng}`,
