@@ -120,6 +120,7 @@ const Favorites = () => {
         )
       }
     >
+      <title>{t('profile.favorites.title')}</title>
       <h1 className="text-heading-1 mb-5">{t('profile.favorites.title')}</h1>
       <p className="text-body-lg mb-5">{t('profile.favorites.description')}</p>
       <div className="grid grid-cols-2 gap-5 mb-5">
