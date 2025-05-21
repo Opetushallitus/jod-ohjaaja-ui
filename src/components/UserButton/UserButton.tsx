@@ -25,7 +25,7 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
   const userMenuButtonRef = React.useRef<HTMLButtonElement>(null);
   const userMenuRef = useMenuClickHandler(() => setUserMenuOpen(false), userMenuButtonRef);
 
-  const userMenuProfileFrontUrl = `${t('slugs.profile.index')}/${t('slugs.profile.preferences')}`;
+  const userMenuProfileFrontUrl = t('slugs.profile.index');
 
   // Highlight menu element when active
   const getActiveClassNames = ({ isActive }: { isActive: boolean }) => (isActive ? 'bg-secondary-1-50 rounded-sm' : '');

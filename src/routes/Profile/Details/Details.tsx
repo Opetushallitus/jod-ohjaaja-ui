@@ -2,7 +2,7 @@ import { MainLayout } from '@/components';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import { useTags } from '@/hooks/useTags';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
-import { Checkbox } from '@jod/design-system';
+import { Checkbox, Combobox } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
@@ -30,6 +30,7 @@ const Details = () => {
 
   return (
     <MainLayout navChildren={<ProfileNavigation />}>
+      <title>{t('profile.details.title')}</title>
       <div>
         <h1 className="text-heading-1-mobile lg:text-heading-1  lg:mb-7">
           {t('profile.details.greeting', {
@@ -37,22 +38,34 @@ const Details = () => {
             lastName,
           })}
         </h1>
-        <h2 className="text-heading-2 mb-6">{t('profile.details.interest.title')}</h2>
-        <p className="text-body-md mb-6">{t('profile.details.interest.description')}</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-5">
-          {tags.map((tag) => (
-            <Checkbox
-              key={tag.id}
-              name={`${tag.id}`}
-              value={`${tag.id}`}
-              label={tag.name}
-              ariaLabel={tag.name}
-              checked={isSelected(tag.id)}
-              onChange={handleTagSelectionChange}
-              variant="bordered"
-            />
-          ))}
-        </div>
+        <section className="mb-8 bg-todo">
+          TODO
+          <h2 className="text-heading-2 mb-6">{t('profile.details.introduction.title')}</h2>
+          <p className="text-body-md mb-6">{t('profile.details.introduction.description')}</p>
+          <Combobox
+            label={t('profile.details.introduction.label')}
+            placeholder={t('profile.details.introduction.placeholder')}
+            options={[]}
+          />
+        </section>
+        <section>
+          <h2 className="text-heading-2 mb-6">{t('profile.details.interest.title')}</h2>
+          <p className="text-body-md mb-6">{t('profile.details.interest.description')}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-5">
+            {tags.map((tag) => (
+              <Checkbox
+                key={tag.id}
+                name={`${tag.id}`}
+                value={`${tag.id}`}
+                label={tag.name}
+                ariaLabel={tag.name}
+                checked={isSelected(tag.id)}
+                onChange={handleTagSelectionChange}
+                variant="bordered"
+              />
+            ))}
+          </div>
+        </section>
       </div>
     </MainLayout>
   );
