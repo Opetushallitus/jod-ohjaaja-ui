@@ -76,31 +76,22 @@
     "previous": "Siirry edelliselle sivulle",
     "page": "Sivu {{page}}"
   },
-  "preferences": {
-    "title": "Asetukseni",
-    "description": "Lorem ipsum dolor sit amet, no vis verear commodo. Vix quot dicta phaedrum ad. Has eu invenire concludaturque, simul accusata no ius. Eum ad iudico eruditi, idque malorum cum no. Te nam rebum iuvaret, atqui legere admodum an pro.",
-    "delete-profile": {
-      "title": "Poista koko osaamisprofiilisi ja kaikki siihen tallennetut tiedot",
-      "description": "Kaikki osaamisprofiilisi tallennetut tiedot poistetaan pysyvästi, eikä niitä voi palauttaa.",
-      "action": "Poista osaamisprofiili",
-      "confirm": "Haluatko varmasti poistaa osaamisprofiilisi?"
-    },
-    "download": {
-      "title": "Lataa talteen kaikki osaamisprofiilisi tallennetut tietosi",
-      "description": "Voit ladata itsellesi talteen kaikki osaamisprofiilin tallennetut tiedot",
-      "action": "Lataa osaamisprofiilin tiedot"
-    }
-  },
   "print": "Tulosta",
   "privacy-policy": "Tietosuojaseloste",
   "profile": {
     "details": {
-      "title": "Omat tiedot",
+      "greeting": "Hei {{firstName}} {{lastName}} - tervetuloa",
       "interest": {
         "title": "Kiinnostukseni",
         "description": "Valitsemalla sinua kiinnostavia asiasanoja, voimme tarjota palvelussa sinulle paremmin kohdistettuja sisältöjä. Näet myös kaiken muun palvelussa tarjottavan sisällön. Valintasi tallennetaan automaattisesti. "
       },
-      "greeting": "Hei {{firstName}} {{lastName}} - tervetuloa"
+      "introduction": {
+        "title": "Tietoa minusta",
+        "description": "Voit täydentää omia tietojasi alla. Näytämme tietosi muille käyttäjille keskustelujen yhteydessä. Tietojen täydentäminen on vapaaehtoista.",
+        "label": "Valitse työskentelypaikkasi",
+        "placeholder": "Valitse"
+      },
+      "title": "Omat tiedot"
     },
     "favorites": {
       "description": "Suosikeiksi tallentamasi artikkelisisällöt löytyvät täältä. Voit tallentaa suosikkeja artikkelinostoista tai artikkelien sivuilta. Voit poistaa tallennetun suosikin tyhjentämällä valinnan.",
@@ -140,7 +131,55 @@
       "title": "Tervetuloa! Luo oma osaamispolkusi ja hyödynnä monipuoliset palvelut"
     },
     "preferences": {
-      "title": "Asetukseni"
+      "description": "Tällä sivulla voit valita, mihin tarkoituksiin toiminnastasi Ohjaajan osiossa kerättävää tietoa käytetään.",
+      "delete-profile": {
+        "title": "Poista koko ohjaajan profiili ja kaikki siihen tallennetut tiedot",
+        "description": "Kaikki ohjaajan profiiliin tallennetut tiedot poistetaan pysyvästi, eikä niitä voi palauttaa. Huomioithan, että ohjaajan profiilin poisto ei vaikuta mahdollisesti luomaasi osaamisprofiiliin tai sen tietoihin. Jos haluat poistaa myös osaamisprofiilin, sinun tulee tehdä se Osaamispolun asetuksissa.",
+        "action": "Poista ohjaajan profiili",
+        "confirm": "Haluatko varmasti poistaa ohjaajan profiilisi?"
+      },
+      "disclosure-of-data": {
+        "archiving": {
+          "title": "Arkistointi",
+          "description": "Selitys/tarkennus"
+        },
+        "competence-assessment": {
+          "title": "Osaamisen arviointi",
+          "description": "Selitys/tarkennus"
+        },
+        "description": "Voit valita, luovutetaanko tietosi rajapintojen kautta seuraaviin tarkoituksiin:",
+        "development": {
+          "title": "Tutkimus",
+          "description": "Selitys/tarkennus"
+        },
+        "evaluation-of-education": {
+          "title": "Koulutuksen arviointi",
+          "description": "Selitys/tarkennus"
+        },
+        "guidance-and-planning": {
+          "title": "Ohjaus ja suunnittelu",
+          "description": "Selitys/tarkennus"
+        },
+        "research": {
+          "title": "Tutkimus",
+          "description": "Selitys/tarkennus"
+        },
+        "statistics-and-monitoring": {
+          "title": "Tilastointi ja seuranta",
+          "description": "Selitys/tarkennus"
+        },
+        "teaching-evaluation": {
+          "title": "Opetuksen arviointi",
+          "description": "Selitys/tarkennus"
+        },
+        "title": "Tietojen luovutus anonymisoimattomana"
+      },
+      "download": {
+        "title": "Lataa talteen kaikki ohjaajan profiiliin tallennetut tietosi",
+        "description": "Tämä tarkoittaa tietoja, jotka olet jakanut Ohjaajan osiossa sekä tietoja, joita olemme keränneet toiminnastasi. ",
+        "action": "Lataa ohjaajan osion tiedot"
+      },
+      "title": "Asetukset"
     }
   },
   "recently-watched-contents": "Viimeksi katsomasi sisällöt",
@@ -188,7 +227,7 @@
       "details": "omat-tiedot",
       "favorites": "suosikit",
       "index": "ohjaajan-tyopoyta",
-      "preferences": "asetukseni"
+      "preferences": "asetukset"
     }
   },
   "terms-of-service": "Käyttöehdot",
