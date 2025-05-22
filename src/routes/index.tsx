@@ -21,7 +21,7 @@ export const profileRoutes = supportedLanguageCodes.map(
       children: [
         {
           index: true,
-          loader: () => replace(i18n.t('slugs.profile.preferences', { lng })),
+          loader: () => replace(i18n.t('slugs.profile.details', { lng })),
         },
         {
           id: `{slugs.profile.details}|${lng}`,
