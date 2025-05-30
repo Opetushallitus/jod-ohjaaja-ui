@@ -14,7 +14,7 @@ import { LoaderData } from './loader';
 
 const CategoryMain = () => {
   const { data, isLoggedIn } = useLoaderData<LoaderData>();
-  const categoryRoute = useCategoryRoute();
+  const categoryRoute = useCategoryRoute('CategoryMain');
   const { t } = useTranslation();
 
   const [carouselItems, setCarouselItems] = React.useState<CardCarouselItem[]>([]);
