@@ -22,7 +22,7 @@ describe('useCategoryRoute', () => {
 
     vi.mocked(getRoutes).mockReturnValue([{ id: 'route1' }, { id: 'route2' }]);
 
-    const { result } = renderHook(() => useCategoryRoute());
+    const { result } = renderHook(() => useCategoryRoute('CategoryMain'));
     expect(result.current).toBeUndefined();
   });
 
@@ -36,7 +36,7 @@ describe('useCategoryRoute', () => {
 
     vi.mocked(getRoutes).mockReturnValue([expectedRoute]);
 
-    const { result } = renderHook(() => useCategoryRoute());
+    const { result } = renderHook(() => useCategoryRoute('CategoryListing'));
     expect(result.current).toEqual(expectedRoute);
   });
 
@@ -60,7 +60,7 @@ describe('useCategoryRoute', () => {
       },
     ]);
 
-    const { result } = renderHook(() => useCategoryRoute());
+    const { result } = renderHook(() => useCategoryRoute('CategoryListing'));
     expect(result.current).toEqual(expectedRoute);
   });
 });

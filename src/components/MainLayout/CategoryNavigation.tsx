@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { NavigationList } from './NavigationList';
 
 export const CategoryNavigation = () => {
-  const categoryRoute = useCategoryRoute();
+  const categoryRoute = useCategoryRoute('CategoryMain');
   const { lg } = useMediaQueries();
   const { i18n, t } = useTranslation();
 

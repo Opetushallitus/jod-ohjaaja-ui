@@ -2,13 +2,11 @@ import { getRoutes } from '@/routes';
 import { isRouteMatchHandle } from '@/types/cms-navigation';
 import { type RouteObject, type UIMatch, useMatches } from 'react-router';
 
-export const useCategoryRoute = () => {
+export const useCategoryRoute = (type: 'CategoryMain' | 'CategoryListing') => {
   const matches = useMatches();
   const routes = getRoutes();
 
-  const rootCategoryMatch = matches.find(
-    (match) => isRouteMatchHandle(match.handle) && match.handle.type.startsWith('Category'),
-  );
+  const rootCategoryMatch = matches.find((match) => isRouteMatchHandle(match.handle) && match.handle.type === type);
   const categoryRoute = rootCategoryMatch !== undefined ? findCategoryRoute(routes, rootCategoryMatch) : undefined;
 
   return categoryRoute;
