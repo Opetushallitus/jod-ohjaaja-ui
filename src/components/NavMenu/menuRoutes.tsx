@@ -79,6 +79,15 @@ export const useMenuRoutes = (onClose: () => void) => {
 
   const mainLevelMenuItems: MenuItem[] = React.useMemo(() => {
     return [
+      {
+        label: t('front-page-navigation'),
+        LinkComponent: ({ children, className }: LinkComponent) => (
+          <NavLink to={`/${language}`} className={className} lang={language} onClick={onClose}>
+            {children}
+          </NavLink>
+        ),
+        selected: pathname === `/${language}`,
+      },
       ...createContentNavigationMenuItems(),
 
       {
