@@ -1,16 +1,18 @@
 {
+  "about-ai": "Tietoa tekoälyn käytöstä",
+  "about-us": "Tietoa palvelusta",
   "about-us-and-user-guide": "Tietoa palvelusta ja käyttöohjeet",
   "accessibility-statement": "Saavutettavuusseloste",
   "add-to-favorites": "Tallenna suosikiksi",
   "advisors-workspace": "Ohjaajan työpöytä",
   "back": "Takaisin",
+  "cancel": "Peruuta",
   "carousel": {
     "indicator": "Siirry sivulle {{index}}",
     "next": "Seuraava sivu",
     "prev": "Edellinen sivu"
   },
   "close-menu": "Sulje valikko",
-  "contents": "Sisällys",
   "content-details": {
     "additional-content": "Lisätietoja",
     "date-created": "Luotu:",
@@ -21,12 +23,32 @@
     "article-count_other": "{{count}} artikkelia",
     "show-more": "Näytä lisää"
   },
+  "contents": "Sisällys",
   "cookie-policy": "Evästekäytäntö",
   "copyright": "© JOD 2024. Kaikki oikeudet pidätetään.",
   "current-location": "Nykyinen sijainti",
-  "delete": "Poista",
-  "cancel": "Peruuta",
   "data-sources": "Datalähteet",
+  "delete": "Poista",
+  "error-boundary": {
+    "session-expired": "Istuntosi on vanhentunut. Sinun täytyy kirjautua palveluun uudelleen tai käyttää palvelua ilman kirjautumista.",
+    "title": "Tapahtui virhe",
+    "unexpected": "Tapahtui odottamaton virhe. Tämä voi johtua verkkoyhteyden katkeamisesta tai palvelun virheestä."
+  },
+  "footer": {
+    "cooperation-title": "Osaamipolku on toteutettu yhteistyössä seuraavien tahojen toimesta.",
+    "feedback-button-label": "Anna palautetta",
+    "feedback-content": "Haluamme kehittää Osaamispolkua vastaamaan paremmin juuri sinun tarpeita. Anna meille palautetta ja huomiomme sen kehitystyössä.",
+    "feedback-title": "Kerro meille mitä pidit palvelusta!",
+    "funding-title": "Palvelu on rahoitettu Euroopan RFF-rahoituksella.",
+    "logos": {
+      "keha-label": "KEHA-keskus",
+      "okm-label": "Opetus- ja kulttuuriministeriö",
+      "oph-label": "Opetushallitus",
+      "tem-label": "Työ- ja elinkeinoministeriö"
+    },
+    "more-info-description": "Mietityttääkö tietosuoja tai tekoälyn hyödyntäminen palvelussa? Alta löydät kootusti yleistä tietoa palvelusta ja sen käytöstä.",
+    "more-info-title": "Haluatko tietää lisää Osaamispolusta?"
+  },
   "front-page": "Etusivu",
   "front-page-navigation": "Ohjaajan osion etusivu",
   "home": {
@@ -45,23 +67,23 @@
   },
   "link-copied": "Linkki kopioitu!",
   "link-copy-failed": "Linkin kopiointi epäonnistui",
-  "login": "Kirjaudu sisään",
   "log-in-to-the-service": "Kirjaudu palveluun",
   "log-in-to-the-service-content": "Kirjautumalla palveluun voit keskustella sisällöistä, tallentaa niitä suosikeiksi ja kustomoida palvelussa sinulle näkyvää sisältöä omien kiinnostustesi mukaan. Palvelu käyttää suomi.fi.tunnistautumista. ",
+  "login": "Kirjaudu sisään",
   "logout": "Kirjaudu ulos",
   "menu": "Valikko",
   "navigation": {
     "external": {
+      "tietopalvelu": {
+        "description": "Tietoa päätöksentekijöille",
+        "label": "Tietopalvelu",
+        "url": "/tietopalvelu/fi"
+      },
       "title": "Osaamispolun sisältökokonaisuudet",
       "yksilo": {
+        "description": "Henkilökohtainen osaamispolkusi",
         "label": "Osaamispolkuni",
-        "url": "/yksilo/fi",
-        "description": "Henkilökohtainen osaamispolkusi"
-      },
-      "tietopalvelu": {
-        "label": "Tietopalvelu",
-        "url": "/tietopalvelu/fi",
-        "description": "Tietoa päätöksentekijöille"
+        "url": "/yksilo/fi"
       }
     }
   },
@@ -74,31 +96,32 @@
   "osaamispolku": "Osaamispolku",
   "pagination": {
     "next": "Siirry seuraavalle sivulle",
-    "previous": "Siirry edelliselle sivulle",
-    "page": "Sivu {{page}}"
+    "page": "Sivu {{page}}",
+    "previous": "Siirry edelliselle sivulle"
   },
   "print": "Tulosta",
   "privacy-policy": "Tietosuojaseloste",
+  "privacy-policy-and-cookies": "Tietosuojaseloste ja evästeet",
   "profile": {
     "details": {
       "greeting": "Hei {{firstName}} {{lastName}} - tervetuloa",
       "interest": {
-        "title": "Kiinnostukseni",
-        "description": "Valitsemalla sinua kiinnostavia asiasanoja, voimme tarjota palvelussa sinulle paremmin kohdistettuja sisältöjä. Näet myös kaiken muun palvelussa tarjottavan sisällön. Valintasi tallennetaan automaattisesti. "
+        "description": "Valitsemalla sinua kiinnostavia asiasanoja, voimme tarjota palvelussa sinulle paremmin kohdistettuja sisältöjä. Näet myös kaiken muun palvelussa tarjottavan sisällön. Valintasi tallennetaan automaattisesti. ",
+        "title": "Kiinnostukseni"
       },
       "introduction": {
-        "title": "Tietoa minusta",
         "description": "Voit täydentää omia tietojasi alla. Näytämme tietosi muille käyttäjille keskustelujen yhteydessä. Tietojen täydentäminen on vapaaehtoista.",
         "label": "Valitse työskentelypaikkasi",
-        "placeholder": "Valitse"
+        "placeholder": "Valitse",
+        "title": "Tietoa minusta"
       },
       "title": "Omat tiedot"
     },
     "favorites": {
       "description": "Suosikeiksi tallentamasi artikkelisisällöt löytyvät täältä. Voit tallentaa suosikkeja artikkelinostoista tai artikkelien sivuilta. Voit poistaa tallennetun suosikin tyhjentämällä valinnan.",
-      "favorite-count_zero": "Et ole vielä tallentanut suosikkeja.",
       "favorite-count_one": "Olet tallentanut yhden suosikin.",
       "favorite-count_other": "Olet tallentanut {{count}} suosikkia.",
+      "favorite-count_zero": "Et ole vielä tallentanut suosikkeja.",
       "filter": "Suodata",
       "no-favorites": "Voit tallentaa artikkeleita suosikeiksi klikkaamalla sydän-ikonia. Voit tutustua sisältöihin seuraavissa osioissa:",
       "no-tags": "Voit suodattaa tallentamiasi sisältöjä avainsanoihin perustuen.",
@@ -132,53 +155,53 @@
       "title": "Tervetuloa! Luo oma osaamispolkusi ja hyödynnä monipuoliset palvelut"
     },
     "preferences": {
-      "description": "Tällä sivulla voit valita, mihin tarkoituksiin toiminnastasi Ohjaajan osiossa kerättävää tietoa käytetään.",
       "delete-profile": {
-        "title": "Poista koko ohjaajan profiili ja kaikki siihen tallennetut tiedot",
-        "description": "Kaikki ohjaajan profiiliin tallennetut tiedot poistetaan pysyvästi, eikä niitä voi palauttaa. Huomioithan, että ohjaajan profiilin poisto ei vaikuta mahdollisesti luomaasi osaamisprofiiliin tai sen tietoihin. Jos haluat poistaa myös osaamisprofiilin, sinun tulee tehdä se Osaamispolun asetuksissa.",
         "action": "Poista ohjaajan profiili",
-        "confirm": "Haluatko varmasti poistaa ohjaajan profiilisi?"
+        "confirm": "Haluatko varmasti poistaa ohjaajan profiilisi?",
+        "description": "Kaikki ohjaajan profiiliin tallennetut tiedot poistetaan pysyvästi, eikä niitä voi palauttaa. Huomioithan, että ohjaajan profiilin poisto ei vaikuta mahdollisesti luomaasi osaamisprofiiliin tai sen tietoihin. Jos haluat poistaa myös osaamisprofiilin, sinun tulee tehdä se Osaamispolun asetuksissa.",
+        "title": "Poista koko ohjaajan profiili ja kaikki siihen tallennetut tiedot"
       },
+      "description": "Tällä sivulla voit valita, mihin tarkoituksiin toiminnastasi Ohjaajan osiossa kerättävää tietoa käytetään.",
       "disclosure-of-data": {
         "archiving": {
-          "title": "Arkistointi",
-          "description": "Selitys/tarkennus"
+          "description": "Selitys/tarkennus",
+          "title": "Arkistointi"
         },
         "competence-assessment": {
-          "title": "Osaamisen arviointi",
-          "description": "Selitys/tarkennus"
+          "description": "Selitys/tarkennus",
+          "title": "Osaamisen arviointi"
         },
         "description": "Voit valita, luovutetaanko tietosi rajapintojen kautta seuraaviin tarkoituksiin:",
         "development": {
-          "title": "Tutkimus",
-          "description": "Selitys/tarkennus"
+          "description": "Selitys/tarkennus",
+          "title": "Tutkimus"
         },
         "evaluation-of-education": {
-          "title": "Koulutuksen arviointi",
-          "description": "Selitys/tarkennus"
+          "description": "Selitys/tarkennus",
+          "title": "Koulutuksen arviointi"
         },
         "guidance-and-planning": {
-          "title": "Ohjaus ja suunnittelu",
-          "description": "Selitys/tarkennus"
+          "description": "Selitys/tarkennus",
+          "title": "Ohjaus ja suunnittelu"
         },
         "research": {
-          "title": "Tutkimus",
-          "description": "Selitys/tarkennus"
+          "description": "Selitys/tarkennus",
+          "title": "Tutkimus"
         },
         "statistics-and-monitoring": {
-          "title": "Tilastointi ja seuranta",
-          "description": "Selitys/tarkennus"
+          "description": "Selitys/tarkennus",
+          "title": "Tilastointi ja seuranta"
         },
         "teaching-evaluation": {
-          "title": "Opetuksen arviointi",
-          "description": "Selitys/tarkennus"
+          "description": "Selitys/tarkennus",
+          "title": "Opetuksen arviointi"
         },
         "title": "Tietojen luovutus anonymisoimattomana"
       },
       "download": {
-        "title": "Lataa talteen kaikki ohjaajan profiiliin tallennetut tietosi",
+        "action": "Lataa ohjaajan osion tiedot",
         "description": "Tämä tarkoittaa tietoja, jotka olet jakanut Ohjaajan osiossa sekä tietoja, joita olemme keränneet toiminnastasi. ",
-        "action": "Lataa ohjaajan osion tiedot"
+        "title": "Lataa talteen kaikki ohjaajan profiiliin tallennetut tietosi"
       },
       "title": "Asetukset"
     }
@@ -201,40 +224,35 @@
     "title": "Etsi palvelusta"
   },
   "search-results": {
-    "article-count_zero": "Ei tuloksia hakusanallasi",
     "article-count_one": "1 tulos hakusanallasi",
-    "article-count_other": "{{count}} tulosta hakusanallasi"
+    "article-count_other": "{{count}} tulosta hakusanallasi",
+    "article-count_zero": "Ei tuloksia hakusanallasi"
   },
   "select-language": "Valitse kieli",
   "share": "Jaa",
   "skiplinks": {
     "main": "Siirry pääsisältöön"
   },
-  "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
-  "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä.",
   "slugs": {
     "accessibility-statement": "saavutettavuusseloste",
     "basic-information": "perustiedot",
     "cookie-policy": "evastekaytanto",
     "data-sources": "datalahteet",
     "privacy-policy": "tietosuojaseloste",
-    "search": "haku",
-    "terms-of-service": "kayttoehdot",
-    "user-guide": {
-      "index": "ohjeet",
-      "what-is-the-service": "mika-palvelu-on"
-    },
     "profile": {
       "details": "omat-tiedot",
       "favorites": "suosikit",
       "index": "ohjaajan-tyopoyta",
       "preferences": "asetukset"
+    },
+    "search": "haku",
+    "terms-of-service": "kayttoehdot",
+    "user-guide": {
+      "index": "ohjeet",
+      "what-is-the-service": "mika-palvelu-on"
     }
   },
-  "terms-of-service": "Käyttöehdot",
-  "error-boundary": {
-    "session-expired": "Istuntosi on vanhentunut. Sinun täytyy kirjautua palveluun uudelleen tai käyttää palvelua ilman kirjautumista.",
-    "title": "Tapahtui virhe",
-    "unexpected": "Tapahtui odottamaton virhe. Tämä voi johtua verkkoyhteyden katkeamisesta tai palvelun virheestä."
-  }
+  "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
+  "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä.",
+  "terms-of-service": "Käyttöehdot"
 }
