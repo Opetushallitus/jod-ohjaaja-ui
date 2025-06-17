@@ -60,7 +60,6 @@ const TagFilterList = ({
             name="tag"
             value={`${tag.id}`}
             checked={localSelectedTagIds.some((selectedTagId) => tag.id.toString() === selectedTagId)}
-            variant="bordered"
             ariaLabel={t('search.tag-list.checkbox-label', {
               tag: tag.name_i18n[getLocale(language)] ?? tag.name,
             })}
