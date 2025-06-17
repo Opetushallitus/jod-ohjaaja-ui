@@ -46,12 +46,12 @@ export const FeatureCard = ({
       <div className="flex justify-between gap-3 items-center lg:items-start">
         <Heading
           id={headingId}
-          className={`${hero ? 'text-heading-1-mobile md:text-heading-1 text-[#000] md:text-nowrap' : 'text-heading-2-mobile md:text-heading-2 text-[#333]'}`}
+          className={`${hero ? 'text-heading-1-mobile md:text-heading-1 text-[#000] md:text-nowrap' : 'text-heading-2-mobile md:text-heading-2 text-primary-gray'}`}
         >
           {title}
         </Heading>
         {!hero && (
-          <div className="size-9 text-[#333]">
+          <div className="size-9 text-primary-gray">
             <MdArrowForward size={48} />
           </div>
         )}
@@ -60,7 +60,7 @@ export const FeatureCard = ({
         id={contentId}
         className={cx('text-body-lg-mobile md:text-body-lg whitespace-pre-line', {
           'text-black': hero,
-          'text-[#333] hidden lg:block': collapseOnSmallScreen,
+          'text-primary-gray hidden lg:block': collapseOnSmallScreen,
         })}
       >
         {content}

@@ -99,7 +99,7 @@ const ContentDetails = () => {
     '[&_h2]:text-heading-2',
     '[&_h3]:text-heading-3',
     '[&_h4]:text-heading-4',
-    '[&_a]:text-link',
+    '[&_a]:text-accent',
   ]);
 
   const doPrint = () => {

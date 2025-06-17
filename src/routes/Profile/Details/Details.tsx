@@ -61,7 +61,6 @@ const Details = () => {
                 ariaLabel={tag.name}
                 checked={isSelected(tag.id)}
                 onChange={handleTagSelectionChange}
-                variant="bordered"
               />
             ))}
           </div>
