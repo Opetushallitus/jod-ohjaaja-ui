@@ -5,6 +5,7 @@ import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
 import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/RecentlyWatchedContent';
 import { SearchBanner } from '@/components/SearchBanner/SearchBanner';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
+import { useCardCarouselItems } from '@/hooks/useCardCarouselItems';
 import { LangCode } from '@/i18n/config';
 import { LoaderData } from '@/routes/Home/loader';
 import { getMainCategoryPath } from '@/utils/navigation-paths';
@@ -18,18 +19,25 @@ const Home = () => {
     t,
     i18n: { language },
   } = useTranslation();
-  const { data, isLoggedIn } = useLoaderData<LoaderData>();
-  const [carouselItems, setCarouselItems] = React.useState<CardCarouselItem[]>([]);
+  const { newestContent, mostViewedContent, isLoggedIn } = useLoaderData<LoaderData>();
 
-  React.useEffect(() => {
-    const items = data.items.map((article) => {
-      return {
+  const newestArticles: CardCarouselItem[] = useCardCarouselItems(
+    React.useCallback(() => {
+      return newestContent.map((article) => ({
         id: `${article.id ?? ''}`,
         component: <ArticleCard article={article} variant="vertical" isLoggedIn={isLoggedIn} />,
-      };
-    });
-    setCarouselItems(items);
-  }, [data, isLoggedIn]);
+      }));
+    }, [newestContent, isLoggedIn]),
+  );
+
+  const mostViewedArticles: CardCarouselItem[] = useCardCarouselItems(
+    React.useCallback(() => {
+      return mostViewedContent.map((article) => ({
+        id: `${article.id ?? ''}`,
+        component: <ArticleCard article={article} variant="vertical" isLoggedIn={isLoggedIn} />,
+      }));
+    }, [mostViewedContent, isLoggedIn]),
+  );
 
   return (
     <>
@@ -94,7 +102,7 @@ const Home = () => {
             <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.new-content')}</h2>
             <CardCarousel
               itemWidth={261}
-              items={carouselItems}
+              items={newestArticles}
               translations={{
                 prevTrigger: t('carousel.prev'),
                 nextTrigger: t('carousel.next'),
@@ -117,20 +125,21 @@ const Home = () => {
             </div>
           )}
 
-          <div className="col-span-3">
-            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.popular-content')}</h2>
-            <CardCarousel
-              itemWidth={261}
-              items={carouselItems}
-              translations={{
-                prevTrigger: t('carousel.prev'),
-                nextTrigger: t('carousel.next'),
-                indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
-              }}
-              className="max-[640px]:px-5 max-[640px]:-mx-5 max-[1148px]:px-6 max-[1148px]:-mx-6 p-3 -m-3"
-            />
-          </div>
-
+          {mostViewedArticles.length > 0 && (
+            <div className="col-span-3">
+              <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.popular-content')}</h2>
+              <CardCarousel
+                itemWidth={261}
+                items={mostViewedArticles}
+                translations={{
+                  prevTrigger: t('carousel.prev'),
+                  nextTrigger: t('carousel.next'),
+                  indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
+                }}
+                className="max-[640px]:px-5 max-[640px]:-mx-5 max-[1148px]:px-6 max-[1148px]:-mx-6 p-3 -m-3"
+              />
+            </div>
+          )}
           {isLoggedIn ? (
             <div className="col-span-3 grid grid-cols-3 gap-x-6 xl:gap-x-7">
               <RecentlyWatchedContent />

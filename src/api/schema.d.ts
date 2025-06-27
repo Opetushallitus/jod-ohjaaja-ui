@@ -108,6 +108,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/artikkeli/katselu/katsotuimmat': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Gets the most viewed article ids */
+    get: operations['artikkelinKatseluGetMostViewedArtikkeliIds'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -373,6 +390,29 @@ export interface operations {
   artikkelinKatseluGetMostRecentViewedArtikkeliIds: {
     parameters: {
       query?: {
+        koko?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['SivuDtoLong'];
+        };
+      };
+    };
+  };
+  artikkelinKatseluGetMostViewedArtikkeliIds: {
+    parameters: {
+      query?: {
+        filterByArtikkeliIds?: number[];
         koko?: number;
       };
       header?: never;

@@ -10,7 +10,7 @@ import { LoaderData } from './loader';
 const VISIBLE_ITEM_COUNT = 6;
 
 const CategoryListing = () => {
-  const { data, isLoggedIn } = useLoaderData<LoaderData>();
+  const { newestCategoryContent, isLoggedIn } = useLoaderData<LoaderData>();
   const [visibleItemCount, setVisibleItemCount] = React.useState(VISIBLE_ITEM_COUNT);
   const categoryRoute = useCategoryRoute('CategoryListing');
   const title = categoryRoute?.handle?.title;
@@ -37,9 +37,9 @@ const CategoryListing = () => {
     setVisibleItemCount((prevCount) => prevCount + VISIBLE_ITEM_COUNT);
   };
 
-  const contents = data.items.slice(0, visibleItemCount);
-  const totalCount = data.totalCount;
-  const hasMore = data.items.length > visibleItemCount;
+  const contents = newestCategoryContent.items.slice(0, visibleItemCount);
+  const totalCount = newestCategoryContent.totalCount;
+  const hasMore = newestCategoryContent.items.length > visibleItemCount;
   const isLoading = false;
 
   return (
