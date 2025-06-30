@@ -111,9 +111,20 @@
       },
       "introduction": {
         "description": "Voit täydentää omia tietojasi alla. Näytämme tietosi muille käyttäjille keskustelujen yhteydessä. Tietojen täydentäminen on vapaaehtoista.",
+
+        "title": "Tietoa minusta"
+      },
+      "workplace": {
         "label": "Valitse työskentelypaikkasi",
         "placeholder": "Valitse",
-        "title": "Tietoa minusta"
+        "option1": "Oppilaitos / perusaste",
+        "option2": "Oppilaitos / toinen aste",
+        "option3": "Oppilaitos / korkeakoulu",
+        "option4": "Oppilaitos / aikuiskoulutus",
+        "option5": "Työllisyyspalvelut valtio tai kunta",
+        "option6": "Kolmas sektori",
+        "option7": "Yksityinen",
+        "option8": "Muu"
       },
       "title": "Omat tiedot"
     },
