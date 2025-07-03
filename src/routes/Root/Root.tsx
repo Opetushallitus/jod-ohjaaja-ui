@@ -3,11 +3,11 @@ import { NavMenu } from '@/components/NavMenu/NavMenu';
 import { Toaster } from '@/components/Toaster/Toaster';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import i18n from '@/i18n/config';
-import { Footer, NavigationBar, SkipLink } from '@jod/design-system';
+import { Footer, MatomoTracker, NavigationBar, SkipLink } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdMenu } from 'react-icons/md';
-import { Link, NavLink, Outlet, ScrollRestoration, useLoaderData } from 'react-router';
+import { Link, NavLink, Outlet, ScrollRestoration, useLoaderData, useLocation } from 'react-router';
 import { LogoutFormContext } from '.';
 
 const Root = () => {
@@ -17,6 +17,16 @@ const Root = () => {
   } = useTranslation();
   const [navMenuOpen, setNavMenuOpen] = React.useState(false);
   const [langMenuOpen, setLangMenuOpen] = React.useState(false);
+  const location = useLocation();
+
+  const hostname = window.location.hostname;
+  const siteId = React.useMemo(() => {
+    if (hostname === 'localhost' || hostname === 'jodkehitys.fi') {
+      return 37;
+    } else if (hostname === 'jodtestaus.fi') {
+      return 38;
+    }
+  }, [hostname]);
 
   const infoSlug = t('slugs.basic-information');
   const moreInfoLinks = [
@@ -130,6 +140,9 @@ const Root = () => {
       />
       <Toaster />
       <ScrollRestoration />
+      {siteId && (
+        <MatomoTracker trackerUrl="https://analytiikka.opintopolku.fi" siteId={siteId} pathname={location.pathname} />
+      )}
     </>
   );
 };
