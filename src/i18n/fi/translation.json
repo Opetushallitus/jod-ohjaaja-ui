@@ -52,6 +52,7 @@
   "front-page": "Etusivu",
   "front-page-navigation": "Ohjaajan osion etusivu",
   "home": {
+    "best-matching": "Sinua voisi kiinnostaa",
     "card-1-content": "Palvelusta löydät uraohjaustyösi tueksi ajantasaista ja laadukasta tietoa ja menetelmiä ja omaa osaamistasi vahvistavia materiaaleja.",
     "card-1-title": "Tervetuloa ohjaajan osioon!",
     "card-2-content": "Tietoa ohjausalasta ja sen kehittymisestä.",
@@ -111,7 +112,6 @@
       },
       "introduction": {
         "description": "Voit täydentää omia tietojasi alla. Näytämme tietosi muille käyttäjille keskustelujen yhteydessä. Tietojen täydentäminen on vapaaehtoista.",
-
         "title": "Tietoa minusta"
       },
       "workplace": {
