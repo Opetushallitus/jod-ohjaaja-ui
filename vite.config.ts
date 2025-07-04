@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
     test: {
       environment: 'jsdom',
       globals: true,
-      setupFiles: ['./vitest.setup.ts'],
+      setupFiles: ['./vitest.setup.ts', './src/i18n/config.ts'],
       coverage: {
         provider: 'v8',
         reporter: ['lcov'],

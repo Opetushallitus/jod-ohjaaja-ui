@@ -1,20 +1,19 @@
-import { ArticleCard } from '@/components/ArticleCard/ArticleCard';
+import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
 import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
 import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/RecentlyWatchedContent';
 import { SearchBanner } from '@/components/SearchBanner/SearchBanner';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
-import { useCardCarouselItems } from '@/hooks/useCardCarouselItems';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
-import { CardCarousel, CardCarouselItem, tidyClasses as tc } from '@jod/design-system';
-import React from 'react';
+import { tidyClasses as tc } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
 
 const CategoryMain = () => {
-  const { newestCategoryContent, mostViewedContent, isLoggedIn } = useLoaderData<LoaderData>();
+  const { newestCategoryContent, mostViewedCategoryContent, bestMatchingCategoryContent, isLoggedIn } =
+    useLoaderData<LoaderData>();
   const categoryRoute = useCategoryRoute('CategoryMain');
   const { t } = useTranslation();
 
@@ -38,24 +37,6 @@ const CategoryMain = () => {
     'text-body-lg',
   ]);
 
-  const newestArticles: CardCarouselItem[] = useCardCarouselItems(
-    React.useCallback(() => {
-      return newestCategoryContent.items.map((article) => ({
-        id: `${article.id ?? ''}`,
-        component: <ArticleCard article={article} variant="vertical" isLoggedIn={isLoggedIn} />,
-      }));
-    }, [newestCategoryContent, isLoggedIn]),
-  );
-
-  const mostViewedArticles: CardCarouselItem[] = useCardCarouselItems(
-    React.useCallback(() => {
-      return mostViewedContent.map((article) => ({
-        id: `${article.id ?? ''}`,
-        component: <ArticleCard article={article} variant="vertical" isLoggedIn={isLoggedIn} />,
-      }));
-    }, [mostViewedContent, isLoggedIn]),
-  );
-
   return (
     <>
       <SearchBanner />
@@ -77,34 +58,20 @@ const CategoryMain = () => {
           {description && <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: description }} />}
         </section>
 
-        <div className="col-span-3">
-          <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.new-content')}</h2>
-          <CardCarousel
-            itemWidth={261}
-            items={newestArticles}
-            translations={{
-              prevTrigger: t('carousel.prev'),
-              nextTrigger: t('carousel.next'),
-              indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
-            }}
-            className="max-[640px]:px-5 max-[640px]:-mx-5 max-[1148px]:px-6 max-[1148px]:-mx-6 p-3 -m-3"
-          />
-        </div>
-        {mostViewedArticles.length > 0 && (
-          <div className="col-span-3">
-            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.popular-content')}</h2>
-            <CardCarousel
-              itemWidth={261}
-              items={mostViewedArticles}
-              translations={{
-                prevTrigger: t('carousel.prev'),
-                nextTrigger: t('carousel.next'),
-                indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
-              }}
-              className="max-[640px]:px-5 max-[640px]:-mx-5 max-[1148px]:px-6 max-[1148px]:-mx-6 p-3 -m-3"
-            />
-          </div>
-        )}
+        <ArticleCarousel title={t('home.new-content')} isLoggedIn={isLoggedIn} articles={newestCategoryContent.items} />
+
+        <ArticleCarousel
+          title={t('home.popular-content')}
+          isLoggedIn={isLoggedIn}
+          articles={mostViewedCategoryContent}
+        />
+
+        <ArticleCarousel
+          title={t('home.best-matching')}
+          isLoggedIn={isLoggedIn}
+          articles={bestMatchingCategoryContent}
+        />
+
         {isLoggedIn ? (
           <div className="col-span-3">
             <div className="col-span-3 grid grid-cols-3 gap-x-6 xl:gap-x-7">

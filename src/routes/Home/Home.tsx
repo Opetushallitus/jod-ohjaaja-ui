@@ -1,16 +1,13 @@
 import heroSrc from '@/../assets/ohjaaja-hero.avif';
-import { ArticleCard } from '@/components/ArticleCard/ArticleCard';
+import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
 import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
 import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/RecentlyWatchedContent';
 import { SearchBanner } from '@/components/SearchBanner/SearchBanner';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
-import { useCardCarouselItems } from '@/hooks/useCardCarouselItems';
 import { LangCode } from '@/i18n/config';
 import { LoaderData } from '@/routes/Home/loader';
 import { getMainCategoryPath } from '@/utils/navigation-paths';
-import { CardCarousel, CardCarouselItem } from '@jod/design-system';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLoaderData } from 'react-router';
 
@@ -19,25 +16,7 @@ const Home = () => {
     t,
     i18n: { language },
   } = useTranslation();
-  const { newestContent, mostViewedContent, isLoggedIn } = useLoaderData<LoaderData>();
-
-  const newestArticles: CardCarouselItem[] = useCardCarouselItems(
-    React.useCallback(() => {
-      return newestContent.map((article) => ({
-        id: `${article.id ?? ''}`,
-        component: <ArticleCard article={article} variant="vertical" isLoggedIn={isLoggedIn} />,
-      }));
-    }, [newestContent, isLoggedIn]),
-  );
-
-  const mostViewedArticles: CardCarouselItem[] = useCardCarouselItems(
-    React.useCallback(() => {
-      return mostViewedContent.map((article) => ({
-        id: `${article.id ?? ''}`,
-        component: <ArticleCard article={article} variant="vertical" isLoggedIn={isLoggedIn} />,
-      }));
-    }, [mostViewedContent, isLoggedIn]),
-  );
+  const { newestContent, mostViewedContent, bestMatchingContent, isLoggedIn } = useLoaderData<LoaderData>();
 
   return (
     <>
@@ -98,19 +77,8 @@ const Home = () => {
               />
             </div>
           </div>
-          <div className="col-span-3">
-            <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.new-content')}</h2>
-            <CardCarousel
-              itemWidth={261}
-              items={newestArticles}
-              translations={{
-                prevTrigger: t('carousel.prev'),
-                nextTrigger: t('carousel.next'),
-                indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
-              }}
-              className="max-[640px]:px-5 max-[640px]:-mx-5 max-[1148px]:px-6 max-[1148px]:-mx-6 p-3 -m-3"
-            />
-          </div>
+
+          <ArticleCarousel title={t('home.new-content')} isLoggedIn={isLoggedIn} articles={newestContent} />
 
           {isLoggedIn && (
             <div className="col-span-3 lg:col-span-2">
@@ -125,21 +93,9 @@ const Home = () => {
             </div>
           )}
 
-          {mostViewedArticles.length > 0 && (
-            <div className="col-span-3">
-              <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{t('home.popular-content')}</h2>
-              <CardCarousel
-                itemWidth={261}
-                items={mostViewedArticles}
-                translations={{
-                  prevTrigger: t('carousel.prev'),
-                  nextTrigger: t('carousel.next'),
-                  indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
-                }}
-                className="max-[640px]:px-5 max-[640px]:-mx-5 max-[1148px]:px-6 max-[1148px]:-mx-6 p-3 -m-3"
-              />
-            </div>
-          )}
+          <ArticleCarousel title={t('home.popular-content')} isLoggedIn={isLoggedIn} articles={mostViewedContent} />
+          <ArticleCarousel title={t('home.best-matching')} isLoggedIn={isLoggedIn} articles={bestMatchingContent} />
+
           {isLoggedIn ? (
             <div className="col-span-3 grid grid-cols-3 gap-x-6 xl:gap-x-7">
               <RecentlyWatchedContent />

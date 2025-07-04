@@ -35,7 +35,7 @@ export const getMostViewedArtikkeliIds = async (filterByArtikkeliIds?: number[])
       },
     },
   });
-  if (!error) {
+  if (!error && data && Array.isArray(data.sisalto)) {
     return data.sisalto;
   }
   return [] as number[];
