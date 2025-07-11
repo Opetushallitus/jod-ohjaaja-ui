@@ -1,6 +1,6 @@
 import { cx } from '@jod/design-system';
+import { JodArrowRight } from '@jod/design-system/icons';
 import React from 'react';
-import { MdArrowForward } from 'react-icons/md';
 
 export const FeatureCard = ({
   level,
@@ -52,7 +52,7 @@ export const FeatureCard = ({
         </Heading>
         {!hero && (
           <div className="size-9 text-primary-gray">
-            <MdArrowForward size={48} />
+            <JodArrowRight size={48} />
           </div>
         )}
       </div>

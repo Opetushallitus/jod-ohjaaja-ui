@@ -5,9 +5,9 @@ import { useTags } from '@/hooks/useTags';
 import { type Category } from '@/types/cms-content';
 import { getSearchUrl } from '@/utils/navigation';
 import { Button, InputField, useMediaQueries } from '@jod/design-system';
+import { JodSearch, JodSettings } from '@jod/design-system/icons';
 import React, { type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MdSearch, MdTune } from 'react-icons/md';
 import { useLoaderData, useNavigate } from 'react-router';
 import { LoaderData } from './loader';
 import TagFilterList from './TagFilterList';
@@ -80,9 +80,10 @@ const Search = () => {
           <Button
             label={t('search.button')}
             variant="accent"
+            serviceVariant="ohjaaja"
             form="search"
             iconSide="right"
-            icon={<MdSearch size={24} />}
+            icon={<JodSearch />}
           />
         </form>
 
@@ -97,9 +98,8 @@ const Search = () => {
             !tagsLoading &&
             totalCount > 0 && (
               <ButtonMenu
-                className=""
                 triggerLabel={t('search.filter')}
-                triggerIcon={<MdTune size={18} />}
+                triggerIcon={<JodSettings size={18} />}
                 menuClassName="right-0"
               >
                 <TagFilterList

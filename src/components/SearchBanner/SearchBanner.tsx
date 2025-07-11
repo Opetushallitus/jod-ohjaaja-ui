@@ -1,8 +1,8 @@
 import { getSearchUrl } from '@/utils/navigation';
 import { Button, InputField, Spinner } from '@jod/design-system';
+import { JodSearch } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { MdSearch } from 'react-icons/md';
 import { useNavigate } from 'react-router';
 
 export const SearchBanner = () => {
@@ -42,7 +42,7 @@ export const SearchBanner = () => {
             variant="white"
             form="search"
             iconSide="right"
-            icon={isSearching ? <Spinner size={24} color="accent" /> : <MdSearch size={24} />}
+            icon={isSearching ? <Spinner size={24} color="accent" /> : <JodSearch />}
             className="ds:text-button-sm"
           />
         </form>

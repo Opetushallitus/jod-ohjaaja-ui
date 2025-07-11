@@ -2,9 +2,9 @@ import { components } from '@/api/schema';
 import { useLoginLink } from '@/hooks/useLoginLink';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import { PopupList, PopupListItem } from '@jod/design-system';
+import { JodCaretDown, JodCaretUp, JodUser } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { MdExpandLess, MdExpandMore, MdPersonOutline } from 'react-icons/md';
 import { NavLink, useLoaderData, useLocation } from 'react-router';
 
 interface UserButtonProps {
@@ -45,11 +45,11 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
         className="flex gap-2 justify-center items-center select-none cursor-pointer"
       >
         <span className="size-7 flex justify-center items-center">
-          <MdPersonOutline size={24} />
+          <JodUser />
         </span>
         <span className="py-3 whitespace-nowrap">{fullName}</span>
         <span className="size-7 flex justify-center items-center">
-          {userMenuOpen ? <MdExpandLess size={24} /> : <MdExpandMore size={24} />}
+          {userMenuOpen ? <JodCaretUp /> : <JodCaretDown />}
         </span>
       </button>
       {userMenuOpen && (
@@ -80,7 +80,7 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
       }}
     >
       <span className="size-7 flex justify-center items-center">
-        <MdPersonOutline size={24} />
+        <JodUser />
       </span>
       <span className="py-3 pr-2 whitespace-nowrap">{t('login')}</span>
     </a>
