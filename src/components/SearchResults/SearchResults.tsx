@@ -77,6 +77,7 @@ export const SearchResults = ({
             totalItems={totalCount}
             siblingCount={5}
             onPageChange={handleOnPageChange}
+            serviceVariant="ohjaaja"
             translations={{
               nextTriggerLabel: t('pagination.next'),
               prevTriggerLabel: t('pagination.previous'),

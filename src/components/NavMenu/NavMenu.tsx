@@ -1,33 +1,18 @@
 import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
 import { langLabels, supportedLanguageCodes } from '@/i18n/config';
-import { ExternalLinkSection, LinkComponent, NavigationMenu } from '@jod/design-system';
+import { ExternalLinkSection, LinkComponent, type MenuSection, NavigationMenu } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import { useMenuRoutes } from './menuRoutes';
 
-const FrontPageLink = ({ children, className }: LinkComponent) => {
-  // Navigate to the landing page
+const PortalLink = ({ children, className }: LinkComponent) => {
   return (
     <a href="/" className={className}>
       {children}
     </a>
   );
 };
-
-const LogoLink = ({
-  to,
-  className,
-  children,
-}: {
-  to: object | string;
-  className?: string;
-  children: React.ReactNode;
-}) => (
-  <Link to={to} className={className}>
-    {children}
-  </Link>
-);
 
 const LanguageSelectionLinkComponent = (generateLocalizedPath: (langCode: string) => string, langCode: string) => {
   const LanguageSelectionLink = (props: LinkComponent) => {
@@ -52,19 +37,35 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
           label: t('navigation.external.yksilo.label'),
           url: t('navigation.external.yksilo.url'),
           description: t('navigation.external.yksilo.description'),
-          accentColor: '#85C4EC',
+          accentColor: '#006DB3',
         },
         {
           label: t('navigation.external.tietopalvelu.label'),
           url: t('navigation.external.tietopalvelu.url'),
           description: t('navigation.external.tietopalvelu.description'),
-          accentColor: '#EBB8E1',
+          accentColor: '#AD4298',
+        },
+      ],
+    },
+    {
+      title: t('navigation.extra.title'),
+      linkItems: [
+        {
+          label: t('navigation.extra.urataidot.label'),
+          url: t('navigation.extra.urataidot.url'),
+        },
+        {
+          label: t('navigation.extra.palveluhakemisto.label'),
+          url: t('navigation.extra.palveluhakemisto.url'),
         },
       ],
     },
   ];
 
-  const menuItems = useMenuRoutes(onClose);
+  const menuSection: MenuSection = {
+    title: t('navigation.menu-section-title'),
+    linkItems: useMenuRoutes(onClose),
+  };
 
   const getLanguageSelectionItems = React.useCallback(() => {
     return supportedLanguageCodes.map((code) => ({
@@ -79,19 +80,17 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
   return (
     <NavigationMenu
       open={open}
-      accentColor="#66CBD1"
-      FrontPageLinkComponent={FrontPageLink}
-      backLabel={t('back')}
-      menuItems={menuItems}
+      PortalLinkComponent={PortalLink}
+      menuSection={menuSection}
       ariaCloseMenu={t('close-menu')}
       openSubMenuLabel={t('open-submenu')}
-      frontPageLinkLabel={t('front-page')}
+      portalLinkLabel={t('competency-path-portal')}
       onClose={onClose}
-      logo={{ to: `/${language}`, language, srText: t('osaamispolku') }}
-      logoLink={LogoLink}
       selectedLanguage={language}
       languageSelectionItems={languageSelectionItems}
       externalLinkSections={externalLinkSections}
+      languageSelectionTitle={t('language-selection')}
+      serviceVariant="ohjaaja"
     />
   );
 };

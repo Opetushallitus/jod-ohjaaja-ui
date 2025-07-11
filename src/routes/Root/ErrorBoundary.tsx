@@ -23,7 +23,6 @@ const ErrorBoundary = () => {
           icon={<MdHome size={24} />}
           iconSide="left"
           label={t('return-home')}
-          size="md"
           variant="white"
           /* eslint-disable-next-line react/no-unstable-nested-components */
           LinkComponent={({ children }: { children: React.ReactNode }) => <a href="/">{children}</a>}
@@ -32,7 +31,6 @@ const ErrorBoundary = () => {
           icon={<MdOutlinePerson size={24} />}
           iconSide="left"
           label={t('login')}
-          size="md"
           variant="white"
           /* eslint-disable-next-line react/no-unstable-nested-components */
           LinkComponent={({ children }: { children: React.ReactNode }) => <a href={loginLink}>{children}</a>}

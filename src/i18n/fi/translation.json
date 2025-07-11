@@ -13,6 +13,7 @@
     "prev": "Edellinen sivu"
   },
   "close-menu": "Sulje valikko",
+  "competency-path-portal": "Osaamispolkuportaali",
   "content-details": {
     "additional-content": "Lisätietoja",
     "date-created": "Luotu:",
@@ -50,7 +51,6 @@
     "more-info-title": "Haluatko tietää lisää Osaamispolusta?"
   },
   "front-page": "Etusivu",
-  "front-page-navigation": "Ohjaajan osion etusivu",
   "home": {
     "best-matching": "Sinua voisi kiinnostaa",
     "card-1-content": "Palvelusta löydät uraohjaustyösi tueksi ajantasaista ja laadukasta tietoa ja menetelmiä ja omaa osaamistasi vahvistavia materiaaleja.",
@@ -66,6 +66,7 @@
     "new-content": "Uudet sisällöt",
     "popular-content": "Suositut sisällöt"
   },
+  "language-selection": "Käyttökieli",
   "link-copied": "Linkki kopioitu!",
   "link-copy-failed": "Linkin kopiointi epäonnistui",
   "log-in-to-the-service": "Kirjaudu palveluun",
@@ -80,13 +81,25 @@
         "label": "Tietopalvelu",
         "url": "/tietopalvelu/fi"
       },
-      "title": "Osaamispolun sisältökokonaisuudet",
+      "title": "Muut sisältökokonaisuudet",
       "yksilo": {
-        "description": "Henkilökohtainen osaamispolkusi",
+        "description": "Henkilökohtainen osaamispolku",
         "label": "Osaamispolkuni",
         "url": "/yksilo/fi"
       }
-    }
+    },
+    "extra": {
+      "palveluhakemisto": {
+        "label": "Palveluhakemisto",
+        "url": "https://www.suomi.fi/palveluhakemisto/osaamispolku"
+      },
+      "title": "Tukea pohdintaan",
+      "urataidot": {
+        "label": "Urataitojen itsearviointi",
+        "url": "/urataidot/fi"
+      }
+    },
+    "menu-section-title": "Ohjaajan osio"
   },
   "no-match": {
     "description": "Hakemaasi sivua ei löytynyt.",
@@ -114,9 +127,9 @@
         "description": "Voit täydentää omia tietojasi alla. Näytämme tietosi muille käyttäjille keskustelujen yhteydessä. Tietojen täydentäminen on vapaaehtoista.",
         "title": "Tietoa minusta"
       },
+      "title": "Omat tiedot",
       "workplace": {
         "label": "Valitse työskentelypaikkasi",
-        "placeholder": "Valitse",
         "option1": "Oppilaitos / perusaste",
         "option2": "Oppilaitos / toinen aste",
         "option3": "Oppilaitos / korkeakoulu",
@@ -124,9 +137,9 @@
         "option5": "Työllisyyspalvelut valtio tai kunta",
         "option6": "Kolmas sektori",
         "option7": "Yksityinen",
-        "option8": "Muu"
-      },
-      "title": "Omat tiedot"
+        "option8": "Muu",
+        "placeholder": "Valitse"
+      }
     },
     "favorites": {
       "description": "Suosikeiksi tallentamasi artikkelisisällöt löytyvät täältä. Voit tallentaa suosikkeja artikkelinostoista tai artikkelien sivuilta. Voit poistaa tallennetun suosikin tyhjentämällä valinnan.",

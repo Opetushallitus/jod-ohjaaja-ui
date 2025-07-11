@@ -98,7 +98,7 @@ const SettingsRow = ({ title, description, isSelected, onChange }: SettingsRowPr
       <h4 className="text-heading-4 mb-2">{title}</h4>
       <p className="text-body-md">{description}</p>
     </div>
-    <Toggle variant="ohjaaja" ariaLabel={title} onChange={onChange} checked={isSelected}></Toggle>
+    <Toggle serviceVariant="ohjaaja" ariaLabel={title} onChange={onChange} checked={isSelected}></Toggle>
   </div>
 );
 
