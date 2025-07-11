@@ -1,6 +1,6 @@
 import { IconButton, tidyClasses } from '@jod/design-system';
+import { JodClose } from '@jod/design-system/icons';
 import React from 'react';
-import { MdClose } from 'react-icons/md';
 
 interface ButtonMenuProps {
   triggerIcon: React.ReactNode;
@@ -43,7 +43,7 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
           <div className="flex flex-row items-center justify-between mb-5">
             <p className="text-body-sm tex">{triggerLabel}</p>
             <button onClick={() => setMenuOpen(false)} className="cursor-pointer">
-              <MdClose size={24} className="text-secondary-gray" />
+              <JodClose className="text-secondary-gray" />
             </button>
           </div>
           {children}

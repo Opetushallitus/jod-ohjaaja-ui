@@ -5,15 +5,15 @@ import { copyToClipboard } from '@/utils/clipboard';
 import { getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { tidyClasses as tc } from '@jod/design-system';
-import { useTranslation } from 'react-i18next';
 import {
-  MdFavorite,
-  MdFavoriteBorder,
-  MdOutlineFileDownload,
-  MdOutlineLink,
-  MdOutlinePrint,
-  MdOutlineShare,
-} from 'react-icons/md';
+  JodDownload,
+  JodFavorite,
+  JodFavoriteFilled,
+  JodOpenInNew,
+  JodPrint,
+  JodShare,
+} from '@jod/design-system/icons';
+import { useTranslation } from 'react-i18next';
 import { Link, useLoaderData } from 'react-router';
 import { useShallow } from 'zustand/react/shallow';
 import { LoaderData } from './loader';
@@ -131,9 +131,9 @@ const ContentDetails = () => {
                 label={isFavorite ? t('remove-from-favorites') : t('add-to-favorites')}
                 icon={
                   isFavorite ? (
-                    <MdFavorite aria-hidden size={24} className="text-accent" />
+                    <JodFavoriteFilled aria-hidden className="text-accent" />
                   ) : (
-                    <MdFavoriteBorder aria-hidden size={24} className="text-accent" />
+                    <JodFavorite aria-hidden className="text-accent" />
                   )
                 }
                 onClick={handleFavoriteClick}
@@ -141,15 +141,11 @@ const ContentDetails = () => {
             )}
             <ActionButton
               label={t('share')}
-              icon={<MdOutlineShare size={24} className="text-accent" />}
+              icon={<JodShare className="text-accent" />}
               onClick={() => copyToClipboard(window.location.href)}
             />
             {!!window.print && (
-              <ActionButton
-                label={t('print')}
-                icon={<MdOutlinePrint size={24} className="text-accent" />}
-                onClick={doPrint}
-              />
+              <ActionButton label={t('print')} icon={<JodPrint className="text-accent" />} onClick={doPrint} />
             )}
           </div>
         </div>
@@ -157,7 +153,7 @@ const ContentDetails = () => {
 
         <DocumentsAndLinks documents={documents} links={links} />
         {keywords.length > 0 && (
-          <ul className="text-attrib-value flex flex-row divide-x flex-wrap pt-3 text-accent ">
+          <ul className="text-attrib-value flex flex-row divide-x flex-wrap pt-3 text-accent">
             {keywords.map((tag) => (
               <li key={tag.id} className="px-2 first:pl-0 last:pr-0 border-border-gray">
                 <Link to={getSearchUrl(t, language, [`${tag.id}`])}>{tag.name}</Link>
@@ -184,7 +180,7 @@ const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
             target="_blank"
             className="flex text-heading-4 text-accent items-center gap-3 ml-4"
           >
-            {document.title} <MdOutlineFileDownload size={20} />
+            {document.title} <JodDownload size={20} />
           </a>
         ))}
         {links.map((link) => (
@@ -195,7 +191,7 @@ const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
             rel="external noopener noreferrer"
             className="flex text-heading-4 text-accent items-center gap-3 ml-4"
           >
-            {link.text} <MdOutlineLink size={20} />
+            {link.text} <JodOpenInNew size={20} />
           </a>
         ))}
       </div>

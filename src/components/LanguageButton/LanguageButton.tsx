@@ -1,6 +1,6 @@
 import { langLabels } from '@/i18n/config';
+import { JodCaretDown, JodCaretUp, JodLanguage } from '@jod/design-system/icons';
 import { useTranslation } from 'react-i18next';
-import { MdExpandLess, MdExpandMore, MdLanguage } from 'react-icons/md';
 import { LanguageMenu } from '../LanguageMenu/LanguageMenu';
 
 interface LanguageButtonProps {
@@ -19,11 +19,11 @@ export const LanguageButton = ({ onClick, langMenuOpen, menuRef, onMenuBlur, onM
     <div className="relative">
       <button onClick={onClick} className="flex gap-2 justify-center items-center select-none cursor-pointer">
         <span className="size-7 flex justify-center items-center">
-          <MdLanguage size={24} />
+          <JodLanguage />
         </span>
         <span className="py-3 whitespace-nowrap">{langLabels[languageKey as keyof typeof langLabels]}</span>
         <span className="size-7 flex justify-center items-center">
-          {langMenuOpen ? <MdExpandLess size={24} /> : <MdExpandMore size={24} />}
+          {langMenuOpen ? <JodCaretUp /> : <JodCaretDown />}
         </span>
       </button>
       {langMenuOpen && (
