@@ -1,9 +1,9 @@
 import { type Category } from '@/types/cms-content';
 import { getLocale } from '@/utils/navigation';
 import { Accordion, Checkbox } from '@jod/design-system';
+import { JodCaretDown } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { MdOutlineExpandMore } from 'react-icons/md';
 
 interface TagFilterListProperties {
   tags: Category[];
@@ -71,7 +71,7 @@ const TagFilterList = ({
       {tags.length === 0 && emptyText && <p>{emptyText}</p>}
       {hasMore && (
         <button onClick={handleShowMore} className="flex items-center text-button-sm px-5 py-2 cursor-pointer">
-          {t('search.tag-list.show-more')} <MdOutlineExpandMore size={30} />
+          {t('search.tag-list.show-more')} <JodCaretDown size={30} />
         </button>
       )}
     </Wrapper>

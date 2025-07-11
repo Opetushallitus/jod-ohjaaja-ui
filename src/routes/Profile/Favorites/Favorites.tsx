@@ -9,15 +9,14 @@ import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { type Category, type StructuredContent } from '@/types/cms-content';
 import { isSort, type Sort } from '@/types/sort';
-
 import { filterArticlesByTags, getKeywords, groupArticlesByCategory, sortArticles } from '@/utils/cms';
 import { getMainCategory, getMainCategoryPath } from '@/utils/navigation-paths';
 import { RadioButton, RadioButtonGroup, useMediaQueries } from '@jod/design-system';
+import { JodArrowRight, JodSettings, JodSort } from '@jod/design-system/icons';
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { MdArrowForward, MdSort, MdTune } from 'react-icons/md';
 import { Link } from 'react-router';
 import { useShallow } from 'zustand/react/shallow';
 
@@ -129,7 +128,7 @@ const Favorites = () => {
         </p>
         {visibleArticlesByCategory && (
           <ButtonMenu
-            triggerIcon={<MdSort size={18} />}
+            triggerIcon={<JodSort size={18} />}
             triggerLabel={t('profile.favorites.sort.label')}
             className="justify-items-start lg:justify-items-end relative"
             menuClassName="left-0 lg:right-0"
@@ -147,10 +146,10 @@ const Favorites = () => {
         )}
         {!lg && visibleArticlesByCategory && (
           <ButtonMenu
-            triggerIcon={<MdTune size={18} />}
+            triggerIcon={<JodSettings size={18} />}
             triggerLabel={t('profile.favorites.filter')}
             className="justify-items-end relative"
-            menuClassName="right-0 "
+            menuClassName="right-0"
           >
             <TagFilterList
               tags={tags ?? []}
@@ -174,21 +173,21 @@ const Favorites = () => {
               to={`/${language}/${getMainCategoryPath(language, 0)}`}
               className="flex items-center gap-2 text-accent text-button-md"
             >
-              {getMainCategory(language, 0)?.title ?? ''} <MdArrowForward size={20} />
+              {getMainCategory(language, 0)?.title ?? ''} <JodArrowRight size={20} />
             </Link>
 
             <Link
               to={`/${language}/${getMainCategoryPath(language, 1)}`}
               className="flex items-center gap-2 text-accent text-button-md"
             >
-              {getMainCategory(language, 1)?.title ?? ''} <MdArrowForward size={20} />
+              {getMainCategory(language, 1)?.title ?? ''} <JodArrowRight size={20} />
             </Link>
 
             <Link
               to={`/${language}/${getMainCategoryPath(language, 2)}`}
               className="flex items-center gap-2 text-accent text-button-md"
             >
-              {getMainCategory(language, 2)?.title ?? ''} <MdArrowForward size={20} />
+              {getMainCategory(language, 2)?.title ?? ''} <JodArrowRight size={20} />
             </Link>
           </div>
         )}
