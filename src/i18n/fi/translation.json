@@ -13,6 +13,22 @@
     "prev": "Edellinen sivu"
   },
   "close-menu": "Sulje valikko",
+  "comments": {
+    "comment": {
+      "delete": {
+        "title": "Haluatko varmasti poistaa kommentin?",
+        "description": "Toimintoa ei voi peruuttaa",
+        "cancelText": "Peruuta",
+        "confirmText": "Poista kommentti",
+        "label": "Poista kommentti"
+      },
+      "placeholder": "Kirjoita kommentti",
+      "send": "Lähetä"
+    },
+    "description": "Voit kommentoida artikkelin sisältöä sisäänkirjautuneena. Kommentit näkyvät kaikille käyttäjille. Älä jaa kommenteissa henkilö- tai muuta yksityistä tietoa.",
+    "title": "Kommentoi sisältöä",
+    "noComments": "Ei vielä kommentteja."
+  },
   "competency-path-portal": "Osaamispolkuportaali",
   "content-details": {
     "additional-content": "Lisätietoja",

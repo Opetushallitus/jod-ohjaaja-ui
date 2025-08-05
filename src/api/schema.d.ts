@@ -58,6 +58,24 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/artikkeli/kommentit': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Finds all artikkelin kommentit */
+    get: operations['artikkelinKommenttiFindAllArtikkelinKommentit'];
+    put?: never;
+    /** Creates a new artikkelin kommentti */
+    post: operations['artikkelinKommenttiCreateArtikkelinKommentti'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/artikkeli/katselu/{artikkeliId}': {
     parameters: {
       query?: never;
@@ -125,11 +143,30 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/artikkeli/kommentit/{id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Deletes an artikkelin kommentti by ID */
+    delete: operations['artikkelinKommenttiDeleteArtikkelinKommentti'];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
     OhjaajaDto: {
+      /** Format: uuid */
+      id?: string;
       /** @enum {string} */
       tyoskentelyPaikka?:
         | 'PERUSASTE'
@@ -157,12 +194,25 @@ export interface components {
       /** Format: date-time */
       readonly luotu?: string;
     };
+    ArtikkelinKommenttiDto: {
+      /** Format: uuid */
+      readonly id?: string;
+      /** Format: int64 */
+      artikkeliId: number;
+      /** Format: uuid */
+      readonly ohjaajaId?: string;
+      kommentti: string;
+      /** Format: date-time */
+      readonly luotu?: string;
+    };
     CsrfTokenDto: {
       token: string;
       headerName: string;
       parameterName: string;
     };
     OhjaajaCsrfDto: {
+      /** Format: uuid */
+      id?: string;
       etunimi?: string;
       sukunimi?: string;
       csrf: components['schemas']['CsrfTokenDto'];
@@ -177,11 +227,31 @@ export interface components {
         | 'YKSITYINEN'
         | 'MUU';
     };
+    ArtikkelinKommenttiExportDto: {
+      /** Format: uuid */
+      id?: string;
+      /** Format: date-time */
+      luotu?: string;
+      /** Format: int64 */
+      artikkeliId?: number;
+      kommentti?: string;
+    };
     OhjaajaExportDto: {
       /** Format: uuid */
       id?: string;
+      /** @enum {string} */
+      tyoskentelyPaikka?:
+        | 'PERUSASTE'
+        | 'TOINEN_ASTE'
+        | 'KORKEAKOULU'
+        | 'AIKUISKOULUTUS'
+        | 'TYOLLISYYSPALVELUT'
+        | 'KOLMAS_SEKTORI'
+        | 'YKSITYINEN'
+        | 'MUU';
       suosikit?: components['schemas']['OhjaajanSuosikkiExportDto'][];
       kiinnostukset?: components['schemas']['OhjaajanKiinnostusExportDto'][];
+      kommentit?: components['schemas']['ArtikkelinKommenttiExportDto'][];
     };
     OhjaajanKiinnostusExportDto: {
       /** Format: uuid */
@@ -201,6 +271,19 @@ export interface components {
     };
     SivuDtoLong: {
       sisalto: number[];
+      /**
+       * Format: int64
+       * @example 30
+       */
+      maara: number;
+      /**
+       * Format: int32
+       * @example 3
+       */
+      sivuja: number;
+    };
+    SivuDtoArtikkelinKommenttiDto: {
+      sisalto: components['schemas']['ArtikkelinKommenttiDto'][];
       /**
        * Format: int64
        * @example 30
@@ -391,6 +474,52 @@ export interface operations {
       };
     };
   };
+  artikkelinKommenttiFindAllArtikkelinKommentit: {
+    parameters: {
+      query: {
+        artikkeliId: number;
+        sivu: number;
+        koko: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['SivuDtoArtikkelinKommenttiDto'];
+        };
+      };
+    };
+  };
+  artikkelinKommenttiCreateArtikkelinKommentti: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ArtikkelinKommenttiDto'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
   artikkelinKatseluAdd: {
     parameters: {
       query?: never;
@@ -473,6 +602,26 @@ export interface operations {
         content: {
           'application/json': components['schemas']['SivuDtoLong'];
         };
+      };
+    };
+  };
+  artikkelinKommenttiDeleteArtikkelinKommentti: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
