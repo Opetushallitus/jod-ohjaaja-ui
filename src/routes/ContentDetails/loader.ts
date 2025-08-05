@@ -6,7 +6,7 @@ import { LoaderFunction } from 'react-router';
 const getContentDetailsLoader = (contentId: number) =>
   (async ({ context }) => {
     const [data] = await Promise.all([getContentByArticleId(contentId), addArtikkelinKatselu(contentId)]);
-    return { data, isLoggedIn: !!context };
+    return { data, isLoggedIn: !!context, userId: context?.id };
   }) satisfies LoaderFunction<components['schemas']['OhjaajaCsrfDto'] | null>;
 
 export type LoaderData = Awaited<ReturnType<ReturnType<typeof getContentDetailsLoader>>>;

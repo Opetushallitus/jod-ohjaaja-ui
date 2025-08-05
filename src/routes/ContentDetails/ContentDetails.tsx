@@ -1,4 +1,5 @@
 import { MainLayout } from '@/components';
+import Comments from '@/components/Comments/Comments';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { copyToClipboard } from '@/utils/clipboard';
@@ -48,7 +49,7 @@ interface DocumentsAndLinksProps {
 }
 
 const ContentDetails = () => {
-  const { data, isLoggedIn } = useLoaderData<LoaderData>();
+  const { data, isLoggedIn, userId } = useLoaderData<LoaderData>();
   const {
     i18n: { language },
     t,
@@ -162,6 +163,8 @@ const ContentDetails = () => {
           </ul>
         )}
       </div>
+
+      {data.id && <Comments articleId={data.id} userId={userId} />}
     </MainLayout>
   );
 };
