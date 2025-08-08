@@ -46,3 +46,17 @@ export const deleteArtikkelinKommentti = async (id: string) => {
   }
   throw new Error('Failed to delete comment');
 };
+
+export const ilmiannaArtikkelinKommentti = async (id: string) => {
+  const { error } = await client.POST('/api/artikkeli/kommentit/{id}/ilmianto', {
+    params: {
+      path: {
+        id,
+      },
+    },
+  });
+  if (!error) {
+    return true;
+  }
+  throw new Error('Failed to report comment');
+};

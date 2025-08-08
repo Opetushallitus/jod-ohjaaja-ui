@@ -76,6 +76,22 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/artikkeli/kommentit/{id}/ilmianto': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations['artikkelinKommenttiIlmiannaKommentti'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/artikkeli/katselu/{artikkeliId}': {
     parameters: {
       query?: never;
@@ -510,6 +526,28 @@ export interface operations {
         'application/json': components['schemas']['ArtikkelinKommenttiDto'];
       };
     };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ArtikkelinKommenttiDto'];
+        };
+      };
+    };
+  };
+  artikkelinKommenttiIlmiannaKommentti: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
     responses: {
       /** @description OK */
       200: {
