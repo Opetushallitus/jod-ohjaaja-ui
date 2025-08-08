@@ -17,6 +17,7 @@ describe('Comment', () => {
     timestamp: '2023-01-01T12:00:00',
     isOwnComment: false,
     deleteComment: vi.fn(),
+    reportComment: vi.fn(),
   };
 
   it('renders comment with correct content', () => {

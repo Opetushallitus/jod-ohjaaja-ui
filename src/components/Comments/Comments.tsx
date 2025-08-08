@@ -1,4 +1,9 @@
-import { addArtikkelinKommentti, deleteArtikkelinKommentti, getArtikkelinKommentit } from '@/api/artikkelinKommentit';
+import {
+  addArtikkelinKommentti,
+  deleteArtikkelinKommentti,
+  getArtikkelinKommentit,
+  ilmiannaArtikkelinKommentti,
+} from '@/api/artikkelinKommentit';
 import { components } from '@/api/schema';
 import { Spinner } from '@jod/design-system';
 import React from 'react';
@@ -86,6 +91,14 @@ const Comments = ({ articleId, userId }: CommentsProps) => {
     }
   };
 
+  const reportComment = async (commentId: string) => {
+    try {
+      await ilmiannaArtikkelinKommentti(commentId);
+    } catch (error) {
+      console.error('Error reporting comment:', error);
+    }
+  };
+
   React.useEffect(() => {
     fetchComments(page);
   }, [fetchComments, page]);
@@ -109,6 +122,7 @@ const Comments = ({ articleId, userId }: CommentsProps) => {
                 timestamp={comment.luotu}
                 isOwnComment={comment.ohjaajaId === userId}
                 deleteComment={deleteComment}
+                reportComment={reportComment}
                 ref={index === comments.length - 1 ? lastPostElementRef : null}
               />
             );

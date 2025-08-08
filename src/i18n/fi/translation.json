@@ -16,14 +16,21 @@
   "comments": {
     "comment": {
       "delete": {
-        "title": "Haluatko varmasti poistaa kommentin?",
-        "description": "Toimintoa ei voi peruuttaa",
         "cancelText": "Peruuta",
         "confirmText": "Poista kommentti",
-        "label": "Poista kommentti"
+        "description": "Toimintoa ei voi peruuttaa",
+        "label": "Poista kommentti",
+        "title": "Haluatko varmasti poistaa kommentin?"
       },
       "placeholder": "Kirjoita kommentti",
-      "send": "Lähetä"
+      "send": "Lähetä",
+      "report": {
+        "cancelText": "Peruuta",
+        "confirmText": "Vahvista ilmianto",
+        "description": "Tieto asiattomasta sisällöstä välitetään sivuston ylläpitäjälle",
+        "label": "Ilmianna asiaton kommentti",
+        "title": "Ilmianna asiaton kommentti"
+      }
     },
     "description": "Voit kommentoida artikkelin sisältöä sisäänkirjautuneena. Kommentit näkyvät kaikille käyttäjille. Älä jaa kommenteissa henkilö- tai muuta yksityistä tietoa.",
     "title": "Kommentoi sisältöä",

@@ -1,4 +1,5 @@
 import { ConfirmDialog, IconButton } from '@jod/design-system';
+import { JodBlock } from '@jod/design-system/icons';
 import { type RefAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import PatternAvatar from '../PatternAvatar/PatternAvatar';
@@ -10,9 +11,19 @@ interface CommentProps extends RefAttributes<HTMLDivElement> {
   timestamp: string;
   isOwnComment: boolean;
   deleteComment: (id: string) => void;
+  reportComment: (id: string) => void;
 }
 
-const Comment = ({ commentId, author, comment, timestamp, isOwnComment, deleteComment, ref }: CommentProps) => {
+const Comment = ({
+  commentId,
+  author,
+  comment,
+  timestamp,
+  isOwnComment,
+  deleteComment,
+  reportComment,
+  ref,
+}: CommentProps) => {
   const { t } = useTranslation();
 
   const formattedTimestamp = new Date(timestamp)
@@ -56,7 +67,22 @@ const Comment = ({ commentId, author, comment, timestamp, isOwnComment, deleteCo
             )}
           </ConfirmDialog>
         ) : (
-          <div></div>
+          <ConfirmDialog
+            title={t('comments.comment.report.title')}
+            description={t('comments.comment.report.description')}
+            onConfirm={() => reportComment(commentId)}
+            cancelText={t('comments.comment.report.cancelText')}
+            confirmText={t('comments.comment.report.confirmText')}
+          >
+            {(showReportModal) => (
+              <IconButton
+                icon={<JodBlock />}
+                bgColor="gray"
+                onClick={showReportModal}
+                label={t('comments.comment.report.label')}
+              />
+            )}
+          </ConfirmDialog>
         )}
       </div>
     </div>
