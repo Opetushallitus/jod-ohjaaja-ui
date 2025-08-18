@@ -131,6 +131,7 @@ const getLoader = (navigationTreeItem: NavigationTreeItem) => {
     case 'CategoryMain':
       return withOhjaajaContext(getCategoryContentLoader(navigationTreeItem.categoryId ?? 0), false);
     case 'CategoryListing':
+    case 'StudyProgramsListing':
       return withOhjaajaContext(getCategoryContentLoader(navigationTreeItem.categoryId ?? 0), false);
     case 'Article':
       return withOhjaajaContext(getContentDetailsLoader(navigationTreeItem.articleId ?? 0), false);
@@ -142,6 +143,7 @@ const getElement = (navigationTreeItem: NavigationTreeItem) => {
     case 'CategoryMain':
       return <CategoryMain />;
     case 'CategoryListing':
+    case 'StudyProgramsListing':
       return <CategoryListing />;
     case 'Article':
       return <ContentDetails />;
