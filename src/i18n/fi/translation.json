@@ -12,6 +12,18 @@
     "next": "Seuraava sivu",
     "prev": "Edellinen sivu"
   },
+  "chatbot": {
+    "agent-name": "Neuvontabotti",
+    "close": "Sulje",
+    "erase-chat-history": "Tyhjennä keskusteluhistoria",
+    "error-message": "Tapahtui jokin virhe.",
+    "greeting": "Hei, olen Osaamispolun neuvontabotti.",
+    "header": "Neuvontabotti",
+    "open-window-text": "Kysy neuvoa?",
+    "save-chat-as-csv": "Tallenna keskustelu CSV-tiedostona",
+    "text-input-helper": "Ole hyvä ja odota edellisen vastauksen valmistumista.",
+    "text-input-placeholder": "Kirjoita kysymyksesi tähän"
+  },
   "close-menu": "Sulje valikko",
   "comments": {
     "comment": {
@@ -23,18 +35,18 @@
         "title": "Haluatko varmasti poistaa kommentin?"
       },
       "placeholder": "Kirjoita kommentti",
-      "send": "Lähetä",
       "report": {
         "cancelText": "Peruuta",
         "confirmText": "Vahvista ilmianto",
         "description": "Tieto asiattomasta sisällöstä välitetään sivuston ylläpitäjälle",
         "label": "Ilmianna asiaton kommentti",
         "title": "Ilmianna asiaton kommentti"
-      }
+      },
+      "send": "Lähetä"
     },
     "description": "Voit kommentoida artikkelin sisältöä sisäänkirjautuneena. Kommentit näkyvät kaikille käyttäjille. Älä jaa kommenteissa henkilö- tai muuta yksityistä tietoa.",
-    "title": "Kommentoi sisältöä",
-    "noComments": "Ei vielä kommentteja."
+    "noComments": "Ei vielä kommentteja.",
+    "title": "Kommentoi sisältöä"
   },
   "competency-path-portal": "Osaamispolkuportaali",
   "content-details": {
