@@ -1,5 +1,5 @@
 import { MainLayout } from '@/components';
-import Comments from '@/components/Comments/Comments';
+import { useFeature } from '@/hooks/useFeatures/useFeatures';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { copyToClipboard } from '@/utils/clipboard';
@@ -14,6 +14,7 @@ import {
   JodPrint,
   JodShare,
 } from '@jod/design-system/icons';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLoaderData } from 'react-router';
 import { useShallow } from 'zustand/react/shallow';
@@ -43,6 +44,8 @@ export const ActionButton = ({ label, icon, className = '', onClick, ...rest }: 
   );
 };
 
+const Comments = React.lazy(() => import('@/components/Comments/Comments'));
+
 interface DocumentsAndLinksProps {
   documents: ContentDocument[];
   links: ContentLink[];
@@ -54,6 +57,8 @@ const ContentDetails = () => {
     i18n: { language },
     t,
   } = useTranslation();
+
+  const commentsEnabled = useFeature('COMMENTS');
 
   const [suosikit, toggleSuosikki] = useSuosikitStore(useShallow((state) => [state.suosikit, state.toggleSuosikki]));
 
@@ -164,7 +169,7 @@ const ContentDetails = () => {
         )}
       </div>
 
-      {data.id && <Comments articleId={data.id} userId={userId} />}
+      {data.id && commentsEnabled && <Comments articleId={data.id} userId={userId} />}
     </MainLayout>
   );
 };
