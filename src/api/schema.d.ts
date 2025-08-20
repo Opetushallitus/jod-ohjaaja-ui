@@ -125,6 +125,22 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/feature/{feature}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['publicFeatureToggleIsFeatureEnabled'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/artikkeli/viimeksi-katsellut': {
     parameters: {
       query?: never;
@@ -284,6 +300,11 @@ export interface components {
       luotu?: string;
       /** Format: int64 */
       artikkeliId?: number;
+    };
+    FeatureFlagDto: {
+      /** @enum {string} */
+      feature?: 'COMMENTS';
+      enabled?: boolean;
     };
     SivuDtoLong: {
       sisalto: number[];
@@ -594,6 +615,28 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['OhjaajaExportDto'];
+        };
+      };
+    };
+  };
+  publicFeatureToggleIsFeatureEnabled: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        feature: 'COMMENTS';
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['FeatureFlagDto'];
         };
       };
     };
