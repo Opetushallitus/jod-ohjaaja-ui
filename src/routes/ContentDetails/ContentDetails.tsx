@@ -114,24 +114,29 @@ const ContentDetails = () => {
 
   return (
     <MainLayout>
-      <div className="bg-white p-7 col-span-2 flex flex-col sm:gap-7 gap-6">
-        <h1 className="text-heading-1 hyphens-auto">{data.title}</h1>
-        <div className="flex">
+      <div className="bg-white p-7 col-span-2 flex flex-col sm:gap-7 gap-6" data-testid="content-details">
+        <h1 className="text-heading-1 hyphens-auto" data-testid="content-title">
+          {data.title}
+        </h1>
+        <div className="flex" data-testid="content-created">
           <div className="-mt-6 mx-1">{t('content-details.date-created')}</div>
           <div className="-mt-6 mx-3">{dateCreated}</div>
         </div>
-        <div className="flex">
+        <div className="flex" data-testid="content-modified">
           <div className="-mt-7 mx-1">{t('content-details.date-modified')}</div>
           <div className="-mt-7 mx-3">{dateModified}</div>
         </div>
         <div className="flex sm:flex-row flex-col sm:gap-6 gap-5 space-between">
           {image && (
-            <div>
+            <div data-testid="content-image">
               <img src={image.contentUrl} alt={image.description} />
             </div>
           )}
 
-          <div className="flex sm:flex-col flex-row sm:justify-start justify-end flex-1 place-items-end gap-3 print:hidden">
+          <div
+            className="flex sm:flex-col flex-row sm:justify-start justify-end flex-1 place-items-end gap-3 print:hidden"
+            data-testid="content-actions"
+          >
             {isLoggedIn && (
               <ActionButton
                 label={isFavorite ? t('remove-from-favorites') : t('add-to-favorites')}
@@ -143,26 +148,44 @@ const ContentDetails = () => {
                   )
                 }
                 onClick={handleFavoriteClick}
+                data-testid="action-favorite"
               ></ActionButton>
             )}
             <ActionButton
               label={t('share')}
               icon={<JodShare className="text-accent" />}
               onClick={() => copyToClipboard(window.location.href)}
+              data-testid="action-share"
             />
             {!!window.print && (
-              <ActionButton label={t('print')} icon={<JodPrint className="text-accent" />} onClick={doPrint} />
+              <ActionButton
+                label={t('print')}
+                icon={<JodPrint className="text-accent" />}
+                onClick={doPrint}
+                data-testid="action-print"
+              />
             )}
           </div>
         </div>
-        {content && <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: content }} />}
+        {content && (
+          <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: content }} data-testid="content-body" />
+        )}
 
         <DocumentsAndLinks documents={documents} links={links} />
         {keywords.length > 0 && (
-          <ul className="text-attrib-value flex flex-row divide-x flex-wrap pt-3 text-accent">
+          <ul
+            className="text-attrib-value flex flex-row divide-x flex-wrap pt-3 text-accent"
+            data-testid="content-tags"
+          >
             {keywords.map((tag) => (
-              <li key={tag.id} className="px-2 first:pl-0 last:pr-0 border-border-gray">
-                <Link to={getSearchUrl(t, language, [`${tag.id}`])}>{tag.name}</Link>
+              <li
+                key={tag.id}
+                className="px-2 first:pl-0 last:pr-0 border-border-gray"
+                data-testid={`content-tag-${tag.id}`}
+              >
+                <Link to={getSearchUrl(t, language, [`${tag.id}`])} data-testid={`content-tag-link-${tag.id}`}>
+                  {tag.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -181,25 +204,29 @@ const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
   const { t } = useTranslation();
   return (
     hasDocumentsOrLinks && (
-      <div className="w-full bg-bg-gray p-5 rounded-sm">
-        <h3 className="text-heading-4">{t('content-details.additional-content')}</h3>
+      <div className="w-full bg-bg-gray p-5 rounded-sm" data-testid="content-attachments">
+        <h3 className="text-heading-4" data-testid="content-attachments-title">
+          {t('content-details.additional-content')}
+        </h3>
         {documents.map((document) => (
           <a
             key={document.id}
             href={document.contentUrl}
             target="_blank"
             className="flex text-heading-4 text-accent items-center gap-3 ml-4"
+            data-testid={`content-document-${document.id}`}
           >
             {document.title} <JodDownload size={20} />
           </a>
         ))}
-        {links.map((link) => (
+        {links.map((link, index) => (
           <a
             key={link.url}
             href={link.url}
             target="_blank"
             rel="external noopener noreferrer"
             className="flex text-heading-4 text-accent items-center gap-3 ml-4"
+            data-testid={`content-link-${index + 1}`}
           >
             {link.text} <JodOpenInNew size={20} />
           </a>

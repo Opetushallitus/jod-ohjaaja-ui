@@ -42,7 +42,12 @@ export const SearchBar = ({ searchInputVisible, setSearchInputVisible }: SearchB
   const showSearchInput = sm || searchInputVisible;
 
   const searchForm = (
-    <form id="search" className="flex items-center gap-2 justify-end" onSubmit={handleSearch}>
+    <form
+      id="search"
+      className="flex items-center gap-2 justify-end"
+      onSubmit={handleSearch}
+      data-testid="searchbar-form"
+    >
       <SearchInput onChange={handleInputChange} value={searchValue} />
       <SearchButton form="search" isSearching={isSearching} />
     </form>
@@ -50,5 +55,11 @@ export const SearchBar = ({ searchInputVisible, setSearchInputVisible }: SearchB
 
   const toggleSearchButton = <SearchButton onClick={() => setSearchInputVisible(!searchInputVisible)} />;
 
-  return !hideSearch && <div className="print:hidden">{showSearchInput ? searchForm : toggleSearchButton}</div>;
+  return (
+    !hideSearch && (
+      <div className="print:hidden" data-testid="searchbar">
+        {showSearchInput ? searchForm : toggleSearchButton}
+      </div>
+    )
+  );
 };

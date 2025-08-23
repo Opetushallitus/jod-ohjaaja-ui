@@ -106,8 +106,10 @@ const Favorites = () => {
         lg && (
           <>
             {
-              <div className="bg-bg-gray-2 p-6 rounded">
-                <h3 className="text-heading-3-mobile sm:text-heading-3 mb-4">{t('search.tag-list.title')}</h3>
+              <div className="bg-bg-gray-2 p-6 rounded" data-testid="favorites-tag-sidebar">
+                <h3 className="text-heading-3-mobile sm:text-heading-3 mb-4" data-testid="favorites-tag-title">
+                  {t('search.tag-list.title')}
+                </h3>
                 <TagFilterList
                   tags={tags ?? []}
                   selectedTagIds={selectedTagIds}
@@ -121,80 +123,108 @@ const Favorites = () => {
         )
       }
     >
-      <title>{t('profile.favorites.title')}</title>
-      <h1 className="text-heading-1 mb-5">{t('profile.favorites.title')}</h1>
-      <p className="text-body-lg mb-5">{t('profile.favorites.description')}</p>
-      <div className="grid grid-cols-2 gap-5 mb-5">
-        <p className="text-body-md col-span-2 lg:col-span-1">
-          {t('profile.favorites.favorite-count', { count: suosikit.length })}
+      <div data-testid="favorites-route">
+        <title>{t('profile.favorites.title')}</title>
+        <h1 className="text-heading-1 mb-5" data-testid="favorites-title">
+          {t('profile.favorites.title')}
+        </h1>
+        <p className="text-body-lg mb-5" data-testid="favorites-description">
+          {t('profile.favorites.description')}
         </p>
-        {visibleArticlesByCategory && (
-          <ButtonMenu
-            triggerIcon={<JodSort size={18} />}
-            triggerLabel={t('profile.favorites.sort.label')}
-            className="justify-items-start lg:justify-items-end relative"
-            menuClassName="left-0 lg:right-0"
-          >
-            <div className="bg-bg-gray-2 px-6 pb-3 pt-0 rounded">
-              <RadioButtonGroup label="" value={sort} onChange={handleSelectSort}>
-                <RadioButton label={t('profile.favorites.sort.a-z')} value="a-z" />
-                <RadioButton label={t('profile.favorites.sort.z-a')} value="z-a" />
-                <RadioButton label={t('profile.favorites.sort.latest')} value="latest" />
-                <RadioButton label={t('profile.favorites.sort.oldest')} value="oldest" />
-                <RadioButton label={t('profile.favorites.sort.latest-added')} value="latest-added-to-favorites" />
-              </RadioButtonGroup>
+        <div className="grid grid-cols-2 gap-5 mb-5">
+          <p className="text-body-md col-span-2 lg:col-span-1" data-testid="favorites-count">
+            {t('profile.favorites.favorite-count', { count: suosikit.length })}
+          </p>
+          {visibleArticlesByCategory && (
+            <ButtonMenu
+              triggerIcon={<JodSort size={18} />}
+              triggerLabel={t('profile.favorites.sort.label')}
+              className="justify-items-start lg:justify-items-end relative"
+              menuClassName="left-0 lg:right-0"
+              data-testid="favorites-sort-menu"
+            >
+              <div className="bg-bg-gray-2 px-6 pb-3 pt-0 rounded">
+                <RadioButtonGroup label="" value={sort} onChange={handleSelectSort}>
+                  <RadioButton label={t('profile.favorites.sort.a-z')} value="a-z" data-testid="favorites-sort-a-z" />
+                  <RadioButton label={t('profile.favorites.sort.z-a')} value="z-a" data-testid="favorites-sort-z-a" />
+                  <RadioButton
+                    label={t('profile.favorites.sort.latest')}
+                    value="latest"
+                    data-testid="favorites-sort-latest"
+                  />
+                  <RadioButton
+                    label={t('profile.favorites.sort.oldest')}
+                    value="oldest"
+                    data-testid="favorites-sort-oldest"
+                  />
+                  <RadioButton
+                    label={t('profile.favorites.sort.latest-added')}
+                    value="latest-added-to-favorites"
+                    data-testid="favorites-sort-latest-added"
+                  />
+                </RadioButtonGroup>
+              </div>
+            </ButtonMenu>
+          )}
+          {!lg && visibleArticlesByCategory && (
+            <ButtonMenu
+              triggerIcon={<JodSettings size={18} />}
+              triggerLabel={t('profile.favorites.filter')}
+              className="justify-items-end relative"
+              menuClassName="right-0"
+              data-testid="favorites-filter-menu"
+            >
+              <TagFilterList
+                tags={tags ?? []}
+                selectedTagIds={selectedTagIds}
+                onTagSelectionChange={handleTagSelectionChange}
+                mode="accordion"
+              />
+            </ButtonMenu>
+          )}
+        </div>
+        <div data-testid="favorites-content">
+          {visibleArticlesByCategory ? (
+            Object.entries(visibleArticlesByCategory).map(([category, articles]) => (
+              <CategoryList
+                key={category}
+                category={category}
+                articles={articles}
+                data-testid={`favorites-category-${category}`}
+              />
+            ))
+          ) : (
+            <div className="flex flex-col gap-5">
+              <p>{t('profile.favorites.no-favorites')}</p>
+
+              <Link
+                to={`/${language}/${getMainCategoryPath(language, 0)}`}
+                className="flex items-center gap-2 text-accent text-button-md"
+                data-testid="favorites-link-category-0"
+              >
+                {getMainCategory(language, 0)?.title ?? ''} <JodArrowRight size={20} />
+              </Link>
+
+              <Link
+                to={`/${language}/${getMainCategoryPath(language, 1)}`}
+                className="flex items-center gap-2 text-accent text-button-md"
+                data-testid="favorites-link-category-1"
+              >
+                {getMainCategory(language, 1)?.title ?? ''} <JodArrowRight size={20} />
+              </Link>
+
+              <Link
+                to={`/${language}/${getMainCategoryPath(language, 2)}`}
+                className="flex items-center gap-2 text-accent text-button-md"
+                data-testid="favorites-link-category-2"
+              >
+                {getMainCategory(language, 2)?.title ?? ''} <JodArrowRight size={20} />
+              </Link>
             </div>
-          </ButtonMenu>
-        )}
-        {!lg && visibleArticlesByCategory && (
-          <ButtonMenu
-            triggerIcon={<JodSettings size={18} />}
-            triggerLabel={t('profile.favorites.filter')}
-            className="justify-items-end relative"
-            menuClassName="right-0"
-          >
-            <TagFilterList
-              tags={tags ?? []}
-              selectedTagIds={selectedTagIds}
-              onTagSelectionChange={handleTagSelectionChange}
-              mode="accordion"
-            />
-          </ButtonMenu>
-        )}
+          )}
+        </div>
+        {!lg && <SuggestNewContent />}
       </div>
-      <div>
-        {visibleArticlesByCategory ? (
-          Object.entries(visibleArticlesByCategory).map(([category, articles]) => (
-            <CategoryList key={category} category={category} articles={articles} />
-          ))
-        ) : (
-          <div className="flex flex-col gap-5">
-            <p>{t('profile.favorites.no-favorites')}</p>
-
-            <Link
-              to={`/${language}/${getMainCategoryPath(language, 0)}`}
-              className="flex items-center gap-2 text-accent text-button-md"
-            >
-              {getMainCategory(language, 0)?.title ?? ''} <JodArrowRight size={20} />
-            </Link>
-
-            <Link
-              to={`/${language}/${getMainCategoryPath(language, 1)}`}
-              className="flex items-center gap-2 text-accent text-button-md"
-            >
-              {getMainCategory(language, 1)?.title ?? ''} <JodArrowRight size={20} />
-            </Link>
-
-            <Link
-              to={`/${language}/${getMainCategoryPath(language, 2)}`}
-              className="flex items-center gap-2 text-accent text-button-md"
-            >
-              {getMainCategory(language, 2)?.title ?? ''} <JodArrowRight size={20} />
-            </Link>
-          </div>
-        )}
-      </div>
-      {!lg && <SuggestNewContent />}
     </MainLayout>
   );
 };

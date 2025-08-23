@@ -14,17 +14,27 @@ const ErrorBoundary = () => {
     t('error-boundary.unexpected');
 
   return (
-    <main role="main" id="jod-main" className="m-4 flex flex-col items-center justify-center gap-4">
+    <main
+      role="main"
+      id="jod-main"
+      className="m-4 flex flex-col items-center justify-center gap-4"
+      data-testid="error-boundary"
+    >
       <title>{title}</title>
-      <h1 className="text-heading-1">{title}</h1>
-      <p className="text-body-lg">{message}</p>
-      <div className="flex gap-4">
+      <h1 className="text-heading-1" data-testid="error-boundary-title">
+        {title}
+      </h1>
+      <p className="text-body-lg" data-testid="error-boundary-message">
+        {message}
+      </p>
+      <div className="flex gap-4" data-testid="error-boundary-actions">
         <Button
           icon={<JodHome />}
           iconSide="left"
           label={t('return-home')}
           variant="accent"
           serviceVariant="ohjaaja"
+          data-testid="error-boundary-home"
           /* eslint-disable-next-line react/no-unstable-nested-components */
           LinkComponent={({ children }: { children: React.ReactNode }) => (
             <a href={`/ohjaaja/${i18n.language}`}>{children}</a>
@@ -36,6 +46,7 @@ const ErrorBoundary = () => {
           label={t('login')}
           variant="accent"
           serviceVariant="ohjaaja"
+          data-testid="error-boundary-login"
           /* eslint-disable-next-line react/no-unstable-nested-components */
           LinkComponent={({ children }: { children: React.ReactNode }) => <a href={loginLink}>{children}</a>}
         />

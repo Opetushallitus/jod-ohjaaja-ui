@@ -12,6 +12,7 @@ export const SuggestNewContent = () => {
       title={t('suggest-new-content-for-the-service')}
       content={t('suggest-new-content-for-the-service-content')}
       backgroundColor="#EBB8E1"
+      data-testid="suggest-new-content-card"
     />
   );
 };

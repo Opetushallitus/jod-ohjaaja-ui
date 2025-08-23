@@ -57,23 +57,30 @@ const Search = () => {
       navChildren={
         lg &&
         !tagsLoading && (
-          <div className="bg-bg-gray-2 p-6 rounded">
-            <h3 className="text-heading-3-mobile sm:text-heading-3 mb-4">{t('search.tag-list.title')}</h3>
+          <div className="bg-bg-gray-2 p-6 rounded" data-testid="search-tag-sidebar">
+            <h3 className="text-heading-3-mobile sm:text-heading-3 mb-4" data-testid="search-tag-title">
+              {t('search.tag-list.title')}
+            </h3>
             <TagFilterList tags={tags} selectedTagIds={tagIds} onTagSelectionChange={handleTagSelectionChange} />
           </div>
         )
       }
     >
-      <div>
-        <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5">{t('search.title')}</h1>
-        <p className="text-body-lg mb-6">{t('search.description')}</p>
-        <form id="search" className="mb-8 flex flex-row" onSubmit={handleSearch}>
+      <div data-testid="search-route">
+        <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5" data-testid="search-title">
+          {t('search.title')}
+        </h1>
+        <p className="text-body-lg mb-6" data-testid="search-description">
+          {t('search.description')}
+        </p>
+        <form id="search" className="mb-8 flex flex-row" onSubmit={handleSearch} data-testid="search-form">
           <InputField
             placeholder={t('search.placeholder')}
             onChange={handleInputChange}
             value={searchValue}
             hideLabel={true}
             className="w-full mr-4"
+            data-testid="search-input"
           />
 
           <Button
@@ -83,6 +90,7 @@ const Search = () => {
             form="search"
             iconSide="right"
             icon={<JodSearch />}
+            data-testid="search-submit"
           />
         </form>
 
@@ -100,6 +108,7 @@ const Search = () => {
                 triggerLabel={t('search.filter')}
                 triggerIcon={<JodSettings size={18} />}
                 menuClassName="right-0"
+                data-testid="search-filter-menu"
               >
                 <TagFilterList
                   tags={tags}
