@@ -18,6 +18,7 @@ export const SearchButton = ({ form, onClick, isSearching }: SearchButtonProps) 
       aria-label=""
       onClick={onClick}
       className="flex cursor-pointer items-center gap-3 select-none p-4 bg-white text-button-md text-secondary-gray h-[34px]"
+      data-testid={onClick ? 'searchbar-toggle' : 'searchbar-submit'}
     >
       {isSearching ? <Spinner size={24} color="accent" /> : <JodSearch />}
       <span>{t('search.button')}</span>

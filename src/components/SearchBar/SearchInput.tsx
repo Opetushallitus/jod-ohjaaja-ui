@@ -10,7 +10,7 @@ export const SearchInput = ({ value, onChange }: SearchInputProps) => {
   const { t } = useTranslation();
 
   return (
-    <div className="search-input-wrapper">
+    <div className="search-input-wrapper" data-testid="searchbar-input-wrapper">
       <label htmlFor="search-input" className="sr-only">
         {t('search.label')}
       </label>
@@ -24,6 +24,7 @@ export const SearchInput = ({ value, onChange }: SearchInputProps) => {
         aria-label={t('search.label')}
         role="searchbox"
         className="border-2 border-white bg-white py-[10px] px-4 w-[250px] h-[34px] text-primary-gray focus:outline-2 focus:outline-accent placeholder:text-inactive-gray ds:font-arial ds:text-body-md"
+        data-testid="searchbar-input"
       />
     </div>
   );

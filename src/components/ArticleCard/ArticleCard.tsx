@@ -53,6 +53,7 @@ export const ArticleCard = ({ article, variant, isLoggedIn }: ArticleCardProps) 
       to={path}
       linkComponent={Link}
       tags={keywords.map((keyword) => ({ label: keyword.name, to: getSearchUrl(t, language, [`${keyword.id}`]) }))}
+      data-testid={`article-card-${id}`}
       {...favoriteButtonProps}
     />
   );

@@ -91,6 +91,7 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
       externalLinkSections={externalLinkSections}
       languageSelectionTitle={t('language-selection')}
       serviceVariant="ohjaaja"
+      data-testid="navigation-menu"
     />
   );
 };

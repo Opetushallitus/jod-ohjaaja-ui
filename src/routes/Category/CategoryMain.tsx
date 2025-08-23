@@ -40,19 +40,37 @@ const CategoryMain = () => {
     <main
       role="main"
       className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-6 pt-5 sm:px-6 print:p-0"
+      data-testid="category-main"
     >
       <Breadcrumb />
-      <aside className="col-span-3 lg:row-start-2 lg:col-start-3 lg:col-span-1 print:hidden position-relative lg:position-static z-10 lg:z-auto h-[47px] lg:h-auto">
+      <aside
+        className="col-span-3 lg:row-start-2 lg:col-start-3 lg:col-span-1 print:hidden position-relative lg:position-static z-10 lg:z-auto h-[47px] lg:h-auto"
+        data-testid="category-main-aside"
+      >
         <nav
           role="navigation"
           className="sticky position-absolute top-0 left-0 w-full lg:top-[96px] lg:position-static max-h-[calc(100vh-196px)] overflow-y-auto scrollbar-hidden"
+          data-testid="category-nav"
         >
           <CategoryNavigation />
         </nav>
       </aside>
-      <section className="col-span-3 lg:row-start-2 lg:col-start-1 lg:col-span-2 print:col-span-3">
-        {title && <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5">{title}</h1>}
-        {description && <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: description }} />}
+      <section
+        className="col-span-3 lg:row-start-2 lg:col-start-1 lg:col-span-2 print:col-span-3"
+        data-testid="category-main-content"
+      >
+        {title && (
+          <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5" data-testid="category-title">
+            {title}
+          </h1>
+        )}
+        {description && (
+          <div
+            className={richTextClasses}
+            dangerouslySetInnerHTML={{ __html: description }}
+            data-testid="category-description"
+          />
+        )}
       </section>
 
       <ArticleCarousel title={t('home.new-content')} isLoggedIn={isLoggedIn} articles={newestCategoryContent.items} />

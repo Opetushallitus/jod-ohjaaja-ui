@@ -26,6 +26,7 @@ export const LanguageButton = ({ onClick, langMenuOpen, menuRef, onMenuBlur, onM
       <button
         onClick={onClick}
         className="flex flex-col sm:flex-row justify-center items-center select-none cursor-pointer sm:mr-5"
+        data-testid="language-button-trigger"
       >
         <JodLanguage className="mx-auto" />
 
@@ -35,7 +36,7 @@ export const LanguageButton = ({ onClick, langMenuOpen, menuRef, onMenuBlur, onM
         {caret}
       </button>
       {langMenuOpen && (
-        <div ref={menuRef} onBlur={onMenuBlur} className="absolute right-0 translate-y-8">
+        <div ref={menuRef} onBlur={onMenuBlur} className="absolute right-0 translate-y-8" data-testid="language-menu">
           <LanguageMenu onClick={onMenuClick} />
         </div>
       )}

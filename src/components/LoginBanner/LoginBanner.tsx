@@ -33,6 +33,7 @@ export const LoginBanner = () => {
         title={t('log-in-to-the-service')}
         content={t('log-in-to-the-service-content')}
         backgroundColor="#66CBD1"
+        data-testid="login-banner-card"
       />
     </div>
   );

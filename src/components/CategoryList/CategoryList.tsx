@@ -21,17 +21,30 @@ export const CategoryList: React.FC<CategoryListProps> = ({ category, articles }
   const showMoreButton = visibleCount < articles.length;
 
   return (
-    <div className="mb-5">
-      <h3 className="text-heading-3 mb-5">
+    <div className="mb-5" data-testid="category-list">
+      <h3 className="text-heading-3 mb-5" data-testid="category-list-title">
         {category} ({articles.length})
       </h3>
-      <div className="grid grid-cols-1 gap-3">
+      <div className="grid grid-cols-1 gap-3" data-testid="category-list-items">
         {visibleArticles.map((article) => (
-          <ArticleCard key={article.id} article={article} variant="horizontal" isLoggedIn={true} />
+          <ArticleCard
+            key={article.id}
+            article={article}
+            variant="horizontal"
+            isLoggedIn={true}
+            data-testid={`category-list-item-${article.id}`}
+          />
         ))}
       </div>
-      <div className="flex flex-row pt-4 justify-center">
-        {showMoreButton && <Button onClick={handleShowMore} label={t('content-list.show-more')} variant="white" />}
+      <div className="flex flex-row pt-4 justify-center" data-testid="category-list-footer">
+        {showMoreButton && (
+          <Button
+            onClick={handleShowMore}
+            label={t('content-list.show-more')}
+            variant="white"
+            data-testid="category-list-show-more"
+          />
+        )}
       </div>
     </div>
   );

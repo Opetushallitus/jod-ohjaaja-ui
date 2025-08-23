@@ -104,12 +104,18 @@ const Comments = ({ articleErc, userId }: CommentsProps) => {
   }, [fetchComments, page]);
 
   return (
-    <div className="py-7">
-      <h2 className="text-heading-2 pb-5">{t('comments.title')}</h2>
-      <p className="text-body-lg pb-7">{t('comments.description')}</p>
-      <div className="grid gap-4 pb-5 max-h-[450px] overflow-y-auto" ref={commentsRef}>
+    <div className="py-7" data-testid="comments">
+      <h2 className="text-heading-2 pb-5" data-testid="comments-title">
+        {t('comments.title')}
+      </h2>
+      <p className="text-body-lg pb-7" data-testid="comments-description">
+        {t('comments.description')}
+      </p>
+      <div className="grid gap-4 pb-5 max-h-[450px] overflow-y-auto" ref={commentsRef} data-testid="comments-list">
         {comments.length === 0 && !loading && (
-          <div className="text-body-md text-primary-gray pt-3 pb-6">{t('comments.noComments')}</div>
+          <div className="text-body-md text-primary-gray pt-3 pb-6" data-testid="comments-empty">
+            {t('comments.noComments')}
+          </div>
         )}
         {comments.map((comment, index) => {
           if (comment.id && comment.luotu) {
@@ -129,7 +135,7 @@ const Comments = ({ articleErc, userId }: CommentsProps) => {
           }
         })}
         {loading && (
-          <div className="flex justify-center py-4">
+          <div className="flex justify-center py-4" data-testid="comments-loading">
             <Spinner size={16} color="accent" />
           </div>
         )}

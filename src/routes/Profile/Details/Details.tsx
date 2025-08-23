@@ -57,16 +57,20 @@ const Details = () => {
   return (
     <MainLayout navChildren={<ProfileNavigation />}>
       <title>{t('profile.details.title')}</title>
-      <div>
-        <h1 className="text-heading-1-mobile lg:text-heading-1  lg:mb-7">
+      <div data-testid="profile-details">
+        <h1 className="text-heading-1-mobile lg:text-heading-1  lg:mb-7" data-testid="profile-details-greeting">
           {t('profile.details.greeting', {
             firstName,
             lastName,
           })}
         </h1>
-        <section className="mb-8">
-          <h2 className="text-heading-2 mb-6">{t('profile.details.introduction.title')}</h2>
-          <p className="text-body-md mb-6">{t('profile.details.introduction.description')}</p>
+        <section className="mb-8" data-testid="profile-details-introduction">
+          <h2 className="text-heading-2 mb-6" data-testid="profile-details-intro-title">
+            {t('profile.details.introduction.title')}
+          </h2>
+          <p className="text-body-md mb-6" data-testid="profile-details-intro-description">
+            {t('profile.details.introduction.description')}
+          </p>
           <Combobox
             label={t('profile.details.workplace.label')}
             placeholder={t('profile.details.workplace.placeholder')}
@@ -82,12 +86,20 @@ const Details = () => {
               { value: 'MUU', label: t('profile.details.workplace.option8') },
             ]}
             onChange={handleWorkplaceChange}
+            data-testid="profile-details-workplace"
           />
         </section>
-        <section>
-          <h2 className="text-heading-2 mb-6">{t('profile.details.interest.title')}</h2>
-          <p className="text-body-md mb-6">{t('profile.details.interest.description')}</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-5">
+        <section data-testid="profile-details-interests">
+          <h2 className="text-heading-2 mb-6" data-testid="profile-details-interests-title">
+            {t('profile.details.interest.title')}
+          </h2>
+          <p className="text-body-md mb-6" data-testid="profile-details-interests-description">
+            {t('profile.details.interest.description')}
+          </p>
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-5"
+            data-testid="profile-details-interests-list"
+          >
             {tags.map((tag) => (
               <Checkbox
                 key={tag.id}
@@ -97,6 +109,7 @@ const Details = () => {
                 ariaLabel={tag.name}
                 checked={isSelected(tag.id)}
                 onChange={handleTagSelectionChange}
+                data-testid={`profile-interest-${tag.id}`}
               />
             ))}
           </div>

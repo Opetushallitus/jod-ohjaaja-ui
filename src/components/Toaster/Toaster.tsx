@@ -14,6 +14,7 @@ export const Toaster = () => {
       className="fixed top-[80px] right-4 z-60 flex flex-col gap-4"
       onMouseEnter={startPause}
       onMouseLeave={endPause}
+      data-testid="toaster"
     >
       {safeToasts
         .filter((toast) => toast.visible)

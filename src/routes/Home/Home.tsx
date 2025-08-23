@@ -18,7 +18,7 @@ const Home = () => {
   const { newestContent, mostViewedContent, bestMatchingContent, isLoggedIn } = useLoaderData<LoaderData>();
 
   return (
-    <main id="jod-main" className="w-full max-w-(--breakpoint-xl) mx-auto">
+    <main id="jod-main" className="w-full max-w-(--breakpoint-xl) mx-auto" data-testid="home">
       <title>{t('osaamispolku')}</title>
 
       <img
@@ -26,9 +26,13 @@ const Home = () => {
         alt=""
         role="none"
         className="absolute w-(--breakpoint-xl) h-[320px] md:h-[454px] object-cover object-object-[50%] lg:object-[0_20%] -z-10"
+        data-testid="home-hero"
       />
 
-      <div className="grid gap-8 grid-cols-3 max-w-[1140px] mx-auto px-5 sm:px-6 pt-[186px] md:pt-[72px] pb-7 md:pb-[40px] lg:pb-[75px]">
+      <div
+        className="grid gap-8 grid-cols-3 max-w-[1140px] mx-auto px-5 sm:px-6 pt-[186px] md:pt-[72px] pb-7 md:pb-[40px] lg:pb-[75px]"
+        data-testid="home-content"
+      >
         <div className="col-span-3 flex flex-col gap-3 md:gap-5 lg:gap-8">
           <FeatureCard
             level="h1"

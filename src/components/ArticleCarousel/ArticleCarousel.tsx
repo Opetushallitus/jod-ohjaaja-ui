@@ -24,8 +24,10 @@ export const ArticleCarousel = ({ title, isLoggedIn, articles }: ArticleCarousel
 
   return (
     carouselItems.length > 0 && (
-      <div className="col-span-3">
-        <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5">{title}</h2>
+      <div className="col-span-3" data-testid="article-carousel">
+        <h2 className="text-heading-2-mobile sm:text-heading-2 mb-5" data-testid="article-carousel-title">
+          {title}
+        </h2>
         <CardCarousel
           itemWidth={261}
           items={carouselItems}
@@ -35,6 +37,7 @@ export const ArticleCarousel = ({ title, isLoggedIn, articles }: ArticleCarousel
             indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
           }}
           className="max-[640px]:px-5 max-[640px]:-mx-5 max-[1148px]:px-6 max-[1148px]:-mx-6 p-3 -m-3"
+          data-testid="article-carousel-cards"
         />
       </div>
     )
