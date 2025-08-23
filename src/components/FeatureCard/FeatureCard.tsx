@@ -42,11 +42,13 @@ export const FeatureCard = ({
         'py-[6px] lg:py-6': !hero && collapseOnSmallScreen,
       })}
       style={{ backgroundColor, opacity }}
+      data-testid={to ? 'feature-card-link' : 'feature-card'}
     >
-      <div className="flex justify-between gap-3 items-center lg:items-start">
+      <div className="flex justify-between gap-3 items-center lg:items-start" data-testid="feature-card-header">
         <Heading
           id={headingId}
           className={`${hero ? 'text-heading-1-mobile md:text-heading-1 text-[#000] md:text-nowrap' : 'text-heading-2-mobile md:text-heading-2 text-primary-gray'}`}
+          data-testid="feature-card-title"
         >
           {title}
         </Heading>
@@ -62,6 +64,7 @@ export const FeatureCard = ({
           'text-black': hero,
           'text-primary-gray hidden lg:block': collapseOnSmallScreen,
         })}
+        data-testid="feature-card-content"
       >
         {content}
       </p>

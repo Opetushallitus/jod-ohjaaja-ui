@@ -26,15 +26,21 @@ export const SearchBanner = () => {
     navigate(getSearchUrl(t, language, [], searchValue));
   };
   return (
-    <div className="bg-[#66CBD1]">
+    <div className="bg-[#66CBD1]" data-testid="search-banner">
       <div className="mx-auto w-full max-w-[1140px] h-[48px] print:hidden grid lg:grid-cols-3 px-5">
-        <form id="search" className="lg:col-start-3 flex items-center gap-4 justify-end" onSubmit={handleSearch}>
+        <form
+          id="search"
+          className="lg:col-start-3 flex items-center gap-4 justify-end"
+          onSubmit={handleSearch}
+          data-testid="search-banner-form"
+        >
           <InputField
             placeholder={t('search.placeholder')}
             onChange={handleInputChange}
             value={searchValue}
             hideLabel={true}
             className="ds:py-3 ds:text-body-sm max-w-[224px]"
+            data-testid="search-banner-input"
           />
 
           <Button
@@ -44,6 +50,7 @@ export const SearchBanner = () => {
             iconSide="right"
             icon={isSearching ? <Spinner size={24} color="accent" /> : <JodSearch />}
             className="ds:text-button-sm"
+            data-testid="search-banner-submit"
           />
         </form>
       </div>

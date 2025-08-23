@@ -92,7 +92,7 @@ const Root = () => {
   return (
     <>
       <link rel="manifest" href={`/ohjaaja/manifest-${language}.json`} crossOrigin="use-credentials" />
-      <header role="banner" className="sticky top-0 z-30 print:hidden">
+      <header role="banner" className="sticky top-0 z-30 print:hidden" data-testid="app-header">
         <SkipLink hash="#jod-main" label={t('skiplinks.main')} />
         <form action="/ohjaaja/logout" method="POST" hidden ref={logoutForm}>
           <input type="hidden" name="_csrf" value={data?.csrf.token} />
@@ -105,6 +105,7 @@ const Root = () => {
               onClick={() => setNavMenuOpen(!navMenuOpen)}
               aria-label={t('open-menu')}
               className="flex gap-2 justify-center items-center select-none cursor-pointer"
+              data-testid="navmenu-toggle"
             >
               <span className="size-7 flex justify-center items-center">
                 <JodMenu />
@@ -119,12 +120,13 @@ const Root = () => {
               menuRef={langMenuRef}
               onMenuBlur={handleBlur}
               onMenuClick={() => setLangMenuOpen(false)}
+              data-testid="language-button"
             />
           }
           userButtonComponent={<UserButton onLogout={logout} />}
           refs={{ langMenuButtonRef: langMenuButtonRef }}
           renderLink={({ to, className, children }) => (
-            <Link to={to} className={className}>
+            <Link to={to} className={className} data-testid="navbar-link">
               {children}
             </Link>
           )}
@@ -152,6 +154,7 @@ const Root = () => {
         feedbackBgImageClassName="bg-[url(@/../assets/home-1.avif)] bg-cover bg-[length:auto_auto] sm:bg-[length:auto_1000px] bg-[top_-0rem_right_-0rem] sm:bg-[top_-21rem_right_0rem]"
         copyright={t('copyright')}
         feedbackOnClick={() => console.log('feedbackOnClick')}
+        data-testid="app-footer"
       />
       <Toaster />
       <ScrollRestoration />
@@ -169,6 +172,7 @@ const Root = () => {
         eraseChatHistory={t('chatbot.erase-chat-history')}
         saveChatAsCsv={t('chatbot.save-chat-as-csv')}
         close={t('chatbot.close')}
+        data-testid="chatbot"
       />
       <MatomoTracker trackerUrl="https://analytiikka.opintopolku.fi" siteId={siteId} pathname={location.pathname} />
     </>

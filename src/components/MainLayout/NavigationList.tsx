@@ -28,11 +28,15 @@ const LinkOrSpan = ({ item, level }: { item: NavigationListItem; level: 1 | 2 })
         )
       }
       end
+      data-testid={`navlist-link-${level}`}
     >
       {item.title}
     </NavLink>
   ) : (
-    <span className={`hyphens-auto text-black w-full block py-3 text-button-md ${level === 2 ? 'pl-7' : 'pl-5'}`}>
+    <span
+      className={`hyphens-auto text-black w-full block py-3 text-button-md ${level === 2 ? 'pl-7' : 'pl-5'}`}
+      data-testid={`navlist-text-${level}`}
+    >
       {item.title}
     </span>
   );
@@ -40,12 +44,16 @@ const LinkOrSpan = ({ item, level }: { item: NavigationListItem; level: 1 | 2 })
 
 export const NavigationList = ({ rootItem }: NavigationListProps) => {
   return (
-    <ul className="flex flex-col gap-y-2 py-3">
-      <li className="flex min-h-7 items-center w-full">
+    <ul className="flex flex-col gap-y-2 py-3" data-testid="navigation-list">
+      <li className="flex min-h-7 items-center w-full" data-testid="navigation-list-root">
         <LinkOrSpan item={rootItem} level={1} />
       </li>
       {rootItem.children?.map((category) => (
-        <li key={category.id} className="flex min-h-7 items-center w-full">
+        <li
+          key={category.id}
+          className="flex min-h-7 items-center w-full"
+          data-testid={`navigation-list-item-${category.id}`}
+        >
           <LinkOrSpan item={category} level={2} />
         </li>
       ))}

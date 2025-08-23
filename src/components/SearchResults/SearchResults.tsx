@@ -37,12 +37,14 @@ export const SearchResults = ({
   const pageCount = Math.ceil(totalCount / pageSize);
 
   return (
-    <div>
-      <div className="mb-2 flex flex-row items-center justify-between">
-        <p className="text-body-md">{t('search-results.article-count', { count: totalCount })}</p>
+    <div data-testid="search-results">
+      <div className="mb-2 flex flex-row items-center justify-between" data-testid="search-results-header">
+        <p className="text-body-md" data-testid="search-results-count">
+          {t('search-results.article-count', { count: totalCount })}
+        </p>
         {filterMenu}
       </div>
-      <div className="flex flex-col flex-wrap gap-3 sm:gap-3">
+      <div className="flex flex-col flex-wrap gap-3 sm:gap-3" data-testid="search-results-list">
         {contents.map((content, index) => {
           const ingress = findContentValueByName(content, 'ingress')?.data;
           const id = `${content.id ?? ''}`;
@@ -63,6 +65,7 @@ export const SearchResults = ({
                   label: keyword.name,
                   to: getSearchUrl(t, language, [`${keyword.id}`]),
                 }))}
+                data-testid={`search-result-card-${id}`}
               />
               {!isLastItem && <div className="border-b border-border-gray" />}
             </React.Fragment>
@@ -70,7 +73,7 @@ export const SearchResults = ({
         })}
       </div>
       {contents.length > 0 && pageCount > 1 && (
-        <div className="pt-4">
+        <div className="pt-4" data-testid="search-results-pagination">
           <Pagination
             currentPage={currentPage}
             pageSize={pageSize}
@@ -83,6 +86,7 @@ export const SearchResults = ({
               prevTriggerLabel: t('pagination.previous'),
               itemLabel: ({ page }) => t('pagination.page', { page }),
             }}
+            data-testid="pagination"
           />
         </div>
       )}
