@@ -54,7 +54,6 @@ const Search = () => {
 
   return (
     <MainLayout
-      hideSearch
       navChildren={
         lg &&
         !tagsLoading && (
