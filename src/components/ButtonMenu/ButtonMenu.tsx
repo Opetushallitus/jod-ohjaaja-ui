@@ -28,8 +28,13 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
   }, [menuRef]);
 
   return (
-    <div className={tidyClasses(`relative ${className}`)}>
-      <IconButton icon={triggerIcon} label={triggerLabel} onClick={() => setMenuOpen(!menuOpen)} />
+    <div className={tidyClasses(`relative ${className}`)} data-testid="button-menu">
+      <IconButton
+        icon={triggerIcon}
+        label={triggerLabel}
+        onClick={() => setMenuOpen(!menuOpen)}
+        data-testid="button-menu-trigger"
+      />
       {menuOpen && (
         <div
           className={tidyClasses(
@@ -39,10 +44,11 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
           tabIndex={0}
           onKeyDown={(e) => e.key === 'Escape' && setMenuOpen(false)}
           ref={menuRef}
+          data-testid="button-menu-popup"
         >
           <div className="flex flex-row items-center justify-between mb-5">
             <p className="text-body-sm tex">{triggerLabel}</p>
-            <button onClick={() => setMenuOpen(false)} className="cursor-pointer">
+            <button onClick={() => setMenuOpen(false)} className="cursor-pointer" data-testid="button-menu-close">
               <JodClose className="text-secondary-gray" />
             </button>
           </div>

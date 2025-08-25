@@ -16,8 +16,12 @@ export const LanguageButton = ({ onClick, langMenuOpen, menuRef, onMenuBlur, onM
     i18n: { language: languageKey },
   } = useTranslation();
   return (
-    <div className="relative">
-      <button onClick={onClick} className="flex gap-2 justify-center items-center select-none cursor-pointer">
+    <div className="relative" data-testid="language-button-wrapper">
+      <button
+        onClick={onClick}
+        className="flex gap-2 justify-center items-center select-none cursor-pointer"
+        data-testid="language-button-trigger"
+      >
         <span className="size-7 flex justify-center items-center">
           <JodLanguage />
         </span>
@@ -27,7 +31,7 @@ export const LanguageButton = ({ onClick, langMenuOpen, menuRef, onMenuBlur, onM
         </span>
       </button>
       {langMenuOpen && (
-        <div ref={menuRef} onBlur={onMenuBlur} className="absolute right-0 translate-y-8">
+        <div ref={menuRef} onBlur={onMenuBlur} className="absolute right-0 translate-y-8" data-testid="language-menu">
           <LanguageMenu onClick={onMenuClick} />
         </div>
       )}

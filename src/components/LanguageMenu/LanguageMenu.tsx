@@ -24,6 +24,7 @@ const ListItems = ({ onClick }: { onClick: LanguageMenuProps['onClick'] }) => {
       className={cx('w-full text-button-md hover:underline px-5 py-3', {
         'bg-secondary-1-50 rounded': lng === language,
       })}
+      data-testid={`language-option-${lng}`}
     >
       {langLabels[lng] ?? lng}
     </Link>
@@ -34,7 +35,7 @@ export const LanguageMenu = ({ inline, onClick }: LanguageMenuProps) => {
   return inline ? (
     <ListItems onClick={onClick} />
   ) : (
-    <PopupList classNames="gap-2">
+    <PopupList classNames="gap-2" data-testid="language-popup">
       <ListItems onClick={onClick} />
     </PopupList>
   );

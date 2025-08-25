@@ -25,12 +25,12 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
   }, [currentComment]);
 
   return (
-    <div className="flex gap-5 pt-5 border-t-border-gray border-t">
+    <div className="flex gap-5 pt-5 border-t-border-gray border-t" data-testid="comment-input">
       <div>
         <PatternAvatar seed={userId} size={32} />
       </div>
       {addingComment ? (
-        <div className="flex-grow flex justify-center">
+        <div className="flex-grow flex justify-center" data-testid="comment-input-loading">
           <Spinner size={16} color="accent" />
         </div>
       ) : (
@@ -46,6 +46,7 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
               setCurrentComment(e.target.value);
             }}
             value={currentComment}
+            data-testid="comment-input-textarea"
           />
 
           <Button
@@ -60,6 +61,7 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
                 setCurrentComment('');
               }
             }}
+            data-testid="comment-input-send"
           />
         </div>
       )}

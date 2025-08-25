@@ -38,14 +38,18 @@ const Comment = ({
     .replace(',', ' klo')
     .replace(/(\d{2})\.(\d{2})$/, '$1:$2');
   return (
-    <div ref={ref} className="grid gap-2">
+    <div ref={ref} className="grid gap-2" data-testid={`comment-${commentId}`}>
       <div className="flex gap-3">
         <div className="">
           <PatternAvatar seed={author} size={32} />
         </div>
         <div className="rounded-lg bg-white flex-grow p-5 grid gap-2">
-          <div className="text-button-sm text-secondary-gray">{formattedTimestamp}</div>
-          <div className="text-body-sm text-primary-gray whitespace-pre-line">{comment}</div>
+          <div className="text-button-sm text-secondary-gray" data-testid="comment-timestamp">
+            {formattedTimestamp}
+          </div>
+          <div className="text-body-sm text-primary-gray whitespace-pre-line" data-testid="comment-text">
+            {comment}
+          </div>
         </div>
       </div>
       <div className="flex justify-end">
@@ -63,6 +67,7 @@ const Comment = ({
                 bgColor="gray"
                 onClick={showDeleteModal}
                 label={t('comments.comment.delete.label')}
+                data-testid="comment-delete"
               />
             )}
           </ConfirmDialog>
@@ -80,6 +85,7 @@ const Comment = ({
                 bgColor="gray"
                 onClick={showReportModal}
                 label={t('comments.comment.report.label')}
+                data-testid="comment-report"
               />
             )}
           </ConfirmDialog>

@@ -55,7 +55,7 @@ const TagFilterList = ({
   return (
     <Wrapper mode={mode}>
       {visibleTags.map((tag) => (
-        <div key={tag.id} className="my-4">
+        <div key={tag.id} className="my-4" data-testid={`tag-filter-item-${tag.id}`}>
           <Checkbox
             name="tag"
             value={`${tag.id}`}
@@ -65,12 +65,17 @@ const TagFilterList = ({
             })}
             label={tag.name_i18n[getLocale(language)] ?? tag.name}
             onChange={() => handleCheckboxChange(tag)}
+            data-testid={`tag-filter-checkbox-${tag.id}`}
           ></Checkbox>
         </div>
       ))}
       {tags.length === 0 && emptyText && <p>{emptyText}</p>}
       {hasMore && (
-        <button onClick={handleShowMore} className="flex items-center text-button-sm px-5 py-2 cursor-pointer">
+        <button
+          onClick={handleShowMore}
+          className="flex items-center text-button-sm px-5 py-2 cursor-pointer"
+          data-testid="tag-filter-show-more"
+        >
           {t('search.tag-list.show-more')} <JodCaretDown size={30} />
         </button>
       )}
@@ -84,13 +89,14 @@ const Wrapper = ({ children, mode }: { children: React.ReactNode; mode: 'default
     i18n: { language },
   } = useTranslation();
   return mode === 'default' ? (
-    <div>{children}</div>
+    <div data-testid="tag-filter-list">{children}</div>
   ) : (
     <Accordion
       initialState
       lang={language}
       title={<span className="text-heading-4">{t('search.tag-list.title')}</span>}
       titleText={t('search.tag-list.title')}
+      data-testid="tag-filter-accordion"
     >
       <div className="pl-5">{children}</div>
     </Accordion>

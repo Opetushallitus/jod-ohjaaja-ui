@@ -30,11 +30,11 @@ export const CategoryNavigation = () => {
   return (
     navigationListItem &&
     hasChildren && (
-      <div className="bg-secondary-2-25 rounded-md py-3 lg:py-6 px-[20px]">
+      <div className="bg-secondary-2-25 rounded-md py-3 lg:py-6 px-[20px]" data-testid="category-navigation">
         {lg ? (
           <NavigationList rootItem={navigationListItem} />
         ) : (
-          <Accordion title={t('contents')} lang={i18n.language} initialState={false}>
+          <Accordion title={t('contents')} lang={i18n.language} initialState={false} data-testid="category-accordion">
             <NavigationList rootItem={navigationListItem} />
           </Accordion>
         )}

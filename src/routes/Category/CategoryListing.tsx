@@ -44,20 +44,35 @@ const CategoryListing = () => {
 
   return (
     <MainLayout navChildren={<CategoryNavigation />}>
-      <section className="col-span-3 lg:row-start-2 lg:col-start-1 lg:col-span-2 print:col-span-3">
-        {title && <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5">{title}</h1>}
-        {description && <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: description }} />}
-      </section>
-      <section className="my-6">
-        <ContentList
-          contents={contents}
-          totalCount={totalCount}
-          hasMore={hasMore}
-          loadMore={handleLoadMore}
-          isLoading={isLoading}
-          isLoggedIn={isLoggedIn}
-        />
-      </section>
+      <div data-testid="category-listing-route">
+        <section
+          className="col-span-3 lg:row-start-2 lg:col-start-1 lg:col-span-2 print:col-span-3"
+          data-testid="category-listing-header"
+        >
+          {title && (
+            <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5" data-testid="category-listing-title">
+              {title}
+            </h1>
+          )}
+          {description && (
+            <div
+              className={richTextClasses}
+              dangerouslySetInnerHTML={{ __html: description }}
+              data-testid="category-listing-description"
+            />
+          )}
+        </section>
+        <section className="my-6" data-testid="category-listing-content">
+          <ContentList
+            contents={contents}
+            totalCount={totalCount}
+            hasMore={hasMore}
+            loadMore={handleLoadMore}
+            isLoading={isLoading}
+            isLoggedIn={isLoggedIn}
+          />
+        </section>
+      </div>
     </MainLayout>
   );
 };

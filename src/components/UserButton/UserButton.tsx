@@ -38,11 +38,12 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
   });
 
   return data?.csrf ? (
-    <div className="relative">
+    <div className="relative" data-testid="user-button">
       <button
         ref={userMenuButtonRef}
         onClick={() => setUserMenuOpen(!userMenuOpen)}
         className="flex gap-2 justify-center items-center select-none cursor-pointer"
+        data-testid="user-button-trigger"
       >
         <span className="size-7 flex justify-center items-center">
           <JodUser />
@@ -53,16 +54,17 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
         </span>
       </button>
       {userMenuOpen && (
-        <div ref={userMenuRef} className="absolute right-0 min-w-max translate-y-8 transform">
+        <div ref={userMenuRef} className="absolute right-0 min-w-max translate-y-8 transform" data-testid="user-menu">
           <PopupList classNames="gap-2">
             <NavLink
               to={userMenuProfileFrontUrl}
               onClick={() => setUserMenuOpen(false)}
               className={(props) => `w-full ${getActiveClassNames(props)}`.trim()}
+              data-testid="user-menu-profile"
             >
               <PopupListItem>{t('profile.index')}</PopupListItem>
             </NavLink>
-            <button type="button" onClick={onLogout} className="cursor-pointer w-full">
+            <button type="button" onClick={onLogout} className="cursor-pointer w-full" data-testid="user-menu-logout">
               <PopupListItem classNames="w-full">{t('logout')}</PopupListItem>
             </button>
           </PopupList>
@@ -78,6 +80,7 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
           onClick();
         }
       }}
+      data-testid="user-login-link"
     >
       <span className="size-7 flex justify-center items-center">
         <JodUser />

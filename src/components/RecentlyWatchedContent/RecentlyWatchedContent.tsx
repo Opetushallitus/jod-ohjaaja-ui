@@ -73,9 +73,11 @@ export const RecentlyWatchedContent = () => {
 
   return contentCards.length > 0 ? (
     <>
-      <h2 className="col-span-3 text-heading-2-mobile sm:text-heading-2 mb-5">{t('recently-watched-contents')}</h2>
+      <h2 className="col-span-3 text-heading-2-mobile sm:text-heading-2 mb-5" data-testid="recently-watched-title">
+        {t('recently-watched-contents')}
+      </h2>
 
-      <div className="col-span-3 lg:col-span-2 rounded bg-white p-6">
+      <div className="col-span-3 lg:col-span-2 rounded bg-white p-6" data-testid="recently-watched-list">
         {contentCards.map((card, index) => (
           <React.Fragment key={card.key}>
             {card}
@@ -86,6 +88,6 @@ export const RecentlyWatchedContent = () => {
       </div>
     </>
   ) : (
-    <div className="col-span-3 lg:col-span-2"></div>
+    <div className="col-span-3 lg:col-span-2" data-testid="recently-watched-empty"></div>
   );
 };
