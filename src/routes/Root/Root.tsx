@@ -1,9 +1,10 @@
 import { LanguageButton, UserButton } from '@/components';
 import { NavMenu } from '@/components/NavMenu/NavMenu';
+import { SearchBar } from '@/components/SearchBar/SearchBar';
 import { Toaster } from '@/components/Toaster/Toaster';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import i18n from '@/i18n/config';
-import { Chatbot, Footer, MatomoTracker, NavigationBar, SkipLink } from '@jod/design-system';
+import { Chatbot, Footer, MatomoTracker, NavigationBar, SkipLink, useMediaQueries } from '@jod/design-system';
 import { JodMenu } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -30,6 +31,8 @@ const Root = () => {
   } = useTranslation();
   const [navMenuOpen, setNavMenuOpen] = React.useState(false);
   const [langMenuOpen, setLangMenuOpen] = React.useState(false);
+  const [searchInputVisible, setSearchInputVisible] = React.useState(false);
+  const { sm } = useMediaQueries();
   const location = useLocation();
 
   const hostname = window.location.hostname;
@@ -89,6 +92,8 @@ const Root = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language]);
 
+  const showServiceName = sm || !searchInputVisible;
+
   return (
     <>
       <link rel="manifest" href={`/ohjaaja/manifest-${language}.json`} crossOrigin="use-credentials" />
@@ -128,6 +133,12 @@ const Root = () => {
               {children}
             </Link>
           )}
+          showServiceBar
+          serviceBarVariant="ohjaaja"
+          serviceBarContent={
+            <SearchBar searchInputVisible={searchInputVisible} setSearchInputVisible={setSearchInputVisible} />
+          }
+          serviceBarTitle={showServiceName ? t('service-name') : ' '}
         />
       </header>
       <LogoutFormContext.Provider value={logoutForm.current}>

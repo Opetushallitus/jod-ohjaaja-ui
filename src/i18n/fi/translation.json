@@ -273,6 +273,7 @@
     "button": "Hae",
     "description": "Voit hakea palvelun sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan. ",
     "filter": "Suodata",
+    "label": "Syötä hakusana",
     "placeholder": "Hae ohjaajan osioista",
     "tag-list": {
       "accordion-title": "Suodata",
@@ -288,6 +289,7 @@
     "article-count_zero": "Ei tuloksia hakusanallasi"
   },
   "select-language": "Valitse kieli",
+  "service-name": "Ohjaajan osio",
   "share": "Jaa",
   "skiplinks": {
     "main": "Siirry pääsisältöön"
