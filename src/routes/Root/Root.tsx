@@ -109,12 +109,10 @@ const Root = () => {
             <button
               onClick={() => setNavMenuOpen(!navMenuOpen)}
               aria-label={t('open-menu')}
-              className="flex gap-2 justify-center items-center select-none cursor-pointer"
+              className="flex flex-col sm:flex-row sm:gap-3 justify-center items-center select-none cursor-pointer"
             >
-              <span className="size-7 flex justify-center items-center">
-                <JodMenu />
-              </span>
-              <span className="py-3 pr-2">{t('menu')}</span>
+              <JodMenu />
+              <span className="md:pr-3 sm:text-button-sm text-[12px]">{t('menu')}</span>
             </button>
           }
           languageButtonComponent={

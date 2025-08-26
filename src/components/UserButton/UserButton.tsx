@@ -1,7 +1,7 @@
 import { components } from '@/api/schema';
 import { useLoginLink } from '@/hooks/useLoginLink';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
-import { PopupList, PopupListItem } from '@jod/design-system';
+import { PopupList, PopupListItem, useMediaQueries } from '@jod/design-system';
 import { JodCaretDown, JodCaretUp, JodUser } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,6 +18,8 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
     i18n: { language },
   } = useTranslation();
 
+  const { sm } = useMediaQueries();
+
   const data = useLoaderData() as components['schemas']['OhjaajaCsrfDto'] | null;
   const location = useLocation();
 
@@ -30,27 +32,24 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
   // Highlight menu element when active
   const getActiveClassNames = ({ isActive }: { isActive: boolean }) => (isActive ? 'bg-secondary-1-50 rounded-sm' : '');
 
-  const fullName = `${data?.etunimi} ${data?.sukunimi}`;
-
+  console.log(location);
   const state = location.state;
   const loginLink = useLoginLink({
     callbackURL: state?.callbackURL ? `/${language}/${state?.callbackURL}` : `/${language}`,
   });
+
+  const caret = sm ? <>{userMenuOpen ? <JodCaretUp size={20} /> : <JodCaretDown size={20} />}</> : null;
 
   return data?.csrf ? (
     <div className="relative">
       <button
         ref={userMenuButtonRef}
         onClick={() => setUserMenuOpen(!userMenuOpen)}
-        className="flex gap-2 justify-center items-center select-none cursor-pointer"
+        className="flex flex-col sm:flex-row justify-center items-center select-none cursor-pointer sm:mr-5"
       >
-        <span className="size-7 flex justify-center items-center">
-          <JodUser />
-        </span>
-        <span className="py-3 whitespace-nowrap">{fullName}</span>
-        <span className="size-7 flex justify-center items-center">
-          {userMenuOpen ? <JodCaretUp /> : <JodCaretDown />}
-        </span>
+        <JodUser className="mx-auto" />
+        <span className="whitespace-nowrap sm:text-button-sm text-[12px] sm:mx-3">{data?.etunimi}</span>
+        {caret}
       </button>
       {userMenuOpen && (
         <div ref={userMenuRef} className="absolute right-0 min-w-max translate-y-8 transform">
@@ -72,17 +71,15 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
   ) : (
     <a
       href={loginLink}
-      className="flex gap-2 justify-center items-center select-none cursor-pointer"
+      className="flex flex-col sm:flex-row sm:gap-2 justify-center items-center select-none cursor-pointer"
       onClick={() => {
         if (onClick) {
           onClick();
         }
       }}
     >
-      <span className="size-7 flex justify-center items-center">
-        <JodUser />
-      </span>
-      <span className="py-3 pr-2 whitespace-nowrap">{t('login')}</span>
+      <JodUser className="mx-auto" />
+      <span className="whitespace-nowrap text-[12px] sm:text-button-sm sm:mr-5">{t('login')}</span>
     </a>
   );
 };
