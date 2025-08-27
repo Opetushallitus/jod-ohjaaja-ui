@@ -53,6 +53,7 @@ describe('navigation utils', () => {
       type,
       categoryId,
       articleId,
+      externalReferenceCode: articleId ? `article-${articleId}` : `category-${categoryId}`,
       parentNavigationId: parentId,
       children,
     };
@@ -69,6 +70,7 @@ describe('navigation utils', () => {
         path: 'main',
         type: 'CategoryMain',
         children: [],
+        externalReferenceCode: 'category-1',
         categoryId: 1,
         articleId: undefined,
         lng: 'fi',
@@ -109,6 +111,7 @@ describe('navigation utils', () => {
             type: 'Article',
             title: 'Article 1',
             description: '',
+            externalReferenceCode: 'article-1',
             children: [],
             categoryId: undefined,
             articleId: 1,
@@ -117,6 +120,7 @@ describe('navigation utils', () => {
         ],
         categoryId: 2,
         articleId: undefined,
+        externalReferenceCode: 'category-2',
         lng: 'fi',
       });
     });
@@ -156,6 +160,7 @@ describe('navigation utils', () => {
     description: '',
     type,
     lng: 'fi',
+    externalReferenceCode: `article-${articleId}`,
     children: children as NavigationTreeItem[],
     ...(articleId && { articleId }),
   });

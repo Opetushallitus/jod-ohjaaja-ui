@@ -44,7 +44,7 @@ describe('Comments', () => {
   });
 
   it('should render comments list', async () => {
-    render(<Comments articleId={1} userId="user1" />);
+    render(<Comments articleErc={'1'} userId="user1" />);
 
     await waitFor(() => {
       expect(screen.getByText('Test comment 1')).toBeInTheDocument();
@@ -55,7 +55,7 @@ describe('Comments', () => {
   it('should show no comments message when empty', async () => {
     (getArtikkelinKommentit as Mock).mockResolvedValue({ sisalto: [], sivuja: 0 });
 
-    render(<Comments articleId={1} userId="user1" />);
+    render(<Comments articleErc={'1'} userId="user1" />);
 
     await waitFor(() => {
       expect(screen.getByText('comments.noComments')).toBeInTheDocument();
@@ -64,7 +64,7 @@ describe('Comments', () => {
 
   it('should add new comment', async () => {
     HTMLDivElement.prototype.scrollTo = vi.fn();
-    render(<Comments articleId={1} userId="user1" />);
+    render(<Comments articleErc={'1'} userId="user1" />);
 
     const input = screen.getByPlaceholderText('comments.comment.placeholder');
     fireEvent.change(input, { target: { value: 'New comment' } });
@@ -73,13 +73,13 @@ describe('Comments', () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(addArtikkelinKommentti).toHaveBeenCalledWith(1, 'New comment');
+      expect(addArtikkelinKommentti).toHaveBeenCalledWith('1', 'New comment');
     });
     expect(HTMLDivElement.prototype.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
   });
 
   it('should delete comment', async () => {
-    render(<Comments articleId={1} userId="user1" />);
+    render(<Comments articleErc={'1'} userId="user1" />);
     const user = userEvent.setup();
     await waitFor(async () => {
       await user.click(screen.getAllByLabelText('comments.comment.delete.label')[0]);
@@ -90,7 +90,7 @@ describe('Comments', () => {
   });
 
   it('should not show comment input when userId is not provided', async () => {
-    render(<Comments articleId={1} />);
+    render(<Comments articleErc={'1'} />);
     await waitFor(() => {
       expect(screen.queryByPlaceholderText('comments.comment.placeholder')).not.toBeInTheDocument();
     });

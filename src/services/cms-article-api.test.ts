@@ -1,11 +1,23 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import * as cmsApi from './cms-api';
+import { NavigationTreeItem } from '@/types/cms-navigation';
+import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
+import {
+  getArticlesByErcs,
+  getCategoryContent,
+  getContentByArticleId,
+  getNewestContent,
+  searchContent,
+} from './cms-article-api';
+import { getNavigationTreeItems } from './navigation-loader';
 
 // Mock fetch globally
 const mockFetch = vi.fn();
 global.fetch = mockFetch;
 
-describe('CMS API', () => {
+vi.mock('@/services/navigation-loader', () => ({
+  getNavigationTreeItems: vi.fn(),
+}));
+
+describe('CMS ARTICLE API', () => {
   beforeEach(() => {
     mockFetch.mockClear();
     mockFetch.mockImplementation(() =>
@@ -16,13 +28,8 @@ describe('CMS API', () => {
     );
   });
 
-  it('should fetch navigation menu', async () => {
-    await cmsApi.getNavigations();
-    expect(mockFetch).toHaveBeenCalledWith('/ohjaaja/cms/o/jod-navigation/20117', expect.any(Object));
-  });
-
   it('should fetch content by article ID', async () => {
-    await cmsApi.getContentByArticleId(123);
+    await getContentByArticleId(123);
     expect(mockFetch).toHaveBeenCalledWith(
       '/ohjaaja/cms/o/headless-delivery/v1.0/structured-contents/123?nestedFields=embeddedTaxonomyCategory',
       expect.any(Object),
@@ -30,7 +37,7 @@ describe('CMS API', () => {
   });
 
   it('should fetch newest content', async () => {
-    await cmsApi.getNewestContent();
+    await getNewestContent();
     const queryParams = new URLSearchParams();
     queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
     queryParams.set('page', `1`);
@@ -46,7 +53,7 @@ describe('CMS API', () => {
   });
 
   it('should fetch category content', async () => {
-    await cmsApi.getCategoryContent(456, 'dateCreated:desc');
+    await getCategoryContent(456, 'dateCreated:desc');
     const queryParams = new URLSearchParams();
     queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
     queryParams.set('page', `1`);
@@ -63,7 +70,7 @@ describe('CMS API', () => {
   });
 
   it('should search content', async () => {
-    await cmsApi.searchContent('test', ['789'], 1, 10);
+    await searchContent('test', ['789'], 1, 10);
     const queryParams = new URLSearchParams();
     queryParams.set('page', `1`);
     queryParams.set('pageSize', `10`);
@@ -80,34 +87,58 @@ describe('CMS API', () => {
   });
 
   it('should fetch articles by IDs', async () => {
-    await cmsApi.getArticles([101, 102]);
+    const mockTreeNavigationTreeItems: NavigationTreeItem[] = [
+      {
+        name: 'article-1',
+        title: 'Article 1',
+        description: '',
+        path: '',
+        lng: 'fi',
+        type: 'Article',
+        externalReferenceCode: '101',
+        articleId: 1001,
+        children: [],
+      },
+      {
+        name: 'article-2',
+        title: 'Article 2',
+        description: '',
+        path: '',
+        lng: 'fi',
+        type: 'Article',
+        externalReferenceCode: '102',
+        articleId: 1002,
+        children: [],
+      },
+      {
+        name: 'article-2',
+        title: 'Article 2',
+        description: '',
+        path: '',
+        lng: 'sv',
+        type: 'Article',
+        externalReferenceCode: '102',
+        articleId: 1002,
+        children: [],
+      },
+    ];
+
+    (getNavigationTreeItems as Mock).mockReturnValue(mockTreeNavigationTreeItems);
+    await getArticlesByErcs(['101', '102']);
     const queryParams = new URLSearchParams();
     queryParams.set('page', `1`);
     queryParams.set('pageSize', `500`);
     queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
-    const idFilters = [101, 102].map((id) => `id eq '${id}'`).join(' or ');
+    const idFilters = [1001, 1002].map((id) => `id eq '${id}'`).join(' or ');
     queryParams.set('filter', idFilters);
+
+    mockFetch.mock.calls.forEach((call) => console.log(call[0])); // Debugging line to see the actual URL called
+
     expect(mockFetch).toHaveBeenCalledWith(
       expect.stringContaining(
         '/ohjaaja/cms/o/headless-delivery/v1.0/sites/20117/structured-contents?' + queryParams.toString(),
       ),
       expect.any(Object),
     );
-  });
-
-  it('should fetch tags', async () => {
-    await cmsApi.getTags();
-    expect(mockFetch).toHaveBeenCalledWith('/ohjaaja/cms/o/jod-tags/20117', expect.any(Object));
-  });
-
-  it('should throw error on failed request', async () => {
-    mockFetch.mockImplementationOnce(() =>
-      Promise.resolve({
-        ok: false,
-        statusText: 'Not Found',
-      }),
-    );
-
-    await expect(cmsApi.getTags()).rejects.toThrow('CMS API error: Not Found');
   });
 });

@@ -257,8 +257,8 @@ export const sortArticles = (
     case 'latest-added-to-favorites':
       if (!suosikit) return articles;
       return articles.sort((a, b) => {
-        const aDate = suosikit.find((suosikki) => suosikki.artikkeliId === a.id)?.luotu;
-        const bDate = suosikit.find((suosikki) => suosikki.artikkeliId === b.id)?.luotu;
+        const aDate = suosikit.find((suosikki) => suosikki.artikkeliErc === a.externalReferenceCode)?.luotu;
+        const bDate = suosikit.find((suosikki) => suosikki.artikkeliErc === b.externalReferenceCode)?.luotu;
         return new Date(bDate ?? Date.now()).getTime() - new Date(aDate ?? Date.now()).getTime();
       });
     default:

@@ -1,6 +1,6 @@
-import { getMostRecentViewedArtikkeliIds } from '@/api/artikkelinKatselu';
+import { getMostRecentViewedArtikkeliErcs } from '@/api/artikkelinKatselu';
 import { LangCode } from '@/i18n/config';
-import { getArticles } from '@/services/cms-api';
+import { getArticlesByErcs } from '@/services/cms-article-api';
 import { StructuredContent } from '@/types/cms-content';
 import { getIngress, getKeywords, getTitle } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
@@ -27,8 +27,8 @@ export const RecentlyWatchedContent = () => {
   );
 
   const createContentCard = React.useCallback(
-    (articleId: number, articles: StructuredContent[], language: string) => {
-      const article = articles.find((a) => a.id === articleId);
+    (articleErc: string, articles: StructuredContent[], language: string) => {
+      const article = articles.find((a) => a.externalReferenceCode === articleErc);
       if (!article) return null;
       const ingress = getIngress(article);
       const id = `${article.id ?? ''}`;
@@ -53,13 +53,13 @@ export const RecentlyWatchedContent = () => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const data = await getMostRecentViewedArtikkeliIds();
+      const data = await getMostRecentViewedArtikkeliErcs();
       if (data?.sisalto?.length) {
         // Fetch up to 10 articles to ensure we have enough valid ones
         // We'll display only 4, but fetch more to handle potential missing articles
-        const articles = (await getArticles(data.sisalto.slice(0, 10)))?.items || [];
+        const articles = (await getArticlesByErcs(data.sisalto.slice(0, 10)))?.items || [];
         const cards = data.sisalto
-          .map((articleId) => createContentCard(articleId, articles, language))
+          .map((articleErc) => createContentCard(articleErc, articles, language))
           .filter((card): card is JSX.Element => card !== null)
           .slice(0, 4); // Limit to 4 cards
 

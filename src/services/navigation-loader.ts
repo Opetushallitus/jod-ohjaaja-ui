@@ -1,7 +1,7 @@
 import { supportedLanguageCodes } from '@/i18n/config';
 import { CMSNavigationMenu, NavigationTreeItem } from '@/types/cms-navigation';
 import { getNavigationItems } from '@/utils/navigation';
-import { getNavigations } from './cms-api';
+import { getNavigations } from './cms-navigation-api';
 
 let navigationItems: NavigationTreeItem[] = [];
 

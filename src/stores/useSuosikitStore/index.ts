@@ -4,23 +4,23 @@ import { create } from 'zustand';
 
 interface SuosikitStore {
   suosikit: components['schemas']['SuosikkiDto'][];
-  toggleSuosikki: (articleId: number) => Promise<void>;
+  toggleSuosikki: (articleErc: string) => Promise<void>;
   fetchSuosikit: () => Promise<void>;
   clearSuosikit: () => void;
 }
 
 export const useSuosikitStore = create<SuosikitStore>()((set, get) => ({
   suosikit: [],
-  toggleSuosikki: async (articleId) => {
+  toggleSuosikki: async (articleErc) => {
     const currentSuosikit = get().suosikit;
-    const existingSuosikki = currentSuosikit.find((suosikki) => suosikki.artikkeliId === articleId);
+    const existingSuosikki = currentSuosikit.find((suosikki) => suosikki.artikkeliErc === articleErc);
     if (existingSuosikki?.id) {
       await deleteSuosikki(existingSuosikki.id);
       set({ suosikit: currentSuosikit.filter((suosikki) => suosikki.id !== existingSuosikki.id) });
     } else {
-      const newSuosikkiId = await addSuosikki(articleId);
+      const newSuosikkiId = await addSuosikki(articleErc);
       if (newSuosikkiId) {
-        const newSuosikki = { id: newSuosikkiId, artikkeliId: articleId, luotu: new Date().toISOString() };
+        const newSuosikki = { id: newSuosikkiId, artikkeliErc: articleErc, luotu: new Date().toISOString() };
         set({ suosikit: [...currentSuosikit, newSuosikki] });
       }
     }

@@ -1,11 +1,11 @@
 import { addArtikkelinKatselu } from '@/api/artikkelinKatselu';
 import { components } from '@/api/schema';
-import { getContentByArticleId } from '@/services/cms-api';
+import { getContentByArticleId } from '@/services/cms-article-api';
 import { LoaderFunction } from 'react-router';
 
-const getContentDetailsLoader = (contentId: number) =>
+const getContentDetailsLoader = (contentId: number, externalReferenceCode?: string) =>
   (async ({ context }) => {
-    const [data] = await Promise.all([getContentByArticleId(contentId), addArtikkelinKatselu(contentId)]);
+    const [data] = await Promise.all([getContentByArticleId(contentId), addArtikkelinKatselu(externalReferenceCode)]);
     return { data, isLoggedIn: !!context, userId: context?.id };
   }) satisfies LoaderFunction<components['schemas']['OhjaajaCsrfDto'] | null>;
 

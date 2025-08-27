@@ -62,10 +62,10 @@ const ContentDetails = () => {
 
   const [suosikit, toggleSuosikki] = useSuosikitStore(useShallow((state) => [state.suosikit, state.toggleSuosikki]));
 
-  const isFavorite = suosikit.some((suosikki) => suosikki.artikkeliId === data.id);
+  const isFavorite = suosikit.some((suosikki) => suosikki.artikkeliErc === data.externalReferenceCode);
   const handleFavoriteClick = () => {
-    if (data.id !== undefined) {
-      toggleSuosikki(data.id);
+    if (data.externalReferenceCode !== undefined) {
+      toggleSuosikki(data.externalReferenceCode);
     }
   };
 
@@ -169,7 +169,9 @@ const ContentDetails = () => {
         )}
       </div>
 
-      {data.id && commentsEnabled && <Comments articleId={data.id} userId={userId} />}
+      {data.externalReferenceCode && commentsEnabled && (
+        <Comments articleErc={data.externalReferenceCode} userId={userId} />
+      )}
     </MainLayout>
   );
 };

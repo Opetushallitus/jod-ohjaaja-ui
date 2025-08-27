@@ -1,21 +1,21 @@
-import { getMostViewedArtikkeliIds } from '@/api/artikkelinKatselu';
+import { getMostViewedArtikkeliErcs } from '@/api/artikkelinKatselu';
 import { getBestMatchingArticles } from '@/api/kiinnostukset';
 import { components } from '@/api/schema';
-import { getCategoryContent } from '@/services/cms-api';
+import { getCategoryContent } from '@/services/cms-article-api';
 import { StructuredContent } from '@/types/cms-content';
 import { LoaderFunction } from 'react-router';
 
 const getCategoryContentLoader = (categoryId: number) =>
   (async ({ context }) => {
     const isLoggedIn = !!context;
-    const [newestCategoryContent, mostViewedArticleIds, bestMatchingCategoryContent] = await Promise.all([
+    const [newestCategoryContent, mostViewedArticleErcs, bestMatchingCategoryContent] = await Promise.all([
       getCategoryContent(categoryId, 'dateCreated:desc'),
-      getMostViewedArtikkeliIds(),
+      getMostViewedArtikkeliErcs(),
       isLoggedIn ? getBestMatchingArticles(categoryId) : Promise.resolve([]),
     ]);
 
-    const mostViewedCategoryContent = mostViewedArticleIds
-      .map((id) => newestCategoryContent.items.find((article) => article.id === id))
+    const mostViewedCategoryContent = mostViewedArticleErcs
+      .map((erc) => newestCategoryContent.items.find((article) => article.externalReferenceCode === erc))
       .filter((a): a is StructuredContent => !!a);
 
     return { newestCategoryContent, mostViewedCategoryContent, bestMatchingCategoryContent, isLoggedIn };

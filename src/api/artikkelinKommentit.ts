@@ -1,10 +1,10 @@
 import { client } from './client';
 
-export const getArtikkelinKommentit = async (artikkeliId: number, sivu: number) => {
+export const getArtikkelinKommentit = async (artikkeliErc: string, sivu: number) => {
   const { data, error } = await client.GET(`/api/artikkeli/kommentit`, {
     params: {
       query: {
-        artikkeliId,
+        artikkeliErc,
         sivu,
         koko: 4,
       },
@@ -20,10 +20,10 @@ export const getArtikkelinKommentit = async (artikkeliId: number, sivu: number) 
   };
 };
 
-export const addArtikkelinKommentti = async (artikkeliId: number, kommentti: string) => {
+export const addArtikkelinKommentti = async (artikkeliErc: string, kommentti: string) => {
   const { data, error } = await client.POST(`/api/artikkeli/kommentit`, {
     body: {
-      artikkeliId,
+      artikkeliErc,
       kommentti,
     },
   });

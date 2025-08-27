@@ -1,19 +1,21 @@
 import { client } from './client';
 
-const ARTIKKELIN_KATSELU_PATH = '/api/artikkeli/katselu/{artikkeliId}';
+const ARTIKKELIN_KATSELU_PATH = '/api/artikkeli/katselu/{artikkeliErc}';
 const KATSOTUIMMAT_ARTIKKELIT_PATH = '/api/artikkeli/katselu/katsotuimmat';
 const ARTIKKELIN_KATSELU_VIIMEKSI_PATH = '/api/artikkeli/viimeksi-katsellut';
-export const addArtikkelinKatselu = async (artikkeliId: number) => {
-  await client.POST(ARTIKKELIN_KATSELU_PATH, {
-    params: {
-      path: {
-        artikkeliId,
+export const addArtikkelinKatselu = async (artikkeliErc?: string) => {
+  if (artikkeliErc !== undefined) {
+    await client.POST(ARTIKKELIN_KATSELU_PATH, {
+      params: {
+        path: {
+          artikkeliErc,
+        },
       },
-    },
-  });
+    });
+  }
 };
 
-export const getMostRecentViewedArtikkeliIds = async () => {
+export const getMostRecentViewedArtikkeliErcs = async () => {
   const { data, error } = await client.GET(ARTIKKELIN_KATSELU_VIIMEKSI_PATH);
   if (!error) {
     return data;
@@ -21,7 +23,7 @@ export const getMostRecentViewedArtikkeliIds = async () => {
   return null;
 };
 
-export const getMostViewedArtikkeliIds = async (filterByArtikkeliIds?: number[]) => {
+export const getMostViewedArtikkeliErcs = async (filterByArtikkeliErcs?: string[]) => {
   const { data, error } = await client.GET(KATSOTUIMMAT_ARTIKKELIT_PATH, {
     querySerializer: {
       array: {
@@ -31,12 +33,12 @@ export const getMostViewedArtikkeliIds = async (filterByArtikkeliIds?: number[])
     },
     params: {
       query: {
-        filterByArtikkeliIds: filterByArtikkeliIds,
+        filterByArtikkeliErcs: filterByArtikkeliErcs,
       },
     },
   });
   if (!error && data && Array.isArray(data.sisalto)) {
     return data.sisalto;
   }
-  return [] as number[];
+  return [] as string[];
 };

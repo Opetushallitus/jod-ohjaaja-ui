@@ -134,7 +134,10 @@ const getLoader = (navigationTreeItem: NavigationTreeItem) => {
     case 'StudyProgramsListing':
       return withOhjaajaContext(getCategoryContentLoader(navigationTreeItem.categoryId ?? 0), false);
     case 'Article':
-      return withOhjaajaContext(getContentDetailsLoader(navigationTreeItem.articleId ?? 0), false);
+      return withOhjaajaContext(
+        getContentDetailsLoader(navigationTreeItem.articleId ?? 0, navigationTreeItem.externalReferenceCode),
+        false,
+      );
   }
 };
 

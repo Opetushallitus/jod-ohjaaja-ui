@@ -32,7 +32,6 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
   // Highlight menu element when active
   const getActiveClassNames = ({ isActive }: { isActive: boolean }) => (isActive ? 'bg-secondary-1-50 rounded-sm' : '');
 
-  console.log(location);
   const state = location.state;
   const loginLink = useLoginLink({
     callbackURL: state?.callbackURL ? `/${language}/${state?.callbackURL}` : `/${language}`,
