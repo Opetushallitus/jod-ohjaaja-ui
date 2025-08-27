@@ -31,6 +31,7 @@ const createBaseNavigationTreeItem = (
     type,
     categoryId,
     articleId,
+    externalReferenceCode: articleId ? `article-${articleId}` : `category-${categoryId}`,
     lng,
     children: [],
   };

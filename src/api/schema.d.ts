@@ -92,7 +92,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/api/artikkeli/katselu/{artikkeliId}': {
+  '/api/artikkeli/katselu/{artikkeliErc}': {
     parameters: {
       query?: never;
       header?: never;
@@ -148,7 +148,7 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** Gets the last viewed article ids */
+    /** Gets the last viewed article Ercs */
     get: operations['artikkelinKatseluGetMostRecentViewedArtikkeliIds'];
     put?: never;
     post?: never;
@@ -165,7 +165,7 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** Gets the most viewed article ids */
+    /** Gets the most viewed article Ercs */
     get: operations['artikkelinKatseluGetMostViewedArtikkeliIds'];
     put?: never;
     post?: never;
@@ -213,8 +213,7 @@ export interface components {
     SuosikkiDto: {
       /** Format: uuid */
       readonly id?: string;
-      /** Format: int64 */
-      artikkeliId: number;
+      artikkeliErc: string;
       /** Format: date-time */
       readonly luotu?: string;
     };
@@ -229,8 +228,7 @@ export interface components {
     ArtikkelinKommenttiDto: {
       /** Format: uuid */
       readonly id?: string;
-      /** Format: int64 */
-      artikkeliId: number;
+      artikkeliErc: string;
       /** Format: uuid */
       readonly ohjaajaId?: string;
       kommentti: string;
@@ -264,8 +262,7 @@ export interface components {
       id?: string;
       /** Format: date-time */
       luotu?: string;
-      /** Format: int64 */
-      artikkeliId?: number;
+      artikkeliErc?: string;
       kommentti?: string;
     };
     OhjaajaExportDto: {
@@ -298,16 +295,15 @@ export interface components {
       id?: string;
       /** Format: date-time */
       luotu?: string;
-      /** Format: int64 */
-      artikkeliId?: number;
+      artikkeliErc?: string;
     };
     FeatureFlagDto: {
       /** @enum {string} */
       feature?: 'COMMENTS';
       enabled?: boolean;
     };
-    SivuDtoLong: {
-      sisalto: number[];
+    SivuDtoString: {
+      sisalto: string[];
       /**
        * Format: int64
        * @example 30
@@ -514,7 +510,7 @@ export interface operations {
   artikkelinKommenttiFindAllArtikkelinKommentit: {
     parameters: {
       query: {
-        artikkeliId: number;
+        artikkeliErc: string;
         sivu: number;
         koko: number;
       };
@@ -584,7 +580,7 @@ export interface operations {
       query?: never;
       header?: never;
       path: {
-        artikkeliId: number;
+        artikkeliErc: string;
       };
       cookie?: never;
     };
@@ -658,7 +654,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['SivuDtoLong'];
+          'application/json': components['schemas']['SivuDtoString'];
         };
       };
     };
@@ -666,7 +662,7 @@ export interface operations {
   artikkelinKatseluGetMostViewedArtikkeliIds: {
     parameters: {
       query?: {
-        filterByArtikkeliIds?: number[];
+        filterByArtikkeliErcs?: string[];
         koko?: number;
       };
       header?: never;
@@ -681,7 +677,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['SivuDtoLong'];
+          'application/json': components['schemas']['SivuDtoString'];
         };
       };
     };

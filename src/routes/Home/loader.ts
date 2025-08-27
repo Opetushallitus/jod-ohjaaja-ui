@@ -1,7 +1,7 @@
-import { getMostViewedArtikkeliIds } from '@/api/artikkelinKatselu';
+import { getMostViewedArtikkeliErcs } from '@/api/artikkelinKatselu';
 import { getBestMatchingArticles } from '@/api/kiinnostukset';
 import { components } from '@/api/schema';
-import { getArticles, getNewestContent } from '@/services/cms-api';
+import { getArticlesByErcs, getNewestContent } from '@/services/cms-article-api';
 import { type StructuredContent } from '@/types/cms-content';
 
 import { LoaderFunction } from 'react-router';
@@ -10,10 +10,10 @@ const loader = (async ({ context }) => {
   const isLoggedIn = !!context;
   const [newestContent, mostViewedContent, bestMatchingContent] = await Promise.all([
     getNewestContent(),
-    getMostViewedArtikkeliIds().then(async (articleIds) => {
-      const articles = await getArticles(articleIds);
-      return articleIds
-        .map((id) => articles.items.find((article) => article.id === id))
+    getMostViewedArtikkeliErcs().then(async (articleErcs) => {
+      const articles = await getArticlesByErcs(articleErcs);
+      return articleErcs
+        .map((erc) => articles.items.find((article) => article.externalReferenceCode === erc))
         .filter((a): a is StructuredContent => !!a);
     }),
     isLoggedIn ? getBestMatchingArticles() : Promise.resolve([]),

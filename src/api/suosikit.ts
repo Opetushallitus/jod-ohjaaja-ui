@@ -11,10 +11,10 @@ export const getSuosikit = async () => {
 
   return [];
 };
-export const addSuosikki = async (artikkeliId: number) => {
+export const addSuosikki = async (artikkeliErc: string) => {
   const { data, error } = await client.POST(SUOSIKIT_PATH, {
     body: {
-      artikkeliId,
+      artikkeliErc,
     },
   });
 

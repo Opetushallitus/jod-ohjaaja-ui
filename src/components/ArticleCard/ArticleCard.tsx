@@ -29,14 +29,14 @@ export const ArticleCard = ({ article, variant, isLoggedIn }: ArticleCardProps) 
   const imageSrc = getAdaptiveMediaSrc(imageContent?.id, imageContent?.title, 'thumbnail');
   const path = getArticlePath(article.id ?? 0, language as LangCode);
   const keywords = getKeywords(article);
-  const isFavorite = suosikit.some((suosikki) => suosikki.artikkeliId === article.id);
+  const isFavorite = suosikit.some((suosikki) => suosikki.artikkeliErc === article.externalReferenceCode);
 
   const favoriteButtonProps = isLoggedIn
     ? {
         isFavorite,
         onFavoriteClick: () => {
-          if (article.id !== undefined) {
-            toggleSuosikki(article.id);
+          if (article.externalReferenceCode !== undefined) {
+            toggleSuosikki(article.externalReferenceCode);
           }
         },
         favoriteLabel: isFavorite ? t('remove-from-favorites') : t('add-to-favorites'),

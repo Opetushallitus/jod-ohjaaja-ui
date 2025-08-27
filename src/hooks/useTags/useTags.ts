@@ -1,4 +1,4 @@
-import { getTags } from '@/services/cms-api';
+import { getTags } from '@/services/cms-tag-api';
 import { type Category } from '@/types/cms-content';
 import React from 'react';
 

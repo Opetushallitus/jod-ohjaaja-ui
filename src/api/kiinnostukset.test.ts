@@ -1,4 +1,4 @@
-import { getCategoryContent, searchContent } from '@/services/cms-api';
+import { getCategoryContent, searchContent } from '@/services/cms-article-api';
 import { StructuredContent, StructuredContentPage } from '@/types/cms-content';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getBestMatchingArticles } from './kiinnostukset';
@@ -12,7 +12,7 @@ vi.mock('@/api/client', () => ({
   },
 }));
 
-vi.mock('@/services/cms-api', () => ({
+vi.mock('@/services/cms-article-api', () => ({
   getCategoryContent: vi.fn(),
   searchContent: vi.fn(),
 }));

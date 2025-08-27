@@ -19,6 +19,7 @@ export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangC
     children: navigationItem.children.map((child) => getNavigationItems(child, lng)),
     categoryId: navigationItem.categoryId ?? undefined,
     articleId: navigationItem.articleId ?? undefined,
+    externalReferenceCode: navigationItem.externalReferenceCode,
     lng,
   };
 };

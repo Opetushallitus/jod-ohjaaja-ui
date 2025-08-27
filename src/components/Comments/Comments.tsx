@@ -12,11 +12,11 @@ import Comment from './Comment';
 import { CommentInput } from './CommentInput';
 
 interface CommentsProps {
-  articleId: number;
+  articleErc: string;
   userId?: string; // Optional userId for determining if the comment is the user's own
 }
 
-const Comments = ({ articleId, userId }: CommentsProps) => {
+const Comments = ({ articleErc, userId }: CommentsProps) => {
   const { t } = useTranslation();
 
   const commentsRef = React.useRef<HTMLDivElement>(null);
@@ -49,7 +49,7 @@ const Comments = ({ articleId, userId }: CommentsProps) => {
   const fetchComments = React.useCallback(
     async (pageNum: number) => {
       setLoading(true);
-      const commentsResponse = await getArtikkelinKommentit(articleId, pageNum - 1);
+      const commentsResponse = await getArtikkelinKommentit(articleErc, pageNum - 1);
       if (pageNum === 1) {
         setComments(commentsResponse.sisalto);
       } else {
@@ -63,13 +63,13 @@ const Comments = ({ articleId, userId }: CommentsProps) => {
       setLoading(false);
       setAddingComment(false);
     },
-    [articleId],
+    [articleErc],
   );
 
   const addComment = async (comment: string) => {
     setAddingComment(true);
     try {
-      await addArtikkelinKommentti(articleId, comment);
+      await addArtikkelinKommentti(articleErc, comment);
 
       if (page === 1) {
         fetchComments(1); // Refresh comments if on the first page

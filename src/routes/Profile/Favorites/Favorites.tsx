@@ -4,7 +4,7 @@ import { CategoryList } from '@/components/CategoryList/CategoryList';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import TagFilterList from '@/routes/Search/TagFilterList';
-import { getArticles } from '@/services/cms-api';
+import { getArticlesByErcs } from '@/services/cms-article-api';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { type Category, type StructuredContent } from '@/types/cms-content';
@@ -37,7 +37,7 @@ const Favorites = () => {
     const navigationTreeItems = getNavigationTreeItems().filter((item) => item.lng === language);
 
     const fetchArticles = async () => {
-      const fetchedArticles = await getArticles(suosikit.map((suosikki) => suosikki.artikkeliId));
+      const fetchedArticles = await getArticlesByErcs(suosikit.map((suosikki) => suosikki.artikkeliErc));
       if (fetchedArticles.items.length === 0) {
         setArticlesByCategory(null);
       } else {

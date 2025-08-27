@@ -1,4 +1,4 @@
-import { getCategoryContent, searchContent } from '@/services/cms-api';
+import { getCategoryContent, searchContent } from '@/services/cms-article-api';
 import { client } from './client';
 
 const KIINNOSTUKSET_PATH = '/api/profiili/kiinnostukset';

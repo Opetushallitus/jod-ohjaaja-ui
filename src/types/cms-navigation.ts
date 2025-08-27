@@ -20,6 +20,7 @@ export interface CMSNavigationItem {
   type: NavigationItemType;
   articleId: number | null;
   categoryId: number | null;
+  externalReferenceCode?: string;
   parentNavigationId: number;
   children: CMSNavigationItem[];
 }
@@ -38,6 +39,7 @@ export interface NavigationTreeItem {
   children: NavigationTreeItem[];
   categoryId?: number;
   articleId?: number;
+  externalReferenceCode?: string;
   lng: LangCode;
 }
 
