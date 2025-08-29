@@ -96,7 +96,7 @@ export const useMenuRoutes = (onClose: () => void) => {
         label: t('advisors-workspace'),
         LinkComponent: ({ children, className }: LinkComponent) => (
           <NavLinkBasedOnAuth
-            to={`/${t('slugs.profile.index')}`}
+            to={`${t('slugs.profile.index')}`}
             shouldLogin={!data}
             className={className}
             onClose={onClose}
