@@ -26,7 +26,9 @@ const ErrorBoundary = () => {
           variant="accent"
           serviceVariant="ohjaaja"
           /* eslint-disable-next-line react/no-unstable-nested-components */
-          LinkComponent={({ children }: { children: React.ReactNode }) => <a href="/">{children}</a>}
+          LinkComponent={({ children }: { children: React.ReactNode }) => (
+            <a href={`/ohjaaja/${i18n.language}`}>{children}</a>
+          )}
         />
         <Button
           icon={<JodUser />}
