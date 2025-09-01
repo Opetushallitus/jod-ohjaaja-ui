@@ -1,13 +1,13 @@
 import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
-import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
 import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/RecentlyWatchedContent';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
+import { useBreadcrumbItems } from '@/hooks/useBreadcrumbItems';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
-import { tidyClasses as tc } from '@jod/design-system';
+import { Breadcrumb, tidyClasses as tc } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
-import { useLoaderData } from 'react-router';
+import { NavLink, useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
 
 const CategoryMain = () => {
@@ -18,6 +18,8 @@ const CategoryMain = () => {
 
   const title = categoryRoute?.handle?.title;
   const description = categoryRoute?.handle?.description;
+
+  const breadcrumbItems = useBreadcrumbItems();
 
   const richTextClasses = tc([
     '[&_p]:my-5',
@@ -42,7 +44,7 @@ const CategoryMain = () => {
       className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-6 pt-5 sm:px-6 print:p-0"
       data-testid="category-main"
     >
-      <Breadcrumb />
+      <Breadcrumb items={breadcrumbItems} serviceVariant="ohjaaja" LinkComponent={NavLink} />
       <aside
         className="col-span-3 lg:row-start-2 lg:col-start-3 lg:col-span-1 print:hidden position-relative lg:position-static z-10 lg:z-auto h-[47px] lg:h-auto"
         data-testid="category-main-aside"
