@@ -46,6 +46,8 @@ const Favorites = () => {
     };
     if (suosikit.length > 0) {
       fetchArticles();
+    } else {
+      setArticlesByCategory(null);
     }
   }, [suosikit, language]);
 
