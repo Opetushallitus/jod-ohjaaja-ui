@@ -2,6 +2,35 @@ import { cx } from '@jod/design-system';
 import { JodArrowRight } from '@jod/design-system/icons';
 import React from 'react';
 
+type LinkProps = {
+  to: string;
+  linkComponent: React.ElementType;
+  onClick?: never;
+};
+
+type ClickProps = {
+  to?: never;
+  linkComponent?: never;
+  onClick: () => void;
+};
+
+type StaticProps = {
+  to?: never;
+  linkComponent?: never;
+  onClick?: never;
+};
+
+type FeatureCardProps = {
+  hero?: boolean;
+  level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  title: string;
+  content: string;
+  backgroundColor: string;
+  collapseOnSmallScreen?: boolean;
+  opacity?: number;
+  className?: string;
+} & (LinkProps | ClickProps | StaticProps);
+
 export const FeatureCard = ({
   level,
   hero = false,
@@ -13,18 +42,8 @@ export const FeatureCard = ({
   className,
   to,
   linkComponent,
-}: {
-  hero?: boolean;
-  level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  title: string;
-  content: string;
-  backgroundColor: string;
-  collapseOnSmallScreen?: boolean;
-  opacity?: number;
-  className?: string;
-  to?: string;
-  linkComponent?: React.ElementType;
-}) => {
+  onClick,
+}: FeatureCardProps) => {
   const headingId = React.useId();
   const contentId = React.useId();
 
@@ -34,6 +53,7 @@ export const FeatureCard = ({
   return (
     <Card
       to={to}
+      onClick={onClick}
       role="region"
       aria-labelledby={headingId}
       aria-describedby={contentId}
