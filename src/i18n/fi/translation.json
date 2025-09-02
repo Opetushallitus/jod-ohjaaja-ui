@@ -276,6 +276,25 @@
       "what-is-the-service": "mika-palvelu-on"
     }
   },
+  "suggest-new-content": {
+    "content-label": "Ehdotuksesi sisällöksi",
+    "content-placeholder": "Ehdotus",
+    "description": "Oletko käyttänyt ohjausmenetelmää, jota palvelusta ei löydy? Tai haluaisitko lisää tietoa jostain teemasta? Ehdota meille palvelusta mielestäsi puuttuvaa sisältöä oheisella lomakkeella.",
+    "description-label": "Kuvaile omin sanoin sisältöä ja miksi se olisi hyödyllinen",
+    "description-placeholder": "Sisällön kuvaus",
+    "email-label": "Yhteystietosi, jotta voimme tarvittaessa olla yhteydessä sinuun.",
+    "email-placeholder": "Sähköpostiosoite",
+    "errors": {
+      "content": "Syötä ehdotuksesi sisällöksi",
+      "valid-email": "Syötä kelvollinen sähköpostiosoite",
+      "link": "Syötä kelvollinen linkki",
+      "description": "Syötä sisällön kuvaus"
+    },
+    "link-label": "Linkki ehdottamaasi sisältöön",
+    "link-placeholder": "Linkki",
+    "send": "Lähetä ehdotus",
+    "title": "Sisällön ehdottaminen"
+  },
   "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
   "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä.",
   "terms-of-service": "Käyttöehdot",
