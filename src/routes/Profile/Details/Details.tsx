@@ -4,7 +4,7 @@ import { MainLayout } from '@/components';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import { useTags } from '@/hooks/useTags';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
-import { Checkbox, Combobox } from '@jod/design-system';
+import { Checkbox, Select } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
@@ -71,7 +71,7 @@ const Details = () => {
           <p className="text-body-md mb-6" data-testid="profile-details-intro-description">
             {t('profile.details.introduction.description')}
           </p>
-          <Combobox
+          <Select
             label={t('profile.details.workplace.label')}
             placeholder={t('profile.details.workplace.placeholder')}
             selected={currentTyoskentelyPaikka ?? ''}
