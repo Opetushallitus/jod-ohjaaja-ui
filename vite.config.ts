@@ -62,6 +62,15 @@ export default defineConfig(({ mode }) => {
           },
           auth: `${env.CMSUSER}:${env.CMSPASSWORD}`,
         },
+        '/': {
+          target: 'http://localhost:5173', // Landing page UI
+          xfwd: true,
+          bypass: (req) => {
+            if (req.url && req.url.startsWith('/ohjaaja')) {
+              return req.url;
+            }
+          },
+        },
       },
     },
   };
