@@ -96,7 +96,7 @@ const Root = () => {
 
   return (
     <>
-      <link rel="manifest" href={`/ohjaaja/manifest-${language}.json`} crossOrigin="use-credentials" />
+      <link rel="manifest" href={`/manifest-${language}.json`} crossOrigin="use-credentials" />
       <header role="banner" className="sticky top-0 z-30 print:hidden" data-testid="app-header">
         <SkipLink hash="#jod-main" label={t('skiplinks.main')} />
         <form action="/ohjaaja/logout" method="POST" hidden ref={logoutForm}>
@@ -170,7 +170,7 @@ const Root = () => {
       <Chatbot
         agent={agent}
         language={language}
-        agentIcon={`${import.meta.env.BASE_URL}chatbot-icon.svg`}
+        agentIcon={'/chatbot-icon.svg'}
         header={t('chatbot.header')}
         openWindowText={t('chatbot.open-window-text')}
         agentName={t('chatbot.agent-name')}
