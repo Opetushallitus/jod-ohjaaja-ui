@@ -7,7 +7,7 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
 
-const VISIBLE_ITEM_COUNT = 6;
+const VISIBLE_ITEM_COUNT = 10;
 
 const CategoryListing = () => {
   const { newestCategoryContent, isLoggedIn } = useLoaderData<LoaderData>();
