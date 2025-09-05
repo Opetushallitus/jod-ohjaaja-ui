@@ -79,8 +79,7 @@ const Home = () => {
           </div>
         </div>
 
-        <ArticleCarousel title={t('home.new-content')} isLoggedIn={isLoggedIn} articles={newestContent} />
-
+        <ArticleCarousel title={t('home.popular-content')} isLoggedIn={isLoggedIn} articles={mostViewedContent} />
         {isLoggedIn && (
           <div className="col-span-3 lg:col-span-2">
             <FeatureCard
@@ -94,7 +93,7 @@ const Home = () => {
           </div>
         )}
 
-        <ArticleCarousel title={t('home.popular-content')} isLoggedIn={isLoggedIn} articles={mostViewedContent} />
+        <ArticleCarousel title={t('home.new-content')} isLoggedIn={isLoggedIn} articles={newestContent} />
         <ArticleCarousel title={t('home.best-matching')} isLoggedIn={isLoggedIn} articles={bestMatchingContent} />
 
         {isLoggedIn ? (
