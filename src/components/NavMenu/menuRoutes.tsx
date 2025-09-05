@@ -23,22 +23,11 @@ const createMenuItem = (
         {children}
       </NavLink>
     ),
-    selected: currentPath.startsWith(path),
+    selected: currentPath === path,
     childItems: navigationItem.children
       .filter((child) => child.type !== 'Article')
       .map((childItem) => createMenuItem(childItem, language, onClose, path, currentPath)),
   };
-  if (navigationItem.children.filter((child) => child.type !== 'Article').length > 0) {
-    menuItem.childItems.splice(0, 0, {
-      label: navigationItem.title,
-      LinkComponent: ({ children, className }: LinkComponent) => (
-        <NavLink className={className} to={path} onClick={onClose} lang={language}>
-          {children}
-        </NavLink>
-      ),
-      selected: currentPath === path,
-    });
-  }
   return menuItem;
 };
 
