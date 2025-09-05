@@ -278,5 +278,27 @@
   },
   "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
   "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä.",
-  "terms-of-service": "Käyttöehdot"
+  "terms-of-service": "Käyttöehdot",
+  "toast": {
+    "add-default-success": "Lisäys onnistui.",
+    "add-default-failed": "Lisäys epäonnistui.",
+    "delete-default-success": "Poisto onnistui.",
+    "delete-default-failed": "Poisto epäonnistui.",
+    "update-default-success": "Päivitys onnistui.",
+    "update-default-failed": "Päivitys epäonnistui.",
+    "add-comment-success": "Kommentti lisätty.",
+    "add-comment-failed": "Kommentin lisääminen epäonnistui.",
+    "delete-comment-success": "Kommentti poistettu.",
+    "delete-comment-failed": "Kommentin poistaminen epäonnistui.",
+    "report-comment-success": "Kommentti ilmoitettu.",
+    "report-comment-failed": "Kommentin ilmoittaminen epäonnistui.",
+    "add-interest-success": "Kiinnostus lisätty.",
+    "add-interest-failed": "Kiinnostuksen lisääminen epäonnistui.",
+    "delete-interest-success": "Kiinnostus poistettu.",
+    "delete-interest-failed": "Kiinnostuksen poistaminen epäonnistui.",
+    "add-favorite-success": "Suosikki lisätty.",
+    "add-favorite-failed": "Suosikin lisääminen epäonnistui.",
+    "delete-favorite-success": "Suosikki poistettu.",
+    "delete-favorite-failed": "Suosikin poistaminen epäonnistui."
+  }
 }
