@@ -220,43 +220,6 @@
         "description": "Kaikki ohjaajan profiiliin tallennetut tiedot poistetaan pysyvästi, eikä niitä voi palauttaa. Huomioithan, että ohjaajan profiilin poisto ei vaikuta mahdollisesti luomaasi osaamisprofiiliin tai sen tietoihin. Jos haluat poistaa myös osaamisprofiilin, sinun tulee tehdä se Osaamispolun asetuksissa.",
         "title": "Poista koko ohjaajan profiili ja kaikki siihen tallennetut tiedot"
       },
-      "description": "Tällä sivulla voit valita, mihin tarkoituksiin toiminnastasi Ohjaajan osiossa kerättävää tietoa käytetään.",
-      "disclosure-of-data": {
-        "archiving": {
-          "description": "Selitys/tarkennus",
-          "title": "Arkistointi"
-        },
-        "competence-assessment": {
-          "description": "Selitys/tarkennus",
-          "title": "Osaamisen arviointi"
-        },
-        "description": "Voit valita, luovutetaanko tietosi rajapintojen kautta seuraaviin tarkoituksiin:",
-        "development": {
-          "description": "Selitys/tarkennus",
-          "title": "Tutkimus"
-        },
-        "evaluation-of-education": {
-          "description": "Selitys/tarkennus",
-          "title": "Koulutuksen arviointi"
-        },
-        "guidance-and-planning": {
-          "description": "Selitys/tarkennus",
-          "title": "Ohjaus ja suunnittelu"
-        },
-        "research": {
-          "description": "Selitys/tarkennus",
-          "title": "Tutkimus"
-        },
-        "statistics-and-monitoring": {
-          "description": "Selitys/tarkennus",
-          "title": "Tilastointi ja seuranta"
-        },
-        "teaching-evaluation": {
-          "description": "Selitys/tarkennus",
-          "title": "Opetuksen arviointi"
-        },
-        "title": "Tietojen luovutus anonymisoimattomana"
-      },
       "download": {
         "action": "Lataa ohjaajan osion tiedot",
         "description": "Tämä tarkoittaa tietoja, jotka olet jakanut Ohjaajan osiossa sekä tietoja, joita olemme keränneet toiminnastasi. ",
