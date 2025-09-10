@@ -29,7 +29,7 @@ const isTyoskentelyPaikka = (
 
 const Details = () => {
   const { t } = useTranslation();
-  const { firstName, lastName, tyoskentelyPaikka } = useLoaderData<LoaderData>();
+  const { tyoskentelyPaikka } = useLoaderData<LoaderData>();
   const { tags } = useTags();
   const [kiinnostukset, toggleKiinnostus] = useKiinnostuksetStore(
     useShallow((state) => [state.kiinnostukset, state.toggleKiinnostus]),
@@ -58,11 +58,8 @@ const Details = () => {
     <MainLayout navChildren={<ProfileNavigation />}>
       <title>{t('profile.details.title')}</title>
       <div data-testid="profile-details">
-        <h1 className="text-heading-1-mobile lg:text-heading-1  lg:mb-7" data-testid="profile-details-greeting">
-          {t('profile.details.greeting', {
-            firstName,
-            lastName,
-          })}
+        <h1 className="text-heading-1-mobile lg:text-heading-1  lg:mb-7" data-testid="profile-details-title">
+          {t('profile.details.title')}
         </h1>
         <section className="mb-8" data-testid="profile-details-introduction">
           <h2 className="text-heading-2 mb-6" data-testid="profile-details-intro-title">

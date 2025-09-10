@@ -4,7 +4,7 @@
   "about-us-and-user-guide": "Tietoa palvelusta ja käyttöohjeet",
   "accessibility-statement": "Saavutettavuusseloste",
   "add-to-favorites": "Tallenna suosikiksi",
-  "advisors-workspace": "Ohjaajan työpöytä",
+  "advisors-workspace": "Ohjaajan profiili",
   "back": "Takaisin",
   "cancel": "Peruuta",
   "carousel": {
@@ -103,7 +103,7 @@
   "link-copy-failed": "Linkin kopiointi epäonnistui",
   "log-in-to-the-service": "Kirjaudu palveluun",
   "log-in-to-the-service-content": "Kirjautumalla palveluun saat mahdollisuuden keskustella sisällöistä, tallentaa suosikkeja ja mukauttaa sinulle näkyvää sisältöä kiinnostuksesi mukaan. Palvelu käyttää suomi.fi-tunnistautumista.",
-  "login": "Kirjaudu sisään",
+  "login": "Kirjaudu",
   "login-for-favorites": "Kirjaudu sisään Osaamispolkuun, jotta voit tallentaa suosikkeja ja päästä tarkastelemaan niitä myöhemmin.",
   "logout": "Kirjaudu ulos",
   "menu": "Valikko",
@@ -151,7 +151,6 @@
   "privacy-policy-and-cookies": "Tietosuojaseloste ja evästeet",
   "profile": {
     "details": {
-      "greeting": "Hei {{firstName}} {{lastName}} - tervetuloa",
       "interest": {
         "description": "Valitsemalla sinua kiinnostavia asiasanoja, voimme tarjota palvelussa sinulle paremmin kohdistettuja sisältöjä. Näet myös kaiken muun palvelussa tarjottavan sisällön. Valintasi tallennetaan automaattisesti. ",
         "title": "Kiinnostukseni"
@@ -192,7 +191,22 @@
       },
       "title": "Suosikit"
     },
-    "index": "Ohjaajan työpöytä",
+    "front": {
+      "data-processing-info": "Osaamisprofiilin tietojen käsittely perustuu Lakiin valtakunnallisesta jatkuvan oppimisen digitaalisesta palvelukokonaisuudesta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
+      "greeting": "Hei {{etunimi}} - tervetuloa ohjaajan profiiliin!",
+      "list-1-item-1": "lisätä omia tietojasi, jotta voimme palvella sinua paremmin",
+      "list-1-item-2": "tallentaa Ohjaajan osion sisältöjä  suosikeiksi sydänikonia painamalla",
+      "list-1-item-3": "nähdä ja hallinnoida suosikkisisältösi",
+      "list-1-item-4": "ladata tai poistaa profiilisi",
+      "list-2-item-1": "lähettää ehdotuksesi palveluun lisättävästä sisällöstä",
+      "list-2-item-2": "keskustella muiden ohjaajien kanssa sisältöjen yhteydessä olevissa kommenttiketjuissa",
+      "logged-in-features-intro": "Kirjautuneena voit myös:",
+      "privacy-policy-link-text": "tietosuojaselosteesta",
+      "profile-description": "Ohjaajan profiilissa voit:",
+      "title": "Ohjaajan profiili",
+      "you-are-signed-in": "Olet kirjautunut ohjaajan profiiliin. Ohjaajan profiili toimii Osaamispolun ohjaajan osion omien tietojesi säilytys- ja hallintapaikkana."
+    },
+    "index": "Ohjaajan profiili",
     "landing-page": {
       "description": "Kirjautumalla sisään saat käyttöösi henkilökohtaisen osaamispolkusi, joka auttaa sinua hallinnoimaan ja hyödyntämään osaamistasi tehokkaasti.",
       "list-1-item-1": "Oman osaamispolun hallinta ja tietojen luvitus: Päätä, miten ja missä tietojasi käytetään.",
@@ -264,7 +278,8 @@
     "profile": {
       "details": "omat-tiedot",
       "favorites": "suosikit",
-      "index": "ohjaajan-tyopoyta",
+      "front": "etusivu",
+      "index": "ohjaajan-profiili",
       "preferences": "asetukset"
     },
     "search": "haku",
@@ -287,9 +302,9 @@
     "email-placeholder": "Sähköpostiosoite",
     "errors": {
       "content": "Syötä ehdotuksesi sisällöksi",
-      "valid-email": "Syötä kelvollinen sähköpostiosoite",
+      "description": "Syötä sisällön kuvaus",
       "link": "Syötä kelvollinen linkki",
-      "description": "Syötä sisällön kuvaus"
+      "valid-email": "Syötä kelvollinen sähköpostiosoite"
     },
     "link-label": "Linkki ehdottamaasi sisältöön",
     "link-placeholder": "Linkki",
@@ -300,25 +315,25 @@
   "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä.",
   "terms-of-service": "Käyttöehdot",
   "toast": {
-    "add-default-success": "Lisäys onnistui.",
-    "add-default-failed": "Lisäys epäonnistui.",
-    "delete-default-success": "Poisto onnistui.",
-    "delete-default-failed": "Poisto epäonnistui.",
-    "update-default-success": "Päivitys onnistui.",
-    "update-default-failed": "Päivitys epäonnistui.",
-    "add-comment-success": "Kommentti lisätty.",
     "add-comment-failed": "Kommentin lisääminen epäonnistui.",
-    "delete-comment-success": "Kommentti poistettu.",
-    "delete-comment-failed": "Kommentin poistaminen epäonnistui.",
-    "report-comment-success": "Kommentti ilmoitettu.",
-    "report-comment-failed": "Kommentin ilmoittaminen epäonnistui.",
-    "add-interest-success": "Kiinnostus lisätty.",
-    "add-interest-failed": "Kiinnostuksen lisääminen epäonnistui.",
-    "delete-interest-success": "Kiinnostus poistettu.",
-    "delete-interest-failed": "Kiinnostuksen poistaminen epäonnistui.",
-    "add-favorite-success": "Suosikki lisätty.",
+    "add-comment-success": "Kommentti lisätty.",
+    "add-default-failed": "Lisäys epäonnistui.",
+    "add-default-success": "Lisäys onnistui.",
     "add-favorite-failed": "Suosikin lisääminen epäonnistui.",
+    "add-favorite-success": "Suosikki lisätty.",
+    "add-interest-failed": "Kiinnostuksen lisääminen epäonnistui.",
+    "add-interest-success": "Kiinnostus lisätty.",
+    "delete-comment-failed": "Kommentin poistaminen epäonnistui.",
+    "delete-comment-success": "Kommentti poistettu.",
+    "delete-default-failed": "Poisto epäonnistui.",
+    "delete-default-success": "Poisto onnistui.",
+    "delete-favorite-failed": "Suosikin poistaminen epäonnistui.",
     "delete-favorite-success": "Suosikki poistettu.",
-    "delete-favorite-failed": "Suosikin poistaminen epäonnistui."
+    "delete-interest-failed": "Kiinnostuksen poistaminen epäonnistui.",
+    "delete-interest-success": "Kiinnostus poistettu.",
+    "report-comment-failed": "Kommentin ilmoittaminen epäonnistui.",
+    "report-comment-success": "Kommentti ilmoitettu.",
+    "update-default-failed": "Päivitys epäonnistui.",
+    "update-default-success": "Päivitys onnistui."
   }
 }
