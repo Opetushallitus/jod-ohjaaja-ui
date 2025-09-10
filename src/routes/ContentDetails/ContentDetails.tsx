@@ -1,5 +1,8 @@
 import { MainLayout } from '@/components';
+import { createLoginDialogFooter } from '@/components/createLoginDialogFooter';
 import { useFeature } from '@/hooks/useFeatures/useFeatures';
+import { useLoginLink } from '@/hooks/useLoginLink';
+import { useModal } from '@/hooks/useModal';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { copyToClipboard } from '@/utils/clipboard';
@@ -16,7 +19,7 @@ import {
 } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLoaderData } from 'react-router';
+import { Link, useLoaderData, useLocation } from 'react-router';
 import { useShallow } from 'zustand/react/shallow';
 import { LoaderData } from './loader';
 
@@ -58,13 +61,26 @@ const ContentDetails = () => {
     t,
   } = useTranslation();
 
+  const { showDialog, closeAllModals } = useModal();
+  const location = useLocation();
+  const state = location.state;
+  const loginLink = useLoginLink({
+    callbackURL: state?.callbackURL ? `/${language}/${state?.callbackURL}` : `/${language}`,
+  });
+
   const commentsEnabled = useFeature('COMMENTS');
 
   const [suosikit, toggleSuosikki] = useSuosikitStore(useShallow((state) => [state.suosikit, state.toggleSuosikki]));
 
   const isFavorite = suosikit.some((suosikki) => suosikki.artikkeliErc === data.externalReferenceCode);
   const handleFavoriteClick = () => {
-    if (data.externalReferenceCode !== undefined) {
+    if (!isLoggedIn) {
+      showDialog({
+        title: t('login'),
+        description: t('login-for-favorites'),
+        footer: createLoginDialogFooter(t, loginLink, closeAllModals),
+      });
+    } else if (data.externalReferenceCode !== undefined) {
       toggleSuosikki(data.externalReferenceCode);
     }
   };
@@ -137,20 +153,19 @@ const ContentDetails = () => {
             className="flex sm:flex-col flex-row sm:justify-start justify-end flex-1 place-items-end gap-3 print:hidden"
             data-testid="content-actions"
           >
-            {isLoggedIn && (
-              <ActionButton
-                label={isFavorite ? t('remove-from-favorites') : t('add-to-favorites')}
-                icon={
-                  isFavorite ? (
-                    <JodFavoriteFilled aria-hidden className="text-accent" />
-                  ) : (
-                    <JodFavorite aria-hidden className="text-accent" />
-                  )
-                }
-                onClick={handleFavoriteClick}
-                data-testid="action-favorite"
-              ></ActionButton>
-            )}
+            <ActionButton
+              label={isFavorite ? t('remove-from-favorites') : t('add-to-favorites')}
+              icon={
+                isFavorite ? (
+                  <JodFavoriteFilled aria-hidden className="text-accent" />
+                ) : (
+                  <JodFavorite aria-hidden className="text-accent" />
+                )
+              }
+              onClick={handleFavoriteClick}
+              data-testid="action-favorite"
+            ></ActionButton>
+
             <ActionButton
               label={t('share')}
               icon={<JodShare className="text-accent" />}

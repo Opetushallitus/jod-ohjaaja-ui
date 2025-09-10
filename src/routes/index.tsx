@@ -8,6 +8,7 @@ import { CategoryListing, CategoryMain, getCategoryContentLoader } from './Categ
 import { Home, homeLoader } from './Home';
 import { Details, Favorites, Preferences, Profile, profileDetailsLoader } from './Profile';
 
+import { ModalProvider } from '@/hooks/useModal';
 import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
 import { Search, searchLoader } from './Search';
 
@@ -47,7 +48,11 @@ const rootRoute: RouteObject = {
   id: 'root',
   path: '/:lng',
   loader: withOhjaajaContext(rootLoader, false),
-  element: <Root />,
+  element: (
+    <ModalProvider>
+      <Root />
+    </ModalProvider>
+  ),
   errorElement: <ErrorBoundary />,
   children: [
     {
