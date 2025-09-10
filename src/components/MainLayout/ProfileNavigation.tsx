@@ -13,6 +13,7 @@ export const ProfileNavigation = () => {
   const navigationListItem = {
     id: 'index',
     title: t('profile.index'),
+    path: `/${language}/${t('slugs.profile.index')}/${t('slugs.profile.front')}`,
     children: profileRoutes.map((route) => ({
       id: route.path,
       title: route.name,

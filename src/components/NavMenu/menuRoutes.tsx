@@ -94,7 +94,7 @@ export const useMenuRoutes = (onClose: () => void) => {
           </NavLinkBasedOnAuth>
         ),
         childItems: profileMenuItems,
-        selected: pathname.startsWith(`/${language}/${t('slugs.profile.index')}`),
+        selected: pathname === `/${language}/${t('slugs.profile.index')}/${t('slugs.profile.front')}`,
       },
     ];
   }, [createContentNavigationMenuItems, t, profileMenuItems, pathname, language, data, onClose]);

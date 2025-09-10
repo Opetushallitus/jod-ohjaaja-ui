@@ -10,6 +10,7 @@ import { Details, Favorites, Preferences, Profile, profileDetailsLoader } from '
 
 import { ModalProvider } from '@/hooks/useModal';
 import { NoteStackProvider } from '@jod/design-system';
+import ProfileFront from './Profile/ProfileFront/ProfileFront';
 import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
 import { Search, searchLoader } from './Search';
 import articleRedirectLoader from './articleRedirectLoader';
@@ -20,27 +21,44 @@ export const profileRoutes = supportedLanguageCodes.map(
       id: `{slugs.profile.index}|${lng}`,
       path: i18n.t('slugs.profile.index', { lng }),
       element: <Profile />,
+      handle: {
+        title: i18n.t('profile.front.title', { lng }),
+      },
       loader: withOhjaajaContext(() => null),
       children: [
         {
           index: true,
-          loader: () => replace(i18n.t('slugs.profile.details', { lng })),
+          loader: () => replace(i18n.t('slugs.profile.front', { lng })),
+        },
+        {
+          id: `{slugs.profile.front}|${lng}`,
+          path: i18n.t('slugs.profile.front', { lng }),
+          element: <ProfileFront />,
         },
         {
           id: `{slugs.profile.details}|${lng}`,
           path: i18n.t('slugs.profile.details', { lng }),
           element: <Details />,
+          handle: {
+            title: i18n.t('profile.details.title', { lng }),
+          },
           loader: withOhjaajaContext(profileDetailsLoader, true),
         },
         {
           id: `{slugs.profile.favorites}|${lng}`,
           path: i18n.t('slugs.profile.favorites', { lng }),
           element: <Favorites />,
+          handle: {
+            title: i18n.t('profile.favorites.title', { lng }),
+          },
         },
         {
           id: `{slugs.profile.preferences}|${lng}`,
           path: i18n.t('slugs.profile.preferences', { lng }),
           element: <Preferences />,
+          handle: {
+            title: i18n.t('profile.preferences.title', { lng }),
+          },
         },
       ],
     }) as RouteObject,

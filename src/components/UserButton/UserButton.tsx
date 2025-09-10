@@ -34,7 +34,9 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
 
   const state = location.state;
   const loginLink = useLoginLink({
-    callbackURL: state?.callbackURL ? `/${language}/${state?.callbackURL}` : `/${language}`,
+    callbackURL: state?.callbackURL
+      ? `/${language}/${state?.callbackURL}`
+      : `/${language}/${t('slugs.profile.index')}/${t('slugs.profile.front')}`,
   });
 
   const caret = sm ? <>{userMenuOpen ? <JodCaretUp size={20} /> : <JodCaretDown size={20} />}</> : null;

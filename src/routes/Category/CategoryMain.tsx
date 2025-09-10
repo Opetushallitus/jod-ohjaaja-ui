@@ -44,7 +44,7 @@ const CategoryMain = () => {
   return (
     <main
       role="main"
-      className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-6 pt-5 sm:px-6 print:p-0"
+      className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-9 pt-5 sm:px-6 print:p-0"
       data-testid="category-main"
     >
       <Breadcrumb items={breadcrumbItems} serviceVariant="ohjaaja" LinkComponent={NavLink} />
@@ -61,7 +61,7 @@ const CategoryMain = () => {
         </nav>
       </aside>
       <section
-        className="col-span-3 lg:row-start-2 lg:col-start-1 lg:col-span-2 print:col-span-3"
+        className="col-span-3 lg:row-start-2 lg:col-start-1 lg:col-span-2 print:col-span-3 mb-11"
         data-testid="category-main-content"
       >
         {title && (
