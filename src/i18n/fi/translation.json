@@ -107,6 +107,7 @@
   "log-in-to-the-service": "Kirjaudu palveluun",
   "log-in-to-the-service-content": "Kirjautumalla palveluun saat mahdollisuuden keskustella sisällöistä, tallentaa suosikkeja ja mukauttaa sinulle näkyvää sisältöä kiinnostuksesi mukaan. Palvelu käyttää suomi.fi-tunnistautumista.",
   "login": "Kirjaudu sisään",
+  "login-for-favorites": "Kirjaudu sisään Osaamispolkuun, jotta voit tallentaa suosikkeja ja päästä tarkastelemaan niitä myöhemmin.",
   "logout": "Kirjaudu ulos",
   "menu": "Valikko",
   "navigation": {

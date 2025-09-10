@@ -108,7 +108,6 @@ export const toastMiddleware: Middleware = {
     const uuidRegex = /\/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/;
     const urlWithoutUUID = strippedUrl.replace(uuidRegex, getUuidTagPathPart(strippedUrl)) as keyof paths;
     const ignoredPathMethod = ignoredOperations[urlWithoutUUID];
-    console.log(urlWithoutUUID);
     if (isModifyingMethod(request.method) && request.method !== ignoredPathMethod) {
       showToast(request.method, urlWithoutUUID, response);
     }
