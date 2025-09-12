@@ -1,12 +1,23 @@
-import { authStore } from '@/auth';
+import { useAuthStore } from '@/stores/useAuthStore';
+import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
+import { useNoteStore } from '@/stores/useNoteStore';
+import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { Middleware } from 'openapi-fetch';
-import { unregisterCsrfMiddleware } from './csrf';
 
 export const sessionExpiredMiddleware: Middleware = {
   onResponse({ response }) {
     if (response.status === 403 && !response.url.endsWith('/api/profiili/ohjaaja')) {
-      authStore.ohjaajaPromise = undefined;
-      unregisterCsrfMiddleware();
+      useAuthStore.getState().invalidate();
+
+      useNoteStore.getState().setNote({
+        title: 'error-boundary.title',
+        description: 'error-boundary.session-expired',
+        variant: 'error',
+      });
+
+      useSuosikitStore.getState().clearSuosikit();
+      useKiinnostuksetStore.getState().clearKiinnostukset();
+
       /* eslint-disable sonarjs/todo-tag */
       throw new Error('session-expired'); // TODO: This should be replaced with a proper handling of session expiration
     }

@@ -6,6 +6,7 @@ import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewCont
 import TagFilterList from '@/routes/Search/TagFilterList';
 import { getArticlesByErcs } from '@/services/cms-article-api';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
+import { useAuthStore } from '@/stores/useAuthStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { type Category, type StructuredContent } from '@/types/cms-content';
 import { isSort, type Sort } from '@/types/sort';
@@ -29,6 +30,8 @@ const Favorites = () => {
   const { lg } = useMediaQueries();
   const [articlesByCategory, setArticlesByCategory] = React.useState<Record<string, StructuredContent[]> | null>(null);
   const [selectedTagIds, setSelectedTagIds] = React.useState<string[]>([]);
+  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = !!user;
 
   const [sort, setSort] = React.useState<Sort>('a-z');
   const suosikit = useSuosikitStore(useShallow((state) => state.suosikit));
@@ -190,6 +193,7 @@ const Favorites = () => {
                 key={category}
                 category={category}
                 articles={articles}
+                isLoggedIn={isLoggedIn}
                 data-testid={`favorites-category-${category}`}
               />
             ))
