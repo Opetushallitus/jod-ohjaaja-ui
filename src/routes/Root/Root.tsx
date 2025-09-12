@@ -145,6 +145,17 @@ const Root = () => {
         <NavMenu open={navMenuOpen} onClose={() => setNavMenuOpen(false)} />
         <Outlet />
       </LogoutFormContext.Provider>
+      <Chatbot
+        agent={agent}
+        language={language}
+        header={t('chatbot.header')}
+        openWindowText={t('chatbot.open-window-text')}
+        agentName={t('chatbot.agent-name')}
+        errorMessage={t('chatbot.error-message')}
+        greeting={t('chatbot.greeting')}
+        textInputPlaceholder={t('chatbot.text-input-placeholder')}
+        waitingmessage={t('chatbot.waiting-message')}
+      />
       <Footer
         language={language}
         okmLabel={t('footer.logos.okm-label')}
@@ -167,22 +178,6 @@ const Root = () => {
       />
       <Toaster />
       <ScrollRestoration />
-      <Chatbot
-        agent={agent}
-        language={language}
-        agentIcon={'/chatbot-icon.svg'}
-        header={t('chatbot.header')}
-        openWindowText={t('chatbot.open-window-text')}
-        agentName={t('chatbot.agent-name')}
-        errorMessage={t('chatbot.error-message')}
-        greeting={t('chatbot.greeting')}
-        textInputPlaceholder={t('chatbot.text-input-placeholder')}
-        textInputHelper={t('chatbot.text-input-helper')}
-        eraseChatHistory={t('chatbot.erase-chat-history')}
-        saveChatAsCsv={t('chatbot.save-chat-as-csv')}
-        close={t('chatbot.close')}
-        data-testid="chatbot"
-      />
       <MatomoTracker trackerUrl="https://analytiikka.opintopolku.fi" siteId={siteId} pathname={location.pathname} />
     </>
   );
