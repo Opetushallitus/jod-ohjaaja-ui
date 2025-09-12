@@ -1,1 +1,1 @@
-export { authStore, withOhjaajaContext } from './auth';
+export { withOhjaajaContext } from './auth';

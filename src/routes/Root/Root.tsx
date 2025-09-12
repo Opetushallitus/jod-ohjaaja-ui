@@ -4,11 +4,23 @@ import { SearchBar } from '@/components/SearchBar/SearchBar';
 import { Toaster } from '@/components/Toaster/Toaster';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import i18n from '@/i18n/config';
-import { Chatbot, Footer, MatomoTracker, NavigationBar, SkipLink, useMediaQueries } from '@jod/design-system';
+import { useAuthStore } from '@/stores/useAuthStore';
+import { useNoteStore } from '@/stores/useNoteStore';
+import {
+  Chatbot,
+  Footer,
+  MatomoTracker,
+  NavigationBar,
+  NoteStack,
+  SkipLink,
+  useMediaQueries,
+  useNoteStack,
+} from '@jod/design-system';
 import { JodMenu } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, NavLink, Outlet, ScrollRestoration, useLoaderData, useLocation } from 'react-router';
+import { Link, NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router';
+import { useShallow } from 'zustand/react/shallow';
 import { LogoutFormContext } from '.';
 
 const agents = {
@@ -29,11 +41,13 @@ const Root = () => {
     t,
     i18n: { language },
   } = useTranslation();
+  const { note, clearNote } = useNoteStore(useShallow((state) => ({ note: state.note, clearNote: state.clearNote })));
   const [navMenuOpen, setNavMenuOpen] = React.useState(false);
   const [langMenuOpen, setLangMenuOpen] = React.useState(false);
   const [searchInputVisible, setSearchInputVisible] = React.useState(false);
   const { sm } = useMediaQueries();
   const location = useLocation();
+  const { addNote } = useNoteStack();
 
   const hostname = window.location.hostname;
   const { siteId, agent } = React.useMemo(() => {
@@ -75,7 +89,7 @@ const Root = () => {
 
   const langMenuRef = useMenuClickHandler(() => setLangMenuOpen(false), langMenuButtonRef);
 
-  const data = useLoaderData();
+  const user = useAuthStore((state) => state.user);
 
   const logout = () => {
     logoutForm.current?.submit();
@@ -92,6 +106,22 @@ const Root = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language]);
 
+  React.useEffect(() => {
+    if (!note) {
+      return;
+    }
+
+    addNote({
+      title: t(note.title),
+      description: t(note.description),
+      variant: 'error',
+      permanent: note.permanent ?? false,
+      // Prevent multiple session-expired notes with fixed id
+      id: note.description.includes('session-expired') ? 'session-expired' : undefined,
+    });
+    clearNote();
+  }, [addNote, clearNote, note, t]);
+
   const showServiceName = sm || !searchInputVisible;
 
   return (
@@ -100,7 +130,7 @@ const Root = () => {
       <header role="banner" className="sticky top-0 z-30 print:hidden" data-testid="app-header">
         <SkipLink hash="#jod-main" label={t('skiplinks.main')} />
         <form action="/ohjaaja/logout" method="POST" hidden ref={logoutForm}>
-          <input type="hidden" name="_csrf" value={data?.csrf.token} />
+          <input type="hidden" name="_csrf" value={user?.csrf.token ?? ''} />
           <input type="hidden" name="lang" value={language} />
         </form>
         <NavigationBar
@@ -140,6 +170,7 @@ const Root = () => {
           }
           serviceBarTitle={showServiceName ? t('service-name') : ' '}
         />
+        <NoteStack showAllText={t('show-all')} />
       </header>
       <LogoutFormContext.Provider value={logoutForm.current}>
         <NavMenu open={navMenuOpen} onClose={() => setNavMenuOpen(false)} />

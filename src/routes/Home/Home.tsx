@@ -6,6 +6,7 @@ import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/Rece
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import { LangCode } from '@/i18n/config';
 import { LoaderData } from '@/routes/Home/loader';
+import { useAuthStore } from '@/stores/useAuthStore';
 import { getMainCategoryPath } from '@/utils/navigation-paths';
 import { useTranslation } from 'react-i18next';
 import { Link, useLoaderData } from 'react-router';
@@ -15,7 +16,9 @@ const Home = () => {
     t,
     i18n: { language },
   } = useTranslation();
-  const { newestContent, mostViewedContent, bestMatchingContent, isLoggedIn } = useLoaderData<LoaderData>();
+  const { newestContent, mostViewedContent, bestMatchingContent } = useLoaderData<LoaderData>();
+  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = !!user;
 
   return (
     <main id="jod-main" className="w-full max-w-(--breakpoint-xl) mx-auto" data-testid="home">

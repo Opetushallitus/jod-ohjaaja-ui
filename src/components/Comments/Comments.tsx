@@ -79,6 +79,7 @@ const Comments = ({ articleErc, userId }: CommentsProps) => {
       commentsRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       console.error('Error adding comment:', error);
+      setAddingComment(false);
     }
   };
 

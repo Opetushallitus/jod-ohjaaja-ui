@@ -9,6 +9,7 @@ import { Home, homeLoader } from './Home';
 import { Details, Favorites, Preferences, Profile, profileDetailsLoader } from './Profile';
 
 import { ModalProvider } from '@/hooks/useModal';
+import { NoteStackProvider } from '@jod/design-system';
 import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
 import { Search, searchLoader } from './Search';
 
@@ -49,9 +50,11 @@ const rootRoute: RouteObject = {
   path: '/:lng',
   loader: withOhjaajaContext(rootLoader, false),
   element: (
-    <ModalProvider>
-      <Root />
-    </ModalProvider>
+    <NoteStackProvider>
+      <ModalProvider>
+        <Root />
+      </ModalProvider>
+    </NoteStackProvider>
   ),
   errorElement: <ErrorBoundary />,
   children: [

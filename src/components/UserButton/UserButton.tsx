@@ -1,11 +1,11 @@
-import { components } from '@/api/schema';
 import { useLoginLink } from '@/hooks/useLoginLink';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
+import { useAuthStore } from '@/stores/useAuthStore';
 import { PopupList, PopupListItem, useMediaQueries } from '@jod/design-system';
 import { JodCaretDown, JodCaretUp, JodUser } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink, useLoaderData, useLocation } from 'react-router';
+import { NavLink, useLocation } from 'react-router';
 
 interface UserButtonProps {
   onLogout: () => void;
@@ -20,7 +20,7 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
 
   const { sm } = useMediaQueries();
 
-  const data = useLoaderData() as components['schemas']['OhjaajaCsrfDto'] | null;
+  const user = useAuthStore((state) => state.user);
   const location = useLocation();
 
   const [userMenuOpen, setUserMenuOpen] = React.useState(false);
@@ -39,7 +39,7 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
 
   const caret = sm ? <>{userMenuOpen ? <JodCaretUp size={20} /> : <JodCaretDown size={20} />}</> : null;
 
-  return data?.csrf ? (
+  return user ? (
     <div className="relative" data-testid="user-button">
       <button
         ref={userMenuButtonRef}
@@ -48,7 +48,7 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
         data-testid="user-button-trigger"
       >
         <JodUser className="mx-auto" />
-        <span className="whitespace-nowrap sm:text-button-sm text-[12px] sm:mx-3">{data?.etunimi}</span>
+        <span className="whitespace-nowrap sm:text-button-sm text-[12px] sm:mx-3">{user.etunimi}</span>
         {caret}
       </button>
       {userMenuOpen && (
