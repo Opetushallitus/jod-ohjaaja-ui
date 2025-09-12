@@ -7,9 +7,10 @@ import { useTranslation } from 'react-i18next';
 interface CategoryListProps {
   category: string;
   articles: StructuredContent[];
+  isLoggedIn: boolean;
 }
 
-export const CategoryList: React.FC<CategoryListProps> = ({ category, articles }) => {
+export const CategoryList: React.FC<CategoryListProps> = ({ category, articles, isLoggedIn }) => {
   const { t } = useTranslation();
   const [visibleCount, setVisibleCount] = React.useState(3);
 
@@ -31,7 +32,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({ category, articles }
             key={article.id}
             article={article}
             variant="horizontal"
-            isLoggedIn={true}
+            isLoggedIn={isLoggedIn}
             data-testid={`category-list-item-${article.id}`}
           />
         ))}

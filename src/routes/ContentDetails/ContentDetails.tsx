@@ -3,6 +3,7 @@ import { createLoginDialogFooter } from '@/components/createLoginDialogFooter';
 import { useFeature } from '@/hooks/useFeatures/useFeatures';
 import { useLoginLink } from '@/hooks/useLoginLink';
 import { useModal } from '@/hooks/useModal';
+import { useAuthStore } from '@/stores/useAuthStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { copyToClipboard } from '@/utils/clipboard';
@@ -55,7 +56,8 @@ interface DocumentsAndLinksProps {
 }
 
 const ContentDetails = () => {
-  const { data, isLoggedIn, userId } = useLoaderData<LoaderData>();
+  const { data } = useLoaderData<LoaderData>();
+  const user = useAuthStore((state) => state.user);
   const {
     i18n: { language },
     t,
@@ -74,7 +76,7 @@ const ContentDetails = () => {
 
   const isFavorite = suosikit.some((suosikki) => suosikki.artikkeliErc === data.externalReferenceCode);
   const handleFavoriteClick = () => {
-    if (!isLoggedIn) {
+    if (!user) {
       showDialog({
         title: t('login'),
         description: t('login-for-favorites'),
@@ -165,7 +167,6 @@ const ContentDetails = () => {
               onClick={handleFavoriteClick}
               data-testid="action-favorite"
             ></ActionButton>
-
             <ActionButton
               label={t('share')}
               icon={<JodShare className="text-accent" />}
@@ -208,7 +209,7 @@ const ContentDetails = () => {
       </div>
 
       {data.externalReferenceCode && commentsEnabled && (
-        <Comments articleErc={data.externalReferenceCode} userId={userId} />
+        <Comments articleErc={data.externalReferenceCode} userId={user?.id} />
       )}
     </MainLayout>
   );

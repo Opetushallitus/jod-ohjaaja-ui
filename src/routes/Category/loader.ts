@@ -18,7 +18,7 @@ const getCategoryContentLoader = (categoryId: number) =>
       .map((erc) => newestCategoryContent.items.find((article) => article.externalReferenceCode === erc))
       .filter((a): a is StructuredContent => !!a);
 
-    return { newestCategoryContent, mostViewedCategoryContent, bestMatchingCategoryContent, isLoggedIn };
+    return { newestCategoryContent, mostViewedCategoryContent, bestMatchingCategoryContent };
   }) satisfies LoaderFunction<components['schemas']['OhjaajaCsrfDto'] | null>;
 
 export type LoaderData = Awaited<ReturnType<ReturnType<typeof getCategoryContentLoader>>>;
