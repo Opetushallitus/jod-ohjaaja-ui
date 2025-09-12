@@ -4,9 +4,9 @@ import { getContentByArticleId } from '@/services/cms-article-api';
 import { LoaderFunction } from 'react-router';
 
 const getContentDetailsLoader = (contentId: number, externalReferenceCode?: string) =>
-  (async ({ context }) => {
+  (async () => {
     const [data] = await Promise.all([getContentByArticleId(contentId), addArtikkelinKatselu(externalReferenceCode)]);
-    return { data, isLoggedIn: !!context, userId: context?.id };
+    return { data };
   }) satisfies LoaderFunction<components['schemas']['OhjaajaCsrfDto'] | null>;
 
 export type LoaderData = Awaited<ReturnType<ReturnType<typeof getContentDetailsLoader>>>;

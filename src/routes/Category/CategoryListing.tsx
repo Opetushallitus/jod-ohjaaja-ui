@@ -2,6 +2,7 @@ import { MainLayout } from '@/components';
 import { ContentList } from '@/components/ContentList/ContentList';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
+import { useAuthStore } from '@/stores/useAuthStore';
 import { tidyClasses as tc } from '@jod/design-system';
 import React from 'react';
 import { useLoaderData } from 'react-router';
@@ -10,7 +11,9 @@ import { LoaderData } from './loader';
 const VISIBLE_ITEM_COUNT = 10;
 
 const CategoryListing = () => {
-  const { newestCategoryContent, isLoggedIn } = useLoaderData<LoaderData>();
+  const { newestCategoryContent } = useLoaderData<LoaderData>();
+  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = !!user;
   const [visibleItemCount, setVisibleItemCount] = React.useState(VISIBLE_ITEM_COUNT);
   const categoryRoute = useCategoryRoute('CategoryListing');
   const title = categoryRoute?.handle?.title;
