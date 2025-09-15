@@ -272,6 +272,9 @@
     "user-guide": {
       "index": "ohjeet",
       "what-is-the-service": "mika-palvelu-on"
+    },
+    "article": {
+      "short": "artikkeli/:articleErc"
     }
   },
   "suggest-new-content": {

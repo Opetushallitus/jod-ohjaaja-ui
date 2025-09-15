@@ -12,6 +12,7 @@ import { ModalProvider } from '@/hooks/useModal';
 import { NoteStackProvider } from '@jod/design-system';
 import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
 import { Search, searchLoader } from './Search';
+import articleRedirectLoader from './articleRedirectLoader';
 
 export const profileRoutes = supportedLanguageCodes.map(
   (lng) =>
@@ -45,6 +46,16 @@ export const profileRoutes = supportedLanguageCodes.map(
     }) as RouteObject,
 );
 
+const shortArticleRoutes = supportedLanguageCodes.map(
+  (lng) =>
+    ({
+      id: `article-short|${lng}`,
+      path: i18n.t('slugs.article.short', { lng }),
+      loader: articleRedirectLoader,
+      element: <div></div>,
+    }) as RouteObject,
+);
+
 const rootRoute: RouteObject = {
   id: 'root',
   path: '/:lng',
@@ -64,6 +75,7 @@ const rootRoute: RouteObject = {
       loader: withOhjaajaContext(homeLoader, false),
     },
     ...profileRoutes,
+    ...shortArticleRoutes,
   ],
 };
 
