@@ -11,8 +11,13 @@ const isModifyingMethod = (method: string): method is Method => {
   return modifyingMethods.includes(method as Method);
 };
 
-const ignoredOperations: Partial<Record<keyof paths, Method>> = {
-  '/api/artikkeli/katselu/{artikkeliErc}': 'POST',
+const ignoredOperations: Record<Method, (path: string) => boolean> = {
+  POST: (path: string) => {
+    return path.startsWith('/api/artikkeli/katselu');
+  },
+  DELETE: () => false,
+  PUT: () => false,
+  PATCH: () => false,
 };
 
 const messages: Partial<Record<keyof paths, Partial<Record<Method, { success: string; failed: string }>>>> = {
@@ -107,8 +112,7 @@ export const toastMiddleware: Middleware = {
     // Regular expression to detect UUID at the end of the path
     const uuidRegex = /\/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/;
     const urlWithoutUUID = strippedUrl.replace(uuidRegex, getUuidTagPathPart(strippedUrl)) as keyof paths;
-    const ignoredPathMethod = ignoredOperations[urlWithoutUUID];
-    if (isModifyingMethod(request.method) && request.method !== ignoredPathMethod) {
+    if (isModifyingMethod(request.method) && !ignoredOperations[request.method](strippedUrl)) {
       showToast(request.method, urlWithoutUUID, response);
     }
     return response;
