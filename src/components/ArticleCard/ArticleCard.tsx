@@ -35,7 +35,11 @@ export const ArticleCard = ({ article, variant, isLoggedIn }: ArticleCardProps) 
   const imageContent = findContentValueByName(article, 'image')?.image;
   const ingress = findContentValueByName(article, 'ingress')?.data;
   const id = `${article.id ?? ''}`;
-  const imageSrc = getAdaptiveMediaSrc(imageContent?.id, imageContent?.title, 'thumbnail');
+  const imageSrc = getAdaptiveMediaSrc(
+    imageContent?.id,
+    imageContent?.title,
+    variant === 'horizontal' ? 'card_horizontal' : 'card_vertical',
+  );
   const path = getArticlePath(article.id ?? 0, language as LangCode);
   const keywords = getKeywords(article);
   const isFavorite = suosikit.some((suosikki) => suosikki.artikkeliErc === article.externalReferenceCode);
