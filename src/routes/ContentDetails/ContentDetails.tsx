@@ -7,7 +7,7 @@ import { useAuthStore } from '@/stores/useAuthStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { copyToClipboard } from '@/utils/clipboard';
-import { getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
+import { getAdaptiveMediaSrc, getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { tidyClasses as tc } from '@jod/design-system';
 import {
@@ -102,6 +102,8 @@ const ContentDetails = () => {
   const documents = getDocuments(data);
   const keywords = getKeywords(data);
 
+  const imageSrc = getAdaptiveMediaSrc(image?.id, image?.title, 'article');
+
   const richTextClasses = tc([
     '[&_p]:my-5',
     '[&_p]:first:my-0',
@@ -146,8 +148,14 @@ const ContentDetails = () => {
         </div>
         <div className="flex sm:flex-row flex-col sm:gap-6 gap-5 space-between">
           {image && (
-            <div data-testid="content-image">
-              <img src={image.contentUrl} alt={image.description} />
+            <div data-testid="content-image" className="w-[386px] h-[217px] flex-shrink-0">
+              <img
+                src={imageSrc}
+                alt={image.description}
+                width={386}
+                height={217}
+                className="h-full w-full object-contain object-left"
+              />
             </div>
           )}
 

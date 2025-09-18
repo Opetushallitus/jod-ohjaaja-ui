@@ -8,8 +8,9 @@ import { getCategoryArticleIds } from './navigation';
 
 type ContentName = 'ingress' | 'content' | 'image' | 'document' | 'link';
 const AdaptiveMediaSizes = {
-  thumbnail: 'Thumbnail-300x300',
-  preview: 'Preview-1000x0',
+  card_horizontal: 'Card-Horizontal',
+  card_vertical: 'Card-Vertical',
+  article: 'Article',
 };
 
 DOMPurify.addHook('afterSanitizeAttributes', function (node) {
