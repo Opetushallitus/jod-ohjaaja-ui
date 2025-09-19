@@ -62,6 +62,11 @@ export default defineConfig(({ mode }) => {
           },
           auth: `${env.CMSUSER}:${env.CMSPASSWORD}`,
         },
+        '/api': {
+          target: 'https://jodkehitys.fi',
+          changeOrigin: true,
+          xfwd: true,
+        },
         '/': {
           target: 'http://localhost:5173', // Landing page UI
           xfwd: true,
