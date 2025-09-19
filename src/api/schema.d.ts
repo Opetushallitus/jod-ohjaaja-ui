@@ -20,6 +20,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/sisaltoehdotus': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Sends a content suggestion */
+    post: operations['ehdotaUuttaSisaltoaSendSisaltoEhdotus'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/profiili/suosikit': {
     parameters: {
       query?: never;
@@ -210,6 +227,13 @@ export interface components {
         | 'YKSITYINEN'
         | 'MUU';
     };
+    SisaltoEhdotusDto: {
+      sisalto: string;
+      email?: string;
+      linkki?: string;
+      kuvaus: string;
+      kieli: string;
+    };
     SuosikkiDto: {
       /** Format: uuid */
       readonly id?: string;
@@ -367,6 +391,28 @@ export interface operations {
     requestBody: {
       content: {
         'application/json': components['schemas']['OhjaajaDto'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  ehdotaUuttaSisaltoaSendSisaltoEhdotus: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['SisaltoEhdotusDto'];
       };
     };
     responses: {

@@ -348,6 +348,8 @@
     "terms-of-service": "kayttoehdot"
   },
   "suggest-new-content": {
+    "close-content-guide": "Sulje sisältöohje",
+    "content-guide": "Ehdotetulta sisällöltä odotetaan muun muassa, että se  liittyy elinikäiseen ohjaukseen, urasuunnittelutaitoihin tai ohjaajan ammattitaidon kehittymiseen. Sisällön tulee olla lainmukaista, suomen- tai ruotsinkielistä, avoimesti saatavilla olevaa ja maksutonta, eikä se saa loukata tekijänoikeuksia. Soveltuvuus arvioidaan jokaisen ehdotetun sisällön osalta erikseen.",
     "content-label": "Ehdotuksesi sisällöksi",
     "content-placeholder": "Ehdotus",
     "description": "Oletko käyttänyt ohjausmenetelmää, jota palvelusta ei löydy? Tai haluaisitko lisää tietoa jostain teemasta? Ehdota meille palvelusta mielestäsi puuttuvaa sisältöä oheisella lomakkeella.",
@@ -355,15 +357,18 @@
     "description-placeholder": "Sisällön kuvaus",
     "email-label": "Yhteystietosi, jotta voimme tarvittaessa olla yhteydessä sinuun.",
     "email-placeholder": "Sähköpostiosoite",
+    "error": "Sisältöehdotuksen lähettäminen epäonnistui. Yritä uudelleen myöhemmin.",
     "errors": {
       "content": "Syötä ehdotuksesi sisällöksi",
       "description": "Syötä sisällön kuvaus",
-      "link": "Syötä kelvollinen linkki",
+      "link": "Syötä kelvollinen linkki esim. https://www.osaamispolku.fi",
       "valid-email": "Syötä kelvollinen sähköpostiosoite"
     },
     "link-label": "Linkki ehdottamaasi sisältöön",
     "link-placeholder": "Linkki",
+    "open-content-guide": "Avaa sisältöohje",
     "send": "Lähetä ehdotus",
+    "success": "Kiitos sisältöehdotuksestasi!",
     "title": "Sisällön ehdottaminen"
   },
   "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
