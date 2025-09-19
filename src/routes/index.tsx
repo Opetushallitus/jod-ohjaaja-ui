@@ -167,10 +167,12 @@ const getRoute = (navigationTreeItem: NavigationTreeItem): RouteObject => {
 const getLoader = (navigationTreeItem: NavigationTreeItem) => {
   switch (navigationTreeItem.type) {
     case 'CategoryMain':
-      return withOhjaajaContext(getCategoryContentLoader(navigationTreeItem.categoryId ?? 0), false);
     case 'CategoryListing':
     case 'StudyProgramsListing':
-      return withOhjaajaContext(getCategoryContentLoader(navigationTreeItem.categoryId ?? 0), false);
+      return withOhjaajaContext(
+        getCategoryContentLoader(navigationTreeItem.categoryId ?? 0, navigationTreeItem.type),
+        false,
+      );
     case 'Article':
       return withOhjaajaContext(
         getContentDetailsLoader(navigationTreeItem.articleId ?? 0, navigationTreeItem.externalReferenceCode),
