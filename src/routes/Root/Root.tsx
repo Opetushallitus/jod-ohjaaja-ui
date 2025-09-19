@@ -1,9 +1,9 @@
-import { LanguageButton, UserButton } from '@/components';
+import { FeedbackModal, LanguageButton, UserButton } from '@/components';
 import { NavMenu } from '@/components/NavMenu/NavMenu';
 import { SearchBar } from '@/components/SearchBar/SearchBar';
 import { Toaster } from '@/components/Toaster/Toaster';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
-import i18n from '@/i18n/config';
+import i18n, { LangCode } from '@/i18n/config';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useNoteStore } from '@/stores/useNoteStore';
 import {
@@ -44,6 +44,7 @@ const Root = () => {
   const { note, clearNote } = useNoteStore(useShallow((state) => ({ note: state.note, clearNote: state.clearNote })));
   const [navMenuOpen, setNavMenuOpen] = React.useState(false);
   const [langMenuOpen, setLangMenuOpen] = React.useState(false);
+  const [feedbackVisible, setFeedbackVisible] = React.useState(false);
   const [searchInputVisible, setSearchInputVisible] = React.useState(false);
   const { sm } = useMediaQueries();
   const location = useLocation();
@@ -202,10 +203,17 @@ const Root = () => {
         feedbackTitle={t('footer.feedback-title')}
         feedbackContent={t('footer.feedback-content')}
         feedbackButtonLabel={t('footer.feedback-button-label')}
+        feedbackOnClick={() => setFeedbackVisible(true)}
         feedbackBgImageClassName="bg-[url(@/../assets/home-1.avif)] bg-cover bg-[length:auto_auto] sm:bg-[length:auto_1000px] bg-[top_-0rem_right_-0rem] sm:bg-[top_-21rem_right_0rem]"
         copyright={t('copyright')}
-        feedbackOnClick={() => console.log('feedbackOnClick')}
         data-testid="app-footer"
+      />
+      <FeedbackModal
+        isOpen={feedbackVisible}
+        onClose={() => setFeedbackVisible(false)}
+        section="Ohjaajan osio"
+        area="Alatunniste"
+        language={language as LangCode}
       />
       <Toaster />
       <ScrollRestoration />

@@ -8,6 +8,7 @@ export { default as Comments } from './Comments/Comments';
 export { ConfirmDialogWrapper, type ConfirmDialogWrapperProps } from './ConfirmDialogWrapper/ConfirmDialogWrapper';
 export { ContentList } from './ContentList/ContentList';
 export { FeatureCard } from './FeatureCard/FeatureCard';
+export { FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { LanguageButton } from './LanguageButton/LanguageButton';
 export { LanguageMenu } from './LanguageMenu/LanguageMenu';
 export { MainLayout } from './MainLayout/MainLayout';
