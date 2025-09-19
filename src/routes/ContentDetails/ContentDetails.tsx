@@ -67,7 +67,9 @@ const ContentDetails = () => {
   const location = useLocation();
   const state = location.state;
   const loginLink = useLoginLink({
-    callbackURL: state?.callbackURL ? `/${language}/${state?.callbackURL}` : `/${language}`,
+    callbackURL: state?.callbackURL
+      ? `/${language}/${state?.callbackURL}`
+      : `/${language}/${t('slugs.profile.index')}/${t('slugs.profile.front')}`,
   });
 
   const commentsEnabled = useFeature('COMMENTS');

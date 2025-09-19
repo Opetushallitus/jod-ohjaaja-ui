@@ -252,23 +252,23 @@
       "you-are-signed-in": "Olet kirjautunut ohjaajan profiiliin. Ohjaajan profiili toimii Osaamispolun ohjaajan osion omien tietojesi säilytys- ja hallintapaikkana."
     },
     "index": "Ohjaajan profiili",
-    "landing-page": {
-      "description": "Kirjautumalla sisään saat käyttöösi henkilökohtaisen osaamispolkusi, joka auttaa sinua hallinnoimaan ja hyödyntämään osaamistasi tehokkaasti.",
-      "list-1-item-1": "Oman osaamispolun hallinta ja tietojen luvitus: Päätä, miten ja missä tietojasi käytetään.",
-      "list-1-item-2": "Työ- ja koulutushistoria: Tallenna saavutuksesi yhteen paikkaan.",
-      "list-1-item-3": "Omat osaamiset ja kiinnostuksen kohteet: Tunnista vahvuutesi ja kiinnostuksen kohteesi.",
-      "list-1-item-4": "Urasuunnitelmat: Suunnittele tulevaisuutesi ja seuraa edistymistäsi.",
-      "list-1-item-5": "Tietojen tuonti muista palveluista: tuo tietosi Työmarkkinatorista ja Oma Opintopolusta.",
-      "list-1-item-6": "Suosikkisisällöt: Tallenna ja hallitse kiinnostavimpia työ- ja koulutusvaihtoehtoja.",
-      "list-2-item-1": "Näet kaikki osaamiseesi ja kiinnostuksiisi liittyvät tiedot yhdessä paikassa.",
-      "list-2-item-2": "Voit tunnistaa vahvuutesi, myös vapaa-ajan harrastusten kautta.",
-      "list-2-item-3": "Löydät profiilisi perusteella työ- ja koulutusmahdollisuuksia, jotka sopivat juuri sinulle.",
+    "login-page": {
+      "auth-description": "Palvelu käyttää Suomi.fi-tunnistusta. Käytämme tietojasi vain anonymisoituna, jotta voimme luoda yleiskuvan käyttäjistä.",
+      "benefits": "Hyödyt käyttäjälle",
+      "benefits-description": "Kirjautumalla palveluun voit lisäksi:",
+      "data-processing-info": "Osaamisprofiilin tietojen käsittely perustuu Lakiin valtakunnallisesta jatkuvan oppimisen digitaalisesta palvelukokonaisuudesta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
+      "description": "Kirjautumalla palveluun saat käyttöösi henkilökohtaisen ohjaajan profiilin sekä lisäominaisuuksia Ohjaajan osion käyttöön.",
+      "list-1-item-1": "omat tiedot, jossa voit mm. kertoa kiinnostuksesi, jotta voimme tarjota sinulle paremmin kohdennettuja sisältöjä",
+      "list-1-item-2": "suosikit, joihin voit tallentaa palvelun sisältöjä, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa",
+      "list-1-item-3": "asetukset, jossa voit tallentaa tai poistaa profiilisi",
+      "list-2-item-1": "ehdottaa uutta sisältöä lisättäväksi palveluun",
+      "list-2-item-2": "kommentoida ja keskustella palvelun sisällöstä muiden ohjaajien kanssa",
       "page-title": "Kirjaudu palveluun",
-      "paragraph-2": "Miten Oma Osaamispolku voi auttaa sinua?",
-      "paragraph-3": "Aloita luomalla oma osaamispolkusi ja ota ensimmäinen askel kohti uusia mahdollisuuksia!",
-      "paragraph-4": "Osaamisprofiilin tietojen käsittely perustuu Lakiin valtakunnallisesta jatkuvan oppimisen osaamistietovarannosta. Lue lisää tietojen käsittelyn perusteista tietosuojaselosteesta.",
-      "profile-includes": "Oma Osaamispolku sisältää:",
-      "title": "Tervetuloa! Luo oma osaamispolkusi ja hyödynnä monipuoliset palvelut"
+      "logged-in-features": "Kirjautuneen lisäominaisuudet",
+      "profile": "Ohjaajan profiili",
+      "profile-description": "Kun kirjaudut Ohjaajan osioon ensimmäisen kerran, luomme sinulle tyhjän profiilin. Profiili on tallessa niin kauan kuin tarvitset sitä.",
+      "profile-includes": "Ohjaajan profiili sisältää:",
+      "title": "Luo oma ohjaajan profiili"
     },
     "preferences": {
       "delete-profile": {
@@ -328,7 +328,8 @@
       "favorites": "suosikit",
       "front": "etusivu",
       "index": "ohjaajan-profiili",
-      "preferences": "asetukset"
+      "preferences": "asetukset",
+      "login": "kirjaudu-sisaan"
     },
     "search": "haku",
     "terms-of-service": "kayttoehdot",
