@@ -1,4 +1,3 @@
-import { useLoginLink } from '@/hooks/useLoginLink';
 import { sluggify } from '@/utils/string-utils';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
@@ -20,23 +19,21 @@ export const NavLinkBasedOnAuth = ({
     t,
     i18n: { language },
   } = useTranslation();
-  const loginPageUrl = useLoginLink({
-    callbackURL: `/${language}/${to}`,
-  });
 
   const testId = `navlink-${shouldLogin ? 'login' : 'link'}-${sluggify(to.replace(/\//g, '-'))}`;
 
   return shouldLogin ? (
-    <a
-      href={loginPageUrl}
+    <NavLink
+      state={{ callbackURL: to }}
+      to={`/${language}/${t('slugs.profile.login')}`}
       className={className}
       lang={language}
-      aria-label={t('login')}
       onClick={onClose}
       data-testid={testId}
+      aria-label={t('login')}
     >
       {children}
-    </a>
+    </NavLink>
   ) : (
     <NavLink to={`/${language}/${to}`} className={className} lang={language} onClick={onClose} data-testid={testId}>
       {children}

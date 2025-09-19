@@ -1,11 +1,10 @@
-import { useLoginLink } from '@/hooks/useLoginLink';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { PopupList, PopupListItem, useMediaQueries } from '@jod/design-system';
 import { JodCaretDown, JodCaretUp, JodUser } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink, useLocation } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 interface UserButtonProps {
   onLogout: () => void;
@@ -21,7 +20,6 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
   const { sm } = useMediaQueries();
 
   const user = useAuthStore((state) => state.user);
-  const location = useLocation();
 
   const [userMenuOpen, setUserMenuOpen] = React.useState(false);
   const userMenuButtonRef = React.useRef<HTMLButtonElement>(null);
@@ -31,13 +29,6 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
 
   // Highlight menu element when active
   const getActiveClassNames = ({ isActive }: { isActive: boolean }) => (isActive ? 'bg-secondary-1-50 rounded-sm' : '');
-
-  const state = location.state;
-  const loginLink = useLoginLink({
-    callbackURL: state?.callbackURL
-      ? `/${language}/${state?.callbackURL}`
-      : `/${language}/${t('slugs.profile.index')}/${t('slugs.profile.front')}`,
-  });
 
   const caret = sm ? <>{userMenuOpen ? <JodCaretUp size={20} /> : <JodCaretDown size={20} />}</> : null;
 
@@ -72,8 +63,8 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
       )}
     </div>
   ) : (
-    <a
-      href={loginLink}
+    <Link
+      to={`/${language}/${t('slugs.profile.login')}`}
       className="flex flex-col sm:flex-row sm:gap-2 justify-center items-center select-none cursor-pointer"
       onClick={() => {
         if (onClick) {
@@ -84,6 +75,6 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
     >
       <JodUser className="mx-auto" />
       <span className="whitespace-nowrap text-[12px] sm:text-button-sm sm:mr-5">{t('login')}</span>
-    </a>
+    </Link>
   );
 };

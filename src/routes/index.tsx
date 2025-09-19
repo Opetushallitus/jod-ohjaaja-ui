@@ -10,10 +10,11 @@ import { Details, Favorites, Preferences, Profile, profileDetailsLoader } from '
 
 import { ModalProvider } from '@/hooks/useModal';
 import { NoteStackProvider } from '@jod/design-system';
+import articleRedirectLoader from './articleRedirectLoader';
+import LoginPage from './LoginPage/LoginPage';
 import ProfileFront from './Profile/ProfileFront/ProfileFront';
 import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
 import { Search, searchLoader } from './Search';
-import articleRedirectLoader from './articleRedirectLoader';
 
 export const profileRoutes = supportedLanguageCodes.map(
   (lng) =>
@@ -74,6 +75,18 @@ const shortArticleRoutes = supportedLanguageCodes.map(
     }) as RouteObject,
 );
 
+const profileLoginPageRoutes = supportedLanguageCodes.map(
+  (lng) =>
+    ({
+      id: `{slugs.profile.login}|${lng}`,
+      path: i18n.t('slugs.profile.login', { lng }),
+      element: <LoginPage />,
+      handle: {
+        title: i18n.t('login', { lng }),
+      },
+    }) as RouteObject,
+);
+
 const rootRoute: RouteObject = {
   id: 'root',
   path: '/:lng',
@@ -94,6 +107,7 @@ const rootRoute: RouteObject = {
     },
     ...profileRoutes,
     ...shortArticleRoutes,
+    ...profileLoginPageRoutes,
   ],
 };
 
