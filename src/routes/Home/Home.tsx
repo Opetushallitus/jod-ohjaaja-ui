@@ -1,4 +1,4 @@
-import heroSrc from '@/../assets/ohjaaja-hero.avif';
+import heroSrc from '@/../assets/ohjaaja-hero.jpg';
 import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
 import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
@@ -28,12 +28,12 @@ const Home = () => {
         src={heroSrc}
         alt=""
         role="none"
-        className="absolute w-(--breakpoint-xl) h-[320px] md:h-[454px] object-cover object-object-[50%] lg:object-[0_20%] -z-10"
+        className="absolute w-(--breakpoint-xl) sm:h-[617px] h-[calc(100vh-104px)] object-cover xl:object-[50%_50%] lg:object-[20%_50%] md:object-[41%_50%] sm:object-[44%_50%] object-[50%_50%] -z-10"
         data-testid="home-hero"
       />
 
       <div
-        className="grid gap-8 grid-cols-3 max-w-[1140px] mx-auto px-5 sm:px-6 pt-[186px] md:pt-[72px] pb-7 md:pb-[40px] lg:pb-[75px]"
+        className="grid gap-8 grid-cols-3 max-w-[1140px] mx-auto px-5 sm:px-6 sm:pt-[245px] pt-[calc(100vh-245px)] pb-7 md:pb-[40px] lg:pb-[75px]"
         data-testid="home-content"
       >
         <div className="col-span-3 flex flex-col gap-3 md:gap-5 lg:gap-8">
