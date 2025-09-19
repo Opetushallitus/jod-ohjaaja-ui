@@ -11,11 +11,11 @@ import { LoaderData } from './loader';
 const VISIBLE_ITEM_COUNT = 10;
 
 const CategoryListing = () => {
-  const { newestCategoryContent } = useLoaderData<LoaderData>();
+  const { newestCategoryContent, navigationItemType } = useLoaderData<LoaderData>();
   const user = useAuthStore((state) => state.user);
   const isLoggedIn = !!user;
   const [visibleItemCount, setVisibleItemCount] = React.useState(VISIBLE_ITEM_COUNT);
-  const categoryRoute = useCategoryRoute('CategoryListing');
+  const categoryRoute = useCategoryRoute(navigationItemType);
   const title = categoryRoute?.handle?.title;
   const description = categoryRoute?.handle?.description;
 
