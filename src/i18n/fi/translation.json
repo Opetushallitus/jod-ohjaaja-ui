@@ -381,5 +381,8 @@
     "report-comment-success": "Kommentti ilmoitettu.",
     "update-default-failed": "Päivitys epäonnistui.",
     "update-default-success": "Päivitys onnistui."
+  },
+  "button-menu": {
+    "close": "Sulje"
   }
 }
