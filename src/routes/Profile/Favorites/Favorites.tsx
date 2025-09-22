@@ -147,7 +147,12 @@ const Favorites = () => {
               data-testid="favorites-sort-menu"
             >
               <div className="bg-bg-gray-2 px-6 pb-3 pt-0 rounded">
-                <RadioButtonGroup label="" value={sort} onChange={handleSelectSort}>
+                <RadioButtonGroup
+                  label={t('profile.favorites.sort.label')}
+                  value={sort}
+                  onChange={handleSelectSort}
+                  hideLabel
+                >
                   <RadioButton label={t('profile.favorites.sort.a-z')} value="a-z" data-testid="favorites-sort-a-z" />
                   <RadioButton label={t('profile.favorites.sort.z-a')} value="z-a" data-testid="favorites-sort-z-a" />
                   <RadioButton
