@@ -1,4 +1,4 @@
-import { ConfirmDialog, IconButton } from '@jod/design-system';
+import { ConfirmDialog } from '@jod/design-system';
 import { JodBlock } from '@jod/design-system/icons';
 import { type RefAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +13,34 @@ interface CommentProps extends RefAttributes<HTMLDivElement> {
   deleteComment: (id: string) => void;
   reportComment: (id: string) => void;
 }
+
+const Button = ({
+  onClick,
+  dataTestid,
+  label,
+  icon,
+}: {
+  onClick: () => void;
+  dataTestid: string;
+  label: string;
+  icon: React.ReactNode;
+}) => (
+  <button
+    aria-label={label}
+    type="button"
+    onClick={onClick}
+    className="group flex flex-row justify-center items-center gap-1 cursor-pointer"
+    data-testid={dataTestid}
+  >
+    <span className="text-button-md group-hover:text-accent group-hover:underline">{label}</span>
+    <div
+      aria-hidden="true"
+      className="bg-secondary-5-light-3 rounded-full flex items-center justify-center select-none size-7"
+    >
+      {icon}
+    </div>
+  </button>
+);
 
 const Comment = ({
   commentId,
@@ -62,12 +90,11 @@ const Comment = ({
             confirmText={t('comments.comment.delete.confirmText')}
           >
             {(showDeleteModal) => (
-              <IconButton
+              <Button
                 icon={<DeleteIcon />}
-                bgColor="gray"
                 onClick={showDeleteModal}
                 label={t('comments.comment.delete.label')}
-                data-testid="comment-delete"
+                dataTestid="comment-delete"
               />
             )}
           </ConfirmDialog>
@@ -80,12 +107,11 @@ const Comment = ({
             confirmText={t('comments.comment.report.confirmText')}
           >
             {(showReportModal) => (
-              <IconButton
+              <Button
                 icon={<JodBlock />}
-                bgColor="gray"
                 onClick={showReportModal}
                 label={t('comments.comment.report.label')}
-                data-testid="comment-report"
+                dataTestid="comment-report"
               />
             )}
           </ConfirmDialog>
