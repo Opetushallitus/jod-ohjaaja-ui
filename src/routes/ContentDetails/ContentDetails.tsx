@@ -137,7 +137,7 @@ const ContentDetails = () => {
   return (
     <MainLayout>
       <div className="bg-white p-7 col-span-2 flex flex-col sm:gap-7 gap-6" data-testid="content-details">
-        <h1 className="text-heading-1 hyphens-auto" data-testid="content-title">
+        <h1 className="text-heading-1 hyphens-manual" data-testid="content-title">
           {data.title}
         </h1>
         <div className="flex" data-testid="content-created">
