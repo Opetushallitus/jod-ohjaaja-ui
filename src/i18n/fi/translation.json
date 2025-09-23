@@ -1,8 +1,5 @@
 {
-  "about-ai": "Tietoa tekoälyn käytöstä",
-  "about-us": "Tietoa palvelusta",
   "about-us-and-user-guide": "Tietoa palvelusta ja käyttöohjeet",
-  "accessibility-statement": "Saavutettavuusseloste",
   "add-to-favorites": "Tallenna suosikiksi",
   "advisors-workspace": "Ohjaajan profiili",
   "back": "Takaisin",
@@ -57,10 +54,8 @@
     "show-more": "Näytä lisää"
   },
   "contents": "Sisällys",
-  "cookie-policy": "Evästekäytäntö",
   "copyright": "© JOD 2024. Kaikki oikeudet pidätetään.",
   "current-location": "Nykyinen sijainti",
-  "data-sources": "Datalähteet",
   "delete": "Poista",
   "error-boundary": {
     "session-expired": "Istuntosi on vanhentunut. Sinun täytyy kirjautua palveluun uudelleen tai käyttää palvelua ilman kirjautumista.",
@@ -125,7 +120,14 @@
       "tem-label": "Työ- ja elinkeinoministeriö"
     },
     "more-info-description": "Mietityttääkö tietosuoja tai tekoälyn hyödyntäminen palvelussa? Alta löydät kootusti yleistä tietoa palvelusta ja sen käytöstä.",
-    "more-info-title": "Haluatko tietää lisää Osaamispolusta?"
+    "more-info-title": "Haluatko tietää lisää Osaamispolusta?",
+    "more-info-links": {
+      "about-service": "Tietoa palvelusta",
+      "privacy-and-cookies": "Tietosuojaseloste ja evästeet",
+      "data-sources": "Datalähteet",
+      "ai-usage": "Tietoa tekoälyn käytöstä",
+      "accessibility": "Tietoa saavutettavuudesta"
+    }
   },
   "front-page": "Etusivu",
   "home": {
@@ -192,8 +194,6 @@
     "previous": "Siirry edelliselle sivulle"
   },
   "print": "Tulosta",
-  "privacy-policy": "Tietosuojaseloste",
-  "privacy-policy-and-cookies": "Tietosuojaseloste ja evästeet",
   "profile": {
     "details": {
       "interest": {
@@ -315,13 +315,10 @@
     "main": "Siirry pääsisältöön"
   },
   "slugs": {
-    "accessibility-statement": "saavutettavuusseloste",
     "article": {
       "short": "artikkeli/:articleErc"
     },
     "basic-information": "perustiedot",
-    "cookie-policy": "evastekaytanto",
-    "data-sources": "datalahteet",
     "privacy-policy": "tietosuojaseloste",
     "profile": {
       "details": "omat-tiedot",
@@ -333,10 +330,11 @@
     },
     "search": "haku",
     "terms-of-service": "kayttoehdot",
-    "user-guide": {
-      "index": "ohjeet",
-      "what-is-the-service": "mika-palvelu-on"
-    }
+    "about-service": "tietoa-palvelusta",
+    "privacy-and-cookies": "tietosuojaseloste-ja-evasteet",
+    "data-sources": "datalahteet",
+    "ai-usage": "tietoa-tekoalyn-kaytosta",
+    "accessibility": "tietoa-saavutettavuudesta"
   },
   "suggest-new-content": {
     "content-label": "Ehdotuksesi sisällöksi",
