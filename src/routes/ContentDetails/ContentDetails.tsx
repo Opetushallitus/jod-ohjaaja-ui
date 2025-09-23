@@ -105,6 +105,8 @@ const ContentDetails = () => {
   const keywords = getKeywords(data);
 
   const imageSrc = getAdaptiveMediaSrc(image?.id, image?.title, 'article');
+  const imageAlt = image?.description;
+  const imageCopyright = imageAlt?.split(' Kuva: ').length === 2 ? imageAlt?.split(' Kuva: ')[1] : undefined;
 
   const richTextClasses = tc([
     '[&_p]:my-5',
@@ -149,17 +151,22 @@ const ContentDetails = () => {
           <div className="-mt-7 mx-3">{dateModified}</div>
         </div>
         <div className="flex sm:flex-row flex-col sm:gap-6 gap-5 space-between">
-          {image && (
-            <div data-testid="content-image" className="w-[386px] h-[217px] flex-shrink-0">
-              <img
-                src={imageSrc}
-                alt={image.description}
-                width={386}
-                height={217}
-                className="h-full w-full object-contain object-left"
-              />
-            </div>
-          )}
+          <div className="flex flex-col">
+            {image && (
+              <div data-testid="content-image" className="w-[386px] h-[217px] flex-shrink-0">
+                <img
+                  src={imageSrc}
+                  alt={image.description}
+                  width={386}
+                  height={217}
+                  className="h-full w-full object-contain object-left"
+                />
+              </div>
+            )}
+            {imageCopyright && (
+              <span className="font-arial text-body-xs text-secondary-gray block">@ {imageCopyright}</span>
+            )}
+          </div>
 
           <div
             className="flex sm:flex-col flex-row sm:justify-start justify-end flex-1 place-items-end gap-3 print:hidden"
