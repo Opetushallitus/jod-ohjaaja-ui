@@ -43,6 +43,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({ category, articles, 
             onClick={handleShowMore}
             label={t('content-list.show-more')}
             variant="white"
+            serviceVariant="ohjaaja"
             data-testid="category-list-show-more"
           />
         )}

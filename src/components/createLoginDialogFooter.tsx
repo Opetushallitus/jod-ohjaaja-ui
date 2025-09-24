@@ -10,6 +10,7 @@ export const createLoginDialogFooter = (t: (key: string) => string, loginLink: s
           <Button
             label={t('cancel')}
             variant="white"
+            serviceVariant="ohjaaja"
             onClick={() => {
               hideDialog();
               onClose?.();
@@ -20,6 +21,7 @@ export const createLoginDialogFooter = (t: (key: string) => string, loginLink: s
           <Button
             label={t('login')}
             variant="accent"
+            serviceVariant="ohjaaja"
             LinkComponent={getLinkTo(loginLink, { useAnchor: true })}
             className="whitespace-nowrap"
             data-testid="login-dialog-login"

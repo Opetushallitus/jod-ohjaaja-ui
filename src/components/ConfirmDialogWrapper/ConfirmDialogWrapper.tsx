@@ -56,6 +56,7 @@ export const ConfirmDialogWrapper = ({
     <>
       <Button
         label={cancelText ?? defaultCancelText}
+        serviceVariant="ohjaaja"
         onClick={() => {
           if (loading) {
             return;

@@ -36,6 +36,7 @@ export const ContentList = ({ contents, totalCount, hasMore, isLoading, isLogged
             onClick={loadMore}
             label={t('content-list.show-more')}
             variant="white"
+            serviceVariant="ohjaaja"
             data-testid="content-list-show-more"
           />
         )}
