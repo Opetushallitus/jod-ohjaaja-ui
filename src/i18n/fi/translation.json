@@ -3,6 +3,16 @@
   "add-to-favorites": "Tallenna suosikiksi",
   "advisors-workspace": "Ohjaajan profiili",
   "back": "Takaisin",
+  "beta": {
+    "note": {
+      "description": "Kerro mielipiteesi ja auta meitä kehittämään palvelua.",
+      "title": "Kokeile palvelua",
+      "to-feedback": "Siirry kyselyyn"
+    }
+  },
+  "button-menu": {
+    "close": "Sulje"
+  },
   "cancel": "Peruuta",
   "carousel": {
     "indicator": "Siirry sivulle {{index}}",
@@ -120,14 +130,14 @@
       "tem-label": "Työ- ja elinkeinoministeriö"
     },
     "more-info-description": "Mietityttääkö tietosuoja tai tekoälyn hyödyntäminen palvelussa? Alta löydät kootusti yleistä tietoa palvelusta ja sen käytöstä.",
-    "more-info-title": "Haluatko tietää lisää Osaamispolusta?",
     "more-info-links": {
       "about-service": "Tietoa palvelusta",
-      "privacy-and-cookies": "Tietosuojaseloste ja evästeet",
-      "data-sources": "Datalähteet",
+      "accessibility": "Tietoa saavutettavuudesta",
       "ai-usage": "Tietoa tekoälyn käytöstä",
-      "accessibility": "Tietoa saavutettavuudesta"
-    }
+      "data-sources": "Datalähteet",
+      "privacy-and-cookies": "Tietosuojaseloste ja evästeet"
+    },
+    "more-info-title": "Haluatko tietää lisää Osaamispolusta?"
   },
   "front-page": "Etusivu",
   "home": {
@@ -263,8 +273,8 @@
       "list-1-item-3": "asetukset, jossa voit tallentaa tai poistaa profiilisi",
       "list-2-item-1": "ehdottaa uutta sisältöä lisättäväksi palveluun",
       "list-2-item-2": "kommentoida ja keskustella palvelun sisällöstä muiden ohjaajien kanssa",
-      "page-title": "Kirjaudu palveluun",
       "logged-in-features": "Kirjautuneen lisäominaisuudet",
+      "page-title": "Kirjaudu palveluun",
       "profile": "Ohjaajan profiili",
       "profile-description": "Kun kirjaudut Ohjaajan osioon ensimmäisen kerran, luomme sinulle tyhjän profiilin. Profiili on tallessa niin kauan kuin tarvitset sitä.",
       "profile-includes": "Ohjaajan profiili sisältää:",
@@ -311,30 +321,31 @@
   "select-language": "Valitse kieli",
   "service-name": "Ohjaajan osio",
   "share": "Jaa",
+  "show-all": "Näytä kaikki",
   "skiplinks": {
     "main": "Siirry pääsisältöön"
   },
   "slugs": {
+    "about-service": "tietoa-palvelusta",
+    "accessibility": "tietoa-saavutettavuudesta",
+    "ai-usage": "tietoa-tekoalyn-kaytosta",
     "article": {
       "short": "artikkeli/:articleErc"
     },
     "basic-information": "perustiedot",
+    "data-sources": "datalahteet",
+    "privacy-and-cookies": "tietosuojaseloste-ja-evasteet",
     "privacy-policy": "tietosuojaseloste",
     "profile": {
       "details": "omat-tiedot",
       "favorites": "suosikit",
       "front": "etusivu",
       "index": "ohjaajan-profiili",
-      "preferences": "asetukset",
-      "login": "kirjaudu-sisaan"
+      "login": "kirjaudu-sisaan",
+      "preferences": "asetukset"
     },
     "search": "haku",
-    "terms-of-service": "kayttoehdot",
-    "about-service": "tietoa-palvelusta",
-    "privacy-and-cookies": "tietosuojaseloste-ja-evasteet",
-    "data-sources": "datalahteet",
-    "ai-usage": "tietoa-tekoalyn-kaytosta",
-    "accessibility": "tietoa-saavutettavuudesta"
+    "terms-of-service": "kayttoehdot"
   },
   "suggest-new-content": {
     "content-label": "Ehdotuksesi sisällöksi",
@@ -379,8 +390,5 @@
     "report-comment-success": "Kommentti ilmoitettu.",
     "update-default-failed": "Päivitys epäonnistui.",
     "update-default-success": "Päivitys onnistui."
-  },
-  "button-menu": {
-    "close": "Sulje"
   }
 }

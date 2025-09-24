@@ -6,7 +6,9 @@ import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import i18n, { LangCode } from '@/i18n/config';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useNoteStore } from '@/stores/useNoteStore';
+import { getLinkTo } from '@/utils/routeUtils';
 import {
+  Button,
   Chatbot,
   Footer,
   MatomoTracker,
@@ -16,7 +18,7 @@ import {
   useMediaQueries,
   useNoteStack,
 } from '@jod/design-system';
-import { JodMenu } from '@jod/design-system/icons';
+import { JodMenu, JodOpenInNew } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, Outlet, ScrollRestoration, useLocation } from 'react-router';
@@ -110,6 +112,29 @@ const Root = () => {
   }, [addNote, clearNote, note, t]);
 
   const showServiceName = sm || !searchInputVisible;
+
+  React.useEffect(() => {
+    addNote({
+      title: t('beta.note.title'),
+      description: t('beta.note.description'),
+      variant: 'feedback',
+      readMoreComponent: (
+        <Button
+          size="sm"
+          variant="white"
+          label={t('beta.note.to-feedback')}
+          icon={<JodOpenInNew />}
+          iconSide="right"
+          LinkComponent={getLinkTo('https://link.webropolsurveys.com/S/9697D299FF7E5000', {
+            useAnchor: true,
+            target: '_blank',
+          })}
+        />
+      ),
+      permanent: false,
+      id: 'beta-feedback',
+    });
+  }, [t, addNote]);
 
   return (
     <>
