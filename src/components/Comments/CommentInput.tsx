@@ -52,6 +52,7 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
           <Button
             label={t('comments.comment.send')}
             variant="accent"
+            serviceVariant="ohjaaja"
             disabled={currentComment.trim().length < 1}
             className="self-end mb-2"
             onClick={() => {

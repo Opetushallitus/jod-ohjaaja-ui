@@ -27,6 +27,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
         <div className="flex justify-end flex-1 gap-3">
           <Button
             variant="white"
+            serviceVariant="ohjaaja"
             label={t('cancel')}
             onClick={onClose}
             className="whitespace-nowrap"
@@ -35,6 +36,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
           <Button
             form={formId}
             variant="white"
+            serviceVariant="ohjaaja"
             label={t('suggest-new-content.send')}
             className="whitespace-nowrap"
             disabled={!isValid}

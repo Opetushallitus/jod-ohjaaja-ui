@@ -1,12 +1,12 @@
-import { components } from '@/api/schema';
 import { MainLayout } from '@/components';
 import { ExternalLink } from '@/components/ExternalLink/ExternalLink';
 import { useLoginLink } from '@/hooks/useLoginLink';
+import { useAuthStore } from '@/stores/useAuthStore';
 import { Button } from '@jod/design-system';
 import { JodArrowRight } from '@jod/design-system/icons';
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { useLocation, useNavigate, useRouteLoaderData } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 const ListItem = ({ children }: { children: React.ReactNode }) => <li className="list-disc ml-9 pl-1">{children}</li>;
 
@@ -21,7 +21,7 @@ const LoginPage = () => {
   } = useTranslation();
   const location = useLocation();
 
-  const rootLoaderData = useRouteLoaderData('root') as components['schemas']['OhjaajaCsrfDto'];
+  const user = useAuthStore((state) => state.user);
   const navigate = useNavigate();
 
   const state = location.state;
@@ -33,10 +33,10 @@ const LoginPage = () => {
   });
   // Redirect to root if already logged-in
   React.useEffect(() => {
-    if (rootLoaderData) {
+    if (user) {
       navigate('/');
     }
-  }, [rootLoaderData, navigate]);
+  }, [user, navigate]);
 
   return (
     <MainLayout>

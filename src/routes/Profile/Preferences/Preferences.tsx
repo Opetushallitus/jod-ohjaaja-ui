@@ -34,6 +34,7 @@ const Preferences = () => {
           <p className="text-body-md mb-5">{t('profile.preferences.download.description')}</p>
           <Button
             variant="accent"
+            serviceVariant="ohjaaja"
             label={t('profile.preferences.download.action')}
             LinkComponent={DownloadLink}
             data-testid="preferences-download-button"
