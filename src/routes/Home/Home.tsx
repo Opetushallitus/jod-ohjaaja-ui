@@ -8,8 +8,9 @@ import { LangCode } from '@/i18n/config';
 import { LoaderData } from '@/routes/Home/loader';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { getMainCategoryPath } from '@/utils/navigation-paths';
+import { getLinkTo } from '@/utils/routeUtils';
 import { useTranslation } from 'react-i18next';
-import { Link, useLoaderData } from 'react-router';
+import { useLoaderData } from 'react-router';
 
 const Home = () => {
   const {
@@ -33,7 +34,7 @@ const Home = () => {
       />
 
       <div
-        className="grid gap-8 grid-cols-3 max-w-[1140px] mx-auto px-5 sm:px-6 sm:pt-[245px] pt-[calc(100vh-245px)] pb-7 md:pb-[40px] lg:pb-[75px]"
+        className="grid gap-8 grid-cols-3 max-w-[1140px] mx-auto px-5 sm:px-6 sm:pt-[470px] pt-[calc(100vh-220px)] pb-7 md:pb-[40px] lg:pb-[75px]"
         data-testid="home-content"
       >
         <div className="col-span-3 flex flex-col gap-3 md:gap-5 lg:gap-8">
@@ -42,42 +43,36 @@ const Home = () => {
             hero
             title={t('home.card-1-title')}
             content={t('home.card-1-content')}
-            backgroundColor="#00A8B3BF"
-            className="md:w-min"
+            backgroundColor="var(--ds-color-secondary-2-dark-2)"
+            className="lg:w-min"
           />
           <div className="flex flex-col lg:flex-row gap-3 md:gap-5 xl:gap-7">
             <FeatureCard
-              to={getMainCategoryPath(language as LangCode, 0)}
-              linkComponent={Link}
+              linkComponent={getLinkTo(getMainCategoryPath(language as LangCode, 0))}
               level="h2"
               title={t('home.card-2-title')}
               content={t('home.card-2-content')}
-              backgroundColor="var(--ds-color-secondary-1)"
-              collapseOnSmallScreen={true}
-              opacity={0.95}
+              backgroundColor="var(--ds-color-secondary-2-dark)"
               className="flex-1"
+              buttonText={t('home.card-2-button-text')}
             />
             <FeatureCard
-              to={getMainCategoryPath(language as LangCode, 1)}
-              linkComponent={Link}
+              linkComponent={getLinkTo(getMainCategoryPath(language as LangCode, 1))}
               level="h2"
               title={t('home.card-3-title')}
               content={t('home.card-3-content')}
-              backgroundColor="var(--ds-color-secondary-3)"
-              collapseOnSmallScreen={true}
-              opacity={0.95}
+              backgroundColor="var(--ds-color-secondary-2-dark-2)"
               className="flex-1"
+              buttonText={t('home.card-3-button-text')}
             />
             <FeatureCard
-              to={getMainCategoryPath(language as LangCode, 2)}
-              linkComponent={Link}
+              linkComponent={getLinkTo(getMainCategoryPath(language as LangCode, 2))}
               level="h2"
               title={t('home.card-4-title')}
               content={t('home.card-4-content')}
-              backgroundColor="var(--ds-color-secondary-4)"
-              collapseOnSmallScreen={true}
-              opacity={0.95}
+              backgroundColor="var(--ds-color-secondary-2-dark)"
               className="flex-1"
+              buttonText={t('home.card-4-button-text')}
             />
           </div>
         </div>
@@ -86,12 +81,12 @@ const Home = () => {
         {isLoggedIn && (
           <div className="col-span-3 lg:col-span-2">
             <FeatureCard
-              to={`/${language}/${t('slugs.profile.index')}/${t('slugs.profile.favorites')}`}
-              linkComponent={Link}
+              linkComponent={getLinkTo(`/${language}/${t('slugs.profile.index')}/${t('slugs.profile.favorites')}`)}
               level="h2"
               title={t('home.favorites')}
               content={t('home.favorites-content')}
-              backgroundColor="#85C4EC"
+              buttonText={t('home.favorites-button-label')}
+              backgroundColor="var(--ds-color-secondary-2-dark)"
             />
           </div>
         )}

@@ -11,11 +11,11 @@ export const SuggestNewContent = () => {
       <SuggestNewContentModal isOpen={showModal} onClose={() => setShowModal(false)} />
       <FeatureCard
         onClick={() => setShowModal(true)}
+        buttonText={t('suggest-new-content-for-the-service-button')}
         level="h2"
         title={t('suggest-new-content-for-the-service')}
         content={t('suggest-new-content-for-the-service-content')}
-        backgroundColor="#EBB8E1"
-        className="cursor-pointer"
+        backgroundColor="var(--ds-color-secondary-2-dark-2)"
         data-testid="suggest-new-content-card"
       />
     </>

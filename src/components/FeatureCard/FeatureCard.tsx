@@ -1,23 +1,23 @@
-import { cx } from '@jod/design-system';
+import { Button, cx, type LinkComponent } from '@jod/design-system';
 import { JodArrowRight } from '@jod/design-system/icons';
 import React from 'react';
 
 type LinkProps = {
-  to: string;
-  linkComponent: React.ElementType;
+  linkComponent: LinkComponent;
+  buttonText: string;
   onClick?: never;
 };
 
 type ClickProps = {
-  to?: never;
   linkComponent?: never;
   onClick: () => void;
+  buttonText: string;
 };
 
 type StaticProps = {
-  to?: never;
   linkComponent?: never;
   onClick?: never;
+  buttonText?: never;
 };
 
 type FeatureCardProps = {
@@ -27,7 +27,6 @@ type FeatureCardProps = {
   content: string;
   backgroundColor: string;
   collapseOnSmallScreen?: boolean;
-  opacity?: number;
   className?: string;
 } & (LinkProps | ClickProps | StaticProps);
 
@@ -38,56 +37,64 @@ export const FeatureCard = ({
   content,
   backgroundColor,
   collapseOnSmallScreen = false,
-  opacity,
   className,
-  to,
   linkComponent,
+  buttonText,
   onClick,
 }: FeatureCardProps) => {
   const headingId = React.useId();
   const contentId = React.useId();
 
   const Heading = level;
-  const Card = linkComponent || 'div';
 
   return (
-    <Card
-      to={to}
-      onClick={onClick}
-      role="region"
-      aria-labelledby={headingId}
-      aria-describedby={contentId}
-      className={cx(`flex flex-col gap-5 rounded-lg px-6 lg:pb-7 ${className ? className : ''}`.trim(), {
+    <div
+      className={cx(`flex flex-col gap-5 rounded-lg px-6 lg:pb-7 ${className || ''}`.trim(), {
         'pt-6 pb-7': hero || !collapseOnSmallScreen,
         'py-[6px] lg:py-6': !hero && collapseOnSmallScreen,
       })}
-      style={{ backgroundColor, opacity }}
-      data-testid={to ? 'feature-card-link' : 'feature-card'}
+      style={{ backgroundColor }}
+      data-testid={'feature-card'}
     >
       <div className="flex justify-between gap-3 items-center lg:items-start" data-testid="feature-card-header">
         <Heading
           id={headingId}
-          className={`${hero ? 'text-heading-1-mobile md:text-heading-1 text-[#000] md:text-nowrap' : 'text-heading-2-mobile md:text-heading-2 text-primary-gray'}`}
+          className={`${hero ? 'text-heading-1-mobile md:text-heading-1 text-white md:text-nowrap' : 'text-heading-2-mobile md:text-heading-2 text-white'}`}
           data-testid="feature-card-title"
         >
           {title}
         </Heading>
-        {!hero && (
-          <div className="size-9 text-primary-gray">
-            <JodArrowRight size={48} />
-          </div>
-        )}
       </div>
       <p
         id={contentId}
-        className={cx('text-body-lg-mobile md:text-body-lg whitespace-pre-line', {
-          'text-black': hero,
-          'text-primary-gray hidden lg:block': collapseOnSmallScreen,
-        })}
+        className={'text-body-lg-mobile md:text-body-lg whitespace-pre-line text-white flex-grow'}
         data-testid="feature-card-content"
       >
         {content}
       </p>
-    </Card>
+      {linkComponent && buttonText ? (
+        <Button
+          label={buttonText}
+          LinkComponent={linkComponent}
+          variant="white"
+          serviceVariant="ohjaaja"
+          icon={<JodArrowRight aria-hidden />}
+          iconSide="right"
+          data-testid="feature-card-button-link"
+        />
+      ) : null}
+      {onClick ? (
+        <Button
+          onClick={onClick}
+          label={buttonText}
+          variant="white"
+          serviceVariant="ohjaaja"
+          icon={<JodArrowRight aria-hidden />}
+          iconSide="right"
+          aria-labelledby={`${headingId} ${contentId}`}
+          data-testid="feature-card-button"
+        />
+      ) : null}
+    </div>
   );
 };
