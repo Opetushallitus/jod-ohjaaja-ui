@@ -48,9 +48,10 @@ const Root = () => {
   const [langMenuOpen, setLangMenuOpen] = React.useState(false);
   const [feedbackVisible, setFeedbackVisible] = React.useState(false);
   const [searchInputVisible, setSearchInputVisible] = React.useState(false);
+  const [visibleBetaFeedback, setVisibleBetaFeedback] = React.useState(true);
   const { sm } = useMediaQueries();
   const location = useLocation();
-  const { addNote } = useNoteStack();
+  const { addNote, removeNote } = useNoteStack();
 
   const hostname = window.location.hostname;
   const { siteId, agent } = React.useMemo(() => {
@@ -114,27 +115,33 @@ const Root = () => {
   const showServiceName = sm || !searchInputVisible;
 
   React.useEffect(() => {
-    addNote({
-      title: t('beta.note.title'),
-      description: t('beta.note.description'),
-      variant: 'feedback',
-      readMoreComponent: (
-        <Button
-          size="sm"
-          variant="white"
-          label={t('beta.note.to-feedback')}
-          icon={<JodOpenInNew />}
-          iconSide="right"
-          LinkComponent={getLinkTo('https://link.webropolsurveys.com/S/9697D299FF7E5000', {
-            useAnchor: true,
-            target: '_blank',
-          })}
-        />
-      ),
-      permanent: false,
-      id: 'beta-feedback',
-    });
-  }, [t, addNote]);
+    if (visibleBetaFeedback) {
+      addNote({
+        title: t('beta.note.title'),
+        description: t('beta.note.description'),
+        variant: 'feedback',
+        onCloseClick: () => {
+          setVisibleBetaFeedback(false);
+          removeNote('beta-feedback');
+        },
+        readMoreComponent: (
+          <Button
+            size="sm"
+            variant="white"
+            label={t('beta.note.to-feedback')}
+            icon={<JodOpenInNew />}
+            iconSide="right"
+            LinkComponent={getLinkTo('https://link.webropolsurveys.com/S/9697D299FF7E5000', {
+              useAnchor: true,
+              target: '_blank',
+            })}
+          />
+        ),
+        permanent: false,
+        id: 'beta-feedback',
+      });
+    }
+  }, [t, addNote, visibleBetaFeedback, removeNote]);
 
   return (
     <>
