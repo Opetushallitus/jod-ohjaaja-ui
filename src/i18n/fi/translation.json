@@ -52,7 +52,7 @@
     "noComments": "Ei vielä kommentteja.",
     "title": "Kommentoi sisältöä"
   },
-  "competency-path-portal": "Osaamispolkuportaali",
+  "competency-path-portal": "Osaamispolun etusivu",
   "content-details": {
     "additional-content": "Lisätietoja",
     "date-created": "Luotu:",
@@ -139,7 +139,7 @@
     },
     "more-info-title": "Haluatko tietää lisää Osaamispolusta?"
   },
-  "front-page": "Etusivu",
+  "front-page": "Ohjaajan osio",
   "home": {
     "best-matching": "Sinua voisi kiinnostaa",
     "card-1-content": "Ohjaajan osiosta löydät uraohjaustyösi tueksi tietoa, menetelmiä ja omaa osaamistasi vahvistavia materiaaleja. Palvelu kokoaa yhteen sisältöjä eri tietolähteistä.",
@@ -167,7 +167,7 @@
   "navigation": {
     "external": {
       "tietopalvelu": {
-        "description": "Tietoa päätöksentekijöille",
+        "description": "Tietoa päätöksenteon tueksi",
         "label": "Tietopalvelu",
         "url": "/tietopalvelu/fi"
       },
@@ -180,7 +180,7 @@
     },
     "extra": {
       "palveluhakemisto": {
-        "label": "Palveluhakemisto",
+        "label": "Ohjaus- ja neuvontapalveluja",
         "url": "https://www.suomi.fi/palveluhakemisto/osaamispolku"
       },
       "title": "Tukea pohdintaan",
@@ -189,7 +189,7 @@
         "url": "/urataidot/fi"
       }
     },
-    "menu-section-title": "Ohjaajan osio"
+    "menu-section-title": "Tietoja ja materiaaleja ohjaukseen"
   },
   "no-match": {
     "description": "Hakemaasi sivua ei löytynyt.",
