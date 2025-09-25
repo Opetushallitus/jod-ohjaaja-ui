@@ -51,12 +51,12 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
       title: t('navigation.extra.title'),
       linkItems: [
         {
-          label: t('navigation.extra.urataidot.label'),
-          url: t('navigation.extra.urataidot.url'),
-        },
-        {
           label: t('navigation.extra.palveluhakemisto.label'),
           url: t('navigation.extra.palveluhakemisto.url'),
+        },
+        {
+          label: t('navigation.extra.urataidot.label'),
+          url: t('navigation.extra.urataidot.url'),
         },
       ],
     },
