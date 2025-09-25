@@ -48,7 +48,7 @@
       },
       "send": "Lähetä"
     },
-    "description": "Voit kommentoida artikkelin sisältöä sisäänkirjautuneena. Kommentit näkyvät kaikille käyttäjille. Älä jaa kommenteissa henkilö- tai muuta yksityistä tietoa.",
+    "description": "Voit kommentoida tätä sisältöä sisäänkirjautuneena. Kommentointi tapahtuu nimettömänä. Kommentit näkyvät kaikille käyttäjille. Älä jaa kommenteissa henkilö- tai muuta yksityistä tietoa.",
     "noComments": "Ei vielä kommentteja.",
     "title": "Kommentoi sisältöä"
   },
@@ -59,8 +59,8 @@
     "date-modified": "Muokattu:"
   },
   "content-list": {
-    "article-count_one": "{{count}} artikkeli",
-    "article-count_other": "{{count}} artikkelia",
+    "article-count_one": "{{count}} sisältö",
+    "article-count_other": "{{count}} sisältöä",
     "show-more": "Näytä lisää"
   },
   "contents": "Sisällys",
@@ -145,7 +145,7 @@
     "card-1-content": "Ohjaajan osiosta löydät uraohjaustyösi tueksi tietoa, menetelmiä ja omaa osaamistasi vahvistavia materiaaleja. Palvelu kokoaa yhteen sisältöjä eri tietolähteistä.",
     "card-1-title": "Tervetuloa ohjaajan osioon!",
     "card-2-content": "Tietoa ohjausalasta ja sen kehittymisestä.",
-    "card-2-title": "Tietosisällöt",
+    "card-2-title": "Ohjaajan tietosisällöt",
     "card-2-button-text": "Siirry tietosisältöihin",
     "card-3-content": "Ohjaustyössä käytettäviä menetelmiä.",
     "card-3-title": "Asiakastyön tueksi",
@@ -234,12 +234,12 @@
       }
     },
     "favorites": {
-      "description": "Suosikeiksi tallentamasi artikkelisisällöt löytyvät täältä. Voit tallentaa suosikkeja artikkelinostoista tai artikkelien sivuilta. Voit poistaa tallennetun suosikin tyhjentämällä valinnan.",
+      "description": "Suosikeiksi tallentamasi sisällöt löytyvät täältä. Voit tallentaa suosikkeja painamalla sydänikonia sisältönostojen ja sisältösivujen yhteydessä. Voit poistaa tallennetun suosikin painamalla sydänikonia uudestaan.",
       "favorite-count_one": "Olet tallentanut yhden suosikin.",
       "favorite-count_other": "Olet tallentanut {{count}} suosikkia.",
       "favorite-count_zero": "Et ole vielä tallentanut suosikkeja.",
       "filter": "Suodata",
-      "no-favorites": "Voit tallentaa artikkeleita suosikeiksi klikkaamalla sydän-ikonia. Voit tutustua sisältöihin seuraavissa osioissa:",
+      "no-favorites": "Et ole vielä tallentanut suosikkeja. Voit tutustua sisältöihin seuraavissa osioissa:",
       "no-tags": "Voit suodattaa tallentamiasi sisältöjä avainsanoihin perustuen.",
       "sort": {
         "a-z": "Aakkosittain A-Ö",
