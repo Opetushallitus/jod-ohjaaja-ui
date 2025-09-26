@@ -59,7 +59,7 @@ export const FeatureCard = ({
       <div className="flex justify-between gap-3 items-center lg:items-start" data-testid="feature-card-header">
         <Heading
           id={headingId}
-          className={`${hero ? 'text-heading-1-mobile md:text-heading-1 text-white md:text-nowrap' : 'text-heading-2-mobile md:text-heading-2 text-white'}`}
+          className={`${hero ? 'text-heading-1-mobile md:text-heading-1 text-white whitespace-pre-line' : 'text-heading-2-mobile md:text-heading-2 text-white'}`}
           data-testid="feature-card-title"
         >
           {title}
