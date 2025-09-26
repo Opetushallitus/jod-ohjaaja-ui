@@ -144,27 +144,27 @@
     "best-matching": "Sinua voisi kiinnostaa",
     "card-1-content": "Ohjaajan osiosta löydät uraohjaustyösi tueksi tietoa, menetelmiä ja omaa osaamistasi vahvistavia materiaaleja. Palvelu kokoaa yhteen sisältöjä eri tietolähteistä.",
     "card-1-title": "Tervetuloa\nohjaajan osioon!",
+    "card-2-button-text": "Siirry tietosisältöihin",
     "card-2-content": "Tietoa ohjausalasta ja sen kehittymisestä.",
     "card-2-title": "Ohjaajan tietosisällöt",
-    "card-2-button-text": "Siirry tietosisältöihin",
+    "card-3-button-text": "Tutki menetelmiä",
     "card-3-content": "Ohjaustyössä käytettäviä menetelmiä.",
     "card-3-title": "Asiakastyön tueksi",
-    "card-3-button-text": "Tutki menetelmiä",
+    "card-4-button-text": "Tutustu materiaaleihin",
     "card-4-content": "Materiaaleja ohjausosaamisen kehittämiseen.",
     "card-4-title": "Ammatillinen kehittyminen",
-    "card-4-button-text": "Tutustu materiaaleihin",
     "favorites": "Suosikit",
-    "favorites-content": "Kirjautuneena käyttäjänä voit tallentaa palvelun sisältöjä suosikeiksi, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa. Suosikiksi tallentaminen tapahtuu klikkaamalla sisältökortin sydänikonia.",
     "favorites-button-label": "Siirry suosikkeihin",
+    "favorites-content": "Kirjautuneena käyttäjänä voit tallentaa palvelun sisältöjä suosikeiksi, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa. Suosikiksi tallentaminen tapahtuu klikkaamalla sisältökortin sydänikonia.",
     "new-content": "Uudet sisällöt",
     "popular-content": "Suositut sisällöt"
   },
   "language-selection": "Käyttökieli",
   "link-copied": "Linkki kopioitu!",
   "link-copy-failed": "Linkin kopiointi epäonnistui",
-  "log-in-to-the-service-title": "Kirjaudu Ohjaajan osioon",
   "log-in-to-the-service-button": "Kirjaudu palveluun",
   "log-in-to-the-service-content": "Kirjautumalla palveluun saat mahdollisuuden keskustella sisällöistä, tallentaa suosikkeja ja mukauttaa sinulle näkyvää sisältöä kiinnostuksesi mukaan. Palvelu käyttää suomi.fi-tunnistautumista.",
+  "log-in-to-the-service-title": "Kirjaudu Ohjaajan osioon",
   "login": "Kirjaudu",
   "login-for-favorites": "Kirjaudu sisään Osaamispolkuun, jotta voit tallentaa suosikkeja ja päästä tarkastelemaan niitä myöhemmin.",
   "logout": "Kirjaudu ulos",
@@ -369,6 +369,9 @@
       "link": "Syötä kelvollinen linkki esim. https://www.osaamispolku.fi",
       "valid-email": "Syötä kelvollinen sähköpostiosoite"
     },
+    "footer-info-1": "Kun annat sisältöehdotuksen, ehdotus tallennetaan. Sähköpostiosoitteen antaminen on vapaaehtoista, mutta mikäli annat tiedon sähköpostiosoitteestasi, tieto tallennetaan. Tietoja ei välitetä eteenpäin kolmansille osapuolille. Sisältöehdotukset käsitellään KEHA-keskuksessa.",
+    "keha-privacy-policy-href-link-text": "KEHA-keskuksen asiakas- ja neuvontapalveluiden tietosuojaseloste",
+    "keha-privacy-policy-href": "https://tyomarkkinatori.fi/tietoa-palvelusta/tietosuoja-ja-kayttoehdot/tietosuojaselosteet/asiakas-ja-neuvontapalveluiden-tietosuojaseloste",
     "link-label": "Linkki ehdottamaasi sisältöön",
     "link-placeholder": "Linkki",
     "open-content-guide": "Avaa sisältöohje",
@@ -377,6 +380,7 @@
     "title": "Sisällön ehdottaminen"
   },
   "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
+  "suggest-new-content-for-the-service-button": "Ehdota sisältöä",
   "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä.",
   "terms-of-service": "Käyttöehdot",
   "toast": {
@@ -400,6 +404,5 @@
     "report-comment-success": "Kommentti ilmoitettu.",
     "update-default-failed": "Päivitys epäonnistui.",
     "update-default-success": "Päivitys onnistui."
-  },
-  "suggest-new-content-for-the-service-button": "Ehdota sisältöä"
+  }
 }
