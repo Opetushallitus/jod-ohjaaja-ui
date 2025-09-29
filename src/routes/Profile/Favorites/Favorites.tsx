@@ -128,10 +128,10 @@ const Favorites = () => {
     >
       <div data-testid="favorites-route">
         <title>{t('profile.favorites.title')}</title>
-        <h1 className="text-heading-1 mb-5" data-testid="favorites-title">
+        <h1 className="text-heading-1-mobile lg:text-heading-1 mb-6" data-testid="favorites-title">
           {t('profile.favorites.title')}
         </h1>
-        <p className="text-body-lg mb-5" data-testid="favorites-description">
+        <p className="text-body-lg mb-8" data-testid="favorites-description">
           {t('profile.favorites.description')}
         </p>
         <div className="grid grid-cols-2 gap-5 mb-5">

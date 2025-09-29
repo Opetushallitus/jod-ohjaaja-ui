@@ -20,7 +20,7 @@ const ProfileFront = () => {
   return (
     <MainLayout navChildren={navChildren}>
       <title>{t('profile.front.title')}</title>
-      <h1 className="mb-6 text-heading-2 sm:text-heading-1" data-testid="profile-front-title">
+      <h1 className="text-heading-1-mobile lg:text-heading-1 mb-6" data-testid="profile-front-title">
         {t('profile.front.greeting', {
           etunimi,
         })}

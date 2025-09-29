@@ -26,9 +26,10 @@ const Preferences = () => {
     <MainLayout navChildren={<ProfileNavigation />}>
       <div data-testid="preferences-route">
         <title>{t('profile.preferences.title')}</title>
-        <h1 className="mb-5 text-heading-2 sm:text-heading-1" data-testid="preferences-title">
+        <h1 className="text-heading-1-mobile lg:text-heading-1 mb-6" data-testid="preferences-title">
           {t('profile.preferences.title')}
         </h1>
+        <p className="text-body-lg mb-8">{t('profile.preferences.ingress')}</p>
         <section className="mb-8" data-testid="preferences-download">
           <h2 className="text-heading-2-mobile sm:text-heading-2 mb-3">{t('profile.preferences.download.title')}</h2>
           <p className="text-body-md mb-5">{t('profile.preferences.download.description')}</p>

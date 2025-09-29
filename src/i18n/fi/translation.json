@@ -211,13 +211,14 @@
   "print": "Tulosta",
   "profile": {
     "details": {
+      "ingress": "Voit täydentää omia tietojasi alla. Tietojen täydentäminen on vapaaehtoista. Kommentoidessasi ohjaajan osion sisältöjä, nimesi tai muut tietosi eivät näy palvelun muille käyttäjille. ",
       "interest": {
         "description": "Valitsemalla sinua kiinnostavia asiasanoja, voimme tarjota palvelussa sinulle paremmin kohdistettuja sisältöjä. Näet myös kaiken muun palvelussa tarjottavan sisällön. Valintasi tallennetaan automaattisesti. ",
         "title": "Kiinnostukseni"
       },
       "introduction": {
         "description": "Voit täydentää omia tietojasi alla. Näytämme tietosi muille käyttäjille keskustelujen yhteydessä. Tietojen täydentäminen on vapaaehtoista.",
-        "title": "Tietoa minusta"
+        "title": "Työskentelypaikka"
       },
       "title": "Omat tiedot",
       "workplace": {
@@ -289,14 +290,15 @@
       "delete-profile": {
         "action": "Poista ohjaajan profiili",
         "confirm": "Haluatko varmasti poistaa ohjaajan profiilisi?",
-        "description": "Kaikki ohjaajan profiiliin tallennetut tiedot poistetaan pysyvästi, eikä niitä voi palauttaa. Huomioithan, että ohjaajan profiilin poisto ei vaikuta mahdollisesti luomaasi osaamisprofiiliin tai sen tietoihin. Jos haluat poistaa myös osaamisprofiilin, sinun tulee tehdä se Osaamispolun asetuksissa.",
-        "title": "Poista koko ohjaajan profiili ja kaikki siihen tallennetut tiedot"
+        "description": "Voit poistaa koko ohjaajan profiilisi ja kaikki siihen tallennetut tiedot pysyvästi. Poistoa ei voi perua.   Huomioithan, että ohjaajan profiilin poisto ei vaikuta mahdollisesti luomaasi osaamisprofiiliin tai sen tietoihin. Jos haluat poistaa myös osaamisprofiilin, sinun tulee tehdä se Oman osaamispolkusi osaamisprofiilin asetuksissa.",
+        "title": "Poista ohjaajan profiili "
       },
       "download": {
-        "action": "Lataa ohjaajan osion tiedot",
-        "description": "Tämä tarkoittaa tietoja, jotka olet jakanut Ohjaajan osiossa sekä tietoja, joita olemme keränneet toiminnastasi. ",
-        "title": "Lataa talteen kaikki ohjaajan profiiliin tallennetut tietosi"
+        "action": "Lataa ohjaajan profiilin tiedot (JSON)",
+        "description": "Voit ladata kaikki ohjaajan profiiliisi tallennetut tiedot omalle laitteellesi. Tämä tarkoittaa tietoja, jotka olet jakanut Ohjaajan osiossa sekä tietoja, joita olemme keränneet toiminnastasi.  Tiedot muodostetaan koneluettavaan JSON-muotoon. JSON on yksinkertainen ja kevyt avoimen standardin tiedostomuoto tiedonvälitykseen ja tallennukseen.",
+        "title": "Lataa ohjaajan profiili"
       },
+      "ingress": "Tällä sivulla voit ladata profiilisi tiedot itsellesi tai poistaa profiilisi kokonaan.",
       "title": "Asetukset"
     }
   },
@@ -370,8 +372,8 @@
       "valid-email": "Syötä kelvollinen sähköpostiosoite"
     },
     "footer-info-1": "Kun annat sisältöehdotuksen, ehdotus tallennetaan. Sähköpostiosoitteen antaminen on vapaaehtoista, mutta mikäli annat tiedon sähköpostiosoitteestasi, tieto tallennetaan. Tietoja ei välitetä eteenpäin kolmansille osapuolille. Sisältöehdotukset käsitellään KEHA-keskuksessa.",
-    "keha-privacy-policy-href-link-text": "KEHA-keskuksen asiakas- ja neuvontapalveluiden tietosuojaseloste",
     "keha-privacy-policy-href": "https://tyomarkkinatori.fi/tietoa-palvelusta/tietosuoja-ja-kayttoehdot/tietosuojaselosteet/asiakas-ja-neuvontapalveluiden-tietosuojaseloste",
+    "keha-privacy-policy-href-link-text": "KEHA-keskuksen asiakas- ja neuvontapalveluiden tietosuojaseloste",
     "link-label": "Linkki ehdottamaasi sisältöön",
     "link-placeholder": "Linkki",
     "open-content-guide": "Avaa sisältöohje",
