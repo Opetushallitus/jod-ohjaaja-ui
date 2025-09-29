@@ -58,9 +58,10 @@ const Details = () => {
     <MainLayout navChildren={<ProfileNavigation />}>
       <title>{t('profile.details.title')}</title>
       <div data-testid="profile-details">
-        <h1 className="text-heading-1-mobile lg:text-heading-1  lg:mb-7" data-testid="profile-details-title">
+        <h1 className="text-heading-1-mobile lg:text-heading-1 mb-6" data-testid="profile-details-title">
           {t('profile.details.title')}
         </h1>
+        <p className="text-body-lg mb-8">{t('profile.details.ingress')}</p>
         <section className="mb-8" data-testid="profile-details-introduction">
           <h2 className="text-heading-2 mb-6" data-testid="profile-details-intro-title">
             {t('profile.details.introduction.title')}
