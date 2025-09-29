@@ -88,7 +88,11 @@ const Details = () => {
           />
         </section>
         <section data-testid="profile-details-interests">
-          <h2 className="text-heading-2 mb-6" data-testid="profile-details-interests-title">
+          <h2
+            id="profile-details-interests-title"
+            className="text-heading-2 mb-6"
+            data-testid="profile-details-interests-title"
+          >
             {t('profile.details.interest.title')}
           </h2>
           <p className="text-body-md mb-6" data-testid="profile-details-interests-description">
@@ -97,6 +101,8 @@ const Details = () => {
           <div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-5"
             data-testid="profile-details-interests-list"
+            role="group"
+            aria-labelledby="profile-details-interests-title"
           >
             {tags.map((tag) => (
               <Checkbox
