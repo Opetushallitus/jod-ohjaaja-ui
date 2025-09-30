@@ -121,7 +121,7 @@
     "cooperation-title": "Osaamispolku on toteutettu yhteistyössä seuraavien tahojen toimesta",
     "copyright": "© Osaamispolku 2025. Kaikki oikeudet pidätetään.",
     "feedback-button-label": "Anna palautetta",
-    "feedback-content": "Haluamme kehittää Osaamispolkua vastaamaan paremmin juuri sinun tarpeita. Anna meille palautetta ja huomiomme sen kehitystyössä.",
+    "feedback-content": "Haluamme kehittää Osaamispolkua vastaamaan paremmin juuri sinun tarpeitasi. Anna meille palautetta ja huomioimme sen kehitystyössä.",
     "feedback-title": "Kerro meille mitä pidit palvelusta!",
     "funding-title": "Palvelu on rahoitettu EU:n elpymis- ja palautumistukivälineellä (RRF)",
     "logos": {
@@ -164,7 +164,7 @@
   "link-copied": "Linkki kopioitu!",
   "link-copy-failed": "Linkin kopiointi epäonnistui",
   "log-in-to-the-service-button": "Kirjaudu palveluun",
-  "log-in-to-the-service-content": "Kirjautumalla palveluun saat mahdollisuuden keskustella sisällöistä, tallentaa suosikkeja ja mukauttaa sinulle näkyvää sisältöä kiinnostuksesi mukaan. Palvelu käyttää suomi.fi-tunnistautumista.",
+  "log-in-to-the-service-content": "Kirjautumalla palveluun saat mahdollisuuden keskustella sisällöistä, tallentaa suosikkeja ja mukauttaa sinulle näkyvää sisältöä kiinnostuksesi mukaan. Palvelu käyttää Suomi.fi-tunnistautumista.",
   "log-in-to-the-service-title": "Kirjaudu Ohjaajan osioon",
   "login": "Kirjaudu",
   "login-for-favorites": "Kirjaudu sisään Osaamispolkuun, jotta voit tallentaa suosikkeja ja päästä tarkastelemaan niitä myöhemmin.",
@@ -212,9 +212,9 @@
   "print": "Tulosta",
   "profile": {
     "details": {
-      "ingress": "Voit täydentää omia tietojasi alla. Tietojen täydentäminen on vapaaehtoista. Kommentoidessasi ohjaajan osion sisältöjä, nimesi tai muut tietosi eivät näy palvelun muille käyttäjille. ",
+      "ingress": "Voit täydentää omia tietojasi alla. Tietojen täydentäminen on vapaaehtoista. Kommentoidessasi ohjaajan osion sisältöjä, nimesi tai muut tietosi eivät näy palvelun muille käyttäjille.",
       "interest": {
-        "description": "Valitsemalla sinua kiinnostavia asiasanoja, voimme tarjota palvelussa sinulle paremmin kohdistettuja sisältöjä. Näet myös kaiken muun palvelussa tarjottavan sisällön. Valintasi tallennetaan automaattisesti. ",
+        "description": "Valitsemalla sinua kiinnostavia asiasanoja voimme tarjota palvelussa sinulle paremmin kohdistettuja sisältöjä. Näet myös kaiken muun palvelussa tarjottavan sisällön. Valintasi tallennetaan automaattisesti.",
         "title": "Kiinnostukseni"
       },
       "introduction": {
@@ -228,7 +228,7 @@
         "option2": "Oppilaitos / toinen aste",
         "option3": "Oppilaitos / korkeakoulu",
         "option4": "Oppilaitos / aikuiskoulutus",
-        "option5": "Työllisyyspalvelut valtio tai kunta",
+        "option5": "Työllisyyspalvelut (valtio tai kunta)",
         "option6": "Kolmas sektori",
         "option7": "Yksityinen",
         "option8": "Muu",
@@ -254,11 +254,11 @@
       "title": "Suosikit"
     },
     "front": {
-      "data-processing-info": "Osaamisprofiilin tietojen käsittely perustuu Lakiin valtakunnallisesta jatkuvan oppimisen digitaalisesta palvelukokonaisuudesta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
+      "data-processing-info": "Osaamisprofiilin tietojen käsittely perustuu lakiin valtakunnallisesta jatkuvan oppimisen digitaalisesta palvelukokonaisuudesta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
       "greeting": "Hei {{etunimi}} - tervetuloa ohjaajan profiiliin!",
       "list-1-item-1": "lisätä omia tietojasi, jotta voimme palvella sinua paremmin",
-      "list-1-item-2": "tallentaa Ohjaajan osion sisältöjä  suosikeiksi sydänikonia painamalla",
-      "list-1-item-3": "nähdä ja hallinnoida suosikkisisältösi",
+      "list-1-item-2": "tallentaa Ohjaajan osion sisältöjä suosikeiksi sydänikonia painamalla",
+      "list-1-item-3": "nähdä ja hallinnoida suosikkejasi",
       "list-1-item-4": "ladata tai poistaa profiilisi",
       "list-2-item-1": "lähettää ehdotuksesi palveluun lisättävästä sisällöstä",
       "list-2-item-2": "keskustella muiden ohjaajien kanssa sisältöjen yhteydessä olevissa kommenttiketjuissa",
@@ -273,11 +273,11 @@
       "auth-description": "Palvelu käyttää Suomi.fi-tunnistusta. Käytämme tietojasi vain anonymisoituna, jotta voimme luoda yleiskuvan käyttäjistä.",
       "benefits": "Hyödyt käyttäjälle",
       "benefits-description": "Kirjautumalla palveluun voit lisäksi:",
-      "data-processing-info": "Osaamisprofiilin tietojen käsittely perustuu Lakiin valtakunnallisesta jatkuvan oppimisen digitaalisesta palvelukokonaisuudesta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
+      "data-processing-info": "Osaamisprofiilin tietojen käsittely perustuu lakiin valtakunnallisesta jatkuvan oppimisen digitaalisesta palvelukokonaisuudesta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
       "description": "Kirjautumalla palveluun saat käyttöösi henkilökohtaisen ohjaajan profiilin sekä lisäominaisuuksia Ohjaajan osion käyttöön.",
-      "list-1-item-1": "omat tiedot, jossa voit mm. kertoa kiinnostuksesi, jotta voimme tarjota sinulle paremmin kohdennettuja sisältöjä",
-      "list-1-item-2": "suosikit, joihin voit tallentaa palvelun sisältöjä, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa",
-      "list-1-item-3": "asetukset, jossa voit tallentaa tai poistaa profiilisi",
+      "list-1-item-1": "Omat tiedot -osio, jossa voit muun muassa kertoa kiinnostuksesi, jotta voimme tarjota sinulle paremmin kohdennettuja sisältöjä.",
+      "list-1-item-2": "Suosikit-osio, johon voit tallentaa palvelun sisältöjä, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa.",
+      "list-1-item-3": "Asetukset-osio, jossa voit ladata tai poistaa profiilisi.",
       "list-2-item-1": "ehdottaa uutta sisältöä lisättäväksi palveluun",
       "list-2-item-2": "kommentoida ja keskustella palvelun sisällöstä muiden ohjaajien kanssa",
       "logged-in-features": "Kirjautuneen lisäominaisuudet",
@@ -291,12 +291,12 @@
       "delete-profile": {
         "action": "Poista ohjaajan profiili",
         "confirm": "Haluatko varmasti poistaa ohjaajan profiilisi?",
-        "description": "Voit poistaa koko ohjaajan profiilisi ja kaikki siihen tallennetut tiedot pysyvästi. Poistoa ei voi perua.   Huomioithan, että ohjaajan profiilin poisto ei vaikuta mahdollisesti luomaasi osaamisprofiiliin tai sen tietoihin. Jos haluat poistaa myös osaamisprofiilin, sinun tulee tehdä se Oman osaamispolkusi osaamisprofiilin asetuksissa.",
-        "title": "Poista ohjaajan profiili "
+        "description": "Voit poistaa koko ohjaajan profiilisi ja kaikki siihen tallennetut tiedot pysyvästi. Poistoa ei voi perua. Huomioithan, että ohjaajan profiilin poisto ei vaikuta mahdollisesti luomaasi osaamisprofiiliin tai sen tietoihin. Jos haluat poistaa myös osaamisprofiilin, sinun tulee tehdä se Osaamispolkusi osaamisprofiilin asetuksissa.",
+        "title": "Poista ohjaajan profiili"
       },
       "download": {
         "action": "Lataa ohjaajan profiilin tiedot (JSON)",
-        "description": "Voit ladata kaikki ohjaajan profiiliisi tallennetut tiedot omalle laitteellesi. Tämä tarkoittaa tietoja, jotka olet jakanut Ohjaajan osiossa sekä tietoja, joita olemme keränneet toiminnastasi.  Tiedot muodostetaan koneluettavaan JSON-muotoon. JSON on yksinkertainen ja kevyt avoimen standardin tiedostomuoto tiedonvälitykseen ja tallennukseen.",
+        "description": "Voit ladata kaikki ohjaajan profiiliisi tallennetut tiedot omalle laitteellesi. Tämä tarkoittaa tietoja, jotka olet jakanut Ohjaajan osiossa, sekä tietoja, joita olemme keränneet toiminnastasi. Tiedot muodostetaan koneluettavaan JSON-muotoon. JSON on yksinkertainen ja kevyt avoimen standardin tiedostomuoto tiedonvälitykseen ja tallennukseen.",
         "title": "Lataa ohjaajan profiili"
       },
       "ingress": "Tällä sivulla voit ladata profiilisi tiedot itsellesi tai poistaa profiilisi kokonaan.",
@@ -309,7 +309,7 @@
   "return-menu": "Palaa valikkoon",
   "search": {
     "button": "Hae",
-    "description": "Voit hakea palvelun sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan. ",
+    "description": "Voit hakea palvelun sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan.",
     "filter": "Suodata",
     "label": "Hae ohjaajan osiosta",
     "placeholder": "Hae ohjaajan osioista",
@@ -357,7 +357,7 @@
   },
   "suggest-new-content": {
     "close-content-guide": "Sulje sisältöohje",
-    "content-guide": "Ehdotetulta sisällöltä odotetaan muun muassa, että se  liittyy elinikäiseen ohjaukseen, urasuunnittelutaitoihin tai ohjaajan ammattitaidon kehittymiseen. Sisällön tulee olla lainmukaista, suomen- tai ruotsinkielistä, avoimesti saatavilla olevaa ja maksutonta, eikä se saa loukata tekijänoikeuksia. Soveltuvuus arvioidaan jokaisen ehdotetun sisällön osalta erikseen.",
+    "content-guide": "Ehdotetulta sisällöltä odotetaan muun muassa, että se liittyy elinikäiseen ohjaukseen, urasuunnittelutaitoihin tai ohjaajan ammattitaidon kehittymiseen. Sisällön tulee olla lainmukaista, suomen- tai ruotsinkielistä, avoimesti saatavilla olevaa ja maksutonta, eikä se saa loukata tekijänoikeuksia. Soveltuvuus arvioidaan jokaisen ehdotetun sisällön osalta erikseen.",
     "content-label": "Ehdotuksesi sisällöksi",
     "content-placeholder": "Ehdotus",
     "description": "Oletko käyttänyt ohjausmenetelmää, jota palvelusta ei löydy? Tai haluaisitko lisää tietoa jostain teemasta? Ehdota meille palvelusta mielestäsi puuttuvaa sisältöä oheisella lomakkeella.",
