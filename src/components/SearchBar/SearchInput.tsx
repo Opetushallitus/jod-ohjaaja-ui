@@ -11,9 +11,6 @@ export const SearchInput = ({ value, onChange }: SearchInputProps) => {
 
   return (
     <div className="search-input-wrapper" data-testid="searchbar-input-wrapper">
-      <label htmlFor="search-input" className="sr-only">
-        {t('search.label')}
-      </label>
       <input
         id="search-input"
         type="text"
