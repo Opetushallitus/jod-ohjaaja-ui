@@ -1,4 +1,5 @@
 import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
+import { BreadcrumbLink } from '@/components/BreadcrumbLink/BreadcrumbLink';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
 import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/RecentlyWatchedContent';
@@ -8,7 +9,7 @@ import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { Breadcrumb, tidyClasses as tc } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
-import { NavLink, useLoaderData } from 'react-router';
+import { useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
 
 const CategoryMain = () => {
@@ -47,7 +48,12 @@ const CategoryMain = () => {
       className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-9 pt-5 sm:px-6 print:p-0"
       data-testid="category-main"
     >
-      <Breadcrumb items={breadcrumbItems} serviceVariant="ohjaaja" LinkComponent={NavLink} />
+      <Breadcrumb
+        items={breadcrumbItems}
+        serviceVariant="ohjaaja"
+        LinkComponent={BreadcrumbLink}
+        ariaLabel={t('breadcrumb')}
+      />
       <aside
         className="col-span-3 lg:row-start-2 lg:col-start-3 lg:col-span-1 print:hidden position-relative lg:position-static z-10 lg:z-auto h-[47px] lg:h-auto"
         data-testid="category-main-aside"
