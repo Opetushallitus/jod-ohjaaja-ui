@@ -67,6 +67,7 @@ const Search = () => {
       }
     >
       <div data-testid="search-route">
+        <title>{t('search.title')}</title>
         <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5" data-testid="search-title">
           {t('search.title')}
         </h1>

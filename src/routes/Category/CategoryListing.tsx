@@ -47,6 +47,7 @@ const CategoryListing = () => {
 
   return (
     <MainLayout navChildren={<CategoryNavigation />}>
+      <title>{title}</title>
       <div data-testid="category-listing-route">
         <section
           className="col-span-3 lg:row-start-2 lg:col-start-1 lg:col-span-2 print:col-span-3"

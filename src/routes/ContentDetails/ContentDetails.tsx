@@ -138,6 +138,7 @@ const ContentDetails = () => {
 
   return (
     <MainLayout>
+      <title>{data.title}</title>
       <div className="bg-white p-7 col-span-2 flex flex-col sm:gap-7 gap-6" data-testid="content-details">
         <h1 className="text-heading-1 hyphens-manual" data-testid="content-title">
           {data.title}
