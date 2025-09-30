@@ -64,6 +64,7 @@ const CategoryMain = () => {
         className="col-span-3 lg:row-start-2 lg:col-start-1 lg:col-span-2 print:col-span-3 mb-11"
         data-testid="category-main-content"
       >
+        <title>{title}</title>
         {title && (
           <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5" data-testid="category-title">
             {title}

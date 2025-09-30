@@ -40,7 +40,7 @@ const Home = () => {
 
   return (
     <main id="jod-main" className="w-full max-w-(--breakpoint-xl) mx-auto" data-testid="home">
-      <title>{t('osaamispolku')}</title>
+      <title>{t('front-page')}</title>
 
       <img
         src={heroSrc}
