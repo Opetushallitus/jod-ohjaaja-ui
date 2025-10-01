@@ -1,17 +1,19 @@
 import { MainLayout } from '@/components';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import { LogoutFormContext } from '@/routes/Root';
+import { useAuthStore } from '@/stores/useAuthStore';
+import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
+import { useNoteStore } from '@/stores/useNoteStore';
+import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { Button, ConfirmDialog } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-const DownloadLink = ({ children }: { children: React.ReactNode }) => (
-  <a href={`${import.meta.env.BASE_URL}api/profiili/ohjaaja/vienti`}>{children}</a>
-);
-
 const Preferences = () => {
   const { t } = useTranslation();
   const logoutForm = React.useContext(LogoutFormContext);
+  const fetchUser = useAuthStore((state) => state.fetchUser);
+  const user = useAuthStore((state) => state.user);
 
   const deleteProfile = () => {
     const deletionInput = document.createElement('input');
@@ -20,6 +22,37 @@ const Preferences = () => {
     deletionInput.value = 'true';
     logoutForm?.appendChild(deletionInput);
     logoutForm?.submit();
+  };
+
+  // Normally, store clearing is triggered automatically on 401 responses.
+  // However, if no such request occurs, we proactively clear the stores here as a fallback.
+  const onSessionExpired = () => {
+    useNoteStore.getState().setNote({
+      title: 'error-boundary.title',
+      description: 'error-boundary.session-expired',
+      variant: 'error',
+    });
+
+    useSuosikitStore.getState().clearSuosikit();
+    useKiinnostuksetStore.getState().clearKiinnostukset();
+  };
+
+  const onDownload = async () => {
+    const user = await fetchUser();
+    if (user) {
+      globalThis.location.href = `${import.meta.env.BASE_URL}api/profiili/ohjaaja/vienti`;
+    } else {
+      onSessionExpired();
+    }
+  };
+
+  const onDeleteUser = (showDialog: () => void) => async () => {
+    const user = await fetchUser();
+    if (user) {
+      showDialog();
+    } else {
+      onSessionExpired();
+    }
   };
 
   return (
@@ -37,8 +70,9 @@ const Preferences = () => {
             variant="accent"
             serviceVariant="ohjaaja"
             label={t('profile.preferences.download.action')}
-            LinkComponent={DownloadLink}
+            onClick={onDownload}
             data-testid="preferences-download-button"
+            disabled={!user}
           />
         </section>
         <section data-testid="preferences-delete-profile">
@@ -48,7 +82,7 @@ const Preferences = () => {
           <p className="text-body-md mb-5">{t('profile.preferences.delete-profile.description')}</p>
           <ConfirmDialog
             title={t('profile.preferences.delete-profile.action')}
-            onConfirm={() => deleteProfile()}
+            onConfirm={deleteProfile}
             confirmText={t('delete')}
             cancelText={t('cancel')}
             variant="destructive"
@@ -58,8 +92,9 @@ const Preferences = () => {
               <Button
                 variant="red-delete"
                 label={t('profile.preferences.delete-profile.action')}
-                onClick={showDialog}
+                onClick={onDeleteUser(showDialog)}
                 data-testid="preferences-delete-button"
+                disabled={!user}
               />
             )}
           </ConfirmDialog>
