@@ -254,7 +254,7 @@
       "title": "Suosikit"
     },
     "front": {
-      "data-processing-info": "Osaamisprofiilin tietojen käsittely perustuu lakiin valtakunnallisesta jatkuvan oppimisen digitaalisesta palvelukokonaisuudesta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
+      "data-processing-info": "Osaamisprofiilin tietojen käsittely perustuu lakiin valtakunnallisesta jatkuvan oppimisen osaamistietovarannosta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
       "greeting": "Hei {{etunimi}} - tervetuloa ohjaajan profiiliin!",
       "list-1-item-1": "lisätä omia tietojasi, jotta voimme palvella sinua paremmin",
       "list-1-item-2": "tallentaa Ohjaajan osion sisältöjä suosikeiksi sydänikonia painamalla",
@@ -285,6 +285,7 @@
       "profile": "Ohjaajan profiili",
       "profile-description": "Kun kirjaudut Ohjaajan osioon ensimmäisen kerran, luomme sinulle tyhjän profiilin. Profiili on tallessa niin kauan kuin tarvitset sitä.",
       "profile-includes": "Ohjaajan profiili sisältää:",
+      "suomifi-description": "Palvelu käyttää Suomi.fi-tunnistusta. Käytämme tietojasi vain anonymisoituna, jotta voimme luoda yleiskuvan käyttäjistä.",
       "title": "Luo oma ohjaajan profiili"
     },
     "preferences": {
