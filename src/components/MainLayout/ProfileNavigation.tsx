@@ -26,7 +26,7 @@ export const ProfileNavigation = () => {
       {lg ? (
         <NavigationList rootItem={navigationListItem} menuTitle={t('in-this-section')} />
       ) : (
-        <Accordion title={t('in-this-section')} lang={language} initialState={false} data-testid="profile-accordion">
+        <Accordion title={t('in-this-section')} initialState={false} data-testid="profile-accordion">
           <NavigationList rootItem={navigationListItem} />
         </Accordion>
       )}

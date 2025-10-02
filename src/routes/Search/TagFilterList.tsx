@@ -83,18 +83,14 @@ const TagFilterList = ({
 };
 
 const Wrapper = ({ children, mode }: { children: React.ReactNode; mode: 'default' | 'accordion' }) => {
-  const {
-    t,
-    i18n: { language },
-  } = useTranslation();
+  const { t } = useTranslation();
   return mode === 'default' ? (
     <div data-testid="tag-filter-list">{children}</div>
   ) : (
     <Accordion
       initialState
-      lang={language}
       title={<span className="text-heading-4">{t('search.tag-list.title')}</span>}
-      titleText={t('search.tag-list.title')}
+      ariaLabel={t('search.tag-list.title')}
       data-testid="tag-filter-accordion"
     >
       <div className="pl-5">{children}</div>

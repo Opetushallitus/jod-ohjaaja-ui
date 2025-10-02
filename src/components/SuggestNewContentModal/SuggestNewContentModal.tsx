@@ -152,7 +152,6 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
           }
           isOpen={contentGuideIsOpen}
           setIsOpen={setContentGuideIsOpen}
-          lang={language}
           data-testid="suggest-new-content.content-guide-accordion"
         >
           <p>{t('suggest-new-content.content-guide')}</p>
