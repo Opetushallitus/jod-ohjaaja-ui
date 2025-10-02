@@ -173,6 +173,7 @@ export const FeedbackModal = ({ isOpen, onClose, section, area, language }: Feed
             className="mb-9"
             rows={5}
             maxLength={MESSAGE_MAX_LENGTH}
+            requiredText={t('required')}
             data-testid="feedback-message"
           />
           <Controller

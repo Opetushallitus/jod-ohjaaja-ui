@@ -181,6 +181,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               label={t('suggest-new-content.content-label')}
               {...methods.register('content')}
               placeholder={t('suggest-new-content.content-placeholder')}
+              requiredText={t('required')}
               data-testid="suggest-new-content.content"
             />
             <FormError name="content" errors={errors} />
@@ -199,6 +200,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               label={t('suggest-new-content.link-label')}
               {...methods.register('link')}
               placeholder={t('suggest-new-content.link-placeholder')}
+              requiredText={t('required')}
               data-testid="suggest-new-content.link"
             />
             <FormError name="link" errors={errors} />
