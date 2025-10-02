@@ -34,12 +34,7 @@ export const CategoryNavigation = () => {
         {lg ? (
           <NavigationList rootItem={navigationListItem} menuTitle={t('in-this-section')} />
         ) : (
-          <Accordion
-            title={t('in-this-section')}
-            lang={i18n.language}
-            initialState={false}
-            data-testid="category-accordion"
-          >
+          <Accordion title={t('in-this-section')} initialState={false} data-testid="category-accordion">
             <NavigationList rootItem={navigationListItem} />
           </Accordion>
         )}

@@ -239,9 +239,9 @@ const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
   return (
     hasDocumentsOrLinks && (
       <div className="w-full bg-bg-gray p-5 rounded-sm" data-testid="content-attachments">
-        <h3 className="text-heading-4" data-testid="content-attachments-title">
+        <h2 className="text-heading-4" data-testid="content-attachments-title">
           {t('content-details.additional-content')}
-        </h3>
+        </h2>
         {documents.map((document) => (
           <a
             key={document.id}
