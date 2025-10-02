@@ -1,9 +1,10 @@
-import { FeedbackModal, LanguageButton, UserButton } from '@/components';
+import { FeedbackModal, UserButton } from '@/components';
 import { NavMenu } from '@/components/NavMenu/NavMenu';
 import { SearchBar } from '@/components/SearchBar/SearchBar';
 import { Toaster } from '@/components/Toaster/Toaster';
+import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
 import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
-import i18n, { LangCode } from '@/i18n/config';
+import i18n, { LangCode, langLabels, supportedLanguageCodes } from '@/i18n/config';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useNoteStore } from '@/stores/useNoteStore';
 import { getLinkTo } from '@/utils/routeUtils';
@@ -11,6 +12,7 @@ import {
   Button,
   Chatbot,
   Footer,
+  LanguageButton,
   MatomoTracker,
   NavigationBar,
   NoteStack,
@@ -52,6 +54,7 @@ const Root = () => {
   const { sm } = useMediaQueries();
   const location = useLocation();
   const { addNote, removeNote } = useNoteStack();
+  const { generateLocalizedPath } = useLocalizedRoutes();
 
   const hostname = window.location.hostname;
   const { siteId, agent } = React.useMemo(() => {
@@ -158,21 +161,30 @@ const Root = () => {
             <button
               onClick={() => setNavMenuOpen(!navMenuOpen)}
               aria-label={t('open-menu')}
-              className="flex flex-col sm:flex-row sm:gap-3 justify-center items-center select-none cursor-pointer"
-              data-testid="navmenu-toggle"
+              className="flex flex-col md:flex-row gap-2 md:gap-3 justify-center items-center select-none cursor-pointer"
+              data-testid="open-nav-menu"
             >
-              <JodMenu />
-              <span className="md:pr-3 sm:text-button-sm text-[12px]">{t('menu')}</span>
+              <JodMenu className="mx-auto" />
+              <span className="md:text-[14px] sm:text-[12px] text-[10px]">{t('menu')}</span>
             </button>
           }
           languageButtonComponent={
             <LanguageButton
+              dataTestId="language-button"
               onClick={() => setLangMenuOpen(!langMenuOpen)}
               langMenuOpen={langMenuOpen}
               menuRef={langMenuRef}
               onMenuBlur={handleBlur}
               onMenuClick={() => setLangMenuOpen(false)}
-              data-testid="language-button"
+              language={language as LangCode}
+              supportedLanguageCodes={supportedLanguageCodes}
+              generateLocalizedPath={generateLocalizedPath}
+              LinkComponent={Link}
+              translations={{
+                fi: { change: 'Vaihda kieli.', label: langLabels.fi },
+                sv: { change: 'Andra språk.', label: langLabels.sv },
+                en: { change: 'Change language.', label: langLabels.en },
+              }}
             />
           }
           userButtonComponent={<UserButton onLogout={logout} />}
