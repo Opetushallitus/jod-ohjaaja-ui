@@ -37,11 +37,11 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
       <button
         ref={userMenuButtonRef}
         onClick={() => setUserMenuOpen(!userMenuOpen)}
-        className="flex flex-col sm:flex-row justify-center items-center select-none cursor-pointer sm:mr-5"
+        className="flex flex-col md:flex-row justify-center items-center select-none cursor-pointer gap-2 md:gap-3"
         data-testid="user-button-trigger"
       >
         <JodUser className="mx-auto" />
-        <span className="whitespace-nowrap sm:text-button-sm text-[12px] sm:mx-3">{user.etunimi}</span>
+        <span className="whitespace-nowrap md:text-[14px] sm:text-[12px] text-[10px]">{user.etunimi}</span>
         {caret}
       </button>
       {userMenuOpen && (
@@ -69,7 +69,7 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
   ) : (
     <Link
       to={`/${language}/${t('slugs.profile.login')}`}
-      className="flex flex-col sm:flex-row sm:gap-2 justify-center items-center select-none cursor-pointer"
+      className="flex flex-col md:flex-row gap-2 md:gap-3 justify-center items-center select-none cursor-pointer"
       onClick={() => {
         if (onClick) {
           onClick();
@@ -78,7 +78,7 @@ export const UserButton = ({ onLogout, onClick }: UserButtonProps) => {
       data-testid="user-login-link"
     >
       <JodUser className="mx-auto" />
-      <span className="whitespace-nowrap text-[12px] sm:text-button-sm sm:mr-5">{t('login')}</span>
+      <span className="whitespace-nowrap md:text-[14px] sm:text-[12px] text-[10px]">{t('login')}</span>
     </Link>
   );
 };
