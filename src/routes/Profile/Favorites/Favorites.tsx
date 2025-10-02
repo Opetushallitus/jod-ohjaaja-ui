@@ -109,10 +109,10 @@ const Favorites = () => {
         lg && (
           <>
             {
-              <div className="bg-bg-gray-2 p-6 rounded" data-testid="favorites-tag-sidebar">
-                <h3 className="text-heading-3-mobile sm:text-heading-3 mb-4" data-testid="favorites-tag-title">
+              <div className="bg-white p-6 rounded-lg" data-testid="favorites-tag-sidebar">
+                <span className="text-body-sm mb-4 mt-2 flex" data-testid="favorites-tag-title">
                   {t('search.tag-list.title')}
-                </h3>
+                </span>
                 <TagFilterList
                   tags={tags ?? []}
                   selectedTagIds={selectedTagIds}

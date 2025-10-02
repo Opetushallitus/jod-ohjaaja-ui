@@ -22,11 +22,11 @@ export const ProfileNavigation = () => {
   };
 
   return (
-    <div className="bg-secondary-2-25 rounded-md py-3 lg:py-6 px-[20px]" data-testid="profile-navigation">
+    <div className={`bg-white rounded-lg ${lg ? 'p-6' : 'p-4'}`} data-testid="profile-navigation">
       {lg ? (
-        <NavigationList rootItem={navigationListItem} />
+        <NavigationList rootItem={navigationListItem} menuTitle={t('in-this-section')} />
       ) : (
-        <Accordion title={t('profile.index')} lang={language} initialState={false} data-testid="profile-accordion">
+        <Accordion title={t('in-this-section')} lang={language} initialState={false} data-testid="profile-accordion">
           <NavigationList rootItem={navigationListItem} />
         </Accordion>
       )}

@@ -1,7 +1,6 @@
 import { type Category } from '@/types/cms-content';
 import { getLocale } from '@/utils/navigation';
 import { Accordion, Checkbox } from '@jod/design-system';
-import { JodCaretDown } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -19,7 +18,7 @@ const TagFilterList = ({
   selectedTagIds,
   emptyText,
   mode = 'default',
-  itemsToShow = 10,
+  itemsToShow = 8,
   onTagSelectionChange,
 }: TagFilterListProperties) => {
   const {
@@ -55,7 +54,7 @@ const TagFilterList = ({
   return (
     <Wrapper mode={mode}>
       {visibleTags.map((tag) => (
-        <div key={tag.id} className="my-4" data-testid={`tag-filter-item-${tag.id}`}>
+        <div key={tag.id} className="my-6 ml-4" data-testid={`tag-filter-item-${tag.id}`}>
           <Checkbox
             name="tag"
             value={`${tag.id}`}
@@ -73,10 +72,10 @@ const TagFilterList = ({
       {hasMore && (
         <button
           onClick={handleShowMore}
-          className="flex items-center text-button-sm px-5 py-2 cursor-pointer"
+          className="flex items-center text-button-sm pl-2 py-2 cursor-pointer text-secondary-2-dark"
           data-testid="tag-filter-show-more"
         >
-          {t('search.tag-list.show-more')} <JodCaretDown size={30} />
+          {t('search.tag-list.show-more')}
         </button>
       )}
     </Wrapper>

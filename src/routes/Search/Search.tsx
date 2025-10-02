@@ -57,10 +57,10 @@ const Search = () => {
       navChildren={
         lg &&
         !tagsLoading && (
-          <div className="bg-bg-gray-2 p-6 rounded" data-testid="search-tag-sidebar">
-            <h3 className="text-heading-3-mobile sm:text-heading-3 mb-4" data-testid="search-tag-title">
+          <div className="bg-white p-6 rounded-lg" data-testid="search-tag-sidebar">
+            <span className="text-body-sm mb-4 mt-2 flex" data-testid="search-tag-title">
               {t('search.tag-list.title')}
-            </h3>
+            </span>
             <TagFilterList tags={tags} selectedTagIds={tagIds} onTagSelectionChange={handleTagSelectionChange} />
           </div>
         )
