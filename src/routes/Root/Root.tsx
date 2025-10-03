@@ -217,6 +217,7 @@ const Root = () => {
         greeting={t('chatbot.greeting')}
         textInputPlaceholder={t('chatbot.text-input-placeholder')}
         waitingmessage={t('chatbot.waiting-message')}
+        disclaimer={t('chatbot.disclaimer')}
       />
       <Footer
         language={language}
