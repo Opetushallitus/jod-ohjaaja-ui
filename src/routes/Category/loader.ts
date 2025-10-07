@@ -1,9 +1,11 @@
 import { getMostViewedArtikkeliErcs } from '@/api/artikkelinKatselu';
 import { getBestMatchingArticles } from '@/api/kiinnostukset';
 import { components } from '@/api/schema';
+import i18n, { LangCode } from '@/i18n/config';
 import { getCategoryContent } from '@/services/cms-article-api';
 import { StructuredContent } from '@/types/cms-content';
 import { NavigationItemType } from '@/types/cms-navigation';
+import { getCategoryArticleErcs } from '@/utils/navigation';
 import { LoaderFunction } from 'react-router';
 
 const getCategoryContentLoader = (categoryId: number, navigationItemType: NavigationItemType) =>
@@ -11,7 +13,7 @@ const getCategoryContentLoader = (categoryId: number, navigationItemType: Naviga
     const isLoggedIn = !!context;
     const [newestCategoryContent, mostViewedArticleErcs, bestMatchingCategoryContent] = await Promise.all([
       getCategoryContent(categoryId, 'dateCreated:desc'),
-      getMostViewedArtikkeliErcs(),
+      getMostViewedArtikkeliErcs(getCategoryArticleErcs(categoryId, i18n.language as LangCode)),
       isLoggedIn ? getBestMatchingArticles(categoryId) : Promise.resolve([]),
     ]);
 
