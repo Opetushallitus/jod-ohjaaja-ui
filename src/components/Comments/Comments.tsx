@@ -127,7 +127,7 @@ const Comments = ({ articleErc, userId }: CommentsProps) => {
                 author={comment.ohjaajaId ?? 'Anonymous'}
                 comment={comment.kommentti}
                 timestamp={comment.luotu}
-                isOwnComment={comment.ohjaajaId === userId}
+                isOwnComment={userId !== undefined && comment.ohjaajaId === userId}
                 deleteComment={deleteComment}
                 reportComment={reportComment}
                 ref={index === comments.length - 1 ? lastPostElementRef : null}
