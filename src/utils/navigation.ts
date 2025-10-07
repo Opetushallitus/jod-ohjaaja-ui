@@ -1,4 +1,5 @@
 import { LangCode } from '@/i18n/config';
+import { getNavigationTreeItems } from '@/services/navigation-loader';
 import {
   type CMSNavigationItem,
   type CMSNavigationItemLocalization,
@@ -74,5 +75,30 @@ export const getCategoryArticleIds = (navigationItem: NavigationTreeItem): numbe
       }
       return acc;
     }, [] as number[]) ?? []
+  );
+};
+
+/**
+ * Get the all article ERCs from a category navigation item and its child categories
+ * @param {NavigationTreeItem} navigationItem - The navigation item to search
+ * @returns {string[]} - An array of article ERCs
+ */
+export const getCategoryArticleErcs = (categoryId: number, language: LangCode): string[] => {
+  const navigationItem = getNavigationTreeItems().find(
+    (item) => item.categoryId === categoryId && item.lng === language,
+  );
+  return navigationItem ? getArticleErcs(navigationItem) : [];
+};
+
+const getArticleErcs = (navigationItem: NavigationTreeItem): string[] => {
+  return (
+    navigationItem.children?.reduce((acc, item) => {
+      if (item.type === 'Article' && item.externalReferenceCode) {
+        acc.push(item.externalReferenceCode);
+      } else if (item.children) {
+        acc.push(...getArticleErcs(item));
+      }
+      return acc;
+    }, [] as string[]) ?? []
   );
 };
