@@ -140,7 +140,7 @@ const ContentDetails = () => {
     <MainLayout>
       <title>{data.title}</title>
       <div className="bg-white p-7 col-span-2 flex flex-col sm:gap-7 gap-6" data-testid="content-details">
-        <h1 className="text-heading-1 hyphens-manual" data-testid="content-title">
+        <h1 className="text-heading-1 hyphens-auto break-words" data-testid="content-title">
           {data.title}
         </h1>
         <div className="flex" data-testid="content-created">
@@ -154,14 +154,8 @@ const ContentDetails = () => {
         <div className="flex sm:flex-row flex-col sm:gap-6 gap-5 space-between">
           <div className="flex flex-col">
             {image && (
-              <div data-testid="content-image" className="w-[386px] h-[217px] flex-shrink-0">
-                <img
-                  src={imageSrc}
-                  alt={image.description}
-                  width={386}
-                  height={217}
-                  className="h-full w-full object-contain object-left"
-                />
+              <div data-testid="content-image" className="max-w-[386px] max-h-[217px] flex-shrink-0">
+                <img src={imageSrc} alt={image.description} className="object-contain object-left" />
               </div>
             )}
             {imageCopyright && (
@@ -170,7 +164,7 @@ const ContentDetails = () => {
           </div>
 
           <div
-            className="flex sm:flex-col flex-row sm:justify-start justify-end flex-1 place-items-end gap-3 print:hidden"
+            className="flex sm:flex-col flex-row flex-wrap sm:justify-start justify-end flex-1 place-items-end gap-3 print:hidden"
             data-testid="content-actions"
           >
             <ActionButton
