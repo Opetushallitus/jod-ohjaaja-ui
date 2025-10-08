@@ -9,12 +9,15 @@ export const getContentByArticleId = async (articleId: number) => {
   return fetchFromCMS<StructuredContent>(`/headless-delivery/v1.0/structured-contents/${articleId}?${queryParams}`);
 };
 
-export const getNewestContent = () => {
+export const getNewestContent = (ignoreCategoryId?: number) => {
   const queryParams = new URLSearchParams();
   queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
   queryParams.set('page', `1`);
   queryParams.set('pageSize', `12`);
   queryParams.set('sort', 'dateCreated:desc');
+  if (ignoreCategoryId) {
+    queryParams.set('filter', `taxonomyCategoryIds/any(t:t ne ${ignoreCategoryId})`);
+  }
 
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,

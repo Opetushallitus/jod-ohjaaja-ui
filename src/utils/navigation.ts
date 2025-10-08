@@ -1,6 +1,7 @@
 import { LangCode } from '@/i18n/config';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import {
+  NavigationItemType,
   type CMSNavigationItem,
   type CMSNavigationItemLocalization,
   type NavigationTreeItem,
@@ -101,4 +102,17 @@ const getArticleErcs = (navigationItem: NavigationTreeItem): string[] => {
       return acc;
     }, [] as string[]) ?? []
   );
+};
+
+export const getNavigationItemsByType = (
+  navigationItems: readonly NavigationTreeItem[],
+  type: NavigationItemType,
+  lng: LangCode,
+): NavigationTreeItem[] => {
+  return [
+    ...navigationItems.filter((item) => item.type === type && item.lng === lng),
+    ...navigationItems
+      .filter((item) => item.children.length > 0)
+      .flatMap((item) => getNavigationItemsByType(item.children, type, lng)),
+  ];
 };
