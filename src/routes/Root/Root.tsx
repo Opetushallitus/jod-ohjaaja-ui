@@ -1,9 +1,8 @@
-import { FeedbackModal, UserButton } from '@/components';
+import { FeedbackModal } from '@/components';
 import { NavMenu } from '@/components/NavMenu/NavMenu';
 import { SearchBar } from '@/components/SearchBar/SearchBar';
 import { Toaster } from '@/components/Toaster/Toaster';
 import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
-import { useMenuClickHandler } from '@/hooks/useMenuClickHandler';
 import i18n, { LangCode, langLabels, supportedLanguageCodes } from '@/i18n/config';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useNoteStore } from '@/stores/useNoteStore';
@@ -14,16 +13,18 @@ import {
   Footer,
   LanguageButton,
   MatomoTracker,
+  MenuButton,
   NavigationBar,
   NoteStack,
   SkipLink,
   useMediaQueries,
   useNoteStack,
+  UserButton,
 } from '@jod/design-system';
-import { JodMenu, JodOpenInNew } from '@jod/design-system/icons';
+import { JodOpenInNew } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, Outlet, ScrollRestoration, useLocation } from 'react-router';
+import { Link, NavLink, Outlet, ScrollRestoration, useLocation, useMatch } from 'react-router';
 import { useShallow } from 'zustand/react/shallow';
 import { LogoutFormContext } from '.';
 
@@ -47,7 +48,6 @@ const Root = () => {
   } = useTranslation();
   const { note, clearNote } = useNoteStore(useShallow((state) => ({ note: state.note, clearNote: state.clearNote })));
   const [navMenuOpen, setNavMenuOpen] = React.useState(false);
-  const [langMenuOpen, setLangMenuOpen] = React.useState(false);
   const [feedbackVisible, setFeedbackVisible] = React.useState(false);
   const [searchInputVisible, setSearchInputVisible] = React.useState(false);
   const [visibleBetaFeedback, setVisibleBetaFeedback] = React.useState(true);
@@ -78,20 +78,12 @@ const Root = () => {
   );
   const logoutForm = React.useRef<HTMLFormElement>(null);
 
-  const langMenuButtonRef = React.useRef<HTMLLIElement>(null);
-
-  const langMenuRef = useMenuClickHandler(() => setLangMenuOpen(false), langMenuButtonRef);
-
   const user = useAuthStore((state) => state.user);
+
+  const isProfileActive = !!useMatch(`/${language}/${t('slugs.profile.index')}/*`);
 
   const logout = () => {
     logoutForm.current?.submit();
-  };
-
-  const handleBlur = (event: React.FocusEvent<HTMLDivElement>) => {
-    if (langMenuRef.current && !langMenuRef.current.contains(event.relatedTarget as Node)) {
-      setLangMenuOpen(false);
-    }
   };
 
   React.useEffect(() => {
@@ -157,25 +149,11 @@ const Root = () => {
         </form>
         <NavigationBar
           logo={{ to: `/${language}`, language, srText: t('osaamispolku') }}
-          menuComponent={
-            <button
-              onClick={() => setNavMenuOpen(!navMenuOpen)}
-              aria-label={t('open-menu')}
-              className="flex flex-col md:flex-row gap-2 md:gap-3 justify-center items-center select-none cursor-pointer"
-              data-testid="open-nav-menu"
-            >
-              <JodMenu className="mx-auto" />
-              <span className="md:text-[14px] sm:text-[12px] text-[10px]">{t('menu')}</span>
-            </button>
-          }
+          menuComponent={<MenuButton label={t('menu')} onClick={() => setNavMenuOpen(!navMenuOpen)} />}
           languageButtonComponent={
             <LanguageButton
+              serviceVariant="ohjaaja"
               dataTestId="language-button"
-              onClick={() => setLangMenuOpen(!langMenuOpen)}
-              langMenuOpen={langMenuOpen}
-              menuRef={langMenuRef}
-              onMenuBlur={handleBlur}
-              onMenuClick={() => setLangMenuOpen(false)}
               language={language as LangCode}
               supportedLanguageCodes={supportedLanguageCodes}
               generateLocalizedPath={generateLocalizedPath}
@@ -187,8 +165,22 @@ const Root = () => {
               }}
             />
           }
-          userButtonComponent={<UserButton onLogout={logout} />}
-          refs={{ langMenuButtonRef: langMenuButtonRef }}
+          userButtonComponent={
+            <UserButton
+              serviceVariant="ohjaaja"
+              firstName={user?.etunimi}
+              isProfileActive={isProfileActive}
+              profileLabel={t('profile.index')}
+              // eslint-disable-next-line react/no-unstable-nested-components
+              profileLinkComponent={(props) => <NavLink to={t('slugs.profile.index')} {...props} />}
+              isLoggedIn={!!user}
+              loginLabel={t('login')}
+              // eslint-disable-next-line react/no-unstable-nested-components
+              loginLinkComponent={(props) => <NavLink to={`/${language}/${t('slugs.profile.login')}`} {...props} />}
+              logoutLabel={t('logout')}
+              onLogout={logout}
+            />
+          }
           renderLink={({ to, className, children }) => (
             <Link to={to} className={className} data-testid="navbar-link">
               {children}
