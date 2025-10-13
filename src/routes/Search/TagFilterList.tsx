@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 interface TagFilterListProperties {
   tags: Category[];
   selectedTagIds: string[];
+  ariaLabelId: string;
   emptyText?: string;
   mode?: 'default' | 'accordion';
   itemsToShow?: number;
@@ -16,6 +17,7 @@ interface TagFilterListProperties {
 const TagFilterList = ({
   tags,
   selectedTagIds,
+  ariaLabelId,
   emptyText,
   mode = 'default',
   itemsToShow = 8,
@@ -52,7 +54,7 @@ const TagFilterList = ({
   };
 
   return (
-    <Wrapper mode={mode}>
+    <Wrapper mode={mode} ariaLabelId={ariaLabelId}>
       {visibleTags.map((tag) => (
         <div key={tag.id} className="my-6 ml-4" data-testid={`tag-filter-item-${tag.id}`}>
           <Checkbox
@@ -82,10 +84,20 @@ const TagFilterList = ({
   );
 };
 
-const Wrapper = ({ children, mode }: { children: React.ReactNode; mode: 'default' | 'accordion' }) => {
+const Wrapper = ({
+  children,
+  mode,
+  ariaLabelId,
+}: {
+  children: React.ReactNode;
+  mode: 'default' | 'accordion';
+  ariaLabelId: string;
+}) => {
   const { t } = useTranslation();
   return mode === 'default' ? (
-    <div data-testid="tag-filter-list">{children}</div>
+    <div data-testid="tag-filter-list" role="group" aria-labelledby={ariaLabelId}>
+      {children}
+    </div>
   ) : (
     <Accordion
       initialState
@@ -93,7 +105,9 @@ const Wrapper = ({ children, mode }: { children: React.ReactNode; mode: 'default
       ariaLabel={t('search.tag-list.title')}
       data-testid="tag-filter-accordion"
     >
-      <div className="pl-5">{children}</div>
+      <div className="pl-5" role="group" aria-labelledby={ariaLabelId}>
+        {children}
+      </div>
     </Accordion>
   );
 };

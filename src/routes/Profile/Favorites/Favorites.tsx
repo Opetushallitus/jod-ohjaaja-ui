@@ -110,13 +110,14 @@ const Favorites = () => {
           <>
             {
               <div className="bg-white p-6 rounded-lg" data-testid="favorites-tag-sidebar">
-                <span className="text-body-sm mb-4 mt-2 flex" data-testid="favorites-tag-title">
+                <span className="text-body-sm mb-4 mt-2 flex" data-testid="favorites-tag-title" id="favorites-tag-list">
                   {t('search.tag-list.title')}
                 </span>
                 <TagFilterList
                   tags={tags ?? []}
                   selectedTagIds={selectedTagIds}
                   onTagSelectionChange={handleTagSelectionChange}
+                  ariaLabelId="favorites-tag-list"
                   emptyText={t('profile.favorites.no-tags')}
                 />
               </div>
@@ -182,11 +183,15 @@ const Favorites = () => {
               menuClassName="right-0"
               data-testid="favorites-filter-menu"
             >
+              <span className="sr-only" id="favorites-tag-list">
+                {t('search.tag-list.title')}
+              </span>
               <TagFilterList
                 tags={tags ?? []}
                 selectedTagIds={selectedTagIds}
                 onTagSelectionChange={handleTagSelectionChange}
                 mode="accordion"
+                ariaLabelId="favorites-tag-list"
               />
             </ButtonMenu>
           )}
