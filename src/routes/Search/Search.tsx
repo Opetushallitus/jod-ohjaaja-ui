@@ -58,10 +58,15 @@ const Search = () => {
         lg &&
         !tagsLoading && (
           <div className="bg-white p-6 rounded-lg" data-testid="search-tag-sidebar">
-            <span className="text-body-sm mb-4 mt-2 flex" data-testid="search-tag-title">
+            <span className="text-body-sm mb-4 mt-2 flex" data-testid="search-tag-title" id="search-tag-list">
               {t('search.tag-list.title')}
             </span>
-            <TagFilterList tags={tags} selectedTagIds={tagIds} onTagSelectionChange={handleTagSelectionChange} />
+            <TagFilterList
+              tags={tags}
+              selectedTagIds={tagIds}
+              ariaLabelId="search-tag-list"
+              onTagSelectionChange={handleTagSelectionChange}
+            />
           </div>
         )
       }
@@ -111,9 +116,13 @@ const Search = () => {
                 menuClassName="right-0"
                 data-testid="search-filter-menu"
               >
+                <span className="sr-only" id="search-tag-list">
+                  {t('search.tag-list.title')}
+                </span>
                 <TagFilterList
                   tags={tags}
                   selectedTagIds={tagIds}
+                  ariaLabelId="search-tag-list"
                   onTagSelectionChange={handleTagSelectionChange}
                   mode="accordion"
                 />
