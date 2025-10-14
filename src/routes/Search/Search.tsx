@@ -29,6 +29,7 @@ const Search = () => {
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
+    globalThis._paq?.push(['trackEvent', 'ohjaaja.Haku', 'Hakusana', searchValue]);
     navigate(getSearchUrl(t, language, tagIds, searchValue));
   };
 

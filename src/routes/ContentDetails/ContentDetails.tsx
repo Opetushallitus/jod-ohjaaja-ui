@@ -243,6 +243,9 @@ const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
             target="_blank"
             className="flex text-heading-4 text-accent items-center gap-3 ml-4"
             data-testid={`content-document-${document.id}`}
+            onClick={() => {
+              globalThis._paq?.push(['trackEvent', 'ohjaaja.Tiedon käyttöaste', 'Lataus', document.title]);
+            }}
           >
             {document.title} <JodDownload size={20} />
           </a>
