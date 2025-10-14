@@ -31,6 +31,7 @@ export const SearchBar = ({ searchInputVisible, setSearchInputVisible }: SearchB
     if (isSearching) return;
     setIsSearching(true);
     e.preventDefault();
+    globalThis._paq?.push(['trackEvent', 'ohjaaja.Haku', 'Hakusana', searchValue]);
     navigate(getSearchUrl(t, language, [], searchValue));
     setTimeout(() => {
       setSearchValue('');
