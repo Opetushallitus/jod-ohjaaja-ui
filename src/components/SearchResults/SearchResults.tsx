@@ -3,7 +3,7 @@ import { type StructuredContent } from '@/types/cms-content';
 import { findContentValueByName, getKeywords } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { getArticleCategoryTitlePathParts, getArticlePath } from '@/utils/navigation-paths';
-import { ContentCard, type PageChangeDetails, Pagination } from '@jod/design-system';
+import { ContentCard, EmptyState, type PageChangeDetails, Pagination } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
@@ -38,10 +38,14 @@ export const SearchResults = ({
 
   return (
     <div data-testid="search-results">
-      <div className="mb-2 flex flex-row items-center justify-between" data-testid="search-results-header">
-        <p className="text-body-md" data-testid="search-results-count">
-          {t('search-results.article-count', { count: totalCount })}
-        </p>
+      <div className="mb-7 flex flex-row items-center justify-between" data-testid="search-results-header">
+        {totalCount === 0 ? (
+          <EmptyState text={t('search-results.article-count', { count: totalCount })} />
+        ) : (
+          <p className="text-body-sm font-arial text-primary-gray" data-testid="search-results-count">
+            {t('search-results.article-count', { count: totalCount })}
+          </p>
+        )}
         {filterMenu}
       </div>
       <div className="flex flex-col flex-wrap gap-3 sm:gap-3" data-testid="search-results-list">

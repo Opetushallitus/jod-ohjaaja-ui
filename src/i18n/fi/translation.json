@@ -312,22 +312,23 @@
   "return-menu": "Palaa valikkoon",
   "search": {
     "button": "Hae",
-    "description": "Voit hakea palvelun sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan.",
-    "filter": "Suodata",
+    "description": "Voit hakea Ohjaajan osion sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan.",
+    "filter": "Suodata ({{count}})",
+    "global-placeholder": "Hae ohjaajan osioista",
     "label": "Hae ohjaajan osiosta",
-    "placeholder": "Hae ohjaajan osioista",
+    "placeholder": "Kirjoita hakusanat",
     "tag-list": {
       "accordion-title": "Suodata",
       "checkbox-label": "Asiasana {{tag}}",
       "show-more": "Näytä lisää",
       "title": "Asiasanat"
     },
-    "title": "Etsi palvelusta"
+    "title": "Etsi ohjaajan osiosta"
   },
   "search-results": {
-    "article-count_one": "1 tulos hakusanallasi",
-    "article-count_other": "{{count}} tulosta hakusanallasi",
-    "article-count_zero": "Ei tuloksia hakusanallasi"
+    "article-count_one": "1 tulos haullasi",
+    "article-count_other": "{{count}} tulosta haullasi",
+    "article-count_zero": "Ei tuloksia haullasi"
   },
   "select-language": "Valitse kieli",
   "service-name": "Ohjaajan osio",
