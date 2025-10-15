@@ -14,7 +14,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { ExternalLink } from '../ExternalLink/ExternalLink';
-import { FormError } from '../FormError/FormError';
 
 interface SuggestNewContentFormModel {
   content: string;
@@ -56,12 +55,17 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
 
   const { isValid, isLoading, errors, isSubmitting } = useFormState({ control: methods.control });
 
+  const handleClose = () => {
+    methods.reset();
+    onClose();
+  };
+
   return (
     <Modal
       open={isOpen}
       content={
         <SuggestNewContentForm
-          onClose={onClose}
+          onClose={handleClose}
           isLoading={isLoading}
           errors={errors}
           methods={methods}
@@ -75,7 +79,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
             variant="white"
             serviceVariant="ohjaaja"
             label={t('cancel')}
-            onClick={onClose}
+            onClick={handleClose}
             className="whitespace-nowrap"
             data-testid="suggest-new-content.cancel"
           />
@@ -179,8 +183,8 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               placeholder={t('suggest-new-content.content-placeholder')}
               requiredText={t('required')}
               data-testid="suggest-new-content.content"
+              errorMessage={errors.content?.message}
             />
-            <FormError name="content" errors={errors} />
           </div>
           <div className="mb-6">
             <InputField
@@ -188,8 +192,8 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               {...methods.register('email')}
               placeholder={t('suggest-new-content.email-placeholder')}
               data-testid="suggest-new-content.email"
+              errorMessage={errors.email?.message}
             />
-            <FormError name="email" errors={errors} />
           </div>
           <div className="mb-6">
             <InputField
@@ -197,8 +201,8 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               {...methods.register('link')}
               placeholder={t('suggest-new-content.link-placeholder')}
               data-testid="suggest-new-content.link"
+              errorMessage={errors.link?.message}
             />
-            <FormError name="link" errors={errors} />
           </div>
 
           <div className="mb-6">
@@ -209,8 +213,8 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               placeholder={t('suggest-new-content.description-placeholder')}
               rows={2}
               data-testid="suggest-new-content.description"
+              errorMessage={errors.description?.message}
             />
-            <FormError name="description" errors={errors} />
           </div>
 
           <hr className="h-1 bg-border-gray text-border-gray mb-7" />
