@@ -79,13 +79,13 @@ const Search = () => {
         <p className="text-body-lg mb-6" data-testid="search-description">
           {t('search.description')}
         </p>
-        <form id="search" className="mb-8 flex flex-row" onSubmit={handleSearch} data-testid="search-form">
+        <form id="search" className="mb-7 flex flex-row" onSubmit={handleSearch} data-testid="search-form">
           <InputField
             placeholder={t('search.placeholder')}
             onChange={handleInputChange}
             value={searchValue}
             hideLabel={true}
-            className="w-full mr-4"
+            className="w-full "
             data-testid="search-input"
           />
 
@@ -97,6 +97,7 @@ const Search = () => {
             iconSide="right"
             icon={<JodSearch />}
             data-testid="search-submit"
+            className="ml-4"
           />
         </form>
 
@@ -108,10 +109,9 @@ const Search = () => {
           loadPage={handleLoadPage}
           filterMenu={
             !lg &&
-            !tagsLoading &&
-            totalCount > 0 && (
+            !tagsLoading && (
               <ButtonMenu
-                triggerLabel={t('search.filter')}
+                triggerLabel={t('search.filter', { count: tagIds.length })}
                 triggerIcon={<JodSettings size={18} />}
                 menuClassName="right-0"
                 data-testid="search-filter-menu"

@@ -16,7 +16,7 @@ export const SearchInput = ({ value, onChange }: SearchInputProps) => {
         type="text"
         value={value}
         onChange={onChange}
-        placeholder={t('search.placeholder')}
+        placeholder={t('search.global-placeholder')}
         autoComplete="off"
         aria-label={t('search.label')}
         role="searchbox"
