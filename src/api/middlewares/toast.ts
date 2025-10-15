@@ -59,6 +59,12 @@ const messages: Partial<Record<keyof paths, Partial<Record<Method, { success: st
       failed: i18n.t('toast.delete-favorite-failed'),
     },
   },
+  '/api/sisaltoehdotus': {
+    POST: {
+      success: i18n.t('suggest-new-content.success'),
+      failed: i18n.t('suggest-new-content.error'),
+    },
+  },
 };
 
 const defaultMessages = {

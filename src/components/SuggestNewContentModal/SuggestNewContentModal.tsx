@@ -81,7 +81,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
           />
           <Button
             form={formId}
-            variant="white"
+            variant="accent"
             serviceVariant="ohjaaja"
             label={t('suggest-new-content.send')}
             className="whitespace-nowrap"
@@ -126,11 +126,8 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
         throw new Error();
       }
       onClose();
-      // Wait a moment before showing success message
-      setTimeout(() => alert(t('suggest-new-content.success')), 50);
     } catch (error) {
       console.error('Failed to submit new content suggestion:', error);
-      alert(t('suggest-new-content.error'));
     }
   };
 
@@ -199,7 +196,6 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               label={t('suggest-new-content.link-label')}
               {...methods.register('link')}
               placeholder={t('suggest-new-content.link-placeholder')}
-              requiredText={t('required')}
               data-testid="suggest-new-content.link"
             />
             <FormError name="link" errors={errors} />
@@ -208,6 +204,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
           <div className="mb-6">
             <Textarea
               label={t('suggest-new-content.description-label')}
+              requiredText={t('required')}
               {...methods.register('description')}
               placeholder={t('suggest-new-content.description-placeholder')}
               rows={2}
