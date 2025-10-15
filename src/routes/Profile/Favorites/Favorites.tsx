@@ -12,7 +12,7 @@ import { type Category, type StructuredContent } from '@/types/cms-content';
 import { isSort, type Sort } from '@/types/sort';
 import { filterArticlesByTags, getKeywords, groupArticlesByCategory, sortArticles } from '@/utils/cms';
 import { getMainCategory, getMainCategoryPath } from '@/utils/navigation-paths';
-import { RadioButton, RadioButtonGroup, useMediaQueries } from '@jod/design-system';
+import { EmptyState, RadioButton, RadioButtonGroup, useMediaQueries } from '@jod/design-system';
 import { JodArrowRight, JodSettings, JodSort } from '@jod/design-system/icons';
 
 import React from 'react';
@@ -68,7 +68,7 @@ const Favorites = () => {
   };
 
   const getFilteredAndSortedArticles = () => {
-    if (!articlesByCategory) return null;
+    if (!articlesByCategory) return {};
     if (selectedTagIds.length === 0)
       return Object.fromEntries(
         Object.entries(articlesByCategory).map(([k, v]) => [k, sortArticles(v, sort, suosikit)]),
@@ -135,69 +135,71 @@ const Favorites = () => {
         <p className="text-body-lg mb-8" data-testid="favorites-description">
           {t('profile.favorites.description')}
         </p>
-        <div className="grid grid-cols-2 gap-5 mb-5">
-          <p className="text-body-md col-span-2 lg:col-span-1" data-testid="favorites-count">
-            {t('profile.favorites.favorite-count', { count: suosikit.length })}
-          </p>
-          {visibleArticlesByCategory && (
-            <ButtonMenu
-              triggerIcon={<JodSort size={18} />}
-              triggerLabel={t('profile.favorites.sort.label')}
-              className="justify-items-start lg:justify-items-end relative"
-              menuClassName="left-0 lg:right-0"
-              data-testid="favorites-sort-menu"
-            >
-              <div className="bg-bg-gray-2 px-6 pb-3 pt-0 rounded">
-                <RadioButtonGroup
-                  label={t('profile.favorites.sort.label')}
-                  value={sort}
-                  onChange={handleSelectSort}
-                  hideLabel
-                >
-                  <RadioButton label={t('profile.favorites.sort.a-z')} value="a-z" data-testid="favorites-sort-a-z" />
-                  <RadioButton label={t('profile.favorites.sort.z-a')} value="z-a" data-testid="favorites-sort-z-a" />
-                  <RadioButton
-                    label={t('profile.favorites.sort.latest')}
-                    value="latest"
-                    data-testid="favorites-sort-latest"
-                  />
-                  <RadioButton
-                    label={t('profile.favorites.sort.oldest')}
-                    value="oldest"
-                    data-testid="favorites-sort-oldest"
-                  />
-                  <RadioButton
-                    label={t('profile.favorites.sort.latest-added')}
-                    value="latest-added-to-favorites"
-                    data-testid="favorites-sort-latest-added"
-                  />
-                </RadioButtonGroup>
-              </div>
-            </ButtonMenu>
-          )}
-          {!lg && visibleArticlesByCategory && (
-            <ButtonMenu
-              triggerIcon={<JodSettings size={18} />}
-              triggerLabel={t('profile.favorites.filter')}
-              className="justify-items-end relative"
-              menuClassName="right-0"
-              data-testid="favorites-filter-menu"
-            >
-              <span className="sr-only" id="favorites-tag-list">
-                {t('search.tag-list.title')}
-              </span>
-              <TagFilterList
-                tags={tags ?? []}
-                selectedTagIds={selectedTagIds}
-                onTagSelectionChange={handleTagSelectionChange}
-                mode="accordion"
-                ariaLabelId="favorites-tag-list"
-              />
-            </ButtonMenu>
-          )}
-        </div>
+        {suosikit.length > 0 && (
+          <div className="grid grid-cols-2 gap-5 mb-5">
+            <p className="text-body-md col-span-2 lg:col-span-1" data-testid="favorites-count">
+              {t('profile.favorites.favorite-count', { count: suosikit.length })}
+            </p>
+            {visibleArticlesByCategory && (
+              <ButtonMenu
+                triggerIcon={<JodSort size={18} />}
+                triggerLabel={t('profile.favorites.sort.label')}
+                className="justify-items-start lg:justify-items-end relative"
+                menuClassName="left-0 lg:right-0"
+                data-testid="favorites-sort-menu"
+              >
+                <div className="bg-bg-gray-2 px-6 pb-3 pt-0 rounded">
+                  <RadioButtonGroup
+                    label={t('profile.favorites.sort.label')}
+                    value={sort}
+                    onChange={handleSelectSort}
+                    hideLabel
+                  >
+                    <RadioButton label={t('profile.favorites.sort.a-z')} value="a-z" data-testid="favorites-sort-a-z" />
+                    <RadioButton label={t('profile.favorites.sort.z-a')} value="z-a" data-testid="favorites-sort-z-a" />
+                    <RadioButton
+                      label={t('profile.favorites.sort.latest')}
+                      value="latest"
+                      data-testid="favorites-sort-latest"
+                    />
+                    <RadioButton
+                      label={t('profile.favorites.sort.oldest')}
+                      value="oldest"
+                      data-testid="favorites-sort-oldest"
+                    />
+                    <RadioButton
+                      label={t('profile.favorites.sort.latest-added')}
+                      value="latest-added-to-favorites"
+                      data-testid="favorites-sort-latest-added"
+                    />
+                  </RadioButtonGroup>
+                </div>
+              </ButtonMenu>
+            )}
+            {!lg && visibleArticlesByCategory && (
+              <ButtonMenu
+                triggerIcon={<JodSettings size={18} />}
+                triggerLabel={t('profile.favorites.filter')}
+                className="justify-items-end relative"
+                menuClassName="right-0"
+                data-testid="favorites-filter-menu"
+              >
+                <span className="sr-only" id="favorites-tag-list">
+                  {t('search.tag-list.title')}
+                </span>
+                <TagFilterList
+                  tags={tags ?? []}
+                  selectedTagIds={selectedTagIds}
+                  onTagSelectionChange={handleTagSelectionChange}
+                  mode="accordion"
+                  ariaLabelId="favorites-tag-list"
+                />
+              </ButtonMenu>
+            )}
+          </div>
+        )}
         <div data-testid="favorites-content">
-          {visibleArticlesByCategory ? (
+          {suosikit.length > 0 ? (
             Object.entries(visibleArticlesByCategory).map(([category, articles]) => (
               <CategoryList
                 key={category}
@@ -209,7 +211,7 @@ const Favorites = () => {
             ))
           ) : (
             <div className="flex flex-col gap-5">
-              <p>{t('profile.favorites.no-favorites')}</p>
+              <EmptyState text={t('profile.favorites.no-favorites')} />
 
               <Link
                 to={`/${language}/${getMainCategoryPath(language, 0)}`}

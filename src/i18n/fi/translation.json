@@ -241,10 +241,9 @@
       "description": "Suosikeiksi tallentamasi sisällöt löytyvät täältä. Voit tallentaa suosikkeja painamalla sydänikonia sisältönostojen ja sisältösivujen yhteydessä. Voit poistaa tallennetun suosikin painamalla sydänikonia uudestaan.",
       "favorite-count_one": "Olet tallentanut yhden suosikin.",
       "favorite-count_other": "Olet tallentanut {{count}} suosikkia.",
-      "favorite-count_zero": "Et ole vielä tallentanut suosikkeja.",
       "filter": "Suodata",
       "no-favorites": "Et ole vielä tallentanut suosikkeja. Voit tutustua sisältöihin seuraavissa osioissa:",
-      "no-tags": "Voit suodattaa tallentamiasi sisältöjä avainsanoihin perustuen.",
+      "no-tags": "Voit suodattaa tallentamiasi sisältöjä asiasanoihin perustuen.",
       "sort": {
         "a-z": "Aakkosittain A-Ö",
         "label": "Järjestä",
