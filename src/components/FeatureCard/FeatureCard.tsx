@@ -6,18 +6,21 @@ type LinkProps = {
   linkComponent: LinkComponent;
   buttonText: string;
   onClick?: never;
+  hideIcon?: boolean;
 };
 
 type ClickProps = {
   linkComponent?: never;
   onClick: () => void;
   buttonText: string;
+  hideIcon?: boolean;
 };
 
 type StaticProps = {
   linkComponent?: never;
   onClick?: never;
   buttonText?: never;
+  hideIcon?: never;
 };
 
 type FeatureCardProps = {
@@ -41,6 +44,7 @@ export const FeatureCard = ({
   linkComponent,
   buttonText,
   onClick,
+  hideIcon = false,
 }: FeatureCardProps) => {
   const headingId = React.useId();
   const contentId = React.useId();
@@ -78,7 +82,7 @@ export const FeatureCard = ({
           LinkComponent={linkComponent}
           variant="white"
           serviceVariant="ohjaaja"
-          icon={<JodArrowRight aria-hidden />}
+          icon={hideIcon ? undefined : <JodArrowRight aria-hidden />}
           iconSide="right"
           data-testid="feature-card-button-link"
         />
@@ -89,10 +93,11 @@ export const FeatureCard = ({
           label={buttonText}
           variant="white"
           serviceVariant="ohjaaja"
-          icon={<JodArrowRight aria-hidden />}
+          icon={hideIcon ? undefined : <JodArrowRight aria-hidden />}
           iconSide="right"
           aria-labelledby={`${headingId} ${contentId}`}
           data-testid="feature-card-button"
+          className="self-start"
         />
       ) : null}
     </div>
