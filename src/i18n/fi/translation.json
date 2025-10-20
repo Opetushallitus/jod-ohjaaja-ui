@@ -220,7 +220,7 @@
         "title": "Kiinnostukseni"
       },
       "introduction": {
-        "description": "Voit täydentää omia tietojasi alla. Näytämme tietosi muille käyttäjille keskustelujen yhteydessä. Tietojen täydentäminen on vapaaehtoista.",
+        "description": "Kerro meille missä työskentelet, jotta ymmärrämme ketkä palvelua käyttävät. Näin voimme kehittää palvelua ja sen sisältöjä vastaamaan paremmin käyttäjien tarpeita. Työskentelypaikkasi ei näy muille käyttäjille, eikä sitä käytetä muuhun kuin tilastollisiin tarkoituksiin. ",
         "title": "Työskentelypaikka"
       },
       "title": "Omat tiedot",
@@ -229,8 +229,8 @@
         "option1": "Oppilaitos / perusaste",
         "option2": "Oppilaitos / toinen aste",
         "option3": "Oppilaitos / korkeakoulu",
-        "option4": "Oppilaitos / aikuiskoulutus",
-        "option5": "Työllisyyspalvelut (valtio tai kunta)",
+        "option4": "Oppilaitos / muu",
+        "option5": "Työllisyyspalvelut",
         "option6": "Kolmas sektori",
         "option7": "Yksityinen",
         "option8": "Muu",
@@ -276,9 +276,9 @@
       "benefits-description": "Kirjautumalla palveluun voit lisäksi:",
       "data-processing-info": "Osaamisprofiilin tietojen käsittely perustuu lakiin valtakunnallisesta jatkuvan oppimisen digitaalisesta palvelukokonaisuudesta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
       "description": "Kirjautumalla palveluun saat käyttöösi henkilökohtaisen ohjaajan profiilin sekä lisäominaisuuksia Ohjaajan osion käyttöön.",
-      "list-1-item-1": "Omat tiedot -osio, jossa voit muun muassa kertoa kiinnostuksesi, jotta voimme tarjota sinulle paremmin kohdennettuja sisältöjä.",
-      "list-1-item-2": "Suosikit-osio, johon voit tallentaa palvelun sisältöjä, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa.",
-      "list-1-item-3": "Asetukset-osio, jossa voit ladata tai poistaa profiilisi.",
+      "list-1-item-1": "Omat tiedot, jossa voit mm. kertoa kiinnostuksesi, jotta voimme tarjota sinulle paremmin kohdennettuja sisältöjä",
+      "list-1-item-2": "Suosikit, joihin voit tallentaa palvelun sisältöjä, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa",
+      "list-1-item-3": "Asetukset, jossa voit ladata tai poistaa profiilisi.",
       "list-2-item-1": "ehdottaa uutta sisältöä lisättäväksi palveluun",
       "list-2-item-2": "kommentoida ja keskustella palvelun sisällöstä muiden ohjaajien kanssa",
       "logged-in-features": "Kirjautuneen lisäominaisuudet",
@@ -286,7 +286,6 @@
       "profile": "Ohjaajan profiili",
       "profile-description": "Kun kirjaudut Ohjaajan osioon ensimmäisen kerran, luomme sinulle tyhjän profiilin. Profiili on tallessa niin kauan kuin tarvitset sitä.",
       "profile-includes": "Ohjaajan profiili sisältää:",
-      "suomifi-description": "Palvelu käyttää Suomi.fi-tunnistusta. Käytämme tietojasi vain anonymisoituna, jotta voimme luoda yleiskuvan käyttäjistä.",
       "title": "Luo oma ohjaajan profiili"
     },
     "preferences": {

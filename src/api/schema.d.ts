@@ -221,7 +221,7 @@ export interface components {
         | 'PERUSASTE'
         | 'TOINEN_ASTE'
         | 'KORKEAKOULU'
-        | 'AIKUISKOULUTUS'
+        | 'OPPILAITOS_MUU'
         | 'TYOLLISYYSPALVELUT'
         | 'KOLMAS_SEKTORI'
         | 'YKSITYINEN'
@@ -229,7 +229,7 @@ export interface components {
     };
     SisaltoEhdotusDto: {
       sisalto: string;
-      email?: string;
+      sahkoposti?: string;
       linkki?: string;
       kuvaus: string;
       kieli: string;
@@ -275,7 +275,7 @@ export interface components {
         | 'PERUSASTE'
         | 'TOINEN_ASTE'
         | 'KORKEAKOULU'
-        | 'AIKUISKOULUTUS'
+        | 'OPPILAITOS_MUU'
         | 'TYOLLISYYSPALVELUT'
         | 'KOLMAS_SEKTORI'
         | 'YKSITYINEN'
@@ -297,7 +297,7 @@ export interface components {
         | 'PERUSASTE'
         | 'TOINEN_ASTE'
         | 'KORKEAKOULU'
-        | 'AIKUISKOULUTUS'
+        | 'OPPILAITOS_MUU'
         | 'TYOLLISYYSPALVELUT'
         | 'KOLMAS_SEKTORI'
         | 'YKSITYINEN'

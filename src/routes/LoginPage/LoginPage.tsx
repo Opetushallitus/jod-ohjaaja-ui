@@ -87,7 +87,6 @@ const LoginPage = () => {
             </ul>
           </div>
         </div>
-        <p className="font-arial">{t('profile.login-page.suomifi-description')}</p>
 
         <p className="font-arial">
           <Trans
