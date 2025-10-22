@@ -95,6 +95,7 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
       externalLinkSections={externalLinkSections}
       languageSelectionTitle={t('language-selection')}
       serviceVariant="ohjaaja"
+      externalLinkIconAriaLabel={t('external-link')}
       data-testid="navigation-menu"
     />
   );
