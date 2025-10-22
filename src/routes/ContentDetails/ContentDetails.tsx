@@ -259,7 +259,7 @@ const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
             className="flex text-heading-4 text-accent items-center gap-3 ml-4"
             data-testid={`content-link-${index + 1}`}
           >
-            {link.text} <JodOpenInNew size={20} />
+            {link.text} <JodOpenInNew size={20} ariaLabel={t('external-link')} />
           </a>
         ))}
       </div>

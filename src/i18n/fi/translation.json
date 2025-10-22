@@ -73,6 +73,7 @@
     "title": "Tapahtui virhe",
     "unexpected": "Tapahtui odottamaton virhe. Tämä voi johtua verkkoyhteyden katkeamisesta tai palvelun virheestä."
   },
+  "external-link": "Linkki johtaa palvelun ulkopuolelle",
   "feedback": {
     "cancel": "Peruuta",
     "email-label": "Sähköpostiosoite",

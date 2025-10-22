@@ -1,4 +1,5 @@
 import { JodOpenInNew } from '@jod/design-system/icons';
+import { useTranslation } from 'react-i18next';
 
 interface ExternalLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
@@ -7,6 +8,7 @@ interface ExternalLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement
 }
 
 export const ExternalLink = ({ href, children, className = '', ...rest }: ExternalLinkProps) => {
+  const { t } = useTranslation();
   return (
     <a
       href={href}
@@ -16,7 +18,7 @@ export const ExternalLink = ({ href, children, className = '', ...rest }: Extern
       {...rest}
     >
       {children}
-      <JodOpenInNew size={24} />
+      <JodOpenInNew size={24} ariaLabel={t('external-link')} />
     </a>
   );
 };
