@@ -62,6 +62,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
 
   return (
     <Modal
+      name={t('suggest-new-content.title')}
       open={isOpen}
       content={
         <SuggestNewContentForm
