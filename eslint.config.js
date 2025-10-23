@@ -10,7 +10,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist', 'src/api/schema.d.ts'] },
+  { ignores: ['dist', 'src/api/schema.d.ts', 'scripts/**'] },
   { files: ['**/*.{ts,tsx}'] },
   { languageOptions: { ecmaVersion: 2020, globals: globals.browser } },
   sonarjs.configs.recommended,

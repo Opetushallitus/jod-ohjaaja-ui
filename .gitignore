@@ -17,6 +17,10 @@ coverage
 /blob-report/
 *.local
 
+# translation export and import files
+/translations-export
+/translations-import
+
 
 # Editor directories and files
 .vscode/*
