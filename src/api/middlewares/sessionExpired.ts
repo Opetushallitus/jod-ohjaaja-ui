@@ -1,3 +1,4 @@
+import i18n from '@/i18n/config';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
 import { useNoteStore } from '@/stores/useNoteStore';
@@ -10,8 +11,8 @@ export const sessionExpiredMiddleware: Middleware = {
       useAuthStore.getState().invalidate();
 
       useNoteStore.getState().setNote({
-        title: 'error-boundary.title',
-        description: 'error-boundary.session-expired',
+        title: i18n.t('error-boundary.title'),
+        description: i18n.t('error-boundary.session-expired'),
         variant: 'error',
       });
 

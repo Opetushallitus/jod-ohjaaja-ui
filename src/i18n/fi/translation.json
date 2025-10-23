@@ -1,8 +1,6 @@
 {
-  "about-us-and-user-guide": "Tietoa palvelusta ja käyttöohjeet",
   "add-to-favorites": "Tallenna suosikiksi",
   "advisors-workspace": "Ohjaajan profiili",
-  "back": "Takaisin",
   "beta": {
     "note": {
       "description": "Kerro mielipiteesi ja auta meitä kehittämään palvelua.",
@@ -65,8 +63,6 @@
     "article-count_other": "{{count}} sisältöä",
     "show-more": "Näytä lisää"
   },
-  "contents": "Sisällys",
-  "current-location": "Nykyinen sijainti",
   "delete": "Poista",
   "error-boundary": {
     "session-expired": "Istuntosi on vanhentunut. Sinun täytyy kirjautua palveluun uudelleen tai käyttää palvelua ilman kirjautumista.",
@@ -264,7 +260,6 @@
       "list-2-item-1": "lähettää ehdotuksesi palveluun lisättävästä sisällöstä",
       "list-2-item-2": "keskustella muiden ohjaajien kanssa sisältöjen yhteydessä olevissa kommenttiketjuissa",
       "logged-in-features-intro": "Kirjautuneena voit myös:",
-      "privacy-policy-link-text": "tietosuojaselosteesta",
       "profile-description": "Ohjaajan profiilissa voit:",
       "title": "Ohjaajan profiili",
       "you-are-signed-in": "Olet kirjautunut ohjaajan profiiliin. Ohjaajan profiili toimii Osaamispolun ohjaajan osion omien tietojesi säilytys- ja hallintapaikkana."
@@ -272,9 +267,7 @@
     "index": "Ohjaajan profiili",
     "login-page": {
       "auth-description": "Palvelu käyttää Suomi.fi-tunnistusta. Käytämme tietojasi vain anonymisoituna, jotta voimme luoda yleiskuvan käyttäjistä.",
-      "benefits": "Hyödyt käyttäjälle",
       "benefits-description": "Kirjautumalla palveluun voit lisäksi:",
-      "data-processing-info": "Osaamisprofiilin tietojen käsittely perustuu lakiin valtakunnallisesta jatkuvan oppimisen digitaalisesta palvelukokonaisuudesta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
       "description": "Kirjautumalla palveluun saat käyttöösi henkilökohtaisen ohjaajan profiilin sekä lisäominaisuuksia Ohjaajan osion käyttöön.",
       "list-1-item-1": "Omat tiedot, jossa voit mm. kertoa kiinnostuksesi, jotta voimme tarjota sinulle paremmin kohdennettuja sisältöjä",
       "list-1-item-2": "Suosikit, joihin voit tallentaa palvelun sisältöjä, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa",
@@ -308,7 +301,6 @@
   "remove-from-favorites": "Poista suosikeista",
   "required": "pakollinen",
   "return-home": "Palaa etusivulle",
-  "return-menu": "Palaa valikkoon",
   "search": {
     "button": "Hae",
     "description": "Voit hakea Ohjaajan osion sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan.",
@@ -317,9 +309,7 @@
     "label": "Hae ohjaajan osiosta",
     "placeholder": "Kirjoita hakusanat",
     "tag-list": {
-      "accordion-title": "Suodata",
       "checkbox-label": "Asiasana {{tag}}",
-      "show-more": "Näytä lisää",
       "title": "Asiasanat"
     },
     "title": "Etsi ohjaajan osiosta"
@@ -329,7 +319,6 @@
     "article-count_other": "{{count}} tulosta haullasi",
     "article-count_zero": "Ei tuloksia haullasi"
   },
-  "select-language": "Valitse kieli",
   "service-name": "Ohjaajan osio",
   "share": "Jaa",
   "show-all": "Näytä kaikki",
@@ -343,10 +332,8 @@
     "article": {
       "short": "artikkeli/:articleErc"
     },
-    "basic-information": "perustiedot",
     "data-sources": "datalahteet",
     "privacy-and-cookies": "tietosuojaseloste-ja-evasteet",
-    "privacy-policy": "tietosuojaseloste",
     "profile": {
       "details": "omat-tiedot",
       "favorites": "suosikit",
@@ -355,8 +342,7 @@
       "login": "kirjaudu-sisaan",
       "preferences": "asetukset"
     },
-    "search": "haku",
-    "terms-of-service": "kayttoehdot"
+    "search": "haku"
   },
   "suggest-new-content": {
     "close-content-guide": "Sulje sisältöohje",
@@ -388,7 +374,6 @@
   "suggest-new-content-for-the-service": "Ehdota uutta sisältöä palveluun",
   "suggest-new-content-for-the-service-button": "Ehdota sisältöä",
   "suggest-new-content-for-the-service-content": "Oletko esimerkiksi käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä.",
-  "terms-of-service": "Käyttöehdot",
   "toast": {
     "add-comment-failed": "Kommentin lisääminen epäonnistui.",
     "add-comment-success": "Kommentti lisätty.",
