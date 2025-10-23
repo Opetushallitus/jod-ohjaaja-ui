@@ -28,8 +28,8 @@ const Preferences = () => {
   // However, if no such request occurs, we proactively clear the stores here as a fallback.
   const onSessionExpired = () => {
     useNoteStore.getState().setNote({
-      title: 'error-boundary.title',
-      description: 'error-boundary.session-expired',
+      title: t('error-boundary.title'),
+      description: t('error-boundary.session-expired'),
       variant: 'error',
     });
 
