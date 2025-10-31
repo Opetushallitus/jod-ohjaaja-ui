@@ -22,7 +22,7 @@ export const createLoginDialogFooter = (t: (key: string) => string, loginLink: s
             label={t('login')}
             variant="accent"
             serviceVariant="ohjaaja"
-            LinkComponent={getLinkTo(loginLink, { useAnchor: true })}
+            linkComponent={getLinkTo(loginLink, { useAnchor: true })}
             className="whitespace-nowrap"
             data-testid="login-dialog-login"
           />

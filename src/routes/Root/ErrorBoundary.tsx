@@ -36,8 +36,10 @@ const ErrorBoundary = () => {
           serviceVariant="ohjaaja"
           data-testid="error-boundary-home"
           /* eslint-disable-next-line react/no-unstable-nested-components */
-          LinkComponent={({ children }: { children: React.ReactNode }) => (
-            <a href={`/ohjaaja/${i18n.language}`}>{children}</a>
+          linkComponent={({ children, className }) => (
+            <a href={`/ohjaaja/${i18n.language}`} className={className}>
+              {children}
+            </a>
           )}
         />
         <Button
@@ -48,7 +50,11 @@ const ErrorBoundary = () => {
           serviceVariant="ohjaaja"
           data-testid="error-boundary-login"
           /* eslint-disable-next-line react/no-unstable-nested-components */
-          LinkComponent={({ children }: { children: React.ReactNode }) => <a href={loginLink}>{children}</a>}
+          linkComponent={({ children, className }) => (
+            <a href={loginLink} className={className}>
+              {children}
+            </a>
+          )}
         />
       </div>
     </main>

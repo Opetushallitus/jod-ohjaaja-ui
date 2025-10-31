@@ -140,7 +140,7 @@ const Root = () => {
             label={t('beta.note.to-feedback')}
             icon={<JodOpenInNew ariaLabel={t('external-link')} />}
             iconSide="right"
-            LinkComponent={getLinkTo('https://link.webropolsurveys.com/S/F27EA876E86B2D74', {
+            linkComponent={getLinkTo('https://link.webropolsurveys.com/S/F27EA876E86B2D74', {
               useAnchor: true,
               target: '_blank',
             })}
