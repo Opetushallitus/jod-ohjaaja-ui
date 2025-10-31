@@ -79,11 +79,12 @@ export const FeatureCard = ({
       {linkComponent && buttonText ? (
         <Button
           label={buttonText}
-          LinkComponent={linkComponent}
+          linkComponent={linkComponent}
           variant="white"
           serviceVariant="ohjaaja"
           icon={hideIcon ? undefined : <JodArrowRight aria-hidden />}
           iconSide="right"
+          className="w-fit"
           data-testid="feature-card-button-link"
         />
       ) : null}
@@ -96,8 +97,8 @@ export const FeatureCard = ({
           icon={hideIcon ? undefined : <JodArrowRight aria-hidden />}
           iconSide="right"
           aria-labelledby={`${headingId} ${contentId}`}
+          className="w-fit"
           data-testid="feature-card-button"
-          className="self-start"
         />
       ) : null}
     </div>
