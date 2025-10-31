@@ -105,7 +105,7 @@ const Comments = ({ articleErc, userId }: CommentsProps) => {
   }, [fetchComments, page]);
 
   return (
-    <div className="py-7" data-testid="comments">
+    <div className="py-7 print:hidden" data-testid="comments">
       <h2 className="text-heading-2 pb-5" data-testid="comments-title">
         {t('comments.title')}
       </h2>
