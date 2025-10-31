@@ -30,7 +30,11 @@ const NoMatch = () => {
         serviceVariant="ohjaaja"
         data-testid="no-match-home-button"
         /* eslint-disable-next-line react/no-unstable-nested-components */
-        LinkComponent={({ children }: { children: React.ReactNode }) => <a href={`/ohjaaja/${language}`}>{children}</a>}
+        linkComponent={({ children, className }) => (
+          <a href={`/ohjaaja/${language}`} className={className}>
+            {children}
+          </a>
+        )}
       />
     </main>
   );
