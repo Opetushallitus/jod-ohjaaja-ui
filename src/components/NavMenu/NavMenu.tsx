@@ -84,7 +84,7 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
   return (
     <NavigationMenu
       open={open}
-      PortalLinkComponent={PortalLink}
+      portalLinkComponent={PortalLink}
       menuSection={menuSection}
       ariaCloseMenu={t('close-menu')}
       openSubMenuLabel={t('open-submenu')}

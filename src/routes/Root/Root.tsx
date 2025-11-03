@@ -171,7 +171,7 @@ const Root = () => {
               language={language as LangCode}
               supportedLanguageCodes={supportedLanguageCodes}
               generateLocalizedPath={generateLocalizedPath}
-              LinkComponent={Link}
+              linkComponent={Link}
               translations={{
                 fi: { change: 'Vaihda kieli.', label: langLabels.fi },
                 sv: { change: 'Andra språk.', label: langLabels.sv },
