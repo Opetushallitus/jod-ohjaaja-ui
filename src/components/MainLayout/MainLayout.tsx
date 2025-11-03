@@ -21,7 +21,7 @@ export const MainLayout = ({ children, navChildren, asideChildren }: MainLayoutP
       <Breadcrumb
         items={breadcrumbItems}
         serviceVariant="ohjaaja"
-        LinkComponent={BreadcrumbLink}
+        linkComponent={BreadcrumbLink}
         ariaLabel={t('breadcrumb')}
       />
 

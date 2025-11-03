@@ -51,7 +51,7 @@ const CategoryMain = () => {
       <Breadcrumb
         items={breadcrumbItems}
         serviceVariant="ohjaaja"
-        LinkComponent={BreadcrumbLink}
+        linkComponent={BreadcrumbLink}
         ariaLabel={t('breadcrumb')}
       />
       <aside

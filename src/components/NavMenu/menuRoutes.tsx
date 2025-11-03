@@ -18,7 +18,7 @@ const createMenuItem = (
   const path = `${pathPrefix}/${navigationItem.path}`;
   const menuItem = {
     label: navigationItem.title,
-    LinkComponent: ({ children, className }: LinkComponent) => (
+    linkComponent: ({ children, className }: LinkComponent) => (
       <NavLink className={className} to={path} onClick={onClose} lang={language}>
         {children}
       </NavLink>
@@ -46,7 +46,7 @@ export const useMenuRoutes = (onClose: () => void) => {
 
   const profileMenuItems: MenuItem[] = profileRoutes.map((route) => ({
     label: route.name,
-    LinkComponent: ({ children, className }: LinkComponent) => (
+    linkComponent: ({ children, className }: LinkComponent) => (
       <NavLinkBasedOnAuth
         to={`${profileIndexPath}/${route.path}`}
         shouldLogin={!data}
@@ -72,7 +72,7 @@ export const useMenuRoutes = (onClose: () => void) => {
       {
         icon: <JodHome />,
         label: t('front-page'),
-        LinkComponent: ({ children, className }: LinkComponent) => (
+        linkComponent: ({ children, className }: LinkComponent) => (
           <NavLink to={`/${language}`} className={className} lang={language} onClick={onClose}>
             {children}
           </NavLink>
@@ -83,7 +83,7 @@ export const useMenuRoutes = (onClose: () => void) => {
 
       {
         label: t('advisors-workspace'),
-        LinkComponent: ({ children, className }: LinkComponent) => (
+        linkComponent: ({ children, className }: LinkComponent) => (
           <NavLinkBasedOnAuth
             to={`${t('slugs.profile.index')}`}
             shouldLogin={!data}
