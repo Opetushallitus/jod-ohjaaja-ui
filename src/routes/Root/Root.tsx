@@ -113,6 +113,7 @@ const Root = () => {
     addNote({
       title: note.title,
       description: note.description,
+      ariaClose: t('note.close'),
       variant: 'error',
       permanent: note.permanent ?? false,
       // Prevent multiple session-expired notes with fixed id
@@ -128,6 +129,7 @@ const Root = () => {
       addNote({
         title: t('beta.note.title'),
         description: t('beta.note.description'),
+        ariaClose: t('note.close'),
         variant: 'feedback',
         onCloseClick: () => {
           setVisibleBetaFeedback(false);
