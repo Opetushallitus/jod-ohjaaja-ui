@@ -1,3 +1,4 @@
+import { ServiceVariantProvider } from '@jod/design-system';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
@@ -33,7 +34,9 @@ loadNavigation()
 
     root.render(
       <StrictMode>
-        <RouterProvider router={router} />
+        <ServiceVariantProvider value="ohjaaja">
+          <RouterProvider router={router} />
+        </ServiceVariantProvider>
       </StrictMode>,
     );
   })
