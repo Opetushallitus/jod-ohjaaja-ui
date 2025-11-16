@@ -15,7 +15,7 @@ export const MainLayout = ({ children, navChildren, asideChildren }: MainLayoutP
   const { t } = useTranslation();
   return (
     <div
-      className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-9 pt-5 sm:px-6 print:p-0 auto-rows-max"
+      className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-9 pt-11 sm:px-6 print:p-0 auto-rows-max"
       data-testid="main-layout"
     >
       <Breadcrumb
