@@ -15,7 +15,6 @@ import {
   MatomoTracker,
   MenuButton,
   NavigationBar,
-  NoteStack,
   SkipLink,
   useMediaQueries,
   useNoteStack,
@@ -41,6 +40,38 @@ const agents = {
   },
 };
 
+const useAddBetaFeedbackNote = () => {
+  const { t } = useTranslation();
+  const { addPermanentNote } = useNoteStack();
+  const notesInitializedRef = React.useRef(false);
+
+  React.useEffect(() => {
+    if (notesInitializedRef.current) {
+      return;
+    }
+    addPermanentNote({
+      title: t('beta.note.title'),
+      description: t('beta.note.description'),
+      variant: 'feedback',
+      readMoreComponent: (
+        <Button
+          size="sm"
+          variant="white"
+          label={t('beta.note.to-feedback')}
+          icon={<JodOpenInNew ariaLabel={t('external-link')} />}
+          iconSide="right"
+          linkComponent={getLinkTo('https://link.webropolsurveys.com/S/F27EA876E86B2D74', {
+            useAnchor: true,
+            target: '_blank',
+          })}
+          className="whitespace-nowrap"
+        />
+      ),
+    });
+    notesInitializedRef.current = true;
+  }, [addPermanentNote, t]);
+};
+
 const Root = () => {
   const {
     t,
@@ -50,11 +81,10 @@ const Root = () => {
   const [navMenuOpen, setNavMenuOpen] = React.useState(false);
   const [feedbackVisible, setFeedbackVisible] = React.useState(false);
   const [searchInputVisible, setSearchInputVisible] = React.useState(false);
-  const [visibleBetaFeedback, setVisibleBetaFeedback] = React.useState(true);
   const { sm } = useMediaQueries();
   const location = useLocation();
-  const { addNote, removeNote } = useNoteStack();
   const { generateLocalizedPath } = useLocalizedRoutes();
+  const { addPermanentNote, addTemporaryNote } = useNoteStack();
 
   const hostname = window.location.hostname;
   const { siteId, agent } = React.useMemo(() => {
@@ -105,54 +135,35 @@ const Root = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language]);
 
+  useAddBetaFeedbackNote();
+
   React.useEffect(() => {
     if (!note) {
       return;
     }
 
-    addNote({
-      title: note.title,
-      description: note.description,
-      ariaClose: t('note.close'),
-      variant: 'error',
-      permanent: note.permanent ?? false,
-      // Prevent multiple session-expired notes with fixed id
-      id: note.description.includes('session-expired') ? 'session-expired' : undefined,
-    });
-    clearNote();
-  }, [addNote, clearNote, note, t]);
-
-  const showServiceName = sm || !searchInputVisible;
-
-  React.useEffect(() => {
-    if (visibleBetaFeedback) {
-      addNote({
-        title: t('beta.note.title'),
-        description: t('beta.note.description'),
-        ariaClose: t('note.close'),
-        variant: 'feedback',
-        onCloseClick: () => {
-          setVisibleBetaFeedback(false);
-          removeNote('beta-feedback');
-        },
-        readMoreComponent: (
-          <Button
-            size="sm"
-            variant="white"
-            label={t('beta.note.to-feedback')}
-            icon={<JodOpenInNew ariaLabel={t('external-link')} />}
-            iconSide="right"
-            linkComponent={getLinkTo('https://link.webropolsurveys.com/S/F27EA876E86B2D74', {
-              useAnchor: true,
-              target: '_blank',
-            })}
-          />
-        ),
-        permanent: false,
-        id: 'beta-feedback',
+    if (note.permanent) {
+      addPermanentNote({
+        // Prevent multiple session-expired notes with fixed id
+        id: note.description.includes('session-expired') ? 'session-expired' : undefined,
+        title: note.title,
+        description: note.description,
+        variant: 'error',
+      });
+    } else {
+      addTemporaryNote({
+        // Prevent multiple session-expired notes with fixed id
+        id: note.description.includes('session-expired') ? 'session-expired' : undefined,
+        title: note.title,
+        description: note.description,
+        variant: 'error',
+        isCollapsed: false,
       });
     }
-  }, [t, addNote, visibleBetaFeedback, removeNote]);
+    clearNote();
+  }, [addPermanentNote, addTemporaryNote, clearNote, note, t]);
+
+  const showServiceName = sm || !searchInputVisible;
 
   return (
     <>
@@ -202,14 +213,16 @@ const Root = () => {
               {children}
             </Link>
           )}
-          showServiceBar
           serviceBarVariant="ohjaaja"
+          serviceBarTitle={showServiceName ? t('service-name') : ' '}
           serviceBarContent={
             <SearchBar searchInputVisible={searchInputVisible} setSearchInputVisible={setSearchInputVisible} />
           }
-          serviceBarTitle={showServiceName ? t('service-name') : ' '}
+          translations={{
+            showAllNotesLabel: t('show-all'),
+            ariaLabelCloseNote: t('note.close'),
+          }}
         />
-        <NoteStack showAllText={t('show-all')} />
       </header>
       <LogoutFormContext.Provider value={logoutForm.current}>
         <NavMenu open={navMenuOpen} onClose={() => setNavMenuOpen(false)} />

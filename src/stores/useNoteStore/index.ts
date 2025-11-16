@@ -1,10 +1,10 @@
-import type { NoteStackNote } from '@jod/design-system';
+import { Note } from '@jod/design-system';
 import { create } from 'zustand';
 
 export interface NoteData {
   title: string;
   description: string;
-  variant: NoteStackNote['variant'];
+  variant: React.ComponentProps<typeof Note>['variant'];
   permanent?: boolean;
 }
 
