@@ -326,23 +326,23 @@
     "main": "Gå till huvudinnehållet"
   },
   "slugs": {
-    "about-service": "om-tjänsten",
+    "about-service": "information-om-tjansten",
     "accessibility": "information-om-tillganglighet",
-    "ai-usage": "information-om-användning-av-AI",
+    "ai-usage": "information-om-anvandningen-av-artificiell-intelligens",
     "article": {
       "short": "artikkeli/:articleErc"
     },
     "data-sources": "datakallor",
-    "privacy-and-cookies": "sekretesspolicy-och-cookies",
+    "privacy-and-cookies": "dataskyddsbeskrivning-och-cookies",
     "profile": {
       "details": "egna-uppgifter",
       "favorites": "favoriter",
       "front": "startsida",
-      "index": "vägledarens-profil",
+      "index": "vagledarens-profil",
       "login": "logga-in",
-      "preferences": "inställningar"
+      "preferences": "installningar"
     },
-    "search": "sökning"
+    "search": "sokning"
   },
   "suggest-new-content": {
     "close-content-guide": "Stäng anvisning om innehåll",

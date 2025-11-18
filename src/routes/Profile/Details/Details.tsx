@@ -4,6 +4,7 @@ import { MainLayout } from '@/components';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import { useTags } from '@/hooks/useTags';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
+import { getLocale } from '@/utils/navigation';
 import { Checkbox, Select } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -28,7 +29,10 @@ const isTyoskentelyPaikka = (
 };
 
 const Details = () => {
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
   const { tyoskentelyPaikka } = useLoaderData<LoaderData>();
   const { tags } = useTags();
   const [kiinnostukset, toggleKiinnostus] = useKiinnostuksetStore(
@@ -109,8 +113,10 @@ const Details = () => {
                 key={tag.id}
                 name={`${tag.id}`}
                 value={`${tag.id}`}
-                label={tag.name}
-                ariaLabel={tag.name}
+                ariaLabel={t('search.tag-list.checkbox-label', {
+                  tag: tag.name_i18n[getLocale(language)] ?? tag.name,
+                })}
+                label={tag.name_i18n[getLocale(language)] ?? tag.name}
                 checked={isSelected(tag.id)}
                 onChange={handleTagSelectionChange}
                 data-testid={`profile-interest-${tag.id}`}

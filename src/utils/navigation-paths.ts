@@ -38,10 +38,10 @@ export const getItemPath = (lng: string, type: NavigationItemType, name: string)
  */
 export const getMainCategoryPath = (lng: string, order: number): string => {
   const navigationItems = getNavigationTreeItems();
-
   return (
     navigationItems
-      .filter((item, index) => item.lng === lng && index === order)
+      .filter((item) => item.lng === lng)
+      .filter((_, index) => index === order)
       .map((item) => item.path)
       .find((path) => path !== null) ?? ''
   );
@@ -55,7 +55,7 @@ export const getMainCategoryPath = (lng: string, order: number): string => {
  */
 export const getMainCategory = (lng: string, order: number): NavigationTreeItem | null => {
   const navigationItems = getNavigationTreeItems();
-  const item = navigationItems.find((item, index) => item.lng === lng && index === order);
+  const item = navigationItems.filter((item) => item.lng === lng).find((_, index) => index === order);
   if (item) {
     return {
       ...item,
