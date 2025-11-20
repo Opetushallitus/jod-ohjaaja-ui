@@ -1,4 +1,9 @@
 {
+  "no-match": {
+    "description": "The page you are looking for could not be found or the link is outdated. Please check the address, open the menu, or go to the homepage.",
+    "go-home": "Go to homepage",
+    "title": "Oops! Page not found"
+  },
   "note": {
     "close": "Close"
   }
