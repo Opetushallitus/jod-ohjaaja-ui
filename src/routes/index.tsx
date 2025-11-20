@@ -108,6 +108,7 @@ const rootRoute: RouteObject = {
     ...profileRoutes,
     ...shortArticleRoutes,
     ...profileLoginPageRoutes,
+    { path: '*', element: <NoMatch /> },
   ],
 };
 
@@ -142,7 +143,6 @@ const createRoutes = (): RouteObject[] => {
       loader: () => replace(`/${i18n.language}`),
     },
     rootRoute,
-    { path: '*', element: <NoMatch /> },
   ];
 };
 
