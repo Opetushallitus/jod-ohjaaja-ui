@@ -43,13 +43,10 @@ const agents = {
 const useAddBetaFeedbackNote = () => {
   const { t } = useTranslation();
   const { addPermanentNote } = useNoteStack();
-  const notesInitializedRef = React.useRef(false);
 
   React.useEffect(() => {
-    if (notesInitializedRef.current) {
-      return;
-    }
-    addPermanentNote({
+    addPermanentNote(() => ({
+      id: 'beta-feedback-note',
       title: t('beta.note.title'),
       description: t('beta.note.description'),
       variant: 'feedback',
@@ -67,8 +64,7 @@ const useAddBetaFeedbackNote = () => {
           className="whitespace-nowrap"
         />
       ),
-    });
-    notesInitializedRef.current = true;
+    }));
   }, [addPermanentNote, t]);
 };
 
@@ -143,22 +139,22 @@ const Root = () => {
     }
 
     if (note.permanent) {
-      addPermanentNote({
+      addPermanentNote(() => ({
         // Prevent multiple session-expired notes with fixed id
         id: note.description.includes('session-expired') ? 'session-expired' : undefined,
         title: note.title,
         description: note.description,
         variant: 'error',
-      });
+      }));
     } else {
-      addTemporaryNote({
+      addTemporaryNote(() => ({
         // Prevent multiple session-expired notes with fixed id
         id: note.description.includes('session-expired') ? 'session-expired' : undefined,
         title: note.title,
         description: note.description,
         variant: 'error',
         isCollapsed: false,
-      });
+      }));
     }
     clearNote();
   }, [addPermanentNote, addTemporaryNote, clearNote, note, t]);
