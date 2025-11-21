@@ -9,9 +9,10 @@ const ErrorBoundary = () => {
   const loginLink = useLoginLink();
   const error = useRouteError() as Error;
   const title = t('error-boundary.title');
-  const message =
-    (error.message && i18n.exists(`error-boundary.${error.message}`) && t(`error-boundary.${error.message}`)) ||
-    t('error-boundary.unexpected');
+  const messages: Record<string, string> = {
+    'session-expired': t('error-boundary.session-expired'),
+  };
+  const message = (error.message && messages[error.message]) || t('error-boundary.unexpected');
 
   return (
     <main
