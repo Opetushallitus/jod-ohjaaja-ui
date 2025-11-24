@@ -30,7 +30,6 @@ export const NavLinkBasedOnAuth = ({
       lang={language}
       onClick={onClose}
       data-testid={testId}
-      aria-label={t('login')}
     >
       {children}
     </NavLink>
