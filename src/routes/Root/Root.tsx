@@ -27,19 +27,6 @@ import { Link, NavLink, Outlet, ScrollRestoration, useLocation, useMatch } from 
 import { useShallow } from 'zustand/react/shallow';
 import { LogoutFormContext } from '.';
 
-const agents = {
-  test: {
-    fi: 'dea3919a-4f96-436e-a6bd-b24e4218da9f',
-    sv: 'fdc65221-a280-48b3-9dbc-9dea053a9cb4',
-    en: 'e78e5079-e789-4706-b0a2-e665eb87e7dd',
-  },
-  prod: {
-    fi: '2c134474-326f-4456-9139-8e585a569a9a',
-    sv: 'd41ea75b-628f-4420-9e4a-7431ffabb047',
-    en: '37f50124-4dec-4cab-8bc6-f8d2ea5bfe21',
-  },
-};
-
 const useAddBetaFeedbackNote = () => {
   const { t } = useTranslation();
   const { addTemporaryNote } = useNoteStack();
@@ -84,13 +71,13 @@ const Root = () => {
   const { addPermanentNote, addTemporaryNote } = useNoteStack();
 
   const hostname = window.location.hostname;
-  const { siteId, agent } = React.useMemo(() => {
+  const { siteId } = React.useMemo(() => {
     if (hostname === 'osaamispolku.fi') {
-      return { siteId: 36, agent: agents.prod[language as keyof typeof agents.prod] };
+      return { siteId: 36 };
     } else if (hostname === 'jodtestaus.fi') {
-      return { siteId: 38, agent: agents.test[language as keyof typeof agents.test] };
+      return { siteId: 38 };
     } else {
-      return { siteId: 37, agent: agents.test[language as keyof typeof agents.test] };
+      return { siteId: 37 };
     }
   }, [hostname, language]);
 
@@ -226,18 +213,7 @@ const Root = () => {
         <NavMenu open={navMenuOpen} onClose={() => setNavMenuOpen(false)} />
         <Outlet />
       </LogoutFormContext.Provider>
-      <Chatbot
-        agent={agent}
-        language={language}
-        header={t('chatbot.header')}
-        openWindowText={t('chatbot.open-window-text')}
-        agentName={t('chatbot.agent-name')}
-        errorMessage={t('chatbot.error-message')}
-        greeting={t('chatbot.greeting')}
-        textInputPlaceholder={t('chatbot.text-input-placeholder')}
-        waitingmessage={t('chatbot.waiting-message')}
-        disclaimer={t('chatbot.disclaimer')}
-      />
+      <Chatbot lang={i18n.language} environment={hostname === 'osaamispolku.fi' ? 'PROD' : 'TST'} />
       <Footer
         language={language}
         okmLabel={t('footer.logos.okm-label')}
