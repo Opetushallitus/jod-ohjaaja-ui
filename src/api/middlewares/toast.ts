@@ -20,7 +20,7 @@ const ignoredOperations: Record<Method, (path: string) => boolean> = {
   PATCH: () => false,
 };
 
-const messages: Partial<Record<keyof paths, Partial<Record<Method, { success: string; failed: string }>>>> = {
+const messages = (): Partial<Record<keyof paths, Partial<Record<Method, { success: string; failed: string }>>>> => ({
   '/api/artikkeli/kommentit': {
     POST: {
       success: i18n.t('toast.add-comment-success'),
@@ -65,9 +65,9 @@ const messages: Partial<Record<keyof paths, Partial<Record<Method, { success: st
       failed: i18n.t('suggest-new-content.error'),
     },
   },
-};
+});
 
-const defaultMessages = {
+const defaultMessages = () => ({
   POST: {
     success: i18n.t('toast.add-default-success'),
     failed: i18n.t('toast.add-default-failed'),
@@ -84,20 +84,20 @@ const defaultMessages = {
     success: i18n.t('toast.update-default-success'),
     failed: i18n.t('toast.update-default-failed'),
   },
-};
+});
 
 const showToast = (method: Method, url: keyof paths, response: Response) => {
   const suffix = response.ok ? 'success' : 'failed';
   const toastFn = response.ok ? toast.success : toast.error;
 
-  const message = messages[url]?.[method]?.[suffix] ?? defaultMessages[method][suffix];
+  const message = messages()[url]?.[method]?.[suffix] ?? defaultMessages()[method][suffix];
 
   toastFn(message);
 };
 
 const stripUrlPrefix = (url: string): string => {
   const apiIndex = url.indexOf('/api/');
-  return apiIndex !== -1 ? url.slice(apiIndex) : url;
+  return apiIndex >= 0 ? url.slice(apiIndex) : url;
 };
 
 const getUuidTagPathPart = (url: string): string => {
@@ -109,7 +109,7 @@ const getUuidTagPathPart = (url: string): string => {
 
 const removeQuery = (url: string): string => {
   const questionMarkIndex = url.indexOf('?');
-  return questionMarkIndex !== -1 ? url.slice(0, questionMarkIndex) : url;
+  return questionMarkIndex >= 0 ? url.slice(0, questionMarkIndex) : url;
 };
 
 export const toastMiddleware: Middleware = {
