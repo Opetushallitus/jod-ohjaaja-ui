@@ -216,6 +216,7 @@ const Root = () => {
             <SearchBar searchInputVisible={searchInputVisible} setSearchInputVisible={setSearchInputVisible} />
           }
           translations={{
+            versionLabel: t('version'),
             showAllNotesLabel: t('show-all'),
             ariaLabelCloseNote: t('note.close'),
           }}
