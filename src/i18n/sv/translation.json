@@ -34,7 +34,7 @@
       "delete": {
         "cancelText": "Avbryt",
         "confirmText": "Radera kommentar",
-        "description": "Åtgärden kan inte ångras",
+        "description": "Åtgärden kan inte avbrytas",
         "label": "Radera kommentar",
         "title": "Är du säker på att du vill radera kommentaren?"
       },
@@ -43,8 +43,8 @@
         "cancelText": "Avbryt",
         "confirmText": "Bekräfta anmälan",
         "description": "Information om olämpligt innehåll vidarebefordras till webbplatsadministratören.",
-        "label": "Rapportera en olämplig kommentar",
-        "title": "Rapportera en olämplig kommentar"
+        "label": "Rapportera en osaklig kommentar",
+        "title": "Rapportera en osaklig kommentar"
       },
       "send": "Skicka"
     },
@@ -265,7 +265,7 @@
     "login-page": {
       "auth-description": "Tjänsten använder Suomi.fi-autentisering. Vi använder dina uppgifter endast i anonymiserad form för att skapa en översikt av användarna.",
       "benefits-description": "Genom att logga in i tjänsten kan du dessutom",
-      "description": "Genom att logga in i tjänsten får du tillgång till en personlig vägledarens profil och tilläggsfunktioner för att använda Vägledar-delen.",
+      "description": "Genom att logga in i tjänsten får du tillgång till en personlig vägledarprofil och tilläggsfunktioner för att använda Vägledar-delen.",
       "list-1-item-1": "Under Mina uppgifter kan du bland annat ange dina intressen så att vi kan erbjuda dig mer målinriktat innehåll.",
       "list-1-item-2": "Under Favoriter kan du spara innehåll som finns i tjänsten, vilket gör det enklare att hitta och dela innehållet i fortsättningen.",
       "list-1-item-3": "Under Inställningar kan du ladda upp eller radera din profil.",
@@ -276,13 +276,13 @@
       "profile": "Vägledarens profil",
       "profile-description": "Första gången du loggar in på Vägledar-delen skapar vi en tom profil åt dig. Profilen sparas så länge du behöver den.",
       "profile-includes": "Vägledarens profil innehåller:",
-      "title": "Skapa din egen vägledarens profil"
+      "title": "Skapa din egen vägledarprofil"
     },
     "preferences": {
       "delete-profile": {
         "action": "Radera vägledarens profil",
-        "confirm": "Är du säker på att du vill radera din vägledarens profil?",
-        "description": "Du kan permanent radera hela din vägledarens profil och alla uppgifter som sparats i den. Du kan inte ångra radering. Observera att om du eventuellt har skapat en kompetensprofil kommer raderingen av vägledarens profil inte att påverka kompetensprofilen och dess uppgifter. Om du också vill radera kompetensprofilen ska du göra det i inställningarna för kompetensprofilen på din Kompetensstig.",
+        "confirm": "Är du säker på att du vill radera din vägledarprofil?",
+        "description": "Du kan permanent radera hela din vägledarprofil och alla uppgifter som sparats i den. Du kan inte ångra radering. Observera att om du eventuellt har skapat en kompetensprofil kommer raderingen av vägledarens profil inte att påverka kompetensprofilen och dess uppgifter. Om du också vill radera kompetensprofilen ska du göra det i inställningarna för kompetensprofilen på din Kompetensstig.",
         "title": "Radera vägledarens profil"
       },
       "download": {
