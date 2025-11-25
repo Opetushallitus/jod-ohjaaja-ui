@@ -3,18 +3,19 @@ import { isNavigationItemType } from '@/types/cms-navigation';
 import { getItemPath } from '@/utils/navigation-paths';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { generatePath, useMatches, useParams } from 'react-router';
+import { generatePath, useMatches, useParams, useSearchParams } from 'react-router';
 
 export const useLocalizedRoutes = () => {
   const matches = useMatches();
   const params = useParams();
+  const [searchParams] = useSearchParams();
   const { t } = useTranslation();
 
   // Generate localized path in given language
   const generateLocalizedPath = React.useCallback(
     (lng: string) => {
       const pathnameParts: string[] = [];
-      matches.forEach((match) => {
+      for (const match of matches) {
         const { id } = match;
         if (id === 'root') {
           // Add language to root
@@ -37,11 +38,19 @@ export const useLocalizedRoutes = () => {
             }
           }
         }
-      });
+      }
 
-      return generatePath(`/${pathnameParts.join('/')}`, params);
+      const path = generatePath(`/${pathnameParts.join('/')}`, params);
+
+      // Append current query parameters if any exist
+      const queryString = searchParams.toString();
+      if (queryString) {
+        return `${path}?${queryString}`;
+      }
+
+      return path;
     },
-    [matches, params, t],
+    [matches, params, searchParams, t],
   );
 
   return { generateLocalizedPath };
