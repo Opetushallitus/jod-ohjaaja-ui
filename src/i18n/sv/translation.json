@@ -18,16 +18,6 @@
     "next": "Nästa sida",
     "prev": "Föregående sida"
   },
-  "chatbot": {
-    "agent-name": "Rådgivningsrobot",
-    "disclaimer": "Ange inte dina personuppgifter i rådgivningsroboten.",
-    "error-message": "Det har uppstått ett fel.",
-    "greeting": "Hej, jag är Kompetensstigens rådgivningsrobot. Jag kan hjälpa dig med frågor om Kompetensstigen.<br/><br/>Jag är en testversion och tränar fortfarande, så jag kan inte svara på alla frågor. Fråga ändå, för jag lär mig hela tiden mer. De frågor du ställer hjälper mig att utvecklas.<br/><br/>Var snäll och ställ en fråga i taget. Ställ korta och tydliga frågor, så kan jag hjälpa dig bättre. Jag kommer inte ihåg tidigare frågor eller svar. Ange inte dina personuppgifter i chatten. Hur kan jag hjälpa?",
-    "header": "Rådgivningsrobot",
-    "open-window-text": "Be om råd",
-    "text-input-placeholder": "Skriv din fråga här",
-    "waiting-message": "Hämtar information..."
-  },
   "close-menu": "Stäng menyn",
   "comments": {
     "comment": {
