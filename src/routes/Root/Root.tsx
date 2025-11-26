@@ -79,7 +79,7 @@ const Root = () => {
     } else {
       return { siteId: 37 };
     }
-  }, [hostname, language]);
+  }, [hostname]);
 
   const moreInfoLinks = [
     {
@@ -213,7 +213,7 @@ const Root = () => {
         <NavMenu open={navMenuOpen} onClose={() => setNavMenuOpen(false)} />
         <Outlet />
       </LogoutFormContext.Provider>
-      <Chatbot lang={i18n.language} environment={hostname === 'osaamispolku.fi' ? 'PROD' : 'TST'} />
+      <Chatbot />
       <Footer
         language={language}
         okmLabel={t('footer.logos.okm-label')}
