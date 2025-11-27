@@ -40,7 +40,7 @@ export const getCategoryContent = (categoryId: number, sort?: string) => {
   );
 };
 
-export const searchContent = (searchTerm: string, tagIds: string[], page: number, pageSize: number) => {
+export const searchContent = (searchTerm: string, tagIds: string[], page: number, pageSize: number, lang?: string) => {
   const queryParams = new URLSearchParams();
   queryParams.set('page', `${page}`);
   queryParams.set('pageSize', `${pageSize}`);
@@ -51,6 +51,7 @@ export const searchContent = (searchTerm: string, tagIds: string[], page: number
   }
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
+    lang,
   );
 };
 
