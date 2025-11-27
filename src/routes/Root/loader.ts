@@ -17,9 +17,12 @@ export default (async ({ params: { lng }, context }) => {
   }
 
   const isLoggedIn = !!context;
-  await (isLoggedIn
-    ? Promise.all([fetchSuosikit(), fetchKiinnostukset()])
-    : Promise.all([clearSuosikit(), clearKiinnostukset()]));
+  if (isLoggedIn) {
+    await Promise.all([fetchSuosikit(), fetchKiinnostukset()]);
+  } else {
+    clearSuosikit();
+    clearKiinnostukset();
+  }
 
   return context;
 }) satisfies LoaderFunction;

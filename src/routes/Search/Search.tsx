@@ -30,6 +30,7 @@ const Search = () => {
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
     globalThis._paq?.push(['trackEvent', 'ohjaaja.Haku', 'Hakusana', searchValue]);
+    console.log('Navigating to search with value:', searchValue);
     navigate(getSearchUrl(t, language, tagIds, searchValue));
   };
 
@@ -94,7 +95,6 @@ const Search = () => {
             label={t('search.button')}
             variant="accent"
             serviceVariant="ohjaaja"
-            form="search"
             iconSide="right"
             icon={<JodSearch />}
             data-testid="search-submit"
