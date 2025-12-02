@@ -45,7 +45,7 @@ const CategoryMain = () => {
   return (
     <main
       role="main"
-      className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-9 pt-5 sm:px-6 print:p-0"
+      className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-9 pt-11 sm:px-6 print:p-0"
       data-testid="category-main"
     >
       <Breadcrumb
