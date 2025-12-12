@@ -1,4 +1,4 @@
-import { MainLayout } from '@/components';
+import { FeatureCard, MainLayout } from '@/components';
 import { createLoginDialogFooter } from '@/components/createLoginDialogFooter';
 import { useFeature } from '@/hooks/useFeatures/useFeatures';
 import { useLoginLink } from '@/hooks/useLoginLink';
@@ -9,6 +9,7 @@ import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { copyToClipboard } from '@/utils/clipboard';
 import { getAdaptiveMediaSrc, getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
+import { getLinkTo } from '@/utils/routeUtils';
 import { tidyClasses as tc } from '@jod/design-system';
 import {
   JodDownload,
@@ -137,7 +138,21 @@ const ContentDetails = () => {
   };
 
   return (
-    <MainLayout>
+    <MainLayout
+      navChildren={
+        user ? undefined : (
+          <FeatureCard
+            buttonText={t('profile.login-page.page-title')}
+            level="h2"
+            title={t('access-content-later-title')}
+            content={t('access-content-later-content')}
+            backgroundColor="var(--ds-color-secondary-2-dark)"
+            data-testid="access-content-later-card"
+            linkComponent={getLinkTo(`/${language}/${t('slugs.profile.login')}`)}
+          />
+        )
+      }
+    >
       <title>{data.title}</title>
       <div className="bg-white p-7 col-span-2 flex flex-col sm:gap-7 gap-6" data-testid="content-details">
         <h1 className="text-heading-1 hyphens-auto break-words" data-testid="content-title">

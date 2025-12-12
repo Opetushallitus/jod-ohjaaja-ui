@@ -1,6 +1,7 @@
-import { MainLayout } from '@/components';
+import { GuidanceCard, MainLayout } from '@/components';
 import { ContentList } from '@/components/ContentList/ContentList';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
+import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { tidyClasses as tc } from '@jod/design-system';
@@ -46,7 +47,15 @@ const CategoryListing = () => {
   const isLoading = false;
 
   return (
-    <MainLayout navChildren={<CategoryNavigation />}>
+    <MainLayout
+      navChildren={
+        <div className="flex flex-col gap-3">
+          <CategoryNavigation />
+          <GuidanceCard />
+          <SuggestNewContent />
+        </div>
+      }
+    >
       <title>{title}</title>
       <div data-testid="category-listing-route">
         <section

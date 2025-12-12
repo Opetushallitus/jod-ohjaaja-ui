@@ -1,4 +1,13 @@
 {
+  "access-content-later-content": "As a logged-in user, you can save service content as favorites, making it easier to find and share them in the future.",
+  "access-content-later-title": "Want to find this content later?",
+  "guidance-card": {
+    "description": "Find a collection of services that support career and education choices. By filtering the service list, you can quickly find services for different needs.",
+    "link-text": "Go to service",
+    "link-url": "https://www.suomi.fi/aihe/ohjaus-ja-neuvontapalveluja/palvelut",
+    "title": "Guidance and counseling services"
+  },
+  "log-in-to-the-service-title": "Get more out of the Guidance section by logging in",
   "no-match": {
     "description": "The page you are looking for could not be found or the link is outdated. Please check the address, open the menu, or go to the homepage.",
     "go-home": "Go to homepage",
@@ -6,5 +15,9 @@
   },
   "note": {
     "close": "Close"
-  }
+  },
+  "suggest-new-content-for-the-service-content": "Have you used a guidance method not found in the service?\nSuggest content you think is missing from the service.",
+  "want-to-see-interesting-content-button": "My profile",
+  "want-to-see-interesting-content-content": "Select keywords that interest you in your profile and we will offer you more targeted content.",
+  "want-to-see-interesting-content-title": "Want to see content that interests you?"
 }

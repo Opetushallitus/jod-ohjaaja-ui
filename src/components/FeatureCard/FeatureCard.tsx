@@ -7,6 +7,7 @@ type LinkProps = {
   buttonText: string;
   onClick?: never;
   hideIcon?: boolean;
+  icon?: React.ReactNode;
 };
 
 type ClickProps = {
@@ -14,6 +15,7 @@ type ClickProps = {
   onClick: () => void;
   buttonText: string;
   hideIcon?: boolean;
+  icon?: React.ReactNode;
 };
 
 type StaticProps = {
@@ -21,6 +23,7 @@ type StaticProps = {
   onClick?: never;
   buttonText?: never;
   hideIcon?: never;
+  icon?: never;
 };
 
 type FeatureCardProps = {
@@ -31,6 +34,7 @@ type FeatureCardProps = {
   backgroundColor: string;
   collapseOnSmallScreen?: boolean;
   className?: string;
+  icon?: React.ReactNode;
 } & (LinkProps | ClickProps | StaticProps);
 
 export const FeatureCard = ({
@@ -45,6 +49,7 @@ export const FeatureCard = ({
   buttonText,
   onClick,
   hideIcon = false,
+  icon = <JodArrowRight aria-hidden />,
 }: FeatureCardProps) => {
   const headingId = React.useId();
   const contentId = React.useId();
@@ -71,7 +76,7 @@ export const FeatureCard = ({
       </div>
       <p
         id={contentId}
-        className={'text-body-lg-mobile md:text-body-lg whitespace-pre-line text-white flex-grow'}
+        className="text-body-lg-mobile md:text-body-lg whitespace-pre-line text-white flex-grow"
         data-testid="feature-card-content"
       >
         {content}
@@ -82,7 +87,7 @@ export const FeatureCard = ({
           linkComponent={linkComponent}
           variant="white"
           serviceVariant="ohjaaja"
-          icon={hideIcon ? undefined : <JodArrowRight aria-hidden />}
+          icon={hideIcon ? undefined : icon}
           iconSide="right"
           className="w-fit"
           data-testid="feature-card-button-link"
@@ -94,7 +99,7 @@ export const FeatureCard = ({
           label={buttonText}
           variant="white"
           serviceVariant="ohjaaja"
-          icon={hideIcon ? undefined : <JodArrowRight aria-hidden />}
+          icon={hideIcon ? undefined : icon}
           iconSide="right"
           aria-labelledby={`${headingId} ${contentId}`}
           className="w-fit"

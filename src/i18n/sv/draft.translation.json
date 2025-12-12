@@ -1,4 +1,13 @@
 {
+  "access-content-later-content": "Som inloggad användare kan du spara tjänstens innehåll som favoriter, vilket gör det enklare att hitta och dela dem i framtiden.",
+  "access-content-later-title": "Vill du hitta detta innehåll senare?",
+  "guidance-card": {
+    "description": "Hitta samlade tjänster som stöder val av karriär och utbildning. Genom att filtrera tjänstelistan hittar du snabbt tjänster för olika behov.",
+    "link-text": "Gå till tjänsten",
+    "link-url": "https://www.suomi.fi/amne/vaglednings-och-radgivningstjanster/service",
+    "title": "Väglednings- och rådgivningstjänster"
+  },
+  "log-in-to-the-service-title": "Få ut mer av vägledningssektionen genom att logga in",
   "no-match": {
     "description": "Sidan du söker kunde inte hittas eller länken är föråldrad. Kontrollera adressen, öppna menyn eller gå till startsidan.",
     "go-home": "Gå till startsidan",
@@ -7,5 +16,9 @@
   "note": {
     "close": "Stäng"
   },
-  "version": "Testversion"
+  "suggest-new-content-for-the-service-content": "Har du använt en vägledningsmetod som inte finns i tjänsten?\nFöreslå innehåll som du tycker saknas i tjänsten.",
+  "version": "Testversion",
+  "want-to-see-interesting-content-button": "Min profil",
+  "want-to-see-interesting-content-content": "Välj nyckelord som intresserar dig i din profil så erbjuder vi dig mer riktat innehåll.",
+  "want-to-see-interesting-content-title": "Vill du se innehåll som intresserar dig?"
 }
