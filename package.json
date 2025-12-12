@@ -25,6 +25,7 @@
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^5.2.1",
     "@jod/design-system": "github:Opetushallitus/jod-design-system#main",
+    "@testing-library/user-event": "^14.6.1",
     "dompurify": "^3.2.6",
     "i18next": "^25.6.3",
     "openapi-fetch": "^0.14.0",
