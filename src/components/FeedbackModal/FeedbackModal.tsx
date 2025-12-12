@@ -1,5 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Checkbox, InputField, Modal, RadioButton, RadioButtonGroup, Textarea } from '@jod/design-system';
+import {
+  Button,
+  Checkbox,
+  InputField,
+  Modal,
+  RadioButton,
+  RadioButtonGroup,
+  Textarea,
+  useMediaQueries,
+} from '@jod/design-system';
 import { JodOpenInNew } from '@jod/design-system/icons';
 import React from 'react';
 import { Controller, Form, FormSubmitHandler, useForm, useFormState } from 'react-hook-form';
@@ -56,6 +65,7 @@ export interface FeedbackModalProps {
 export const FeedbackModal = ({ isOpen, onClose, section, area, language }: FeedbackModalProps) => {
   const formId = React.useId();
   const { t } = useTranslation();
+  const { sm } = useMediaQueries();
 
   const { control, register, watch, reset } = useForm({
     resolver: zodResolver(Feedback),
@@ -124,9 +134,9 @@ export const FeedbackModal = ({ isOpen, onClose, section, area, language }: Feed
       open={isOpen}
       onClose={onClose}
       fullWidthContent
+      topSlot={<h2 className="sm:text-heading-1 text-heading-1-mobile mb-5">{t('feedback.title')}</h2>}
       content={
         <Form id={formId} control={control} onSubmit={onSubmit} data-testid="feedback-form">
-          <h2 className="sm:text-heading-1 text-heading-1-mobile mb-5">{t('feedback.title')}</h2>
           <p className="sm:text-body-md text-body-md-mobile mb-9">
             {t('feedback.intro-1')} {t('feedback.intro-2')}
             <br />
@@ -264,14 +274,16 @@ export const FeedbackModal = ({ isOpen, onClose, section, area, language }: Feed
             }}
             className="whitespace-nowrap"
             data-testid="feedback-cancel"
+            size={sm ? 'lg' : 'sm'}
           />
           <Button
-            variant="white"
+            variant="accent"
             label={t('feedback.submit')}
             className="whitespace-nowrap"
             disabled={!isValid || isSubmitting}
             form={formId}
             data-testid="feedback-submit"
+            size={sm ? 'lg' : 'sm'}
           />
         </div>
       }
