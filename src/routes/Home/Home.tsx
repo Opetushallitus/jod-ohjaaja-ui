@@ -108,7 +108,20 @@ const Home = () => {
         )}
 
         <ArticleCarousel title={t('home.new-content')} isLoggedIn={isLoggedIn} articles={newestContent} />
-        <ArticleCarousel title={t('home.best-matching')} isLoggedIn={isLoggedIn} articles={bestMatchingContent} />
+        {isLoggedIn && bestMatchingContent.length === 0 ? (
+          <div className="col-span-3 lg:col-span-2">
+            <FeatureCard
+              linkComponent={getLinkTo(`/${language}/${t('slugs.profile.index')}/${t('slugs.profile.details')}`)}
+              level="h2"
+              title={t('want-to-see-interesting-content-title')}
+              content={t('want-to-see-interesting-content-content')}
+              buttonText={t('want-to-see-interesting-content-button')}
+              backgroundColor="var(--ds-color-secondary-2-dark)"
+            />
+          </div>
+        ) : (
+          <ArticleCarousel title={t('home.best-matching')} isLoggedIn={isLoggedIn} articles={bestMatchingContent} />
+        )}
 
         {isLoggedIn ? (
           <div className="col-span-3 grid grid-cols-3 gap-x-6 xl:gap-x-7">

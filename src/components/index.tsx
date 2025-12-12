@@ -9,5 +9,6 @@ export { ConfirmDialogWrapper, type ConfirmDialogWrapperProps } from './ConfirmD
 export { ContentList } from './ContentList/ContentList';
 export { FeatureCard } from './FeatureCard/FeatureCard';
 export { FeedbackModal } from './FeedbackModal/FeedbackModal';
+export { default as GuidanceCard } from './GuidanceCard/GuidanceCard';
 export { MainLayout } from './MainLayout/MainLayout';
 export { UserButton } from './UserButton/UserButton';
