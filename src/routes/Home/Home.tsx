@@ -1,4 +1,7 @@
-import heroSrc from '@/../assets/ohjaaja-hero.jpg';
+import heroSrc1 from '@/../assets/ohjaaja-hero-1.jpg';
+import heroSrc2 from '@/../assets/ohjaaja-hero-2.jpg';
+import heroSrc3 from '@/../assets/ohjaaja-hero-3.jpg';
+import heroSrc4 from '@/../assets/ohjaaja-hero-4.jpg';
 import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
 import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
@@ -36,6 +39,13 @@ const Home = () => {
       resizeObserver.observe(firstCardRef.current);
       return () => resizeObserver.disconnect();
     }
+  }, []);
+
+  // Rotate hero image weekly
+  const heroSrc = React.useMemo(() => {
+    const heroImages = [heroSrc1, heroSrc2, heroSrc3, heroSrc4];
+    const weekNumber = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
+    return heroImages[weekNumber % heroImages.length];
   }, []);
 
   return (
