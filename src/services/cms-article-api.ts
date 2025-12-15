@@ -1,5 +1,6 @@
 import { type StructuredContent, type StructuredContentPage } from '@/types/cms-content';
 import { type NavigationTreeItem } from '@/types/cms-navigation';
+import { type Sort } from '@/types/sort';
 import { fetchFromCMS, SCOPE_ID } from './cms-api';
 import { getNavigationTreeItems } from './navigation-loader';
 
@@ -24,13 +25,13 @@ export const getNewestContent = (ignoreCategoryId?: number) => {
   );
 };
 
-export const getCategoryContent = (categoryId: number, sort?: string) => {
+export const getCategoryContent = (categoryId: number, sort?: Omit<Sort, 'latest-added-to-favorites'>) => {
   const queryParams = new URLSearchParams();
   queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
   queryParams.set('page', `1`);
   queryParams.set('pageSize', `500`);
   if (sort) {
-    queryParams.set('sort', 'dateCreated:desc');
+    queryParams.set('sort', getSortApiParam(sort));
   }
   if (categoryId) {
     queryParams.set('filter', `taxonomyCategoryIds/any(t:t eq ${categoryId})`);
@@ -38,6 +39,21 @@ export const getCategoryContent = (categoryId: number, sort?: string) => {
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
   );
+};
+
+const getSortApiParam = (sort: Omit<Sort, 'latest-added-to-favorites'>) => {
+  switch (sort) {
+    case 'a-z':
+      return 'title:asc';
+    case 'z-a':
+      return 'title:desc';
+    case 'latest':
+      return 'dateCreated:desc';
+    case 'oldest':
+      return 'dateCreated:asc';
+    default:
+      return 'dateCreated:desc';
+  }
 };
 
 export const searchContent = (searchTerm: string, tagIds: string[], page: number, pageSize: number, lang?: string) => {

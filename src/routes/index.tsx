@@ -4,13 +4,15 @@ import { ContentDetails, getContentDetailsLoader } from '@/routes/ContentDetails
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { NavigationTreeItem } from '@/types/cms-navigation';
 import { RouteObject, replace } from 'react-router';
-import { CategoryListing, CategoryMain, getCategoryContentLoader } from './Category';
+import { CategoryMain, getMainCategoryContentLoader } from './CategoryMain';
 import { Home, homeLoader } from './Home';
 import { Details, Favorites, Preferences, Profile, profileDetailsLoader } from './Profile';
 
 import { ModalProvider } from '@/hooks/useModal';
 import { NoteStackProvider } from '@jod/design-system';
 import articleRedirectLoader from './articleRedirectLoader';
+import { getCategoryListingLoader } from './CategoryListing';
+import CategoryListing from './CategoryListing/CategoryListing';
 import LoginPage from './LoginPage/LoginPage';
 import ProfileFront from './Profile/ProfileFront/ProfileFront';
 import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
@@ -181,10 +183,14 @@ const getRoute = (navigationTreeItem: NavigationTreeItem): RouteObject => {
 const getLoader = (navigationTreeItem: NavigationTreeItem) => {
   switch (navigationTreeItem.type) {
     case 'CategoryMain':
+      return withOhjaajaContext(
+        getMainCategoryContentLoader(navigationTreeItem.categoryId ?? 0, navigationTreeItem.type),
+        false,
+      );
     case 'CategoryListing':
     case 'StudyProgramsListing':
       return withOhjaajaContext(
-        getCategoryContentLoader(navigationTreeItem.categoryId ?? 0, navigationTreeItem.type),
+        getCategoryListingLoader(navigationTreeItem.categoryId ?? 0, navigationTreeItem.type),
         false,
       );
     case 'Article':

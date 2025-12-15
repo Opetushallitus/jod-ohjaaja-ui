@@ -3,19 +3,40 @@ import { ContentList } from '@/components/ContentList/ContentList';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
+import { getCategoryContent } from '@/services/cms-article-api';
 import { useAuthStore } from '@/stores/useAuthStore';
+import { type StructuredContentPage } from '@/types/cms-content';
+import { type Sort } from '@/types/sort';
 import { tidyClasses as tc } from '@jod/design-system';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
 import { LoaderData } from './loader';
 
 const VISIBLE_ITEM_COUNT = 10;
 
 const CategoryListing = () => {
-  const { newestCategoryContent, navigationItemType } = useLoaderData<LoaderData>();
+  const {
+    i18n: { language },
+  } = useTranslation();
+  const { categoryId, navigationItemType } = useLoaderData<LoaderData>();
   const user = useAuthStore((state) => state.user);
   const isLoggedIn = !!user;
   const [visibleItemCount, setVisibleItemCount] = React.useState(VISIBLE_ITEM_COUNT);
+  const [sortOrder, setSortOrder] = React.useState<Omit<Sort, 'latest-added-to-favorites'>>('latest');
+  const [categoryContent, setCategoryContent] = React.useState<StructuredContentPage | null>(null);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchCategoryContent = async () => {
+      const content = await getCategoryContent(categoryId, sortOrder);
+      setCategoryContent(content);
+      setIsLoading(false);
+    };
+    setIsLoading(true);
+    fetchCategoryContent();
+  }, [categoryId, sortOrder, language]);
+
   const categoryRoute = useCategoryRoute(navigationItemType);
   const title = categoryRoute?.handle?.title;
   const description = categoryRoute?.handle?.description;
@@ -41,19 +62,18 @@ const CategoryListing = () => {
     setVisibleItemCount((prevCount) => prevCount + VISIBLE_ITEM_COUNT);
   };
 
-  const contents = newestCategoryContent.items.slice(0, visibleItemCount);
-  const totalCount = newestCategoryContent.totalCount;
-  const hasMore = newestCategoryContent.items.length > visibleItemCount;
-  const isLoading = false;
+  const contents = categoryContent?.items.slice(0, visibleItemCount) ?? [];
+  const totalCount = categoryContent?.totalCount ?? 0;
+  const hasMore = (categoryContent?.items.length ?? 0) > visibleItemCount;
 
   return (
     <MainLayout
-      navChildren={
-        <div className="flex flex-col gap-3">
-          <CategoryNavigation />
+      navChildren={<CategoryNavigation />}
+      featuredContentChildren={
+        <>
           <GuidanceCard />
           <SuggestNewContent />
-        </div>
+        </>
       }
     >
       <title>{title}</title>
@@ -83,6 +103,8 @@ const CategoryListing = () => {
             loadMore={handleLoadMore}
             isLoading={isLoading}
             isLoggedIn={isLoggedIn}
+            sort={sortOrder}
+            handleSelectSort={setSortOrder}
           />
         </section>
       </div>
