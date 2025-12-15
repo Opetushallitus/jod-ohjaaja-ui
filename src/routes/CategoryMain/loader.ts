@@ -8,11 +8,11 @@ import { NavigationItemType } from '@/types/cms-navigation';
 import { getCategoryArticleErcs } from '@/utils/navigation';
 import { LoaderFunction } from 'react-router';
 
-const getCategoryContentLoader = (categoryId: number, navigationItemType: NavigationItemType) =>
+const getMainCategoryContentLoader = (categoryId: number, navigationItemType: NavigationItemType) =>
   (async ({ context }) => {
     const isLoggedIn = !!context;
     const [newestCategoryContent, mostViewedArticleErcs, bestMatchingCategoryContent] = await Promise.all([
-      getCategoryContent(categoryId, 'dateCreated:desc'),
+      getCategoryContent(categoryId, 'newest'),
       getMostViewedArtikkeliErcs(getCategoryArticleErcs(categoryId, i18n.language as LangCode)),
       isLoggedIn ? getBestMatchingArticles(categoryId) : Promise.resolve([]),
     ]);
@@ -24,5 +24,5 @@ const getCategoryContentLoader = (categoryId: number, navigationItemType: Naviga
     return { newestCategoryContent, mostViewedCategoryContent, bestMatchingCategoryContent, navigationItemType };
   }) satisfies LoaderFunction<components['schemas']['OhjaajaCsrfDto'] | null>;
 
-export type LoaderData = Awaited<ReturnType<ReturnType<typeof getCategoryContentLoader>>>;
-export default getCategoryContentLoader;
+export type LoaderData = Awaited<ReturnType<ReturnType<typeof getMainCategoryContentLoader>>>;
+export default getMainCategoryContentLoader;

@@ -56,7 +56,7 @@ const Search = () => {
 
   return (
     <MainLayout
-      navChildren={
+      asideChildren={
         lg &&
         !tagsLoading && (
           <div className="bg-white p-6 rounded-lg" data-testid="search-tag-sidebar">

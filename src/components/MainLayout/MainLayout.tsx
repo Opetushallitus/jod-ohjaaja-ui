@@ -1,5 +1,5 @@
 import { useBreadcrumbItems } from '@/hooks/useBreadcrumbItems';
-import { Breadcrumb, tidyClasses } from '@jod/design-system';
+import { Breadcrumb, tidyClasses, useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink';
@@ -8,9 +8,11 @@ interface MainLayoutProps {
   children: React.ReactNode;
   navChildren?: React.ReactNode;
   asideChildren?: React.ReactNode;
+  featuredContentChildren?: React.ReactNode;
 }
 
-export const MainLayout = ({ children, navChildren, asideChildren }: MainLayoutProps) => {
+export const MainLayout = ({ children, navChildren, asideChildren, featuredContentChildren }: MainLayoutProps) => {
+  const { lg } = useMediaQueries();
   const breadcrumbItems = useBreadcrumbItems();
   const { t } = useTranslation();
   return (
@@ -25,7 +27,7 @@ export const MainLayout = ({ children, navChildren, asideChildren }: MainLayoutP
         ariaLabel={t('breadcrumb')}
       />
 
-      {(navChildren || asideChildren) && (
+      {(navChildren || asideChildren || (lg && featuredContentChildren)) && (
         <aside
           className="lg:flex lg:flex-col lg:gap-6 lg:order-last col-span-3 lg:col-span-1 print:hidden position-relative lg:position-static z-10 lg:z-auto h-[47px] lg:h-auto"
           data-testid="main-layout-aside"
@@ -42,6 +44,7 @@ export const MainLayout = ({ children, navChildren, asideChildren }: MainLayoutP
             </nav>
           )}
           {asideChildren}
+          {lg && featuredContentChildren}
         </aside>
       )}
       <main
@@ -51,6 +54,7 @@ export const MainLayout = ({ children, navChildren, asideChildren }: MainLayoutP
         data-testid="main-layout-main"
       >
         {children}
+        {!lg && <div className="flex flex-col gap-3">{featuredContentChildren}</div>}
       </main>
     </div>
   );

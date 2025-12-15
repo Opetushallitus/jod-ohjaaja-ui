@@ -134,12 +134,12 @@ const ContentDetails = () => {
   ]);
 
   const doPrint = () => {
-    window.print();
+    globalThis.print();
   };
 
   return (
     <MainLayout
-      navChildren={
+      featuredContentChildren={
         user ? undefined : (
           <FeatureCard
             buttonText={t('profile.login-page.page-title')}
@@ -197,10 +197,10 @@ const ContentDetails = () => {
             <ActionButton
               label={t('share')}
               icon={<JodShare className="text-accent" />}
-              onClick={() => copyToClipboard(window.location.href)}
+              onClick={() => copyToClipboard(globalThis.location.href)}
               data-testid="action-share"
             />
-            {!!window.print && (
+            {!!globalThis.print && (
               <ActionButton
                 label={t('print')}
                 icon={<JodPrint className="text-accent" />}
