@@ -154,7 +154,6 @@
   "link-copy-failed": "Länken kunde inte kopieras",
   "log-in-to-the-service-button": "Logga in på Vägledar-delen",
   "log-in-to-the-service-content": "Genom att logga in kan du diskutera innehållet, spara favoriter och anpassa det visade innehållet efter dina intressen. Tjänsten använder Suomi.fi-autentisering.",
-  "log-in-to-the-service-title": "Logga in på Vägledar-delen",
   "login": "Logga in",
   "login-for-favorites": "Logga in på Vägledar-delen för att spara favoriter och komma åt dem senare.",
   "logout": "Logga ut",
@@ -183,10 +182,7 @@
     },
     "menu-section-title": "Information och material för vägledning"
   },
-  "no-match": {
-    "description": "Sidan du sökte hittades inte.",
-    "title": "Sidan kunde inte hittas."
-  },
+  "no-match": {},
   "open-submenu": "Öppna undermenyn",
   "osaamispolku": "Min kompetensstig",
   "pagination": {
@@ -360,7 +356,6 @@
   },
   "suggest-new-content-for-the-service": "Föreslå nytt innehåll i tjänsten",
   "suggest-new-content-for-the-service-button": "Föreslå innehåll",
-  "suggest-new-content-for-the-service-content": "Har du exempelvis använt en vägledningsmetod som inte finns i tjänsten?\nGe oss förslag på innehåll som du tycker att saknas i tjänsten.",
   "toast": {
     "add-comment-failed": "Det gick inte att lägga till kommentaren.",
     "add-comment-success": "Kommentar tillagd.",

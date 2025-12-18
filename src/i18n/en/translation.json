@@ -1,1 +1,391 @@
-{}
+{
+  "add-to-favorites": "Save as favourite",
+  "advisors-workspace": "Guidance practitioner profile",
+  "beta": {
+    "note": {
+      "description": "Tell us what you think and help us to improve the service.",
+      "title": "Try the service",
+      "to-feedback": "Take the survey"
+    }
+  },
+  "breadcrumb": "Trail of breadcrumbs",
+  "button-menu": {
+    "close": "Close"
+  },
+  "cancel": "Cancel",
+  "carousel": {
+    "indicator": "Go to page {{index}}",
+    "next": "Next page",
+    "prev": "Previous page"
+  },
+  "close-menu": "Close the menu",
+  "comments": {
+    "comment": {
+      "delete": {
+        "cancelText": "Cancel",
+        "confirmText": "Delete comment",
+        "description": "This action cannot be undone",
+        "label": "Delete comment",
+        "title": "Are you sure you want to delete the comment?"
+      },
+      "placeholder": "Write a comment",
+      "report": {
+        "cancelText": "Cancel",
+        "confirmText": "Confirm report",
+        "description": "The website administrator will be notified of inappropriate content.",
+        "label": "Report inappropriate comment",
+        "title": "Report inappropriate comment"
+      },
+      "send": "Submit"
+    },
+    "description": "You can comment on this content when logged in. Comments are made anonymously. The comments are visible to all users. Do not share personal or other private information in the comments.",
+    "noComments": "No comments yet.",
+    "title": "Comment on content"
+  },
+  "competency-path-portal": "Front page of Competency Path",
+  "content-details": {
+    "additional-content": "Inquiries",
+    "date-created": "Created:",
+    "date-modified": "Edited:"
+  },
+  "content-list": {
+    "article-count_one": "{{count}} content",
+    "article-count_other": "{{count}} contents",
+    "show-more": "Show more"
+  },
+  "delete": "Delete",
+  "error-boundary": {
+    "session-expired": "Your session has expired. You must log in to the service again or use the service without logging in.",
+    "title": "An error occurred",
+    "unexpected": "An unexpected error occurred. This may be due to a loss of network connection or a service error."
+  },
+  "external-link": "The link leads outside the service",
+  "feedback": {
+    "cancel": "Cancel",
+    "email-label": "E-mail address",
+    "error": "Sending feedback failed. Please try again later.",
+    "footer-handled": {
+      "ohjaajan": "Guidance practitioner section at the KEHA centre,",
+      "osaamispolkuni": "My Competence Path Finnish National Agency for Education,",
+      "tietopalvelu": "Information service and the entire service at the Ministry of Education and Culture."
+    },
+    "footer-info-1": "When you send feedback, we save the service status information, such as the view from which the feedback was sent. Status information will not be disclosed to third parties. Feedback is used for service development and voluntarily provided contact information is used to respond to feedback.",
+    "footer-info-heading": "Depending on the section, the feedback is processed as follows:",
+    "footer-privacy-heading": "Read more in the privacy statements of feedback processors:",
+    "intro-1": "Please provide feedback on the service or report a technical problem. This is how you help us in service development.",
+    "intro-2": "If you report an incident, it would help us if you were as specific as possible.",
+    "intro-privacy": "Do not enter any personal information, such as personal identity number or health information, in the feedback. Please fill in all the fields so that we can process your feedback.",
+    "linkHrefs": {
+      "keha": "https://tyomarkkinatori.fi/en/about-the-service/privacy-statements-and-terms-of-use/privacy-statements",
+      "okm": "https://okm.fi/tietoa-sivustosta#henkilotiedot",
+      "oph": "https://www.oph.fi/en/privacy-policy"
+    },
+    "links": {
+      "keha": "KEHA Centre’s Privacy policy for customer and advisory services",
+      "okm": "Ministry of Education and Culture's privacy policy",
+      "oph": "The Finnish National Agency for Education’s privacy policy"
+    },
+    "message-label": "Feedback",
+    "section-question": "Which section does your feedback concern?",
+    "sections": {
+      "koko-palvelu": "Entire service or other feedback",
+      "ohjaajan-osio": "Guidance practitioner section",
+      "osaamispolkuni": "My Competency Path",
+      "tietopalvelu": "Information service"
+    },
+    "submit": "Submit",
+    "success": "Thank you for your feedback! Your feedback will help us to improve the service.",
+    "title": "Give feedback",
+    "type-question": "What kind of feedback would you like to give?",
+    "types": {
+      "kehitysehdotus": "Development proposal",
+      "kehu": "Praise",
+      "moite": "Complaint",
+      "vika": "Technical fault or problem"
+    },
+    "wants-contact": "I want to be contacted."
+  },
+  "footer": {
+    "cooperation-title": "The Competency Path has been implemented in cooperation by the following parties",
+    "copyright": "© Competency Path 2025. All rights reserved.",
+    "feedback-button-label": "Give feedback",
+    "feedback-content": "We want to develop Competency Path to better meet your specific needs. Give us feedback and we will take it into account in our development work.",
+    "feedback-title": "Tell us what you thought about the service!",
+    "funding-title": "The project is funded by the EU’s Recovery and Resilience Facility (RRF).",
+    "logos": {
+      "keha-label": "KEHA Centre",
+      "okm-label": "Ministry of Education and Culture",
+      "oph-label": "Finnish National Agency for Education",
+      "tem-label": "Ministry of Economic Affairs and Employment"
+    },
+    "more-info-description": "Are you worried about data protection or the use of artificial intelligence in the service? Below, you will find a summary of general information about the service and its use.",
+    "more-info-links": {
+      "about-service": "About the service",
+      "accessibility": "Information on accessibility",
+      "ai-usage": "About the use of artificial intelligence",
+      "data-sources": "Data sources",
+      "privacy-and-cookies": "Privacy policy and cookies"
+    },
+    "more-info-title": "Do you want to know more about Competency Path?"
+  },
+  "front-page": "Guidance practitioner section",
+  "home": {
+    "best-matching": "You may also be interested in",
+    "card-1-content": "In the guidance practitioner section, you will find information, methods and materials to strengthen your own competence to support your career guidance work. The service compiles content from different information sources.",
+    "card-1-title": "Guidance practitioner section",
+    "card-2-button-text": "Go to information content",
+    "card-2-content": "Information on the field of guidance and its development",
+    "card-2-title": "Guidance practitioner's information content",
+    "card-3-button-text": "Explore methods",
+    "card-3-content": "Methods used in guidance work",
+    "card-3-title": "To support customer work",
+    "card-4-button-text": "Explore the materials",
+    "card-4-content": "Materials for the development of guidance skills",
+    "card-4-title": "Professional development",
+    "favorites": "Favourites",
+    "favorites-button-label": "Go to favourites",
+    "favorites-content": "As a logged-in user, you can save service content as favourites, making it easier to find and share it in the future. To save a favourite, click the heart icon on the content card.",
+    "new-content": "New content",
+    "popular-content": "Popular content"
+  },
+  "in-this-section": "In this section",
+  "language-selection": "Language of use",
+  "link-copied": "Link copied",
+  "link-copy-failed": "Failed to copy link",
+  "log-in-to-the-service-button": "Log in to the guidance practitioner section",
+  "log-in-to-the-service-content": "After logging in, you can join discussions on the content, save favourites and adapt the content shown according to your interests. The service uses Suomi.fi authentication.",
+  "log-in-to-the-service-title": "Log in to the guidance practitioner section",
+  "login": "Log in",
+  "login-for-favorites": "Log in to the guidance practitioner section to save your favourites and access them later.",
+  "logout": "Log out",
+  "menu": "Menu",
+  "navigation": {
+    "external": {
+      "tietopalvelu": {
+        "description": "Information to support decision-making",
+        "label": "Information service"
+      },
+      "title": "Other content entities",
+      "yksilo": {
+        "description": "Personal competency path",
+        "label": "My Competency Path"
+      }
+    },
+    "extra": {
+      "palveluhakemisto": {
+        "label": "Guidance and counselling services",
+        "url": "https://www.suomi.fi/aihe/ohjaus-ja-neuvontapalveluja"
+      },
+      "title": "Support for reflection",
+      "urataidot": {
+        "label": "Self-assessment of career skills"
+      }
+    },
+    "menu-section-title": "Information and materials for guidance"
+  },
+  "no-match": {
+    "description": "The page you are looking for could not be found or the link has expired. Check the address, open the menu or go to the front page.",
+    "go-home": "Go to the front page",
+    "title": "Oops! Page could not be found"
+  },
+  "note": {
+    "close": "Close"
+  },
+  "open-submenu": "Open submenu",
+  "osaamispolku": "Competency Path",
+  "pagination": {
+    "next": "Go to next page",
+    "page": "Page {{page}}",
+    "previous": "Go to previous page"
+  },
+  "print": "Print",
+  "profile": {
+    "details": {
+      "ingress": "You can complete your information below. Completing the information is optional. When commenting on the content of the guidance practitioner section, your name or other information will not be visible to other users of the service.",
+      "interest": {
+        "description": "When you select keywords that interest you, we can offer you more targeted content in the service. You can also see all other content offered in the service. Your selection will be automatically saved.",
+        "title": "My interests"
+      },
+      "introduction": {
+        "description": "Tell us where you work so we can understand who uses the service. This allows us to develop the service and its content to better meet the needs of users. Your place of work will not be visible to other users and will not be used for any other purpose than statistical purposes. ",
+        "title": "Place of work"
+      },
+      "title": "Personal Info",
+      "workplace": {
+        "label": "Select your place of work",
+        "option1": "Educational institution/primary education",
+        "option2": "Educational institution/secondary education",
+        "option3": "Educational institution/university",
+        "option4": "Educational institution/other",
+        "option5": "Employment services",
+        "option6": "Third sector",
+        "option7": "Private",
+        "option8": "Others",
+        "placeholder": "Select"
+      }
+    },
+    "favorites": {
+      "description": "The content you have saved as favourites can be found here. You can save favourites by clicking the heart icon next to content highlights and content pages. Click the heart icon again to remove a saved favourite.",
+      "favorite-count_one": "You have saved one favourite.",
+      "favorite-count_other": "You have saved {{count}} favourites.",
+      "filter": "Filter",
+      "no-favorites": "You have not saved any favourites yet. You can explore the content in the following sections:",
+      "no-tags": "You can filter your saved content based on keywords.",
+      "sort": {
+        "a-z": "Alphabetically A-Ö",
+        "label": "Sort",
+        "latest": "Newest to oldest",
+        "latest-added": "Last saved",
+        "oldest": "Oldest to newest",
+        "z-a": "Alphabetically Ö-A"
+      },
+      "title": "Favourites"
+    },
+    "front": {
+      "data-processing-info": "The processing of data is based on the Act on the national competence database for continuous learning. Read more about the grounds for data processing at <Link>tietosuojaselosteesta</Link>.",
+      "greeting": "Hello {{firstname}} - welcome to the guidance practitioner's profile!",
+      "list-1-item-1": "add your personal data so that we can serve you better",
+      "list-1-item-2": "save content of the guidance practitioner section as favourites by clicking the heart icon",
+      "list-1-item-3": "view and manage your favourites",
+      "list-1-item-4": "download or delete your profile.",
+      "list-2-item-1": "send your suggestions for content to be added to the service",
+      "list-2-item-2": "discuss with other guidance practitioners in content-related comment chains.",
+      "logged-in-features-intro": "Once logged in, you can also",
+      "profile-description": "In the guidance practitioner profile, you can",
+      "title": "Guidance practitioner profile",
+      "you-are-signed-in": "You are logged in to the guidance practitioner profile. The guidance practitioner profile serves as a storage and management location for your own information in the Guidance practitioner section of Competency Path."
+    },
+    "index": "Guidance practitioner profile",
+    "login-page": {
+      "auth-description": "The service uses Suomi.fi authentication. We only use your data in anonymised form in order to create an overview of the users.",
+      "benefits-description": "By logging in to the service, you can also",
+      "description": "By logging in to the service, you will have access to a personal guidance practitioner profile and additional features for using the Guidance practitioner section.",
+      "list-1-item-1": "Under “Personal info”, you can, for example, indicate your interests so that we can offer you more targeted content.",
+      "list-1-item-2": "Under Favourites, you can save the content of the service, making it easier to find and share it in the future.",
+      "list-1-item-3": "Under Settings you can download or delete your profile.",
+      "list-2-item-1": "suggest new content to be added to the service",
+      "list-2-item-2": "comment on and discuss the content of the service with other guidance practitioners",
+      "logged-in-features": "Additional features for a logged in user",
+      "page-title": "Log in to the service",
+      "profile": "Guidance practitioner profile",
+      "profile-description": "When you log in to the Guidance practitioner section for the first time, we will create a blank profile for you. Your profile will be retained for as long as you need it.",
+      "profile-includes": "The guidance practitioner profile includes:",
+      "title": "Create your own guidance practitioner profile"
+    },
+    "preferences": {
+      "delete-profile": {
+        "action": "Delete guidance practitioner profile",
+        "confirm": "Are you sure you want to delete your guidance practitioner profile?",
+        "description": "You can permanently delete your entire guidance practitioner profile and all information stored in it. The deletion cannot be reversed. Please note that deleting the guidance practitioner profile will not affect any created competence profile, if any, or the information therein. If you also want to delete the competence profile, you need to do so via the competence profile settings in your Competency Path.",
+        "title": "Delete guidance practitioner profile"
+      },
+      "download": {
+        "action": "Download guidance practitioner profile data (JSON)",
+        "description": "You can download all the data stored in your guidance practitioner profile to your device. This refers to information that you have shared in the Guidance practitioner section, as well as information that we have collected about your activities. The data is generated in a machine-readable JSON format. JSON is a simple and lightweight open standard file format for data transfer and storage.",
+        "title": "Download guidance practitioner profile"
+      },
+      "ingress": "On this page, you can download your profile data for yourself or delete your profile completely.",
+      "title": "Settings"
+    }
+  },
+  "recently-watched-contents": "Last viewed content",
+  "remove-from-favorites": "Remove from favourites",
+  "required": "mandatory",
+  "return-home": "Return to the front page",
+  "search": {
+    "button": "Search",
+    "description": "You can search for the content of the Guidance practitioner section using the search function. You can influence the visibility of the results by selecting a keyword that interests you from the list.",
+    "filter": "Filter ({{count}})",
+    "global-placeholder": "Search the Guidance practitioner sections",
+    "label": "Search the Guidance practitioner section",
+    "placeholder": "Enter your search terms",
+    "tag-list": {
+      "checkbox-label": "Keyword {{tag}}",
+      "title": "Keywords"
+    },
+    "title": "Search in Guidance practitioner sections"
+  },
+  "search-results": {
+    "article-count_one": "Showing 1 result",
+    "article-count_other": "Showing {{count}} results",
+    "article-count_zero": "No results found"
+  },
+  "service-name": "Guidance practitioner section",
+  "share": "Share",
+  "show-all": "Show all",
+  "skiplinks": {
+    "main": "Go to main content"
+  },
+  "slugs": {
+    "about-service": "about-the-service",
+    "accessibility": "about-accessibility",
+    "ai-usage": "about-the-use-of-artificial-intelligence",
+    "article": {
+      "short": "artikkeli/:articleErc"
+    },
+    "data-sources": "data sources",
+    "privacy-and-cookies": "privacy-policy-and-cookies",
+    "profile": {
+      "details": "personal-info",
+      "favorites": "favourites",
+      "front": "front page",
+      "index": "guidance-practitioner-profile",
+      "login": "log-in",
+      "preferences": "settings"
+    },
+    "search": "search"
+  },
+  "suggest-new-content": {
+    "close-content-guide": "Close content help",
+    "content-guide": "Among other things, suggested content is expected to be related to lifelong guidance, career management skills or the development of the professional skills of the guidance practitioner. The content must be lawful, in Finnish or Swedish, openly available and free of charge, and not infringe copyright. The suitability is assessed separately with respect to each suggested content.",
+    "content-label": "Your suggestion for content",
+    "content-placeholder": "Suggestion",
+    "description": "Have you used a guidance method that is not available in the service? Interested in adding information about a theme? Use the attached form to suggest any content you think is missing from the service.",
+    "description-label": "Describe the content in your own words and explain why it would be useful",
+    "description-placeholder": "Description of the content",
+    "email-label": "Please provide your contact details so that we can contact you if necessary.",
+    "email-placeholder": "E-mail address",
+    "error": "Failed to submit content suggestion. Please try again later.",
+    "errors": {
+      "content": "Enter your suggestion as content",
+      "description": "Enter a description of the content",
+      "link": "Enter a valid link, e.g. https://www.osaamispolku.fi",
+      "valid-email": "Enter a valid email address"
+    },
+    "footer-info-1": "When you submit a content suggestion, the suggestion is saved. Providing an email address is optional, but if you provide your email address, the information will be stored. The data will not be disclosed to third parties. Content suggestions are processed in the KEHA centre.",
+    "keha-privacy-policy-href": "https://tyomarkkinatori.fi/en/about-the-service/privacy-statements-and-terms-of-use/privacy-statements/customer-and-advisory-services-privacy-statement",
+    "keha-privacy-policy-href-link-text": "KEHA Centre’s Privacy policy for customer and advisory services",
+    "link-label": "Link to your suggested content",
+    "link-placeholder": "Link",
+    "open-content-guide": "Open content help",
+    "send": "Submit suggestion",
+    "success": "Thank you for your content suggestion!",
+    "title": "Content suggestion"
+  },
+  "suggest-new-content-for-the-service": "Suggest new content for the service?",
+  "suggest-new-content-for-the-service-button": "Suggest content",
+  "suggest-new-content-for-the-service-content": "Have you used a guidance method that is not available in the service, for example?\nSuggest any content that you think is missing from the service.",
+  "toast": {
+    "add-comment-failed": "Failed to add comment.",
+    "add-comment-success": "Comment added.",
+    "add-default-failed": "Failed to add.",
+    "add-default-success": "Successfully added.",
+    "add-favorite-failed": "Failed to add favourite.",
+    "add-favorite-success": "Favourite added.",
+    "add-interest-failed": "Failed to add interest.",
+    "add-interest-success": "Interest added.",
+    "delete-comment-failed": "Failed to delete comment.",
+    "delete-comment-success": "Comment deleted.",
+    "delete-default-failed": "Deletion failed.",
+    "delete-default-success": "Deletion succeeded.",
+    "delete-favorite-failed": "Failed to remove favourite.",
+    "delete-favorite-success": "Favourite removed.",
+    "delete-interest-failed": "Failed to remove interest.",
+    "delete-interest-success": "Interest removed.",
+    "report-comment-failed": "Failed to report comment.",
+    "report-comment-success": "Comment reported.",
+    "update-default-failed": "Failed to update.",
+    "update-default-success": "Update succeeded."
+  },
+  "version": "Test version"
+}
