@@ -18,8 +18,8 @@
     "translations:export": "node ./scripts/translations/export-translations.js jod-ohjaaja-ui",
     "translations:import": "node ./scripts/translations/import-translations.js jod-ohjaaja-ui",
     "translations:analyze": "node ./scripts/translations/analyze-translations.js",
-    "translations:check": "node ./scripts/translations/analyze-translations.js --ci --check-langs fi,sv",
-    "translations:report": "node ./scripts/translations/analyze-translations.js --list-unused --list-missing fi,sv"
+    "translations:check": "node ./scripts/translations/analyze-translations.js --ci --check-langs fi,sv,en",
+    "translations:report": "node ./scripts/translations/analyze-translations.js --list-unused --list-missing fi,sv,en"
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",

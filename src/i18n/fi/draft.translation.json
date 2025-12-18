@@ -7,17 +7,6 @@
     "link-url": "https://www.suomi.fi/aihe/ohjaus-ja-neuvontapalveluja/palvelut",
     "title": "Ohjaus- ja neuvontapalveluja"
   },
-  "log-in-to-the-service-title": "Kirjautumalla enemmän irti Ohjaajan osiosta",
-  "no-match": {
-    "description": "Etsimääsi sivua ei löytynyt tai linkki on vanhentunut. Tarkista osoite, avaa valikko tai siirry etusivulle.",
-    "go-home": "Siirry etusivulle",
-    "title": "Hups! Sivua ei löytynyt"
-  },
-  "note": {
-    "close": "Sulje"
-  },
-  "suggest-new-content-for-the-service-content": "Oletko käyttänyt ohjausmenetelmää, jota palvelusta ei löydy?\nEhdota meille palvelusta mielestäsi puuttuvaa sisältöä.",
-  "version": "Testausversio",
   "want-to-see-interesting-content-button": "Omat tiedot",
   "want-to-see-interesting-content-content": "Valitse omissa tiedoissasi sinua kiinnostavia asiasanoja ja tarjoamme sinulle paremmin kohdistettuja sisältöjä.",
   "want-to-see-interesting-content-title": "Haluatko nähdä sinua kiinnostavaa sisältöä?"

@@ -184,8 +184,12 @@
     "menu-section-title": "Tietoja ja materiaaleja ohjaukseen"
   },
   "no-match": {
-    "description": "Hakemaasi sivua ei löytynyt.",
-    "title": "Sivua ei löytynyt."
+    "description": "Etsimääsi sivua ei löytynyt tai linkki on vanhentunut. Tarkista osoite, avaa valikko tai siirry etusivulle.",
+    "go-home": "Siirry etusivulle",
+    "title": "Hups! Sivua ei löytynyt"
+  },
+  "note": {
+    "close": "Sulje"
   },
   "open-submenu": "Avaa alivalikko",
   "osaamispolku": "Osaamispolku",
@@ -382,5 +386,6 @@
     "report-comment-success": "Kommentti ilmoitettu.",
     "update-default-failed": "Päivitys epäonnistui.",
     "update-default-success": "Päivitys onnistui."
-  }
+  },
+  "version": "Testausversio"
 }
