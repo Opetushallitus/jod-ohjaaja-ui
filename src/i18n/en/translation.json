@@ -111,7 +111,7 @@
     "feedback-button-label": "Give feedback",
     "feedback-content": "We want to develop Competency Path to better meet your specific needs. Give us feedback and we will take it into account in our development work.",
     "feedback-title": "Tell us what you thought about the service!",
-    "funding-title": "The project is funded by the EU’s Recovery and Resilience Facility (RRF).",
+    "funding-title": "The project is funded by the EU's Recovery and Resilience Facility (RRF).",
     "logos": {
       "keha-label": "KEHA Centre",
       "okm-label": "Ministry of Education and Culture",
@@ -149,7 +149,7 @@
     "popular-content": "Popular content"
   },
   "in-this-section": "In this section",
-  "language-selection": "Language of use",
+  "language-selection": "Language",
   "link-copied": "Link copied",
   "link-copy-failed": "Failed to copy link",
   "log-in-to-the-service-button": "Log in to the guidance practitioner section",
@@ -174,7 +174,7 @@
     "extra": {
       "palveluhakemisto": {
         "label": "Guidance and counselling services",
-        "url": "https://www.suomi.fi/aihe/ohjaus-ja-neuvontapalveluja"
+        "url": "https://www.suomi.fi/topic/guidance-and-counselling-services"
       },
       "title": "Support for reflection",
       "urataidot": {
@@ -242,8 +242,8 @@
       "title": "Favourites"
     },
     "front": {
-      "data-processing-info": "The processing of data is based on the Act on the national competence database for continuous learning. Read more about the grounds for data processing at <Link>tietosuojaselosteesta</Link>.",
-      "greeting": "Hello {{firstname}} - welcome to the guidance practitioner's profile!",
+      "data-processing-info": "The processing of data is based on the Act on the national competence database for continuous learning. Read more about the grounds for data processing in our <Link>privacy policy</Link>.",
+      "greeting": "Hello {{etunimi}} - welcome to the guidance practitioner's profile!",
       "list-1-item-1": "add your personal data so that we can serve you better",
       "list-1-item-2": "save content of the guidance practitioner section as favourites by clicking the heart icon",
       "list-1-item-3": "view and manage your favourites",
@@ -296,7 +296,7 @@
     "button": "Search",
     "description": "You can search for the content of the Guidance practitioner section using the search function. You can influence the visibility of the results by selecting a keyword that interests you from the list.",
     "filter": "Filter ({{count}})",
-    "global-placeholder": "Search the Guidance practitioner sections",
+    "global-placeholder": "Search the sections",
     "label": "Search the Guidance practitioner section",
     "placeholder": "Enter your search terms",
     "tag-list": {
@@ -317,18 +317,18 @@
     "main": "Go to main content"
   },
   "slugs": {
-    "about-service": "about-the-service",
+    "about-service": "about-service",
     "accessibility": "about-accessibility",
-    "ai-usage": "about-the-use-of-artificial-intelligence",
+    "ai-usage": "about-the-use-of-ai",
     "article": {
       "short": "artikkeli/:articleErc"
     },
-    "data-sources": "data sources",
-    "privacy-and-cookies": "privacy-policy-and-cookies",
+    "data-sources": "data-sources",
+    "privacy-and-cookies": "privacy-notice-and-cookies",
     "profile": {
       "details": "personal-info",
       "favorites": "favourites",
-      "front": "front page",
+      "front": "front-page",
       "index": "guidance-practitioner-profile",
       "login": "log-in",
       "preferences": "settings"
