@@ -8,3 +8,9 @@
   min-height: 100vh;
   flex-direction: column;
 }
+
+@media print {
+  #ai-agent-component-root {
+    display: none;
+  }
+}
