@@ -32,6 +32,7 @@ describe('loader', () => {
       params: {
         lng: 'sv',
       },
+      unstable_pattern: '',
     });
 
     expect(spyChangeLanguage).toHaveBeenCalledWith('sv');
