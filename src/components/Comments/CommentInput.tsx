@@ -47,6 +47,7 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
             }}
             value={currentComment}
             data-testid="comment-input-textarea"
+            ariaLabel={t('comments.comment.placeholder')}
           />
 
           <Button
