@@ -44,6 +44,7 @@ const Home = () => {
   // Rotate hero image weekly
   const heroSrc = React.useMemo(() => {
     const heroImages = [heroSrc1, heroSrc2, heroSrc3, heroSrc4];
+    // eslint-disable-next-line react-hooks/purity
     const weekNumber = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
     return heroImages[weekNumber % heroImages.length];
   }, []);
