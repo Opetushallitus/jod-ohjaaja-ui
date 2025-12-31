@@ -97,6 +97,8 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
       serviceVariant="ohjaaja"
       externalLinkIconAriaLabel={t('external-link')}
       data-testid="navigation-menu"
+      ariaLabel={t('navigation-menu')}
+      navigationAriaLabel={t('main-navigation')}
     />
   );
 };
