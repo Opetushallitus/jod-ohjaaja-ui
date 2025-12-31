@@ -65,7 +65,7 @@ export const ArticleCard = ({ article, variant, isLoggedIn }: ArticleCardProps) 
       label={article.title ?? ''}
       description={ingress ?? ''}
       imageSrc={imageSrc}
-      imageAlt={imageContent?.description ?? ''}
+      imageAlt=""
       to={path}
       linkComponent={Link}
       tags={keywords.map((keyword) => ({ label: keyword.name, to: getSearchUrl(t, language, [`${keyword.id}`]) }))}
