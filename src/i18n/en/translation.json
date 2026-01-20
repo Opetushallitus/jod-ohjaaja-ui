@@ -386,6 +386,5 @@
     "report-comment-success": "Comment reported.",
     "update-default-failed": "Failed to update.",
     "update-default-success": "Update succeeded."
-  },
-  "version": "Test version"
+  }
 }
