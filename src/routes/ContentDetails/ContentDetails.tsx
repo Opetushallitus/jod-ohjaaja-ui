@@ -1,4 +1,4 @@
-import { FeatureCard, MainLayout } from '@/components';
+import { FeatureCard, GuidanceCard, MainLayout } from '@/components';
 import { createLoginDialogFooter } from '@/components/createLoginDialogFooter';
 import { useFeature } from '@/hooks/useFeatures/useFeatures';
 import { useLoginLink } from '@/hooks/useLoginLink';
@@ -140,17 +140,20 @@ const ContentDetails = () => {
   return (
     <MainLayout
       featuredContentChildren={
-        user ? undefined : (
-          <FeatureCard
-            buttonText={t('profile.login-page.page-title')}
-            level="h2"
-            title={t('access-content-later-title')}
-            content={t('access-content-later-content')}
-            backgroundColor="var(--ds-color-secondary-2-dark)"
-            data-testid="access-content-later-card"
-            linkComponent={getLinkTo(`/${language}/${t('slugs.profile.login')}`)}
-          />
-        )
+        <>
+          {user ? undefined : (
+            <FeatureCard
+              buttonText={t('profile.login-page.page-title')}
+              level="h2"
+              title={t('access-content-later-title')}
+              content={t('access-content-later-content')}
+              backgroundColor="var(--ds-color-secondary-2-dark)"
+              data-testid="access-content-later-card"
+              linkComponent={getLinkTo(`/${language}/${t('slugs.profile.login')}`)}
+            />
+          )}
+          <GuidanceCard />
+        </>
       }
     >
       <title>{data.title}</title>
