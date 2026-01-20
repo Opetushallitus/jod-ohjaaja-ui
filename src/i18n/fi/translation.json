@@ -386,6 +386,5 @@
     "report-comment-success": "Kommentti ilmoitettu.",
     "update-default-failed": "Päivitys epäonnistui.",
     "update-default-success": "Päivitys onnistui."
-  },
-  "version": "Testausversio"
+  }
 }
