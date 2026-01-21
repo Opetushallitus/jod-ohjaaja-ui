@@ -63,27 +63,27 @@
   "feedback": {
     "cancel": "Cancel",
     "email-label": "E-mail address",
-    "error": "Sending feedback failed. Please try again later.",
+    "error": "Failed to send feedback. Please try again later.",
     "footer-handled": {
-      "ohjaajan": "Guidance practitioner section at the KEHA centre,",
-      "osaamispolkuni": "My Competence Path Finnish National Agency for Education,",
-      "tietopalvelu": "Information service and the entire service at the Ministry of Education and Culture."
+      "ohjaajan": "Guidance practitioners section at the KEHA centre,",
+      "osaamispolkuni": "My Competency Path at the Finnish National Agency for Education,",
+      "tietopalvelu": "Information service, entire service and other feedback at the Ministry of Education and Culture."
     },
     "footer-info-1": "When you send feedback, we save the service status information, such as the view from which the feedback was sent. Status information will not be disclosed to third parties. Feedback is used for service development and voluntarily provided contact information is used to respond to feedback.",
     "footer-info-heading": "Depending on the section, the feedback is processed as follows:",
-    "footer-privacy-heading": "Read more in the privacy statements of feedback processors:",
-    "intro-1": "Please provide feedback on the service or report a technical problem. This is how you help us in service development.",
+    "footer-privacy-heading": "Read more in the privacy statements of the feedback processors:",
+    "intro-1": "Please provide feedback on the service or report a technical problem. This way, you will help us in service development.",
     "intro-2": "If you report an incident, it would help us if you were as specific as possible.",
     "intro-privacy": "Do not enter any personal information, such as personal identity number or health information, in the feedback. Please fill in all the fields so that we can process your feedback.",
     "linkHrefs": {
       "keha": "https://tyomarkkinatori.fi/en/about-the-service/privacy-statements-and-terms-of-use/privacy-statements",
-      "okm": "https://okm.fi/tietoa-sivustosta#henkilotiedot",
+      "okm": "https://okm.fi/en/data-protection-and-processing-of-personal-data",
       "oph": "https://www.oph.fi/en/privacy-policy"
     },
     "links": {
-      "keha": "KEHA Centre’s Privacy policy for customer and advisory services",
-      "okm": "Ministry of Education and Culture's privacy policy",
-      "oph": "The Finnish National Agency for Education’s privacy policy"
+      "keha": "KEHA Centre's customer and advisory services privacy statement",
+      "okm": "Ministry of Education and Culture's privacy statement",
+      "oph": "Finnish National Agency for Education’s data protection policy"
     },
     "message-label": "Feedback",
     "section-question": "Which section does your feedback concern?",
