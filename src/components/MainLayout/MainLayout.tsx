@@ -29,19 +29,21 @@ export const MainLayout = ({ children, navChildren, asideChildren, featuredConte
 
       {(navChildren || asideChildren || (lg && featuredContentChildren)) && (
         <aside
-          className="lg:flex lg:flex-col lg:gap-6 lg:order-last col-span-3 lg:col-span-1 print:hidden position-relative lg:position-static z-10 lg:z-auto h-[47px] lg:h-auto"
+          className="lg:flex lg:flex-col lg:gap-6 lg:order-last col-span-3 lg:col-span-1 print:hidden relative lg:static z-10 lg:z-auto h-[47px] lg:h-auto"
           data-testid="main-layout-aside"
         >
           {navChildren && (
-            <nav
-              role="navigation"
-              className={tidyClasses(
-                `${!asideChildren && 'sticky lg:position-static'} position-absolute top-0 left-0 w-full lg:top-[96px] max-h-[calc(100vh-196px)] overflow-y-auto scrollbar-hidden`,
-              )}
-              data-testid="main-layout-nav"
-            >
-              {navChildren}
-            </nav>
+            <div className={tidyClasses(`${!asideChildren && 'sticky'} lg:top-[60px] bg-bg-gray lg:-mt-10`)}>
+              <nav
+                role="navigation"
+                className={tidyClasses(
+                  `top-0 left-0 w-full max-h-[calc(100vh-196px)] overflow-y-auto scrollbar-hidden lg:mt-10`,
+                )}
+                data-testid="main-layout-nav"
+              >
+                {navChildren}
+              </nav>
+            </div>
           )}
           {asideChildren}
           {lg && featuredContentChildren}
@@ -54,7 +56,7 @@ export const MainLayout = ({ children, navChildren, asideChildren, featuredConte
         data-testid="main-layout-main"
       >
         {children}
-        {!lg && <div className="flex flex-col gap-3">{featuredContentChildren}</div>}
+        {!lg && <div className="flex flex-col gap-3 mt-3">{featuredContentChildren}</div>}
       </main>
     </div>
   );
