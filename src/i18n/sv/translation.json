@@ -1,13 +1,6 @@
 {
   "add-to-favorites": "Spara som favorit",
   "advisors-workspace": "Vägledarens profil",
-  "beta": {
-    "note": {
-      "description": "Berätta vad du tycker och hjälp oss att förbättra tjänsten.",
-      "title": "Prova på tjänsten",
-      "to-feedback": "Gå till enkäten"
-    }
-  },
   "breadcrumb": "Synlig sökväg",
   "button-menu": {
     "close": "Stäng"
