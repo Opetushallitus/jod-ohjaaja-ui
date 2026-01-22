@@ -1,13 +1,6 @@
 {
   "add-to-favorites": "Tallenna suosikiksi",
   "advisors-workspace": "Ohjaajan profiili",
-  "beta": {
-    "note": {
-      "description": "Kerro mielipiteesi ja auta meitä kehittämään palvelua.",
-      "title": "Kokeile palvelua",
-      "to-feedback": "Siirry kyselyyn"
-    }
-  },
   "breadcrumb": "Murupolku",
   "button-menu": {
     "close": "Sulje"

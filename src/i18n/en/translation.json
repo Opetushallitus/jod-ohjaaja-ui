@@ -1,13 +1,6 @@
 {
   "add-to-favorites": "Save as favourite",
   "advisors-workspace": "Guidance practitioner profile",
-  "beta": {
-    "note": {
-      "description": "Tell us what you think and help us to improve the service.",
-      "title": "Try the service",
-      "to-feedback": "Take the survey"
-    }
-  },
   "breadcrumb": "Trail of breadcrumbs",
   "button-menu": {
     "close": "Close"
