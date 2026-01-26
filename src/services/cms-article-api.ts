@@ -72,13 +72,12 @@ export const searchContent = (searchTerm: string, tagIds: string[], page: number
 };
 
 export const getArticlesByErcs = (articleErcs: string[]) => {
-  const articleIds = getArticleIds(articleErcs);
+  const articleIds = getArticleIds(articleErcs).map((id) => `'${id}'`);
   const queryParams = new URLSearchParams();
   queryParams.set('page', `1`);
   queryParams.set('pageSize', `500`);
   queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
-  const idFilters = articleIds.map((id) => `id eq '${id}'`).join(' or ');
-  queryParams.set('filter', idFilters);
+  queryParams.set('filter', `id in (${articleIds.join(', ')})`);
 
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
