@@ -129,8 +129,9 @@ describe('CMS ARTICLE API', () => {
     queryParams.set('page', `1`);
     queryParams.set('pageSize', `500`);
     queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
-    const idFilters = [1001, 1002].map((id) => `id eq '${id}'`).join(' or ');
-    queryParams.set('filter', idFilters);
+    const ids = [1001, 1002].map((id) => `'${id}'`);
+    const idFilter = `id in (${ids.join(', ')})`;
+    queryParams.set('filter', idFilter);
 
     mockFetch.mock.calls.forEach((call) => console.log(call[0])); // Debugging line to see the actual URL called
 
