@@ -1,6 +1,12 @@
 {
   "access-content-later-content": "Som inloggad användare kan du spara tjänstens innehåll som favoriter, vilket gör det enklare att hitta och dela dem i framtiden.",
   "access-content-later-title": "Vill du hitta detta innehåll senare?",
+  "error": {
+    "form": {
+      "email": "Kontrollera e-postadressen",
+      "required": "Obligatoriskt fält"
+    }
+  },
   "guidance-card": {
     "description": "Hitta samlade tjänster som stöder val av karriär och utbildning. Genom att filtrera tjänstelistan hittar du snabbt tjänster för olika behov.",
     "link-text": "Gå till tjänsten",
@@ -8,13 +14,13 @@
     "title": "Väglednings- och rådgivningstjänster"
   },
   "log-in-to-the-service-title": "Få ut mer av vägledningssektionen genom att logga in",
+  "main-navigation": "Huvudnavigering",
+  "navigation-menu": "Meny",
   "no-match": {
     "description": "Sidan du söker kunde inte hittas eller länken är föråldrad. Kontrollera adressen, öppna menyn eller gå till startsidan.",
     "go-home": "Gå till startsidan",
     "title": "Hoppsan! Sidan hittades inte"
   },
-  "main-navigation": "Huvudnavigering",
-  "navigation-menu": "Meny",
   "note": {
     "close": "Stäng"
   },

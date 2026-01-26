@@ -1,6 +1,12 @@
 {
   "access-content-later-content": "Kirjautuneena käyttäjänä voit tallentaa palvelun sisältöjä suosikeiksi, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa.",
   "access-content-later-title": "Haluatko löytää tämän sisällön myöhemmin?",
+  "error": {
+    "form": {
+      "email": "Tarkista sähköpostiosoite",
+      "required": "Pakollinen kenttä"
+    }
+  },
   "guidance-card": {
     "description": "Löydä kootusti palveluja, joista saa tukea ura- ja koulutusvaihtoehtoihin liittyvään pohdintaan. Rajaamalla palvelulistaa löydät nopeasti palvelut eri tarpeisiin.",
     "link-text": "Siirry palveluun",
