@@ -1,6 +1,12 @@
 {
   "access-content-later-content": "As a logged-in user, you can save service content as favorites, making it easier to find and share them in the future.",
   "access-content-later-title": "Want to find this content later?",
+  "error": {
+    "form": {
+      "email": "Check the email address",
+      "required": "Mandatory field"
+    }
+  },
   "guidance-card": {
     "description": "Find a collection of services that support career and education choices. By filtering the service list, you can quickly find services for different needs.",
     "link-text": "Go to service",
