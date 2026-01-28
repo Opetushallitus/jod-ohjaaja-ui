@@ -10,10 +10,9 @@ export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
   const showModal = React.useCallback(
     <P extends object>(Component: ModalComponentType<P>, props?: Omit<Partial<P>, 'isOpen'>) => {
       setModals((prev) => {
-        const last = prev[prev.length - 1];
+        const last = prev.at(-1);
         // Prevent duplicate: compare Component and shallow props
-        const isDuplicate =
-          last && last.Component === Component && JSON.stringify(last.props) === JSON.stringify(props);
+        const isDuplicate = last?.Component === Component && JSON.stringify(last.props) === JSON.stringify(props);
         if (isDuplicate) {
           return prev;
         }
