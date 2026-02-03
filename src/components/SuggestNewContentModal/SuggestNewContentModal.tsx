@@ -79,7 +79,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
           <Button
             variant="white"
             serviceVariant="ohjaaja"
-            label={t('cancel')}
+            label={t('common:cancel')}
             onClick={handleClose}
             className="whitespace-nowrap"
             data-testid="suggest-new-content.cancel"
@@ -182,7 +182,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               label={t('suggest-new-content.content-label')}
               {...methods.register('content')}
               placeholder={t('suggest-new-content.content-placeholder')}
-              requiredText={t('required')}
+              requiredText={t('common:required')}
               data-testid="suggest-new-content.content"
               errorMessage={errors.content?.message}
             />
@@ -209,7 +209,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
           <div className="mb-6">
             <Textarea
               label={t('suggest-new-content.description-label')}
-              requiredText={t('required')}
+              requiredText={t('common:required')}
               {...methods.register('description')}
               placeholder={t('suggest-new-content.description-placeholder')}
               rows={2}

@@ -8,12 +8,11 @@ const ErrorBoundary = () => {
   const { t, i18n } = useTranslation();
   const loginLink = useLoginLink();
   const error = useRouteError() as Error;
-  const title = t('error-boundary.title');
+  const title = t('common:error-boundary.title');
   const messages: Record<string, string> = {
-    'session-expired': t('error-boundary.session-expired'),
+    'session-expired': t('common:error-boundary.session-expired'),
   };
-  const message = (error.message && messages[error.message]) || t('error-boundary.unexpected');
-
+  const message = (error.message && messages[error.message]) || t('common:error-boundary.unexpected');
   return (
     <main
       role="main"
@@ -32,7 +31,7 @@ const ErrorBoundary = () => {
         <Button
           icon={<JodHome />}
           iconSide="left"
-          label={t('return-home')}
+          label={t('common:return-home')}
           variant="accent"
           serviceVariant="ohjaaja"
           data-testid="error-boundary-home"
@@ -46,7 +45,7 @@ const ErrorBoundary = () => {
         <Button
           icon={<JodUser />}
           iconSide="left"
-          label={t('login')}
+          label={t('common:login')}
           variant="accent"
           serviceVariant="ohjaaja"
           data-testid="error-boundary-login"

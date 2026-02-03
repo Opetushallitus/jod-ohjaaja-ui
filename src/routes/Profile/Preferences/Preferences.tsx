@@ -28,8 +28,8 @@ const Preferences = () => {
   // However, if no such request occurs, we proactively clear the stores here as a fallback.
   const onSessionExpired = () => {
     useNoteStore.getState().setNote({
-      title: t('error-boundary.title'),
-      description: t('error-boundary.session-expired'),
+      title: t('common:error-boundary.title'),
+      description: t('common:error-boundary.session-expired'),
       variant: 'error',
     });
 
@@ -83,8 +83,8 @@ const Preferences = () => {
           <ConfirmDialog
             title={t('profile.preferences.delete-profile.action')}
             onConfirm={deleteProfile}
-            confirmText={t('delete')}
-            cancelText={t('cancel')}
+            confirmText={t('common:delete')}
+            cancelText={t('common:cancel')}
             variant="destructive"
             description={t('profile.preferences.delete-profile.confirm')}
           >
