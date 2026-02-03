@@ -137,7 +137,13 @@ export const FeedbackModal = ({ isOpen, onClose, section, area, language }: Feed
       fullWidthContent
       topSlot={<h2 className="sm:text-heading-1 text-heading-1-mobile mb-5">{t('feedback.title')}</h2>}
       content={
-        <Form id={formId} control={control} onSubmit={onSubmit} data-testid="feedback-form">
+        <Form
+          id={formId}
+          control={control}
+          onSubmit={onSubmit}
+          data-testid="feedback-form"
+          className="max-w-modal-content"
+        >
           <p className="sm:text-body-md text-body-md-mobile mb-9">
             {t('feedback.intro-1')} {t('feedback.intro-2')}
             <br />
