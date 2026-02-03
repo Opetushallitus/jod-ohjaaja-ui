@@ -81,7 +81,7 @@ const ContentDetails = () => {
   const handleFavoriteClick = () => {
     if (!user) {
       showDialog({
-        title: t('login'),
+        title: t('common:login'),
         description: t('login-for-favorites'),
         footer: createLoginDialogFooter(t, loginLink, closeAllModals),
       });
@@ -198,14 +198,14 @@ const ContentDetails = () => {
               data-testid="action-favorite"
             ></ActionButton>
             <ActionButton
-              label={t('share')}
+              label={t('common:share')}
               icon={<JodShare className="text-accent" />}
               onClick={() => copyToClipboard(globalThis.location.href)}
               data-testid="action-share"
             />
             {!!globalThis.print && (
               <ActionButton
-                label={t('print')}
+                label={t('common:print')}
                 icon={<JodPrint className="text-accent" />}
                 onClick={doPrint}
                 data-testid="action-print"
@@ -277,7 +277,7 @@ const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
             className="flex text-heading-4 text-accent items-center gap-3 ml-4"
             data-testid={`content-link-${index + 1}`}
           >
-            {link.text} <JodOpenInNew size={20} ariaLabel={t('external-link')} />
+            {link.text} <JodOpenInNew size={20} ariaLabel={t('common:external-link')} />
           </a>
         ))}
       </div>

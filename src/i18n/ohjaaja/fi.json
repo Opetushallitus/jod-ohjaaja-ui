@@ -1,17 +1,16 @@
 {
+  "access-content-later-content": "Kirjautuneena käyttäjänä voit tallentaa palvelun sisältöjä suosikeiksi, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa.",
+  "access-content-later-title": "Haluatko löytää tämän sisällön myöhemmin?",
   "add-to-favorites": "Tallenna suosikiksi",
   "advisors-workspace": "Ohjaajan profiili",
-  "breadcrumb": "Murupolku",
   "button-menu": {
     "close": "Sulje"
   },
-  "cancel": "Peruuta",
   "carousel": {
     "indicator": "Siirry sivulle {{index}}",
     "next": "Seuraava sivu",
     "prev": "Edellinen sivu"
   },
-  "close-menu": "Sulje valikko",
   "comments": {
     "comment": {
       "delete": {
@@ -35,7 +34,6 @@
     "noComments": "Ei vielä kommentteja.",
     "title": "Kommentoi sisältöä"
   },
-  "competency-path-portal": "Osaamispolun etusivu",
   "content-details": {
     "additional-content": "Lisätietoja",
     "date-created": "Luotu:",
@@ -46,82 +44,13 @@
     "article-count_other": "{{count}} sisältöä",
     "show-more": "Näytä lisää"
   },
-  "delete": "Poista",
-  "error-boundary": {
-    "session-expired": "Istuntosi on vanhentunut. Sinun täytyy kirjautua palveluun uudelleen tai käyttää palvelua ilman kirjautumista.",
-    "title": "Tapahtui virhe",
-    "unexpected": "Tapahtui odottamaton virhe. Tämä voi johtua verkkoyhteyden katkeamisesta tai palvelun virheestä."
-  },
-  "external-link": "Linkki johtaa palvelun ulkopuolelle",
-  "feedback": {
-    "cancel": "Peruuta",
-    "email-label": "Sähköpostiosoite",
-    "error": "Palautteen lähettäminen epäonnistui. Yritä myöhemmin uudelleen.",
-    "footer-handled": {
-      "ohjaajan": "Ohjaajan osio KEHA-keskuksessa,",
-      "osaamispolkuni": "Osaamispolkuni Opetushallituksessa,",
-      "tietopalvelu": "Tietopalvelu ja koko palvelu opetus- ja kulttuuriministeriössä."
-    },
-    "footer-info-1": "Kun lähetät palautetta, tallennamme palvelun tilatiedon, kuten mistä näkymästä palaute on lähetetty. Tilatietoa ei välitetä eteenpäin kolmansille osapuolille. Palautteita käytetään palvelun kehittämiseen ja vapaaehtoisesti jätettäviä yhteystietoja palautteisiin vastaamiseen.",
-    "footer-info-heading": "Palaute käsitellään osiosta riippuen seuraavasti:",
-    "footer-privacy-heading": "Lue lisää palautteiden käsittelijöiden tietosuojaseloisteista:",
-    "intro-1": "Anna palautetta palvelusta tai ilmoita teknisestä ongelmasta. Näin autat meitä palveluiden kehittämisessä.",
-    "intro-2": "Jos raportoit häiriötilanteesta, meitä auttaisi, että kerrot siitä mahdollisimman tarkasti.",
-    "intro-privacy": "Älä kirjoita palautteeseen henkilökohtaisia tietoja, kuten henkilötunnusta tai terveystietoja. Täytäthän kaikki kentät, jotta voimme käsitellä palautteesi.",
-    "linkHrefs": {
-      "keha": "https://tyomarkkinatori.fi/tietoa-palvelusta/tietosuoja-ja-kayttoehdot/tietosuojaselosteet",
-      "okm": "https://okm.fi/tietoa-sivustosta#henkilotiedot",
-      "oph": "https://www.oph.fi/fi/tietosuoja"
-    },
-    "links": {
-      "keha": "KEHA-keskuksen Asiakas- ja neuvontapalveluiden tietosuojaseloste",
-      "okm": "Opetus- ja kulttuuriministeriön tietosuojaseloste",
-      "oph": "Opetushallituksen tietosuojakäytäntö"
-    },
-    "message-label": "Palaute",
-    "section-question": "Mitä osiota palautteesi koskee?",
-    "sections": {
-      "koko-palvelu": "Koko palvelu tai muu palaute",
-      "ohjaajan-osio": "Ohjaajan osio",
-      "osaamispolkuni": "Osaamispolkuni",
-      "tietopalvelu": "Tietopalvelu"
-    },
-    "submit": "Lähetä",
-    "success": "Kiitos palautteestasi! Palautteesi auttaa meitä parantamaan palvelua.",
-    "title": "Anna palautetta",
-    "type-question": "Minkälaista palautetta haluat antaa?",
-    "types": {
-      "kehitysehdotus": "Kehitysehdotus",
-      "kehu": "Kehu",
-      "moite": "Moite",
-      "vika": "Tekninen vika tai ongelma"
-    },
-    "wants-contact": "Haluan, että minuun otetaan yhteyttä."
-  },
-  "footer": {
-    "cooperation-title": "Osaamispolku on toteutettu yhteistyössä seuraavien tahojen toimesta",
-    "copyright": "© Osaamispolku 2026. Kaikki oikeudet pidätetään.",
-    "feedback-button-label": "Anna palautetta",
-    "feedback-content": "Haluamme kehittää Osaamispolkua vastaamaan paremmin juuri sinun tarpeitasi. Anna meille palautetta ja huomioimme sen kehitystyössä.",
-    "feedback-title": "Kerro meille, mitä pidit palvelusta!",
-    "funding-title": "Palvelu on rahoitettu EU:n elpymis- ja palautumistukivälineellä (RRF)",
-    "logos": {
-      "keha-label": "KEHA-keskus",
-      "okm-label": "Opetus- ja kulttuuriministeriö",
-      "oph-label": "Opetushallitus",
-      "tem-label": "Työ- ja elinkeinoministeriö"
-    },
-    "more-info-description": "Mietityttääkö tietosuoja tai tekoälyn hyödyntäminen palvelussa? Alta löydät kootusti yleistä tietoa palvelusta ja sen käytöstä.",
-    "more-info-links": {
-      "about-service": "Tietoa palvelusta",
-      "accessibility": "Tietoa saavutettavuudesta",
-      "ai-usage": "Tietoa tekoälyn käytöstä",
-      "data-sources": "Datalähteet",
-      "privacy-and-cookies": "Tietosuojaseloste ja evästeet"
-    },
-    "more-info-title": "Haluatko tietää lisää Osaamispolusta?"
-  },
   "front-page": "Ohjaajan osio",
+  "guidance-card": {
+    "description": "Löydä kootusti palveluja, joista saa tukea ura- ja koulutusvaihtoehtoihin liittyvään pohdintaan. Rajaamalla palvelulistaa löydät nopeasti palvelut eri tarpeisiin.",
+    "link-text": "Siirry palveluun",
+    "link-url": "https://www.suomi.fi/aihe/ohjaus-ja-neuvontapalveluja",
+    "title": "Ohjaus- ja neuvontapalveluja"
+  },
   "home": {
     "best-matching": "Sinua voisi kiinnostaa",
     "card-1-content": "Ohjaajan osiosta löydät uraohjaustyösi tueksi tietoa, menetelmiä ja omaa osaamistasi vahvistavia materiaaleja. Palvelu kokoaa yhteen sisältöjä eri tietolähteistä.",
@@ -142,53 +71,20 @@
     "popular-content": "Suositut sisällöt"
   },
   "in-this-section": "Tässä osiossa",
-  "language-selection": "Käyttökieli",
   "link-copied": "Linkki kopioitu",
   "link-copy-failed": "Linkin kopiointi epäonnistui",
+  "login-for-favorites": "Kirjaudu sisään Ohjaajan osioon, jotta voit tallentaa suosikkeja ja päästä tarkastelemaan niitä myöhemmin.",
   "log-in-to-the-service-button": "Kirjaudu Ohjaajan osioon",
   "log-in-to-the-service-content": "Kirjautumalla palveluun saat mahdollisuuden keskustella sisällöistä, tallentaa suosikkeja ja mukauttaa sinulle näkyvää sisältöä kiinnostuksesi mukaan. Palvelu käyttää Suomi.fi-tunnistusta.",
   "log-in-to-the-service-title": "Kirjaudu Ohjaajan osioon",
-  "login": "Kirjaudu",
-  "login-for-favorites": "Kirjaudu sisään Ohjaajan osioon, jotta voit tallentaa suosikkeja ja päästä tarkastelemaan niitä myöhemmin.",
-  "logout": "Kirjaudu ulos",
-  "menu": "Valikko",
   "navigation": {
-    "external": {
-      "tietopalvelu": {
-        "description": "Tietoa päätöksenteon tueksi",
-        "label": "Tietopalvelu"
-      },
-      "title": "Muut sisältökokonaisuudet",
-      "yksilo": {
-        "description": "Henkilökohtainen osaamispolku",
-        "label": "Osaamispolkuni"
-      }
-    },
-    "extra": {
-      "palveluhakemisto": {
-        "label": "Ohjaus- ja neuvontapalveluja",
-        "url": "https://www.suomi.fi/aihe/ohjaus-ja-neuvontapalveluja"
-      },
-      "title": "Tukea pohdintaan"
-    },
     "menu-section-title": "Tietoja ja materiaaleja ohjaukseen"
   },
-  "no-match": {
-    "description": "Etsimääsi sivua ei löytynyt tai linkki on vanhentunut. Tarkista osoite, avaa valikko tai siirry etusivulle.",
-    "go-home": "Siirry etusivulle",
-    "title": "Hups! Sivua ei löytynyt"
-  },
-  "note": {
-    "close": "Sulje"
-  },
-  "open-submenu": "Avaa alivalikko",
-  "osaamispolku": "Osaamispolku",
   "pagination": {
     "next": "Siirry seuraavalle sivulle",
     "page": "Sivu {{page}}",
     "previous": "Siirry edelliselle sivulle"
   },
-  "print": "Tulosta",
   "profile": {
     "details": {
       "ingress": "Voit täydentää omia tietojasi alla. Tietojen täydentäminen on vapaaehtoista. Kommentoidessasi Ohjaajan osion sisältöjä, nimesi tai muut tietosi eivät näy palvelun muille käyttäjille.",
@@ -280,8 +176,6 @@
   },
   "recently-watched-contents": "Viimeksi katsomasi sisällöt",
   "remove-from-favorites": "Poista suosikeista",
-  "required": "pakollinen",
-  "return-home": "Palaa etusivulle",
   "search": {
     "button": "Hae",
     "description": "Voit hakea Ohjaajan osion sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan.",
@@ -301,20 +195,10 @@
     "article-count_zero": "Ei tuloksia"
   },
   "service-name": "Ohjaajan osio",
-  "share": "Jaa",
-  "show-all": "Näytä kaikki",
-  "skiplinks": {
-    "main": "Siirry pääsisältöön"
-  },
   "slugs": {
-    "about-service": "tietoa-palvelusta",
-    "accessibility": "tietoa-saavutettavuudesta",
-    "ai-usage": "tietoa-tekoalyn-kaytosta",
     "article": {
       "short": "artikkeli/:articleErc"
     },
-    "data-sources": "datalahteet",
-    "privacy-and-cookies": "tietosuojaseloste-ja-evasteet",
     "profile": {
       "details": "omat-tiedot",
       "favorites": "suosikit",
@@ -376,5 +260,8 @@
     "report-comment-success": "Kommentti ilmoitettu.",
     "update-default-failed": "Päivitys epäonnistui.",
     "update-default-success": "Päivitys onnistui."
-  }
+  },
+  "want-to-see-interesting-content-button": "Omat tiedot",
+  "want-to-see-interesting-content-content": "Valitse omissa tiedoissasi sinua kiinnostavia asiasanoja ja tarjoamme sinulle paremmin kohdistettuja sisältöjä.",
+  "want-to-see-interesting-content-title": "Haluatko nähdä sinua kiinnostavaa sisältöä?"
 }

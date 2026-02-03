@@ -35,28 +35,28 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
 
   const externalLinkSections: ExternalLinkSection[] = [
     {
-      title: t('navigation.external.title'),
+      title: t('common:navigation.external.title'),
       linkItems: [
         {
-          label: t('navigation.external.yksilo.label'),
+          label: t('common:navigation.external.yksilo.label'),
           url: `/yksilo/${language}`,
-          description: t('navigation.external.yksilo.description'),
+          description: t('common:navigation.external.yksilo.description'),
           accentColor: '#006DB3',
         },
         {
-          label: t('navigation.external.tietopalvelu.label'),
+          label: t('common:navigation.external.tietopalvelu.label'),
           url: `/tietopalvelu/${language}`,
-          description: t('navigation.external.tietopalvelu.description'),
+          description: t('common:navigation.external.tietopalvelu.description'),
           accentColor: '#AD4298',
         },
       ],
     },
     {
-      title: t('navigation.extra.title'),
+      title: t('common:navigation.extra.title'),
       linkItems: [
         {
-          label: t('navigation.extra.palveluhakemisto.label'),
-          url: t('navigation.extra.palveluhakemisto.url'),
+          label: t('common:navigation.extra.palveluhakemisto.label'),
+          url: t('common:navigation.extra.palveluhakemisto.url'),
         },
       ],
     },
@@ -81,20 +81,20 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
     <NavigationMenu
       open={open}
       portalLinkComponent={PortalLink}
+      portalLinkLabel={t('common:competency-path-portal')}
       menuSection={menuSection}
-      ariaCloseMenu={t('close-menu')}
-      openSubMenuLabel={t('open-submenu')}
-      portalLinkLabel={t('competency-path-portal')}
+      ariaCloseMenu={t('common:close-menu')}
+      openSubMenuLabel={t('common:open-submenu')}
       onClose={onClose}
       selectedLanguage={language}
       languageSelectionItems={languageSelectionItems}
       externalLinkSections={externalLinkSections}
-      languageSelectionTitle={t('language-selection')}
+      languageSelectionTitle={t('common:language-selection')}
       serviceVariant="ohjaaja"
-      externalLinkIconAriaLabel={t('external-link')}
+      externalLinkIconAriaLabel={t('common:external-link')}
       data-testid="navigation-menu"
-      ariaLabel={t('navigation-menu')}
-      navigationAriaLabel={t('main-navigation')}
+      ariaLabel={t('common:navigation-menu')}
+      navigationAriaLabel={t('common:main-navigation')}
     />
   );
 };

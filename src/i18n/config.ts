@@ -1,11 +1,15 @@
 import i18n, { type Resource } from 'i18next';
+import ChainedBackend from 'i18next-chained-backend';
+import HttpBackend from 'i18next-http-backend';
+import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next } from 'react-i18next';
-import draftTranslationEn from './en/draft.translation.json';
-import translationEn from './en/translation.json';
-import draftTranslationFi from './fi/draft.translation.json';
-import translationFi from './fi/translation.json';
-import draftTranslationSv from './sv/draft.translation.json';
-import translationSv from './sv/translation.json';
+
+import commonEn from './common/en.json';
+import commonFi from './common/fi.json';
+import commonSv from './common/sv.json';
+import ohjaajaEn from './ohjaaja/en.json';
+import ohjaajaFi from './ohjaaja/fi.json';
+import ohjaajaSv from './ohjaaja/sv.json';
 
 export type LangCode = 'fi' | 'sv' | 'en';
 export const supportedLanguageCodes: LangCode[] = ['fi', 'sv', 'en'];
@@ -17,24 +21,35 @@ export const langLabels = {
   sv: 'På svenska',
 };
 
-const resources: Resource = {
-  en: { translation: translationEn },
-  fi: { translation: translationFi },
-  sv: { translation: translationSv },
+const bundledResources: Record<string, Resource> = {
+  en: { common: commonEn, ohjaaja: ohjaajaEn },
+  fi: { common: commonFi, ohjaaja: ohjaajaFi },
+  sv: { common: commonSv, ohjaaja: ohjaajaSv },
 };
 
-i18n.use(initReactI18next).init({
-  lng: defaultLang,
-  supportedLngs: supportedLanguageCodes,
-  fallbackLng: defaultLang,
-  resources,
-  interpolation: {
-    escapeValue: false,
-  },
-});
-
-i18n.addResourceBundle('fi', 'translation', draftTranslationFi, true, true);
-i18n.addResourceBundle('en', 'translation', draftTranslationEn, true, true);
-i18n.addResourceBundle('sv', 'translation', draftTranslationSv, true, true);
+await i18n
+  .use(ChainedBackend)
+  .use(initReactI18next)
+  .init({
+    lng: defaultLang,
+    ns: ['ohjaaja', 'common'],
+    defaultNS: 'ohjaaja',
+    supportedLngs: supportedLanguageCodes,
+    fallbackLng: defaultLang,
+    preload: supportedLanguageCodes,
+    backend: {
+      backends: [HttpBackend, resourcesToBackend((lng: string, ns: string) => bundledResources[lng]?.[ns])],
+      backendOptions: [
+        {
+          loadPath: '/ohjaaja/i18n/{{ns}}/{{lng}}.json',
+        },
+      ],
+    },
+    interpolation: {
+      escapeValue: false,
+    },
+    returnEmptyString: false,
+    saveMissing: false,
+  });
 
 export default i18n;

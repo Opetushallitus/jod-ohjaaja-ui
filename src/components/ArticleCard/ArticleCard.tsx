@@ -49,7 +49,7 @@ export const ArticleCard = ({ article, variant, isLoggedIn }: ArticleCardProps) 
   const handleFavoriteClick = () => {
     if (!isLoggedIn) {
       showDialog({
-        title: t('login'),
+        title: t('common:login'),
         description: t('login-for-favorites'),
         footer: createLoginDialogFooter(t, loginLink, closeAllModals),
       });

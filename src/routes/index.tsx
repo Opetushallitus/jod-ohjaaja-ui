@@ -84,7 +84,7 @@ const profileLoginPageRoutes = supportedLanguageCodes.map(
       path: i18n.t('slugs.profile.login', { lng }),
       element: <LoginPage />,
       handle: {
-        title: i18n.t('login', { lng }),
+        title: i18n.t('common:login', { lng }),
       },
     }) as RouteObject,
 );
