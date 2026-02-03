@@ -8,7 +8,7 @@ export const createLoginDialogFooter = (t: (key: string) => string, loginLink: s
       <div className="flex gap-4 flex-1">
         <div className="flex gap-4 flex-1 justify-end">
           <Button
-            label={t('cancel')}
+            label={t('common:cancel')}
             variant="white"
             serviceVariant="ohjaaja"
             onClick={() => {
@@ -19,7 +19,7 @@ export const createLoginDialogFooter = (t: (key: string) => string, loginLink: s
             data-testid="login-dialog-cancel"
           />
           <Button
-            label={t('login')}
+            label={t('common:login')}
             variant="accent"
             serviceVariant="ohjaaja"
             linkComponent={getLinkTo(loginLink, { useAnchor: true })}

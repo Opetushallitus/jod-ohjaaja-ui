@@ -52,7 +52,7 @@ const CategoryMain = () => {
         items={breadcrumbItems}
         serviceVariant="ohjaaja"
         linkComponent={BreadcrumbLink}
-        ariaLabel={t('breadcrumb')}
+        ariaLabel={t('common:breadcrumb')}
       />
       <aside
         className="col-span-3 lg:row-start-2 lg:col-start-3 lg:col-span-1 print:hidden position-relative lg:position-static z-10 lg:z-auto h-[47px] lg:h-auto"

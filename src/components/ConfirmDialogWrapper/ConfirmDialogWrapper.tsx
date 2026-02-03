@@ -48,7 +48,7 @@ export const ConfirmDialogWrapper = ({
 }: ConfirmDialogWrapperProps) => {
   const { closeActiveModal, closeAllModals } = useModal();
   const { t } = useTranslation();
-  const defaultCancelText = t('cancel');
+  const defaultCancelText = t('common:cancel');
   const defaultConfirmText = title as string;
   const [loading, setLoading] = React.useState(false);
   // eslint-disable-next-line react/no-unstable-nested-components

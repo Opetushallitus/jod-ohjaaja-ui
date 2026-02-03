@@ -24,7 +24,7 @@ export const MainLayout = ({ children, navChildren, asideChildren, featuredConte
         items={breadcrumbItems}
         serviceVariant="ohjaaja"
         linkComponent={BreadcrumbLink}
-        ariaLabel={t('breadcrumb')}
+        ariaLabel={t('common:breadcrumb')}
       />
 
       {(navChildren || asideChildren || (lg && featuredContentChildren)) && (

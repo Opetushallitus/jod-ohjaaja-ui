@@ -11,8 +11,8 @@ export const sessionExpiredMiddleware: Middleware = {
       useAuthStore.getState().invalidate();
 
       useNoteStore.getState().setNote({
-        title: i18n.t('error-boundary.title'),
-        description: i18n.t('error-boundary.session-expired'),
+        title: i18n.t('common:error-boundary.title'),
+        description: i18n.t('common:error-boundary.session-expired'),
         variant: 'error',
       });
 

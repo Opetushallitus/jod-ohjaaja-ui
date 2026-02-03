@@ -1,11 +1,8 @@
-import i18n, { type Resource } from 'i18next';
+import i18n from 'i18next';
+import ChainedBackend from 'i18next-chained-backend';
+import HttpBackend from 'i18next-http-backend';
+import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next } from 'react-i18next';
-import draftTranslationEn from './en/draft.translation.json';
-import translationEn from './en/translation.json';
-import draftTranslationFi from './fi/draft.translation.json';
-import translationFi from './fi/translation.json';
-import draftTranslationSv from './sv/draft.translation.json';
-import translationSv from './sv/translation.json';
 
 export type LangCode = 'fi' | 'sv' | 'en';
 export const supportedLanguageCodes: LangCode[] = ['fi', 'sv', 'en'];
@@ -17,24 +14,28 @@ export const langLabels = {
   sv: 'På svenska',
 };
 
-const resources: Resource = {
-  en: { translation: translationEn },
-  fi: { translation: translationFi },
-  sv: { translation: translationSv },
-};
-
-i18n.use(initReactI18next).init({
-  lng: defaultLang,
-  supportedLngs: supportedLanguageCodes,
-  fallbackLng: defaultLang,
-  resources,
-  interpolation: {
-    escapeValue: false,
-  },
-});
-
-i18n.addResourceBundle('fi', 'translation', draftTranslationFi, true, true);
-i18n.addResourceBundle('en', 'translation', draftTranslationEn, true, true);
-i18n.addResourceBundle('sv', 'translation', draftTranslationSv, true, true);
+i18n
+  .use(ChainedBackend)
+  .use(initReactI18next)
+  .init({
+    lng: defaultLang,
+    ns: ['ohjaaja', 'common'],
+    defaultNS: 'ohjaaja',
+    supportedLngs: supportedLanguageCodes,
+    fallbackLng: defaultLang,
+    backend: {
+      backends: [HttpBackend, resourcesToBackend((lng: string, ns: string) => import(`./${ns}/${lng}.json`))],
+      backendOptions: [
+        {
+          loadPath: '/ohjaaja/i18n/{{ns}}/{{lng}}.json',
+        },
+      ],
+    },
+    interpolation: {
+      escapeValue: false,
+    },
+    returnEmptyString: false,
+    saveMissing: false,
+  });
 
 export default i18n;

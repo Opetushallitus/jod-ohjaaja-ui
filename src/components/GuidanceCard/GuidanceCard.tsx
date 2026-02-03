@@ -16,7 +16,7 @@ const GuidanceCard = () => {
       content={t('guidance-card.description')}
       buttonText={t('guidance-card.link-text')}
       backgroundColor="var(--ds-color-secondary-2-dark)"
-      icon={<JodOpenInNew ariaLabel={t('external-link')} />}
+      icon={<JodOpenInNew ariaLabel={t('common:external-link')} />}
     />
   );
 };
