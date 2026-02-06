@@ -12,6 +12,7 @@ import { LoaderData } from '@/routes/Home/loader';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { getMainCategoryPath } from '@/utils/navigation-paths';
 import { getLinkTo } from '@/utils/routeUtils';
+import { useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
@@ -21,6 +22,9 @@ const Home = () => {
     t,
     i18n: { language },
   } = useTranslation();
+
+  const { sm } = useMediaQueries();
+
   const { newestContent, mostViewedContent, bestMatchingContent } = useLoaderData<LoaderData>();
   const user = useAuthStore((state) => state.user);
   const isLoggedIn = !!user;
@@ -44,10 +48,14 @@ const Home = () => {
   // Rotate hero image weekly
   const heroSrc = React.useMemo(() => {
     const heroImages = [heroSrc1, heroSrc2, heroSrc3, heroSrc4];
-    // eslint-disable-next-line react-hooks/purity
     const weekNumber = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
     return heroImages[weekNumber % heroImages.length];
   }, []);
+
+  const heroHeight = React.useMemo(() => {
+    return window.innerHeight - 68;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.innerWidth]);
 
   return (
     <main id="jod-main" className="w-full max-w-(--breakpoint-xl) mx-auto" data-testid="home">
@@ -57,7 +65,8 @@ const Home = () => {
         src={heroSrc}
         alt=""
         role="none"
-        className="w-(--breakpoint-xl) sm:h-[617px] h-[calc(100vh-104px)] object-cover xl:object-[50%_50%] lg:object-[20%_50%] md:object-[41%_50%] sm:object-[44%_50%] object-[50%_50%] -z-10"
+        className="w-(--breakpoint-xl) sm:h-[617px] object-cover xl:object-[50%_50%] lg:object-[20%_50%] md:object-[41%_50%] sm:object-[44%_50%] object-[50%_50%] -z-10 pointer-events-none select-none touch-none"
+        style={sm ? undefined : { height: heroHeight }}
         data-testid="home-hero"
       />
 
