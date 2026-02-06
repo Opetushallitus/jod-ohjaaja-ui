@@ -1,17 +1,16 @@
 {
+  "access-content-later-content": "Som inloggad användare kan du spara tjänstens innehåll som favoriter, vilket gör det enklare att hitta och dela dem i framtiden.",
+  "access-content-later-title": "Vill du hitta detta innehåll senare?",
   "add-to-favorites": "Spara som favorit",
   "advisors-workspace": "Vägledarens profil",
-  "breadcrumb": "Synlig sökväg",
   "button-menu": {
     "close": "Stäng"
   },
-  "cancel": "Avbryt",
   "carousel": {
     "indicator": "Gå till sidan {{index}}",
     "next": "Nästa sida",
     "prev": "Föregående sida"
   },
-  "close-menu": "Stäng menyn",
   "comments": {
     "comment": {
       "delete": {
@@ -35,7 +34,6 @@
     "noComments": "Inga kommentarer ännu.",
     "title": "Kommentera innehållet"
   },
-  "competency-path-portal": "Kompetensstigens ingångssida",
   "content-details": {
     "additional-content": "Ytterligare information:",
     "date-created": "Skapad:",
@@ -46,82 +44,13 @@
     "article-count_other": "{{count}} innehåll",
     "show-more": "Visa mer"
   },
-  "delete": "Ta bort",
-  "error-boundary": {
-    "session-expired": "Din session har gått ut. Du måste logga in på tjänsten igen eller använda tjänsten utan att logga in.",
-    "title": "Ett fel inträffade",
-    "unexpected": "Ett oväntat fel har inträffat. Detta kan bero på avbrott i nätförbindelsen eller ett fel i tjänsten."
-  },
-  "external-link": "Länken leder dig utanför tjänsten",
-  "feedback": {
-    "cancel": "Avbryt",
-    "email-label": "E-postadress",
-    "error": "Sändningen av responsen misslyckades. Försök på nytt senare.",
-    "footer-handled": {
-      "ohjaajan": "Vägledar-delen på UF-centret,",
-      "osaamispolkuni": "Min kompetensväg i Utbildningsstyrelsen,",
-      "tietopalvelu": "Informationstjänsten och hela tjänsten på undervisnings- och kulturministeriet."
-    },
-    "footer-info-1": "När du skickar respons sparar vi tjänstens statusinformation, såsom från vilken vy responsen har skickats. Statusinformationen vidarebefordras inte till tredje part. Responsen används för att utveckla tjänsten och frivilligt lämnade kontaktuppgifter för att svara på respons.",
-    "footer-info-heading": "Beroende på vilken del det gäller behandlas responsen enligt följande:",
-    "footer-privacy-heading": "Läs mer i responshanterarnas dataskyddsbeskrivningar:",
-    "intro-1": "Ge respons på tjänsten eller rapportera tekniska problem. På så sätt hjälper du oss att utveckla tjänsterna.",
-    "intro-2": "Om du rapporterar en störning skulle det hjälpa oss om du berättar om den så noggrant som möjligt.",
-    "intro-privacy": "Skriv inga personuppgifter i responsen, såsom personbeteckning eller hälsouppgifter. Vänligen fyll i alla fält så att vi kan behandla din respons.",
-    "linkHrefs": {
-      "keha": "https://tyomarkkinatori.fi/sv/information-om-tjansten/dataskydds-och-registerbeskrivning-och-anvandarvillkor/dataskyddsbeskrivningar",
-      "okm": "https://okm.fi/sv/information-om-webbtjanst",
-      "oph": "https://www.oph.fi/sv/integritetspolicy"
-    },
-    "links": {
-      "keha": "Dataskyddsbeskrivning för UF-centrets kund- och rådgivningstjänster",
-      "okm": "Undervisnings- och kulturministeriets dataskyddsbeskrivning",
-      "oph": "Utbildningsstyrelsens integritetspolicy"
-    },
-    "message-label": "Respons",
-    "section-question": "Vilken del gäller din respons?",
-    "sections": {
-      "koko-palvelu": "Hela tjänsten eller annan respons",
-      "ohjaajan-osio": "Vägledar-delen",
-      "osaamispolkuni": "Min kompetensstig",
-      "tietopalvelu": "Informationstjänsten"
-    },
-    "submit": "Skicka",
-    "success": "Tack för din respons! Din respons hjälper oss att förbättra tjänsten.",
-    "title": "Ge respons",
-    "type-question": "Vilken typ av respons vill du ge?",
-    "types": {
-      "kehitysehdotus": "Utvecklingsförslag",
-      "kehu": "Beröm",
-      "moite": "Kritik",
-      "vika": "Tekniskt fel eller problem"
-    },
-    "wants-contact": "Jag vill bli kontaktad."
-  },
-  "footer": {
-    "cooperation-title": "Kompetensstigen har genomförts i samarbete med följande parter",
-    "copyright": "© Kompetensstigen 2026. Alla rättigheter förbehålls.",
-    "feedback-button-label": "Ge respons",
-    "feedback-content": "Vi vill utveckla Kompetensstigen så att den bättre motsvarar just dina behov. Ge oss respons, vi beaktar den i utvecklingsarbetet.",
-    "feedback-title": "Berätta för oss vad du tyckte om tjänsten!",
-    "funding-title": "Finansieringen av projekten kommer från EU:s facilitet för återhämtning och resiliens (RRF)",
-    "logos": {
-      "keha-label": "UF-centret",
-      "okm-label": "Undervisnings- och kulturministeriet",
-      "oph-label": "Utbildningsstyrelsen",
-      "tem-label": "Arbets- och näringsministeriet"
-    },
-    "more-info-description": "Undrar du på dataskyddet eller hur artificiell intelligens används i tjänsten? Nedan hittar du en sammanställning av allmän information om tjänsten och dess användning.",
-    "more-info-links": {
-      "about-service": "Information om tjänsten",
-      "accessibility": "Information om tillgänglighet",
-      "ai-usage": "Information om användningen av artificiell intelligens",
-      "data-sources": "Informationskällor",
-      "privacy-and-cookies": "Dataskyddsbeskrivning och cookies"
-    },
-    "more-info-title": "Vill du veta mer om Kompetensstigen?"
-  },
   "front-page": "Vägledar-delen",
+  "guidance-card": {
+    "description": "Hitta samlade tjänster som stöder val av karriär och utbildning. Genom att filtrera tjänstelistan hittar du snabbt tjänster för olika behov.",
+    "link-text": "Gå till tjänsten",
+    "link-url": "https://www.suomi.fi/amne/vaglednings-och-radgivningstjanster",
+    "title": "Väglednings- och rådgivningstjänster"
+  },
   "home": {
     "best-matching": "Du kanske är intresserad av",
     "card-1-content": "I Vägledar-delen hittar du stöd för ditt arbete i karriärvägledning i form av information, metoder och material som stärker din egen kompetens. Tjänsten sammanställer innehåll från olika informationskällor.",
@@ -142,45 +71,20 @@
     "popular-content": "Populärt innehåll"
   },
   "in-this-section": "I det här avsnittet lärde du dig",
-  "language-selection": "Språk",
   "link-copied": "Länk kopierad",
   "link-copy-failed": "Länken kunde inte kopieras",
+  "login-for-favorites": "Logga in på Vägledar-delen för att spara favoriter och komma åt dem senare.",
   "log-in-to-the-service-button": "Logga in på Vägledar-delen",
   "log-in-to-the-service-content": "Genom att logga in kan du diskutera innehållet, spara favoriter och anpassa det visade innehållet efter dina intressen. Tjänsten använder Suomi.fi-autentisering.",
-  "login": "Logga in",
-  "login-for-favorites": "Logga in på Vägledar-delen för att spara favoriter och komma åt dem senare.",
-  "logout": "Logga ut",
-  "menu": "Meny",
+  "log-in-to-the-service-title": "Få ut mer av vägledningssektionen genom att logga in",
   "navigation": {
-    "external": {
-      "tietopalvelu": {
-        "description": "Information till stöd för beslutsfattande",
-        "label": "Informationstjänsten"
-      },
-      "title": "Övriga uppsättningar av innehåll",
-      "yksilo": {
-        "description": "Personlig kompetensstig",
-        "label": "Min kompetensstig"
-      }
-    },
-    "extra": {
-      "palveluhakemisto": {
-        "label": "Väglednings- och rådgivningstjänster",
-        "url": "https://www.suomi.fi/amne/vaglednings-och-radgivningstjanster"
-      },
-      "title": "Stöd för reflektion"
-    },
     "menu-section-title": "Information och material för vägledning"
   },
-  "no-match": {},
-  "open-submenu": "Öppna undermenyn",
-  "osaamispolku": "Min kompetensstig",
   "pagination": {
     "next": "Gå till följande sida",
     "page": "Sidan {{page}}",
     "previous": "Gå till föregående sida"
   },
-  "print": "Skriv ut",
   "profile": {
     "details": {
       "ingress": "Du kan komplettera dina uppgifter nedan. Det är frivilligt att fylla i uppgifterna. När du kommenterar innehållet i Vägledar-delen kan andra användare av tjänsten inte se ditt namn eller dina andra uppgifter.",
@@ -272,8 +176,6 @@
   },
   "recently-watched-contents": "Senast visat innehåll",
   "remove-from-favorites": "Radera från favoriter",
-  "required": "obligatorisk",
-  "return-home": "Återgå till förstasidan",
   "search": {
     "button": "Sök",
     "description": "Du kan söka efter innehåll i Vägledar-delen med hjälp av friordssökning. Du kan påverka resultatens synlighet genom att välja det nyckelord som intresserar dig i listan.",
@@ -293,20 +195,10 @@
     "article-count_zero": "Inga sökresultat"
   },
   "service-name": "Vägledar-delen",
-  "share": "Dela",
-  "show-all": "Visa alla",
-  "skiplinks": {
-    "main": "Gå till huvudinnehållet"
-  },
   "slugs": {
-    "about-service": "information-om-tjansten",
-    "accessibility": "information-om-tillganglighet",
-    "ai-usage": "information-om-anvandningen-av-artificiell-intelligens",
     "article": {
       "short": "artikkeli/:articleErc"
     },
-    "data-sources": "datakallor",
-    "privacy-and-cookies": "dataskyddsbeskrivning-och-cookies",
     "profile": {
       "details": "egna-uppgifter",
       "favorites": "favoriter",
@@ -346,6 +238,7 @@
   },
   "suggest-new-content-for-the-service": "Föreslå nytt innehåll i tjänsten",
   "suggest-new-content-for-the-service-button": "Föreslå innehåll",
+  "suggest-new-content-for-the-service-content": "Har du använt en vägledningsmetod som inte finns i tjänsten?\nFöreslå innehåll som du tycker saknas i tjänsten.",
   "toast": {
     "add-comment-failed": "Det gick inte att lägga till kommentaren.",
     "add-comment-success": "Kommentar tillagd.",
@@ -367,5 +260,8 @@
     "report-comment-success": "Kommentaren har raderats.",
     "update-default-failed": "Uppdateringen misslyckades.",
     "update-default-success": "Uppdateringen lyckades."
-  }
+  },
+  "want-to-see-interesting-content-button": "Min profil",
+  "want-to-see-interesting-content-content": "Välj nyckelord som intresserar dig i din profil så erbjuder vi dig mer riktat innehåll.",
+  "want-to-see-interesting-content-title": "Vill du se innehåll som intresserar dig?"
 }

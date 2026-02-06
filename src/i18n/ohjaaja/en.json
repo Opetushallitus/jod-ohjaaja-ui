@@ -1,17 +1,16 @@
 {
+  "access-content-later-content": "As a logged-in user, you can save service content as favorites, making it easier to find and share them in the future.",
+  "access-content-later-title": "Want to find this content later?",
   "add-to-favorites": "Save as favourite",
   "advisors-workspace": "Guidance practitioner profile",
-  "breadcrumb": "Trail of breadcrumbs",
   "button-menu": {
     "close": "Close"
   },
-  "cancel": "Cancel",
   "carousel": {
     "indicator": "Go to page {{index}}",
     "next": "Next page",
     "prev": "Previous page"
   },
-  "close-menu": "Close the menu",
   "comments": {
     "comment": {
       "delete": {
@@ -35,7 +34,6 @@
     "noComments": "No comments yet.",
     "title": "Comment on content"
   },
-  "competency-path-portal": "Front page of Competency Path",
   "content-details": {
     "additional-content": "Inquiries",
     "date-created": "Created:",
@@ -46,82 +44,13 @@
     "article-count_other": "{{count}} contents",
     "show-more": "Show more"
   },
-  "delete": "Delete",
-  "error-boundary": {
-    "session-expired": "Your session has expired. You must log in to the service again or use the service without logging in.",
-    "title": "An error occurred",
-    "unexpected": "An unexpected error occurred. This may be due to a loss of network connection or a service error."
-  },
-  "external-link": "The link leads outside the service",
-  "feedback": {
-    "cancel": "Cancel",
-    "email-label": "E-mail address",
-    "error": "Failed to send feedback. Please try again later.",
-    "footer-handled": {
-      "ohjaajan": "Guidance practitioners section at the KEHA centre,",
-      "osaamispolkuni": "My Competency Path at the Finnish National Agency for Education,",
-      "tietopalvelu": "Information service, entire service and other feedback at the Ministry of Education and Culture."
-    },
-    "footer-info-1": "When you send feedback, we save the service status information, such as the view from which the feedback was sent. Status information will not be disclosed to third parties. Feedback is used for service development and voluntarily provided contact information is used to respond to feedback.",
-    "footer-info-heading": "Depending on the section, the feedback is processed as follows:",
-    "footer-privacy-heading": "Read more in the privacy statements of the feedback processors:",
-    "intro-1": "Please provide feedback on the service or report a technical problem. This way, you will help us in service development.",
-    "intro-2": "If you report an incident, it would help us if you were as specific as possible.",
-    "intro-privacy": "Do not enter any personal information, such as personal identity number or health information, in the feedback. Please fill in all the fields so that we can process your feedback.",
-    "linkHrefs": {
-      "keha": "https://tyomarkkinatori.fi/en/about-the-service/privacy-statements-and-terms-of-use/privacy-statements",
-      "okm": "https://okm.fi/en/data-protection-and-processing-of-personal-data",
-      "oph": "https://www.oph.fi/en/privacy-policy"
-    },
-    "links": {
-      "keha": "KEHA Centre's customer and advisory services privacy statement",
-      "okm": "Ministry of Education and Culture's privacy statement",
-      "oph": "Finnish National Agency for Education’s data protection policy"
-    },
-    "message-label": "Feedback",
-    "section-question": "Which section does your feedback concern?",
-    "sections": {
-      "koko-palvelu": "Entire service or other feedback",
-      "ohjaajan-osio": "Guidance practitioner section",
-      "osaamispolkuni": "My Competency Path",
-      "tietopalvelu": "Information service"
-    },
-    "submit": "Submit",
-    "success": "Thank you for your feedback! Your feedback will help us to improve the service.",
-    "title": "Give feedback",
-    "type-question": "What kind of feedback would you like to give?",
-    "types": {
-      "kehitysehdotus": "Development proposal",
-      "kehu": "Praise",
-      "moite": "Complaint",
-      "vika": "Technical fault or problem"
-    },
-    "wants-contact": "I want to be contacted."
-  },
-  "footer": {
-    "cooperation-title": "The Competency Path has been implemented in cooperation by the following parties",
-    "copyright": "© Competency Path 2026. All rights reserved.",
-    "feedback-button-label": "Give feedback",
-    "feedback-content": "We want to develop Competency Path to better meet your specific needs. Give us feedback and we will take it into account in our development work.",
-    "feedback-title": "Tell us what you thought about the service!",
-    "funding-title": "The project is funded by the EU's Recovery and Resilience Facility (RRF).",
-    "logos": {
-      "keha-label": "KEHA Centre",
-      "okm-label": "Ministry of Education and Culture",
-      "oph-label": "Finnish National Agency for Education",
-      "tem-label": "Ministry of Economic Affairs and Employment"
-    },
-    "more-info-description": "Are you worried about data protection or the use of artificial intelligence in the service? Below, you will find a summary of general information about the service and its use.",
-    "more-info-links": {
-      "about-service": "About the service",
-      "accessibility": "Information on accessibility",
-      "ai-usage": "About the use of artificial intelligence",
-      "data-sources": "Data sources",
-      "privacy-and-cookies": "Privacy policy and cookies"
-    },
-    "more-info-title": "Do you want to know more about Competency Path?"
-  },
   "front-page": "Guidance practitioner section",
+  "guidance-card": {
+    "description": "Find a collection of services that support career and education choices. By filtering the service list, you can quickly find services for different needs.",
+    "link-text": "Go to service",
+    "link-url": "https://www.suomi.fi/topic/guidance-and-counselling-services",
+    "title": "Guidance and counseling services"
+  },
   "home": {
     "best-matching": "You may also be interested in",
     "card-1-content": "In the guidance practitioner section, you will find information, methods and materials to strengthen your own competence to support your career guidance work. The service compiles content from different information sources.",
@@ -142,53 +71,20 @@
     "popular-content": "Popular content"
   },
   "in-this-section": "In this section",
-  "language-selection": "Language",
   "link-copied": "Link copied",
   "link-copy-failed": "Failed to copy link",
+  "login-for-favorites": "Log in to the guidance practitioner section to save your favourites and access them later.",
   "log-in-to-the-service-button": "Log in to the guidance practitioner section",
   "log-in-to-the-service-content": "After logging in, you can join discussions on the content, save favourites and adapt the content shown according to your interests. The service uses Suomi.fi authentication.",
   "log-in-to-the-service-title": "Log in to the guidance practitioner section",
-  "login": "Log in",
-  "login-for-favorites": "Log in to the guidance practitioner section to save your favourites and access them later.",
-  "logout": "Log out",
-  "menu": "Menu",
   "navigation": {
-    "external": {
-      "tietopalvelu": {
-        "description": "Information to support decision-making",
-        "label": "Information service"
-      },
-      "title": "Other content entities",
-      "yksilo": {
-        "description": "Personal competency path",
-        "label": "My Competency Path"
-      }
-    },
-    "extra": {
-      "palveluhakemisto": {
-        "label": "Guidance and counselling services",
-        "url": "https://www.suomi.fi/topic/guidance-and-counselling-services"
-      },
-      "title": "Support for reflection"
-    },
     "menu-section-title": "Information and materials for guidance"
   },
-  "no-match": {
-    "description": "The page you are looking for could not be found or the link has expired. Check the address, open the menu or go to the front page.",
-    "go-home": "Go to the front page",
-    "title": "Oops! Page could not be found"
-  },
-  "note": {
-    "close": "Close"
-  },
-  "open-submenu": "Open submenu",
-  "osaamispolku": "Competency Path",
   "pagination": {
     "next": "Go to next page",
     "page": "Page {{page}}",
     "previous": "Go to previous page"
   },
-  "print": "Print",
   "profile": {
     "details": {
       "ingress": "You can complete your information below. Completing the information is optional. When commenting on the content of the guidance practitioner section, your name or other information will not be visible to other users of the service.",
@@ -280,8 +176,6 @@
   },
   "recently-watched-contents": "Last viewed content",
   "remove-from-favorites": "Remove from favourites",
-  "required": "mandatory",
-  "return-home": "Return to the front page",
   "search": {
     "button": "Search",
     "description": "You can search for the content of the Guidance practitioner section using the search function. You can influence the visibility of the results by selecting a keyword that interests you from the list.",
@@ -301,20 +195,10 @@
     "article-count_zero": "No results found"
   },
   "service-name": "Guidance practitioner section",
-  "share": "Share",
-  "show-all": "Show all",
-  "skiplinks": {
-    "main": "Go to main content"
-  },
   "slugs": {
-    "about-service": "about-service",
-    "accessibility": "about-accessibility",
-    "ai-usage": "about-the-use-of-ai",
     "article": {
       "short": "artikkeli/:articleErc"
     },
-    "data-sources": "data-sources",
-    "privacy-and-cookies": "privacy-notice-and-cookies",
     "profile": {
       "details": "personal-info",
       "favorites": "favourites",
@@ -376,5 +260,8 @@
     "report-comment-success": "Comment reported.",
     "update-default-failed": "Failed to update.",
     "update-default-success": "Update succeeded."
-  }
+  },
+  "want-to-see-interesting-content-button": "My profile",
+  "want-to-see-interesting-content-content": "Select keywords that interest you in your profile and we will offer you more targeted content.",
+  "want-to-see-interesting-content-title": "Want to see content that interests you?"
 }
