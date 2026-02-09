@@ -68,7 +68,7 @@ export const FeedbackModal = ({ isOpen, onClose, section, area, language }: Feed
   const { sm } = useMediaQueries();
 
   const { control, register, watch, reset } = useForm({
-    mode: 'onBlur',
+    mode: 'onChange',
     resolver: zodResolver(Feedback),
     defaultValues: {
       section,
