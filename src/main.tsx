@@ -7,6 +7,14 @@ import './i18n/config';
 import './index.css';
 import { getRoutes } from './routes';
 import { loadNavigation } from './services/navigation-loader';
+import { loadNotifications } from './utils/notifications';
+
+try {
+  await loadNotifications();
+} catch (_) {
+  // It's safe to ignore this error.
+  // If notification loading fails, the app will continue to work without notifications.
+}
 
 const root = createRoot(document.getElementById('root')!);
 
