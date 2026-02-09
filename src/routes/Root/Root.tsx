@@ -6,7 +6,10 @@ import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
 import i18n, { LangCode, langLabels, supportedLanguageCodes } from '@/i18n/config';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useNoteStore } from '@/stores/useNoteStore';
+import { getNotifications } from '@/utils/notifications';
+import { getLinkTo } from '@/utils/routeUtils';
 import {
+  Button,
   Chatbot,
   Footer,
   LanguageButton,
@@ -114,6 +117,29 @@ const Root = () => {
   }, [addPermanentNote, addTemporaryNote, clearNote, note, t]);
 
   const showServiceName = sm || !searchInputVisible;
+
+  React.useEffect(() => {
+    getNotifications().forEach((notification) => {
+      addTemporaryNote(() => ({
+        id: notification.id,
+        title: notification.title[language as LangCode],
+        description: notification.description[language as LangCode],
+        variant: notification.variant,
+        readMoreComponent: notification.link ? (
+          <Button
+            size="sm"
+            variant="white"
+            label={notification.link.label[language as LangCode]}
+            linkComponent={getLinkTo(notification.link.url[language as LangCode], {
+              useAnchor: true,
+              target: '_blank',
+            })}
+          />
+        ) : undefined,
+        isCollapsed: false,
+      }));
+    });
+  }, [addTemporaryNote, t, language]);
 
   return (
     <>
