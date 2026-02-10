@@ -11,21 +11,25 @@
     "next": "Seuraava sivu",
     "prev": "Edellinen sivu"
   },
+  "category-links": {
+    "title": "Voit tutustua sisältöihin seuraavissa osioissa"
+  },
   "comments": {
     "comment": {
       "delete": {
         "cancelText": "Peruuta",
         "confirmText": "Poista kommentti",
         "description": "Toimintoa ei voi peruuttaa",
-        "label": "Poista kommentti",
+        "label": "Poista",
         "title": "Haluatko varmasti poistaa kommentin?"
       },
+      "own": "Oma kommentti",
       "placeholder": "Kirjoita kommentti",
       "report": {
         "cancelText": "Peruuta",
         "confirmText": "Vahvista ilmianto",
         "description": "Tieto asiattomasta sisällöstä välitetään sivuston ylläpitäjälle.",
-        "label": "Ilmianna asiaton kommentti",
+        "label": "Ilmianna",
         "title": "Ilmianna asiaton kommentti"
       },
       "send": "Lähetä"
@@ -278,8 +282,5 @@
   },
   "want-to-see-interesting-content-button": "Omat tiedot",
   "want-to-see-interesting-content-content": "Valitse omissa tiedoissasi sinua kiinnostavia asiasanoja ja tarjoamme sinulle paremmin kohdistettuja sisältöjä.",
-  "want-to-see-interesting-content-title": "Haluatko nähdä sinua kiinnostavaa sisältöä?",
-  "category-links": {
-    "title": "Voit tutustua sisältöihin seuraavissa osioissa"
-  }
+  "want-to-see-interesting-content-title": "Haluatko nähdä sinua kiinnostavaa sisältöä?"
 }

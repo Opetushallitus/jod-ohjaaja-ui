@@ -11,21 +11,25 @@
     "next": "Next page",
     "prev": "Previous page"
   },
+  "category-links": {
+    "title": "You can explore the content in the following sections"
+  },
   "comments": {
     "comment": {
       "delete": {
         "cancelText": "Cancel",
         "confirmText": "Delete comment",
         "description": "This action cannot be undone",
-        "label": "Delete comment",
+        "label": "Delete",
         "title": "Are you sure you want to delete the comment?"
       },
+      "own": "Own comment",
       "placeholder": "Write a comment",
       "report": {
         "cancelText": "Cancel",
         "confirmText": "Confirm report",
         "description": "The website administrator will be notified of inappropriate content.",
-        "label": "Report inappropriate comment",
+        "label": "Report",
         "title": "Report inappropriate comment"
       },
       "send": "Submit"
@@ -278,8 +282,5 @@
   },
   "want-to-see-interesting-content-button": "My profile",
   "want-to-see-interesting-content-content": "Select keywords that interest you in your profile and we will offer you more targeted content.",
-  "want-to-see-interesting-content-title": "Want to see content that interests you?",
-  "category-links": {
-    "title": "You can explore the content in the following sections"
-  }
+  "want-to-see-interesting-content-title": "Want to see content that interests you?"
 }

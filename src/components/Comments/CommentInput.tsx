@@ -25,16 +25,16 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
   }, [currentComment]);
 
   return (
-    <div className="flex gap-5 pt-5 border-t-border-gray border-t" data-testid="comment-input">
+    <div className="flex gap-5 pt-7 pl-6 border-t-border-gray border-t" data-testid="comment-input">
       <div>
         <PatternAvatar seed={userId} size={32} />
       </div>
       {addingComment ? (
-        <div className="flex-grow flex justify-center" data-testid="comment-input-loading">
+        <div className="grow flex justify-center" data-testid="comment-input-loading">
           <Spinner size={16} color="accent" />
         </div>
       ) : (
-        <div className="flex flex-grow">
+        <div className="flex grow">
           <Textarea
             className="mr-3"
             placeholder={t('comments.comment.placeholder')}
@@ -55,7 +55,8 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
             variant="accent"
             serviceVariant="ohjaaja"
             disabled={currentComment.trim().length < 1}
-            className="self-end mb-2"
+            className="self-center mb-2"
+            size="sm"
             onClick={() => {
               const comment = textareaRef.current?.value;
               if (comment) {
