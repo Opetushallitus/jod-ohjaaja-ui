@@ -23,11 +23,12 @@ describe('Comment', () => {
   it('renders comment with correct content', () => {
     render(<Comment {...mockProps} />);
     expect(screen.getByText('Test comment content')).toBeInTheDocument();
-    expect(screen.getByText('01.01.2023 klo 12:00')).toBeInTheDocument();
+    expect(screen.getByText('01.01.2023 12:00')).toBeInTheDocument();
   });
 
   it('shows delete button for own comments', () => {
     render(<Comment {...mockProps} isOwnComment={true} />);
+    expect(screen.getByText('01.01.2023 12:00 | comments.comment.own')).toBeInTheDocument();
     expect(screen.getByLabelText('comments.comment.delete.label')).toBeInTheDocument();
   });
 

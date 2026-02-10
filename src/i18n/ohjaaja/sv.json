@@ -11,21 +11,25 @@
     "next": "Nästa sida",
     "prev": "Föregående sida"
   },
+  "category-links": {
+    "title": "Du kan bekanta dig med innehållet i följande avsnitt"
+  },
   "comments": {
     "comment": {
       "delete": {
         "cancelText": "Avbryt",
         "confirmText": "Radera kommentar",
         "description": "Åtgärden kan inte avbrytas",
-        "label": "Radera kommentar",
+        "label": "Radera",
         "title": "Är du säker på att du vill radera kommentaren?"
       },
+      "own": "Egen kommentar",
       "placeholder": "Skriv en kommentar",
       "report": {
         "cancelText": "Avbryt",
         "confirmText": "Bekräfta anmälan",
         "description": "Information om olämpligt innehåll vidarebefordras till webbplatsadministratören.",
-        "label": "Rapportera en osaklig kommentar",
+        "label": "Rapportera",
         "title": "Rapportera en osaklig kommentar"
       },
       "send": "Skicka"
@@ -278,8 +282,5 @@
   },
   "want-to-see-interesting-content-button": "Min profil",
   "want-to-see-interesting-content-content": "Välj nyckelord som intresserar dig i din profil så erbjuder vi dig mer riktat innehåll.",
-  "want-to-see-interesting-content-title": "Vill du se innehåll som intresserar dig?",
-  "category-links": {
-    "title": "Du kan bekanta dig med innehållet i följande avsnitt"
-  }
+  "want-to-see-interesting-content-title": "Vill du se innehåll som intresserar dig?"
 }

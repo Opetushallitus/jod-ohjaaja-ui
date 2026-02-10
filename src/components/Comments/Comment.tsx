@@ -19,26 +19,30 @@ const Button = ({
   dataTestid,
   label,
   icon,
+  danger = false,
 }: {
   onClick: () => void;
   dataTestid: string;
   label: string;
   icon: React.ReactNode;
+  danger?: boolean;
 }) => (
   <button
     aria-label={label}
     type="button"
     onClick={onClick}
-    className="group flex flex-row justify-center items-center gap-1 cursor-pointer"
+    className={`flex cursor-pointer items-center gap-2 select-none group text-button-sm px-5 min-h-7 rounded-[30px] outline-offset-2 disabled:cursor-not-allowed bg-bg-gray-2 focus-visible:outline-secondary-1-dark  ${danger ? 'text-alert-text-2 hover:text-underline' : 'text-secondary-gray hover:text-secondary-1-dark active:text-secondary-1-dark-2 focus-visible:text-secondary-1-dark'} `}
     data-testid={dataTestid}
   >
-    <span className="text-button-md group-hover:text-accent group-hover:underline">{label}</span>
     <div
       aria-hidden="true"
-      className="bg-secondary-5-light-3 rounded-full flex items-center justify-center select-none size-7"
+      className={`${danger ? 'text-[#E35750]' : 'text-secondary-gray group-hover:text-secondary-1-dark group-active:text-secondary-1-dark-2 group-focus-visible:text-secondary-1-dark'}`}
     >
       {icon}
     </div>
+    <span className="text-center group-hover:underline group-active:underline group-focus-visible:underline">
+      {label}
+    </span>
   </button>
 );
 
@@ -54,68 +58,67 @@ const Comment = ({
 }: CommentProps) => {
   const { t } = useTranslation();
 
-  const formattedTimestamp = new Date(timestamp)
-    .toLocaleString('fi-FI', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    })
-    .replace(',', ' klo')
-    .replace(/(\d{2})\.(\d{2})$/, '$1:$2');
+  const date = new Date(timestamp);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const formattedTimestamp = `${day}.${month}.${year} ${hours}:${minutes}`;
+
   return (
-    <div ref={ref} className="grid gap-2" data-testid={`comment-${commentId}`}>
-      <div className="flex gap-3">
-        <div className="">
-          <PatternAvatar seed={author} size={32} />
-        </div>
-        <div className="rounded-lg bg-white flex-grow p-5 grid gap-2">
-          <div className="text-button-sm text-secondary-gray" data-testid="comment-timestamp">
-            {formattedTimestamp}
+    <div ref={ref} data-testid={`comment-${commentId}`}>
+      <div className="grid grid-cols-[48px_1fr_48px] items-start">
+        <div className="pt-3">{!isOwnComment && <PatternAvatar seed={author} size={32} />}</div>
+        <div className="grid gap-3">
+          <div className="rounded-lg bg-white grow p-5 grid gap-2">
+            <div className="text-body-sm text-secondary-gray font-arial" data-testid="comment-timestamp">
+              {formattedTimestamp} {isOwnComment ? `| ${t('comments.comment.own')}` : ''}
+            </div>
+            <div className="text-body-md text-primary-gray whitespace-pre-line" data-testid="comment-text">
+              {comment}
+            </div>
           </div>
-          <div className="text-body-sm text-primary-gray whitespace-pre-line" data-testid="comment-text">
-            {comment}
+          <div className="flex justify-end pr-4">
+            {isOwnComment ? (
+              <ConfirmDialog
+                title={t('comments.comment.delete.title')}
+                description={t('comments.comment.delete.description')}
+                onConfirm={() => deleteComment(commentId)}
+                cancelText={t('comments.comment.delete.cancelText')}
+                confirmText={t('comments.comment.delete.confirmText')}
+              >
+                {(showDeleteModal) => (
+                  <Button
+                    icon={<DeleteIcon />}
+                    onClick={showDeleteModal}
+                    label={t('comments.comment.delete.label')}
+                    dataTestid="comment-delete"
+                    danger
+                  />
+                )}
+              </ConfirmDialog>
+            ) : (
+              <ConfirmDialog
+                title={t('comments.comment.report.title')}
+                description={t('comments.comment.report.description')}
+                onConfirm={() => reportComment(commentId)}
+                cancelText={t('comments.comment.report.cancelText')}
+                confirmText={t('comments.comment.report.confirmText')}
+              >
+                {(showReportModal) => (
+                  <Button
+                    icon={<JodBlock />}
+                    onClick={showReportModal}
+                    label={t('comments.comment.report.label')}
+                    dataTestid="comment-report"
+                  />
+                )}
+              </ConfirmDialog>
+            )}
           </div>
         </div>
-      </div>
-      <div className="flex justify-end">
-        {isOwnComment ? (
-          <ConfirmDialog
-            title={t('comments.comment.delete.title')}
-            description={t('comments.comment.delete.description')}
-            onConfirm={() => deleteComment(commentId)}
-            cancelText={t('comments.comment.delete.cancelText')}
-            confirmText={t('comments.comment.delete.confirmText')}
-          >
-            {(showDeleteModal) => (
-              <Button
-                icon={<DeleteIcon />}
-                onClick={showDeleteModal}
-                label={t('comments.comment.delete.label')}
-                dataTestid="comment-delete"
-              />
-            )}
-          </ConfirmDialog>
-        ) : (
-          <ConfirmDialog
-            title={t('comments.comment.report.title')}
-            description={t('comments.comment.report.description')}
-            onConfirm={() => reportComment(commentId)}
-            cancelText={t('comments.comment.report.cancelText')}
-            confirmText={t('comments.comment.report.confirmText')}
-          >
-            {(showReportModal) => (
-              <Button
-                icon={<JodBlock />}
-                onClick={showReportModal}
-                label={t('comments.comment.report.label')}
-                dataTestid="comment-report"
-              />
-            )}
-          </ConfirmDialog>
-        )}
+        <div className="flex pt-3 justify-end">{isOwnComment && <PatternAvatar seed={author} size={32} />}</div>
       </div>
     </div>
   );
