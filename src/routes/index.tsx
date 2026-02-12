@@ -3,10 +3,10 @@ import i18n, { supportedLanguageCodes } from '@/i18n/config';
 import { ContentDetails, getContentDetailsLoader } from '@/routes/ContentDetails';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { NavigationTreeItem } from '@/types/cms-navigation';
-import { RouteObject, replace } from 'react-router';
+import { replace, RouteObject } from 'react-router';
 import { CategoryMain, getMainCategoryContentLoader } from './CategoryMain';
 import { Home, homeLoader } from './Home';
-import { Details, Favorites, Preferences, Profile, profileDetailsLoader } from './Profile';
+import { Comments, Details, Favorites, ownCommentsLoader, Preferences, Profile, profileDetailsLoader } from './Profile';
 
 import { ModalProvider } from '@/hooks/useModal';
 import { NoteStackProvider } from '@jod/design-system';
@@ -54,6 +54,15 @@ export const profileRoutes = supportedLanguageCodes.map(
           handle: {
             title: i18n.t('profile.favorites.title', { lng }),
           },
+        },
+        {
+          id: `{slugs.profile.comments}|${lng}`,
+          path: i18n.t('slugs.profile.comments', { lng }),
+          element: <Comments />,
+          handle: {
+            title: i18n.t('profile.comments.title', { lng }),
+          },
+          loader: withOhjaajaContext(ownCommentsLoader, true),
         },
         {
           id: `{slugs.profile.preferences}|${lng}`,

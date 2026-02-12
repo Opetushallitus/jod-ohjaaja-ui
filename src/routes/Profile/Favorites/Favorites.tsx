@@ -1,6 +1,5 @@
-import { MainLayout } from '@/components';
+import { CategoryList, EmptyStateWithCategoryLinks, MainLayout, SortMenu } from '@/components';
 import { ButtonMenu } from '@/components/ButtonMenu/ButtonMenu';
-import { CategoryList } from '@/components/CategoryList/CategoryList';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import TagFilterList from '@/routes/Search/TagFilterList';
@@ -10,15 +9,13 @@ import { useAuthStore } from '@/stores/useAuthStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { type Category, type StructuredContent } from '@/types/cms-content';
 import { isSort, type Sort } from '@/types/sort';
-import { filterArticlesByTags, getKeywords, groupArticlesByCategory, sortArticles } from '@/utils/cms';
-import { getMainCategory, getMainCategoryPath } from '@/utils/navigation-paths';
-import { EmptyState, RadioButton, RadioButtonGroup, useMediaQueries } from '@jod/design-system';
-import { JodArrowRight, JodSettings, JodSort } from '@jod/design-system/icons';
+import { filterArticlesByTags, getKeywords, groupArticlesByCategory, sortSuosikkiArticles } from '@/utils/cms';
+import { useMediaQueries } from '@jod/design-system';
+import { JodSettings } from '@jod/design-system/icons';
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Link } from 'react-router';
 import { useShallow } from 'zustand/react/shallow';
 
 const Favorites = () => {
@@ -35,6 +32,14 @@ const Favorites = () => {
 
   const [sort, setSort] = React.useState<Sort>('a-z');
   const suosikit = useSuosikitStore(useShallow((state) => state.suosikit));
+
+  const sortOptions = [
+    { label: t('profile.favorites.sort.a-z'), value: 'a-z' },
+    { label: t('profile.favorites.sort.z-a'), value: 'z-a' },
+    { label: t('profile.favorites.sort.latest'), value: 'latest' },
+    { label: t('profile.favorites.sort.oldest'), value: 'oldest' },
+    { label: t('profile.favorites.sort.latest-added'), value: 'latest-added-to-favorites' },
+  ];
 
   React.useEffect(() => {
     const navigationTreeItems = getNavigationTreeItems().filter((item) => item.lng === language);
@@ -71,14 +76,14 @@ const Favorites = () => {
     if (!articlesByCategory) return {};
     if (selectedTagIds.length === 0)
       return Object.fromEntries(
-        Object.entries(articlesByCategory).map(([k, v]) => [k, sortArticles(v, sort, suosikit)]),
+        Object.entries(articlesByCategory).map(([k, v]) => [k, sortSuosikkiArticles(v, sort, suosikit)]),
       );
 
     return Object.entries(articlesByCategory).reduce(
       (acc, [category, articles]) => {
         const filteredArticles = filterArticlesByTags(articles, selectedTagIds);
         if (filteredArticles.length > 0) {
-          acc[category] = sortArticles(filteredArticles, sort, suosikit);
+          acc[category] = sortSuosikkiArticles(filteredArticles, sort, suosikit);
         }
         return acc;
       },
@@ -141,40 +146,12 @@ const Favorites = () => {
               {t('profile.favorites.favorite-count', { count: suosikit.length })}
             </p>
             {visibleArticlesByCategory && (
-              <ButtonMenu
-                triggerIcon={<JodSort size={18} />}
-                triggerLabel={t('profile.favorites.sort.label')}
-                className="justify-items-start lg:justify-items-end relative"
-                menuClassName="left-0 lg:right-0"
-                data-testid="favorites-sort-menu"
-              >
-                <div className="bg-bg-gray-2 px-6 pb-3 pt-0 rounded">
-                  <RadioButtonGroup
-                    label={t('profile.favorites.sort.label')}
-                    value={sort}
-                    onChange={handleSelectSort}
-                    hideLabel
-                  >
-                    <RadioButton label={t('profile.favorites.sort.a-z')} value="a-z" data-testid="favorites-sort-a-z" />
-                    <RadioButton label={t('profile.favorites.sort.z-a')} value="z-a" data-testid="favorites-sort-z-a" />
-                    <RadioButton
-                      label={t('profile.favorites.sort.latest')}
-                      value="latest"
-                      data-testid="favorites-sort-latest"
-                    />
-                    <RadioButton
-                      label={t('profile.favorites.sort.oldest')}
-                      value="oldest"
-                      data-testid="favorites-sort-oldest"
-                    />
-                    <RadioButton
-                      label={t('profile.favorites.sort.latest-added')}
-                      value="latest-added-to-favorites"
-                      data-testid="favorites-sort-latest-added"
-                    />
-                  </RadioButtonGroup>
-                </div>
-              </ButtonMenu>
+              <SortMenu
+                label={t('profile.favorites.sort.label')}
+                sort={sort}
+                onSortChange={handleSelectSort}
+                options={sortOptions}
+              />
             )}
             {!lg && visibleArticlesByCategory && (
               <ButtonMenu
@@ -210,33 +187,10 @@ const Favorites = () => {
               />
             ))
           ) : (
-            <div className="flex flex-col gap-5">
-              <EmptyState text={t('profile.favorites.no-favorites')} />
-
-              <Link
-                to={`/${language}/${getMainCategoryPath(language, 0)}`}
-                className="flex items-center gap-2 text-accent text-button-md"
-                data-testid="favorites-link-category-0"
-              >
-                {getMainCategory(language, 0)?.title ?? ''} <JodArrowRight size={20} />
-              </Link>
-
-              <Link
-                to={`/${language}/${getMainCategoryPath(language, 1)}`}
-                className="flex items-center gap-2 text-accent text-button-md"
-                data-testid="favorites-link-category-1"
-              >
-                {getMainCategory(language, 1)?.title ?? ''} <JodArrowRight size={20} />
-              </Link>
-
-              <Link
-                to={`/${language}/${getMainCategoryPath(language, 2)}`}
-                className="flex items-center gap-2 text-accent text-button-md"
-                data-testid="favorites-link-category-2"
-              >
-                {getMainCategory(language, 2)?.title ?? ''} <JodArrowRight size={20} />
-              </Link>
-            </div>
+            <EmptyStateWithCategoryLinks
+              emptyStateText={t('profile.favorites.no-favorites')}
+              testIdPrefix="favorites"
+            />
           )}
         </div>
         {!lg && <SuggestNewContent />}

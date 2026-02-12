@@ -175,6 +175,26 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/api/artikkeli/kommentit/omat': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Finds all articles commented by the authenticated user with details
+     * @description Returns article ERCs with comment count and timestamp of latest comment
+     */
+    get: operations['artikkelinKommenttiFindOmatKommentoidutArtikkelit'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/api/artikkeli/katselu/katsotuimmat': {
     parameters: {
       query?: never;
@@ -341,6 +361,37 @@ export interface components {
     };
     SivuDtoArtikkelinKommenttiDto: {
       sisalto: components['schemas']['ArtikkelinKommenttiDto'][];
+      /**
+       * Format: int64
+       * @example 30
+       */
+      maara: number;
+      /**
+       * Format: int32
+       * @example 3
+       */
+      sivuja: number;
+    };
+    KommentoidutArtikkelitDto: {
+      artikkeliErc: string;
+      /**
+       * Format: date-time
+       * @description Timestamp of the most recent comment
+       */
+      uusinKommenttiAika: string;
+      /**
+       * Format: date-time
+       * @description Timestamp of the oldest comment
+       */
+      vanhinKommenttiAika: string;
+      /**
+       * Format: int32
+       * @description Number of comments on this article
+       */
+      kommenttiMaara: number;
+    };
+    SivuDtoKommentoidutArtikkelitDto: {
+      sisalto: components['schemas']['KommentoidutArtikkelitDto'][];
       /**
        * Format: int64
        * @example 30
@@ -701,6 +752,29 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['SivuDtoString'];
+        };
+      };
+    };
+  };
+  artikkelinKommenttiFindOmatKommentoidutArtikkelit: {
+    parameters: {
+      query: {
+        sivu: number;
+        koko: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['SivuDtoKommentoidutArtikkelitDto'];
         };
       };
     };

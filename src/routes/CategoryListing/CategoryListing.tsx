@@ -1,12 +1,11 @@
 import { GuidanceCard, MainLayout } from '@/components';
-import { ContentList } from '@/components/ContentList/ContentList';
+import { ContentList, ContentListSort } from '@/components/ContentList/ContentList';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
 import { getCategoryContent } from '@/services/cms-article-api';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { type StructuredContentPage } from '@/types/cms-content';
-import { type Sort } from '@/types/sort';
 import { tidyClasses as tc } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -23,7 +22,7 @@ const CategoryListing = () => {
   const user = useAuthStore((state) => state.user);
   const isLoggedIn = !!user;
   const [visibleItemCount, setVisibleItemCount] = React.useState(VISIBLE_ITEM_COUNT);
-  const [sortOrder, setSortOrder] = React.useState<Omit<Sort, 'latest-added-to-favorites'>>('latest');
+  const [sortOrder, setSortOrder] = React.useState<ContentListSort>('latest');
   const [categoryContent, setCategoryContent] = React.useState<StructuredContentPage | null>(null);
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -36,6 +35,10 @@ const CategoryListing = () => {
     setIsLoading(true);
     fetchCategoryContent();
   }, [categoryId, sortOrder, language]);
+
+  React.useEffect(() => {
+    setVisibleItemCount(VISIBLE_ITEM_COUNT);
+  }, [categoryId, language]);
 
   const categoryRoute = useCategoryRoute(navigationItemType);
   const title = categoryRoute?.handle?.title;
@@ -104,7 +107,7 @@ const CategoryListing = () => {
             isLoading={isLoading}
             isLoggedIn={isLoggedIn}
             sort={sortOrder}
-            handleSelectSort={setSortOrder}
+            handleSelectSort={(value) => setSortOrder(value as ContentListSort)}
           />
         </section>
       </div>

@@ -1,12 +1,14 @@
 export { ArticleCard } from './ArticleCard/ArticleCard';
 export { ArticleCarousel } from './ArticleCarousel/ArticleCarousel';
 export { ButtonMenu } from './ButtonMenu/ButtonMenu';
+export { SortMenu, type SortOption } from './ButtonMenu/SortMenu';
 export { CategoryList } from './CategoryList/CategoryList';
 export { default as Comment } from './Comments/Comment';
 export { CommentInput } from './Comments/CommentInput';
 export { default as Comments } from './Comments/Comments';
 export { ConfirmDialogWrapper, type ConfirmDialogWrapperProps } from './ConfirmDialogWrapper/ConfirmDialogWrapper';
 export { ContentList } from './ContentList/ContentList';
+export { EmptyStateWithCategoryLinks } from './EmptyStateWithCategoryLinks/EmptyStateWithCategoryLinks';
 export { FeatureCard } from './FeatureCard/FeatureCard';
 export { FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as GuidanceCard } from './GuidanceCard/GuidanceCard';

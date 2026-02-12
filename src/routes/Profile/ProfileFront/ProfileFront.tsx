@@ -35,6 +35,7 @@ const ProfileFront = () => {
             <ListItem>{t('profile.front.list-1-item-2')}</ListItem>
             <ListItem>{t('profile.front.list-1-item-3')}</ListItem>
             <ListItem>{t('profile.front.list-1-item-4')}</ListItem>
+            <ListItem>{t('profile.front.list-1-item-5')}</ListItem>
           </ul>
         </div>
         <div className="font-arial">

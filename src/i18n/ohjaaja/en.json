@@ -86,6 +86,19 @@
     "previous": "Go to previous page"
   },
   "profile": {
+    "comments": {
+      "comment-count": "You have commented on {{count}} content.",
+      "description": "The content you have commented on can be found here. Comments are made anonymously. <br><br>The comments are visible to all users. Do not share personal or other private information in the comments.",
+      "no-comments": "You have not commented on any content yet.",
+      "sort": {
+        "a-z": "Alphabetically A - Ö",
+        "label": "Sort",
+        "latest": "Newest comments first",
+        "oldest": "Oldest comments first",
+        "z-a": "Alphabetically Ö - A"
+      },
+      "title": "My comments"
+    },
     "details": {
       "ingress": "You can complete your information below. Completing the information is optional. When commenting on the content of the guidance practitioner section, your name or other information will not be visible to other users of the service.",
       "interest": {
@@ -115,15 +128,15 @@
       "favorite-count_one": "You have saved one favourite.",
       "favorite-count_other": "You have saved {{count}} favourites.",
       "filter": "Filter",
-      "no-favorites": "You have not saved any favourites yet. You can explore the content in the following sections:",
+      "no-favorites": "You have not saved any favourites yet.",
       "no-tags": "You can filter your saved content based on keywords.",
       "sort": {
-        "a-z": "Alphabetically A-Ö",
+        "a-z": "Alphabetically A - Ö",
         "label": "Sort",
         "latest": "Newest to oldest",
         "latest-added": "Last saved",
         "oldest": "Oldest to newest",
-        "z-a": "Alphabetically Ö-A"
+        "z-a": "Alphabetically Ö - A"
       },
       "title": "Favourites"
     },
@@ -134,6 +147,7 @@
       "list-1-item-2": "save content of the guidance practitioner section as favourites by clicking the heart icon",
       "list-1-item-3": "view and manage your favourites",
       "list-1-item-4": "download or delete your profile.",
+      "list-1-item-5": "see the content you have commented on",
       "list-2-item-1": "send your suggestions for content to be added to the service",
       "list-2-item-2": "discuss with other guidance practitioners in content-related comment chains.",
       "logged-in-features-intro": "Once logged in, you can also",
@@ -200,6 +214,7 @@
       "short": "artikkeli/:articleErc"
     },
     "profile": {
+      "comments": "my-comments",
       "details": "personal-info",
       "favorites": "favourites",
       "front": "front-page",
@@ -263,5 +278,8 @@
   },
   "want-to-see-interesting-content-button": "My profile",
   "want-to-see-interesting-content-content": "Select keywords that interest you in your profile and we will offer you more targeted content.",
-  "want-to-see-interesting-content-title": "Want to see content that interests you?"
+  "want-to-see-interesting-content-title": "Want to see content that interests you?",
+  "category-links": {
+    "title": "You can explore the content in the following sections"
+  }
 }

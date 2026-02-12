@@ -233,7 +233,7 @@ export const filterArticlesByTags = (articles: StructuredContent[], tagIds: stri
  * @param suosikit The user's favorite articles - optional
  * @returns The sorted articles
  */
-export const sortArticles = (
+export const sortSuosikkiArticles = (
   articles: StructuredContent[],
   sort: Sort,
   suosikit?: components['schemas']['SuosikkiDto'][],
@@ -261,6 +261,47 @@ export const sortArticles = (
         const aDate = suosikit.find((suosikki) => suosikki.artikkeliErc === a.externalReferenceCode)?.luotu;
         const bDate = suosikit.find((suosikki) => suosikki.artikkeliErc === b.externalReferenceCode)?.luotu;
         return new Date(bDate ?? Date.now()).getTime() - new Date(aDate ?? Date.now()).getTime();
+      });
+    default:
+      return articles;
+  }
+};
+
+export const sortKommenttiArticles = (
+  articles: StructuredContent[],
+  sort: Sort,
+  kommentit?: components['schemas']['KommentoidutArtikkelitDto'][],
+) => {
+  switch (sort) {
+    case 'a-z':
+      return articles.sort((a, b) => {
+        return a.title.localeCompare(b.title);
+      });
+    case 'z-a':
+      return articles.sort((a, b) => {
+        return b.title.localeCompare(a.title);
+      });
+    case 'latest':
+      if (!kommentit) return articles;
+      return articles.sort((a, b) => {
+        const aDate = kommentit.find(
+          (kommentti) => kommentti.artikkeliErc === a.externalReferenceCode,
+        )?.uusinKommenttiAika;
+        const bDate = kommentit.find(
+          (kommentti) => kommentti.artikkeliErc === b.externalReferenceCode,
+        )?.uusinKommenttiAika;
+        return new Date(bDate ?? Date.now()).getTime() - new Date(aDate ?? Date.now()).getTime();
+      });
+    case 'oldest':
+      if (!kommentit) return articles;
+      return articles.sort((a, b) => {
+        const aDate = kommentit.find(
+          (kommentti) => kommentti.artikkeliErc === a.externalReferenceCode,
+        )?.vanhinKommenttiAika;
+        const bDate = kommentit.find(
+          (kommentti) => kommentti.artikkeliErc === b.externalReferenceCode,
+        )?.vanhinKommenttiAika;
+        return new Date(aDate ?? Date.now()).getTime() - new Date(bDate ?? Date.now()).getTime();
       });
     default:
       return articles;
