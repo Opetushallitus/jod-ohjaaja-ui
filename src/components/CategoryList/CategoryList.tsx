@@ -37,12 +37,12 @@ export const CategoryList: React.FC<CategoryListProps> = ({ category, articles, 
           />
         ))}
       </div>
-      <div className="flex flex-row pt-4 justify-center" data-testid="category-list-footer">
+      <div className="flex flex-row pl-2 pt-7 justify-start" data-testid="category-list-footer">
         {showMoreButton && (
           <Button
             onClick={handleShowMore}
             label={t('content-list.show-more')}
-            variant="white"
+            variant="plain"
             serviceVariant="ohjaaja"
             data-testid="category-list-show-more"
           />

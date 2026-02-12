@@ -20,6 +20,25 @@ export const getArtikkelinKommentit = async (artikkeliErc: string, sivu: number)
   };
 };
 
+export const getOmatArtikkelinKommentit = async (sivu: number) => {
+  const { data, error } = await client.GET(`/api/artikkeli/kommentit/omat`, {
+    params: {
+      query: {
+        sivu,
+        koko: 50,
+      },
+    },
+  });
+  if (!error) {
+    return data;
+  }
+  return {
+    sisalto: [],
+    maara: 0,
+    sivuja: 0,
+  };
+};
+
 export const addArtikkelinKommentti = async (artikkeliErc: string, kommentti: string) => {
   const { data, error } = await client.POST(`/api/artikkeli/kommentit`, {
     body: {

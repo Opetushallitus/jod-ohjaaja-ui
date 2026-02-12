@@ -1,4 +1,4 @@
-import { tidyClasses } from '@jod/design-system';
+import { tidyClasses as tc } from '@jod/design-system';
 import { JodClose } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -49,11 +49,13 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
   }, [menuRef]);
 
   return (
-    <div className={tidyClasses(`relative ${className}`)} data-testid="button-menu">
+    <div className={tc(`relative ${className}`)} data-testid="button-menu">
       <button
         type="button"
         onClick={handleOpenMenu}
-        className="group flex flex-row justify-center items-center gap-4 cursor-pointer"
+        className={tc(
+          `cursor-pointer flex items-center gap-x-3 text-nowrap rounded-2xl px-5 py-3 text-button-sm hover:underline bg-bg-gray-2 ${className}`,
+        )}
         id={buttonId}
         aria-label={triggerLabel}
         aria-expanded={menuOpen}
@@ -61,16 +63,12 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
         data-testid="button-menu-trigger"
         ref={buttonRef}
       >
-        <span className="text-button-md group-hover:text-accent group-hover:underline"> {triggerLabel}</span>
-        <div aria-hidden="true" className="bg-white rounded-full flex items-center justify-center select-none size-7">
-          {triggerIcon}
-        </div>
+        {triggerIcon}
+        {triggerLabel}
       </button>
       {menuOpen && (
         <div
-          className={tidyClasses(
-            `bg-bg-gray-2 p-5 rounded absolute z-50 -translate-y-7 min-w-[250px] ${menuClassName}`,
-          )}
+          className={tc(`bg-bg-gray-2 p-6 rounded absolute z-50 top-0 w-max max-w-[350px] ${menuClassName}`)}
           id={menuId}
           role="region"
           ref={menuRef}
@@ -78,7 +76,7 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
           data-testid="button-menu-popup"
         >
           <div className="flex flex-row items-center justify-between mb-5">
-            <p className="text-body-sm tex" aria-hidden>
+            <p className="text-body-sm" aria-hidden>
               {triggerLabel}
             </p>
             <button

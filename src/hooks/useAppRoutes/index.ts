@@ -13,6 +13,10 @@ export const useAppRoutes = () => {
       path: t('slugs.profile.favorites'),
     },
     {
+      name: t('profile.comments.title'),
+      path: t('slugs.profile.comments'),
+    },
+    {
       name: t('profile.preferences.title'),
       path: t('slugs.profile.preferences'),
     },

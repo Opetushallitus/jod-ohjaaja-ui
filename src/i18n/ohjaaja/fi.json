@@ -86,6 +86,19 @@
     "previous": "Siirry edelliselle sivulle"
   },
   "profile": {
+    "comments": {
+      "comment-count": "Olet jättänyt kommentteja {{count}} sisältöön.",
+      "description": "Kommentoimasi sisällöt löytyvät täältä. Kommenttisi näkyvät nimettömänä. <br><br>Muista, että kommenttisi näkyvät kaikille käyttäjille. Älä jaa kommenteissa henkilötietojasi tai muuta yksityistä tietoa.",
+      "no-comments": "Et ole vielä kommentoinut sisältöjä",
+      "sort": {
+        "a-z": "Aakkosittain A - Ö",
+        "label": "Järjestä",
+        "latest": "Uusin kommentti ensin",
+        "oldest": "Vanhin kommentti ensin",
+        "z-a": "Aakkosittain Ö - A"
+      },
+      "title": "Omat kommentit"
+    },
     "details": {
       "ingress": "Voit täydentää omia tietojasi alla. Tietojen täydentäminen on vapaaehtoista. Kommentoidessasi Ohjaajan osion sisältöjä, nimesi tai muut tietosi eivät näy palvelun muille käyttäjille.",
       "interest": {
@@ -115,15 +128,15 @@
       "favorite-count_one": "Olet tallentanut yhden suosikin.",
       "favorite-count_other": "Olet tallentanut {{count}} suosikkia.",
       "filter": "Suodata",
-      "no-favorites": "Et ole vielä tallentanut suosikkeja. Voit tutustua sisältöihin seuraavissa osioissa:",
+      "no-favorites": "Et ole vielä tallentanut suosikkeja.",
       "no-tags": "Voit suodattaa tallentamiasi sisältöjä asiasanoihin perustuen.",
       "sort": {
-        "a-z": "Aakkosittain A–Ö",
+        "a-z": "Aakkosittain A - Ö",
         "label": "Järjestä",
         "latest": "Uusimmasta vanhimpaan",
         "latest-added": "Viimeksi tallennettu",
         "oldest": "Vanhimmasta uusimpaan",
-        "z-a": "Aakkosittain Ö–A"
+        "z-a": "Aakkosittain Ö - A"
       },
       "title": "Suosikit"
     },
@@ -134,6 +147,7 @@
       "list-1-item-2": "tallentaa Ohjaajan osion sisältöjä suosikeiksi sydänikonia painamalla",
       "list-1-item-3": "nähdä ja hallinnoida suosikkejasi",
       "list-1-item-4": "ladata tai poistaa profiilisi.",
+      "list-1-item-5": "nähdä sisällöt, joita olet kommentoinut",
       "list-2-item-1": "lähettää ehdotuksesi palveluun lisättävästä sisällöstä",
       "list-2-item-2": "keskustella muiden ohjaajien kanssa sisältöjen yhteydessä olevissa kommenttiketjuissa.",
       "logged-in-features-intro": "Kirjautuneena voit myös",
@@ -200,6 +214,7 @@
       "short": "artikkeli/:articleErc"
     },
     "profile": {
+      "comments": "omat-kommentit",
       "details": "omat-tiedot",
       "favorites": "suosikit",
       "front": "etusivu",
@@ -263,5 +278,8 @@
   },
   "want-to-see-interesting-content-button": "Omat tiedot",
   "want-to-see-interesting-content-content": "Valitse omissa tiedoissasi sinua kiinnostavia asiasanoja ja tarjoamme sinulle paremmin kohdistettuja sisältöjä.",
-  "want-to-see-interesting-content-title": "Haluatko nähdä sinua kiinnostavaa sisältöä?"
+  "want-to-see-interesting-content-title": "Haluatko nähdä sinua kiinnostavaa sisältöä?",
+  "category-links": {
+    "title": "Voit tutustua sisältöihin seuraavissa osioissa"
+  }
 }
