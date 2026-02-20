@@ -80,6 +80,7 @@ const Root = () => {
   const user = useAuthStore((state) => state.user);
 
   const isProfileActive = !!useMatch(`/${language}/${t('slugs.profile.index')}/*`);
+  const isOnSearchPage = useMatch(`/${language}/${t('slugs.search')}/*`);
 
   const logout = () => {
     logoutForm.current?.submit();
@@ -192,7 +193,9 @@ const Root = () => {
           serviceBarVariant="ohjaaja"
           serviceBarTitle={showServiceName ? t('service-name') : ' '}
           serviceBarContent={
-            <SearchBar searchInputVisible={searchInputVisible} setSearchInputVisible={setSearchInputVisible} />
+            !isOnSearchPage && (
+              <SearchBar searchInputVisible={searchInputVisible} setSearchInputVisible={setSearchInputVisible} />
+            )
           }
           translations={{
             showAllNotesLabel: t('common:show-all'),
