@@ -135,12 +135,12 @@
       "no-favorites": "Du har ännu inte sparat några favoriter.",
       "no-tags": "Du kan filtrera det innehåll du har sparat baserat på nyckelord.",
       "sort": {
-        "a-z": "Alfabetiskt A-Ö",
+        "a-z": "Alfabetiskt A - Ö",
         "label": "Sortera",
         "latest": "Från senaste till äldsta",
         "latest-added": "Senast sparad",
         "oldest": "Från äldsta till senaste",
-        "z-a": "Alfabetiskt Ö-A"
+        "z-a": "Alfabetiskt Ö - A"
       },
       "title": "Favoriter"
     },
@@ -150,8 +150,8 @@
       "list-1-item-1": "lägga till dina uppgifter så att vi kan betjäna dig bättre",
       "list-1-item-2": "spara innehåll som favoriter i Vägledar-delen genom att trycka på hjärtikonen",
       "list-1-item-3": "se och hantera dina favoriter",
-      "list-1-item-4": "ladda ner eller radera din profil.",
-      "list-1-item-5": "se det innehåll du har kommenterat",
+      "list-1-item-4": "ladda ner eller radera din profil",
+      "list-1-item-5": "se det innehåll du har kommenterat.",
       "list-2-item-1": "skicka ditt förslag på innehåll som borde läggas till i tjänsten",
       "list-2-item-2": "diskutera med andra vägledare i kommentarskedjan som finns i anslutning till innehållet.",
       "logged-in-features-intro": "Som inloggad kan du även",

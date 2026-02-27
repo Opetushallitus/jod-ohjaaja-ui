@@ -24,7 +24,7 @@
         "title": "Haluatko varmasti poistaa kommentin?"
       },
       "own": "Oma kommentti",
-      "placeholder": "Kirjoita kommentti",
+      "placeholder": "Kommentoi",
       "report": {
         "cancelText": "Peruuta",
         "confirmText": "Vahvista ilmianto",
@@ -92,7 +92,7 @@
   "profile": {
     "comments": {
       "comment-count": "Olet jättänyt kommentteja {{count}} sisältöön.",
-      "description": "Kommentoimasi sisällöt löytyvät täältä. Kommenttisi näkyvät nimettömänä. <br><br>Muista, että kommenttisi näkyvät kaikille käyttäjille. Älä jaa kommenteissa henkilötietojasi tai muuta yksityistä tietoa.",
+      "description": "Kommentoimasi sisällöt löytyvät täältä. Kommenttisi näkyvät nimettöminä. <br><br>Muista, että kommenttisi näkyvät kaikille käyttäjille. Älä jaa kommenteissa henkilötietojasi tai muuta yksityistä tietoa.",
       "no-comments": "Et ole vielä kommentoinut sisältöjä",
       "sort": {
         "a-z": "Aakkosittain A - Ö",
@@ -150,8 +150,8 @@
       "list-1-item-1": "lisätä omia tietojasi, jotta voimme palvella sinua paremmin",
       "list-1-item-2": "tallentaa Ohjaajan osion sisältöjä suosikeiksi sydänikonia painamalla",
       "list-1-item-3": "nähdä ja hallinnoida suosikkejasi",
-      "list-1-item-4": "ladata tai poistaa profiilisi.",
-      "list-1-item-5": "nähdä sisällöt, joita olet kommentoinut",
+      "list-1-item-4": "ladata tai poistaa profiilisi",
+      "list-1-item-5": "nähdä sisällöt, joita olet kommentoinut.",
       "list-2-item-1": "lähettää ehdotuksesi palveluun lisättävästä sisällöstä",
       "list-2-item-2": "keskustella muiden ohjaajien kanssa sisältöjen yhteydessä olevissa kommenttiketjuissa.",
       "logged-in-features-intro": "Kirjautuneena voit myös",
