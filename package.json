@@ -24,7 +24,7 @@
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^5.2.2",
     "@jod/design-system": "https://github.com/Opetushallitus/jod-design-system/releases/download/rel-20260311-2/jod-design-system-0.0.0.tgz",
-    "dompurify": "^3.3.1",
+    "dompurify": "^3.3.2",
     "i18next": "^25.7.4",
     "i18next-http-backend": "^3.0.2",
     "openapi-fetch": "^0.16.0",
