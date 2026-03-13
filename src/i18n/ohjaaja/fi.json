@@ -196,6 +196,7 @@
   "remove-from-favorites": "Poista suosikeista",
   "search": {
     "button": "Hae",
+    "clear": "Tyhjennä",
     "description": "Voit hakea Ohjaajan osion sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan.",
     "filter": "Suodata ({{count}})",
     "global-placeholder": "Hae Ohjaajan osioista",
