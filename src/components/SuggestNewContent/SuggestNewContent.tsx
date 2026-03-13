@@ -18,6 +18,7 @@ export const SuggestNewContent = () => {
   return isLoggedIn ? (
     <FeatureCard
       onClick={handleOpenModal}
+      buttonOpensModal
       buttonText={t('suggest-new-content-for-the-service-button')}
       level="h2"
       title={t('suggest-new-content-for-the-service')}
