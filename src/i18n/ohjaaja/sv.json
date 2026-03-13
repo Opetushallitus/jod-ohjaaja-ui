@@ -196,6 +196,7 @@
   "remove-from-favorites": "Radera från favoriter",
   "search": {
     "button": "Sök",
+    "clear": "Rensa",
     "description": "Du kan söka efter innehåll i Vägledar-delen med hjälp av friordssökning. Du kan påverka resultatens synlighet genom att välja det nyckelord som intresserar dig i listan.",
     "filter": "Filtrera ({{count}})",
     "global-placeholder": "Sök i Vägledar-delen",
