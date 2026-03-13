@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@axe-core/react": "^4.11.1",
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^10.0.1",
     "@lavamoat/allow-scripts": "^3.4.1",
     "@lavamoat/preinstall-always-fail": "^2.1.1",
     "@singlestore/eslint-plugin-react-hooks-disable-import": "^1.0.2",
