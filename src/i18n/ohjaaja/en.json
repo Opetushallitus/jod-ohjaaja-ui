@@ -196,6 +196,7 @@
   "remove-from-favorites": "Remove from favourites",
   "search": {
     "button": "Search",
+    "clear": "Clear",
     "description": "You can search for the content of the Guidance practitioner section using the search function. You can influence the visibility of the results by selecting a keyword that interests you from the list.",
     "filter": "Filter ({{count}})",
     "global-placeholder": "Search the sections",

@@ -58,7 +58,7 @@ export const SearchBar = ({ searchInputVisible, setSearchInputVisible }: SearchB
 
   return (
     !hideSearch && (
-      <div className="print:hidden" data-testid="searchbar">
+      <div className="print:hidden mb-2" data-testid="searchbar">
         {showSearchInput ? searchForm : toggleSearchButton}
       </div>
     )
