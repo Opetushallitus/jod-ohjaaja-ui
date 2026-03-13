@@ -5,6 +5,7 @@ import React from 'react';
 type LinkProps = {
   linkComponent: LinkComponent;
   buttonText: string;
+  buttonOpensModal?: never;
   onClick?: never;
   hideIcon?: boolean;
   icon?: React.ReactNode;
@@ -14,6 +15,7 @@ type ClickProps = {
   linkComponent?: never;
   onClick: () => void;
   buttonText: string;
+  buttonOpensModal?: boolean;
   hideIcon?: boolean;
   icon?: React.ReactNode;
 };
@@ -22,6 +24,7 @@ type StaticProps = {
   linkComponent?: never;
   onClick?: never;
   buttonText?: never;
+  buttonOpensModal?: never;
   hideIcon?: never;
   icon?: never;
 };
@@ -47,6 +50,7 @@ export const FeatureCard = ({
   className,
   linkComponent,
   buttonText,
+  buttonOpensModal,
   onClick,
   hideIcon = false,
   icon = <JodArrowRight aria-hidden />,
@@ -104,6 +108,7 @@ export const FeatureCard = ({
           aria-labelledby={`${headingId} ${contentId}`}
           className="w-fit"
           data-testid="feature-card-button"
+          ariaHaspopup={buttonOpensModal ? 'dialog' : undefined}
         />
       ) : null}
     </div>
