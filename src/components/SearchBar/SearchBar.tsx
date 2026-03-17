@@ -40,7 +40,14 @@ export const SearchBar = ({ searchInputVisible, setSearchInputVisible }: SearchB
     }, 300);
   };
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const showSearchInput = sm || searchInputVisible;
+
+  React.useEffect(() => {
+    if (searchInputVisible && !sm) {
+      inputRef.current?.focus();
+    }
+  }, [searchInputVisible, sm]);
 
   const searchForm = (
     <form
@@ -49,7 +56,7 @@ export const SearchBar = ({ searchInputVisible, setSearchInputVisible }: SearchB
       onSubmit={handleSearch}
       data-testid="searchbar-form"
     >
-      <SearchInput onChange={handleInputChange} value={searchValue} />
+      <SearchInput ref={inputRef} onChange={handleInputChange} value={searchValue} />
       <SearchButton form="search" isSearching={isSearching} />
     </form>
   );
