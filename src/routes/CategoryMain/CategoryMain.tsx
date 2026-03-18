@@ -48,12 +48,14 @@ const CategoryMain = () => {
       className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-9 pt-11 sm:px-6 print:p-0"
       data-testid="category-main"
     >
-      <Breadcrumb
-        items={breadcrumbItems}
-        serviceVariant="ohjaaja"
-        linkComponent={BreadcrumbLink}
-        ariaLabel={t('common:breadcrumb')}
-      />
+      <div className="col-span-3">
+        <Breadcrumb
+          items={breadcrumbItems}
+          serviceVariant="ohjaaja"
+          linkComponent={BreadcrumbLink}
+          ariaLabel={t('common:breadcrumb')}
+        />
+      </div>
       <aside
         className="col-span-3 lg:row-start-2 lg:col-start-3 lg:col-span-1 print:hidden position-relative lg:position-static z-10 lg:z-auto h-[47px] lg:h-auto"
         data-testid="category-main-aside"
