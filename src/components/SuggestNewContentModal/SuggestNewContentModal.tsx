@@ -1,6 +1,6 @@
 import { client } from '@/api/client';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Accordion, Button, InputField, Modal, Textarea } from '@jod/design-system';
+import { Accordion, Button, InputField, Modal, Textarea, useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import {
   FieldErrors,
@@ -28,6 +28,7 @@ interface SuggestNewContentModalProps {
 
 export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentModalProps) => {
   const { t } = useTranslation();
+  const { sm } = useMediaQueries();
   const formId = React.useId();
   const methods = useForm<SuggestNewContentFormModel>({
     mode: 'onBlur',
@@ -64,6 +65,8 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
     <Modal
       name={t('suggest-new-content.title')}
       open={isOpen}
+      topSlot={<h2 className="text-hero-mobile text-black sm:text-hero">{t('suggest-new-content.title')}</h2>}
+      fullWidthContent
       content={
         <SuggestNewContentForm
           onClose={handleClose}
@@ -83,6 +86,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
             onClick={handleClose}
             className="whitespace-nowrap"
             data-testid="suggest-new-content.cancel"
+            size={sm ? 'lg' : 'sm'}
           />
           <Button
             form={formId}
@@ -92,6 +96,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
             className="whitespace-nowrap"
             disabled={!isValid || isSubmitting}
             data-testid="suggest-new-content.send"
+            size={sm ? 'lg' : 'sm'}
           />
         </div>
       }
@@ -141,9 +146,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
   }
 
   return (
-    <div>
-      <h2 className="mb-4 text-hero-mobile text-black sm:mb-5 sm:text-hero">{t('suggest-new-content.title')}</h2>
-
+    <div className="max-w-modal-content box-content px-5 md:px-9">
       <div className="flex flex-col gap-5 mb-5 text-body-md-mobile sm:text-body-md font-arial">
         <p>{t('suggest-new-content.description')}</p>
         <Accordion
@@ -219,7 +222,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
           </div>
 
           <hr className="h-1 bg-border-gray text-border-gray mb-7" />
-          <div className="sm:text-body-md text-body-md-mobile">
+          <div className="sm:text-body-md text-body-md-mobile mb-5 sm:mb-9">
             <p>{t('suggest-new-content.footer-info-1')}</p>
             <br />
             <p>
