@@ -20,12 +20,14 @@ export const MainLayout = ({ children, navChildren, asideChildren, featuredConte
       className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-9 pt-11 sm:px-6 print:flex print:p-0 auto-rows-max"
       data-testid="main-layout"
     >
-      <Breadcrumb
-        items={breadcrumbItems}
-        serviceVariant="ohjaaja"
-        linkComponent={BreadcrumbLink}
-        ariaLabel={t('common:breadcrumb')}
-      />
+      <div className="col-span-3">
+        <Breadcrumb
+          items={breadcrumbItems}
+          serviceVariant="ohjaaja"
+          linkComponent={BreadcrumbLink}
+          ariaLabel={t('common:breadcrumb')}
+        />
+      </div>
 
       {(navChildren || asideChildren || (lg && featuredContentChildren)) && (
         <aside
