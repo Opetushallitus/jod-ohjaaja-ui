@@ -12,6 +12,7 @@ const ListItem = ({ children }: { children: React.ReactNode }) => <li className=
 
 const Link =
   (href: string) =>
+  // eslint-disable-next-line react/display-name
   ({ children, className }: { children: React.ReactNode; className?: string }) => (
     <a href={href} className={className}>
       {children}
