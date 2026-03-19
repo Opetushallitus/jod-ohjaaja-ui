@@ -35,7 +35,6 @@ const ErrorBoundary = () => {
           variant="accent"
           serviceVariant="ohjaaja"
           data-testid="error-boundary-home"
-          /* eslint-disable-next-line react/no-unstable-nested-components */
           linkComponent={({ children, className }) => (
             <a href={`/ohjaaja/${i18n.language}`} className={className}>
               {children}
@@ -49,7 +48,6 @@ const ErrorBoundary = () => {
           variant="accent"
           serviceVariant="ohjaaja"
           data-testid="error-boundary-login"
-          /* eslint-disable-next-line react/no-unstable-nested-components */
           linkComponent={({ children, className }) => (
             <a href={loginLink} className={className}>
               {children}

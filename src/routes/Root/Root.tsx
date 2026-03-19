@@ -190,11 +190,9 @@ const Root = () => {
               firstName={user?.etunimi}
               isProfileActive={isProfileActive}
               profileLabel={t('profile.index')}
-              // eslint-disable-next-line react/no-unstable-nested-components
               profileLinkComponent={(props) => <NavLink to={t('slugs.profile.index')} {...props} />}
               isLoggedIn={!!user}
               loginLabel={t('common:login')}
-              // eslint-disable-next-line react/no-unstable-nested-components
               loginLinkComponent={(props) => <NavLink to={`/${language}/${t('slugs.profile.login')}`} {...props} />}
               logoutLabel={t('common:logout')}
               onLogout={logout}

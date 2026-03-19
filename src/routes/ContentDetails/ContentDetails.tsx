@@ -255,6 +255,7 @@ const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
           {t('content-details.additional-content')}
         </h2>
         {documents.map((document) => (
+          // eslint-disable-next-line react/jsx-no-target-blank
           <a
             key={document.id}
             href={document.contentUrl}
