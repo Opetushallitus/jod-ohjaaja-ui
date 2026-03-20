@@ -79,9 +79,7 @@
   },
   "lavamoat": {
     "allowScripts": {
-      "@lavamoat/preinstall-always-fail": false,
-      "@tailwindcss/vite>@tailwindcss/oxide": true,
-      "vite>esbuild": true
+      "@lavamoat/preinstall-always-fail": false
     }
   }
 }
