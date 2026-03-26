@@ -5,6 +5,7 @@ import {
   ilmiannaArtikkelinKommentti,
 } from '@/api/artikkelinKommentit';
 import { components } from '@/api/schema';
+import { useSessionGuardedAction } from '@/hooks/useSessionGuardedAction';
 import { Spinner } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -26,6 +27,7 @@ const Comments = ({ articleErc, userId }: CommentsProps) => {
   const [hasMore, setHasMore] = React.useState<boolean>(true);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [addingComment, setAddingComment] = React.useState<boolean>(false);
+  const guardedAction = useSessionGuardedAction();
 
   const observer = React.useRef<IntersectionObserver | null>(null);
 
@@ -128,7 +130,7 @@ const Comments = ({ articleErc, userId }: CommentsProps) => {
                 comment={comment.kommentti}
                 timestamp={comment.luotu}
                 isOwnComment={userId !== undefined && comment.ohjaajaId === userId}
-                deleteComment={deleteComment}
+                deleteComment={(commentId) => guardedAction(deleteComment, commentId)()}
                 reportComment={reportComment}
                 ref={index === comments.length - 1 ? lastPostElementRef : null}
               />
@@ -141,7 +143,13 @@ const Comments = ({ articleErc, userId }: CommentsProps) => {
           </div>
         )}
       </div>
-      {userId && <CommentInput userId={userId} addComment={addComment} addingComment={addingComment} />}
+      {userId && (
+        <CommentInput
+          userId={userId}
+          addComment={(comment) => guardedAction(addComment, comment)()}
+          addingComment={addingComment}
+        />
+      )}
     </div>
   );
 };

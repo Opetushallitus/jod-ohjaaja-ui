@@ -62,7 +62,7 @@
     "wants-contact": "Haluan, että minuun otetaan yhteyttä."
   },
   "footer": {
-    "cooperation-title": "Osaamispolku on toteutettu yhteistyössä seuraavien tahojen toimesta",
+    "cooperation-title": "Osaamispolku-palvelun ovat yhteistyössä toteuttaneet ",
     "copyright": "© Osaamispolku 2026. Kaikki oikeudet pidätetään.",
     "feedback-button-label": "Anna palautetta",
     "feedback-content": "Haluamme kehittää Osaamispolkua vastaamaan paremmin juuri sinun tarpeitasi. Anna meille palautetta ja huomioimme sen kehitystyössä.",
@@ -94,6 +94,7 @@
   "logout": "Kirjaudu ulos",
   "main-navigation": "Päänavigaatio",
   "menu": "Valikko",
+  "more-info": "Lisätietoa",
   "navigation": {
     "external": {
       "ohjaaja": {
@@ -135,6 +136,27 @@
   "print": "Tulosta",
   "required": "pakollinen",
   "return-home": "Palaa etusivulle",
+  "session": {
+    "expired": {
+      "continue": "Jatka kirjautumatta",
+      "login": "Kirjaudu uudelleen",
+      "modal": {
+        "description": "Toiminnon suorittaminen ei ole mahdollista, koska istuntosi on aikakatkaistu.",
+        "title": "Istuntosi on aikakatkaistu"
+      },
+      "note": {
+        "description": "Miten haluat jatkaa?",
+        "title": "Istuntosi on aikakatkaistu"
+      }
+    },
+    "warning": {
+      "continue": "Jatka käyttöä",
+      "note": {
+        "description": "Jatka palvelun käyttöä kirjautuneena.",
+        "title": "Istuntosi päättyy pian"
+      }
+    }
+  },
   "share": "Jaa",
   "show-all": "Näytä kaikki",
   "skiplinks": {

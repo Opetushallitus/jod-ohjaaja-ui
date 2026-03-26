@@ -62,7 +62,7 @@
     "wants-contact": "I want to be contacted."
   },
   "footer": {
-    "cooperation-title": "The Competency Path has been implemented in cooperation by the following parties",
+    "cooperation-title": "The Competency Path service has been jointly implemented by",
     "copyright": "© Competency Path 2026. All rights reserved.",
     "feedback-button-label": "Give feedback",
     "feedback-content": "We want to develop Competency Path to better meet your specific needs. Give us feedback and we will take it into account in our development work.",
@@ -74,6 +74,7 @@
       "oph-label": "Finnish National Agency for Education",
       "tem-label": "Ministry of Economic Affairs and Employment"
     },
+    "more-info": "More information",
     "more-info-description": "Are you worried about data protection or the use of artificial intelligence in the service? Below, you will find a summary of general information about the service and its use.",
     "more-info-links": {
       "about-service": "About the service",
@@ -94,6 +95,7 @@
   "logout": "Log out",
   "main-navigation": "Main navigation",
   "menu": "Menu",
+  "more-info": "More information",
   "navigation": {
     "external": {
       "ohjaaja": {
@@ -135,6 +137,27 @@
   "print": "Print",
   "required": "mandatory",
   "return-home": "Return to the front page",
+  "session": {
+    "expired": {
+      "continue": "Continue without logging in",
+      "login": "Log in again",
+      "modal": {
+        "description": "The service cannot be performed because your session has expired.",
+        "title": "Your session has expired"
+      },
+      "note": {
+        "description": "How would you like to proceed?",
+        "title": "Your session has expired"
+      }
+    },
+    "warning": {
+      "continue": "Continue to use",
+      "note": {
+        "description": "Continue to use the service while logged in.",
+        "title": "Your session is about to expire"
+      }
+    }
+  },
   "share": "Share",
   "show-all": "Show all",
   "skiplinks": {
