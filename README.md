@@ -46,7 +46,7 @@ To update the JOD Design System to the latest version:
 
 ## Generating TypeScript types from OpenAPI schema
 
-Start the JOD Yksilö locally and make sure it is running on http://localhost:9080/. Then run the following command to generate TypeScript types from the OpenAPI schema:
+Start the JOD Ohjaaja locally and make sure it is running on http://localhost:9080/. Then run the following command to generate TypeScript types from the OpenAPI schema:
 
 ```shell
 npx openapi-typescript http://localhost:9180/ohjaaja/openapi/openapi.json -o src/api/schema.d.ts && npx prettier src/api/schema.d.ts --write

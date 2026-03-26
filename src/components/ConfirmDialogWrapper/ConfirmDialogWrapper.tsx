@@ -1,5 +1,5 @@
 import { useModal } from '@/hooks/useModal';
-import { Button, ConfirmDialog, Spinner } from '@jod/design-system';
+import { Button, ConfirmDialog, Spinner, useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,13 +10,19 @@ const isPromise = (func: (() => Promise<void>) | (() => void)) => {
 type ConfirmDialogProps = React.ComponentProps<typeof ConfirmDialog>;
 type MaybePromise<T> = T | Promise<T>;
 
-export type ConfirmDialogWrapperProps = Omit<ConfirmDialogProps, 'children'> & {
+export type ConfirmDialogWrapperProps = Omit<ConfirmDialogProps, 'children' | 'content'> & {
   /** Closes parent modals on confirmation */
   closeParentModal?: boolean;
   /** Content component for the ConfirmationDialog */
   content?: React.ReactNode | (() => React.ReactNode);
   /** onConfirm handler. If it's a promise/async function, it will be awaited and a loading spinner will be shown in the confirm button */
   onConfirm?: () => MaybePromise<void>;
+  /** Whether to hide the secondary (cancel) button */
+  hideSecondaryButton?: boolean;
+  /** Callback for when the cancel button is clicked */
+  onCancel?: () => void;
+  /** Icon for the confirm button */
+  confirmButtonIcon?: React.ReactNode;
 };
 
 /**
@@ -41,33 +47,46 @@ export const ConfirmDialogWrapper = ({
   cancelText,
   confirmText,
   variant = 'destructive',
+  hideSecondaryButton,
   closeParentModal,
+  confirmButtonIcon,
+  animationMode,
+  shouldRenderBackdrop,
   onConfirm,
+  onCancel,
   footer,
   content,
 }: ConfirmDialogWrapperProps) => {
   const { closeActiveModal, closeAllModals } = useModal();
   const { t } = useTranslation();
+  const { sm } = useMediaQueries();
   const defaultCancelText = t('common:cancel');
   const defaultConfirmText = title as string;
   const [loading, setLoading] = React.useState(false);
+
   const DefaultFooter = (hideDialog: () => void) => (
     <>
-      <Button
-        label={cancelText ?? defaultCancelText}
-        serviceVariant="ohjaaja"
-        onClick={() => {
-          if (loading) {
-            return;
-          }
-          hideDialog();
-          closeActiveModal();
-        }}
-      />
+      {!hideSecondaryButton && (
+        <Button
+          label={cancelText ?? defaultCancelText}
+          size={sm ? 'lg' : 'sm'}
+          className="not-sm:h-5"
+          onClick={() => {
+            if (loading) {
+              return;
+            }
+            onCancel?.();
+            hideDialog();
+            closeActiveModal();
+          }}
+        />
+      )}
       <Button
         label={confirmText ?? defaultConfirmText}
         iconSide="right"
-        icon={loading ? <Spinner size={24} color="white" /> : undefined}
+        icon={loading ? <Spinner size={24} color="white" /> : confirmButtonIcon}
+        size={sm ? 'lg' : 'sm'}
+        className="not-sm:h-5"
         onClick={async () => {
           if (loading) {
             return;
@@ -106,6 +125,8 @@ export const ConfirmDialogWrapper = ({
       description={description}
       content={typeof content === 'function' ? content() : content}
       footer={footer ?? DefaultFooter}
+      animationMode={animationMode}
+      shouldRenderBackdrop={shouldRenderBackdrop}
     >
       {ShowDialogWrapper}
     </ConfirmDialog>

@@ -4,6 +4,7 @@ import { type OhjaajaCsrfDto } from '@/types/auth';
 
 import { create } from 'zustand';
 import { useKiinnostuksetStore } from '../useKiinnostuksetStore';
+import { useSessionExpirationStore } from '../useSessionExpirationStore';
 import { useSuosikitStore } from '../useSuosikitStore';
 
 interface AuthState {
@@ -52,10 +53,12 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   setUser: (u) => {
     if (u) {
       registerCsrfMiddleware(u.csrf);
+      useSessionExpirationStore.getState().setSessionExpired(false);
       set({ user: u, status: 'authenticated' });
       bc?.postMessage({ type: 'USER_CHANGE', user: u, source: TAB_ID });
     } else {
       unregisterCsrfMiddleware();
+      useSessionExpirationStore.getState().setSessionExpired(true);
       set({ user: null, status: 'anonymous' });
       bc?.postMessage({ type: 'USER_CHANGE', user: null, source: TAB_ID });
     }
@@ -65,6 +68,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     const { status } = get();
     if (status !== 'anonymous') {
       unregisterCsrfMiddleware();
+      useSessionExpirationStore.getState().setSessionExpired(true);
       set({ user: null, status: 'anonymous', lastFetchAt: 0, promise: null });
       bc?.postMessage({ type: 'USER_CHANGE', user: null, source: TAB_ID });
     }

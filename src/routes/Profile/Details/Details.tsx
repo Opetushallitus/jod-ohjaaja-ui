@@ -2,6 +2,7 @@ import { client } from '@/api/client';
 import { components } from '@/api/schema';
 import { MainLayout } from '@/components';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
+import { useSessionGuardedAction } from '@/hooks/useSessionGuardedAction';
 import { useTags } from '@/hooks/useTags';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
 import { getLocale } from '@/utils/navigation';
@@ -39,6 +40,7 @@ const Details = () => {
     useShallow((state) => [state.kiinnostukset, state.toggleKiinnostus]),
   );
   const [currentTyoskentelyPaikka, setCurrentTyoskentelyPaikka] = React.useState(tyoskentelyPaikka);
+  const guardedAction = useSessionGuardedAction();
 
   const isSelected = React.useCallback(
     (tagId: number) => {
@@ -87,7 +89,7 @@ const Details = () => {
               { value: 'YKSITYINEN', label: t('profile.details.workplace.option7') },
               { value: 'MUU', label: t('profile.details.workplace.option8') },
             ]}
-            onChange={handleWorkplaceChange}
+            onChange={(value) => guardedAction(handleWorkplaceChange, value)()}
             data-testid="profile-details-workplace"
           />
         </section>
@@ -118,7 +120,7 @@ const Details = () => {
                 })}
                 label={tag.name_i18n[getLocale(language)] ?? tag.name}
                 checked={isSelected(tag.id)}
-                onChange={handleTagSelectionChange}
+                onChange={(event) => guardedAction(handleTagSelectionChange, event)()}
                 data-testid={`profile-interest-${tag.id}`}
               />
             ))}

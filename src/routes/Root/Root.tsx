@@ -3,9 +3,12 @@ import { NavMenu } from '@/components/NavMenu/NavMenu';
 import { SearchBar } from '@/components/SearchBar/SearchBar';
 import { Toaster } from '@/components/Toaster/Toaster';
 import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
+import { useLoginLink } from '@/hooks/useLoginLink';
+import { useSessionExpirationTimer } from '@/hooks/useSessionExpirationTimer';
 import i18n, { LangCode, langLabels, supportedLanguageCodes } from '@/i18n/config';
 import { useAuthStore } from '@/stores/useAuthStore';
-import { useNoteStore } from '@/stores/useNoteStore';
+import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
+import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { getNotifications } from '@/utils/notifications';
 import { getLinkTo } from '@/utils/routeUtils';
 import {
@@ -23,8 +26,7 @@ import {
 } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, NavLink, Outlet, ScrollRestoration, useLocation, useMatch } from 'react-router';
-import { useShallow } from 'zustand/react/shallow';
+import { Link, NavLink, Outlet, ScrollRestoration, useFetcher, useLocation, useMatch } from 'react-router';
 import { LogoutFormContext } from '.';
 
 const Root = () => {
@@ -32,14 +34,18 @@ const Root = () => {
     t,
     i18n: { language },
   } = useTranslation();
-  const { note, clearNote } = useNoteStore(useShallow((state) => ({ note: state.note, clearNote: state.clearNote })));
+  const fetcher = useFetcher();
   const [navMenuOpen, setNavMenuOpen] = React.useState(false);
   const [feedbackVisible, setFeedbackVisible] = React.useState(false);
   const [searchInputVisible, setSearchInputVisible] = React.useState(false);
   const { sm } = useMediaQueries();
   const location = useLocation();
   const { generateLocalizedPath } = useLocalizedRoutes();
-  const { addPermanentNote, addTemporaryNote } = useNoteStack();
+  const { addPermanentNote, addTemporaryNote, removeTemporaryNote, removePermanentNote } = useNoteStack();
+
+  const sessionWarningNoteId = 'session-expiration-warning';
+  const sessionExpiredNoteId = 'session-expired';
+  const loginLink = useLoginLink({ callbackURL: location.pathname + location.search + location.hash });
 
   const hostname = globalThis.location.hostname;
   const { siteId } = React.useMemo(() => {
@@ -97,6 +103,81 @@ const Root = () => {
   const isProfileActive = !!useMatch(`/${language}/${t('slugs.profile.index')}/*`);
   const isOnSearchPage = useMatch(`/${language}/${t('slugs.search')}/*`);
 
+  const { extend, disable } = useSessionExpirationTimer({
+    isLoggedIn: !!user,
+    onExtended: () => {
+      setTimeout(() => {
+        // Wrapping the removal in timeout makes this more reliable, otherwise the note sometimes doesn't get removed
+        removeTemporaryNote(sessionWarningNoteId);
+      }, 50);
+    },
+    onWarning: () => {
+      if (!user) {
+        return;
+      }
+      addTemporaryNote(() => ({
+        id: sessionWarningNoteId,
+        title: t('common:session.warning.note.title'),
+        description: t('common:session.warning.note.description'),
+        variant: 'warning',
+        readMoreComponent: (
+          <Button
+            size="sm"
+            variant="white"
+            label={t('common:session.warning.continue')}
+            onClick={async () => {
+              removeTemporaryNote(sessionWarningNoteId);
+              await extend();
+            }}
+          />
+        ),
+        isCollapsed: false,
+      }));
+    },
+    onExpired: async () => {
+      if (!user) {
+        return;
+      }
+      removeTemporaryNote(sessionWarningNoteId);
+      // Clear stores to avoid stale data
+      useSuosikitStore.getState().clearSuosikit();
+      useKiinnostuksetStore.getState().clearKiinnostukset();
+      // Reload root loader, this should set CSRF data to null
+      await fetcher.load(`/${language}`);
+
+      addPermanentNote(() => ({
+        id: sessionExpiredNoteId,
+        title: t('common:session.expired.note.title'),
+        description: t('common:session.expired.note.description'),
+        variant: 'error',
+        readMoreComponent: (
+          <div className="flex gap-4">
+            <Button
+              size="sm"
+              variant="white"
+              label={t('common:session.expired.login')}
+              linkComponent={getLinkTo(loginLink, { useAnchor: true })}
+            />
+            <Button
+              size="sm"
+              variant="white"
+              label={t('common:session.expired.continue')}
+              onClick={() => {
+                disable(); // Disables any future warnings or expirations
+                removePermanentNote(sessionExpiredNoteId);
+                if (isProfileActive) {
+                  globalThis.location.replace(globalThis.location.origin + `/ohjaaja/${language}`);
+                } else {
+                  globalThis.location.reload();
+                }
+              }}
+            />
+          </div>
+        ),
+      }));
+    },
+  });
+
   const logout = () => {
     logoutForm.current?.submit();
   };
@@ -105,32 +186,6 @@ const Root = () => {
     document.documentElement.setAttribute('lang', i18n.language);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language]);
-
-  React.useEffect(() => {
-    if (!note) {
-      return;
-    }
-
-    if (note.permanent) {
-      addPermanentNote(() => ({
-        // Prevent multiple session-expired notes with fixed id
-        id: note.description.includes('session-expired') ? 'session-expired' : undefined,
-        title: note.title,
-        description: note.description,
-        variant: 'error',
-      }));
-    } else {
-      addTemporaryNote(() => ({
-        // Prevent multiple session-expired notes with fixed id
-        id: note.description.includes('session-expired') ? 'session-expired' : undefined,
-        title: note.title,
-        description: note.description,
-        variant: 'error',
-        isCollapsed: false,
-      }));
-    }
-    clearNote();
-  }, [addPermanentNote, addTemporaryNote, clearNote, note, t]);
 
   const showServiceName = sm || !searchInputVisible;
 
