@@ -1,21 +1,19 @@
-import i18n from '@/i18n/config';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
-import { useNoteStore } from '@/stores/useNoteStore';
+import { useSessionExpirationStore } from '@/stores/useSessionExpirationStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { Middleware } from 'openapi-fetch';
 
 export const sessionExpiredMiddleware: Middleware = {
-  onResponse({ response }) {
+  async onResponse({ response }) {
+    const { sessionExpired, extendSession, onSessionExtended } = useSessionExpirationStore.getState();
+
+    if (response.status >= 200 && response.status < 300 && !sessionExpired) {
+      onSessionExtended?.();
+      await extendSession();
+    }
     if (response.status === 403 && !response.url.endsWith('/api/profiili/ohjaaja')) {
       useAuthStore.getState().invalidate();
-
-      useNoteStore.getState().setNote({
-        title: i18n.t('common:error-boundary.title'),
-        description: i18n.t('common:error-boundary.session-expired'),
-        variant: 'error',
-      });
-
       useSuosikitStore.getState().clearSuosikit();
       useKiinnostuksetStore.getState().clearKiinnostukset();
 

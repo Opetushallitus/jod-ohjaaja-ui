@@ -19,6 +19,17 @@ vi.mock('react-i18next', () => ({
   }),
 }));
 
+// Session guard pulls in ModalProvider + router; unit tests only need the action to run
+vi.mock('@/hooks/useSessionGuardedAction', () => ({
+  useSessionGuardedAction: () => {
+    return <Args extends unknown[]>(action: (...args: Args) => void | Promise<void>, ...params: Args) => {
+      return () => {
+        void action(...params);
+      };
+    };
+  },
+}));
+
 describe('Comments', () => {
   const mockComments = {
     sisalto: [

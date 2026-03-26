@@ -1,19 +1,25 @@
 import { MainLayout } from '@/components';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
+import { useModal } from '@/hooks/useModal';
+import { useSessionGuardedAction } from '@/hooks/useSessionGuardedAction';
 import { LogoutFormContext } from '@/routes/Root';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
-import { useNoteStore } from '@/stores/useNoteStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
-import { Button, ConfirmDialog } from '@jod/design-system';
+import { Button } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+
+const navigateToProfileExport = () => {
+  globalThis.location.assign(`${import.meta.env.BASE_URL}api/profiili/ohjaaja/vienti`);
+};
 
 const Preferences = () => {
   const { t } = useTranslation();
   const logoutForm = React.useContext(LogoutFormContext);
   const fetchUser = useAuthStore((state) => state.fetchUser);
-  const user = useAuthStore((state) => state.user);
+  const { showDialog } = useModal();
+  const guardedAction = useSessionGuardedAction();
 
   const deleteProfile = () => {
     const deletionInput = document.createElement('input');
@@ -27,12 +33,7 @@ const Preferences = () => {
   // Normally, store clearing is triggered automatically on 401 responses.
   // However, if no such request occurs, we proactively clear the stores here as a fallback.
   const onSessionExpired = () => {
-    useNoteStore.getState().setNote({
-      title: t('common:error-boundary.title'),
-      description: t('common:error-boundary.session-expired'),
-      variant: 'error',
-    });
-
+    useAuthStore.getState().invalidate();
     useSuosikitStore.getState().clearSuosikit();
     useKiinnostuksetStore.getState().clearKiinnostukset();
   };
@@ -40,16 +41,23 @@ const Preferences = () => {
   const onDownload = async () => {
     const user = await fetchUser();
     if (user) {
-      globalThis.location.href = `${import.meta.env.BASE_URL}api/profiili/ohjaaja/vienti`;
+      navigateToProfileExport();
     } else {
       onSessionExpired();
     }
   };
 
-  const onDeleteUser = (showDialog: () => void) => async () => {
+  const onDeleteUser = async () => {
     const user = await fetchUser();
     if (user) {
-      showDialog();
+      showDialog({
+        title: t('profile.preferences.delete-profile.action'),
+        onConfirm: deleteProfile,
+        confirmText: t('common:delete'),
+        cancelText: t('common:cancel'),
+        variant: 'destructive',
+        description: t('profile.preferences.delete-profile.confirm'),
+      });
     } else {
       onSessionExpired();
     }
@@ -70,9 +78,8 @@ const Preferences = () => {
             variant="accent"
             serviceVariant="ohjaaja"
             label={t('profile.preferences.download.action')}
-            onClick={onDownload}
+            onClick={guardedAction(onDownload)}
             data-testid="preferences-download-button"
-            disabled={!user}
           />
         </section>
         <section data-testid="preferences-delete-profile">
@@ -80,24 +87,13 @@ const Preferences = () => {
             {t('profile.preferences.delete-profile.title')}
           </h2>
           <p className="text-body-md mb-5">{t('profile.preferences.delete-profile.description')}</p>
-          <ConfirmDialog
-            title={t('profile.preferences.delete-profile.action')}
-            onConfirm={deleteProfile}
-            confirmText={t('common:delete')}
-            cancelText={t('common:cancel')}
-            variant="destructive"
-            description={t('profile.preferences.delete-profile.confirm')}
-          >
-            {(showDialog: () => void) => (
-              <Button
-                variant="red-delete"
-                label={t('profile.preferences.delete-profile.action')}
-                onClick={onDeleteUser(showDialog)}
-                data-testid="preferences-delete-button"
-                disabled={!user}
-              />
-            )}
-          </ConfirmDialog>
+
+          <Button
+            variant="red-delete"
+            label={t('profile.preferences.delete-profile.action')}
+            onClick={guardedAction(onDeleteUser)}
+            data-testid="preferences-delete-button"
+          />
         </section>
       </div>
     </MainLayout>

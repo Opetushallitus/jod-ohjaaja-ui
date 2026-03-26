@@ -158,7 +158,7 @@ const ContentDetails = () => {
     >
       <title>{data.title}</title>
       <div className="bg-white p-7 col-span-2 flex flex-col sm:gap-7 gap-6" data-testid="content-details">
-        <h1 className="text-heading-1 hyphens-auto break-words" data-testid="content-title">
+        <h1 className="text-heading-1 hyphens-auto wrap-break-word" data-testid="content-title">
           {data.title}
         </h1>
         <div className="flex" data-testid="content-created">
@@ -172,7 +172,7 @@ const ContentDetails = () => {
         <div className="flex sm:flex-row flex-col sm:gap-6 gap-5 space-between">
           <div className="flex flex-col">
             {image && (
-              <div data-testid="content-image" className="max-w-[386px] max-h-[217px] flex-shrink-0">
+              <div data-testid="content-image" className="max-w-[386px] max-h-[217px] shrink-0">
                 <img src={imageSrc} alt={image.description} className="object-contain object-left" />
               </div>
             )}
