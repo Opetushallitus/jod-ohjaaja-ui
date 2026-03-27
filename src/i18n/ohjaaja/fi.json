@@ -199,7 +199,7 @@
     "clear": "Tyhjennä",
     "description": "Voit hakea Ohjaajan osion sisältöjä käyttämällä vapaasanahakua. Tulosten näkyvyyteen voit vaikuttaa valitsemalla listasta sinua kiinnostavan asiasanan.",
     "filter": "Suodata ({{count}})",
-    "global-placeholder": "Hae Ohjaajan osioista",
+    "global-placeholder": "Hae Ohjaajan osiosta",
     "label": "Hae Ohjaajan osiosta",
     "placeholder": "Kirjoita hakusanat",
     "tag-list": {
