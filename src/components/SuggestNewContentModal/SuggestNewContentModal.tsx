@@ -65,7 +65,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
     <Modal
       name={t('suggest-new-content.title')}
       open={isOpen}
-      topSlot={<h2 className="text-hero-mobile text-black sm:text-hero">{t('suggest-new-content.title')}</h2>}
+      topSlot={<h2 className="text-hero-mobile text-primary-gray sm:text-hero">{t('suggest-new-content.title')}</h2>}
       fullWidthContent
       content={
         <SuggestNewContentForm
