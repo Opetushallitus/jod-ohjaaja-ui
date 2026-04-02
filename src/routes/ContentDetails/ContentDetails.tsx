@@ -7,10 +7,10 @@ import { useAuthStore } from '@/stores/useAuthStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { copyToClipboard } from '@/utils/clipboard';
-import { getAdaptiveMediaSrc, getContent, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
+import { getAdaptiveMediaSrc, getContentSegments, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { getLinkTo } from '@/utils/routeUtils';
-import { tidyClasses as tc } from '@jod/design-system';
+import { CookieConsentGuard, tidyClasses as tc } from '@jod/design-system';
 import {
   JodDownload,
   JodFavorite,
@@ -100,7 +100,7 @@ const ContentDetails = () => {
     : '';
 
   const image = getImage(data);
-  const content = getContent(data);
+  const contentSegments = getContentSegments(data);
   const links = getLinks(data);
   const documents = getDocuments(data);
   const keywords = getKeywords(data);
@@ -213,8 +213,25 @@ const ContentDetails = () => {
             )}
           </div>
         </div>
-        {content && (
-          <div className={richTextClasses} dangerouslySetInnerHTML={{ __html: content }} data-testid="content-body" />
+        {contentSegments.length > 0 && (
+          <div className={richTextClasses} data-testid="content-body">
+            {contentSegments.map((segment) =>
+              segment.type === 'html' ? (
+                <div key={segment.html} dangerouslySetInnerHTML={{ __html: segment.html }} />
+              ) : (
+                <CookieConsentGuard key={segment.src} categories={['thirdPartyContent']} fallback>
+                  <iframe
+                    src={segment.src}
+                    title="YouTube video player"
+                    allowFullScreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    className="aspect-video w-full"
+                  />
+                </CookieConsentGuard>
+              ),
+            )}
+          </div>
         )}
 
         <DocumentsAndLinks documents={documents} links={links} />

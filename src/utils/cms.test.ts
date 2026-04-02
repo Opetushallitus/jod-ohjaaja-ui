@@ -3,7 +3,7 @@ import { Category, StructuredContent } from '@/types/cms-content';
 import { describe, expect, it } from 'vitest';
 import {
   getAcceptLanguageHeader,
-  getContent,
+  getContentSegments,
   getDocuments,
   getImage,
   getIngress,
@@ -154,16 +154,17 @@ describe('CMS utils', () => {
     });
   });
 
-  describe('getContent', () => {
-    it('should return the content if it exists', () => {
-      const content = 'test content';
-      const item = createTestData('test title').addContent(content).get();
-      expect(getContent(item)).toBe(content);
+  describe('getContentSegments', () => {
+    it('should return the content segments if they exist', () => {
+      const htmlContent = '<p>test html content</p>';
+      const item = createTestData('test title').addContent(htmlContent).get();
+      const segments = getContentSegments(item);
+      expect(segments).toEqual([{ type: 'html', html: htmlContent }]);
     });
 
-    it('should return an empty string if the content does not exist', () => {
+    it('should return an empty array if the content segments do not exist', () => {
       const item = createTestData('test title').get();
-      expect(getContent(item)).toBe('');
+      expect(getContentSegments(item)).toEqual([]);
     });
   });
 

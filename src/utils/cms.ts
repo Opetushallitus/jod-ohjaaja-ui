@@ -7,6 +7,8 @@ import DOMPurify from 'dompurify';
 import { getCategoryArticleIds } from './navigation';
 
 type ContentName = 'ingress' | 'content' | 'image' | 'document' | 'link';
+type ContentSegment = { type: 'html'; html: string } | { type: 'youtube'; src: string };
+
 const AdaptiveMediaSizes = {
   card_horizontal: 'Card-Horizontal',
   card_vertical: 'Card-Vertical',
@@ -100,36 +102,52 @@ export const getImage = (item: StructuredContent) => {
 };
 
 /**
- * Get the content of the structured content
- *
- * @param item - The structured content
- * @returns The content of the structured content or an empty string if not found
+ * Parse content into segments, splitting at YouTube embeds so they can be wrapped in CookieConsentGuard.
  */
-export const getContent = (item: StructuredContent) => {
-  const content = DOMPurify.sanitize(findContentValueByName(item, 'content')?.data ?? '');
+export const getContentSegments = (item: StructuredContent): ContentSegment[] => {
+  const raw = DOMPurify.sanitize(findContentValueByName(item, 'content')?.data ?? '');
+  if (!raw) {
+    return [];
+  }
+
   const div = document.createElement('div');
-  div.innerHTML = content;
-  div.querySelectorAll('div.embed-responsive').forEach((embed) => {
-    const url = new URL(embed.getAttribute('data-embed-id') ?? '');
-    const style = embed.getAttribute('style');
-    if (['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtube-nocookie.com'].includes(url.hostname)) {
-      const iframeWrapper = document.createElement('div');
-      iframeWrapper.setAttribute('class', 'aspect-video');
-      iframeWrapper.setAttribute('style', style ?? '');
-      const iframe = document.createElement('iframe');
-      iframe.setAttribute('src', url.toString());
-      iframe.setAttribute('class', 'w-full h-full');
-      iframe.setAttribute('frameborder', '0');
-      iframe.setAttribute('allowfullscreen', 'true');
-      iframe.setAttribute(
-        'allow',
-        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
-      );
-      iframeWrapper.appendChild(iframe);
-      embed.replaceWith(iframeWrapper);
+  div.innerHTML = raw;
+
+  const segments: ContentSegment[] = [];
+  const pending: ChildNode[] = [];
+
+  const flushPending = () => {
+    if (pending.length === 0) {
+      return;
     }
-  });
-  return div.innerHTML;
+    const wrapper = document.createElement('div');
+    pending.forEach((n) => wrapper.appendChild(n.cloneNode(true)));
+    segments.push({ type: 'html', html: wrapper.innerHTML });
+    pending.length = 0;
+  };
+
+  for (const node of Array.from(div.childNodes)) {
+    let isYoutube = false;
+    if (node instanceof HTMLElement && node.classList.contains('embed-responsive')) {
+      try {
+        const url = new URL(node.dataset.embedId ?? '');
+        if (['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtube-nocookie.com'].includes(url.hostname)) {
+          flushPending();
+          segments.push({ type: 'youtube', src: url.toString() });
+          isYoutube = true;
+        }
+      } catch {
+        // not a valid URL, fall through to html
+      }
+    }
+    if (!isYoutube) {
+      pending.push(node);
+    }
+  }
+
+  flushPending();
+
+  return segments;
 };
 
 /**
