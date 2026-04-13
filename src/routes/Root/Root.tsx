@@ -322,7 +322,7 @@ const RootWithCookieConsentProvider = () => {
 
   return (
     <CookieConsentProvider
-      serviceVariant="yksilo"
+      serviceVariant="ohjaaja"
       translations={{
         guard: {
           buttonLabel: t('common:cookie-consent.guard.buttonLabel'),
