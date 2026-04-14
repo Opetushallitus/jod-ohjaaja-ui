@@ -201,6 +201,7 @@
     "filter": "Suodata ({{count}})",
     "global-placeholder": "Hae Ohjaajan osiosta",
     "label": "Hae Ohjaajan osiosta",
+    "min-length": "Hakusanassa on oltava vähintään {{count}} merkkiä",
     "placeholder": "Kirjoita hakusanat",
     "tag-list": {
       "checkbox-label": "Asiasana {{tag}}",

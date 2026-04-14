@@ -201,6 +201,7 @@
     "filter": "Filtrera ({{count}})",
     "global-placeholder": "Sök i Vägledar-delen",
     "label": "Sök i Vägledar-delen",
+    "min-length": "Sökordet måste vara minst {{count}} tecken långt",
     "placeholder": "Skriv sökorden",
     "tag-list": {
       "checkbox-label": "Nyckelord {{tag}}",
