@@ -22,6 +22,7 @@ const Search = () => {
   } = useTranslation();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = React.useState(search);
+  const [submitError, setSubmitError] = React.useState<string | null>(null);
 
   const handleLoadPage = (pageNumber: number) => {
     navigate(getSearchUrl(t, language, tagIds, search, pageNumber));
@@ -29,12 +30,18 @@ const Search = () => {
 
   const handleSearch = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (searchValue.trim().length < 3) {
+      setSubmitError(t('search.min-length', { count: 3 }));
+      return;
+    }
+    setSubmitError(null);
     globalThis._paq?.push(['trackEvent', 'ohjaaja.Haku', 'Hakusana', searchValue]);
     navigate(getSearchUrl(t, language, tagIds, searchValue));
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
+    setSubmitError(null);
   };
 
   React.useEffect(() => {
@@ -80,40 +87,46 @@ const Search = () => {
         <p className="text-body-lg mb-6" data-testid="search-description">
           {t('search.description')}
         </p>
-        <form id="search" className="mb-7 flex flex-row items-center" onSubmit={handleSearch} data-testid="search-form">
-          <div className="flex items-center w-full rounded-md border border-border-form bg-white text-primary-gray p-2">
-            <input
-              type="text"
-              name="search"
-              className="font-arial grow w-full mr-3 placeholder:text-inactive-gray placeholder:text-body-md focus:outline-2 focus:outline-accent pl-3 outline-accent outline-offset-6 rounded-l-xs mx-1"
-              placeholder={t('search.placeholder')}
-              onChange={handleInputChange}
-              value={searchValue}
-              required
-              minLength={3}
-              maxLength={400}
-              data-testid="search-input"
-            />
+        <form id="search" className="mb-7" onSubmit={handleSearch} noValidate data-testid="search-form">
+          <div className="flex flex-row items-center">
+            <div className="flex items-center w-full rounded-md border border-border-form bg-white text-primary-gray p-2">
+              <input
+                type="text"
+                name="search"
+                className="font-arial grow w-full mr-3 placeholder:text-inactive-gray placeholder:text-body-md focus:outline-2 focus:outline-accent pl-3 outline-accent outline-offset-6 rounded-l-xs mx-1"
+                placeholder={t('search.placeholder')}
+                onChange={handleInputChange}
+                value={searchValue}
+                required
+                maxLength={400}
+                data-testid="search-input"
+              />
 
-            <button
-              type="button"
-              className="shrink rounded-sm bg-bg-gray focus:outline-2 focus:outline-accent cursor-pointer size-7 justify-center flex items-center outline-accent outline-offset-2 ml-2"
-              onClick={() => {
-                setSearchValue('');
-              }}
-              aria-label={t('search.clear')}
-            >
-              <JodClose className="text-inactive-gray" />
-            </button>
+              <button
+                type="button"
+                className="shrink rounded-sm bg-bg-gray focus:outline-2 focus:outline-accent cursor-pointer size-7 justify-center flex items-center outline-accent outline-offset-2 ml-2"
+                onClick={() => {
+                  setSearchValue('');
+                }}
+                aria-label={t('search.clear')}
+              >
+                <JodClose className="text-inactive-gray" />
+              </button>
 
-            <button
-              type="submit"
-              className="flex items-center gap-2 shrink ml-3 rounded-sm h-7 bg-accent border-y px-3 text-white hover:bg-accent-dark focus:outline-2 focus:outline-accent cursor-pointer text-heading-4 text-[14px] outline-accent outline-offset-2"
-            >
-              <JodSearch className="text-white" />
-              {t('search.button')}
-            </button>
+              <button
+                type="submit"
+                className="flex items-center gap-2 shrink ml-3 rounded-sm h-7 bg-accent border-y px-3 text-white hover:bg-accent-dark focus:outline-2 focus:outline-accent cursor-pointer text-heading-4 text-[14px] outline-accent outline-offset-2"
+              >
+                <JodSearch className="text-white" />
+                {t('search.button')}
+              </button>
+            </div>
           </div>
+          {submitError && (
+            <div className="mt-2 block text-form-error text-alert-text-2 font-arial" role="alert">
+              {submitError}
+            </div>
+          )}
         </form>
 
         <SearchResults

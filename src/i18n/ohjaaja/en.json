@@ -201,6 +201,7 @@
     "filter": "Filter ({{count}})",
     "global-placeholder": "Search",
     "label": "Search the Guidance practitioner section",
+    "min-length": "Please enter at least {{minLength}} characters to search",
     "placeholder": "Enter your search terms",
     "tag-list": {
       "checkbox-label": "Keyword {{tag}}",
