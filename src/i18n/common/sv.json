@@ -6,7 +6,7 @@
   "cookie-consent": {
     "guard": {
       "buttonLabel": "Öppna behörigheter och samtycken",
-      "description": "Visning av detta innehåll från en annan webbplats är blockerat tills du accepterar cookies som sätts av tredje part. Läs vår cookiepolicy.",
+      "description": "Visning av detta innehåll från en annan webbplats är blockerat tills du accepterar cookies som sätts av tredje part.",
       "title": "Vi bryr oss om din integritet"
     },
     "modal": {
