@@ -31,6 +31,28 @@ import { useTranslation } from 'react-i18next';
 import { Link, NavLink, Outlet, ScrollRestoration, useFetcher, useLocation, useMatch } from 'react-router';
 import { LogoutFormContext } from '.';
 
+const LanguageButtonWrapper = () => {
+  const {
+    i18n: { language },
+  } = useTranslation();
+  const { generateLocalizedPath } = useLocalizedRoutes();
+  return (
+    <LanguageButton
+      serviceVariant="ohjaaja"
+      testId="language-button"
+      language={language as LangCode}
+      supportedLanguageCodes={supportedLanguageCodes}
+      generateLocalizedPath={generateLocalizedPath}
+      linkComponent={Link}
+      translations={{
+        fi: { change: 'Vaihda kieli.', label: langLabels.fi },
+        sv: { change: 'Andra språk.', label: langLabels.sv },
+        en: { change: 'Change language.', label: langLabels.en },
+      }}
+    />
+  );
+};
+
 const Root = () => {
   const {
     t,
@@ -42,7 +64,6 @@ const Root = () => {
   const [searchInputVisible, setSearchInputVisible] = React.useState(false);
   const { sm } = useMediaQueries();
   const location = useLocation();
-  const { generateLocalizedPath } = useLocalizedRoutes();
   const { addPermanentNote, addTemporaryNote, removeTemporaryNote, removePermanentNote } = useNoteStack();
 
   const sessionWarningNoteId = 'session-expiration-warning';
@@ -228,21 +249,7 @@ const Root = () => {
         <NavigationBar
           logo={{ to: `/${language}`, language, srText: t('common:osaamispolku') }}
           menuComponent={<MenuButton label={t('common:menu')} onClick={() => setNavMenuOpen(!navMenuOpen)} />}
-          languageButtonComponent={
-            <LanguageButton
-              serviceVariant="ohjaaja"
-              testId="language-button"
-              language={language as LangCode}
-              supportedLanguageCodes={supportedLanguageCodes}
-              generateLocalizedPath={generateLocalizedPath}
-              linkComponent={Link}
-              translations={{
-                fi: { change: 'Vaihda kieli.', label: langLabels.fi },
-                sv: { change: 'Andra språk.', label: langLabels.sv },
-                en: { change: 'Change language.', label: langLabels.en },
-              }}
-            />
-          }
+          languageButtonComponent={<LanguageButtonWrapper />}
           userButtonComponent={
             <UserButton
               serviceVariant="ohjaaja"
@@ -323,6 +330,7 @@ const RootWithCookieConsentProvider = () => {
   return (
     <CookieConsentProvider
       serviceVariant="ohjaaja"
+      languageButtonComponent={<LanguageButtonWrapper />}
       translations={{
         guard: {
           buttonLabel: t('common:cookie-consent.guard.buttonLabel'),
@@ -337,10 +345,10 @@ const RootWithCookieConsentProvider = () => {
           currentSelectionLabel: t('common:cookie-consent.modal.currentSelectionLabel'),
           declineOptionalLabel: t('common:cookie-consent.modal.declineOptionalLabel'),
           description: t('common:cookie-consent.modal.description'),
-          hereLabel: t('common:cookie-consent.modal.hereLabel'),
           name: t('common:cookie-consent.modal.name'),
           readMoreHref: t('common:cookie-consent.modal.readMoreHref'),
           readMoreLabel: t('common:cookie-consent.modal.readMoreLabel'),
+          externalLinkIconAriaLabel: t('common:external-link'),
           statisticsDescription: t('common:cookie-consent.modal.statisticsDescription'),
           title: t('common:cookie-consent.modal.title'),
         },
