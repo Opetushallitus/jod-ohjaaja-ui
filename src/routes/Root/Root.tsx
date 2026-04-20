@@ -31,7 +31,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, NavLink, Outlet, ScrollRestoration, useFetcher, useLocation, useMatch } from 'react-router';
 import { LogoutFormContext } from '.';
 
-const LanguageButtonWrapper = () => {
+const LanguageButtonWrapper = ({ responsive }: { responsive?: boolean }) => {
   const {
     i18n: { language },
   } = useTranslation();
@@ -44,6 +44,7 @@ const LanguageButtonWrapper = () => {
       supportedLanguageCodes={supportedLanguageCodes}
       generateLocalizedPath={generateLocalizedPath}
       linkComponent={Link}
+      responsive={responsive}
       translations={{
         fi: { change: 'Vaihda kieli.', label: langLabels.fi },
         sv: { change: 'Andra språk.', label: langLabels.sv },
@@ -330,7 +331,7 @@ const RootWithCookieConsentProvider = () => {
   return (
     <CookieConsentProvider
       serviceVariant="ohjaaja"
-      languageButtonComponent={<LanguageButtonWrapper />}
+      languageButtonComponent={<LanguageButtonWrapper responsive={false} />}
       translations={{
         guard: {
           buttonLabel: t('common:cookie-consent.guard.buttonLabel'),
