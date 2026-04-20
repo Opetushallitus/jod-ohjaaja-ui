@@ -23,9 +23,9 @@ export const CategoryList: React.FC<CategoryListProps> = ({ category, articles, 
 
   return (
     <div className="mb-5" data-testid="category-list">
-      <h3 className="text-heading-3 mb-5" data-testid="category-list-title">
+      <h2 className="text-heading-3 mb-5" data-testid="category-list-title">
         {category} ({articles.length})
-      </h3>
+      </h2>
       <div className="grid grid-cols-1 gap-3" data-testid="category-list-items">
         {visibleArticles.map((article) => (
           <ArticleCard
