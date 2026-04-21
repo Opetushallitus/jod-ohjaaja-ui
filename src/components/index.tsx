@@ -13,4 +13,3 @@ export { FeatureCard } from './FeatureCard/FeatureCard';
 export { FeedbackModal } from './FeedbackModal/FeedbackModal';
 export { default as GuidanceCard } from './GuidanceCard/GuidanceCard';
 export { MainLayout } from './MainLayout/MainLayout';
-export { UserButton } from './UserButton/UserButton';
