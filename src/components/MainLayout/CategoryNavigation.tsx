@@ -38,7 +38,13 @@ export const CategoryNavigation = () => {
   return (
     menuSection &&
     hasChildren && (
-      <PageNavigation menuSection={menuSection} collapsed={!lg} testId="category-navigation" itemClassname="mb-2" />
+      <PageNavigation
+        openSubMenuLabel={t('common:open-submenu')}
+        menuSection={menuSection}
+        collapsed={!lg}
+        testId="category-navigation"
+        itemClassname="mb-2"
+      />
     )
   );
 };
