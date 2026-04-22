@@ -30,5 +30,13 @@ export const ProfileNavigation = () => {
     ],
   };
 
-  return <PageNavigation menuSection={menuSection} collapsed={!lg} testId="profile-navigation" itemClassname="mb-2" />;
+  return (
+    <PageNavigation
+      menuSection={menuSection}
+      collapsed={!lg}
+      testId="profile-navigation"
+      itemClassname="mb-2"
+      openSubMenuLabel={t('common:open-submenu')}
+    />
+  );
 };
