@@ -3,7 +3,7 @@ import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import { getArticlesByErcs } from '@/services/cms-article-api';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
-import { useSessionExpirationStore } from '@/stores/useSessionExpirationStore';
+import { useIsLoggedIn } from '@/stores/useSessionManagerStore';
 import { StructuredContent } from '@/types/cms-content';
 import { isSort, Sort } from '@/types/sort';
 import { groupArticlesByCategory, sortKommenttiArticles } from '@/utils/cms';
@@ -21,8 +21,7 @@ const Comments = () => {
 
   const { lg } = useMediaQueries();
   const [articlesByCategory, setArticlesByCategory] = React.useState<Record<string, StructuredContent[]> | null>(null);
-  const sessionExpired = useSessionExpirationStore((state) => state.sessionExpired);
-  const isLoggedIn = !sessionExpired;
+  const isLoggedIn = useIsLoggedIn();
 
   const { omatKommentit } = useLoaderData<LoaderData>();
 

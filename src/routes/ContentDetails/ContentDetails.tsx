@@ -3,7 +3,7 @@ import { createLoginDialogFooter } from '@/components/createLoginDialogFooter';
 import { useFeature } from '@/hooks/useFeatures/useFeatures';
 import { useLoginLink } from '@/hooks/useLoginLink';
 import { useModal } from '@/hooks/useModal';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { copyToClipboard } from '@/utils/clipboard';
@@ -58,7 +58,7 @@ interface DocumentsAndLinksProps {
 
 const ContentDetails = () => {
   const { data } = useLoaderData<LoaderData>();
-  const user = useAuthStore((state) => state.user);
+  const user = useOhjaajaProfile();
   const {
     i18n: { language },
     t,

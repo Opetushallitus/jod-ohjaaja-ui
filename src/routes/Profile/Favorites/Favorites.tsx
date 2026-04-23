@@ -5,7 +5,7 @@ import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewCont
 import TagFilterList from '@/routes/Search/TagFilterList';
 import { getArticlesByErcs } from '@/services/cms-article-api';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
-import { useSessionExpirationStore } from '@/stores/useSessionExpirationStore';
+import { useIsLoggedIn } from '@/stores/useSessionManagerStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { type Category, type StructuredContent } from '@/types/cms-content';
 import { isSort, type Sort } from '@/types/sort';
@@ -27,8 +27,7 @@ const Favorites = () => {
   const { lg } = useMediaQueries();
   const [articlesByCategory, setArticlesByCategory] = React.useState<Record<string, StructuredContent[]> | null>(null);
   const [selectedTagIds, setSelectedTagIds] = React.useState<string[]>([]);
-  const sessionExpired = useSessionExpirationStore((state) => state.sessionExpired);
-  const isLoggedIn = !sessionExpired;
+  const isLoggedIn = useIsLoggedIn();
 
   const [sort, setSort] = React.useState<Sort>('a-z');
   const suosikit = useSuosikitStore(useShallow((state) => state.suosikit));
