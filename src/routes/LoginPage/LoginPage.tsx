@@ -1,7 +1,7 @@
 import { MainLayout } from '@/components';
 import { ExternalLink } from '@/components/ExternalLink/ExternalLink';
 import { useLoginLink } from '@/hooks/useLoginLink';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { Button } from '@jod/design-system';
 import { JodArrowRight } from '@jod/design-system/icons';
 import React from 'react';
@@ -26,7 +26,7 @@ const LoginPage = () => {
   } = useTranslation();
   const location = useLocation();
 
-  const user = useAuthStore((state) => state.user);
+  const user = useOhjaajaProfile();
   const navigate = useNavigate();
 
   const state = location.state;

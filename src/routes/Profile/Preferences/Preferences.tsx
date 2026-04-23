@@ -3,9 +3,7 @@ import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import { useModal } from '@/hooks/useModal';
 import { useSessionGuardedAction } from '@/hooks/useSessionGuardedAction';
 import { LogoutFormContext } from '@/routes/Root';
-import { useAuthStore } from '@/stores/useAuthStore';
-import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
-import { useSuosikitStore } from '@/stores/useSuosikitStore';
+import { useSessionManagerStore } from '@/stores/useSessionManagerStore';
 import { Button } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +15,7 @@ const navigateToProfileExport = () => {
 const Preferences = () => {
   const { t } = useTranslation();
   const logoutForm = React.useContext(LogoutFormContext);
-  const fetchUser = useAuthStore((state) => state.fetchUser);
+  const syncOhjaajaFromServer = useSessionManagerStore((state) => state.syncOhjaajaFromServer);
   const { showDialog } = useModal();
   const guardedAction = useSessionGuardedAction();
 
@@ -33,13 +31,11 @@ const Preferences = () => {
   // Normally, store clearing is triggered automatically on 401 responses.
   // However, if no such request occurs, we proactively clear the stores here as a fallback.
   const onSessionExpired = () => {
-    useAuthStore.getState().invalidate();
-    useSuosikitStore.getState().clearSuosikit();
-    useKiinnostuksetStore.getState().clearKiinnostukset();
+    useSessionManagerStore.getState().silentInvalidateAcrossTabs();
   };
 
   const onDownload = async () => {
-    const user = await fetchUser();
+    const user = await syncOhjaajaFromServer(true);
     if (user) {
       navigateToProfileExport();
     } else {
@@ -48,7 +44,7 @@ const Preferences = () => {
   };
 
   const onDeleteUser = async () => {
-    const user = await fetchUser();
+    const user = await syncOhjaajaFromServer(true);
     if (user) {
       showDialog({
         title: t('profile.preferences.delete-profile.action'),

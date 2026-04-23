@@ -9,7 +9,7 @@ import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/Rece
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import { LangCode } from '@/i18n/config';
 import { LoaderData } from '@/routes/Home/loader';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { getMainCategoryPath } from '@/utils/navigation-paths';
 import { getLinkTo } from '@/utils/routeUtils';
 import { useMediaQueries } from '@jod/design-system';
@@ -26,7 +26,7 @@ const Home = () => {
   const { sm } = useMediaQueries();
 
   const { newestContent, mostViewedContent, bestMatchingContent } = useLoaderData<LoaderData>();
-  const user = useAuthStore((state) => state.user);
+  const user = useOhjaajaProfile();
   const isLoggedIn = !!user;
 
   const firstCardRef = React.useRef<HTMLDivElement>(null);

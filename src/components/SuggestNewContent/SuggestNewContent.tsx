@@ -1,5 +1,5 @@
 import { useModal } from '@/hooks/useModal';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { getLinkTo } from '@/utils/routeUtils';
 import { useTranslation } from 'react-i18next';
 import { FeatureCard } from '../FeatureCard/FeatureCard';
@@ -8,7 +8,7 @@ import { SuggestNewContentModal } from '../SuggestNewContentModal/SuggestNewCont
 export const SuggestNewContent = () => {
   const { t, i18n } = useTranslation();
   const { showModal } = useModal();
-  const user = useAuthStore((state) => state.user);
+  const user = useOhjaajaProfile();
   const isLoggedIn = !!user;
 
   const handleOpenModal = () => {

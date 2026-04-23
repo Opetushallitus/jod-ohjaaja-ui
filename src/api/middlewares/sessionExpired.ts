@@ -1,21 +1,20 @@
-import { useAuthStore } from '@/stores/useAuthStore';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
-import { useSessionExpirationStore } from '@/stores/useSessionExpirationStore';
+import { sessionActivityShouldExtendFromApi, useSessionManagerStore } from '@/stores/useSessionManagerStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { Middleware } from 'openapi-fetch';
 
 export const sessionExpiredMiddleware: Middleware = {
   async onResponse({ response }) {
-    const { sessionExpired, extendSession, onSessionExtended } = useSessionExpirationStore.getState();
+    const sessionState = useSessionManagerStore.getState();
 
-    if (response.status >= 200 && response.status < 300 && !sessionExpired) {
-      onSessionExtended?.();
-      await extendSession();
+    if (response.status >= 200 && response.status < 300 && sessionActivityShouldExtendFromApi(sessionState)) {
+      sessionState.onSessionExtended?.();
+      await sessionState.extendSession();
     }
     if (response.status === 403 && !response.url.endsWith('/api/profiili/ohjaaja')) {
-      useAuthStore.getState().invalidate();
       useSuosikitStore.getState().clearSuosikit();
       useKiinnostuksetStore.getState().clearKiinnostukset();
+      await useSessionManagerStore.getState().expireSession('server-403');
 
       /* eslint-disable sonarjs/todo-tag */
       throw new Error('session-expired'); // TODO: This should be replaced with a proper handling of session expiration

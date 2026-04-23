@@ -4,7 +4,7 @@ import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
 import { getCategoryContent } from '@/services/cms-article-api';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { type StructuredContentPage } from '@/types/cms-content';
 import { tidyClasses as tc } from '@jod/design-system';
 import React from 'react';
@@ -19,7 +19,7 @@ const CategoryListing = () => {
     i18n: { language },
   } = useTranslation();
   const { categoryId, navigationItemType } = useLoaderData<LoaderData>();
-  const user = useAuthStore((state) => state.user);
+  const user = useOhjaajaProfile();
   const isLoggedIn = !!user;
   const [visibleItemCount, setVisibleItemCount] = React.useState(VISIBLE_ITEM_COUNT);
   const [sortOrder, setSortOrder] = React.useState<ContentListSort>('latest');

@@ -6,7 +6,7 @@ import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/Rece
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
 import { useBreadcrumbItems } from '@/hooks/useBreadcrumbItems';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { Breadcrumb, tidyClasses as tc } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
@@ -14,7 +14,7 @@ import { LoaderData } from './loader';
 
 const CategoryMain = () => {
   const { newestCategoryContent, mostViewedCategoryContent, bestMatchingCategoryContent } = useLoaderData<LoaderData>();
-  const user = useAuthStore((state) => state.user);
+  const user = useOhjaajaProfile();
   const isLoggedIn = !!user;
 
   const categoryRoute = useCategoryRoute('CategoryMain');
