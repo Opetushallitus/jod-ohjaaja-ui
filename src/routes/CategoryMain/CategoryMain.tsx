@@ -43,6 +43,7 @@ const CategoryMain = () => {
     '[&_h3]:text-heading-3',
     '[&_h4]:text-heading-4',
     'text-body-lg',
+    '[&_a]:text-accent',
   ]);
 
   return (
