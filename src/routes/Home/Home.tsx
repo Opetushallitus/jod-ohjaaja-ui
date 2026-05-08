@@ -1,3 +1,9 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useLoaderData } from 'react-router';
+
+import { useMediaQueries } from '@jod/design-system';
+
 import heroSrc1 from '@/../assets/ohjaaja-hero-1.jpg';
 import heroSrc2 from '@/../assets/ohjaaja-hero-2.jpg';
 import heroSrc3 from '@/../assets/ohjaaja-hero-3.jpg';
@@ -12,10 +18,6 @@ import { LoaderData } from '@/routes/Home/loader';
 import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { getMainCategoryPath } from '@/utils/navigation-paths';
 import { getLinkTo } from '@/utils/routeUtils';
-import { useMediaQueries } from '@jod/design-system';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLoaderData } from 'react-router';
 
 const Home = () => {
   const {
@@ -54,23 +56,23 @@ const Home = () => {
 
   const heroHeight = React.useMemo(() => {
     return window.innerHeight - 68;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // oxlint-disable-next-line eslint-plugin-react-hooks/exhaustive-deps
   }, [window.innerWidth]);
 
   return (
-    <main id="jod-main" className="w-full max-w-(--breakpoint-xl) mx-auto" data-testid="home">
+    <main id="jod-main" className="mx-auto w-full max-w-(--breakpoint-xl)" data-testid="home">
       <title>{t('front-page')}</title>
 
       <img
         src={heroSrc}
         alt=""
         role="none"
-        className="w-(--breakpoint-xl) sm:h-[617px] object-cover xl:object-[50%_50%] lg:object-[20%_50%] md:object-[41%_50%] sm:object-[44%_50%] object-[50%_50%] -z-10 pointer-events-none select-none touch-none"
+        className="pointer-events-none -z-10 w-(--breakpoint-xl) touch-none object-cover object-[50%_50%] select-none sm:h-[617px] sm:object-[44%_50%] md:object-[41%_50%] lg:object-[20%_50%] xl:object-[50%_50%]"
         style={sm ? undefined : { height: heroHeight }}
         data-testid="home-hero"
       />
 
-      <div ref={firstCardRef} className="max-w-[1140px] mx-auto px-5 sm:px-6 mb-6 lg:mb-8 relative">
+      <div ref={firstCardRef} className="relative mx-auto mb-6 max-w-[1140px] px-5 sm:px-6 lg:mb-8">
         <FeatureCard
           level="h1"
           hero
@@ -80,7 +82,7 @@ const Home = () => {
           className="lg:w-1/2"
         />
       </div>
-      <div className="max-w-[1140px] flex flex-col lg:flex-row gap-6 xl:gap-7 mx-auto px-5 sm:px-6 pb-8 mb-8">
+      <div className="mx-auto mb-8 flex max-w-[1140px] flex-col gap-6 px-5 pb-8 sm:px-6 lg:flex-row xl:gap-7">
         <FeatureCard
           linkComponent={getLinkTo(getMainCategoryPath(language as LangCode, 0))}
           level="h2"
@@ -110,7 +112,7 @@ const Home = () => {
         />
       </div>
       <div
-        className="grid gap-8 grid-cols-3 max-w-[1140px] mx-auto px-5 sm:px-6 pb-7 md:pb-[40px] lg:pb-[75px]"
+        className="mx-auto grid max-w-[1140px] grid-cols-3 gap-8 px-5 pb-7 sm:px-6 md:pb-[40px] lg:pb-[75px]"
         data-testid="home-content"
       >
         <ArticleCarousel title={t('home.popular-content')} isLoggedIn={isLoggedIn} articles={mostViewedContent} />
@@ -146,7 +148,7 @@ const Home = () => {
         {isLoggedIn ? (
           <div className="col-span-3 grid grid-cols-3 gap-x-6 xl:gap-x-7">
             <RecentlyWatchedContent />
-            <div className="col-span-3 lg:col-span-1 content-end">
+            <div className="col-span-3 content-end lg:col-span-1">
               <SuggestNewContent />
             </div>
           </div>

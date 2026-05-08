@@ -1,7 +1,7 @@
+import { create } from 'zustand';
+
 import { addKiinnostus, deleteKiinnostus, getKiinnostukset } from '@/api/kiinnostukset';
 import { components } from '@/api/schema';
-
-import { create } from 'zustand';
 
 interface KiinnostuksetStore {
   kiinnostukset: components['schemas']['KiinnostusDto'][];

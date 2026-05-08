@@ -1,5 +1,6 @@
-import { ConfirmDialogWrapperProps } from '@/components';
 import React from 'react';
+
+import { ConfirmDialogWrapperProps } from '@/components';
 
 export interface ModalComponentProps {
   onClose: () => void;

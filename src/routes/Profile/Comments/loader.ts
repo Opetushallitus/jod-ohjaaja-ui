@@ -1,5 +1,6 @@
-import { getOmatArtikkelinKommentit } from '@/api/artikkelinKommentit';
 import { LoaderFunction } from 'react-router';
+
+import { getOmatArtikkelinKommentit } from '@/api/artikkelinKommentit';
 
 const loader = (async () => {
   const firstPage = await getOmatArtikkelinKommentit(0);

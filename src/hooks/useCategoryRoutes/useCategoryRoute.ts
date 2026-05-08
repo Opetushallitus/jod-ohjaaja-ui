@@ -1,6 +1,7 @@
+import { type RouteObject, type UIMatch, useMatches } from 'react-router';
+
 import { getRoutes } from '@/routes';
 import { isRouteMatchHandle, NavigationItemType } from '@/types/cms-navigation';
-import { type RouteObject, type UIMatch, useMatches } from 'react-router';
 
 export const useCategoryRoute = (type: NavigationItemType) => {
   const matches = useMatches();

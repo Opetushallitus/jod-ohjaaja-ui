@@ -1,3 +1,9 @@
+import React, { JSX } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router';
+
+import { ContentCard } from '@jod/design-system';
+
 import { getMostRecentViewedArtikkeliErcs } from '@/api/artikkelinKatselu';
 import { LangCode } from '@/i18n/config';
 import { getArticlesByErcs } from '@/services/cms-article-api';
@@ -5,10 +11,6 @@ import { StructuredContent } from '@/types/cms-content';
 import { getIngress, getKeywords, getTitle } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { getArticleCategoryTitlePathParts, getArticlePath } from '@/utils/navigation-paths';
-import { ContentCard } from '@jod/design-system';
-import React, { JSX } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router';
 
 export const RecentlyWatchedContent = () => {
   const {
@@ -68,16 +70,16 @@ export const RecentlyWatchedContent = () => {
         setContentCards([]);
       }
     };
-    fetchData();
+    void fetchData();
   }, [createContentCard, language]);
 
   return contentCards.length > 0 ? (
     <>
-      <h2 className="col-span-3 text-heading-2-mobile sm:text-heading-2 mb-5" data-testid="recently-watched-title">
+      <h2 className="col-span-3 mb-5 text-heading-2-mobile sm:text-heading-2" data-testid="recently-watched-title">
         {t('recently-watched-contents')}
       </h2>
 
-      <div className="col-span-3 lg:col-span-2 rounded bg-white p-6" data-testid="recently-watched-list">
+      <div className="col-span-3 rounded bg-white p-6 lg:col-span-2" data-testid="recently-watched-list">
         {contentCards.map((card, index) => (
           <React.Fragment key={card.key}>
             {card}

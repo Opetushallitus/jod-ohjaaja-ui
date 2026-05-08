@@ -1,7 +1,8 @@
-import { tidyClasses as tc } from '@jod/design-system';
-import { JodClose } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { tidyClasses as tc } from '@jod/design-system';
+import { JodClose } from '@jod/design-system/icons';
 
 interface ButtonMenuProps {
   triggerIcon: React.ReactNode;
@@ -54,7 +55,7 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
         type="button"
         onClick={handleOpenMenu}
         className={tc(
-          `cursor-pointer flex items-center gap-x-3 text-nowrap rounded-2xl px-5 py-3 text-button-sm hover:underline bg-bg-gray-2 ${className}`,
+          `rounded-2xl flex cursor-pointer items-center gap-x-3 bg-bg-gray-2 px-5 py-3 text-button-sm text-nowrap hover:underline ${className}`,
         )}
         id={buttonId}
         aria-label={triggerLabel}
@@ -68,14 +69,14 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
       </button>
       {menuOpen && (
         <div
-          className={tc(`bg-bg-gray-2 p-6 rounded absolute z-50 top-0 w-max max-w-[350px] ${menuClassName}`)}
+          className={tc(`absolute top-0 z-50 w-max max-w-[350px] rounded bg-bg-gray-2 p-6 ${menuClassName}`)}
           id={menuId}
           role="region"
           ref={menuRef}
           aria-labelledby={buttonId}
           data-testid="button-menu-popup"
         >
-          <div className="flex flex-row items-center justify-between mb-5">
+          <div className="mb-5 flex flex-row items-center justify-between">
             <p className="text-body-sm" aria-hidden>
               {triggerLabel}
             </p>

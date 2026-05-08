@@ -1,6 +1,9 @@
-import { getLinkTo } from '@/utils/routeUtils';
-import { JodOpenInNew } from '@jod/design-system/icons';
 import { useTranslation } from 'react-i18next';
+
+import { JodOpenInNew } from '@jod/design-system/icons';
+
+import { getLinkTo } from '@/utils/routeUtils';
+
 import { FeatureCard } from '../FeatureCard/FeatureCard';
 
 const GuidanceCard = () => {

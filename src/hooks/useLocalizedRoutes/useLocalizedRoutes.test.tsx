@@ -1,8 +1,10 @@
-import { getItemPath } from '@/utils/navigation-paths';
 import { renderHook } from '@testing-library/react';
 import { useTranslation } from 'react-i18next';
 import { useMatches, useParams, useSearchParams } from 'react-router';
 import { Mock, beforeEach, describe, expect, it, vi } from 'vitest';
+
+import { getItemPath } from '@/utils/navigation-paths';
+
 import { useLocalizedRoutes } from './useLocalizedRoutes';
 
 // Mock the necessary hooks

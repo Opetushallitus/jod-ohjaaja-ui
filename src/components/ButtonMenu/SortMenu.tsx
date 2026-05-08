@@ -1,6 +1,8 @@
-import { Sort } from '@/types/sort';
 import { RadioButton, RadioButtonGroup } from '@jod/design-system';
 import { JodSort } from '@jod/design-system/icons';
+
+import { Sort } from '@/types/sort';
+
 import { ButtonMenu } from './ButtonMenu';
 
 export interface SortOption {

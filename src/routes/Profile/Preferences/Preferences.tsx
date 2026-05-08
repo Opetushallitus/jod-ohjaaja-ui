@@ -1,12 +1,14 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { Button } from '@jod/design-system';
+
 import { MainLayout } from '@/components';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import { useModal } from '@/hooks/useModal';
 import { useSessionGuardedAction } from '@/hooks/useSessionGuardedAction';
 import { LogoutFormContext } from '@/routes/Root';
 import { useSessionManagerStore } from '@/stores/useSessionManagerStore';
-import { Button } from '@jod/design-system';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 const navigateToProfileExport = () => {
   globalThis.location.assign(`${import.meta.env.BASE_URL}api/profiili/ohjaaja/vienti`);
@@ -63,13 +65,13 @@ const Preferences = () => {
     <MainLayout navChildren={<ProfileNavigation />}>
       <div data-testid="preferences-route">
         <title>{t('profile.preferences.title')}</title>
-        <h1 className="text-heading-1-mobile lg:text-heading-1 mb-6" data-testid="preferences-title">
+        <h1 className="mb-6 text-heading-1-mobile lg:text-heading-1" data-testid="preferences-title">
           {t('profile.preferences.title')}
         </h1>
-        <p className="text-body-lg mb-8">{t('profile.preferences.ingress')}</p>
+        <p className="mb-8 text-body-lg">{t('profile.preferences.ingress')}</p>
         <section className="mb-8" data-testid="preferences-download">
-          <h2 className="text-heading-2-mobile sm:text-heading-2 mb-3">{t('profile.preferences.download.title')}</h2>
-          <p className="text-body-md mb-5">{t('profile.preferences.download.description')}</p>
+          <h2 className="mb-3 text-heading-2-mobile sm:text-heading-2">{t('profile.preferences.download.title')}</h2>
+          <p className="mb-5 text-body-md">{t('profile.preferences.download.description')}</p>
           <Button
             variant="accent"
             serviceVariant="ohjaaja"
@@ -79,10 +81,10 @@ const Preferences = () => {
           />
         </section>
         <section data-testid="preferences-delete-profile">
-          <h2 className="text-heading-2-mobile sm:text-heading-2 mb-3">
+          <h2 className="mb-3 text-heading-2-mobile sm:text-heading-2">
             {t('profile.preferences.delete-profile.title')}
           </h2>
-          <p className="text-body-md mb-5">{t('profile.preferences.delete-profile.description')}</p>
+          <p className="mb-5 text-body-md">{t('profile.preferences.delete-profile.description')}</p>
 
           <Button
             variant="red-delete"

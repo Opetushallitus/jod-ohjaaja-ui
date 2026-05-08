@@ -1,8 +1,10 @@
-import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
-import { getLinkTo } from '@/utils/routeUtils';
-import { type MenuSection, PageNavigation, useMediaQueries } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
 import { type RouteObject, useLocation } from 'react-router';
+
+import { type MenuSection, PageNavigation, useMediaQueries } from '@jod/design-system';
+
+import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
+import { getLinkTo } from '@/utils/routeUtils';
 
 export const CategoryNavigation = () => {
   const categoryRoute = useCategoryRoute('CategoryMain');

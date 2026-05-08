@@ -1,15 +1,16 @@
-import { components } from '@/api/schema';
-import { FeedbackModal } from '@/components';
-import { NavMenu } from '@/components/NavMenu/NavMenu';
-import { SearchBar } from '@/components/SearchBar/SearchBar';
-import { Toaster } from '@/components/Toaster/Toaster';
-import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
-import { useLoginLink } from '@/hooks/useLoginLink';
-import { useSessionManagerNotifications } from '@/hooks/useSessionManagerNotifications';
-import i18n, { LangCode, langLabels, supportedLanguageCodes } from '@/i18n/config';
-import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
-import { getNotifications } from '@/utils/notifications';
-import { getLinkTo } from '@/utils/routeUtils';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  ScrollRestoration,
+  useFetcher,
+  useLocation,
+  useMatch,
+  useRouteLoaderData,
+} from 'react-router';
+
 import {
   Button,
   Chatbot,
@@ -25,18 +26,20 @@ import {
   useNoteStack,
   UserButton,
 } from '@jod/design-system';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import {
-  Link,
-  NavLink,
-  Outlet,
-  ScrollRestoration,
-  useFetcher,
-  useLocation,
-  useMatch,
-  useRouteLoaderData,
-} from 'react-router';
+
+import { components } from '@/api/schema';
+import { FeedbackModal } from '@/components';
+import { NavMenu } from '@/components/NavMenu/NavMenu';
+import { SearchBar } from '@/components/SearchBar/SearchBar';
+import { Toaster } from '@/components/Toaster/Toaster';
+import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
+import { useLoginLink } from '@/hooks/useLoginLink';
+import { useSessionManagerNotifications } from '@/hooks/useSessionManagerNotifications';
+import i18n, { LangCode, langLabels, supportedLanguageCodes } from '@/i18n/config';
+import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
+import { getNotifications } from '@/utils/notifications';
+import { getLinkTo } from '@/utils/routeUtils';
+
 import { LogoutFormContext } from '.';
 
 const LanguageButtonWrapper = ({ responsive }: { responsive?: boolean }) => {
@@ -155,7 +158,7 @@ const Root = () => {
 
   React.useEffect(() => {
     document.documentElement.setAttribute('lang', i18n.language);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // oxlint-disable-next-line eslint-plugin-react-hooks/exhaustive-deps
   }, [i18n.language]);
 
   const showServiceName = sm || !searchInputVisible;

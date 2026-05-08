@@ -1,8 +1,11 @@
-import { getSearchUrl } from '@/utils/navigation';
-import { useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMatches, useNavigate } from 'react-router';
+
+import { useMediaQueries } from '@jod/design-system';
+
+import { getSearchUrl } from '@/utils/navigation';
+
 import { SearchButton } from './SearchButton';
 import { SearchInput } from './SearchInput';
 
@@ -36,7 +39,7 @@ export const SearchBar = ({ searchInputVisible, setSearchInputVisible }: SearchB
     if (hasValidSearch) {
       globalThis._paq?.push(['trackEvent', 'ohjaaja.Haku', 'Hakusana', trimmedValue]);
     }
-    navigate(getSearchUrl(t, language, [], hasValidSearch ? trimmedValue : undefined));
+    void navigate(getSearchUrl(t, language, [], hasValidSearch ? trimmedValue : undefined));
     setTimeout(() => {
       setSearchValue('');
       setIsSearching(false);
@@ -56,7 +59,7 @@ export const SearchBar = ({ searchInputVisible, setSearchInputVisible }: SearchB
   const searchForm = (
     <form
       id="search"
-      className="flex items-center gap-2 justify-end"
+      className="flex items-center justify-end gap-2"
       onSubmit={handleSearch}
       data-testid="searchbar-form"
     >
@@ -69,7 +72,7 @@ export const SearchBar = ({ searchInputVisible, setSearchInputVisible }: SearchB
 
   return (
     !hideSearch && (
-      <div className="print:hidden mb-2" data-testid="searchbar">
+      <div className="mb-2 print:hidden" data-testid="searchbar">
         {showSearchInput ? searchForm : toggleSearchButton}
       </div>
     )

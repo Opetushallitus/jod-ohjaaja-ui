@@ -1,3 +1,5 @@
+import { LoaderFunction } from 'react-router';
+
 import { getMostViewedArtikkeliErcs } from '@/api/artikkelinKatselu';
 import { getBestMatchingArticles } from '@/api/kiinnostukset';
 import { components } from '@/api/schema';
@@ -6,7 +8,6 @@ import { getCategoryContent } from '@/services/cms-article-api';
 import { StructuredContent } from '@/types/cms-content';
 import { NavigationItemType } from '@/types/cms-navigation';
 import { getCategoryArticleErcs } from '@/utils/navigation';
-import { LoaderFunction } from 'react-router';
 
 const getMainCategoryContentLoader = (categoryId: number, navigationItemType: NavigationItemType) =>
   (async ({ context }) => {

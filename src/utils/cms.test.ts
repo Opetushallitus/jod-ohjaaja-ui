@@ -1,6 +1,8 @@
+import { describe, expect, it } from 'vitest';
+
 import { LangCode } from '@/i18n/config';
 import { Category, StructuredContent } from '@/types/cms-content';
-import { describe, expect, it } from 'vitest';
+
 import {
   getAcceptLanguageHeader,
   getContentSegments,
@@ -12,7 +14,7 @@ import {
   getTitle,
 } from './cms';
 
-const createTestData = (title: string, keywords: Category[] | undefined = undefined) => {
+const createTestData = (title: string, keywords?: Category[]) => {
   const structuredContent: StructuredContent = {
     title,
     contentFields: [],
@@ -146,7 +148,6 @@ describe('CMS utils', () => {
     });
 
     it('should default to finnish with invalid input', () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const invalidLangs = [null, undefined, '', 0, false, NaN, {}] as any[];
       invalidLangs.forEach((lang) => {
         expect(getAcceptLanguageHeader(lang)['Accept-Language']).toBe('fi-FI');

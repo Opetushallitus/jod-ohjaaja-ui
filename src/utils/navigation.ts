@@ -1,3 +1,5 @@
+import { type TFunction } from 'i18next';
+
 import { LangCode } from '@/i18n/config';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import {
@@ -6,7 +8,7 @@ import {
   type CMSNavigationItemLocalization,
   type NavigationTreeItem,
 } from '@/types/cms-navigation';
-import { type TFunction } from 'i18next';
+
 import { sluggify } from './string-utils';
 
 export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangCode): NavigationTreeItem => {

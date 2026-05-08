@@ -1,4 +1,5 @@
 import { type Feature } from '@/types/feature';
+
 import { client } from './client';
 
 export const isFeatureEnabled = async (feature: Feature) => {

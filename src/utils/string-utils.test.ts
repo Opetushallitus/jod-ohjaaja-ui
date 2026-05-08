@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { sluggify } from './string-utils';
 
 describe('sluggify', () => {
@@ -22,6 +23,7 @@ describe('sluggify', () => {
   ];
 
   testCases.forEach(({ input, expected, desc }) => {
+    // oxlint-disable-next-line jest/valid-title
     it(desc, () => {
       expect(sluggify(input)).toBe(expected);
     });

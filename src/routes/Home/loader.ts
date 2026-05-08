@@ -1,3 +1,5 @@
+import { LoaderFunction } from 'react-router';
+
 import { getMostViewedArtikkeliErcs } from '@/api/artikkelinKatselu';
 import { getBestMatchingArticles } from '@/api/kiinnostukset';
 import { components } from '@/api/schema';
@@ -6,8 +8,6 @@ import { getArticlesByErcs, getNewestContent } from '@/services/cms-article-api'
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { type StructuredContent } from '@/types/cms-content';
 import { getNavigationItemsByType } from '@/utils/navigation';
-
-import { LoaderFunction } from 'react-router';
 
 const loader = (async ({ context }) => {
   const isLoggedIn = !!context;

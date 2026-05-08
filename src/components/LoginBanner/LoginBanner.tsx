@@ -1,5 +1,7 @@
-import { getLinkTo } from '@/utils/routeUtils';
 import { useTranslation } from 'react-i18next';
+
+import { getLinkTo } from '@/utils/routeUtils';
+
 import { FeatureCard } from '../FeatureCard/FeatureCard';
 
 export const LoginBanner = () => {

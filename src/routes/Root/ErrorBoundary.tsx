@@ -1,8 +1,10 @@
-import { useLoginLink } from '@/hooks/useLoginLink';
-import { Button } from '@jod/design-system';
-import { JodHome, JodUser } from '@jod/design-system/icons';
 import { useTranslation } from 'react-i18next';
 import { useRouteError } from 'react-router';
+
+import { Button } from '@jod/design-system';
+import { JodHome, JodUser } from '@jod/design-system/icons';
+
+import { useLoginLink } from '@/hooks/useLoginLink';
 
 const ErrorBoundary = () => {
   const { t, i18n } = useTranslation();

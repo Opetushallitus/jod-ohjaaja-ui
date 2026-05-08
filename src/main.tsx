@@ -1,9 +1,12 @@
-import { ServiceVariantProvider } from '@jod/design-system';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Metric } from 'web-vitals';
+
+import { ServiceVariantProvider } from '@jod/design-system';
+
 import './i18n/config';
+
 import './index.css';
 import { getRoutes } from './routes';
 import { loadNavigation } from './services/navigation-loader';
@@ -19,7 +22,7 @@ try {
 const root = createRoot(document.getElementById('root')!);
 
 if (import.meta.env.NODE_ENV !== 'production') {
-  import('web-vitals').then((vitals) => {
+  void import('web-vitals').then((vitals) => {
     const warnOnlyNegativeMetrics = (metric: Metric) => {
       if (metric.rating !== 'good') {
         console.warn(`Metric ${metric.name} is not good`, metric);
@@ -31,8 +34,8 @@ if (import.meta.env.NODE_ENV !== 'production') {
     vitals.onLCP(warnOnlyNegativeMetrics);
     vitals.onTTFB(warnOnlyNegativeMetrics);
   });
-  import('@axe-core/react').then((axe) => {
-    axe.default(React, root, 1000);
+  void import('@axe-core/react').then((axe) => {
+    void axe.default(React, root, 1000);
   });
 }
 

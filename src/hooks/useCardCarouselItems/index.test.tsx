@@ -1,6 +1,8 @@
-import { type CardCarouselItem } from '@jod/design-system';
 import { renderHook } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
+
+import { type CardCarouselItem } from '@jod/design-system';
+
 import { useCardCarouselItems } from './index';
 
 describe('useCardCarouselItems', () => {

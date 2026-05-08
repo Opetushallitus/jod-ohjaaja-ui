@@ -1,6 +1,8 @@
-import { Button, Spinner, Textarea } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { Button, Spinner, Textarea } from '@jod/design-system';
+
 import PatternAvatar from '../PatternAvatar/PatternAvatar';
 import { LIMITS } from './constants';
 
@@ -25,12 +27,12 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
   }, [currentComment]);
 
   return (
-    <div className="flex gap-5 pt-7 pl-6 border-t-border-gray border-t" data-testid="comment-input">
+    <div className="flex gap-5 border-t border-t-border-gray pt-7 pl-6" data-testid="comment-input">
       <div>
         <PatternAvatar seed={userId} size={32} />
       </div>
       {addingComment ? (
-        <div className="grow flex justify-center" data-testid="comment-input-loading">
+        <div className="flex grow justify-center" data-testid="comment-input-loading">
           <Spinner size={16} color="accent" />
         </div>
       ) : (
@@ -55,7 +57,7 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
             variant="accent"
             serviceVariant="ohjaaja"
             disabled={currentComment.trim().length < 1}
-            className="self-center mb-2"
+            className="mb-2 self-center"
             size="sm"
             onClick={() => {
               const comment = textareaRef.current?.value;

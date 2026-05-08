@@ -1,5 +1,6 @@
-import { JodOpenInNew } from '@jod/design-system/icons';
 import { useTranslation } from 'react-i18next';
+
+import { JodOpenInNew } from '@jod/design-system/icons';
 
 interface ExternalLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;

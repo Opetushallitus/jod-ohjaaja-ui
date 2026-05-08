@@ -1,3 +1,18 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link, useLoaderData, useLocation } from 'react-router';
+import { useShallow } from 'zustand/react/shallow';
+
+import { CookieConsentGuard, tidyClasses as tc } from '@jod/design-system';
+import {
+  JodDownload,
+  JodFavorite,
+  JodFavoriteFilled,
+  JodOpenInNew,
+  JodPrint,
+  JodShare,
+} from '@jod/design-system/icons';
+
 import { FeatureCard, GuidanceCard, MainLayout } from '@/components';
 import { createLoginDialogFooter } from '@/components/createLoginDialogFooter';
 import { useFeature } from '@/hooks/useFeatures/useFeatures';
@@ -10,19 +25,7 @@ import { copyToClipboard } from '@/utils/clipboard';
 import { getAdaptiveMediaSrc, getContentSegments, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { getLinkTo } from '@/utils/routeUtils';
-import { CookieConsentGuard, tidyClasses as tc } from '@jod/design-system';
-import {
-  JodDownload,
-  JodFavorite,
-  JodFavoriteFilled,
-  JodOpenInNew,
-  JodPrint,
-  JodShare,
-} from '@jod/design-system/icons';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link, useLoaderData, useLocation } from 'react-router';
-import { useShallow } from 'zustand/react/shallow';
+
 import { LoaderData } from './loader';
 
 interface ActionButtonProps {
@@ -37,7 +40,7 @@ export const ActionButton = ({ label, icon, className = '', onClick, ...rest }: 
     <button
       aria-label={label}
       className={tc(
-        `cursor-pointer flex items-center gap-x-3 p-2 text-button-sm text-nowrap focus:outline-accent ${className}`,
+        `flex cursor-pointer items-center gap-x-3 p-2 text-button-sm text-nowrap focus:outline-accent ${className}`,
       )}
       onClick={onClick}
       type="button"
@@ -86,7 +89,7 @@ const ContentDetails = () => {
         footer: createLoginDialogFooter(t, loginLink, closeAllModals),
       });
     } else if (data.externalReferenceCode !== undefined) {
-      toggleSuosikki(data.externalReferenceCode);
+      void toggleSuosikki(data.externalReferenceCode);
     }
   };
 
@@ -157,32 +160,32 @@ const ContentDetails = () => {
       }
     >
       <title>{data.title}</title>
-      <div className="bg-white p-7 col-span-2 flex flex-col sm:gap-7 gap-6" data-testid="content-details">
-        <h1 className="text-heading-1 hyphens-auto wrap-break-word" data-testid="content-title">
+      <div className="col-span-2 flex flex-col gap-6 bg-white p-7 sm:gap-7" data-testid="content-details">
+        <h1 className="text-heading-1 wrap-break-word hyphens-auto" data-testid="content-title">
           {data.title}
         </h1>
         <div className="flex" data-testid="content-created">
-          <div className="-mt-6 mx-1">{t('content-details.date-created')}</div>
-          <div className="-mt-6 mx-3">{dateCreated}</div>
+          <div className="mx-1 -mt-6">{t('content-details.date-created')}</div>
+          <div className="mx-3 -mt-6">{dateCreated}</div>
         </div>
         <div className="flex" data-testid="content-modified">
-          <div className="-mt-7 mx-1">{t('content-details.date-modified')}</div>
-          <div className="-mt-7 mx-3">{dateModified}</div>
+          <div className="mx-1 -mt-7">{t('content-details.date-modified')}</div>
+          <div className="mx-3 -mt-7">{dateModified}</div>
         </div>
-        <div className="flex sm:flex-row flex-col sm:gap-6 gap-5 space-between">
+        <div className="space-between flex flex-col gap-5 sm:flex-row sm:gap-6">
           <div className="flex flex-col">
             {image && (
-              <div data-testid="content-image" className="max-w-[386px] max-h-[217px] shrink-0">
+              <div data-testid="content-image" className="max-h-[217px] max-w-[386px] shrink-0">
                 <img src={imageSrc} alt={image.description} className="object-contain object-left" />
               </div>
             )}
             {imageCopyright && (
-              <span className="font-arial text-body-xs text-secondary-gray block">@ {imageCopyright}</span>
+              <span className="block font-arial text-body-xs text-secondary-gray">@ {imageCopyright}</span>
             )}
           </div>
 
           <div
-            className="flex sm:flex-col flex-row flex-wrap sm:justify-start justify-end flex-1 place-items-end gap-3 print:hidden"
+            className="flex flex-1 flex-row flex-wrap place-items-end justify-end gap-3 sm:flex-col sm:justify-start print:hidden"
             data-testid="content-actions"
           >
             <ActionButton
@@ -237,13 +240,13 @@ const ContentDetails = () => {
         <DocumentsAndLinks documents={documents} links={links} />
         {keywords.length > 0 && (
           <ul
-            className="text-attrib-value flex flex-row divide-x flex-wrap pt-3 text-accent"
+            className="flex flex-row flex-wrap divide-x pt-3 text-attrib-value text-accent"
             data-testid="content-tags"
           >
             {keywords.map((tag) => (
               <li
                 key={tag.id}
-                className="px-2 first:pl-0 last:pr-0 border-border-gray"
+                className="border-border-gray px-2 first:pl-0 last:pr-0"
                 data-testid={`content-tag-${tag.id}`}
               >
                 <Link to={getSearchUrl(t, language, [`${tag.id}`])} data-testid={`content-tag-link-${tag.id}`}>
@@ -267,17 +270,16 @@ const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
   const { t } = useTranslation();
   return (
     hasDocumentsOrLinks && (
-      <div className="w-full bg-bg-gray p-5 rounded-sm" data-testid="content-attachments">
+      <div className="w-full rounded-sm bg-bg-gray p-5" data-testid="content-attachments">
         <h2 className="text-heading-4" data-testid="content-attachments-title">
           {t('content-details.additional-content')}
         </h2>
         {documents.map((document) => (
-          // eslint-disable-next-line react/jsx-no-target-blank
           <a
             key={document.id}
             href={document.contentUrl}
             target="_blank"
-            className="flex text-heading-4 text-accent items-center gap-3 ml-4"
+            className="ml-4 flex items-center gap-3 text-heading-4 text-accent"
             data-testid={`content-document-${document.id}`}
             onClick={() => {
               globalThis._paq?.push(['trackEvent', 'ohjaaja.Tiedon käyttöaste', 'Lataus', document.title]);
@@ -292,7 +294,7 @@ const DocumentsAndLinks = ({ documents, links }: DocumentsAndLinksProps) => {
             href={link.url}
             target="_blank"
             rel="external noopener noreferrer"
-            className="flex text-heading-4 text-accent items-center gap-3 ml-4"
+            className="ml-4 flex items-center gap-3 text-heading-4 text-accent"
             data-testid={`content-link-${index + 1}`}
           >
             {link.text} <JodOpenInNew size={20} ariaLabel={t('common:external-link')} />

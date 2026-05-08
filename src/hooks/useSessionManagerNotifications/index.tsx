@@ -1,11 +1,13 @@
+import React from 'react';
+import { useShallow } from 'zustand/shallow';
+
+import { Button, useNoteStack } from '@jod/design-system';
+
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
 import { isSessionExpiredState, isSessionValidState, useSessionManagerStore } from '@/stores/useSessionManagerStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import type { OhjaajaCsrfDto } from '@/types/auth';
 import { getLinkTo } from '@/utils/routeUtils';
-import { Button, useNoteStack } from '@jod/design-system';
-import React from 'react';
-import { useShallow } from 'zustand/shallow';
 
 type NoteActions = Pick<
   ReturnType<typeof useNoteStack>,

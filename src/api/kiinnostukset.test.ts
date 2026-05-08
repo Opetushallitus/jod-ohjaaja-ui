@@ -1,6 +1,8 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { getCategoryContent, searchContent } from '@/services/cms-article-api';
 import { StructuredContent, StructuredContentPage } from '@/types/cms-content';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { getBestMatchingArticles } from './kiinnostukset';
 
 const mocks = vi.hoisted(() => ({

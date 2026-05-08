@@ -1,11 +1,14 @@
-import { useAppRoutes } from '@/hooks/useAppRoutes';
-import { getNavigationTreeItems } from '@/services/navigation-loader';
-import { NavigationTreeItem } from '@/types/cms-navigation';
-import { LinkComponent, MenuItem } from '@jod/design-system';
-import { JodHome } from '@jod/design-system/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLoaderData, useLocation } from 'react-router';
+
+import { LinkComponent, MenuItem } from '@jod/design-system';
+import { JodHome } from '@jod/design-system/icons';
+
+import { useAppRoutes } from '@/hooks/useAppRoutes';
+import { getNavigationTreeItems } from '@/services/navigation-loader';
+import { NavigationTreeItem } from '@/types/cms-navigation';
+
 import { NavLinkBasedOnAuth } from './NavLinkBasedOnAuth';
 
 const createMenuItem = (

@@ -1,7 +1,9 @@
+import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
+
 import { LangCode } from '@/i18n/config';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { NavigationItemType, NavigationTreeItem } from '@/types/cms-navigation';
-import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
+
 import {
   getArticleCategoryTitlePathParts,
   getArticlePath,

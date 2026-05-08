@@ -1,6 +1,7 @@
 import { type StructuredContent, type StructuredContentPage } from '@/types/cms-content';
 import { type NavigationTreeItem } from '@/types/cms-navigation';
 import { type Sort } from '@/types/sort';
+
 import { fetchFromCMS, SCOPE_ID } from './cms-api';
 import { getNavigationTreeItems } from './navigation-loader';
 

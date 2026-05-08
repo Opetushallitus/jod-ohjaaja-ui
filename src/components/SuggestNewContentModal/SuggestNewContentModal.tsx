@@ -1,6 +1,4 @@
-import { client } from '@/api/client';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Accordion, Button, InputField, Modal, Textarea, useMediaQueries } from '@jod/design-system';
 import React from 'react';
 import {
   FieldErrors,
@@ -13,6 +11,11 @@ import {
 } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+
+import { Accordion, Button, InputField, Modal, Textarea, useMediaQueries } from '@jod/design-system';
+
+import { client } from '@/api/client';
+
 import { ExternalLink } from '../ExternalLink/ExternalLink';
 
 interface SuggestNewContentFormModel {
@@ -78,7 +81,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
       }
       data-testid="suggest-new-content-modal"
       footer={
-        <div className="flex justify-end flex-1 gap-3">
+        <div className="flex flex-1 justify-end gap-3">
           <Button
             variant="white"
             serviceVariant="ohjaaja"
@@ -146,8 +149,8 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
   }
 
   return (
-    <div className="max-w-modal-content box-content px-5 md:px-9">
-      <div className="flex flex-col gap-5 mb-5 text-body-md-mobile sm:text-body-md font-arial">
+    <div className="box-content max-w-modal-content px-5 md:px-9">
+      <div className="mb-5 flex flex-col gap-5 font-arial text-body-md-mobile sm:text-body-md">
         <p>{t('suggest-new-content.description')}</p>
         <Accordion
           title={
@@ -221,8 +224,8 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
             />
           </div>
 
-          <hr className="h-1 bg-border-gray text-border-gray mb-7" />
-          <div className="sm:text-body-md text-body-md-mobile mb-5 sm:mb-9">
+          <hr className="mb-7 h-1 bg-border-gray text-border-gray" />
+          <div className="mb-5 text-body-md-mobile sm:mb-9 sm:text-body-md">
             <p>{t('suggest-new-content.footer-info-1')}</p>
             <br />
             <p>

@@ -1,6 +1,7 @@
+import React from 'react';
+
 import { Button, cx, type LinkComponent } from '@jod/design-system';
 import { JodArrowRight } from '@jod/design-system/icons';
-import React from 'react';
 
 type LinkProps = {
   linkComponent: LinkComponent;
@@ -69,10 +70,10 @@ export const FeatureCard = ({
       style={{ backgroundColor }}
       data-testid={'feature-card'}
     >
-      <div className="flex justify-between gap-3 items-center lg:items-start" data-testid="feature-card-header">
+      <div className="flex items-center justify-between gap-3 lg:items-start" data-testid="feature-card-header">
         <Heading
           id={headingId}
-          className={`${hero ? 'text-heading-1-mobile md:text-heading-1 text-white whitespace-pre-line' : 'text-heading-2-mobile md:text-heading-2 text-white'}`}
+          className={`${hero ? 'text-heading-1-mobile whitespace-pre-line text-white md:text-heading-1' : 'text-heading-2-mobile text-white md:text-heading-2'}`}
           data-testid="feature-card-title"
         >
           {title}
@@ -80,7 +81,7 @@ export const FeatureCard = ({
       </div>
       <p
         id={contentId}
-        className="text-body-lg-mobile md:text-body-lg whitespace-pre-line text-white flex-grow"
+        className="flex-grow text-body-lg-mobile whitespace-pre-line text-white md:text-body-lg"
         data-testid="feature-card-content"
       >
         {content}

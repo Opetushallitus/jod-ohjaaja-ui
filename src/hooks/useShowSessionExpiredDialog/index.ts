@@ -1,7 +1,8 @@
-import { useLoginLink } from '@/hooks/useLoginLink';
-import { useModal } from '@/hooks/useModal';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router';
+
+import { useLoginLink } from '@/hooks/useLoginLink';
+import { useModal } from '@/hooks/useModal';
 
 /**
  * Returns a function that opens the session expired dialog (login vs continue browsing).

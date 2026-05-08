@@ -1,7 +1,8 @@
+import { Middleware } from 'openapi-fetch';
+
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
 import { sessionActivityShouldExtendFromApi, useSessionManagerStore } from '@/stores/useSessionManagerStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
-import { Middleware } from 'openapi-fetch';
 
 export const sessionExpiredMiddleware: Middleware = {
   async onResponse({ response }) {
@@ -16,7 +17,6 @@ export const sessionExpiredMiddleware: Middleware = {
       useKiinnostuksetStore.getState().clearKiinnostukset();
       await useSessionManagerStore.getState().expireSession('server-403');
 
-      /* eslint-disable sonarjs/todo-tag */
       throw new Error('session-expired'); // TODO: This should be replaced with a proper handling of session expiration
     }
     return response;
