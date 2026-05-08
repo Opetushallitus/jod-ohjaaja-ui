@@ -1,18 +1,19 @@
-import { MainLayout } from '@/components';
-import { ExternalLink } from '@/components/ExternalLink/ExternalLink';
-import { useLoginLink } from '@/hooks/useLoginLink';
-import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
-import { Button } from '@jod/design-system';
-import { JodArrowRight } from '@jod/design-system/icons';
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
 
-const ListItem = ({ children }: { children: React.ReactNode }) => <li className="list-disc ml-9 pl-1">{children}</li>;
+import { Button } from '@jod/design-system';
+import { JodArrowRight } from '@jod/design-system/icons';
+
+import { MainLayout } from '@/components';
+import { ExternalLink } from '@/components/ExternalLink/ExternalLink';
+import { useLoginLink } from '@/hooks/useLoginLink';
+import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
+
+const ListItem = ({ children }: { children: React.ReactNode }) => <li className="ml-9 list-disc pl-1">{children}</li>;
 
 const Link =
   (href: string) =>
-  // eslint-disable-next-line react/display-name
   ({ children, className }: { children: React.ReactNode; className?: string }) => (
     <a href={href} className={className}>
       {children}
@@ -39,7 +40,7 @@ const LoginPage = () => {
   // Redirect to root if already logged-in
   React.useEffect(() => {
     if (user) {
-      navigate('/');
+      void navigate('/');
     }
   }, [user, navigate]);
 
@@ -50,9 +51,9 @@ const LoginPage = () => {
         {t('profile.login-page.title')}
       </h1>
 
-      <div className="mb-8 text-body-md flex flex-col gap-7">
+      <div className="mb-8 flex flex-col gap-7 text-body-md">
         <div>
-          <p className="text-body-lg mb-3">{t('profile.login-page.description')}</p>
+          <p className="mb-3 text-body-lg">{t('profile.login-page.description')}</p>
           <p className="font-arial">{t('profile.login-page.auth-description')}</p>
         </div>
 
@@ -69,8 +70,8 @@ const LoginPage = () => {
         </div>
 
         <div>
-          <h2 className="text-heading-2-mobile sm:text-heading-2 mb-3">{t('profile.login-page.profile')}</h2>
-          <p className="font-arial mb-7">{t('profile.login-page.profile-description')}</p>
+          <h2 className="mb-3 text-heading-2-mobile sm:text-heading-2">{t('profile.login-page.profile')}</h2>
+          <p className="mb-7 font-arial">{t('profile.login-page.profile-description')}</p>
 
           <div className="font-arial">
             <p>{t('profile.login-page.profile-includes')}</p>
@@ -83,8 +84,8 @@ const LoginPage = () => {
         </div>
 
         <div>
-          <h2 className="text-heading-2-mobile sm:text-heading-2 mb-3">{t('profile.login-page.logged-in-features')}</h2>
-          <div className="font-arial mb-8">
+          <h2 className="mb-3 text-heading-2-mobile sm:text-heading-2">{t('profile.login-page.logged-in-features')}</h2>
+          <div className="mb-8 font-arial">
             <p>{t('profile.login-page.benefits-description')}</p>
             <ul>
               <ListItem>{t('profile.login-page.list-2-item-1')}</ListItem>

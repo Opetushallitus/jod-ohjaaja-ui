@@ -1,4 +1,5 @@
 import { type CMSNavigationMenu } from '@/types/cms-navigation';
+
 import { fetchFromCMS, SCOPE_ID } from './cms-api';
 
 export const getNavigations = async () => {

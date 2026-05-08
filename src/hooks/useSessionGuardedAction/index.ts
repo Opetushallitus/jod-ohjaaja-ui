@@ -22,7 +22,7 @@ export const useSessionGuardedAction = () => {
         showSessionExpiredDialog();
         return;
       }
-      action(...params);
+      void action(...params);
     };
   };
 };

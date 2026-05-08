@@ -1,3 +1,10 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useLoaderData } from 'react-router';
+import { useShallow } from 'zustand/react/shallow';
+
+import { Checkbox, Select } from '@jod/design-system';
+
 import { client } from '@/api/client';
 import { components } from '@/api/schema';
 import { MainLayout } from '@/components';
@@ -6,11 +13,7 @@ import { useSessionGuardedAction } from '@/hooks/useSessionGuardedAction';
 import { useTags } from '@/hooks/useTags';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
 import { getLocale } from '@/utils/navigation';
-import { Checkbox, Select } from '@jod/design-system';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLoaderData } from 'react-router';
-import { useShallow } from 'zustand/react/shallow';
+
 import { LoaderData } from './loader';
 
 const isTyoskentelyPaikka = (
@@ -50,7 +53,7 @@ const Details = () => {
   );
 
   const handleTagSelectionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    toggleKiinnostus(Number(event.target.value));
+    void toggleKiinnostus(Number(event.target.value));
   };
 
   const handleWorkplaceChange = async (value: string) => {
@@ -64,15 +67,15 @@ const Details = () => {
     <MainLayout navChildren={<ProfileNavigation />}>
       <title>{t('profile.details.title')}</title>
       <div data-testid="profile-details">
-        <h1 className="text-heading-1-mobile lg:text-heading-1 mb-6" data-testid="profile-details-title">
+        <h1 className="mb-6 text-heading-1-mobile lg:text-heading-1" data-testid="profile-details-title">
           {t('profile.details.title')}
         </h1>
-        <p className="text-body-lg mb-8">{t('profile.details.ingress')}</p>
+        <p className="mb-8 text-body-lg">{t('profile.details.ingress')}</p>
         <section className="mb-8" data-testid="profile-details-introduction">
-          <h2 className="text-heading-2 mb-6" data-testid="profile-details-intro-title">
+          <h2 className="mb-6 text-heading-2" data-testid="profile-details-intro-title">
             {t('profile.details.introduction.title')}
           </h2>
-          <p className="text-body-md mb-6" data-testid="profile-details-intro-description">
+          <p className="mb-6 text-body-md" data-testid="profile-details-intro-description">
             {t('profile.details.introduction.description')}
           </p>
           <Select
@@ -96,16 +99,16 @@ const Details = () => {
         <section data-testid="profile-details-interests">
           <h2
             id="profile-details-interests-title"
-            className="text-heading-2 mb-6"
+            className="mb-6 text-heading-2"
             data-testid="profile-details-interests-title"
           >
             {t('profile.details.interest.title')}
           </h2>
-          <p className="text-body-md mb-6" data-testid="profile-details-interests-description">
+          <p className="mb-6 text-body-md" data-testid="profile-details-interests-description">
             {t('profile.details.interest.description')}
           </p>
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-5"
+            className="mb-5 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
             data-testid="profile-details-interests-list"
             role="group"
             aria-labelledby="profile-details-interests-title"

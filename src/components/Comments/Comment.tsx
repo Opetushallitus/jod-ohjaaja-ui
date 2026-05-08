@@ -1,7 +1,9 @@
-import { ConfirmDialog } from '@jod/design-system';
-import { JodBlock } from '@jod/design-system/icons';
 import { type RefAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { ConfirmDialog } from '@jod/design-system';
+import { JodBlock } from '@jod/design-system/icons';
+
 import PatternAvatar from '../PatternAvatar/PatternAvatar';
 
 interface CommentProps extends RefAttributes<HTMLDivElement> {
@@ -31,16 +33,16 @@ const Button = ({
     aria-label={label}
     type="button"
     onClick={onClick}
-    className={`flex cursor-pointer items-center gap-2 select-none group text-button-sm px-5 min-h-7 rounded-[30px] outline-offset-2 disabled:cursor-not-allowed bg-bg-gray-2 focus-visible:outline-secondary-1-dark  ${danger ? 'text-alert-text-2 hover:text-underline' : 'text-secondary-gray hover:text-secondary-1-dark active:text-secondary-1-dark-2 focus-visible:text-secondary-1-dark'} `}
+    className={`group flex min-h-7 cursor-pointer items-center gap-2 rounded-[30px] bg-bg-gray-2 px-5 text-button-sm outline-offset-2 select-none focus-visible:outline-secondary-1-dark disabled:cursor-not-allowed ${danger ? 'hover:text-underline text-alert-text-2' : 'text-secondary-gray hover:text-secondary-1-dark focus-visible:text-secondary-1-dark active:text-secondary-1-dark-2'} `}
     data-testid={dataTestid}
   >
     <div
       aria-hidden="true"
-      className={`${danger ? 'text-[#E35750]' : 'text-secondary-gray group-hover:text-secondary-1-dark group-active:text-secondary-1-dark-2 group-focus-visible:text-secondary-1-dark'}`}
+      className={`${danger ? 'text-[#E35750]' : 'text-secondary-gray group-hover:text-secondary-1-dark group-focus-visible:text-secondary-1-dark group-active:text-secondary-1-dark-2'}`}
     >
       {icon}
     </div>
-    <span className="text-center group-hover:underline group-active:underline group-focus-visible:underline">
+    <span className="text-center group-hover:underline group-focus-visible:underline group-active:underline">
       {label}
     </span>
   </button>
@@ -71,11 +73,11 @@ const Comment = ({
       <div className="grid grid-cols-[48px_1fr_48px] items-start">
         <div className="pt-3">{!isOwnComment && <PatternAvatar seed={author} size={32} />}</div>
         <div className="grid gap-3">
-          <div className="rounded-lg bg-white grow p-5 grid gap-2">
-            <div className="text-body-sm text-secondary-gray font-arial" data-testid="comment-timestamp">
+          <div className="grid grow gap-2 rounded-lg bg-white p-5">
+            <div className="font-arial text-body-sm text-secondary-gray" data-testid="comment-timestamp">
               {formattedTimestamp} {isOwnComment ? `| ${t('comments.comment.own')}` : ''}
             </div>
-            <div className="text-body-md text-primary-gray whitespace-pre-line" data-testid="comment-text">
+            <div className="text-body-md whitespace-pre-line text-primary-gray" data-testid="comment-text">
               {comment}
             </div>
           </div>
@@ -118,7 +120,7 @@ const Comment = ({
             )}
           </div>
         </div>
-        <div className="flex pt-3 justify-end">{isOwnComment && <PatternAvatar seed={author} size={32} />}</div>
+        <div className="flex justify-end pt-3">{isOwnComment && <PatternAvatar seed={author} size={32} />}</div>
       </div>
     </div>
   );

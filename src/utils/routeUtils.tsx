@@ -1,6 +1,7 @@
-import { LinkComponent } from '@jod/design-system';
 import React from 'react';
 import { Link } from 'react-router';
+
+import { LinkComponent } from '@jod/design-system';
 
 export interface LinkToOpts {
   useAnchor?: boolean;

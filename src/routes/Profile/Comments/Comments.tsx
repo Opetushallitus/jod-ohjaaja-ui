@@ -1,3 +1,9 @@
+import React from 'react';
+import { Trans, useTranslation } from 'react-i18next';
+import { useLoaderData } from 'react-router';
+
+import { useMediaQueries } from '@jod/design-system';
+
 import { CategoryList, EmptyStateWithCategoryLinks, MainLayout, SortMenu } from '@/components';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewContent';
@@ -7,10 +13,7 @@ import { useIsLoggedIn } from '@/stores/useSessionManagerStore';
 import { StructuredContent } from '@/types/cms-content';
 import { isSort, Sort } from '@/types/sort';
 import { groupArticlesByCategory, sortKommenttiArticles } from '@/utils/cms';
-import { useMediaQueries } from '@jod/design-system';
-import React from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-import { useLoaderData } from 'react-router';
+
 import { LoaderData } from './loader';
 
 const Comments = () => {
@@ -46,7 +49,7 @@ const Comments = () => {
       }
     };
     if (omatKommentit.length > 0) {
-      fetchArticles();
+      void fetchArticles();
     } else {
       setArticlesByCategory(null);
     }
@@ -72,15 +75,15 @@ const Comments = () => {
     <MainLayout navChildren={<ProfileNavigation />} asideChildren={lg && <SuggestNewContent />}>
       <div data-testid="favorites-route">
         <title>{t('profile.comments.title')}</title>
-        <h1 className="text-heading-1-mobile lg:text-heading-1 mb-6" data-testid="favorites-title">
+        <h1 className="mb-6 text-heading-1-mobile lg:text-heading-1" data-testid="favorites-title">
           {t('profile.comments.title')}
         </h1>
-        <p className="text-body-lg mb-8" data-testid="favorites-description">
+        <p className="mb-8 text-body-lg" data-testid="favorites-description">
           <Trans i18nKey="profile.comments.description" />
         </p>
         {omatKommentit.length > 0 && (
-          <div className="grid grid-cols-2 gap-5 mb-5">
-            <p className="text-body-md col-span-2 lg:col-span-1" data-testid="favorites-count">
+          <div className="mb-5 grid grid-cols-2 gap-5">
+            <p className="col-span-2 text-body-md lg:col-span-1" data-testid="favorites-count">
               {t('profile.comments.comment-count', { count: omatKommentit.length })}
             </p>
             {visibleArticlesByCategory && (

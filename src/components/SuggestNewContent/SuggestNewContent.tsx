@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next';
+
 import { useModal } from '@/hooks/useModal';
 import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { getLinkTo } from '@/utils/routeUtils';
-import { useTranslation } from 'react-i18next';
+
 import { FeatureCard } from '../FeatureCard/FeatureCard';
 import { SuggestNewContentModal } from '../SuggestNewContentModal/SuggestNewContentModal';
 

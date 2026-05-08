@@ -1,9 +1,12 @@
-import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
-import { langLabels, supportedLanguageCodes } from '@/i18n/config';
-import { ExternalLinkSection, LinkComponent, type MenuSection, NavigationMenu } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
+
+import { ExternalLinkSection, LinkComponent, type MenuSection, NavigationMenu } from '@jod/design-system';
+
+import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
+import { langLabels, supportedLanguageCodes } from '@/i18n/config';
+
 import { useMenuRoutes } from './menuRoutes';
 
 const PortalLink = ({ children, className, rel, target }: LinkComponent) => {

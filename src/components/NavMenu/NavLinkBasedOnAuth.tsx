@@ -1,6 +1,7 @@
-import { sluggify } from '@/utils/string-utils';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
+
+import { sluggify } from '@/utils/string-utils';
 
 export const NavLinkBasedOnAuth = ({
   to,

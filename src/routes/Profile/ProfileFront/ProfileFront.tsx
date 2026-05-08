@@ -1,12 +1,13 @@
-import { components } from '@/api/schema';
-import { MainLayout } from '@/components';
-import { ExternalLink } from '@/components/ExternalLink/ExternalLink';
-import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router';
 
-const ListItem = ({ children }: { children: React.ReactNode }) => <li className="list-disc ml-9 pl-1">{children}</li>;
+import { components } from '@/api/schema';
+import { MainLayout } from '@/components';
+import { ExternalLink } from '@/components/ExternalLink/ExternalLink';
+import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
+
+const ListItem = ({ children }: { children: React.ReactNode }) => <li className="ml-9 list-disc pl-1">{children}</li>;
 
 const ProfileFront = () => {
   const {
@@ -20,13 +21,13 @@ const ProfileFront = () => {
   return (
     <MainLayout navChildren={navChildren}>
       <title>{t('profile.front.title')}</title>
-      <h1 className="text-heading-1-mobile lg:text-heading-1 mb-6" data-testid="profile-front-title">
+      <h1 className="mb-6 text-heading-1-mobile lg:text-heading-1" data-testid="profile-front-title">
         {t('profile.front.greeting', {
           etunimi,
         })}
       </h1>
 
-      <div className="mb-8 text-body-md flex flex-col gap-7">
+      <div className="mb-8 flex flex-col gap-7 text-body-md">
         <p className="text-body-lg">{t('profile.front.you-are-signed-in')}</p>
         <div className="font-arial">
           <p>{t('profile.front.profile-description')}</p>

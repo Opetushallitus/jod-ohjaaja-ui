@@ -1,3 +1,10 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useShallow } from 'zustand/react/shallow';
+
+import { useMediaQueries } from '@jod/design-system';
+import { JodSettings } from '@jod/design-system/icons';
+
 import { CategoryList, EmptyStateWithCategoryLinks, MainLayout, SortMenu } from '@/components';
 import { ButtonMenu } from '@/components/ButtonMenu/ButtonMenu';
 import { ProfileNavigation } from '@/components/MainLayout/ProfileNavigation';
@@ -10,13 +17,6 @@ import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { type Category, type StructuredContent } from '@/types/cms-content';
 import { isSort, type Sort } from '@/types/sort';
 import { filterArticlesByTags, getKeywords, groupArticlesByCategory, sortSuosikkiArticles } from '@/utils/cms';
-import { useMediaQueries } from '@jod/design-system';
-import { JodSettings } from '@jod/design-system/icons';
-
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-
-import { useShallow } from 'zustand/react/shallow';
 
 const Favorites = () => {
   const {
@@ -52,7 +52,7 @@ const Favorites = () => {
       }
     };
     if (suosikit.length > 0) {
-      fetchArticles();
+      void fetchArticles();
     } else {
       setArticlesByCategory(null);
     }
@@ -113,8 +113,8 @@ const Favorites = () => {
         lg && (
           <>
             {
-              <div className="bg-white p-6 rounded-lg" data-testid="favorites-tag-sidebar">
-                <span className="text-body-sm mb-4 mt-2 flex" data-testid="favorites-tag-title" id="favorites-tag-list">
+              <div className="rounded-lg bg-white p-6" data-testid="favorites-tag-sidebar">
+                <span className="mt-2 mb-4 flex text-body-sm" data-testid="favorites-tag-title" id="favorites-tag-list">
                   {t('search.tag-list.title')}
                 </span>
                 <TagFilterList
@@ -133,15 +133,15 @@ const Favorites = () => {
     >
       <div data-testid="favorites-route">
         <title>{t('profile.favorites.title')}</title>
-        <h1 className="text-heading-1-mobile lg:text-heading-1 mb-6" data-testid="favorites-title">
+        <h1 className="mb-6 text-heading-1-mobile lg:text-heading-1" data-testid="favorites-title">
           {t('profile.favorites.title')}
         </h1>
-        <p className="text-body-lg mb-8" data-testid="favorites-description">
+        <p className="mb-8 text-body-lg" data-testid="favorites-description">
           {t('profile.favorites.description')}
         </p>
         {suosikit.length > 0 && (
-          <div className="grid grid-cols-2 gap-5 mb-5">
-            <p className="text-body-md col-span-2 lg:col-span-1" data-testid="favorites-count">
+          <div className="mb-5 grid grid-cols-2 gap-5">
+            <p className="col-span-2 text-body-md lg:col-span-1" data-testid="favorites-count">
               {t('profile.favorites.favorite-count', { count: suosikit.length })}
             </p>
             {visibleArticlesByCategory && (
@@ -156,7 +156,7 @@ const Favorites = () => {
               <ButtonMenu
                 triggerIcon={<JodSettings size={18} />}
                 triggerLabel={t('profile.favorites.filter')}
-                className="justify-items-end relative"
+                className="relative justify-items-end"
                 menuClassName="right-0"
                 data-testid="favorites-filter-menu"
               >

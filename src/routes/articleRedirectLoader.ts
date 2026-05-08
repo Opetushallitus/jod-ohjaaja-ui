@@ -1,7 +1,8 @@
+import { LoaderFunction, replace } from 'react-router';
+
 import i18n from '@/i18n/config';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { NavigationTreeItem } from '@/types/cms-navigation';
-import { LoaderFunction, replace } from 'react-router';
 
 export default (async ({ params: { articleErc } }) => {
   const navigationTreeItems = getNavigationTreeItems();

@@ -1,8 +1,10 @@
-import { useAppRoutes } from '@/hooks/useAppRoutes';
-import { getLinkTo } from '@/utils/routeUtils';
-import { type MenuSection, PageNavigation, useMediaQueries } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router';
+
+import { type MenuSection, PageNavigation, useMediaQueries } from '@jod/design-system';
+
+import { useAppRoutes } from '@/hooks/useAppRoutes';
+import { getLinkTo } from '@/utils/routeUtils';
 
 export const ProfileNavigation = () => {
   const {

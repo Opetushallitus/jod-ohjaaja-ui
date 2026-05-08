@@ -1,3 +1,9 @@
+import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router';
+import { useShallow } from 'zustand/react/shallow';
+
+import { MediaCard } from '@jod/design-system';
+
 import { useLoginLink } from '@/hooks/useLoginLink';
 import { useModal } from '@/hooks/useModal';
 import { type LangCode } from '@/i18n/config';
@@ -6,10 +12,7 @@ import { type StructuredContent } from '@/types/cms-content';
 import { findContentValueByName, getAdaptiveMediaSrc, getKeywords } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { getArticlePath } from '@/utils/navigation-paths';
-import { MediaCard } from '@jod/design-system';
-import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router';
-import { useShallow } from 'zustand/react/shallow';
+
 import { createLoginDialogFooter } from '../createLoginDialogFooter';
 
 interface ArticleCardProps {
@@ -54,7 +57,7 @@ export const ArticleCard = ({ article, variant, isLoggedIn }: ArticleCardProps) 
         footer: createLoginDialogFooter(t, loginLink, closeAllModals),
       });
     } else if (article.externalReferenceCode !== undefined) {
-      toggleSuosikki(article.externalReferenceCode);
+      void toggleSuosikki(article.externalReferenceCode);
     }
   };
 

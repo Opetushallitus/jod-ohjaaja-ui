@@ -1,3 +1,9 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useLoaderData } from 'react-router';
+
+import { tidyClasses as tc } from '@jod/design-system';
+
 import { GuidanceCard, MainLayout } from '@/components';
 import { ContentList, ContentListSort } from '@/components/ContentList/ContentList';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
@@ -6,10 +12,7 @@ import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
 import { getCategoryContent } from '@/services/cms-article-api';
 import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { type StructuredContentPage } from '@/types/cms-content';
-import { tidyClasses as tc } from '@jod/design-system';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLoaderData } from 'react-router';
+
 import { LoaderData } from './loader';
 
 const VISIBLE_ITEM_COUNT = 10;
@@ -33,7 +36,7 @@ const CategoryListing = () => {
       setIsLoading(false);
     };
     setIsLoading(true);
-    fetchCategoryContent();
+    void fetchCategoryContent();
   }, [categoryId, sortOrder, language]);
 
   React.useEffect(() => {
@@ -82,11 +85,11 @@ const CategoryListing = () => {
       <title>{title}</title>
       <div data-testid="category-listing-route">
         <section
-          className="col-span-3 lg:row-start-2 lg:col-start-1 lg:col-span-2 print:col-span-3"
+          className="col-span-3 lg:col-span-2 lg:col-start-1 lg:row-start-2 print:col-span-3"
           data-testid="category-listing-header"
         >
           {title && (
-            <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5" data-testid="category-listing-title">
+            <h1 className="mb-5 text-heading-1-mobile sm:text-heading-1" data-testid="category-listing-title">
               {title}
             </h1>
           )}

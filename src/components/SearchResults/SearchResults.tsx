@@ -1,12 +1,14 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router';
+
+import { ContentCard, EmptyState, type PageChangeDetails, Pagination } from '@jod/design-system';
+
 import { type LangCode } from '@/i18n/config';
 import { type StructuredContent } from '@/types/cms-content';
 import { findContentValueByName, getKeywords } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { getArticleCategoryTitlePathParts, getArticlePath } from '@/utils/navigation-paths';
-import { ContentCard, EmptyState, type PageChangeDetails, Pagination } from '@jod/design-system';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router';
 
 interface SearchResultsProps {
   contents: StructuredContent[];
@@ -42,7 +44,7 @@ export const SearchResults = ({
         {totalCount === 0 ? (
           <EmptyState text={t('search-results.article-count', { count: totalCount })} />
         ) : (
-          <p className="text-body-sm font-arial text-primary-gray" data-testid="search-results-count">
+          <p className="font-arial text-body-sm text-primary-gray" data-testid="search-results-count">
             {t('search-results.article-count', { count: totalCount })}
           </p>
         )}

@@ -1,8 +1,10 @@
-import { ArticleCard } from '@/components/ArticleCard/ArticleCard';
-import { StructuredContent } from '@/types/cms-content';
-import { Button } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { Button } from '@jod/design-system';
+
+import { ArticleCard } from '@/components/ArticleCard/ArticleCard';
+import { StructuredContent } from '@/types/cms-content';
 
 interface CategoryListProps {
   category: string;
@@ -23,7 +25,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({ category, articles, 
 
   return (
     <div className="mb-5" data-testid="category-list">
-      <h2 className="text-heading-3 mb-5" data-testid="category-list-title">
+      <h2 className="mb-5 text-heading-3" data-testid="category-list-title">
         {category} ({articles.length})
       </h2>
       <div className="grid grid-cols-1 gap-3" data-testid="category-list-items">
@@ -37,7 +39,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({ category, articles, 
           />
         ))}
       </div>
-      <div className="flex flex-row pl-2 pt-7 justify-start" data-testid="category-list-footer">
+      <div className="flex flex-row justify-start pt-7 pl-2" data-testid="category-list-footer">
         {showMoreButton && (
           <Button
             onClick={handleShowMore}

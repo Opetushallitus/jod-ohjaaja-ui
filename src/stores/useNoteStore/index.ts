@@ -1,5 +1,6 @@
-import { Note } from '@jod/design-system';
 import { create } from 'zustand';
+
+import { Note } from '@jod/design-system';
 
 export interface NoteData {
   title: string;

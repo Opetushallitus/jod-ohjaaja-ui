@@ -1,9 +1,10 @@
+import { create } from 'zustand';
+import { useShallow } from 'zustand/shallow';
+
 import { registerCsrfMiddleware, unregisterCsrfMiddleware } from '@/api/middlewares/csrf';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import type { OhjaajaCsrfDto } from '@/types/auth';
-import { create } from 'zustand';
-import { useShallow } from 'zustand/shallow';
 
 const refetchSuosikitAndKiinnostukset = () => {
   useSuosikitStore

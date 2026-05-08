@@ -1,7 +1,9 @@
-import { LangCode } from '@/i18n/config';
-import { CMSNavigationItem, NavigationItemType, NavigationTreeItem } from '@/types/cms-navigation';
 import { TFunction } from 'i18next';
 import { describe, expect, it, vi } from 'vitest';
+
+import { LangCode } from '@/i18n/config';
+import { CMSNavigationItem, NavigationItemType, NavigationTreeItem } from '@/types/cms-navigation';
+
 import { getCategoryArticleIds, getLocale, getNavigationItems, getSearchUrl } from './navigation';
 
 vi.mock('@/services/navigation-loader', () => ({

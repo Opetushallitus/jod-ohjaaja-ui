@@ -1,6 +1,9 @@
-import { StructuredContent } from '@/types/cms-content';
-import { Button, Spinner } from '@jod/design-system';
 import { useTranslation } from 'react-i18next';
+
+import { Button, Spinner } from '@jod/design-system';
+
+import { StructuredContent } from '@/types/cms-content';
+
 import { ArticleCard } from '../ArticleCard/ArticleCard';
 import { SortMenu } from '../ButtonMenu/SortMenu';
 
@@ -37,8 +40,8 @@ export const ContentList = ({
 
   return (
     <div data-testid="content-list">
-      <div className="mb-3 sm:mb-5 flex flex-row justify-between items-center">
-        <div className="mb-3 sm:mb-5 text-heading-2-mobile sm:text-heading-2" data-testid="content-list-count">
+      <div className="mb-3 flex flex-row items-center justify-between sm:mb-5">
+        <div className="mb-3 text-heading-2-mobile sm:mb-5 sm:text-heading-2" data-testid="content-list-count">
           {t('content-list.article-count', { count: totalCount })}
         </div>
         <SortMenu
@@ -60,7 +63,7 @@ export const ContentList = ({
           />
         ))}
       </div>
-      <div className="flex flex-row pl-2 pt-7 justify-start" data-testid="content-list-footer">
+      <div className="flex flex-row justify-start pt-7 pl-2" data-testid="content-list-footer">
         {hasMore && !isLoading && (
           <Button
             onClick={loadMore}

@@ -1,6 +1,7 @@
+import { create } from 'zustand';
+
 import { components } from '@/api/schema';
 import { addSuosikki, deleteSuosikki, getSuosikit } from '@/api/suosikit';
-import { create } from 'zustand';
 
 interface SuosikitStore {
   suosikit: components['schemas']['SuosikkiDto'][];

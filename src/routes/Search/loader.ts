@@ -1,7 +1,9 @@
+import { LoaderFunction } from 'react-router';
+
 import i18n from '@/i18n/config';
 import { searchContent } from '@/services/cms-article-api';
 import { type StructuredContentPage } from '@/types/cms-content';
-import { LoaderFunction } from 'react-router';
+
 import { SEARCH_PAGE_SIZE } from './constants';
 
 const getCurrentLanguage = (langFromUrl?: string) => {

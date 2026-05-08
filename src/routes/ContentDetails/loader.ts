@@ -1,7 +1,8 @@
+import { LoaderFunction } from 'react-router';
+
 import { addArtikkelinKatselu } from '@/api/artikkelinKatselu';
 import { components } from '@/api/schema';
 import { getContentByArticleId } from '@/services/cms-article-api';
-import { LoaderFunction } from 'react-router';
 
 const getContentDetailsLoader = (contentId: number, externalReferenceCode?: string) =>
   (async () => {

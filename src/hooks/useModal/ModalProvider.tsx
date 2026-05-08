@@ -1,10 +1,11 @@
-import { ConfirmDialogWrapper, type ConfirmDialogWrapperProps } from '@/components';
 import React from 'react';
+
+import { ConfirmDialogWrapper, type ConfirmDialogWrapperProps } from '@/components';
+
 import { ModalContext } from './ModalContext';
 import type { ModalComponentType, ModalStackItem } from './utils';
 
 export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [modals, setModals] = React.useState<ModalStackItem<any>[]>([]);
 
   const showModal = React.useCallback(

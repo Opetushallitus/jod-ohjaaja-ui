@@ -1,7 +1,9 @@
-import { getRoutes } from '@/routes';
 import { renderHook } from '@testing-library/react';
 import { useMatches } from 'react-router';
 import { Mock, describe, expect, it, vi } from 'vitest';
+
+import { getRoutes } from '@/routes';
+
 import { useCategoryRoute } from './useCategoryRoute';
 
 vi.mock('@/routes', () => {

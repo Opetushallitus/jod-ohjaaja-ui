@@ -1,9 +1,10 @@
-import { LangCode } from '@/i18n/config';
-import { isNavigationItemType } from '@/types/cms-navigation';
-import { getItemPath } from '@/utils/navigation-paths';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { generatePath, useMatches, useParams, useSearchParams } from 'react-router';
+
+import { LangCode } from '@/i18n/config';
+import { isNavigationItemType } from '@/types/cms-navigation';
+import { getItemPath } from '@/utils/navigation-paths';
 
 export const useLocalizedRoutes = () => {
   const matches = useMatches();

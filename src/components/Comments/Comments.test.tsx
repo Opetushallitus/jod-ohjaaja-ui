@@ -1,8 +1,10 @@
-import { addArtikkelinKommentti, deleteArtikkelinKommentti, getArtikkelinKommentit } from '@/api/artikkelinKommentit';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { Mock } from 'vitest';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+import { addArtikkelinKommentti, deleteArtikkelinKommentti, getArtikkelinKommentit } from '@/api/artikkelinKommentit';
+
 import Comments from './Comments';
 
 // Mock the API functions
@@ -86,6 +88,7 @@ describe('Comments', () => {
     await waitFor(() => {
       expect(addArtikkelinKommentti).toHaveBeenCalledWith('1', 'New comment');
     });
+    // oxlint-disable-next-line typescript/unbound-method
     expect(HTMLDivElement.prototype.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
   });
 

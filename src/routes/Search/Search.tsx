@@ -1,14 +1,17 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useLoaderData, useNavigate } from 'react-router';
+
+import { useMediaQueries } from '@jod/design-system';
+import { JodClose, JodSearch, JodSettings } from '@jod/design-system/icons';
+
 import { MainLayout } from '@/components';
 import { ButtonMenu } from '@/components/ButtonMenu/ButtonMenu';
 import { SearchResults } from '@/components/SearchResults/SearchResults';
 import { useTags } from '@/hooks/useTags';
 import { type Category } from '@/types/cms-content';
 import { getSearchUrl } from '@/utils/navigation';
-import { useMediaQueries } from '@jod/design-system';
-import { JodClose, JodSearch, JodSettings } from '@jod/design-system/icons';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLoaderData, useNavigate } from 'react-router';
+
 import { LoaderData } from './loader';
 import TagFilterList from './TagFilterList';
 
@@ -25,7 +28,7 @@ const Search = () => {
   const [submitError, setSubmitError] = React.useState<string | null>(null);
 
   const handleLoadPage = (pageNumber: number) => {
-    navigate(getSearchUrl(t, language, tagIds, search, pageNumber));
+    void navigate(getSearchUrl(t, language, tagIds, search, pageNumber));
   };
 
   const handleSearch = (e: React.SyntheticEvent<HTMLFormElement>) => {
@@ -36,7 +39,7 @@ const Search = () => {
     }
     setSubmitError(null);
     globalThis._paq?.push(['trackEvent', 'ohjaaja.Haku', 'Hakusana', searchValue]);
-    navigate(getSearchUrl(t, language, tagIds, searchValue));
+    void navigate(getSearchUrl(t, language, tagIds, searchValue));
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +55,7 @@ const Search = () => {
     const selectedTagIds = tagIds?.includes(`${tag.id}`)
       ? tagIds.filter((id) => id !== `${tag.id}`)
       : [...(tagIds ?? []), `${tag.id}`];
-    navigate(getSearchUrl(t, language, selectedTagIds, searchValue));
+    void navigate(getSearchUrl(t, language, selectedTagIds, searchValue));
   };
 
   const contents = data.items;
@@ -65,8 +68,8 @@ const Search = () => {
       asideChildren={
         lg &&
         !tagsLoading && (
-          <div className="bg-white p-6 rounded-lg" data-testid="search-tag-sidebar">
-            <span className="text-body-sm mb-4 mt-2 flex" data-testid="search-tag-title" id="search-tag-list">
+          <div className="rounded-lg bg-white p-6" data-testid="search-tag-sidebar">
+            <span className="mt-2 mb-4 flex text-body-sm" data-testid="search-tag-title" id="search-tag-list">
               {t('search.tag-list.title')}
             </span>
             <TagFilterList
@@ -81,19 +84,19 @@ const Search = () => {
     >
       <div data-testid="search-route">
         <title>{t('search.title')}</title>
-        <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5" data-testid="search-title">
+        <h1 className="mb-5 text-heading-1-mobile sm:text-heading-1" data-testid="search-title">
           {t('search.title')}
         </h1>
-        <p className="text-body-lg mb-6" data-testid="search-description">
+        <p className="mb-6 text-body-lg" data-testid="search-description">
           {t('search.description')}
         </p>
         <form id="search" className="mb-7" onSubmit={handleSearch} noValidate data-testid="search-form">
           <div className="flex flex-row items-center">
-            <div className="flex items-center w-full rounded-md border border-border-form bg-white text-primary-gray p-2">
+            <div className="flex w-full items-center rounded-md border border-border-form bg-white p-2 text-primary-gray">
               <input
                 type="text"
                 name="search"
-                className="font-arial grow w-full mr-3 placeholder:text-inactive-gray placeholder:text-body-md focus:outline-2 focus:outline-accent pl-3 outline-accent outline-offset-6 rounded-l-xs mx-1"
+                className="rounded-l-xs mx-1 mr-3 w-full grow pl-3 font-arial outline-offset-6 outline-accent placeholder:text-body-md placeholder:text-inactive-gray focus:outline-2 focus:outline-accent"
                 placeholder={t('search.placeholder')}
                 onChange={handleInputChange}
                 value={searchValue}
@@ -104,7 +107,7 @@ const Search = () => {
 
               <button
                 type="button"
-                className="shrink rounded-sm bg-bg-gray focus:outline-2 focus:outline-accent cursor-pointer size-7 justify-center flex items-center outline-accent outline-offset-2 ml-2"
+                className="ml-2 flex size-7 shrink cursor-pointer items-center justify-center rounded-sm bg-bg-gray outline-offset-2 outline-accent focus:outline-2 focus:outline-accent"
                 onClick={() => {
                   setSearchValue('');
                 }}
@@ -115,7 +118,7 @@ const Search = () => {
 
               <button
                 type="submit"
-                className="flex items-center gap-2 shrink ml-3 rounded-sm h-7 bg-accent border-y px-3 text-white hover:bg-accent-dark focus:outline-2 focus:outline-accent cursor-pointer text-heading-4 text-[0.875rem] outline-accent outline-offset-2"
+                className="hover:bg-accent-dark ml-3 flex h-7 shrink cursor-pointer items-center gap-2 rounded-sm border-y bg-accent px-3 text-heading-4 text-[0.875rem] text-white outline-offset-2 outline-accent focus:outline-2 focus:outline-accent"
               >
                 <JodSearch className="text-white" />
                 {t('search.button')}
@@ -123,7 +126,7 @@ const Search = () => {
             </div>
           </div>
           {submitError && (
-            <div className="mt-2 block text-form-error text-alert-text-2 font-arial" role="alert">
+            <div className="mt-2 block font-arial text-form-error text-alert-text-2" role="alert">
               {submitError}
             </div>
           )}

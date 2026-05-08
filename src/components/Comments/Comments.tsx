@@ -1,3 +1,8 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { Spinner } from '@jod/design-system';
+
 import {
   addArtikkelinKommentti,
   deleteArtikkelinKommentti,
@@ -6,9 +11,7 @@ import {
 } from '@/api/artikkelinKommentit';
 import { components } from '@/api/schema';
 import { useSessionGuardedAction } from '@/hooks/useSessionGuardedAction';
-import { Spinner } from '@jod/design-system';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+
 import Comment from './Comment';
 import { CommentInput } from './CommentInput';
 
@@ -74,7 +77,7 @@ const Comments = ({ articleErc, userId }: CommentsProps) => {
       await addArtikkelinKommentti(articleErc, comment);
 
       if (page === 1) {
-        fetchComments(1); // Refresh comments if on the first page
+        void fetchComments(1); // Refresh comments if on the first page
       } else {
         setPage(1); // Reset to first page to fetch new comments
       }
@@ -103,20 +106,20 @@ const Comments = ({ articleErc, userId }: CommentsProps) => {
   };
 
   React.useEffect(() => {
-    fetchComments(page);
+    void fetchComments(page);
   }, [fetchComments, page]);
 
   return (
     <div className="py-7 print:hidden" data-testid="comments">
-      <h2 className="text-heading-2 pb-5" data-testid="comments-title">
+      <h2 className="pb-5 text-heading-2" data-testid="comments-title">
         {t('comments.title')}
       </h2>
-      <p className="text-body-lg pb-7" data-testid="comments-description">
+      <p className="pb-7 text-body-lg" data-testid="comments-description">
         {t('comments.description')}
       </p>
-      <div className="grid gap-5 pb-7 max-h-[450px] overflow-y-auto pl-6" ref={commentsRef} data-testid="comments-list">
+      <div className="grid max-h-[450px] gap-5 overflow-y-auto pb-7 pl-6" ref={commentsRef} data-testid="comments-list">
         {comments.length === 0 && !loading && (
-          <div className="text-body-md text-primary-gray pt-3 pb-6" data-testid="comments-empty">
+          <div className="pt-3 pb-6 text-body-md text-primary-gray" data-testid="comments-empty">
             {t('comments.noComments')}
           </div>
         )}

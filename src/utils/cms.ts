@@ -1,9 +1,11 @@
+import DOMPurify from 'dompurify';
+
 import { components } from '@/api/schema';
 import { type LangCode } from '@/i18n/config';
 import type { Category, ContentLink, StructuredContent } from '@/types/cms-content';
 import { type NavigationTreeItem } from '@/types/cms-navigation';
 import { type Sort } from '@/types/sort';
-import DOMPurify from 'dompurify';
+
 import { getCategoryArticleIds } from './navigation';
 
 type ContentName = 'ingress' | 'content' | 'image' | 'document' | 'link';

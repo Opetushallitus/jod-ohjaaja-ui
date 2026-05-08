@@ -1,5 +1,6 @@
-import { type CardCarouselItem } from '@jod/design-system';
 import React from 'react';
+
+import { type CardCarouselItem } from '@jod/design-system';
 
 const MAX_CAROUSEL_ITEMS = 12;
 

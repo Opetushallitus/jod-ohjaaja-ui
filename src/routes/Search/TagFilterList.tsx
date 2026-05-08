@@ -1,8 +1,10 @@
-import { type Category } from '@/types/cms-content';
-import { getLocale } from '@/utils/navigation';
-import { Accordion, Checkbox } from '@jod/design-system';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { Accordion, Checkbox } from '@jod/design-system';
+
+import { type Category } from '@/types/cms-content';
+import { getLocale } from '@/utils/navigation';
 
 interface TagFilterListProperties {
   tags: Category[];

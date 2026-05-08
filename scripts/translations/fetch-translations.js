@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import https from 'node:https';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
 import { getTolgeeConfigPathFromScriptsDir, readAndValidateTolgeeConfig } from './tolgee-config.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -21,7 +22,7 @@ const LANGUAGES = ['en', 'fi', 'sv'];
  */
 function writeToFile(outputPath, data) {
   return new Promise((resolve, reject) => {
-    // Ensure file ends with exactly one newline (Prettier requirement)
+    // Ensure file ends with exactly one newline
     const formattedData = data.trimEnd() + '\n';
 
     fs.writeFile(outputPath, formattedData, 'utf-8', (err) => {

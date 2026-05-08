@@ -1,19 +1,21 @@
+import { replace, RouteObject } from 'react-router';
+
+import { NoteStackProvider } from '@jod/design-system';
+
 import { withOhjaajaContext } from '@/auth';
+import { ModalProvider } from '@/hooks/useModal';
 import i18n, { supportedLanguageCodes } from '@/i18n/config';
 import { ContentDetails, getContentDetailsLoader } from '@/routes/ContentDetails';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { NavigationTreeItem } from '@/types/cms-navigation';
-import { replace, RouteObject } from 'react-router';
-import { CategoryMain, getMainCategoryContentLoader } from './CategoryMain';
-import { Home, homeLoader } from './Home';
-import { Comments, Details, Favorites, ownCommentsLoader, Preferences, Profile, profileDetailsLoader } from './Profile';
 
-import { ModalProvider } from '@/hooks/useModal';
-import { NoteStackProvider } from '@jod/design-system';
 import articleRedirectLoader from './articleRedirectLoader';
 import { getCategoryListingLoader } from './CategoryListing';
 import CategoryListing from './CategoryListing/CategoryListing';
+import { CategoryMain, getMainCategoryContentLoader } from './CategoryMain';
+import { Home, homeLoader } from './Home';
 import LoginPage from './LoginPage/LoginPage';
+import { Comments, Details, Favorites, ownCommentsLoader, Preferences, Profile, profileDetailsLoader } from './Profile';
 import ProfileFront from './Profile/ProfileFront/ProfileFront';
 import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
 import { Search, searchLoader } from './Search';

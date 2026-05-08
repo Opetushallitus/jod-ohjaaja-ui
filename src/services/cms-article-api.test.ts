@@ -1,5 +1,7 @@
-import { NavigationTreeItem } from '@/types/cms-navigation';
 import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
+
+import { NavigationTreeItem } from '@/types/cms-navigation';
+
 import {
   getArticlesByErcs,
   getCategoryContent,
@@ -11,7 +13,7 @@ import { getNavigationTreeItems } from './navigation-loader';
 
 // Mock fetch globally
 const mockFetch = vi.fn();
-global.fetch = mockFetch;
+globalThis.fetch = mockFetch;
 
 vi.mock('@/services/navigation-loader', () => ({
   getNavigationTreeItems: vi.fn(),

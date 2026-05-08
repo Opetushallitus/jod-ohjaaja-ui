@@ -1,3 +1,8 @@
+import { useTranslation } from 'react-i18next';
+import { useLoaderData } from 'react-router';
+
+import { Breadcrumb, tidyClasses as tc } from '@jod/design-system';
+
 import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
 import { BreadcrumbLink } from '@/components/BreadcrumbLink/BreadcrumbLink';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
@@ -7,9 +12,7 @@ import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewCont
 import { useBreadcrumbItems } from '@/hooks/useBreadcrumbItems';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
 import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
-import { Breadcrumb, tidyClasses as tc } from '@jod/design-system';
-import { useTranslation } from 'react-i18next';
-import { useLoaderData } from 'react-router';
+
 import { LoaderData } from './loader';
 
 const CategoryMain = () => {
@@ -45,7 +48,7 @@ const CategoryMain = () => {
   return (
     <main
       role="main"
-      className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pb-9 pt-11 sm:px-6 print:p-0"
+      className="mx-auto grid w-full max-w-[1140px] grow grid-cols-3 gap-6 px-5 pt-11 pb-9 sm:px-6 print:p-0"
       data-testid="category-main"
     >
       <div className="col-span-3">
@@ -57,24 +60,23 @@ const CategoryMain = () => {
         />
       </div>
       <aside
-        className="col-span-3 lg:row-start-2 lg:col-start-3 lg:col-span-1 print:hidden position-relative lg:position-static z-10 lg:z-auto h-[47px] lg:h-auto"
+        className="position-relative lg:position-static z-10 col-span-3 h-[47px] lg:z-auto lg:col-span-1 lg:col-start-3 lg:row-start-2 lg:h-auto print:hidden"
         data-testid="category-main-aside"
       >
         <nav
-          role="navigation"
-          className="sticky position-absolute top-0 left-0 w-full lg:top-[96px] lg:position-static max-h-[calc(100vh-196px)] overflow-y-auto scrollbar-hidden"
+          className="position-absolute lg:position-static scrollbar-hidden sticky top-0 left-0 max-h-[calc(100vh-196px)] w-full overflow-y-auto lg:top-[96px]"
           data-testid="category-nav"
         >
           <CategoryNavigation />
         </nav>
       </aside>
       <section
-        className="col-span-3 lg:row-start-2 lg:col-start-1 lg:col-span-2 print:col-span-3 mb-11"
+        className="col-span-3 mb-11 lg:col-span-2 lg:col-start-1 lg:row-start-2 print:col-span-3"
         data-testid="category-main-content"
       >
         <title>{title}</title>
         {title && (
-          <h1 className="text-heading-1-mobile sm:text-heading-1 mb-5" data-testid="category-title">
+          <h1 className="mb-5 text-heading-1-mobile sm:text-heading-1" data-testid="category-title">
             {title}
           </h1>
         )}
@@ -97,7 +99,7 @@ const CategoryMain = () => {
         <div className="col-span-3">
           <div className="col-span-3 grid grid-cols-3 gap-x-6 xl:gap-x-7">
             <RecentlyWatchedContent />
-            <div className="col-span-3 lg:col-span-1 content-end">
+            <div className="col-span-3 content-end lg:col-span-1">
               <SuggestNewContent />
             </div>
           </div>

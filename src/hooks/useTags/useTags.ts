@@ -1,6 +1,7 @@
+import React from 'react';
+
 import { getTags } from '@/services/cms-tag-api';
 import { type Category } from '@/types/cms-content';
-import React from 'react';
 
 export const useTags = () => {
   const [tags, setTags] = React.useState<Category[]>([]);
@@ -18,7 +19,7 @@ export const useTags = () => {
       }
     };
     setLoading(true);
-    fetchTags();
+    void fetchTags();
   }, []);
 
   return {

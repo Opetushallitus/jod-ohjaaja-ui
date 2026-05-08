@@ -1,6 +1,7 @@
+import React from 'react';
+
 import { isFeatureEnabled } from '@/api/features';
 import { Feature } from '@/types/feature';
-import React from 'react';
 
 export const useFeature = (feature: Feature) => {
   const [isEnabled, setIsEnabled] = React.useState<boolean | null>(null);
@@ -11,7 +12,7 @@ export const useFeature = (feature: Feature) => {
       setIsEnabled(result);
     };
 
-    checkFeature();
+    void checkFeature();
   }, [feature]);
 
   return isEnabled;
