@@ -11,14 +11,14 @@ export const getContentByArticleId = async (articleId: number) => {
   return fetchFromCMS<StructuredContent>(`/headless-delivery/v1.0/structured-contents/${articleId}?${queryParams}`);
 };
 
-export const getNewestContent = (ignoreCategoryId?: number) => {
+export const getNewestContent = (ignoreCategoryIds?: number[]) => {
   const queryParams = new URLSearchParams();
   queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
   queryParams.set('page', `1`);
   queryParams.set('pageSize', `12`);
   queryParams.set('sort', 'dateCreated:desc');
-  if (ignoreCategoryId) {
-    queryParams.set('filter', `taxonomyCategoryIds/any(t:t ne ${ignoreCategoryId})`);
+  if (ignoreCategoryIds && ignoreCategoryIds.length > 0) {
+    queryParams.set('filter', `taxonomyCategoryIds/any(t:t ne ${ignoreCategoryIds.join(' and t ne ')})`);
   }
 
   return fetchFromCMS<StructuredContentPage>(
@@ -26,7 +26,11 @@ export const getNewestContent = (ignoreCategoryId?: number) => {
   );
 };
 
-export const getCategoryContent = (categoryId: number, sort?: Omit<Sort, 'latest-added-to-favorites'>) => {
+export const getCategoryContent = (
+  categoryId: number,
+  sort?: Omit<Sort, 'latest-added-to-favorites'>,
+  ignoreCategoryIds?: number[],
+) => {
   const queryParams = new URLSearchParams();
   queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
   queryParams.set('page', `1`);
@@ -34,9 +38,14 @@ export const getCategoryContent = (categoryId: number, sort?: Omit<Sort, 'latest
   if (sort) {
     queryParams.set('sort', getSortApiParam(sort));
   }
-  if (categoryId) {
-    queryParams.set('filter', `taxonomyCategoryIds/any(t:t eq ${categoryId})`);
+
+  let filter = `taxonomyCategoryIds/any(t:t eq ${categoryId})`;
+  if (ignoreCategoryIds && ignoreCategoryIds.length > 0) {
+    const excludedFilter = `taxonomyCategoryIds/any(t:t ne ${ignoreCategoryIds.join(' and t ne ')})`;
+    filter = `${filter} and ${excludedFilter}`;
   }
+  queryParams.set('filter', filter);
+
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
   );
@@ -72,13 +81,19 @@ export const searchContent = (searchTerm: string, tagIds: string[], page: number
   );
 };
 
-export const getArticlesByErcs = (articleErcs: string[]) => {
+export const getArticlesByErcs = (articleErcs: string[], excludedCategories: number[] = []) => {
   const articleIds = getArticleIds(articleErcs).map((id) => `'${id}'`);
   const queryParams = new URLSearchParams();
   queryParams.set('page', `1`);
   queryParams.set('pageSize', `500`);
   queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
-  queryParams.set('filter', `id in (${articleIds.join(', ')})`);
+  const filter = `id in (${articleIds.join(', ')})`;
+  if (excludedCategories.length > 0) {
+    const excludedFilter = `taxonomyCategoryIds/any(t:t ne ${excludedCategories.join(' and t ne ')})`;
+    queryParams.set('filter', `${filter} and ${excludedFilter}`);
+  } else {
+    queryParams.set('filter', filter);
+  }
 
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
