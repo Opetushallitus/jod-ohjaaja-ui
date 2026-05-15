@@ -19,6 +19,10 @@ export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangC
     name: sluggify(navigationItem.name),
     description: navigationItem.description_i18n[locale] || navigationItem.description,
     path: sluggify(navigationItem.name_i18n[locale] || navigationItem.name),
+    hideFromHomePageNewestCarousel: navigationItem.hideFromHomePageNewestCarousel,
+    hideFromHomePageMostViewedCarousel: navigationItem.hideFromHomePageMostViewedCarousel,
+    hideFromMainCategoryPageNewestCarousel: navigationItem.hideFromMainCategoryPageNewestCarousel,
+    hideFromMainCategoryPageMostViewedCarousel: navigationItem.hideFromMainCategoryPageMostViewedCarousel,
     type: navigationItem.type,
     children: navigationItem.children.map((child) => getNavigationItems(child, lng)),
     categoryId: navigationItem.categoryId ?? undefined,
@@ -83,27 +87,61 @@ export const getCategoryArticleIds = (navigationItem: NavigationTreeItem): numbe
 
 /**
  * Get the all article ERCs from a category navigation item and its child categories
- * @param {NavigationTreeItem} navigationItem - The navigation item to search
+ * @param {number} categoryId - The category ID to search
+ * @param {LangCode} language - The language code to filter navigation items
+ * @param {number[]} excludedCategories - An array of category IDs to exclude from the search
  * @returns {string[]} - An array of article ERCs
  */
-export const getCategoryArticleErcs = (categoryId: number, language: LangCode): string[] => {
+export const getCategoryArticleErcs = (
+  categoryId: number,
+  language: LangCode,
+  excludedCategories: number[] = [],
+): string[] => {
   const navigationItem = getNavigationTreeItems().find(
     (item) => item.categoryId === categoryId && item.lng === language,
   );
-  return navigationItem ? getArticleErcs(navigationItem) : [];
+  return navigationItem ? getArticleErcs(navigationItem, excludedCategories) : [];
 };
 
-const getArticleErcs = (navigationItem: NavigationTreeItem): string[] => {
+const getArticleErcs = (navigationItem: NavigationTreeItem, excludedCategories: number[] = []): string[] => {
+  if (navigationItem.categoryId && excludedCategories.includes(navigationItem.categoryId)) {
+    return [];
+  }
+
   return (
     navigationItem.children?.reduce((acc, item) => {
       if (item.type === 'Article' && item.externalReferenceCode) {
         acc.push(item.externalReferenceCode);
-      } else if (item.children) {
-        acc.push(...getArticleErcs(item));
+      } else if (item.children && item.categoryId && !excludedCategories.includes(item.categoryId)) {
+        acc.push(...getArticleErcs(item, excludedCategories));
       }
       return acc;
     }, [] as string[]) ?? []
   );
+};
+
+export const getExcludedCategoryIds = (
+  navigationItems: readonly NavigationTreeItem[],
+  from:
+    | 'hideFromHomePageNewestCarousel'
+    | 'hideFromHomePageMostViewedCarousel'
+    | 'hideFromMainCategoryPageNewestCarousel'
+    | 'hideFromMainCategoryPageMostViewedCarousel',
+  lng: LangCode,
+): number[] => {
+  return navigationItems
+    .filter((item) => item.lng === lng)
+    .reduce((acc, item) => {
+      if (item[from]) {
+        if (item.categoryId) {
+          acc.push(item.categoryId);
+        }
+        acc.push(...getExcludedCategoryIds(item.children, from, lng));
+      } else {
+        acc.push(...getExcludedCategoryIds(item.children, from, lng));
+      }
+      return acc;
+    }, [] as number[]);
 };
 
 export const getNavigationItemsByType = (
