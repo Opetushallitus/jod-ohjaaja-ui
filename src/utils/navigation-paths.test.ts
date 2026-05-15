@@ -36,6 +36,10 @@ const createBaseNavigationTreeItem = (
     externalReferenceCode: articleId ? `article-${articleId}` : `category-${categoryId}`,
     lng,
     children: [],
+    hideFromHomePageNewestCarousel: false,
+    hideFromHomePageMostViewedCarousel: false,
+    hideFromMainCategoryPageNewestCarousel: false,
+    hideFromMainCategoryPageMostViewedCarousel: false,
   };
 };
 
@@ -45,6 +49,10 @@ const createNavigationTreeItemWithChildren = (
 ): NavigationTreeItem => {
   return {
     ...baseItem,
+    hideFromHomePageNewestCarousel: false,
+    hideFromHomePageMostViewedCarousel: false,
+    hideFromMainCategoryPageNewestCarousel: false,
+    hideFromMainCategoryPageMostViewedCarousel: false,
     children,
   };
 };

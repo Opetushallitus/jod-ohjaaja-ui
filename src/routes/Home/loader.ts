@@ -7,26 +7,28 @@ import i18n, { LangCode } from '@/i18n/config';
 import { getArticlesByErcs, getNewestContent } from '@/services/cms-article-api';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { type StructuredContent } from '@/types/cms-content';
-import { getNavigationItemsByType } from '@/utils/navigation';
+import { getExcludedCategoryIds } from '@/utils/navigation';
 
 const loader = (async ({ context }) => {
   const isLoggedIn = !!context;
+  const language = i18n.language;
 
   const navigationItems = getNavigationTreeItems();
-  const studyProgramsListingIds = getNavigationItemsByType(
+  const excludeCategoriesFromNewestContent = getExcludedCategoryIds(
     navigationItems,
-    'StudyProgramsListing',
-    i18n.language as LangCode,
-  )
-    .map((item) => item.categoryId)
-    .filter((id): id is number => !!id);
+    'hideFromHomePageNewestCarousel',
+    language as LangCode,
+  );
+  const excludeCategoriesFromMostViewedContent = getExcludedCategoryIds(
+    navigationItems,
+    'hideFromHomePageMostViewedCarousel',
+    language as LangCode,
+  );
 
   const [newestContent, mostViewedContent, bestMatchingContent] = await Promise.all([
-    // Exclude study programs from the newest content section on the front page.
-    // Typically, there is only one StudyProgramsListing navigation item, but handle multiple gracefully.
-    getNewestContent(studyProgramsListingIds.length > 0 ? studyProgramsListingIds[0] : undefined),
+    getNewestContent(excludeCategoriesFromNewestContent),
     getMostViewedArtikkeliErcs().then(async (articleErcs) => {
-      const articles = await getArticlesByErcs(articleErcs);
+      const articles = await getArticlesByErcs(articleErcs, excludeCategoriesFromMostViewedContent);
       return articleErcs
         .map((erc) => articles.items.find((article) => article.externalReferenceCode === erc))
         .filter((a): a is StructuredContent => !!a);

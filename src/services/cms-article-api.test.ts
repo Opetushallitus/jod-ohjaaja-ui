@@ -100,6 +100,10 @@ describe('CMS ARTICLE API', () => {
         externalReferenceCode: '101',
         articleId: 1001,
         children: [],
+        hideFromHomePageNewestCarousel: false,
+        hideFromHomePageMostViewedCarousel: false,
+        hideFromMainCategoryPageNewestCarousel: false,
+        hideFromMainCategoryPageMostViewedCarousel: false,
       },
       {
         name: 'article-2',
@@ -111,6 +115,10 @@ describe('CMS ARTICLE API', () => {
         externalReferenceCode: '102',
         articleId: 1002,
         children: [],
+        hideFromHomePageNewestCarousel: false,
+        hideFromHomePageMostViewedCarousel: false,
+        hideFromMainCategoryPageNewestCarousel: false,
+        hideFromMainCategoryPageMostViewedCarousel: false,
       },
       {
         name: 'article-2',
@@ -122,6 +130,10 @@ describe('CMS ARTICLE API', () => {
         externalReferenceCode: '102',
         articleId: 1002,
         children: [],
+        hideFromHomePageNewestCarousel: false,
+        hideFromHomePageMostViewedCarousel: false,
+        hideFromMainCategoryPageNewestCarousel: false,
+        hideFromMainCategoryPageMostViewedCarousel: false,
       },
     ];
 

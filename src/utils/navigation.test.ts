@@ -57,6 +57,10 @@ describe('navigation utils', () => {
       articleId,
       externalReferenceCode: articleId ? `article-${articleId}` : `category-${categoryId}`,
       parentNavigationId: parentId,
+      hideFromHomePageNewestCarousel: false,
+      hideFromHomePageMostViewedCarousel: false,
+      hideFromMainCategoryPageNewestCarousel: false,
+      hideFromMainCategoryPageMostViewedCarousel: false,
       children,
     };
   };
@@ -76,6 +80,10 @@ describe('navigation utils', () => {
         categoryId: 1,
         articleId: undefined,
         lng: 'fi',
+        hideFromHomePageNewestCarousel: false,
+        hideFromHomePageMostViewedCarousel: false,
+        hideFromMainCategoryPageNewestCarousel: false,
+        hideFromMainCategoryPageMostViewedCarousel: false,
       });
     });
     it('returns correct navigation tree item with children', () => {
@@ -118,12 +126,20 @@ describe('navigation utils', () => {
             categoryId: undefined,
             articleId: 1,
             lng: 'fi',
+            hideFromHomePageNewestCarousel: false,
+            hideFromHomePageMostViewedCarousel: false,
+            hideFromMainCategoryPageNewestCarousel: false,
+            hideFromMainCategoryPageMostViewedCarousel: false,
           },
         ],
         categoryId: 2,
         articleId: undefined,
         externalReferenceCode: 'category-2',
         lng: 'fi',
+        hideFromHomePageNewestCarousel: false,
+        hideFromHomePageMostViewedCarousel: false,
+        hideFromMainCategoryPageNewestCarousel: false,
+        hideFromMainCategoryPageMostViewedCarousel: false,
       });
     });
   });
@@ -163,6 +179,10 @@ describe('navigation utils', () => {
     type,
     lng: 'fi',
     externalReferenceCode: `article-${articleId}`,
+    hideFromHomePageNewestCarousel: false,
+    hideFromHomePageMostViewedCarousel: false,
+    hideFromMainCategoryPageNewestCarousel: false,
+    hideFromMainCategoryPageMostViewedCarousel: false,
     children: children as NavigationTreeItem[],
     ...(articleId && { articleId }),
   });

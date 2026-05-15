@@ -34,6 +34,7 @@ export const getMostViewedArtikkeliErcs = async (filterByArtikkeliErcs?: string[
     params: {
       query: {
         filterByArtikkeliErcs: filterByArtikkeliErcs,
+        koko: 30,
       },
     },
   });

@@ -17,6 +17,10 @@ export interface CMSNavigationItem {
   name_i18n: CMSNavigationItemLocalization;
   description: string;
   description_i18n: CMSNavigationItemLocalization;
+  hideFromHomePageNewestCarousel: boolean;
+  hideFromHomePageMostViewedCarousel: boolean;
+  hideFromMainCategoryPageNewestCarousel: boolean;
+  hideFromMainCategoryPageMostViewedCarousel: boolean;
   type: NavigationItemType;
   articleId: number | null;
   categoryId: number | null;
@@ -35,6 +39,10 @@ export interface NavigationTreeItem {
   name: string;
   path: string;
   description: string;
+  hideFromHomePageNewestCarousel: boolean;
+  hideFromHomePageMostViewedCarousel: boolean;
+  hideFromMainCategoryPageNewestCarousel: boolean;
+  hideFromMainCategoryPageMostViewedCarousel: boolean;
   type: NavigationItemType;
   children: NavigationTreeItem[];
   categoryId?: number;
