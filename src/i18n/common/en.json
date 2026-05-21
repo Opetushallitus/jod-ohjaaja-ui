@@ -6,7 +6,7 @@
   "cookie-consent": {
     "guard": {
       "buttonLabel": "Open permissions and consents",
-      "description": "Displaying this content from another site is blocked until you accept cookies set by third parties. Read our cookie policy.",
+      "description": "Displaying this content from another site is blocked until you accept cookies set by third parties.",
       "title": "We care about your privacy"
     },
     "modal": {
@@ -40,6 +40,7 @@
   "external-link": "The link leads outside the service",
   "feedback": {
     "cancel": "Cancel",
+    "close": "Close",
     "email-label": "E-mail address",
     "error": "Failed to send feedback. Please try again later.",
     "footer-handled": {
@@ -73,6 +74,8 @@
     },
     "submit": "Submit",
     "success": "Thank you for your feedback! Your feedback will help us to improve the service.",
+    "success-description": "Your feedback helps us improve the service.",
+    "success-title": "Thank you for your feedback!",
     "title": "Give feedback",
     "type-question": "What kind of feedback would you like to give?",
     "types": {
@@ -161,6 +164,13 @@
   "required": "mandatory",
   "return-home": "Return to the front page",
   "session": {
+    "auth-error": {
+      "description": "Login failed. Please try again.",
+      "reason": {
+        "method-not-allowed": "The login method you selected is not allowed."
+      },
+      "title": "Login failed"
+    },
     "expired": {
       "continue": "Continue without logging in",
       "login": "Log in again",
