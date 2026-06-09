@@ -25,7 +25,7 @@ export const SuggestNewContent = () => {
       level="h2"
       title={t('suggest-new-content-for-the-service')}
       content={t('suggest-new-content-for-the-service-content')}
-      backgroundColor="var(--ds-color-secondary-2-dark-2)"
+      backgroundColor="var(--ds-color-primary-2-dark-2)"
       data-testid="suggest-new-content-card"
       hideIcon
     />
@@ -35,7 +35,7 @@ export const SuggestNewContent = () => {
       level="h2"
       title={t('suggest-new-content-for-the-service')}
       content={t('suggest-new-content-for-the-service-content')}
-      backgroundColor="var(--ds-color-secondary-2-dark-2)"
+      backgroundColor="var(--ds-color-primary-2-dark-2)"
       data-testid="suggest-new-content-card-anonymous"
       linkComponent={getLinkTo(`/${i18n.language}/${t('slugs.profile.login')}`)}
     />
