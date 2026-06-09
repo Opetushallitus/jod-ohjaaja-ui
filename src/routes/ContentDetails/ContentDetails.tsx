@@ -150,7 +150,7 @@ const ContentDetails = () => {
               level="h2"
               title={t('access-content-later-title')}
               content={t('access-content-later-content')}
-              backgroundColor="var(--ds-color-secondary-2-dark)"
+              backgroundColor="var(--ds-color-primary-2-dark)"
               data-testid="access-content-later-card"
               linkComponent={getLinkTo(`/${language}/${t('slugs.profile.login')}`)}
             />

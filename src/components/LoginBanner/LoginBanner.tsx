@@ -17,7 +17,7 @@ export const LoginBanner = () => {
         level="h2"
         title={t('log-in-to-the-service-title')}
         content={t('log-in-to-the-service-content')}
-        backgroundColor="var(--ds-color-secondary-2-dark)"
+        backgroundColor="var(--ds-color-primary-2-dark)"
         data-testid="login-banner-card"
       />
     </div>

@@ -33,12 +33,12 @@ const Button = ({
     aria-label={label}
     type="button"
     onClick={onClick}
-    className={`group flex min-h-7 cursor-pointer items-center gap-2 rounded-[30px] bg-bg-gray-2 px-5 text-button-sm outline-offset-2 select-none focus-visible:outline-secondary-1-dark disabled:cursor-not-allowed ${danger ? 'hover:text-underline text-alert-text-2' : 'text-secondary-gray hover:text-secondary-1-dark focus-visible:text-secondary-1-dark active:text-secondary-1-dark-2'} `}
+    className={`group focus-visible:outline-secondary-1-dark flex min-h-7 cursor-pointer items-center gap-2 rounded-[30px] bg-bg-gray-2 px-5 text-button-sm outline-offset-2 select-none disabled:cursor-not-allowed ${danger ? 'hover:text-underline text-alert-2' : 'hover:text-secondary-1-dark focus-visible:text-secondary-1-dark active:text-secondary-1-dark-2 text-secondary-gray'} `}
     data-testid={dataTestid}
   >
     <div
       aria-hidden="true"
-      className={`${danger ? 'text-[#E35750]' : 'text-secondary-gray group-hover:text-secondary-1-dark group-focus-visible:text-secondary-1-dark group-active:text-secondary-1-dark-2'}`}
+      className={`${danger ? 'text-[#E35750]' : 'group-hover:text-secondary-1-dark group-focus-visible:text-secondary-1-dark group-active:text-secondary-1-dark-2 text-secondary-gray'}`}
     >
       {icon}
     </div>

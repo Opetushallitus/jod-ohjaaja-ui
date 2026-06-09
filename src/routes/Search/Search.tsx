@@ -92,7 +92,7 @@ const Search = () => {
         </p>
         <form id="search" className="mb-7" onSubmit={handleSearch} noValidate data-testid="search-form">
           <div className="flex flex-row items-center">
-            <div className="flex w-full items-center rounded-md border border-border-form bg-white p-2 text-primary-gray">
+            <div className="border-border-form flex w-full items-center rounded-md border bg-white p-2 text-primary-gray">
               <input
                 type="text"
                 name="search"
@@ -126,7 +126,7 @@ const Search = () => {
             </div>
           </div>
           {submitError && (
-            <div className="mt-2 block font-arial text-form-error text-alert-text-2" role="alert">
+            <div className="mt-2 block font-arial text-form-error text-alert-2" role="alert">
               {submitError}
             </div>
           )}

@@ -29,7 +29,7 @@ export const SortMenu = ({
 }: SortMenuProps) => {
   return (
     <ButtonMenu
-      triggerIcon={<JodSort size={18} className="text-secondary-2-dark" />}
+      triggerIcon={<JodSort size={18} className="text-primary-2-dark" />}
       triggerLabel={label}
       className={className}
       menuClassName={menuClassName}

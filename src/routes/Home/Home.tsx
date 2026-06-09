@@ -78,7 +78,7 @@ const Home = () => {
           hero
           title={t('home.card-1-title')}
           content={t('home.card-1-content')}
-          backgroundColor="var(--ds-color-secondary-2-dark-2)"
+          backgroundColor="var(--ds-color-primary-2-dark-2)"
           className="lg:w-1/2"
         />
       </div>
@@ -88,7 +88,7 @@ const Home = () => {
           level="h2"
           title={t('home.card-2-title')}
           content={t('home.card-2-content')}
-          backgroundColor="var(--ds-color-secondary-2-dark)"
+          backgroundColor="var(--ds-color-primary-2-dark)"
           className="flex-1"
           buttonText={t('home.card-2-button-text')}
         />
@@ -97,7 +97,7 @@ const Home = () => {
           level="h2"
           title={t('home.card-3-title')}
           content={t('home.card-3-content')}
-          backgroundColor="var(--ds-color-secondary-2-dark-2)"
+          backgroundColor="var(--ds-color-primary-2-dark-2)"
           className="flex-1"
           buttonText={t('home.card-3-button-text')}
         />
@@ -106,7 +106,7 @@ const Home = () => {
           level="h2"
           title={t('home.card-4-title')}
           content={t('home.card-4-content')}
-          backgroundColor="var(--ds-color-secondary-2-dark)"
+          backgroundColor="var(--ds-color-primary-2-dark)"
           className="flex-1"
           buttonText={t('home.card-4-button-text')}
         />
@@ -124,7 +124,7 @@ const Home = () => {
               title={t('home.favorites')}
               content={t('home.favorites-content')}
               buttonText={t('home.favorites-button-label')}
-              backgroundColor="var(--ds-color-secondary-2-dark)"
+              backgroundColor="var(--ds-color-primary-2-dark)"
             />
           </div>
         )}
@@ -138,7 +138,7 @@ const Home = () => {
               title={t('want-to-see-interesting-content-title')}
               content={t('want-to-see-interesting-content-content')}
               buttonText={t('want-to-see-interesting-content-button')}
-              backgroundColor="var(--ds-color-secondary-2-dark)"
+              backgroundColor="var(--ds-color-primary-2-dark)"
             />
           </div>
         ) : (

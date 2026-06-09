@@ -31,7 +31,7 @@ export const EmptyStateWithCategoryLinks = ({
         <p className="font-bold mb-3 font-arial text-body-md">{t('category-links.title')}</p>
         <Link
           to={`/${language}/${getMainCategoryPath(language, 0)}`}
-          className="flex items-center gap-2 p-2 text-button-sm text-secondary-2-dark"
+          className="flex items-center gap-2 p-2 text-button-sm text-primary-2-dark"
           data-testid={`${testIdPrefix}-link-category-0`}
         >
           {getMainCategory(language, 0)?.title ?? ''} <JodArrowRight size={20} />
@@ -39,7 +39,7 @@ export const EmptyStateWithCategoryLinks = ({
 
         <Link
           to={`/${language}/${getMainCategoryPath(language, 1)}`}
-          className="flex items-center gap-2 p-2 text-button-sm text-secondary-2-dark"
+          className="flex items-center gap-2 p-2 text-button-sm text-primary-2-dark"
           data-testid={`${testIdPrefix}-link-category-1`}
         >
           {getMainCategory(language, 1)?.title ?? ''} <JodArrowRight size={20} />
@@ -47,7 +47,7 @@ export const EmptyStateWithCategoryLinks = ({
 
         <Link
           to={`/${language}/${getMainCategoryPath(language, 2)}`}
-          className="flex items-center gap-2 p-2 text-button-sm text-secondary-2-dark"
+          className="flex items-center gap-2 p-2 text-button-sm text-primary-2-dark"
           data-testid={`${testIdPrefix}-link-category-2`}
         >
           {getMainCategory(language, 2)?.title ?? ''} <JodArrowRight size={20} />
