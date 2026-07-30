@@ -4,7 +4,7 @@ import { Button, cx, type LinkComponent } from '@jod/design-system';
 import { JodArrowRight } from '@jod/design-system/icons';
 
 type LinkProps = {
-  linkComponent: LinkComponent;
+  linkComponent: React.ComponentType<LinkComponent>;
   buttonText: string;
   buttonOpensModal?: never;
   onClick?: never;
