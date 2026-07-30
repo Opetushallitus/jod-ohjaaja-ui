@@ -3,6 +3,7 @@ import { LoaderFunction, replace } from 'react-router';
 import i18n, { defaultLang, LangCode, supportedLanguageCodes } from '@/i18n/config';
 import { useKiinnostuksetStore } from '@/stores/useKiinnostuksetStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
+import { OhjaajaCsrfDto } from '@/types/auth';
 
 export default (async ({ params: { lng }, context }) => {
   const { fetchSuosikit, clearSuosikit } = useSuosikitStore.getState();
@@ -26,4 +27,4 @@ export default (async ({ params: { lng }, context }) => {
   }
 
   return context;
-}) satisfies LoaderFunction;
+}) satisfies LoaderFunction<OhjaajaCsrfDto | null>;
