@@ -12,13 +12,18 @@ export const sessionExpiredMiddleware: Middleware = {
       sessionState.onSessionExtended?.();
       await sessionState.extendSession();
     }
-    if (response.status === 403 && !response.url.endsWith('/api/profiili/ohjaaja')) {
-      useSuosikitStore.getState().clearSuosikit();
-      useKiinnostuksetStore.getState().clearKiinnostukset();
-      await useSessionManagerStore.getState().expireSession('server-403');
 
-      throw new Error('session-expired'); // TODO: This should be replaced with a proper handling of session expiration
+    if (response.status === 403 && !response.url.endsWith('/api/profiili/ohjaaja')) {
+      const body = await response.json();
+      if (body.errorCode === 'AUTHENTICATION_FAILURE') {
+        useSuosikitStore.getState().clearSuosikit();
+        useKiinnostuksetStore.getState().clearKiinnostukset();
+        await useSessionManagerStore.getState().expireSession('server-403');
+
+        throw new Error('session-expired'); // TODO: This should be replaced with a proper handling of session expiration
+      }
     }
+
     return response;
   },
 };
