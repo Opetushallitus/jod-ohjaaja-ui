@@ -32,7 +32,7 @@ DOMPurify.addHook('afterSanitizeAttributes', function (node) {
  * @returns {ContentFieldValue | undefined} Content value
  */
 export const findContentValueByName = (item: StructuredContent, name: ContentName) => {
-  return item.contentFields?.find((field) => field.name === name)?.contentFieldValue;
+  return item.contentFields?.find((field) => field.fieldReference === name)?.contentFieldValue;
 };
 
 /**

@@ -51,6 +51,7 @@ export interface ContentField {
   inputControl?: string;
   label: string;
   name: string;
+  fieldReference: string;
   nestedContentFields: ContentField[];
   repeatable: boolean;
 }

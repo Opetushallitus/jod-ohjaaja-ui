@@ -39,6 +39,7 @@ const createTestData = (title: string, keywords?: Category[]) => {
         inputControl: 'text',
         label: 'ingress',
         name: 'ingress',
+        fieldReference: 'ingress',
         nestedContentFields: [],
         repeatable: false,
       });
@@ -61,6 +62,7 @@ const createTestData = (title: string, keywords?: Category[]) => {
         dataType: 'image',
         label: 'image',
         name: 'image',
+        fieldReference: 'image',
         nestedContentFields: [],
         repeatable: false,
       });
@@ -73,6 +75,7 @@ const createTestData = (title: string, keywords?: Category[]) => {
         inputControl: 'text',
         label: 'content',
         name: 'content',
+        fieldReference: 'content',
         nestedContentFields: [],
         repeatable: false,
       });
@@ -84,12 +87,14 @@ const createTestData = (title: string, keywords?: Category[]) => {
         dataType: '',
         label: 'link',
         name: 'link',
+        fieldReference: 'link',
         nestedContentFields: [
           {
             contentFieldValue: { data: text },
             dataType: 'string',
             label: 'linktext',
             name: 'linktext',
+            fieldReference: 'linktext',
             nestedContentFields: [],
             repeatable: false,
           },
@@ -103,6 +108,7 @@ const createTestData = (title: string, keywords?: Category[]) => {
           dataType: 'string',
           label: 'linkurl',
           name: 'linkurl',
+          fieldReference: 'linkurl',
           nestedContentFields: [],
           repeatable: false,
         });
@@ -128,6 +134,7 @@ const createTestData = (title: string, keywords?: Category[]) => {
         dataType: 'document',
         label: 'document',
         name: 'document',
+        fieldReference: 'document',
         nestedContentFields: [],
         repeatable: true,
       });
