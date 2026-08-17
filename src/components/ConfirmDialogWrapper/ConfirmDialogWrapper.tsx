@@ -58,6 +58,7 @@ export const ConfirmDialogWrapper = ({
   onCancel,
   footer,
   content,
+  testId,
 }: ConfirmDialogWrapperProps) => {
   const { closeActiveModal, closeAllModals } = useModal();
   const { t } = useTranslation();
@@ -73,6 +74,7 @@ export const ConfirmDialogWrapper = ({
           label={cancelText ?? defaultCancelText}
           size={sm ? 'lg' : 'sm'}
           className="not-sm:h-5"
+          testId="confirm-dialog-cancel"
           onClick={() => {
             if (loading) {
               return;
@@ -89,6 +91,7 @@ export const ConfirmDialogWrapper = ({
         icon={loading ? <Spinner size={24} color="white" /> : confirmButtonIcon}
         size={sm ? 'lg' : 'sm'}
         className="not-sm:h-5"
+        testId="confirm-dialog-confirm"
         onClick={async () => {
           if (loading) {
             return;
@@ -129,6 +132,7 @@ export const ConfirmDialogWrapper = ({
       footer={footer ?? DefaultFooter}
       animationMode={animationMode}
       shouldRenderBackdrop={shouldRenderBackdrop}
+      testId={testId}
     >
       {ShowDialogWrapper}
     </ConfirmDialog>

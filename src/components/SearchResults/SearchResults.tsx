@@ -71,7 +71,7 @@ export const SearchResults = ({
                   label: keyword.name,
                   to: getSearchUrl(t, language, [`${keyword.id}`]),
                 }))}
-                data-testid={`search-result-card-${id}`}
+                testId={`search-result-card-${content.title?.replace(/\s+/g, '-').toLowerCase()}`}
               />
               {!isLastItem && <div className="border-b border-border-gray" />}
             </React.Fragment>
@@ -92,7 +92,7 @@ export const SearchResults = ({
               prevTriggerLabel: t('pagination.previous'),
               itemLabel: ({ page }) => t('pagination.page', { page }),
             }}
-            data-testid="pagination"
+            testId="pagination"
           />
         </div>
       )}

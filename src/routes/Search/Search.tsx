@@ -112,6 +112,7 @@ const Search = () => {
                   setSearchValue('');
                 }}
                 aria-label={t('search.clear')}
+                data-testid="search-clear-button"
               >
                 <JodClose className="text-inactive-gray" />
               </button>
@@ -119,6 +120,7 @@ const Search = () => {
               <button
                 type="submit"
                 className="hover:bg-accent-dark ml-3 flex h-7 shrink cursor-pointer items-center gap-2 rounded-sm border-y bg-accent px-3 text-heading-4 text-[0.875rem] text-white outline-offset-2 outline-accent focus:outline-2 focus:outline-accent"
+                data-testid="search-submit-button"
               >
                 <JodSearch className="text-white" />
                 {t('search.button')}

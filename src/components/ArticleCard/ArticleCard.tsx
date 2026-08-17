@@ -55,6 +55,7 @@ export const ArticleCard = ({ article, variant, isLoggedIn }: ArticleCardProps) 
         title: t('common:login'),
         description: t('login-for-favorites'),
         footer: createLoginDialogFooter(t, loginLink, closeAllModals),
+        testId: 'login-dialog',
       });
     } else if (article.externalReferenceCode !== undefined) {
       void toggleSuosikki(article.externalReferenceCode);
@@ -75,7 +76,7 @@ export const ArticleCard = ({ article, variant, isLoggedIn }: ArticleCardProps) 
       isFavorite={isFavorite}
       onFavoriteClick={handleFavoriteClick}
       favoriteLabel={isFavorite ? t('remove-from-favorites') : t('add-to-favorites')}
-      data-testid={`article-card-${id}`}
+      testId={`article-card-${article.title?.replace(/\s+/g, '-').toLowerCase()}`}
     />
   );
 };

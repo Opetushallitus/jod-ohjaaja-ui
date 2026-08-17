@@ -32,6 +32,7 @@ export const useShowSessionExpiredDialog = () => {
         globalThis.scrollTo(0, 0);
         globalThis.location.replace(globalThis.location.origin + `/ohjaaja/${language}`);
       },
+      testId: 'session-expired-dialog',
     });
   };
 };

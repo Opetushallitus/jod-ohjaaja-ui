@@ -93,7 +93,7 @@ const Details = () => {
               { value: 'MUU', label: t('profile.details.workplace.option8') },
             ]}
             onChange={(value) => guardedAction(handleWorkplaceChange, value)()}
-            data-testid="profile-details-workplace"
+            testId="profile-details-workplace"
           />
         </section>
         <section data-testid="profile-details-interests">
@@ -124,7 +124,7 @@ const Details = () => {
                 label={tag.name_i18n[getLocale(language)] ?? tag.name}
                 checked={isSelected(tag.id)}
                 onChange={(event) => guardedAction(handleTagSelectionChange, event)()}
-                data-testid={`profile-interest-${tag.id}`}
+                testId={`profile-interest-${tag.name_i18n[getLocale(language)] ?? tag.name}`}
               />
             ))}
           </div>

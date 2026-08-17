@@ -26,7 +26,7 @@ export const SuggestNewContent = () => {
       title={t('suggest-new-content-for-the-service')}
       content={t('suggest-new-content-for-the-service-content')}
       backgroundColor="var(--ds-color-primary-2-dark-2)"
-      data-testid="suggest-new-content-card"
+      testId="suggest-new-content-card"
       hideIcon
     />
   ) : (
@@ -36,7 +36,7 @@ export const SuggestNewContent = () => {
       title={t('suggest-new-content-for-the-service')}
       content={t('suggest-new-content-for-the-service-content')}
       backgroundColor="var(--ds-color-primary-2-dark-2)"
-      data-testid="suggest-new-content-card-anonymous"
+      testId="suggest-new-content-card-anonymous"
       linkComponent={getLinkTo(`/${i18n.language}/${t('slugs.profile.login')}`)}
     />
   );

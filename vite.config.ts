@@ -94,7 +94,6 @@ export default defineConfig(({ mode }) => {
           headers: {
             Cookie: `JODTOKEN=${env.JODTOKEN}`,
           },
-          auth: `${env.CMSUSER}:${env.CMSPASSWORD}`,
         },
         '/api': {
           target: 'https://jodkehitys.fi',

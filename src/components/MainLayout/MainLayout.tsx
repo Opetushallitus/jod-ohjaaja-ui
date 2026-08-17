@@ -29,6 +29,7 @@ export const MainLayout = ({ children, navChildren, asideChildren, featuredConte
           serviceVariant="ohjaaja"
           linkComponent={BreadcrumbLink}
           ariaLabel={t('common:breadcrumb')}
+          testId="breadcrumb"
         />
       </div>
 

@@ -17,7 +17,7 @@ export const createLoginDialogFooter = (t: (key: string) => string, loginLink: s
               onClose?.();
             }}
             className="whitespace-nowrap"
-            data-testid="login-dialog-cancel"
+            testId="login-dialog-cancel"
           />
           <Button
             label={t('common:login')}
@@ -25,7 +25,7 @@ export const createLoginDialogFooter = (t: (key: string) => string, loginLink: s
             serviceVariant="ohjaaja"
             linkComponent={getLinkTo(loginLink, { useAnchor: true })}
             className="whitespace-nowrap"
-            data-testid="login-dialog-login"
+            testId="login-dialog-login"
           />
         </div>
       </div>

@@ -87,6 +87,7 @@ const ContentDetails = () => {
         title: t('common:login'),
         description: t('login-for-favorites'),
         footer: createLoginDialogFooter(t, loginLink, closeAllModals),
+        testId: 'login-dialog',
       });
     } else if (data.externalReferenceCode !== undefined) {
       void toggleSuosikki(data.externalReferenceCode);
