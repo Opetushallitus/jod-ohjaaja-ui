@@ -33,6 +33,7 @@ export const SortMenu = ({
       triggerLabel={label}
       className={className}
       menuClassName={menuClassName}
+      testId="sort-menu"
     >
       <RadioButtonGroup label={label} value={sort} onChange={onSortChange} hideLabel className="gap-2">
         {options.map((option) => (
@@ -40,7 +41,7 @@ export const SortMenu = ({
             key={option.value}
             label={option.label}
             value={option.value}
-            data-testid={`sort-${option.value}`}
+            testId={`sort-${option.value}`}
             className="pr-7"
           />
         ))}

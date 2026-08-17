@@ -55,7 +55,7 @@ const TagFilterList = ({
             })}
             label={tag.name_i18n[getLocale(language)] ?? tag.name}
             onChange={() => handleCheckboxChange(tag)}
-            data-testid={`tag-filter-checkbox-${tag.id}`}
+            testId={`tag-filter-checkbox-${(tag.name_i18n[getLocale(language)] ?? tag.name).replace(/\s+/g, '-').toLowerCase()}`}
           ></Checkbox>
         </div>
       ))}

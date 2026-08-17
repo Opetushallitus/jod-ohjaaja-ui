@@ -21,13 +21,19 @@ export const getLinkTo = (
   to: React.ComponentProps<typeof Link>['to'],
   opts: LinkToOpts = { useAnchor: false, target: '_self', rel: 'noreferrer noopener' },
 ) => {
-  const LinkToComponent = ({ children, className }: LinkComponent) =>
+  const LinkToComponent = ({ children, className, testId }: LinkComponent & { testId?: string }) =>
     opts.useAnchor ? (
-      <a className={className} href={typeof to === 'string' ? to : to.pathname} target={opts.target} rel={opts.rel}>
+      <a
+        className={className}
+        href={typeof to === 'string' ? to : to.pathname}
+        target={opts.target}
+        rel={opts.rel}
+        data-testid={testId}
+      >
         {children}
       </a>
     ) : (
-      <Link className={className} to={to} target={opts.target} rel={opts.rel} state={opts.state}>
+      <Link className={className} to={to} target={opts.target} rel={opts.rel} state={opts.state} data-testid={testId}>
         {children}
       </Link>
     );

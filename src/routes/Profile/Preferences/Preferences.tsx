@@ -55,6 +55,7 @@ const Preferences = () => {
         cancelText: t('common:cancel'),
         variant: 'destructive',
         description: t('profile.preferences.delete-profile.confirm'),
+        testId: 'preferences-delete-dialog',
       });
     } else {
       onSessionExpired();
@@ -77,7 +78,7 @@ const Preferences = () => {
             serviceVariant="ohjaaja"
             label={t('profile.preferences.download.action')}
             onClick={guardedAction(onDownload)}
-            data-testid="preferences-download-button"
+            testId="preferences-download-button"
           />
         </section>
         <section data-testid="preferences-delete-profile">
@@ -90,7 +91,7 @@ const Preferences = () => {
             variant="red-delete"
             label={t('profile.preferences.delete-profile.action')}
             onClick={guardedAction(onDeleteUser)}
-            data-testid="preferences-delete-button"
+            testId="preferences-delete-button"
           />
         </section>
       </div>

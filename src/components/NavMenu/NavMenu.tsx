@@ -45,12 +45,14 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
           url: `/yksilo/${language}`,
           description: t('common:navigation.external.yksilo.description'),
           accentColor: '#006DB3',
+          testId: 'oma-osaamispolku-link',
         },
         {
           label: t('common:navigation.external.tietopalvelu.label'),
           url: `/tietopalvelu/${language}`,
           description: t('common:navigation.external.tietopalvelu.description'),
           accentColor: '#AD4298',
+          testId: 'tietopalvelu-link',
         },
       ],
     },
@@ -60,6 +62,7 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
         {
           label: t('common:navigation.extra.palveluhakemisto.label'),
           url: t('common:navigation.extra.palveluhakemisto.url'),
+          testId: 'palveluhakemisto-link',
         },
       ],
     },
@@ -95,7 +98,7 @@ export const NavMenu = ({ open, onClose }: { open: boolean; onClose: () => void 
       languageSelectionTitle={t('common:language-selection')}
       serviceVariant="ohjaaja"
       externalLinkIconAriaLabel={t('common:external-link')}
-      data-testid="navigation-menu"
+      testId="navigation-menu"
       ariaLabel={t('common:navigation-menu')}
       navigationAriaLabel={t('common:main-navigation')}
     />

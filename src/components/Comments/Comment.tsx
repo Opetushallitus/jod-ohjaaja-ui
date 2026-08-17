@@ -18,13 +18,13 @@ interface CommentProps extends RefAttributes<HTMLDivElement> {
 
 const Button = ({
   onClick,
-  dataTestid,
+  testId,
   label,
   icon,
   danger = false,
 }: {
   onClick: () => void;
-  dataTestid: string;
+  testId: string;
   label: string;
   icon: React.ReactNode;
   danger?: boolean;
@@ -34,7 +34,7 @@ const Button = ({
     type="button"
     onClick={onClick}
     className={`group focus-visible:outline-secondary-1-dark flex min-h-7 cursor-pointer items-center gap-2 rounded-[30px] bg-bg-gray-2 px-5 text-button-sm outline-offset-2 select-none disabled:cursor-not-allowed ${danger ? 'hover:text-underline text-alert-2' : 'hover:text-secondary-1-dark focus-visible:text-secondary-1-dark active:text-secondary-1-dark-2 text-secondary-gray'} `}
-    data-testid={dataTestid}
+    data-testid={testId}
   >
     <div
       aria-hidden="true"
@@ -89,13 +89,14 @@ const Comment = ({
                 onConfirm={() => deleteComment(commentId)}
                 cancelText={t('comments.comment.delete.cancelText')}
                 confirmText={t('comments.comment.delete.confirmText')}
+                testId="comment-delete-dialog"
               >
                 {(showDeleteModal) => (
                   <Button
                     icon={<DeleteIcon />}
                     onClick={showDeleteModal}
                     label={t('comments.comment.delete.label')}
-                    dataTestid="comment-delete"
+                    testId="comment-delete"
                     danger
                   />
                 )}
@@ -107,13 +108,14 @@ const Comment = ({
                 onConfirm={() => reportComment(commentId)}
                 cancelText={t('comments.comment.report.cancelText')}
                 confirmText={t('comments.comment.report.confirmText')}
+                testId="comment-report-dialog"
               >
                 {(showReportModal) => (
                   <Button
                     icon={<JodBlock />}
                     onClick={showReportModal}
                     label={t('comments.comment.report.label')}
-                    dataTestid="comment-report"
+                    testId="comment-report"
                   />
                 )}
               </ConfirmDialog>

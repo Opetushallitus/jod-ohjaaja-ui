@@ -10,9 +10,17 @@ interface ButtonMenuProps {
   children: React.ReactNode;
   className?: string;
   menuClassName?: string;
+  testId?: string;
 }
 
-export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, menuClassName }: ButtonMenuProps) => {
+export const ButtonMenu = ({
+  triggerIcon,
+  triggerLabel,
+  children,
+  className,
+  menuClassName,
+  testId,
+}: ButtonMenuProps) => {
   const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const menuRef = React.useRef<HTMLDivElement>(null);
@@ -49,8 +57,10 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
     };
   }, [menuRef]);
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : suffix);
+
   return (
-    <div className={tc(`relative ${className}`)} data-testid="button-menu">
+    <div className={tc(`relative ${className}`)} data-testid={getTestId('button-menu')}>
       <button
         type="button"
         onClick={handleOpenMenu}
@@ -61,7 +71,7 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
         aria-label={triggerLabel}
         aria-expanded={menuOpen}
         aria-controls={menuId}
-        data-testid="button-menu-trigger"
+        data-testid={getTestId('button-menu-trigger')}
         ref={buttonRef}
       >
         {triggerIcon}
@@ -74,7 +84,7 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
           role="region"
           ref={menuRef}
           aria-labelledby={buttonId}
-          data-testid="button-menu-popup"
+          data-testid={getTestId('button-menu-popup')}
         >
           <div className="mb-5 flex flex-row items-center justify-between">
             <p className="text-body-sm" aria-hidden>
@@ -84,7 +94,7 @@ export const ButtonMenu = ({ triggerIcon, triggerLabel, children, className, men
               onClick={handleCloseMenu}
               className="cursor-pointer"
               aria-label={t('button-menu.close')}
-              data-testid="button-menu-close"
+              data-testid={getTestId('button-menu-close')}
             >
               <JodClose className="text-secondary-gray" />
             </button>

@@ -14,8 +14,8 @@ const ListItem = ({ children }: { children: React.ReactNode }) => <li className=
 
 const Link =
   (href: string) =>
-  ({ children, className }: { children: React.ReactNode; className?: string }) => (
-    <a href={href} className={className}>
+  ({ children, className, testId }: { children: React.ReactNode; className?: string; testId?: string }) => (
+    <a href={href} className={className} data-testid={testId}>
       {children}
     </a>
   );
@@ -63,7 +63,7 @@ const LoginPage = () => {
             serviceVariant="ohjaaja"
             label={t('common:login')}
             linkComponent={Link(loginLink)}
-            data-testid="landing-login"
+            testId="landing-login"
             iconSide="right"
             icon={<JodArrowRight />}
           />

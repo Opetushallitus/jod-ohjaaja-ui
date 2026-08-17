@@ -48,7 +48,7 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
               setCurrentComment(e.target.value);
             }}
             value={currentComment}
-            data-testid="comment-input-textarea"
+            testId="comment-input-textarea"
             ariaLabel={t('comments.comment.placeholder')}
           />
 
@@ -66,7 +66,7 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
                 setCurrentComment('');
               }
             }}
-            data-testid="comment-input-send"
+            testId="comment-input-send"
           />
         </div>
       )}

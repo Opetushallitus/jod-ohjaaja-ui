@@ -73,17 +73,17 @@ const Comments = () => {
 
   return (
     <MainLayout navChildren={<ProfileNavigation />} asideChildren={lg && <SuggestNewContent />}>
-      <div data-testid="favorites-route">
+      <div data-testid="comments-route">
         <title>{t('profile.comments.title')}</title>
-        <h1 className="mb-6 text-heading-1-mobile lg:text-heading-1" data-testid="favorites-title">
+        <h1 className="mb-6 text-heading-1-mobile lg:text-heading-1" data-testid="comments-title">
           {t('profile.comments.title')}
         </h1>
-        <p className="mb-8 text-body-lg" data-testid="favorites-description">
+        <p className="mb-8 text-body-lg" data-testid="comments-description">
           <Trans i18nKey="profile.comments.description" />
         </p>
         {omatKommentit.length > 0 && (
           <div className="mb-5 grid grid-cols-2 gap-5">
-            <p className="col-span-2 text-body-md lg:col-span-1" data-testid="favorites-count">
+            <p className="col-span-2 text-body-md lg:col-span-1" data-testid="comments-count">
               {t('profile.comments.comment-count', { count: omatKommentit.length })}
             </p>
             {visibleArticlesByCategory && (
@@ -96,7 +96,7 @@ const Comments = () => {
             )}
           </div>
         )}
-        <div data-testid="favorites-content">
+        <div data-testid="comments-content">
           {omatKommentit.length > 0 ? (
             Object.entries(visibleArticlesByCategory).map(([category, articles]) => (
               <CategoryList
@@ -104,7 +104,7 @@ const Comments = () => {
                 category={category}
                 articles={articles}
                 isLoggedIn={isLoggedIn}
-                data-testid={`favorites-category-${category}`}
+                testId={`comments-category-${category}`}
               />
             ))
           ) : (

@@ -337,7 +337,7 @@ export const FeedbackModal = ({ isOpen, onClose, section, area, language }: Feed
           />
         </div>
       }
-      data-testid="feedback-modal"
+      testId="feedback-modal"
     />
   );
 };

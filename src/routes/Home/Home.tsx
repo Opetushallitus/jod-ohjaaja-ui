@@ -80,6 +80,7 @@ const Home = () => {
           content={t('home.card-1-content')}
           backgroundColor="var(--ds-color-primary-2-dark-2)"
           className="lg:w-1/2"
+          testId="home-hero-card"
         />
       </div>
       <div className="mx-auto mb-8 flex max-w-[1140px] flex-col gap-6 px-5 pb-8 sm:px-6 lg:flex-row xl:gap-7">
@@ -91,6 +92,7 @@ const Home = () => {
           backgroundColor="var(--ds-color-primary-2-dark)"
           className="flex-1"
           buttonText={t('home.card-2-button-text')}
+          testId="tietosisällöt"
         />
         <FeatureCard
           linkComponent={getLinkTo(getMainCategoryPath(language as LangCode, 1))}
@@ -100,6 +102,7 @@ const Home = () => {
           backgroundColor="var(--ds-color-primary-2-dark-2)"
           className="flex-1"
           buttonText={t('home.card-3-button-text')}
+          testId="asiakastyön-tueksi"
         />
         <FeatureCard
           linkComponent={getLinkTo(getMainCategoryPath(language as LangCode, 2))}
@@ -109,13 +112,19 @@ const Home = () => {
           backgroundColor="var(--ds-color-primary-2-dark)"
           className="flex-1"
           buttonText={t('home.card-4-button-text')}
+          testId="ammatillinen-kehittyminen"
         />
       </div>
       <div
         className="mx-auto grid max-w-[1140px] grid-cols-3 gap-8 px-5 pb-7 sm:px-6 md:pb-[40px] lg:pb-[75px]"
         data-testid="home-content"
       >
-        <ArticleCarousel title={t('home.popular-content')} isLoggedIn={isLoggedIn} articles={mostViewedContent} />
+        <ArticleCarousel
+          title={t('home.popular-content')}
+          isLoggedIn={isLoggedIn}
+          articles={mostViewedContent}
+          testId="popular-content"
+        />
         {isLoggedIn && (
           <div className="col-span-3 lg:col-span-2">
             <FeatureCard
@@ -125,11 +134,17 @@ const Home = () => {
               content={t('home.favorites-content')}
               buttonText={t('home.favorites-button-label')}
               backgroundColor="var(--ds-color-primary-2-dark)"
+              testId="home-favorites"
             />
           </div>
         )}
 
-        <ArticleCarousel title={t('home.new-content')} isLoggedIn={isLoggedIn} articles={newestContent} />
+        <ArticleCarousel
+          title={t('home.new-content')}
+          isLoggedIn={isLoggedIn}
+          articles={newestContent}
+          testId="new-content"
+        />
         {isLoggedIn && bestMatchingContent.length === 0 ? (
           <div className="col-span-3 lg:col-span-2">
             <FeatureCard
@@ -139,10 +154,16 @@ const Home = () => {
               content={t('want-to-see-interesting-content-content')}
               buttonText={t('want-to-see-interesting-content-button')}
               backgroundColor="var(--ds-color-primary-2-dark)"
+              testId="home-interesting-content"
             />
           </div>
         ) : (
-          <ArticleCarousel title={t('home.best-matching')} isLoggedIn={isLoggedIn} articles={bestMatchingContent} />
+          <ArticleCarousel
+            title={t('home.best-matching')}
+            isLoggedIn={isLoggedIn}
+            articles={bestMatchingContent}
+            testId="best-matching-content"
+          />
         )}
 
         {isLoggedIn ? (

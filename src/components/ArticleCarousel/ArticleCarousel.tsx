@@ -12,10 +12,12 @@ interface ArticleCarouselProps {
   title: string;
   isLoggedIn: boolean;
   articles: StructuredContent[];
+  testId?: string;
 }
 
-export const ArticleCarousel = ({ title, isLoggedIn, articles }: ArticleCarouselProps) => {
+export const ArticleCarousel = ({ title, isLoggedIn, articles, testId }: ArticleCarouselProps) => {
   const { t } = useTranslation();
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : suffix);
   const carouselItems: CardCarouselItem[] = useCardCarouselItems(
     React.useCallback(() => {
       return articles.map((article) => ({
@@ -27,8 +29,8 @@ export const ArticleCarousel = ({ title, isLoggedIn, articles }: ArticleCarousel
 
   return (
     carouselItems.length > 0 && (
-      <div className="col-span-3" data-testid="article-carousel">
-        <h2 className="mb-5 text-heading-2-mobile sm:text-heading-2" data-testid="article-carousel-title">
+      <div className="col-span-3" data-testid={getTestId('article-carousel')}>
+        <h2 className="mb-5 text-heading-2-mobile sm:text-heading-2" data-testid={getTestId('article-carousel-title')}>
           {title}
         </h2>
         <CardCarousel
@@ -40,7 +42,7 @@ export const ArticleCarousel = ({ title, isLoggedIn, articles }: ArticleCarousel
             indicator: (index: number) => t('carousel.indicator', { index: index + 1 }),
           }}
           className="-m-3 p-3 max-[1148px]:-mx-6 max-[1148px]:px-6 max-[640px]:-mx-5 max-[640px]:px-5"
-          data-testid="article-carousel-cards"
+          data-testid={getTestId('article-carousel-cards')}
         />
       </div>
     )

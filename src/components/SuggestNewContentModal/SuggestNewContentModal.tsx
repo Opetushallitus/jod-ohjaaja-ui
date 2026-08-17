@@ -79,7 +79,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
           formId={formId}
         />
       }
-      data-testid="suggest-new-content-modal"
+      testId="suggest-new-content-modal"
       footer={
         <div className="flex flex-1 justify-end gap-3">
           <Button
@@ -88,7 +88,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
             label={t('common:cancel')}
             onClick={handleClose}
             className="whitespace-nowrap"
-            data-testid="suggest-new-content.cancel"
+            testId="suggest-new-content.cancel"
             size={sm ? 'lg' : 'sm'}
           />
           <Button
@@ -98,7 +98,7 @@ export const SuggestNewContentModal = ({ isOpen, onClose }: SuggestNewContentMod
             label={t('suggest-new-content.send')}
             className="whitespace-nowrap"
             disabled={!isValid || isSubmitting}
-            data-testid="suggest-new-content.send"
+            testId="suggest-new-content.send"
             size={sm ? 'lg' : 'sm'}
           />
         </div>
@@ -160,7 +160,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
           }
           isOpen={contentGuideIsOpen}
           setIsOpen={setContentGuideIsOpen}
-          data-testid="suggest-new-content.content-guide-accordion"
+          testId="suggest-new-content.content-guide-accordion"
         >
           <p>{t('suggest-new-content.content-guide')}</p>
         </Accordion>
@@ -189,7 +189,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               {...methods.register('content')}
               placeholder={t('suggest-new-content.content-placeholder')}
               requiredText={t('common:required')}
-              data-testid="suggest-new-content.content"
+              testId="suggest-new-content.content"
               errorMessage={errors.content?.message}
             />
           </div>
@@ -198,7 +198,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               label={t('suggest-new-content.email-label')}
               {...methods.register('email')}
               placeholder={t('suggest-new-content.email-placeholder')}
-              data-testid="suggest-new-content.email"
+              testId="suggest-new-content.email"
               errorMessage={errors.email?.message}
             />
           </div>
@@ -207,7 +207,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               label={t('suggest-new-content.link-label')}
               {...methods.register('link')}
               placeholder={t('suggest-new-content.link-placeholder')}
-              data-testid="suggest-new-content.link"
+              testId="suggest-new-content.link"
               errorMessage={errors.link?.message}
             />
           </div>
@@ -219,7 +219,7 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
               {...methods.register('description')}
               placeholder={t('suggest-new-content.description-placeholder')}
               rows={2}
-              data-testid="suggest-new-content.description"
+              testId="suggest-new-content.description"
               errorMessage={errors.description?.message}
             />
           </div>

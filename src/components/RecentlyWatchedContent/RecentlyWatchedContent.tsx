@@ -47,6 +47,7 @@ export const RecentlyWatchedContent = () => {
           linkComponent={Link}
           path={path}
           tags={createTagsFromKeywords(keywords)}
+          testId={`recently-watched-card-${title.replace(/\s+/g, '-').toLowerCase()}`}
         />
       );
     },

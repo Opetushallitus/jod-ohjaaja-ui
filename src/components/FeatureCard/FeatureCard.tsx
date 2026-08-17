@@ -39,6 +39,7 @@ type FeatureCardProps = {
   collapseOnSmallScreen?: boolean;
   className?: string;
   icon?: React.ReactNode;
+  testId?: string;
 } & (LinkProps | ClickProps | StaticProps);
 
 export const FeatureCard = ({
@@ -55,11 +56,19 @@ export const FeatureCard = ({
   onClick,
   hideIcon = false,
   icon = <JodArrowRight aria-hidden />,
+  testId,
 }: FeatureCardProps) => {
   const headingId = React.useId();
   const contentId = React.useId();
 
   const Heading = level;
+
+  const getTestId = (suffix: string) => {
+    if (testId) {
+      return `${testId}-${suffix}`;
+    }
+    return suffix;
+  };
 
   return (
     <div
@@ -68,13 +77,16 @@ export const FeatureCard = ({
         'py-[6px] lg:py-6': !hero && collapseOnSmallScreen,
       })}
       style={{ backgroundColor }}
-      data-testid={'feature-card'}
+      data-testid={getTestId('feature-card')}
     >
-      <div className="flex items-center justify-between gap-3 lg:items-start" data-testid="feature-card-header">
+      <div
+        className="flex items-center justify-between gap-3 lg:items-start"
+        data-testid={getTestId('feature-card-header')}
+      >
         <Heading
           id={headingId}
           className={`${hero ? 'text-heading-1-mobile whitespace-pre-line text-white md:text-heading-1' : 'text-heading-2-mobile text-white md:text-heading-2'}`}
-          data-testid="feature-card-title"
+          data-testid={getTestId('feature-card-title')}
         >
           {title}
         </Heading>
@@ -82,7 +94,7 @@ export const FeatureCard = ({
       <p
         id={contentId}
         className="flex-grow text-body-lg-mobile whitespace-pre-line text-white md:text-body-lg"
-        data-testid="feature-card-content"
+        data-testid={getTestId('feature-card-content')}
       >
         {content}
       </p>
@@ -95,7 +107,7 @@ export const FeatureCard = ({
           icon={hideIcon ? undefined : icon}
           iconSide="right"
           className="w-fit"
-          data-testid="feature-card-button-link"
+          testId={getTestId('feature-card-button-link')}
         />
       ) : null}
       {onClick ? (
@@ -108,7 +120,7 @@ export const FeatureCard = ({
           iconSide="right"
           aria-labelledby={`${headingId} ${contentId}`}
           className="w-fit"
-          data-testid="feature-card-button"
+          testId={getTestId('feature-card-button')}
           ariaHaspopup={buttonOpensModal ? 'dialog' : undefined}
         />
       ) : null}

@@ -58,6 +58,7 @@ const CategoryMain = () => {
           serviceVariant="ohjaaja"
           linkComponent={BreadcrumbLink}
           ariaLabel={t('common:breadcrumb')}
+          testId="breadcrumb"
         />
       </div>
       <aside
@@ -90,11 +91,26 @@ const CategoryMain = () => {
         )}
       </section>
 
-      <ArticleCarousel title={t('home.popular-content')} isLoggedIn={isLoggedIn} articles={mostViewedCategoryContent} />
+      <ArticleCarousel
+        title={t('home.popular-content')}
+        isLoggedIn={isLoggedIn}
+        articles={mostViewedCategoryContent}
+        testId="popular-content"
+      />
 
-      <ArticleCarousel title={t('home.new-content')} isLoggedIn={isLoggedIn} articles={newestCategoryContent.items} />
+      <ArticleCarousel
+        title={t('home.new-content')}
+        isLoggedIn={isLoggedIn}
+        articles={newestCategoryContent.items}
+        testId="new-content"
+      />
 
-      <ArticleCarousel title={t('home.best-matching')} isLoggedIn={isLoggedIn} articles={bestMatchingCategoryContent} />
+      <ArticleCarousel
+        title={t('home.best-matching')}
+        isLoggedIn={isLoggedIn}
+        articles={bestMatchingCategoryContent}
+        testId="best-matching-content"
+      />
 
       {isLoggedIn ? (
         <div className="col-span-3">
