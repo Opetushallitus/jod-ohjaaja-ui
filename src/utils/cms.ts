@@ -160,12 +160,12 @@ export const getContentSegments = (item: StructuredContent): ContentSegment[] =>
  */
 export const getLinks = (item: StructuredContent): ContentLink[] => {
   const links = item.contentFields
-    ?.filter((field) => field.name === 'link')
+    ?.filter((field) => field.fieldReference === 'link')
     .map((linkContentField) => {
-      const text = linkContentField.nestedContentFields.find((field) => field.name === 'linktext')?.contentFieldValue
-        ?.data;
-      const url = linkContentField.nestedContentFields.find((field) => field.name === 'linkurl')?.contentFieldValue
-        ?.data;
+      const text = linkContentField.nestedContentFields.find((field) => field.fieldReference === 'linktext')
+        ?.contentFieldValue?.data;
+      const url = linkContentField.nestedContentFields.find((field) => field.fieldReference === 'linkurl')
+        ?.contentFieldValue?.data;
 
       if (text === undefined || text.trim() === '' || url === undefined || url.trim() === '') {
         return null;
@@ -185,7 +185,7 @@ export const getLinks = (item: StructuredContent): ContentLink[] => {
  */
 export const getDocuments = (item: StructuredContent) => {
   const documents = item.contentFields
-    ?.filter((field) => field.name === 'document')
+    ?.filter((field) => field.fieldReference === 'document')
     .map((documentContentField) => documentContentField.contentFieldValue.document)
     .filter((document) => document !== undefined);
 
