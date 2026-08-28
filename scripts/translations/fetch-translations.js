@@ -22,7 +22,7 @@ const LANGUAGES = ['en', 'fi', 'sv'];
  */
 function writeToFile(outputPath, data) {
   return new Promise((resolve, reject) => {
-    // Ensure file ends with exactly one newline
+    // Ensure file ends with exactly one newline (Prettier requirement)
     const formattedData = data.trimEnd() + '\n';
 
     fs.writeFile(outputPath, formattedData, 'utf-8', (err) => {

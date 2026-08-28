@@ -153,7 +153,13 @@ GitHub Actions automatically handles:
 1. **Push translations to Tolgee** - New translation keys are uploaded to Tolgee platform. Existing keys are not modified or deleted.
 2. **Tag management** - The `manage-tags` script runs automatically:
    - Unused keys are marked as deprecated in Tolgee
-   - JIRA ticket tags are automatically added (if ticket ID can be parsed from branch or commit) to track when changes reach production
+   - A JIRA ticket tag is added next to `deprecated` to track when the change reaches production.
+     The ticket is read from the commit that removed the key's last usage, so a key keeps the
+     ticket that actually orphaned it even when a later PR is the one that notices.
+   - When that lookup finds nothing, the current run's ticket is used instead. It is resolved from
+     `JIRA_TICKET_ID`, then the PR title, then the head branch (both `OPHJOD-1234-x` and a bare
+     `1234` are understood). If nothing resolves, the key is still marked `deprecated`, just
+     without a ticket tag.
    - Keys can be safely removed from Tolgee once verified in production
 
 **Note:** Updates to existing translations and key deletions must be done directly in the Tolgee platform.
