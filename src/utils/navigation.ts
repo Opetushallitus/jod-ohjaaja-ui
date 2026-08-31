@@ -9,6 +9,7 @@ import {
   type NavigationTreeItem,
 } from '@/types/cms-navigation';
 
+import { sanitizeHtml } from './rich-text';
 import { sluggify } from './string-utils';
 
 export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangCode): NavigationTreeItem => {
@@ -17,7 +18,7 @@ export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangC
   return {
     title: navigationItem.name_i18n[locale] || navigationItem.name,
     name: sluggify(navigationItem.name),
-    description: navigationItem.description_i18n[locale] || navigationItem.description,
+    description: sanitizeHtml(navigationItem.description_i18n[locale] || navigationItem.description),
     path: sluggify(navigationItem.name_i18n[locale] || navigationItem.name),
     hideFromHomePageNewestCarousel: navigationItem.hideFromHomePageNewestCarousel,
     hideFromHomePageMostViewedCarousel: navigationItem.hideFromHomePageMostViewedCarousel,

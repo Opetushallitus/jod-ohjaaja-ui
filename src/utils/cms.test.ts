@@ -174,6 +174,26 @@ describe('CMS utils', () => {
       const item = createTestData('test title').get();
       expect(getContentSegments(item)).toEqual([]);
     });
+
+    it('should sanitize the content', () => {
+      const item = createTestData('test title')
+        .addContent('<p style="color: red">test html content</p><script>alert(1)</script>')
+        .get();
+      expect(getContentSegments(item)).toEqual([{ type: 'html', html: '<p>test html content</p>' }]);
+    });
+
+    it('should split youtube embeds into their own segments', () => {
+      const item = createTestData('test title')
+        .addContent(
+          '<p>before</p><div class="embed-responsive" data-embed-id="https://www.youtube.com/embed/abc"></div><p>after</p>',
+        )
+        .get();
+      expect(getContentSegments(item)).toEqual([
+        { type: 'html', html: '<p>before</p>' },
+        { type: 'youtube', src: 'https://www.youtube.com/embed/abc' },
+        { type: 'html', html: '<p>after</p>' },
+      ]);
+    });
   });
 
   describe('getImage', () => {

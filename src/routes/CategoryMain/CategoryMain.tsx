@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
 
-import { Breadcrumb, tidyClasses as tc } from '@jod/design-system';
+import { Breadcrumb } from '@jod/design-system';
 
 import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
 import { BreadcrumbLink } from '@/components/BreadcrumbLink/BreadcrumbLink';
@@ -12,6 +12,7 @@ import { SuggestNewContent } from '@/components/SuggestNewContent/SuggestNewCont
 import { useBreadcrumbItems } from '@/hooks/useBreadcrumbItems';
 import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
 import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
+import { getRichTextClasses } from '@/utils/rich-text';
 
 import { LoaderData } from './loader';
 
@@ -27,24 +28,6 @@ const CategoryMain = () => {
   const description = categoryRoute?.handle?.description;
 
   const breadcrumbItems = useBreadcrumbItems();
-
-  const richTextClasses = tc([
-    '[&_p]:my-5',
-    '[&_p]:first:my-0',
-    '[&_li]:my-2',
-    '[&_li]:ml-6',
-    '[&_li]:list-item',
-    '[&_ul]:list-disc',
-    '[&_ol]:list-decimal',
-    '[&_strong]:font-bold',
-    '[&_img]:inline',
-    '[&_h1]:text-heading-1',
-    '[&_h2]:text-heading-2',
-    '[&_h3]:text-heading-3',
-    '[&_h4]:text-heading-4',
-    'text-body-lg',
-    '[&_a]:text-accent',
-  ]);
 
   return (
     <main
@@ -84,7 +67,7 @@ const CategoryMain = () => {
         )}
         {description && (
           <div
-            className={richTextClasses}
+            className={getRichTextClasses()}
             dangerouslySetInnerHTML={{ __html: description }}
             data-testid="category-description"
           />

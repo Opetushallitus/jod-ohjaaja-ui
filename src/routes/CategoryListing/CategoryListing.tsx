@@ -2,8 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
 
-import { tidyClasses as tc } from '@jod/design-system';
-
 import { GuidanceCard, MainLayout } from '@/components';
 import { ContentList, ContentListSort } from '@/components/ContentList/ContentList';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
@@ -12,6 +10,7 @@ import { useCategoryRoute } from '@/hooks/useCategoryRoutes';
 import { getCategoryContent } from '@/services/cms-article-api';
 import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { type StructuredContentPage } from '@/types/cms-content';
+import { getRichTextClasses } from '@/utils/rich-text';
 
 import { LoaderData } from './loader';
 
@@ -47,23 +46,6 @@ const CategoryListing = () => {
   const title = categoryRoute?.handle?.title;
   const description = categoryRoute?.handle?.description;
 
-  const richTextClasses = tc([
-    '[&_p]:my-5',
-    '[&_p]:first:my-0',
-    '[&_li]:my-2',
-    '[&_li]:ml-6',
-    '[&_li]:list-item',
-    '[&_ul]:list-disc',
-    '[&_ol]:list-decimal',
-    '[&_strong]:font-bold',
-    '[&_img]:inline',
-    '[&_h1]:text-heading-1',
-    '[&_h2]:text-heading-2',
-    '[&_h3]:text-heading-3',
-    '[&_h4]:text-heading-4',
-    'text-body-lg',
-  ]);
-
   const handleLoadMore = () => {
     setVisibleItemCount((prevCount) => prevCount + VISIBLE_ITEM_COUNT);
   };
@@ -95,7 +77,7 @@ const CategoryListing = () => {
           )}
           {description && (
             <div
-              className={richTextClasses}
+              className={getRichTextClasses()}
               dangerouslySetInnerHTML={{ __html: description }}
               data-testid="category-listing-description"
             />
