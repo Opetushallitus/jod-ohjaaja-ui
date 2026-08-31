@@ -24,6 +24,7 @@ import { ContentDocument, ContentLink } from '@/types/cms-content';
 import { copyToClipboard } from '@/utils/clipboard';
 import { getAdaptiveMediaSrc, getContentSegments, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
+import { getRichTextClasses } from '@/utils/rich-text';
 import { getLinkTo } from '@/utils/routeUtils';
 
 import { LoaderData } from './loader';
@@ -113,30 +114,6 @@ const ContentDetails = () => {
   const imageAlt = image?.description;
   const imageCopyright = imageAlt?.split(' Kuva: ').length === 2 ? imageAlt?.split(' Kuva: ')[1] : undefined;
 
-  const richTextClasses = tc([
-    '[&_p]:my-5',
-    '[&_p]:first:my-0',
-    '[&_li]:my-2',
-    '[&_li]:ml-6',
-    '[&_li]:list-item',
-    '[&_ul]:list-disc',
-    '[&_ol]:list-decimal',
-    '[&_strong]:font-bold',
-    '[&_img]:inline',
-    '[&_table]:border-collapse',
-    '[&_table]:border',
-    '[&_table]:border-gray-400',
-    '[&_table_td]:border',
-    '[&_table_td]:border-gray-400',
-    '[&_table>caption]:font-bold',
-    '[&_table>caption]:text-left',
-    '[&_h1]:text-heading-1',
-    '[&_h2]:text-heading-2',
-    '[&_h3]:text-heading-3',
-    '[&_h4]:text-heading-4',
-    '[&_a]:text-accent',
-  ]);
-
   const doPrint = () => {
     globalThis.print();
   };
@@ -218,7 +195,7 @@ const ContentDetails = () => {
           </div>
         </div>
         {contentSegments.length > 0 && (
-          <div className={richTextClasses} data-testid="content-body">
+          <div className={getRichTextClasses('article')} data-testid="content-body">
             {contentSegments.map((segment) =>
               segment.type === 'html' ? (
                 <div key={segment.html} dangerouslySetInnerHTML={{ __html: segment.html }} />

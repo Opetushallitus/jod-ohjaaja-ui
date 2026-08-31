@@ -54,6 +54,7 @@ export interface NavigationTreeItem {
 export interface RouteMatchHandle {
   type: NavigationItemType;
   title: string;
+  description: string;
 }
 
 export const isRouteMatchHandle = (value: unknown): value is RouteMatchHandle =>

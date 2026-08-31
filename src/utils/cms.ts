@@ -1,5 +1,3 @@
-import DOMPurify from 'dompurify';
-
 import { components } from '@/api/schema';
 import { type LangCode } from '@/i18n/config';
 import type { Category, ContentLink, StructuredContent } from '@/types/cms-content';
@@ -7,6 +5,7 @@ import { type NavigationTreeItem } from '@/types/cms-navigation';
 import { type Sort } from '@/types/sort';
 
 import { getCategoryArticleIds } from './navigation';
+import { sanitizeHtml } from './rich-text';
 
 type ContentName = 'ingress' | 'content' | 'image' | 'document' | 'link';
 type ContentSegment = { type: 'html'; html: string } | { type: 'youtube'; src: string };
@@ -16,14 +15,6 @@ const AdaptiveMediaSizes = {
   card_vertical: 'Card-Vertical',
   article: 'Article',
 };
-
-DOMPurify.addHook('afterSanitizeAttributes', function (node) {
-  // set all elements owning target to target=_blank
-  if ('target' in node) {
-    node.setAttribute('target', '_blank');
-    node.setAttribute('rel', 'noopener');
-  }
-});
 
 /**
  * Finds the content value from Liferay strucured content by label
@@ -107,7 +98,7 @@ export const getImage = (item: StructuredContent) => {
  * Parse content into segments, splitting at YouTube embeds so they can be wrapped in CookieConsentGuard.
  */
 export const getContentSegments = (item: StructuredContent): ContentSegment[] => {
-  const raw = DOMPurify.sanitize(findContentValueByName(item, 'content')?.data ?? '');
+  const raw = sanitizeHtml(findContentValueByName(item, 'content')?.data, { variant: 'article' });
   if (!raw) {
     return [];
   }

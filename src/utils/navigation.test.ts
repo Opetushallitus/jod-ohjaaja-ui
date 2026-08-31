@@ -86,6 +86,13 @@ describe('navigation utils', () => {
         hideFromMainCategoryPageMostViewedCarousel: false,
       });
     });
+    it('sanitizes the description of the navigation tree item', () => {
+      const navigationItem: CMSNavigationItem = createCMSNavigationItem(1, 'Main', 0, 'CategoryMain', [], 1);
+      navigationItem.description_i18n['fi-FI'] = '<p style="color: red">Description</p><script>alert(1)</script>';
+      const result = getNavigationItems(navigationItem, 'fi' as LangCode);
+      expect(result.description).toBe('<p>Description</p>');
+    });
+
     it('returns correct navigation tree item with children', () => {
       const navigationItem: CMSNavigationItem = createCMSNavigationItem(
         1,
