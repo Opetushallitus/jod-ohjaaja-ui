@@ -19,7 +19,7 @@ export const ExternalLink = ({ href, children, className = '', ...rest }: Extern
       {...rest}
     >
       {children}
-      <JodOpenInNew size={24} ariaLabel={t('common:external-link')} />
+      <JodOpenInNew size={18} ariaLabel={t('common:external-link')} />
     </a>
   );
 };

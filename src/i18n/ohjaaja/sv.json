@@ -145,8 +145,9 @@
       "title": "Favoriter"
     },
     "front": {
-      "data-processing-info": "Behandlingen av uppgifter grundar sig på lagen om den nationella informationsresursen för kompetenser. Läs mer om grunderna för behandlingen av uppgifter <Link>dataskyddsbeskrivning</Link>.",
+      "data-processing-info": "Behandlingen av uppgifter grundar sig på lagen om den nationella informationsresursen för kompetenser. <Link>Lag om den nationella informationsresursen för kompetenser | 1449/2025 | Lagstiftning.</Link> Läs mer om grunderna för behandlingen av uppgifter <Link2>dataskyddsbeskrivning</Link2>.",
       "greeting": "Hej {{etunimi}} – välkommen till vägledarens profil!",
+      "href": "https://www.finlex.fi/sv/lagstiftning/2025/1449",
       "list-1-item-1": "lägga till dina uppgifter så att vi kan betjäna dig bättre",
       "list-1-item-2": "spara innehåll som favoriter i Vägledar-delen genom att trycka på hjärtikonen",
       "list-1-item-3": "se och hantera dina favoriter",
