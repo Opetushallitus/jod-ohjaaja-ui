@@ -113,7 +113,7 @@
         "description": "Kerro meille missä työskentelet, jotta ymmärrämme, ketkä palvelua käyttävät. Näin voimme kehittää palvelua ja sen sisältöjä vastaamaan paremmin käyttäjien tarpeita. Työskentelypaikkasi ei näy muille käyttäjille, eikä sitä käytetä muuhun kuin tilastollisiin tarkoituksiin. ",
         "title": "Työskentelypaikka"
       },
-      "title": "Omat tiedot",
+      "title": "Omat tietosi",
       "workplace": {
         "label": "Valitse työskentelypaikkasi",
         "option1": "Oppilaitos / perusaste",
@@ -145,8 +145,9 @@
       "title": "Suosikit"
     },
     "front": {
-      "data-processing-info": "Tietojen käsittely perustuu lakiin valtakunnallisesta jatkuvan oppimisen osaamistietovarannosta. Lue lisää tietojen käsittelyn perusteista <Link>tietosuojaselosteesta</Link>.",
+      "data-processing-info": "Tietojen käsittely perustuu lakiin valtakunnallisesta osaamistietovarannosta. <Link>Laki valtakunnallisesta osaamistietovarannosta | 1449/2025 | Lainsäädäntö | Finlex.</Link> Lue lisää tietojen käsittelyn perusteista <Link2>tietosuojaselosteesta</Link2>.",
       "greeting": "Hei {{etunimi}} – tervetuloa ohjaajan profiiliin!",
+      "href": "https://www.finlex.fi/fi/lainsaadanto/2025/1449",
       "list-1-item-1": "lisätä omia tietojasi, jotta voimme palvella sinua paremmin",
       "list-1-item-2": "tallentaa Ohjaajan osion sisältöjä suosikeiksi sydänikonia painamalla",
       "list-1-item-3": "nähdä ja hallinnoida suosikkejasi",
@@ -164,7 +165,7 @@
       "auth-description": "Palvelu käyttää Suomi.fi-tunnistusta. Käytämme tietojasi vain anonymisoituna, jotta voimme luoda yleiskuvan käyttäjistä.",
       "benefits-description": "Kirjautumalla palveluun voit lisäksi",
       "description": "Kirjautumalla palveluun saat käyttöösi henkilökohtaisen ohjaajan profiilin sekä lisäominaisuuksia Ohjaajan osion käyttöön.",
-      "list-1-item-1": "Omat tiedot -kohdassa voit mm. kertoa kiinnostuksesi, jotta voimme tarjota sinulle paremmin kohdennettuja sisältöjä.",
+      "list-1-item-1": "Omat tietosi -kohdassa voit mm. kertoa kiinnostuksesi, jotta voimme tarjota sinulle paremmin kohdennettuja sisältöjä.",
       "list-1-item-2": "Suosikit-kohdassa voit tallentaa palvelun sisältöjä, jolloin niiden löytäminen ja jakaminen on jatkossa helpompaa.",
       "list-1-item-3": "Asetukset-kohdassa voit ladata tai poistaa profiilisi.",
       "list-2-item-1": "ehdottaa uutta sisältöä lisättäväksi palveluun",
@@ -282,7 +283,7 @@
     "update-default-failed": "Päivitys epäonnistui.",
     "update-default-success": "Päivitys onnistui."
   },
-  "want-to-see-interesting-content-button": "Omat tiedot",
+  "want-to-see-interesting-content-button": "Omat tietosi",
   "want-to-see-interesting-content-content": "Valitse omissa tiedoissasi sinua kiinnostavia asiasanoja ja tarjoamme sinulle paremmin kohdistettuja sisältöjä.",
   "want-to-see-interesting-content-title": "Haluatko nähdä sinua kiinnostavaa sisältöä?"
 }

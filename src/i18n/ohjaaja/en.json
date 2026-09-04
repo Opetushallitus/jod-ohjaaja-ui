@@ -145,8 +145,9 @@
       "title": "Favourites"
     },
     "front": {
-      "data-processing-info": "The processing of data is based on the Act on the national competence database for continuous learning. Read more about the grounds for data processing in our <Link>privacy policy</Link>.",
+      "data-processing-info": "The processing of data is based on the act on the national competence data repository. Read more about the grounds for data processing in our <Link2>privacy policy</Link2>.",
       "greeting": "Hello {{etunimi}} - welcome to the guidance practitioner's profile!",
+      "href": "https://www.finlex.fi/fi/lainsaadanto/2025/1449",
       "list-1-item-1": "add your personal data so that we can serve you better",
       "list-1-item-2": "save content of the guidance practitioner section as favourites by clicking the heart icon",
       "list-1-item-3": "view and manage your favourites",
