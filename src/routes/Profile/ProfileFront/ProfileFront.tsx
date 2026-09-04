@@ -53,6 +53,13 @@ const ProfileFront = () => {
             components={{
               Link: (
                 <ExternalLink
+                  href={t('profile.front.href')}
+                  className="font-poppins"
+                  data-testid="profile-front-finlex-link"
+                />
+              ),
+              Link2: (
+                <ExternalLink
                   href={`/${language}/${t('common:slugs.privacy-and-cookies')}`}
                   className="font-poppins"
                   data-testid="profile-front-privacy-link"
