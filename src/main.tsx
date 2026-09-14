@@ -21,7 +21,7 @@ try {
 
 const root = createRoot(document.getElementById('root')!);
 
-if (import.meta.env.NODE_ENV !== 'production') {
+if (import.meta.env.DEV) {
   void import('web-vitals').then((vitals) => {
     const warnOnlyNegativeMetrics = (metric: Metric) => {
       if (metric.rating !== 'good') {
