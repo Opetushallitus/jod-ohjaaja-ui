@@ -21,11 +21,11 @@ import { useModal } from '@/hooks/useModal';
 import { useOhjaajaProfile } from '@/stores/useSessionManagerStore';
 import { useSuosikitStore } from '@/stores/useSuosikitStore';
 import { ContentDocument, ContentLink } from '@/types/cms-content';
-import { copyToClipboard } from '@/utils/clipboard';
 import { getAdaptiveMediaSrc, getContentSegments, getDocuments, getImage, getKeywords, getLinks } from '@/utils/cms';
 import { getSearchUrl } from '@/utils/navigation';
 import { getRichTextClasses } from '@/utils/rich-text';
 import { getLinkTo } from '@/utils/routeUtils';
+import { share } from '@/utils/share';
 
 import { LoaderData } from './loader';
 
@@ -181,7 +181,7 @@ const ContentDetails = () => {
             <ActionButton
               label={t('common:share')}
               icon={<JodShare className="text-accent" />}
-              onClick={() => copyToClipboard(globalThis.location.href)}
+              onClick={() => share(t('front-page'), data.title, globalThis.location.href)}
               data-testid="action-share"
             />
             {!!globalThis.print && (
