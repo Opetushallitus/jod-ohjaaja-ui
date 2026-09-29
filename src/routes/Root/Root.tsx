@@ -20,6 +20,7 @@ import {
   MatomoTracker,
   MenuButton,
   NavigationBar,
+  pictureToImageSet,
   SkipLink,
   useCookieConsent,
   useMediaQueries,
@@ -27,6 +28,7 @@ import {
   UserButton,
 } from '@jod/design-system';
 
+import feedbackBg from '@/../assets/feedback.jpg?preset=bg';
 import { components } from '@/api/schema';
 import { FeedbackModal } from '@/components';
 import { NavMenu } from '@/components/NavMenu/NavMenu';
@@ -238,29 +240,31 @@ const Root = () => {
         <Outlet />
       </LogoutFormContext.Provider>
       <Chatbot />
-      <Footer
-        language={language}
-        okmLabel={t('common:footer.logos.okm-label')}
-        temLabel={t('common:footer.logos.tem-label')}
-        ophLabel={t('common:footer.logos.oph-label')}
-        kehaLabel={t('common:footer.logos.keha-label')}
-        cooperationTitle={t('common:footer.cooperation-title')}
-        fundingTitle={t('common:footer.funding-title')}
-        moreInfoTitle={t('common:footer.more-info-title')}
-        moreInfoDescription={t('common:footer.more-info-description')}
-        moreInfoLinks={moreInfoLinks}
-        feedbackTitle={t('common:footer.feedback-title')}
-        feedbackContent={t('common:footer.feedback-content')}
-        feedbackButtonLabel={t('common:footer.feedback-button-label')}
-        feedbackOnClick={() => setFeedbackVisible(true)}
-        feedbackBgImageClassName="bg-[url(@/../assets/feedback.jpg)] bg-cover bg-[50%_50%]"
-        copyright={t('common:footer.copyright')}
-        socialMedia={socialMedia}
-        externalLinkIconAriaLabel={t('common:external-link')}
-        testId="footer"
-        cookieSettingsLabel={t('common:footer.cookie-settings-label')}
-        onCookieSettingsClick={() => openCookieConsent()}
-      />
+      <div className="contents" style={{ '--feedback-bg': pictureToImageSet(feedbackBg) } as React.CSSProperties}>
+        <Footer
+          language={language}
+          okmLabel={t('common:footer.logos.okm-label')}
+          temLabel={t('common:footer.logos.tem-label')}
+          ophLabel={t('common:footer.logos.oph-label')}
+          kehaLabel={t('common:footer.logos.keha-label')}
+          cooperationTitle={t('common:footer.cooperation-title')}
+          fundingTitle={t('common:footer.funding-title')}
+          moreInfoTitle={t('common:footer.more-info-title')}
+          moreInfoDescription={t('common:footer.more-info-description')}
+          moreInfoLinks={moreInfoLinks}
+          feedbackTitle={t('common:footer.feedback-title')}
+          feedbackContent={t('common:footer.feedback-content')}
+          feedbackButtonLabel={t('common:footer.feedback-button-label')}
+          feedbackOnClick={() => setFeedbackVisible(true)}
+          feedbackBgImageClassName="bg-(image:--feedback-bg) bg-cover bg-[50%_50%]"
+          copyright={t('common:footer.copyright')}
+          socialMedia={socialMedia}
+          externalLinkIconAriaLabel={t('common:external-link')}
+          testId="footer"
+          cookieSettingsLabel={t('common:footer.cookie-settings-label')}
+          onCookieSettingsClick={() => openCookieConsent()}
+        />
+      </div>
       <FeedbackModal
         isOpen={feedbackVisible}
         onClose={() => setFeedbackVisible(false)}
