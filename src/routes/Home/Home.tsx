@@ -2,12 +2,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
 
-import { useMediaQueries } from '@jod/design-system';
+import { Picture, useMediaQueries } from '@jod/design-system';
 
-import heroSrc1 from '@/../assets/ohjaaja-hero-1.jpg';
-import heroSrc2 from '@/../assets/ohjaaja-hero-2.jpg';
-import heroSrc3 from '@/../assets/ohjaaja-hero-3.jpg';
-import heroSrc4 from '@/../assets/ohjaaja-hero-4.jpg';
+import heroSrc1 from '@/../assets/ohjaaja-hero-1.jpg?preset=hero';
+import heroSrc2 from '@/../assets/ohjaaja-hero-2.jpg?preset=hero';
+import heroSrc3 from '@/../assets/ohjaaja-hero-3.jpg?preset=hero';
+import heroSrc4 from '@/../assets/ohjaaja-hero-4.jpg?preset=hero';
 import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
 import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
@@ -63,13 +63,16 @@ const Home = () => {
     <main id="jod-main" className="mx-auto w-full max-w-(--breakpoint-xl)" data-testid="home">
       <title>{t('front-page')}</title>
 
-      <img
-        src={heroSrc}
+      <Picture
+        picture={heroSrc}
         alt=""
         role="none"
+        loading="eager"
+        fetchPriority="high"
+        sizes="1440px"
         className="pointer-events-none -z-10 w-(--breakpoint-xl) touch-none object-cover object-[50%_50%] select-none sm:h-[617px] sm:object-[44%_50%] md:object-[41%_50%] lg:object-[20%_50%] xl:object-[50%_50%]"
         style={sm ? undefined : { height: heroHeight }}
-        data-testid="home-hero"
+        testId="home-hero"
       />
 
       <div ref={firstCardRef} className="relative mx-auto mb-6 max-w-[1140px] px-5 sm:px-6 lg:mb-8">
