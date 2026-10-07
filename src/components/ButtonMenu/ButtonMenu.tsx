@@ -28,15 +28,21 @@ export const ButtonMenu = ({
   const buttonId = React.useId();
   const menuId = React.useId();
 
-  const handleCloseMenu = () => {
+  const handleCloseMenu = React.useCallback(() => {
     setMenuOpen(false);
     buttonRef.current?.focus();
-  };
+  }, []);
   const handleOpenMenu = () => {
     setMenuOpen(true);
   };
 
   React.useEffect(() => {
+    if (!menuOpen) {
+      return;
+    }
+
+    menuRef.current?.focus();
+
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         handleCloseMenu();
@@ -55,7 +61,7 @@ export const ButtonMenu = ({
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [menuRef]);
+  }, [menuOpen, handleCloseMenu]);
 
   const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : suffix);
 
@@ -78,11 +84,11 @@ export const ButtonMenu = ({
         {triggerLabel}
       </button>
       {menuOpen && (
-        <div
-          className={tc(`absolute top-0 z-50 w-max max-w-[350px] rounded bg-bg-gray-2 p-6 ${menuClassName}`)}
+        <section
+          className={tc(`absolute top-0 z-10 w-max max-w-[350px] rounded bg-bg-gray-2 p-6 ${menuClassName}`)}
           id={menuId}
-          role="region"
           ref={menuRef}
+          tabIndex={-1}
           aria-labelledby={buttonId}
           data-testid={getTestId('button-menu-popup')}
         >
@@ -100,7 +106,7 @@ export const ButtonMenu = ({
             </button>
           </div>
           {children}
-        </div>
+        </section>
       )}
     </div>
   );
