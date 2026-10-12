@@ -259,6 +259,7 @@ const Root = () => {
           feedbackBgImageClassName="bg-(image:--feedback-bg) bg-cover bg-[50%_50%]"
           copyright={t('common:footer.copyright')}
           socialMedia={socialMedia}
+          socialMediaLabel={t('common:footer.social-media-label')}
           externalLinkIconAriaLabel={t('common:external-link')}
           testId="footer"
           cookieSettingsLabel={t('common:footer.cookie-settings-label')}
