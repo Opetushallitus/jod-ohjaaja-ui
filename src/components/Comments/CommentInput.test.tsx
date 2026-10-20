@@ -31,7 +31,7 @@ describe('CommentInput', () => {
   it('shows spinner when adding comment', () => {
     render(<CommentInput {...mockProps} addingComment={true} />);
     expect(screen.queryByPlaceholderText('comments.comment.placeholder')).not.toBeInTheDocument();
-    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(screen.getByTestId('comment-input-loading-spinner')).toBeInTheDocument();
   });
 
   it('disables send button when textarea is empty', () => {
