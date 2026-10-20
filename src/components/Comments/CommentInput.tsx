@@ -33,7 +33,7 @@ export const CommentInput = ({ userId, addComment, addingComment }: CommentInput
       </div>
       {addingComment ? (
         <div className="flex grow justify-center" data-testid="comment-input-loading">
-          <Spinner size={16} color="accent" />
+          <Spinner size={16} color="accent" testId="comment-input-loading-spinner" />
         </div>
       ) : (
         <div className="flex grow">
