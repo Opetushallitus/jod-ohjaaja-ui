@@ -10,16 +10,15 @@ import {
 } from '@/types/cms-navigation';
 
 import { sanitizeHtml } from './rich-text';
-import { sluggify } from './string-utils';
 
 export const getNavigationItems = (navigationItem: CMSNavigationItem, lng: LangCode): NavigationTreeItem => {
   const locale = getLocale(lng);
 
   return {
     title: navigationItem.name_i18n[locale] || navigationItem.name,
-    name: sluggify(navigationItem.name),
+    name: navigationItem.slug,
     description: sanitizeHtml(navigationItem.description_i18n[locale] || navigationItem.description),
-    path: sluggify(navigationItem.name_i18n[locale] || navigationItem.name),
+    path: navigationItem.slug_i18n[locale] || navigationItem.slug,
     hideFromHomePageNewestCarousel: navigationItem.hideFromHomePageNewestCarousel,
     hideFromHomePageMostViewedCarousel: navigationItem.hideFromHomePageMostViewedCarousel,
     hideFromMainCategoryPageNewestCarousel: navigationItem.hideFromMainCategoryPageNewestCarousel,

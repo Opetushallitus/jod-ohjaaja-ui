@@ -1,7 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 
-import { sluggify } from '@/utils/string-utils';
+/** The paths are already ASCII slugs, so only the slashes and other separators need replacing. */
+const toTestId = (path: string) =>
+  path
+    .toLowerCase()
+    .replaceAll(/[^a-z0-9]+/g, '-')
+    .replaceAll(/(^-|-$)/g, '');
 
 export const NavLinkBasedOnAuth = ({
   to,
@@ -21,7 +26,7 @@ export const NavLinkBasedOnAuth = ({
     i18n: { language },
   } = useTranslation();
 
-  const testId = `navlink-${shouldLogin ? 'login' : 'link'}-${sluggify(to.replace(/\//g, '-'))}`;
+  const testId = `navlink-${shouldLogin ? 'login' : 'link'}-${toTestId(to)}`;
 
   return shouldLogin ? (
     <NavLink

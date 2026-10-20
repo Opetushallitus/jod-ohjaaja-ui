@@ -38,6 +38,8 @@ describe('navigation utils', () => {
     categoryId: number | null = null,
     articleId: number | null = null,
   ): CMSNavigationItem => {
+    // The CMS builds the slugs; for these names the result is simple
+    const slug = name.toLowerCase().replaceAll(' ', '-');
     return {
       id,
       name,
@@ -45,6 +47,12 @@ describe('navigation utils', () => {
         'fi-FI': name,
         'en-US': name,
         'sv-SE': name,
+      },
+      slug,
+      slug_i18n: {
+        'fi-FI': slug,
+        'en-US': slug,
+        'sv-SE': slug,
       },
       description: '',
       description_i18n: {
@@ -86,6 +94,26 @@ describe('navigation utils', () => {
         hideFromMainCategoryPageMostViewedCarousel: false,
       });
     });
+    it('uses the slug of the language as the path, falling back to the slug of the name', () => {
+      const navigationItem: CMSNavigationItem = createCMSNavigationItem(1, 'Main', 0, 'CategoryMain', [], 1);
+      navigationItem.name = 'Pääkategoria';
+      navigationItem.slug = 'paakategoria';
+      navigationItem.name_i18n = {
+        'fi-FI': 'Pääkategoria',
+        'sv-SE': 'Huvudkategori',
+      } as CMSNavigationItem['name_i18n'];
+      navigationItem.slug_i18n = { 'fi-FI': 'paakategoria', 'sv-SE': 'huvudkategori' };
+
+      expect(getNavigationItems(navigationItem, 'sv' as LangCode)).toMatchObject({
+        name: 'paakategoria',
+        path: 'huvudkategori',
+      });
+      expect(getNavigationItems(navigationItem, 'en' as LangCode)).toMatchObject({
+        title: 'Pääkategoria',
+        path: 'paakategoria',
+      });
+    });
+
     it('sanitizes the description of the navigation tree item', () => {
       const navigationItem: CMSNavigationItem = createCMSNavigationItem(1, 'Main', 0, 'CategoryMain', [], 1);
       navigationItem.description_i18n['fi-FI'] = '<p style="color: red">Description</p><script>alert(1)</script>';

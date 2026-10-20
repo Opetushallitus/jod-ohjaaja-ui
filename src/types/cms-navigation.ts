@@ -15,6 +15,10 @@ export interface CMSNavigationItem {
   id: number;
   name: string;
   name_i18n: CMSNavigationItemLocalization;
+  /** URL path segment built by the CMS from name */
+  slug: string;
+  /** URL path segments built by the CMS from name_i18n, missing for languages without a name */
+  slug_i18n: Partial<CMSNavigationItemLocalization>;
   description: string;
   description_i18n: CMSNavigationItemLocalization;
   hideFromHomePageNewestCarousel: boolean;
