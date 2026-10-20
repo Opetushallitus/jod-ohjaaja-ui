@@ -31,8 +31,8 @@ import {
 import feedbackBg from '@/../assets/feedback.jpg?preset=bg';
 import { components } from '@/api/schema';
 import { FeedbackModal } from '@/components';
+import { HeaderSearch } from '@/components/HeaderSearch/HeaderSearch';
 import { NavMenu } from '@/components/NavMenu/NavMenu';
-import { SearchBar } from '@/components/SearchBar/SearchBar';
 import { Toaster } from '@/components/Toaster/Toaster';
 import { useLocalizedRoutes } from '@/hooks/useLocalizedRoutes';
 import { useLoginLink } from '@/hooks/useLoginLink';
@@ -226,7 +226,7 @@ const Root = () => {
           serviceBarTitle={showServiceName ? t('service-name') : ' '}
           serviceBarContent={
             !isOnSearchPage && (
-              <SearchBar searchInputVisible={searchInputVisible} setSearchInputVisible={setSearchInputVisible} />
+              <HeaderSearch searchInputVisible={searchInputVisible} setSearchInputVisible={setSearchInputVisible} />
             )
           }
           translations={{
