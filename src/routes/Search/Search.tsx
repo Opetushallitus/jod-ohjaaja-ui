@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData, useNavigate } from 'react-router';
 
-import { useMediaQueries } from '@jod/design-system';
-import { JodClose, JodSearch, JodSettings } from '@jod/design-system/icons';
+import { SearchBar, useMediaQueries } from '@jod/design-system';
+import { JodSettings } from '@jod/design-system/icons';
 
 import { MainLayout } from '@/components';
 import { ButtonMenu } from '@/components/ButtonMenu/ButtonMenu';
@@ -24,32 +24,28 @@ const Search = () => {
     i18n: { language },
   } = useTranslation();
   const navigate = useNavigate();
-  const [searchValue, setSearchValue] = React.useState(search);
+  const [searchState, setSearchState] = React.useState({ search, value: search });
+  const searchValue = searchState.search === search ? searchState.value : search;
   const [submitError, setSubmitError] = React.useState<string | null>(null);
 
   const handleLoadPage = (pageNumber: number) => {
     void navigate(getSearchUrl(t, language, tagIds, search, pageNumber));
   };
 
-  const handleSearch = (e: React.SyntheticEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (searchValue.trim().length < 3) {
+  const handleSearch = (value: string) => {
+    if (value.trim().length < 3) {
       setSubmitError(t('search.min-length', { count: 3 }));
       return;
     }
     setSubmitError(null);
-    globalThis._paq?.push(['trackEvent', 'ohjaaja.Haku', 'Hakusana', searchValue]);
-    void navigate(getSearchUrl(t, language, tagIds, searchValue));
+    globalThis._paq?.push(['trackEvent', 'ohjaaja.Haku', 'Hakusana', value]);
+    void navigate(getSearchUrl(t, language, tagIds, value));
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
+  const handleInputChange = (value: string) => {
+    setSearchState({ search, value });
     setSubmitError(null);
   };
-
-  React.useEffect(() => {
-    setSearchValue(search);
-  }, [search]);
 
   const handleTagSelectionChange = (tag: Category) => {
     const selectedTagIds = tagIds?.includes(`${tag.id}`)
@@ -90,49 +86,19 @@ const Search = () => {
         <p className="mb-6 text-body-lg" data-testid="search-description">
           {t('search.description')}
         </p>
-        <form id="search" className="mb-7" onSubmit={handleSearch} noValidate data-testid="search-form">
-          <div className="flex flex-row items-center">
-            <div className="border-border-form flex w-full items-center rounded-md border bg-white p-2 text-primary-gray">
-              <input
-                type="text"
-                name="search"
-                className="rounded-l-xs mx-1 mr-3 w-full grow pl-3 font-arial outline-offset-6 outline-accent placeholder:text-body-md placeholder:text-inactive-gray focus:outline-2 focus:outline-accent"
-                placeholder={t('search.placeholder')}
-                onChange={handleInputChange}
-                value={searchValue}
-                required
-                maxLength={400}
-                data-testid="search-input"
-              />
-
-              <button
-                type="button"
-                className="ml-2 flex size-7 shrink cursor-pointer items-center justify-center rounded-sm bg-bg-gray outline-offset-2 outline-accent focus:outline-2 focus:outline-accent"
-                onClick={() => {
-                  setSearchValue('');
-                }}
-                aria-label={t('search.clear')}
-                data-testid="search-clear-button"
-              >
-                <JodClose className="text-inactive-gray" />
-              </button>
-
-              <button
-                type="submit"
-                className="hover:bg-accent-dark ml-3 flex h-7 shrink cursor-pointer items-center gap-2 rounded-sm border-y bg-accent px-3 text-heading-4 text-[0.875rem] text-white outline-offset-2 outline-accent focus:outline-2 focus:outline-accent"
-                data-testid="search-submit-button"
-              >
-                <JodSearch className="text-white" />
-                {t('search.button')}
-              </button>
-            </div>
-          </div>
-          {submitError && (
-            <div className="mt-2 block font-arial text-form-error text-alert-2" role="alert">
-              {submitError}
-            </div>
-          )}
-        </form>
+        <SearchBar
+          id="search"
+          className="mb-7"
+          value={searchValue}
+          onChange={handleInputChange}
+          onSubmit={handleSearch}
+          placeholder={t('search.placeholder')}
+          searchLabel={t('search.button')}
+          clearLabel={t('search.clear')}
+          errorMessage={submitError ?? undefined}
+          serviceVariant="ohjaaja"
+          testId="search"
+        />
 
         <SearchResults
           contents={contents}
