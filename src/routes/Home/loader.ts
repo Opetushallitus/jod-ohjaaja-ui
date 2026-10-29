@@ -7,9 +7,10 @@ import i18n, { LangCode } from '@/i18n/config';
 import { getArticlesByErcs, getNewestContent } from '@/services/cms-article-api';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { type StructuredContent } from '@/types/cms-content';
+import { deferred } from '@/utils/deferred';
 import { getExcludedCategoryIds } from '@/utils/navigation';
 
-const loader = (async ({ context }) => {
+const loader = (({ context }) => {
   const isLoggedIn = !!context;
   const language = i18n.language;
 
@@ -25,18 +26,19 @@ const loader = (async ({ context }) => {
     language as LangCode,
   );
 
-  const [newestContent, mostViewedContent, bestMatchingContent] = await Promise.all([
-    getNewestContent(excludeCategoriesFromNewestContent),
+  // The content is not awaited, so that the page can be rendered while the carousels are still loading.
+  const newestContent = deferred(getNewestContent(excludeCategoriesFromNewestContent).then(({ items }) => items));
+  const mostViewedContent = deferred(
     getMostViewedArtikkeliErcs().then(async (articleErcs) => {
       const articles = await getArticlesByErcs(articleErcs, excludeCategoriesFromMostViewedContent);
       return articleErcs
         .map((erc) => articles.items.find((article) => article.externalReferenceCode === erc))
         .filter((a): a is StructuredContent => !!a);
     }),
-    isLoggedIn ? getBestMatchingArticles() : Promise.resolve([]),
-  ]);
+  );
+  const bestMatchingContent = deferred(isLoggedIn ? getBestMatchingArticles() : Promise.resolve([]));
 
-  return { newestContent: newestContent.items, mostViewedContent, bestMatchingContent, isLoggedIn };
+  return { newestContent, mostViewedContent, bestMatchingContent, isLoggedIn };
 }) satisfies LoaderFunction<components['schemas']['OhjaajaCsrfDto'] | null>;
 
 export type LoaderData = Awaited<ReturnType<typeof loader>>;

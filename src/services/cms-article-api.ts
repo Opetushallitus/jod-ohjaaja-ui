@@ -5,6 +5,32 @@ import { type Sort } from '@/types/sort';
 import { fetchFromCMS, SCOPE_ID } from './cms-api';
 import { getNavigationTreeItems } from './navigation-loader';
 
+// Fields needed by the article lists and cards, the rest of the article (e.g. actions and taxonomy references) is left out.
+// The article body cannot be left out, because the CMS cannot filter content fields by their name.
+const ARTICLE_LIST_FIELDS = [
+  'id',
+  'title',
+  'externalReferenceCode',
+  'dateCreated',
+  'taxonomyCategoryBriefs.taxonomyCategoryId',
+  'taxonomyCategoryBriefs.taxonomyCategoryName',
+  'taxonomyCategoryBriefs.embeddedTaxonomyCategory',
+  'contentFields.fieldReference',
+  'contentFields.contentFieldValue.data',
+  'contentFields.contentFieldValue.image.id',
+  'contentFields.contentFieldValue.image.title',
+].join(',');
+
+const EMPTY_PAGE: StructuredContentPage = Object.freeze({
+  actions: {},
+  facets: [],
+  items: [],
+  lastPage: 1,
+  page: 1,
+  pageSize: 0,
+  totalCount: 0,
+});
+
 export const getContentByArticleId = async (articleId: number) => {
   const queryParams = new URLSearchParams();
   queryParams.set('nestedFields', 'embeddedTaxonomyCategory');
@@ -20,6 +46,8 @@ export const getNewestContent = (ignoreCategoryIds?: number[]) => {
   if (ignoreCategoryIds && ignoreCategoryIds.length > 0) {
     queryParams.set('filter', `taxonomyCategoryIds/any(t:t ne ${ignoreCategoryIds.join(' and t ne ')})`);
   }
+
+  queryParams.set('fields', ARTICLE_LIST_FIELDS);
 
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
@@ -45,6 +73,8 @@ export const getCategoryContent = (
     filter = `${filter} and ${excludedFilter}`;
   }
   queryParams.set('filter', filter);
+
+  queryParams.set('fields', ARTICLE_LIST_FIELDS);
 
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
@@ -75,6 +105,8 @@ export const searchContent = (searchTerm: string, tagIds: string[], page: number
   if (tagIds.length > 0) {
     queryParams.set('filter', `taxonomyCategoryIds/any(t:t eq ${tagIds.join(' or t eq ')})`);
   }
+  queryParams.set('fields', ARTICLE_LIST_FIELDS);
+
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,
     lang,
@@ -83,6 +115,10 @@ export const searchContent = (searchTerm: string, tagIds: string[], page: number
 
 export const getArticlesByErcs = (articleErcs: string[], excludedCategories: number[] = []) => {
   const articleIds = getArticleIds(articleErcs).map((id) => `'${id}'`);
+  // An empty `id in ()` filter is ignored by the CMS, which would return all articles.
+  if (articleIds.length === 0) {
+    return Promise.resolve(EMPTY_PAGE);
+  }
   const queryParams = new URLSearchParams();
   queryParams.set('page', `1`);
   queryParams.set('pageSize', `500`);
@@ -94,6 +130,8 @@ export const getArticlesByErcs = (articleErcs: string[], excludedCategories: num
   } else {
     queryParams.set('filter', filter);
   }
+
+  queryParams.set('fields', ARTICLE_LIST_FIELDS);
 
   return fetchFromCMS<StructuredContentPage>(
     `/headless-delivery/v1.0/sites/${SCOPE_ID}/structured-contents?${queryParams}`,

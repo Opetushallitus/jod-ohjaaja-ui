@@ -8,10 +8,11 @@ import { getCategoryContent } from '@/services/cms-article-api';
 import { getNavigationTreeItems } from '@/services/navigation-loader';
 import { StructuredContent } from '@/types/cms-content';
 import { NavigationItemType } from '@/types/cms-navigation';
+import { deferred } from '@/utils/deferred';
 import { getCategoryArticleErcs, getExcludedCategoryIds } from '@/utils/navigation';
 
 const getMainCategoryContentLoader = (categoryId: number, navigationItemType: NavigationItemType) =>
-  (async ({ context }) => {
+  (({ context }) => {
     const isLoggedIn = !!context;
     const language = i18n.language;
 
@@ -27,19 +28,33 @@ const getMainCategoryContentLoader = (categoryId: number, navigationItemType: Na
       language as LangCode,
     );
 
-    const [newestCategoryContent, mostViewedArticleErcs, bestMatchingCategoryContent] = await Promise.all([
-      getCategoryContent(categoryId, 'newest', excludeCategoriesFromNewestContent),
-      getMostViewedArtikkeliErcs(
-        getCategoryArticleErcs(categoryId, language as LangCode, excludeCategoriesFromMostViewedContent),
+    // The content is not awaited, so that the page can be rendered while the carousels are still loading.
+    const newestCategoryContent = deferred(
+      getCategoryContent(categoryId, 'newest', excludeCategoriesFromNewestContent).then(({ items }) => items),
+    );
+    const mostViewedCategoryContent = deferred(
+      Promise.all([
+        newestCategoryContent,
+        getMostViewedArtikkeliErcs(
+          getCategoryArticleErcs(categoryId, language as LangCode, excludeCategoriesFromMostViewedContent),
+        ),
+      ]).then(([articles, mostViewedArticleErcs]) =>
+        mostViewedArticleErcs
+          .map((erc) => articles.find((article) => article.externalReferenceCode === erc))
+          .filter((a): a is StructuredContent => !!a),
       ),
+    );
+    const bestMatchingCategoryContent = deferred(
       isLoggedIn ? getBestMatchingArticles(categoryId) : Promise.resolve([]),
-    ]);
+    );
 
-    const mostViewedCategoryContent = mostViewedArticleErcs
-      .map((erc) => newestCategoryContent.items.find((article) => article.externalReferenceCode === erc))
-      .filter((a): a is StructuredContent => !!a);
-
-    return { newestCategoryContent, mostViewedCategoryContent, bestMatchingCategoryContent, navigationItemType };
+    return {
+      newestCategoryContent,
+      mostViewedCategoryContent,
+      bestMatchingCategoryContent,
+      navigationItemType,
+      isLoggedIn,
+    };
   }) satisfies LoaderFunction<components['schemas']['OhjaajaCsrfDto'] | null>;
 
 export type LoaderData = Awaited<ReturnType<ReturnType<typeof getMainCategoryContentLoader>>>;

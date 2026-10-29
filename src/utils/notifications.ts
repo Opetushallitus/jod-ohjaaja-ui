@@ -1,4 +1,4 @@
-import i18n, { defaultLang, LangCode, supportedLanguageCodes } from '@/i18n/config';
+import i18n, { defaultLang, LangCode, supportedLanguageCodes, translationsLoaded } from '@/i18n/config';
 
 interface Notification {
   id: string;
@@ -20,8 +20,17 @@ const validVariants: readonly string[] = [
 ] satisfies Notification['variant'][];
 
 export const loadNotifications = async () => {
+  // Fetch the JSON notifications while the translations are still loading.
+  const jsonNotifications: Promise<Notification[]> = fetch(`${import.meta.env.BASE_URL}config/notifications.json`).then(
+    (res) => res.json(),
+  );
+  // Prevent an unhandled rejection if the translations fail before the JSON request is awaited.
+  jsonNotifications.catch(() => {});
+
   try {
-    for (const namespace of ['yksilo', 'common']) {
+    await translationsLoaded;
+
+    for (const namespace of ['ohjaaja', 'common']) {
       // Get all notification indices for the current namespace.
       const indices = Object.entries(i18n.getResourceBundle(defaultLang, namespace) ?? {})
         .flatMap(([key, value]) => {
@@ -67,9 +76,7 @@ export const loadNotifications = async () => {
       }
     }
 
-    notifications.push(
-      ...(await fetch(`${import.meta.env.BASE_URL}config/notifications.json`).then((res) => res.json())),
-    );
+    notifications.push(...(await jsonNotifications));
   } catch {
     // It's safe to ignore this error.
     // If notification loading fails, the app will continue to work with no notifications.

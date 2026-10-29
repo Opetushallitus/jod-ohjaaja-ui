@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router';
 
 import { Breadcrumb } from '@jod/design-system';
 
-import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
+import { DeferredArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
 import { BreadcrumbLink } from '@/components/BreadcrumbLink/BreadcrumbLink';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
 import { CategoryNavigation } from '@/components/MainLayout/CategoryNavigation';
@@ -17,7 +17,12 @@ import { getRichTextClasses } from '@/utils/rich-text';
 import { LoaderData } from './loader';
 
 const CategoryMain = () => {
-  const { newestCategoryContent, mostViewedCategoryContent, bestMatchingCategoryContent } = useLoaderData<LoaderData>();
+  const {
+    newestCategoryContent,
+    mostViewedCategoryContent,
+    bestMatchingCategoryContent,
+    isLoggedIn: loaderIsLoggedIn,
+  } = useLoaderData<LoaderData>();
   const user = useOhjaajaProfile();
   const isLoggedIn = !!user;
 
@@ -74,26 +79,29 @@ const CategoryMain = () => {
         )}
       </section>
 
-      <ArticleCarousel
+      <DeferredArticleCarousel
         title={t('home.popular-content')}
         isLoggedIn={isLoggedIn}
         articles={mostViewedCategoryContent}
         testId="popular-content"
       />
 
-      <ArticleCarousel
+      <DeferredArticleCarousel
         title={t('home.new-content')}
         isLoggedIn={isLoggedIn}
-        articles={newestCategoryContent.items}
+        articles={newestCategoryContent}
         testId="new-content"
       />
 
-      <ArticleCarousel
-        title={t('home.best-matching')}
-        isLoggedIn={isLoggedIn}
-        articles={bestMatchingCategoryContent}
-        testId="best-matching-content"
-      />
+      {/* The content is loaded only if the loader's session was logged in, and it is personal */}
+      {loaderIsLoggedIn && isLoggedIn && (
+        <DeferredArticleCarousel
+          title={t('home.best-matching')}
+          isLoggedIn={isLoggedIn}
+          articles={bestMatchingCategoryContent}
+          testId="best-matching-content"
+        />
+      )}
 
       {isLoggedIn ? (
         <div className="col-span-3">

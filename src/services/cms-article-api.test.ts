@@ -88,6 +88,15 @@ describe('CMS ARTICLE API', () => {
     );
   });
 
+  it('should only fetch the fields needed by the article lists', async () => {
+    await getNewestContent();
+
+    const url = new URL(mockFetch.mock.calls[0][0], 'http://localhost');
+    expect(url.searchParams.get('fields')?.split(',')).toEqual(
+      expect.arrayContaining(['id', 'title', 'contentFields.fieldReference', 'contentFields.contentFieldValue.data']),
+    );
+  });
+
   it('should fetch articles by IDs', async () => {
     const mockTreeNavigationTreeItems: NavigationTreeItem[] = [
       {
@@ -155,5 +164,17 @@ describe('CMS ARTICLE API', () => {
       ),
       expect.any(Object),
     );
+  });
+
+  it.each([
+    ['no ERCs are given', []],
+    ['none of the ERCs are found in the navigation', ['unknown']],
+  ])('should not fetch articles by ERCs when %s', async (_, articleErcs) => {
+    (getNavigationTreeItems as Mock).mockReturnValue([]);
+
+    const result = await getArticlesByErcs(articleErcs);
+
+    expect(mockFetch).not.toHaveBeenCalled();
+    expect(result.items).toEqual([]);
   });
 });
