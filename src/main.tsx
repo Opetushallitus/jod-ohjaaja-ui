@@ -5,19 +5,13 @@ import { Metric } from 'web-vitals';
 
 import { ServiceVariantProvider } from '@jod/design-system';
 
-import './i18n/config';
+import { prefetchOhjaajaContext, releasePrefetchedOhjaajaContext } from './auth';
+import { translationsLoaded } from './i18n/config';
 
 import './index.css';
 import { getRoutes } from './routes';
 import { loadNavigation } from './services/navigation-loader';
 import { loadNotifications } from './utils/notifications';
-
-try {
-  await loadNotifications();
-} catch (_) {
-  // It's safe to ignore this error.
-  // If notification loading fails, the app will continue to work without notifications.
-}
 
 const root = createRoot(document.getElementById('root')!);
 
@@ -39,9 +33,27 @@ if (import.meta.env.DEV) {
   });
 }
 
-loadNavigation()
+// Start the startup requests in parallel instead of one after another.
+prefetchOhjaajaContext();
+
+Promise.all([
+  translationsLoaded,
+  loadNavigation(),
+  loadNotifications().catch(() => {
+    // It's safe to ignore this error.
+    // If notification loading fails, the app will continue to work without notifications.
+  }),
+])
   .then(() => {
     const router = createBrowserRouter(getRoutes(), { basename: '/ohjaaja' });
+
+    // The prefetched session is only valid for the initial navigation, later navigations check the session again.
+    const unsubscribe = router.subscribe((state) => {
+      if (state.initialized) {
+        releasePrefetchedOhjaajaContext();
+        unsubscribe();
+      }
+    });
 
     root.render(
       <StrictMode>
@@ -52,5 +64,5 @@ loadNavigation()
     );
   })
   .catch((error) => {
-    console.error('Failed to load navigation', error);
+    console.error('Failed to start the application', error);
   });

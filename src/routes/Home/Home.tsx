@@ -8,7 +8,7 @@ import heroSrc1 from '@/../assets/ohjaaja-hero-1.jpg?preset=hero';
 import heroSrc2 from '@/../assets/ohjaaja-hero-2.jpg?preset=hero';
 import heroSrc3 from '@/../assets/ohjaaja-hero-3.jpg?preset=hero';
 import heroSrc4 from '@/../assets/ohjaaja-hero-4.jpg?preset=hero';
-import { ArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
+import { DeferredArticleCarousel } from '@/components/ArticleCarousel/ArticleCarousel';
 import { FeatureCard } from '@/components/FeatureCard/FeatureCard';
 import { LoginBanner } from '@/components/LoginBanner/LoginBanner';
 import { RecentlyWatchedContent } from '@/components/RecentlyWatchedContent/RecentlyWatchedContent';
@@ -27,7 +27,12 @@ const Home = () => {
 
   const { sm } = useMediaQueries();
 
-  const { newestContent, mostViewedContent, bestMatchingContent } = useLoaderData<LoaderData>();
+  const {
+    newestContent,
+    mostViewedContent,
+    bestMatchingContent,
+    isLoggedIn: loaderIsLoggedIn,
+  } = useLoaderData<LoaderData>();
   const user = useOhjaajaProfile();
   const isLoggedIn = !!user;
 
@@ -122,7 +127,7 @@ const Home = () => {
         className="mx-auto grid max-w-[1140px] grid-cols-3 gap-8 px-5 pb-7 sm:px-6 md:pb-[40px] lg:pb-[75px]"
         data-testid="home-content"
       >
-        <ArticleCarousel
+        <DeferredArticleCarousel
           title={t('home.popular-content')}
           isLoggedIn={isLoggedIn}
           articles={mostViewedContent}
@@ -142,30 +147,32 @@ const Home = () => {
           </div>
         )}
 
-        <ArticleCarousel
+        <DeferredArticleCarousel
           title={t('home.new-content')}
           isLoggedIn={isLoggedIn}
           articles={newestContent}
           testId="new-content"
         />
-        {isLoggedIn && bestMatchingContent.length === 0 ? (
-          <div className="col-span-3 lg:col-span-2">
-            <FeatureCard
-              linkComponent={getLinkTo(`/${language}/${t('slugs.profile.index')}/${t('slugs.profile.details')}`)}
-              level="h2"
-              title={t('want-to-see-interesting-content-title')}
-              content={t('want-to-see-interesting-content-content')}
-              buttonText={t('want-to-see-interesting-content-button')}
-              backgroundColor="var(--ds-color-primary-2-dark)"
-              testId="home-interesting-content"
-            />
-          </div>
-        ) : (
-          <ArticleCarousel
+        {/* The content is loaded only if the loader's session was logged in, and it is personal */}
+        {loaderIsLoggedIn && isLoggedIn && (
+          <DeferredArticleCarousel
             title={t('home.best-matching')}
             isLoggedIn={isLoggedIn}
             articles={bestMatchingContent}
             testId="best-matching-content"
+            emptyContent={
+              <div className="col-span-3 lg:col-span-2">
+                <FeatureCard
+                  linkComponent={getLinkTo(`/${language}/${t('slugs.profile.index')}/${t('slugs.profile.details')}`)}
+                  level="h2"
+                  title={t('want-to-see-interesting-content-title')}
+                  content={t('want-to-see-interesting-content-content')}
+                  buttonText={t('want-to-see-interesting-content-button')}
+                  backgroundColor="var(--ds-color-primary-2-dark)"
+                  testId="home-interesting-content"
+                />
+              </div>
+            }
           />
         )}
 

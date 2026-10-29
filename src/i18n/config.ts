@@ -27,7 +27,8 @@ const bundledResources: Record<string, Resource> = {
   sv: { common: commonSv, ohjaaja: ohjaajaSv },
 };
 
-await i18n
+// Translations are loaded in parallel with the other startup requests, wait for this before rendering or using them.
+export const translationsLoaded = i18n
   .use(HttpBackend)
   .use(initReactI18next)
   .init({
@@ -52,19 +53,20 @@ await i18n
     saveMissing: false,
     maxRetries: 0,
     showSupportNotice: false,
-  } as InitOptions);
-
-// Add bundled as fallback
-for (const lng of supportedLanguageCodes) {
-  for (const ns of ['ohjaaja', 'common']) {
-    i18n.addResourceBundle(
-      lng,
-      ns,
-      bundledResources[lng]?.[ns] ?? {},
-      true, // deep merge
-      false, // do not overwrite HTTP values
-    );
-  }
-}
+  } as InitOptions)
+  .then(() => {
+    // Add bundled as fallback
+    for (const lng of supportedLanguageCodes) {
+      for (const ns of ['ohjaaja', 'common']) {
+        i18n.addResourceBundle(
+          lng,
+          ns,
+          bundledResources[lng]?.[ns] ?? {},
+          true, // deep merge
+          false, // do not overwrite HTTP values
+        );
+      }
+    }
+  });
 
 export default i18n;

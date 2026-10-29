@@ -20,87 +20,91 @@ import ProfileFront from './Profile/ProfileFront/ProfileFront';
 import { ErrorBoundary, NoMatch, Root, rootLoader } from './Root';
 import { Search, searchLoader } from './Search';
 
-export const profileRoutes = supportedLanguageCodes.map(
-  (lng) =>
-    ({
-      id: `{slugs.profile.index}|${lng}`,
-      path: i18n.t('slugs.profile.index', { lng }),
-      element: <Profile />,
-      handle: {
-        title: i18n.t('profile.front.title', { lng }),
-      },
-      loader: withOhjaajaContext(() => null),
-      children: [
-        {
-          index: true,
-          loader: () => replace(i18n.t('slugs.profile.front', { lng })),
+// Routes are created on demand because the translations used in the slugs are loaded asynchronously.
+const createProfileRoutes = () =>
+  supportedLanguageCodes.map(
+    (lng) =>
+      ({
+        id: `{slugs.profile.index}|${lng}`,
+        path: i18n.t('slugs.profile.index', { lng }),
+        element: <Profile />,
+        handle: {
+          title: i18n.t('profile.front.title', { lng }),
         },
-        {
-          id: `{slugs.profile.front}|${lng}`,
-          path: i18n.t('slugs.profile.front', { lng }),
-          element: <ProfileFront />,
-        },
-        {
-          id: `{slugs.profile.details}|${lng}`,
-          path: i18n.t('slugs.profile.details', { lng }),
-          element: <Details />,
-          handle: {
-            title: i18n.t('profile.details.title', { lng }),
+        loader: withOhjaajaContext(() => null),
+        children: [
+          {
+            index: true,
+            loader: () => replace(i18n.t('slugs.profile.front', { lng })),
           },
-          loader: withOhjaajaContext(profileDetailsLoader, true),
-        },
-        {
-          id: `{slugs.profile.favorites}|${lng}`,
-          path: i18n.t('slugs.profile.favorites', { lng }),
-          element: <Favorites />,
-          handle: {
-            title: i18n.t('profile.favorites.title', { lng }),
+          {
+            id: `{slugs.profile.front}|${lng}`,
+            path: i18n.t('slugs.profile.front', { lng }),
+            element: <ProfileFront />,
           },
-        },
-        {
-          id: `{slugs.profile.comments}|${lng}`,
-          path: i18n.t('slugs.profile.comments', { lng }),
-          element: <Comments />,
-          handle: {
-            title: i18n.t('profile.comments.title', { lng }),
+          {
+            id: `{slugs.profile.details}|${lng}`,
+            path: i18n.t('slugs.profile.details', { lng }),
+            element: <Details />,
+            handle: {
+              title: i18n.t('profile.details.title', { lng }),
+            },
+            loader: withOhjaajaContext(profileDetailsLoader, true),
           },
-          loader: withOhjaajaContext(ownCommentsLoader, true),
-        },
-        {
-          id: `{slugs.profile.preferences}|${lng}`,
-          path: i18n.t('slugs.profile.preferences', { lng }),
-          element: <Preferences />,
-          handle: {
-            title: i18n.t('profile.preferences.title', { lng }),
+          {
+            id: `{slugs.profile.favorites}|${lng}`,
+            path: i18n.t('slugs.profile.favorites', { lng }),
+            element: <Favorites />,
+            handle: {
+              title: i18n.t('profile.favorites.title', { lng }),
+            },
           },
-        },
-      ],
-    }) as RouteObject,
-);
+          {
+            id: `{slugs.profile.comments}|${lng}`,
+            path: i18n.t('slugs.profile.comments', { lng }),
+            element: <Comments />,
+            handle: {
+              title: i18n.t('profile.comments.title', { lng }),
+            },
+            loader: withOhjaajaContext(ownCommentsLoader, true),
+          },
+          {
+            id: `{slugs.profile.preferences}|${lng}`,
+            path: i18n.t('slugs.profile.preferences', { lng }),
+            element: <Preferences />,
+            handle: {
+              title: i18n.t('profile.preferences.title', { lng }),
+            },
+          },
+        ],
+      }) as RouteObject,
+  );
 
-const shortArticleRoutes = supportedLanguageCodes.map(
-  (lng) =>
-    ({
-      id: `article-short|${lng}`,
-      path: i18n.t('slugs.article.short', { lng }),
-      loader: articleRedirectLoader,
-      element: <div></div>,
-    }) as RouteObject,
-);
+const createShortArticleRoutes = () =>
+  supportedLanguageCodes.map(
+    (lng) =>
+      ({
+        id: `article-short|${lng}`,
+        path: i18n.t('slugs.article.short', { lng }),
+        loader: articleRedirectLoader,
+        element: <div></div>,
+      }) as RouteObject,
+  );
 
-const profileLoginPageRoutes = supportedLanguageCodes.map(
-  (lng) =>
-    ({
-      id: `{slugs.profile.login}|${lng}`,
-      path: i18n.t('slugs.profile.login', { lng }),
-      element: <LoginPage />,
-      handle: {
-        title: i18n.t('common:login', { lng }),
-      },
-    }) as RouteObject,
-);
+const createProfileLoginPageRoutes = () =>
+  supportedLanguageCodes.map(
+    (lng) =>
+      ({
+        id: `{slugs.profile.login}|${lng}`,
+        path: i18n.t('slugs.profile.login', { lng }),
+        element: <LoginPage />,
+        handle: {
+          title: i18n.t('common:login', { lng }),
+        },
+      }) as RouteObject,
+  );
 
-const rootRoute: RouteObject = {
+const createRootRoute = (): RouteObject => ({
   id: 'root',
   path: '/:lng',
   loader: withOhjaajaContext(rootLoader, false),
@@ -118,22 +122,23 @@ const rootRoute: RouteObject = {
       element: <Home />,
       loader: withOhjaajaContext(homeLoader, false),
     },
-    ...profileRoutes,
-    ...shortArticleRoutes,
-    ...profileLoginPageRoutes,
+    ...createProfileRoutes(),
+    ...createShortArticleRoutes(),
+    ...createProfileLoginPageRoutes(),
     { path: '*', element: <NoMatch /> },
   ],
-};
+});
 
-const searchRoutes: RouteObject[] = supportedLanguageCodes.map((lng) => ({
-  id: `{slugs.search}|${lng}`,
-  path: i18n.t('slugs.search', { lng }),
-  handle: {
-    title: i18n.t('search.title', { lng }),
-  },
-  element: <Search />,
-  loader: searchLoader,
-}));
+const createSearchRoutes = (): RouteObject[] =>
+  supportedLanguageCodes.map((lng) => ({
+    id: `{slugs.search}|${lng}`,
+    path: i18n.t('slugs.search', { lng }),
+    handle: {
+      title: i18n.t('search.title', { lng }),
+    },
+    element: <Search />,
+    loader: searchLoader,
+  }));
 
 let routes: RouteObject[] = [];
 
@@ -149,7 +154,8 @@ const createRoutes = (): RouteObject[] => {
   const navigationTreeItems = getNavigationTreeItems();
 
   const routes = navigationTreeItems.map(getRoute);
-  rootRoute.children?.push(...routes, ...searchRoutes);
+  const rootRoute = createRootRoute();
+  rootRoute.children?.push(...routes, ...createSearchRoutes());
   return [
     {
       path: '/',
