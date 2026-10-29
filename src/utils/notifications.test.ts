@@ -68,6 +68,7 @@ vi.mock('@/i18n/config', () => {
     },
     defaultLang: 'fi',
     supportedLanguageCodes: ['fi', 'sv', 'en'],
+    translationsLoaded: Promise.resolve(),
   };
 });
 

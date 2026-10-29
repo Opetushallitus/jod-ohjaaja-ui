@@ -1,1 +1,1 @@
-export { withOhjaajaContext } from './auth';
+export { prefetchOhjaajaContext, releasePrefetchedOhjaajaContext, withOhjaajaContext } from './auth';
