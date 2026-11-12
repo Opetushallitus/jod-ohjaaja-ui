@@ -239,7 +239,7 @@ const Root = () => {
         <NavMenu open={navMenuOpen} onClose={() => setNavMenuOpen(false)} />
         <Outlet />
       </LogoutFormContext.Provider>
-      <Chatbot />
+      <Chatbot ariaLabel={t('common:chatbot.name')} />
       <div className="contents" style={{ '--feedback-bg': pictureToImageSet(feedbackBg) } as React.CSSProperties}>
         <Footer
           language={language}
