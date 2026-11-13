@@ -37,6 +37,7 @@ export const HeaderSearch = ({ searchInputVisible, setSearchInputVisible }: Head
         ariaLabel={t('search.label')}
         searchLabel={t('search.button')}
         testId="header-search"
+        serviceVariant="ohjaaja"
       />
     )
   );
