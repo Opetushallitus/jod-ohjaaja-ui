@@ -1,0 +1,321 @@
+{
+  "id": 42066,
+  "siteId": 20117,
+  "navigationItems": [
+    {
+      "id": 42072,
+      "name": "Ohjaajan tietosisällöt",
+      "name_i18n": {
+        "fi-FI": "Ohjaajan tietosisällöt",
+        "en-US": "Guidance practitioner's information content",
+        "sv-SE": "Vägledarens informationsinnehåll"
+      },
+      "slug": "ohjaajan-tietosisallot",
+      "slug_i18n": {
+        "fi-FI": "ohjaajan-tietosisallot",
+        "en-US": "guidance-practitioner-s-information-content",
+        "sv-SE": "vagledarens-informationsinnehall"
+      },
+      "description": "<p>Ohjaajan tietosisällöistä löydät tietoa ohjausalasta ja urasuunnittelutaidoista.&nbsp;Sisällöt&nbsp;on tarkoitettu&nbsp;pohjatiedoksi&nbsp;kaikille elinikäisen ohjauksen parissa työskenteleville ammattilaisille, päättäjille ja tutkijoille.</p>\n\n<p>Tietosisältöjen taustalla ovat&nbsp;jatkuvan oppimisen kokonaisuus ja erityisesti elinikäiseen ohjaukseen liittyvät valtakunnalliset hankkeet.&nbsp;</p>",
+      "description_i18n": {
+        "fi-FI": "<p>Ohjaajan tietosisällöistä löydät tietoa ohjausalasta ja urasuunnittelutaidoista.&nbsp;Sisällöt&nbsp;on tarkoitettu&nbsp;pohjatiedoksi&nbsp;kaikille elinikäisen ohjauksen parissa työskenteleville ammattilaisille, päättäjille ja tutkijoille.</p>\n\n<p>Tietosisältöjen taustalla ovat&nbsp;jatkuvan oppimisen kokonaisuus ja erityisesti elinikäiseen ohjaukseen liittyvät valtakunnalliset hankkeet.&nbsp;</p>",
+        "en-US": "<p>The guidance practitioner's information content section contains information on guidance and career management skills. The content is intended as basic information for all professionals, decision-makers and researchers working with lifelong guidance.</p>\n\n<p>The information content is based on the continuous learning project and, in particular, national projects related to lifelong guidance.</p>",
+        "sv-SE": "<p>I vägledarens informationsinnehåll finns information om vägledningsbranschen och färdigheter i karriärplanering.&nbsp;Innehållet&nbsp;är avsett&nbsp;som grundläggande information&nbsp;för alla yrkespersoner, beslutsfattare och forskare som arbetar med livslång vägledning.&nbsp;&nbsp;</p>\n\n<p>Bakom informationsinnehållet ligger&nbsp;helheten av kontinuerligt lärande och särskilt nationella projekt om livslång vägledning.</p>"
+      },
+      "type": "CategoryListing",
+      "hideFromHomePageNewestCarousel": false,
+      "hideFromHomePageMostViewedCarousel": false,
+      "hideFromMainCategoryPageNewestCarousel": false,
+      "hideFromMainCategoryPageMostViewedCarousel": false,
+      "externalReferenceCode": "264ae348-b614-f585-6846-28f30fcbfed3",
+      "articleId": null,
+      "categoryId": 31901,
+      "children": [
+        {
+          "id": 44068,
+          "name": "Ohjausalan koulutus Suomessa: selvitys koulutusten rakenteista ja sisällöistä",
+          "name_i18n": {
+            "fi-FI": "Ohjausalan koulutus Suomessa: selvitys koulutusten rakenteista ja sisällöistä",
+            "en-US": "Education in the Field of Guidance in Finland: A Study on the Structures and Contents of Training Programs",
+            "sv-SE": "Utbildning inom vägledning i Finland: redogörelse över strukturen och innehållet i utbildningen"
+          },
+          "slug": "ohjausalan-koulutus-suomessa-selvitys-koulutusten-rakenteista-ja-sisalloista",
+          "slug_i18n": {
+            "fi-FI": "ohjausalan-koulutus-suomessa-selvitys-koulutusten-rakenteista-ja-sisalloista",
+            "en-US": "education-in-the-field-of-guidance-in-finland-a-study-on-the-structures-and-contents-of-training-programs",
+            "sv-SE": "utbildning-inom-vagledning-i-finland-redogorelse-over-strukturen-och-innehallet-i-utbildningen"
+          },
+          "description": "",
+          "description_i18n": {
+            "fi-FI": "",
+            "en-US": "",
+            "sv-SE": ""
+          },
+          "type": "Article",
+          "hideFromHomePageNewestCarousel": false,
+          "hideFromHomePageMostViewedCarousel": false,
+          "hideFromMainCategoryPageNewestCarousel": false,
+          "hideFromMainCategoryPageMostViewedCarousel": false,
+          "externalReferenceCode": "73a29331-6aaf-eb99-ce35-14277f300ce4",
+          "articleId": 44058,
+          "categoryId": null,
+          "children": [],
+          "parentId": 42072
+        },
+        {
+          "id": 62470,
+          "name": "Ohjausalan ammattilaisten osaamiskuvaukset",
+          "name_i18n": {
+            "fi-FI": "Ohjausalan ammattilaisten osaamiskuvaukset",
+            "en-US": "National Competency Framework for Career Professionals",
+            "sv-SE": "Kompetensbeskrivning för professionella inom vägledning och handledning"
+          },
+          "slug": "ohjausalan-ammattilaisten-osaamiskuvaukset",
+          "slug_i18n": {
+            "fi-FI": "ohjausalan-ammattilaisten-osaamiskuvaukset",
+            "en-US": "national-competency-framework-for-career-professionals",
+            "sv-SE": "kompetensbeskrivning-for-professionella-inom-vagledning-och-handledning"
+          },
+          "description": "<p>työllisyysalue työllisyyspalvelu työllisyyspalvelut</p>",
+          "description_i18n": {
+            "fi-FI": "<p>työllisyysalue työllisyyspalvelu työllisyyspalvelut</p>",
+            "en-US": "",
+            "sv-SE": ""
+          },
+          "type": "Article",
+          "hideFromHomePageNewestCarousel": false,
+          "hideFromHomePageMostViewedCarousel": false,
+          "hideFromMainCategoryPageNewestCarousel": false,
+          "hideFromMainCategoryPageMostViewedCarousel": false,
+          "externalReferenceCode": "4a204c94-38fb-bdce-912b-e608ce218029",
+          "articleId": 50944,
+          "categoryId": null,
+          "children": [],
+          "parentId": 42072
+        }
+      ],
+      "parentId": 0
+    },
+    {
+      "id": 42069,
+      "name": "Asiakastyön tueksi",
+      "name_i18n": {
+        "fi-FI": "Asiakastyön tueksi",
+        "en-US": "To support customer work",
+        "sv-SE": "Till stöd för kundarbetet"
+      },
+      "slug": "asiakastyon-tueksi",
+      "slug_i18n": {
+        "fi-FI": "asiakastyon-tueksi",
+        "en-US": "to-support-customer-work",
+        "sv-SE": "till-stod-for-kundarbetet"
+      },
+      "description": "<p>Asiakastyön tueksi -osiosta löydät materiaaleja, joita voit hyödyntää omassa ohjaustyössäsi. Osiossa on esimerkiksi työkaluja, joita voit käyttää ohjaustilanteissa tai antaa ohjattaville tehtäväksi itsenäisesti. Materiaalit ovat myös kaikkien käyttäjien vapaasti käytettävissä.&nbsp;</p>\n\n<p>Materiaalit on jaoteltu kuuteen kategoriaan ohjaajan tietosisällöt -osiosta löytyvän <a href=\"https://osaamispolku.fi/ohjaaja/fi/ohjaajan-tietosisallot/urasuunnittelutaitojen-viitekehys\">urasuunnittelutaitojen viitekehyksen</a> mukaan. Lisäksi löydät asiakastyössä keskeisiä tietolähteitä <a href=\"https://osaamispolku.fi/ohjaaja/fi/ammatillinen-kehittyminen/hyodyllisia-linkkeja-ohjaajille\">Hyödyllisiä linkkejä ohjaajille</a> -osiosta.</p>",
+      "description_i18n": {
+        "fi-FI": "<p>Asiakastyön tueksi -osiosta löydät materiaaleja, joita voit hyödyntää omassa ohjaustyössäsi. Osiossa on esimerkiksi työkaluja, joita voit käyttää ohjaustilanteissa tai antaa ohjattaville tehtäväksi itsenäisesti. Materiaalit ovat myös kaikkien käyttäjien vapaasti käytettävissä.&nbsp;</p>\n\n<p>Materiaalit on jaoteltu kuuteen kategoriaan ohjaajan tietosisällöt -osiosta löytyvän <a href=\"https://osaamispolku.fi/ohjaaja/fi/ohjaajan-tietosisallot/urasuunnittelutaitojen-viitekehys\">urasuunnittelutaitojen viitekehyksen</a> mukaan. Lisäksi löydät asiakastyössä keskeisiä tietolähteitä <a href=\"https://osaamispolku.fi/ohjaaja/fi/ammatillinen-kehittyminen/hyodyllisia-linkkeja-ohjaajille\">Hyödyllisiä linkkejä ohjaajille</a> -osiosta.</p>",
+        "en-US": "<p>To support customer work, you will find materials in the section that you can use in your own guidance work. The section contains tools, for example, that you can use in guidance situations or give the guidance recipient to use independently. The materials are also freely available to guided persons.&nbsp;</p>\n\n<p>The materials are divided into six categories according to <a href=\"https://osaamispolku.fi/ohjaaja/en/guidance-practitioner-s-information-content/framework-for-career-management-skills\">career management skills framework</a> found in the guidance practitioner's information content section. In addition, you can find key information sources for client work in the <a href=\"https://osaamispolku.fi/ohjaaja/en/professional-development/useful-links-for-guidance-practitioners\">Useful links for guidance practitioners</a> section.</p>",
+        "sv-SE": "<p>I avsnittet Till stöd för kundarbetet hittar du material som du kan använda i ditt eget vägledningsarbete. Avsnittet innehåller till exempel verktyg som du kan använda i vägledningssituationer eller ge som en självständig uppgift för dem som behöver vägledning. Materialet är också fritt tillgängligt för alla som behöver vägledning.&nbsp;</p>\n\n<p>Materialet är indelat i sex kategorier enligt <a href=\"https://osaamispolku.fi/ohjaaja/sv/vagledarens-informationsinnehall/referensramen-for-karriarkompetenser\">referensramen för karriärkompetenser</a> och finns i avsnittet vägledarens informationsinnehåll. Dessutom hittar du centrala informationskällor för klientarbete i avsnittet <a href=\"https://osaamispolku.fi/ohjaaja/sv/yrkesmassig-utveckling/anvandbara-lankar-for-vagledare\">Användbara länkar för vägledare</a>.</p>"
+      },
+      "type": "CategoryMain",
+      "hideFromHomePageNewestCarousel": false,
+      "hideFromHomePageMostViewedCarousel": false,
+      "hideFromMainCategoryPageNewestCarousel": false,
+      "hideFromMainCategoryPageMostViewedCarousel": false,
+      "externalReferenceCode": "cfaae276-b790-606f-f4de-3988da1db468",
+      "articleId": null,
+      "categoryId": 32136,
+      "children": [
+        {
+          "id": 42070,
+          "name": "Itsetuntemus",
+          "name_i18n": {
+            "fi-FI": "Itsetuntemus",
+            "en-US": "Self-knowledge",
+            "sv-SE": "Självkännedom"
+          },
+          "slug": "itsetuntemus",
+          "slug_i18n": {
+            "fi-FI": "itsetuntemus",
+            "en-US": "self-knowledge",
+            "sv-SE": "sjalvkannedom"
+          },
+          "description": "<p>Materiaalien avulla ohjattavasi voi&nbsp;kartoittaa ymmärrystä itsestään ja keskittyä esimerkiksi omien arvojen, kiinnostuksen kohteiden ja vahvuuksien tunnistamiseen.</p>\n\n<p>Voit soveltaa tehtäviä hyvin erilaisille opiskelija- tai asiakasryhmille.&nbsp;Löydät osiosta tehtäviä ryhmäohjaukseen, yksilöohjaukseen tai itsenäisesti toteutettaviksi.&nbsp;</p>",
+          "description_i18n": {
+            "fi-FI": "<p>Materiaalien avulla ohjattavasi voi&nbsp;kartoittaa ymmärrystä itsestään ja keskittyä esimerkiksi omien arvojen, kiinnostuksen kohteiden ja vahvuuksien tunnistamiseen.</p>\n\n<p>Voit soveltaa tehtäviä hyvin erilaisille opiskelija- tai asiakasryhmille.&nbsp;Löydät osiosta tehtäviä ryhmäohjaukseen, yksilöohjaukseen tai itsenäisesti toteutettaviksi.&nbsp;</p>",
+            "en-US": "<p>With the help of the materials, your guidance recipients can survey their self-understanding and focus on identifying their own values, interests and strengths, for example.</p>\n\n<p>You can apply the tasks for very different student or customer groups.&nbsp;In the section, you will find tasks for group guidance, individual guidance or for independent use.&nbsp;<br />\n </p>",
+            "sv-SE": "<p>Med hjälp av materialet kan den som du ska vägleda&nbsp;kartlägga förståelsen om sig själv och fokusera till exempel på att identifiera sina egna värderingar, intressen och styrkor.</p>\n\n<p>Du kan tillämpa uppgifterna på mycket olika student- eller kundgrupper.&nbsp;I avsnittet hittar du uppgifter för vägledning i grupp, individuell vägledning eller för att utföras självständigt.&nbsp;</p>"
+          },
+          "type": "CategoryListing",
+          "hideFromHomePageNewestCarousel": false,
+          "hideFromHomePageMostViewedCarousel": false,
+          "hideFromMainCategoryPageNewestCarousel": false,
+          "hideFromMainCategoryPageMostViewedCarousel": false,
+          "externalReferenceCode": "454c56bc-7b9f-f408-a7d6-fc56a2c11c80",
+          "articleId": null,
+          "categoryId": 37953,
+          "children": [
+            {
+              "id": 49754,
+              "name": "CREAR-arviointiväline",
+              "name_i18n": {
+                "fi-FI": "CREAR-arviointiväline",
+                "en-US": "CREAR assessment tool",
+                "sv-SE": "CREAR-bedömningsverktyget"
+              },
+              "slug": "crear-arviointivaline",
+              "slug_i18n": {
+                "fi-FI": "crear-arviointivaline",
+                "en-US": "crear-assessment-tool",
+                "sv-SE": "crear-bedomningsverktyget"
+              },
+              "description": "<p>ammattikoulu ammattikoululainen ammattikoululaisten ammattikoulun korkeakoulu korkeakouluopiskelija korkeakouluopiskelijoiden ammattikorkeakoulu ammattikorkeakouluopiskelija ammattikorkeakouluopiskelijoiden yliopisto yliopisto-opiskelija yliopisto-opiskelijoiden nuori nuorten nuoret aikuinen aikuisten aikuiset</p>",
+              "description_i18n": {
+                "fi-FI": "<p>ammattikoulu ammattikoululainen ammattikoululaisten ammattikoulun korkeakoulu korkeakouluopiskelija korkeakouluopiskelijoiden ammattikorkeakoulu ammattikorkeakouluopiskelija ammattikorkeakouluopiskelijoiden yliopisto yliopisto-opiskelija yliopisto-opiskelijoiden nuori nuorten nuoret aikuinen aikuisten aikuiset</p>",
+                "en-US": "",
+                "sv-SE": ""
+              },
+              "type": "Article",
+              "hideFromHomePageNewestCarousel": false,
+              "hideFromHomePageMostViewedCarousel": false,
+              "hideFromMainCategoryPageNewestCarousel": false,
+              "hideFromMainCategoryPageMostViewedCarousel": false,
+              "externalReferenceCode": "0e54baa6-66e1-09d4-a668-4123ceb150f7",
+              "articleId": 47799,
+              "categoryId": null,
+              "children": [],
+              "parentId": 42070
+            },
+            {
+              "id": 49757,
+              "name": "VAHTO-Vahvuuskortit ja vahvuusperustaisen ohjauksen työkirja",
+              "name_i18n": {
+                "fi-FI": "VAHTO-Vahvuuskortit ja vahvuusperustaisen ohjauksen työkirja",
+                "en-US": "VAHTO Strengths Cards and Workbook of Strenghts-Based Future Guidance",
+                "sv-SE": "VAHTO-Styrkekort och arbetsboken"
+              },
+              "slug": "vahto-vahvuuskortit-ja-vahvuusperustaisen-ohjauksen-tyokirja",
+              "slug_i18n": {
+                "fi-FI": "vahto-vahvuuskortit-ja-vahvuusperustaisen-ohjauksen-tyokirja",
+                "en-US": "vahto-strengths-cards-and-workbook-of-strenghts-based-future-guidance",
+                "sv-SE": "vahto-styrkekort-och-arbetsboken"
+              },
+              "description": "",
+              "description_i18n": {
+                "fi-FI": "",
+                "en-US": "",
+                "sv-SE": ""
+              },
+              "type": "Article",
+              "hideFromHomePageNewestCarousel": false,
+              "hideFromHomePageMostViewedCarousel": false,
+              "hideFromMainCategoryPageNewestCarousel": false,
+              "hideFromMainCategoryPageMostViewedCarousel": false,
+              "externalReferenceCode": "88251a13-6793-f69b-c614-fe830288c29d",
+              "articleId": 47779,
+              "categoryId": null,
+              "children": [],
+              "parentId": 42070
+            }
+          ],
+          "parentId": 42069
+        }
+      ],
+      "parentId": 0
+    },
+    {
+      "id": 42067,
+      "name": "Ammatillinen kehittyminen",
+      "name_i18n": {
+        "fi-FI": "Ammatillinen kehittyminen",
+        "en-US": "Professional development",
+        "sv-SE": "Yrkesmässig utveckling"
+      },
+      "slug": "ammatillinen-kehittyminen",
+      "slug_i18n": {
+        "fi-FI": "ammatillinen-kehittyminen",
+        "en-US": "professional-development",
+        "sv-SE": "yrkesmassig-utveckling"
+      },
+      "description": "<p>Ammatillisen kehittymisen osiosta löydät ohjausalan koulutuksia ja materiaalia oman ohjausosaamisesi kehittämiseen. Materiaalien avulla voit perehtyä ohjauksen eri näkökulmiin ja erilaisten ryhmien tarpeisiin vaihtelevissa ohjaustilanteissa. Lisäksi löydät asiakastyössä hyödyllisiä tietolähteitä ja keskeisiä verkkopalveluita.&nbsp;</p>",
+      "description_i18n": {
+        "fi-FI": "<p>Ammatillisen kehittymisen osiosta löydät ohjausalan koulutuksia ja materiaalia oman ohjausosaamisesi kehittämiseen. Materiaalien avulla voit perehtyä ohjauksen eri näkökulmiin ja erilaisten ryhmien tarpeisiin vaihtelevissa ohjaustilanteissa. Lisäksi löydät asiakastyössä hyödyllisiä tietolähteitä ja keskeisiä verkkopalveluita.&nbsp;</p>",
+        "en-US": "<p>In the professional development section, you can find training in guidance and material to develop your guidance competence. The materials help you to familiarise yourself with different perspectives on guidance and the needs of different groups in various guidance situations. In addition, you will find useful information sources and key online services for client work.</p>",
+        "sv-SE": "<p>I avsnittet Yrkesmässig utveckling hittar du utbildningar och material för att utveckla dina egna färdigheter i vägledning. Med hjälp av materialet kan du fördjupa dig i olika synvinklar på vägledning och olika gruppers behov i varierande vägledningssituationer. Dessutom hittar du informationskällor och centrala webbtjänster som är användbara i klientarbetet.</p>"
+      },
+      "type": "CategoryMain",
+      "hideFromHomePageNewestCarousel": false,
+      "hideFromHomePageMostViewedCarousel": false,
+      "hideFromMainCategoryPageNewestCarousel": false,
+      "hideFromMainCategoryPageMostViewedCarousel": false,
+      "externalReferenceCode": "ohjaaja-study-program-parent-category",
+      "articleId": null,
+      "categoryId": 31925,
+      "children": [
+        {
+          "id": 42068,
+          "name": "Ammatillisen kehittymisen työkalut",
+          "name_i18n": {
+            "fi-FI": "Ammatillisen kehittymisen työkalut",
+            "en-US": "Professional development tools",
+            "sv-SE": "Verktyg för yrkesmässig utveckling"
+          },
+          "slug": "ammatillisen-kehittymisen-tyokalut",
+          "slug_i18n": {
+            "fi-FI": "ammatillisen-kehittymisen-tyokalut",
+            "en-US": "professional-development-tools",
+            "sv-SE": "verktyg-for-yrkesmassig-utveckling"
+          },
+          "description": "<p>Materiaalien avulla voit kehittää omaa ohjausosaamistasi. Voit perehtyä ohjauksen eri näkökulmiin ja erilaisten ryhmien tarpeisiin vaihtelevissa ohjaustilanteissa.&nbsp;Osiossa on lisäksi testejä, joilla voit arvioida omaa ohjausosaamistasi.</p>",
+          "description_i18n": {
+            "fi-FI": "<p>Materiaalien avulla voit kehittää omaa ohjausosaamistasi. Voit perehtyä ohjauksen eri näkökulmiin ja erilaisten ryhmien tarpeisiin vaihtelevissa ohjaustilanteissa.&nbsp;Osiossa on lisäksi testejä, joilla voit arvioida omaa ohjausosaamistasi.</p>",
+            "en-US": "<p>You can use the materials to develop your own guidance skills. You can familiarise yourself with different perspectives on guidance and the needs of different groups in various guidance situations.&nbsp;The section also contains tests that you can use to assess your guidance competence.&nbsp;</p>",
+            "sv-SE": "<p>Materialet hjälper dig att utveckla din egen vägledningskompetens. Du kan bekanta dig med olika synpunkter på handledning och med olika gruppers behov i varierande handledningssituationer.&nbsp;Avsnittet innehåller dessutom tester som hjälper dig att bedöma din egen vägledarkompetens.</p>"
+          },
+          "type": "CategoryListing",
+          "hideFromHomePageNewestCarousel": false,
+          "hideFromHomePageMostViewedCarousel": false,
+          "hideFromMainCategoryPageNewestCarousel": false,
+          "hideFromMainCategoryPageMostViewedCarousel": false,
+          "externalReferenceCode": "f7d6a0bc-f5cc-40cd-7d2d-d721616a4555",
+          "articleId": null,
+          "categoryId": 37957,
+          "children": [
+            {
+              "id": 50093,
+              "name": "Ohjausosaamista yhteistyössä",
+              "name_i18n": {
+                "fi-FI": "Ohjausosaamista yhteistyössä",
+                "en-US": "Ohjausosaamista yhteistyössä",
+                "sv-SE": "Ohjausosaamista yhteistyössä"
+              },
+              "slug": "ohjausosaamista-yhteistyossa",
+              "slug_i18n": {
+                "fi-FI": "ohjausosaamista-yhteistyossa",
+                "en-US": "ohjausosaamista-yhteistyossa",
+                "sv-SE": "ohjausosaamista-yhteistyossa"
+              },
+              "description": "<p>aikuinen aikuiset aikuisten työnhakija työnhakijan työnhakijat työtön työttömän työttömät&nbsp;työllisyysalue työllisyyspalvelut työllisyyspalvelu</p>",
+              "description_i18n": {
+                "fi-FI": "<p>aikuinen aikuiset aikuisten työnhakija työnhakijan työnhakijat työtön työttömän työttömät&nbsp;työllisyysalue työllisyyspalvelut työllisyyspalvelu</p>",
+                "en-US": "",
+                "sv-SE": ""
+              },
+              "type": "Article",
+              "hideFromHomePageNewestCarousel": false,
+              "hideFromHomePageMostViewedCarousel": false,
+              "hideFromMainCategoryPageNewestCarousel": false,
+              "hideFromMainCategoryPageMostViewedCarousel": false,
+              "externalReferenceCode": "7d75cd1b-7555-27bb-2753-f1249f2dcc32",
+              "articleId": 50044,
+              "categoryId": null,
+              "children": [],
+              "parentId": 42068
+            }
+          ],
+          "parentId": 42067
+        }
+      ],
+      "parentId": 0
+    }
+  ]
+}

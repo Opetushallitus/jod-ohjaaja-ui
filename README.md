@@ -63,6 +63,28 @@ Start the JOD Ohjaaja locally and make sure it is running on http://localhost:90
 npx openapi-typescript http://localhost:9180/ohjaaja/openapi/openapi.json -o src/api/schema.d.ts && npx oxfmt src/api/schema.d.ts --write
 ```
 
+## End-to-end tests
+
+The Playwright tests in `e2e/` run against the UI only. The Ohjaaja backend and the Liferay CMS are replaced by an
+in-memory fake (`e2e/backend.ts`), so no backend, CMS or test environment is needed and the tests run in the build
+workflow on every pull request.
+
+```shell
+npm run test:e2e:install   # once, and after updating @playwright/test
+npm run test:e2e           # headless, on Chrome (desktop and mobile)
+npm run test:e2e:all       # on all browsers
+npm run test:e2e -- --project=firefox   # on the chosen browsers
+npm run test:e2e -- --ui   # watch and debug the tests in the Playwright UI
+```
+
+- The tests use port 8190, so that they never reuse a development server on port 8180 that proxies to a real backend.
+- Locally the tests start `vite dev` (or reuse one running on port 8190); in CI they run against `vite preview` of the
+  build.
+- By default the tests run on Chrome only (desktop and mobile), in CI on the bundled Chromium, to keep the runs fast.
+- A request the fake does not handle fails the test, so a new API or CMS call needs a handler in `e2e/backend.ts`.
+- The CMS fixtures in `e2e/fixtures/cms/` are trimmed copies of real Liferay responses. When the CMS response format
+  changes, refresh them from the CMS and keep only the few categories and articles the tests use.
+
 ## Accessibility testing
 
 ### Axe
