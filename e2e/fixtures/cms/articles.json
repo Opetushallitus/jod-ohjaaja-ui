@@ -1,0 +1,1174 @@
+[
+  {
+    "availableLanguages": ["en-US", "fi-FI", "sv-SE"],
+    "contentFields": [
+      {
+        "contentFieldValue": {
+          "data": "Julkaisu ohjausalan koulutusten rakenteista, sisällöistä ja kehittämistarpeista"
+        },
+        "dataType": "string",
+        "fieldReference": "ingress",
+        "inputControl": "text",
+        "label": "Tiivistelmä",
+        "name": "Text06331573",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "data": "<p>Selvityksessä kuvataan ohjausalan suomen- ja ruotsinkielisiä koulutuksia vuosina 2020-2023 sekä arvioidaan koulutusrakenteiden toimivuutta ja kehittämistarpeita. Koulutusten sisältöjä peilataan <a href=\"https://jyx.jyu.fi/jyx/Record/jyx_123456789_91826\" onclick=\"window.open(this.href, 'Ohjausalanammattilaistenosaamiskuvauksiin', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;\">Ohjausalan ammattilaisten osaamiskuvauksiin</a>.</p>\n\n<p>Selvityksen taustalla ovat työ- ja elinkeinoministeriön ja opetus- ja kulttuuriministeriön elinikäisen ohjauksen strategiassa 2020-2023 esiin nostetut tarpeet. Strategian tavoitteiden mukaisesti ohjauspalvelujen laadun ja ammattimaisuuden vahvistaminen edellyttää ohjausalan koulutusten, koulutusrakenteiden ja näiden kehittämistarpeiden kokonaisarviointia.&nbsp;Selvityksen on laatinut Jyväskylän yliopiston Koulutuksen tutkimuslaitos.&nbsp;Selvitys on toteutettu EU:n elpymis- ja palautumistukivälineen (RRF) rahoituksella.&nbsp;</p>\n\n<p>Julkaisu on saatavilla suomeksi.</p>"
+        },
+        "dataType": "string",
+        "fieldReference": "content",
+        "label": "Sisältö",
+        "name": "RichText28658582",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "image": {
+            "contentType": "Document",
+            "contentUrl": "/ohjaaja/cms/documents/20117/0/Keksi_KLe_Osaamispolku_1-1072%7E3.jpg/ca604ebd-2cf0-9676-903e-f701395195b3?version=1.0&t=1758538626569",
+            "description": "Kuvituskuva",
+            "encodingFormat": "image/jpeg",
+            "externalReferenceCode": "ca604ebd-2cf0-9676-903e-f701395195b3",
+            "fileExtension": "jpg",
+            "id": 89205,
+            "scopeExternalReferenceCode": "L_GUEST",
+            "sizeInBytes": 23550782,
+            "title": "Ohjausalan koulutus Suomessa: selvitys koulutusten rakenteista ja sisällöistä"
+          }
+        },
+        "dataType": "image",
+        "fieldReference": "image",
+        "label": "Kuva",
+        "name": "Image59796823",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "document": {
+            "contentType": "Document",
+            "contentUrl": "/ohjaaja/cms/documents/20117/0/Ohjausalan+koulutus+Suomessa_selvitys+koulutusten+rakenteista+ja+sis%C3%A4ll%C3%B6ist%C3%A4.pdf/61439d36-8ac8-7e50-bb0a-7963f6ed37f2?version=1.1&t=1762333172259",
+            "description": "",
+            "encodingFormat": "application/pdf",
+            "externalReferenceCode": "61439d36-8ac8-7e50-bb0a-7963f6ed37f2",
+            "fileExtension": "pdf",
+            "id": 65106,
+            "scopeExternalReferenceCode": "L_GUEST",
+            "sizeInBytes": 5414758,
+            "title": "Ohjausalan koulutus Suomessa - selvitys koulutusten rakenteista ja sisällöistä (pdf)"
+          }
+        },
+        "dataType": "document",
+        "fieldReference": "document",
+        "label": "Tiedosto",
+        "name": "DocumentLibrary22581947",
+        "nestedContentFields": [],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "",
+        "fieldReference": "link",
+        "label": "Linkki",
+        "name": "Fieldset73641796",
+        "nestedContentFields": [
+          {
+            "contentFieldValue": {
+              "data": ""
+            },
+            "dataType": "string",
+            "fieldReference": "linktext",
+            "inputControl": "text",
+            "label": "Kuvaus",
+            "name": "Text16501757",
+            "nestedContentFields": [],
+            "repeatable": false
+          },
+          {
+            "contentFieldValue": {
+              "data": ""
+            },
+            "dataType": "string",
+            "fieldReference": "linkurl",
+            "inputControl": "text",
+            "label": "Linkki",
+            "name": "Text50201893",
+            "nestedContentFields": [],
+            "repeatable": false
+          }
+        ],
+        "repeatable": true
+      }
+    ],
+    "contentStructureId": 31886,
+    "dateCreated": "2025-04-01T11:24:10Z",
+    "dateModified": "2025-11-05T10:57:13Z",
+    "externalReferenceCode": "73a29331-6aaf-eb99-ce35-14277f300ce4",
+    "id": 44058,
+    "siteId": 20117,
+    "taxonomyCategoryBriefs": [
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "264ae348-b614-f585-6846-28f30fcbfed3",
+          "id": 31901,
+          "name": "Ohjaajan tietosisällöt",
+          "name_i18n": {
+            "fi-FI": "Ohjaajan tietosisällöt",
+            "en-US": "Guidance practitioner's information content",
+            "sv-SE": "Vägledarens informationsinnehåll"
+          },
+          "type": "CATEGORY"
+        },
+        "taxonomyCategoryId": 31901,
+        "taxonomyCategoryName": "Ohjaajan tietosisällöt",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "264ae348-b614-f585-6846-28f30fcbfed3",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "9a3d8185-239d-5d36-1064-244bea456548",
+          "id": 44908,
+          "name": "Elinikäinen ohjaus",
+          "name_i18n": {
+            "fi-FI": "Elinikäinen ohjaus",
+            "en-US": "Lifelong guidance",
+            "sv-SE": "Livslång vägledning"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 44908,
+        "taxonomyCategoryName": "Elinikäinen ohjaus",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "9a3d8185-239d-5d36-1064-244bea456548",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "314cf2c9-b49e-39f9-52d4-158d1b05e50b",
+          "id": 46939,
+          "name": "Ohjausosaaminen",
+          "name_i18n": {
+            "fi-FI": "Ohjausosaaminen",
+            "en-US": "Guidance competency",
+            "sv-SE": "Vägledningskompetens"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 46939,
+        "taxonomyCategoryName": "Ohjausosaaminen",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "314cf2c9-b49e-39f9-52d4-158d1b05e50b",
+          "siteKey": "Guest"
+        }
+      }
+    ],
+    "title": "Ohjausalan koulutus Suomessa: selvitys koulutusten rakenteista ja sisällöistä"
+  },
+  {
+    "availableLanguages": ["en-US", "fi-FI", "sv-SE"],
+    "contentFields": [
+      {
+        "contentFieldValue": {
+          "data": "Materiaaleja vahvuusperustaiseen tulevaisuusohjaukseen"
+        },
+        "dataType": "string",
+        "fieldReference": "ingress",
+        "inputControl": "text",
+        "label": "Tiivistelmä",
+        "name": "Text06331573",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "data": "<p paraeid=\"{86a4c27a-e576-436a-bdad-66b2a967228b}{26}\" paraid=\"941433004\">VAHTO-hankkeessa vahvuusperustaisella tulevaisuusohjauksella viitataan laajaan ohjausajatteluun, jossa tunnistetaan vahvuuksien ja työelämävalmiuksien osa-alueita. VAHTO-vahvuuskortteja voi käyttää ohjauksen tukena ja työkaluna. Vahvuusperustaisen ohjauksen työkirja sisältää vinkkejä ja harjoituksia vahvuusperustaiseen tulevaisuusohjaukseen. Materiaali pohjautuu korkeakouluopiskelijoiden ohjaukseen, mutta sitä voi hyödyntää myös muissa ohjaustilanteissa ja eri koulutusasteilla.&nbsp;</p>\n\n<p paraeid=\"{86a4c27a-e576-436a-bdad-66b2a967228b}{52}\" paraid=\"193019668\">Materiaalit on tuotettu osana Lapin yliopiston ja Lapin ammattikorkeakoulun yhteistä VAHTO – Vahvuusperustaisen tulevaisuusohjauksen kehittäminen hanketta. Hanketta on rahoittanut Euroopan sosiaalirahasto ja Pohjois-Pohjanmaan ELY-keskus.</p>\n\n<p paraeid=\"{86a4c27a-e576-436a-bdad-66b2a967228b}{52}\" paraid=\"193019668\">VAHTO-vahvuuskortit ja työkirja ovat käytettävissä suomeksi ja englanniksi.&nbsp;</p>"
+        },
+        "dataType": "string",
+        "fieldReference": "content",
+        "label": "Sisältö",
+        "name": "RichText28658582",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "image": {
+            "contentType": "Document",
+            "contentUrl": "/ohjaaja/cms/documents/20117/0/Vahtokuva.jpg/e7308d5c-b0a5-7049-380f-ef052926c326?version=1.0&t=1758877448282",
+            "description": "Kuvituskuva Kuva: VAHTO/Lapin AMK ja Lapin yliopisto",
+            "encodingFormat": "image/jpeg",
+            "externalReferenceCode": "e7308d5c-b0a5-7049-380f-ef052926c326",
+            "fileExtension": "jpg",
+            "id": 92185,
+            "scopeExternalReferenceCode": "L_GUEST",
+            "sizeInBytes": 23186,
+            "title": "Vahtokuva"
+          }
+        },
+        "dataType": "image",
+        "fieldReference": "image",
+        "label": "Kuva",
+        "name": "Image59796823",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "document",
+        "fieldReference": "document",
+        "label": "Tiedosto",
+        "name": "DocumentLibrary22581947",
+        "nestedContentFields": [],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "",
+        "fieldReference": "link",
+        "label": "Linkki",
+        "name": "Fieldset73641796",
+        "nestedContentFields": [
+          {
+            "contentFieldValue": {
+              "data": "VAHTO-kortit (pdf)"
+            },
+            "dataType": "string",
+            "fieldReference": "linktext",
+            "inputControl": "text",
+            "label": "Kuvaus",
+            "name": "Text16501757",
+            "nestedContentFields": [],
+            "repeatable": false
+          },
+          {
+            "contentFieldValue": {
+              "data": "https://lauda.ulapland.fi/bitstream/handle/10024/64877/VAHTO_kortit.pdf?sequence=1&isAllowed=y"
+            },
+            "dataType": "string",
+            "fieldReference": "linkurl",
+            "inputControl": "text",
+            "label": "Linkki",
+            "name": "Text50201893",
+            "nestedContentFields": [],
+            "repeatable": false
+          }
+        ],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "",
+        "fieldReference": "link",
+        "label": "Linkki",
+        "name": "Fieldset73641796",
+        "nestedContentFields": [
+          {
+            "contentFieldValue": {
+              "data": "VAHTO-hanke -työkirja (pdf)"
+            },
+            "dataType": "string",
+            "fieldReference": "linktext",
+            "inputControl": "text",
+            "label": "Kuvaus",
+            "name": "Text16501757",
+            "nestedContentFields": [],
+            "repeatable": false
+          },
+          {
+            "contentFieldValue": {
+              "data": "https://lauda.ulapland.fi/bitstream/handle/10024/64876/VAHTO-hanke_Tyokirja_B5.pdf?sequence=1&isAllowed=y"
+            },
+            "dataType": "string",
+            "fieldReference": "linkurl",
+            "inputControl": "text",
+            "label": "Linkki",
+            "name": "Text50201893",
+            "nestedContentFields": [],
+            "repeatable": false
+          }
+        ],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "",
+        "fieldReference": "link",
+        "label": "Linkki",
+        "name": "Fieldset73641796",
+        "nestedContentFields": [
+          {
+            "contentFieldValue": {
+              "data": "VAHTO-hanke -sivusto"
+            },
+            "dataType": "string",
+            "fieldReference": "linktext",
+            "inputControl": "text",
+            "label": "Kuvaus",
+            "name": "Text16501757",
+            "nestedContentFields": [],
+            "repeatable": false
+          },
+          {
+            "contentFieldValue": {
+              "data": "https://blogi.eoppimispalvelut.fi/vahto/"
+            },
+            "dataType": "string",
+            "fieldReference": "linkurl",
+            "inputControl": "text",
+            "label": "Linkki",
+            "name": "Text50201893",
+            "nestedContentFields": [],
+            "repeatable": false
+          }
+        ],
+        "repeatable": true
+      }
+    ],
+    "contentStructureId": 31886,
+    "dateCreated": "2025-04-17T12:18:43Z",
+    "dateModified": "2026-06-11T07:07:04Z",
+    "externalReferenceCode": "88251a13-6793-f69b-c614-fe830288c29d",
+    "id": 47779,
+    "siteId": 20117,
+    "taxonomyCategoryBriefs": [
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "cfaae276-b790-606f-f4de-3988da1db468",
+          "id": 32136,
+          "name": "Asiakastyön tueksi",
+          "name_i18n": {
+            "fi-FI": "Asiakastyön tueksi",
+            "en-US": "To support customer work",
+            "sv-SE": "Till stöd för kundarbetet"
+          },
+          "type": "CATEGORY"
+        },
+        "taxonomyCategoryId": 32136,
+        "taxonomyCategoryName": "Asiakastyön tueksi",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "cfaae276-b790-606f-f4de-3988da1db468",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "454c56bc-7b9f-f408-a7d6-fc56a2c11c80",
+          "id": 37953,
+          "name": "Itsetuntemus",
+          "name_i18n": {
+            "fi-FI": "Itsetuntemus",
+            "en-US": "Self-knowledge",
+            "sv-SE": "Självkännedom"
+          },
+          "type": "CATEGORY"
+        },
+        "taxonomyCategoryId": 37953,
+        "taxonomyCategoryName": "Itsetuntemus",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "454c56bc-7b9f-f408-a7d6-fc56a2c11c80",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "1df145e5-ae1c-095c-c388-b3a9036a2950",
+          "id": 44909,
+          "name": "Itsetuntemus",
+          "name_i18n": {
+            "fi-FI": "Itsetuntemus",
+            "en-US": "Self-knowledge",
+            "sv-SE": "Självkännedom"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 44909,
+        "taxonomyCategoryName": "Itsetuntemus",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "1df145e5-ae1c-095c-c388-b3a9036a2950",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "314cf2c9-b49e-39f9-52d4-158d1b05e50b",
+          "id": 46939,
+          "name": "Ohjausosaaminen",
+          "name_i18n": {
+            "fi-FI": "Ohjausosaaminen",
+            "en-US": "Guidance competency",
+            "sv-SE": "Vägledningskompetens"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 46939,
+        "taxonomyCategoryName": "Ohjausosaaminen",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "314cf2c9-b49e-39f9-52d4-158d1b05e50b",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "bee965cb-7a57-5459-81a5-9fa34b5e7cd2",
+          "id": 46940,
+          "name": "Työkalu",
+          "name_i18n": {
+            "fi-FI": "Työkalu",
+            "en-US": "Tool",
+            "sv-SE": "Verktyg"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 46940,
+        "taxonomyCategoryName": "Työkalu",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "bee965cb-7a57-5459-81a5-9fa34b5e7cd2",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "7984eca7-b45c-a6ce-064a-657013403b06",
+          "id": 47680,
+          "name": "Tulevaisuuden hahmottaminen",
+          "name_i18n": {
+            "fi-FI": "Tulevaisuuden hahmottaminen",
+            "en-US": "Understanding the future",
+            "sv-SE": "Föreställning av framtiden"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 47680,
+        "taxonomyCategoryName": "Tulevaisuuden hahmottaminen",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "7984eca7-b45c-a6ce-064a-657013403b06",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "74d6e41b-82d3-313c-4953-e29224dd8d8d",
+          "id": 47795,
+          "name": "Osaamisidentiteetti",
+          "name_i18n": {
+            "fi-FI": "Osaamisidentiteetti",
+            "en-US": "Competence identity",
+            "sv-SE": "Kompetensidentitet"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 47795,
+        "taxonomyCategoryName": "Osaamisidentiteetti",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "74d6e41b-82d3-313c-4953-e29224dd8d8d",
+          "siteKey": "Guest"
+        }
+      }
+    ],
+    "title": "VAHTO-Vahvuuskortit ja vahvuusperustaisen ohjauksen työkirja"
+  },
+  {
+    "availableLanguages": ["en-US", "fi-FI", "sv-SE"],
+    "contentFields": [
+      {
+        "contentFieldValue": {
+          "data": "Digitaalinen työkalu yksilön elämäntilanteen arviointiin"
+        },
+        "dataType": "string",
+        "fieldReference": "ingress",
+        "inputControl": "text",
+        "label": "Tiivistelmä",
+        "name": "Text06331573",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "data": "<p paraeid=\"{86a4c27a-e576-436a-bdad-66b2a967228b}{177}\" paraid=\"81823118\">CREAR on digitaalinen palvelutarpeen arviointityökalu, joka antaa nopeasti ja luotettavasti kokonaisvaltaisen kuvan yksilön elämäntilanteesta. Tuloksen perusteella voidaan arvioida tuen tarvetta ja suunnitella yksilöllisiä ohjaus- ja tukipalveluita. CREAR soveltuu ohjauksen, opetuksen ja opiskeluhuollon asiantuntijoille, ja sitä voi käyttää esimerkiksi yksilöohjaus-, pienryhmä- ja luokkatilanteissa.&nbsp;&nbsp;</p>\n\n<p paraeid=\"{86a4c27a-e576-436a-bdad-66b2a967228b}{213}\" paraid=\"1029552224\">CREAR digitaalinen palvelutarpeen arviointityökalu on toteutettu osana Laurea-ammattikorkeakoulun koordinoimaa RETU-hanketta.&nbsp;&nbsp;</p>\n\n<p paraeid=\"{86a4c27a-e576-436a-bdad-66b2a967228b}{235}\" paraid=\"1871676412\">CREAR on saatavilla suomen, ruotsin ja englannin kielellä sekä selkosuomeksi.&nbsp;</p>"
+        },
+        "dataType": "string",
+        "fieldReference": "content",
+        "label": "Sisältö",
+        "name": "RichText28658582",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "image": {
+            "contentType": "Document",
+            "contentUrl": "/ohjaaja/cms/documents/20117/0/Keksi_MTo_Osaamispolku-0039%7E2.jpg/910fcf07-21be-fa6c-9751-16631c116d10?version=1.0&t=1758544050434",
+            "description": "Kuvituskuva",
+            "encodingFormat": "image/jpeg",
+            "externalReferenceCode": "910fcf07-21be-fa6c-9751-16631c116d10",
+            "fileExtension": "jpg",
+            "id": 90461,
+            "scopeExternalReferenceCode": "L_GUEST",
+            "sizeInBytes": 8937084,
+            "title": "CREAR"
+          }
+        },
+        "dataType": "image",
+        "fieldReference": "image",
+        "label": "Kuva",
+        "name": "Image59796823",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "document",
+        "fieldReference": "document",
+        "label": "Tiedosto",
+        "name": "DocumentLibrary22581947",
+        "nestedContentFields": [],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "",
+        "fieldReference": "link",
+        "label": "Linkki",
+        "name": "Fieldset73641796",
+        "nestedContentFields": [
+          {
+            "contentFieldValue": {
+              "data": "CREAR-arviointiväline"
+            },
+            "dataType": "string",
+            "fieldReference": "linktext",
+            "inputControl": "text",
+            "label": "Kuvaus",
+            "name": "Text16501757",
+            "nestedContentFields": [],
+            "repeatable": false
+          },
+          {
+            "contentFieldValue": {
+              "data": "https://retumittari.fi/"
+            },
+            "dataType": "string",
+            "fieldReference": "linkurl",
+            "inputControl": "text",
+            "label": "Linkki",
+            "name": "Text50201893",
+            "nestedContentFields": [],
+            "repeatable": false
+          }
+        ],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "",
+        "fieldReference": "link",
+        "label": "Linkki",
+        "name": "Fieldset73641796",
+        "nestedContentFields": [
+          {
+            "contentFieldValue": {
+              "data": "CREAR-käsikirja (pdf)"
+            },
+            "dataType": "string",
+            "fieldReference": "linktext",
+            "inputControl": "text",
+            "label": "Kuvaus",
+            "name": "Text16501757",
+            "nestedContentFields": [],
+            "repeatable": false
+          },
+          {
+            "contentFieldValue": {
+              "data": "https://www.theseus.fi/bitstream/handle/10024/352806/Laurea%20julkaisut%20152.pdf?sequence=2&isAllowed=y"
+            },
+            "dataType": "string",
+            "fieldReference": "linkurl",
+            "inputControl": "text",
+            "label": "Linkki",
+            "name": "Text50201893",
+            "nestedContentFields": [],
+            "repeatable": false
+          }
+        ],
+        "repeatable": true
+      }
+    ],
+    "contentStructureId": 31886,
+    "dateCreated": "2025-04-17T12:24:34Z",
+    "dateModified": "2026-08-10T12:11:50Z",
+    "externalReferenceCode": "0e54baa6-66e1-09d4-a668-4123ceb150f7",
+    "id": 47799,
+    "siteId": 20117,
+    "taxonomyCategoryBriefs": [
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "cfaae276-b790-606f-f4de-3988da1db468",
+          "id": 32136,
+          "name": "Asiakastyön tueksi",
+          "name_i18n": {
+            "fi-FI": "Asiakastyön tueksi",
+            "en-US": "To support customer work",
+            "sv-SE": "Till stöd för kundarbetet"
+          },
+          "type": "CATEGORY"
+        },
+        "taxonomyCategoryId": 32136,
+        "taxonomyCategoryName": "Asiakastyön tueksi",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "cfaae276-b790-606f-f4de-3988da1db468",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "454c56bc-7b9f-f408-a7d6-fc56a2c11c80",
+          "id": 37953,
+          "name": "Itsetuntemus",
+          "name_i18n": {
+            "fi-FI": "Itsetuntemus",
+            "en-US": "Self-knowledge",
+            "sv-SE": "Självkännedom"
+          },
+          "type": "CATEGORY"
+        },
+        "taxonomyCategoryId": 37953,
+        "taxonomyCategoryName": "Itsetuntemus",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "454c56bc-7b9f-f408-a7d6-fc56a2c11c80",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "1df145e5-ae1c-095c-c388-b3a9036a2950",
+          "id": 44909,
+          "name": "Itsetuntemus",
+          "name_i18n": {
+            "fi-FI": "Itsetuntemus",
+            "en-US": "Self-knowledge",
+            "sv-SE": "Självkännedom"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 44909,
+        "taxonomyCategoryName": "Itsetuntemus",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "1df145e5-ae1c-095c-c388-b3a9036a2950",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "bee965cb-7a57-5459-81a5-9fa34b5e7cd2",
+          "id": 46940,
+          "name": "Työkalu",
+          "name_i18n": {
+            "fi-FI": "Työkalu",
+            "en-US": "Tool",
+            "sv-SE": "Verktyg"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 46940,
+        "taxonomyCategoryName": "Työkalu",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "bee965cb-7a57-5459-81a5-9fa34b5e7cd2",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "cc1e5ee5-a03d-b418-b021-48302e2e0934",
+          "id": 47796,
+          "name": "Monialaisuus",
+          "name_i18n": {
+            "fi-FI": "Monialaisuus",
+            "en-US": "Multidisciplinary approach",
+            "sv-SE": "Mångsidighet"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 47796,
+        "taxonomyCategoryName": "Monialaisuus",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "cc1e5ee5-a03d-b418-b021-48302e2e0934",
+          "siteKey": "Guest"
+        }
+      }
+    ],
+    "title": "CREAR-arviointiväline"
+  },
+  {
+    "availableLanguages": ["en-US", "fi-FI", "sv-SE"],
+    "contentFields": [
+      {
+        "contentFieldValue": {
+          "data": "Materiaalia työllisyyspalveluiden ohjausosaamisen asiantuntijoiden tueksi"
+        },
+        "dataType": "string",
+        "fieldReference": "ingress",
+        "inputControl": "text",
+        "label": "Tiivistelmä",
+        "name": "Text06331573",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "data": "<p paraeid=\"{67436f0e-7f28-4e2e-a762-126d61d290fc}{221}\" paraid=\"569796954\">Ohjausosaamista yhteistyössä -hankkeen taustalla oli aikuisten uraohjauksen kasvava tarve työllisyyspalveluissa. Sivuilta löytyy materiaalia, joka tukee työllisyyspalveluissa toimivien ohjausosaamisen kehittymistä.&nbsp;&nbsp;</p>\n\n<p paraeid=\"{67436f0e-7f28-4e2e-a762-126d61d290fc}{237}\" paraid=\"1122244739\">Hanketta hallinnoi Itä-Suomen yliopisto ja sitä on rahoittanut Euroopan sosiaalirahasto.</p>\n\n<p paraeid=\"{67436f0e-7f28-4e2e-a762-126d61d290fc}{249}\" paraid=\"2116974794\">Sivusto on suomen kielellä.</p>"
+        },
+        "dataType": "string",
+        "fieldReference": "content",
+        "label": "Sisältö",
+        "name": "RichText28658582",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "image": {
+            "contentType": "Document",
+            "contentUrl": "/ohjaaja/cms/documents/20117/0/Ohjausosaamista_yhteisty%C3%B6ss%C3%A4.jpg/b3a49f62-6aea-5ee3-efeb-db468480a232?version=1.0&t=1765190451524",
+            "description": "Kuvituskuva",
+            "encodingFormat": "image/jpeg",
+            "externalReferenceCode": "b3a49f62-6aea-5ee3-efeb-db468480a232",
+            "fileExtension": "jpg",
+            "id": 128928,
+            "scopeExternalReferenceCode": "L_GUEST",
+            "sizeInBytes": 77491,
+            "title": "Ohjausosaamista_yhteistyössä"
+          }
+        },
+        "dataType": "image",
+        "fieldReference": "image",
+        "label": "Kuva",
+        "name": "Image59796823",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "document",
+        "fieldReference": "document",
+        "label": "Tiedosto",
+        "name": "DocumentLibrary22581947",
+        "nestedContentFields": [],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "",
+        "fieldReference": "link",
+        "label": "Linkki",
+        "name": "Fieldset73641796",
+        "nestedContentFields": [
+          {
+            "contentFieldValue": {
+              "data": "Ohjausosaamista yhteistyössä -sivusto"
+            },
+            "dataType": "string",
+            "fieldReference": "linktext",
+            "inputControl": "text",
+            "label": "Kuvaus",
+            "name": "Text16501757",
+            "nestedContentFields": [],
+            "repeatable": false
+          },
+          {
+            "contentFieldValue": {
+              "data": "https://sites.uef.fi/ohjausosaamista/"
+            },
+            "dataType": "string",
+            "fieldReference": "linkurl",
+            "inputControl": "text",
+            "label": "Linkki",
+            "name": "Text50201893",
+            "nestedContentFields": [],
+            "repeatable": false
+          }
+        ],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "",
+        "fieldReference": "link",
+        "label": "Linkki",
+        "name": "Fieldset73641796",
+        "nestedContentFields": [
+          {
+            "contentFieldValue": {
+              "data": "Ohjausosaamisen kasvun työkalu"
+            },
+            "dataType": "string",
+            "fieldReference": "linktext",
+            "inputControl": "text",
+            "label": "Kuvaus",
+            "name": "Text16501757",
+            "nestedContentFields": [],
+            "repeatable": false
+          },
+          {
+            "contentFieldValue": {
+              "data": "https://sites.uef.fi/ohjausosaamista/tutkimus/"
+            },
+            "dataType": "string",
+            "fieldReference": "linkurl",
+            "inputControl": "text",
+            "label": "Linkki",
+            "name": "Text50201893",
+            "nestedContentFields": [],
+            "repeatable": false
+          }
+        ],
+        "repeatable": true
+      }
+    ],
+    "contentStructureId": 31886,
+    "dateCreated": "2025-04-24T12:26:23Z",
+    "dateModified": "2026-10-05T12:22:54Z",
+    "externalReferenceCode": "7d75cd1b-7555-27bb-2753-f1249f2dcc32",
+    "id": 50044,
+    "siteId": 20117,
+    "taxonomyCategoryBriefs": [
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "ohjaaja-study-program-parent-category",
+          "id": 31925,
+          "name": "Ammatillinen kehittyminen",
+          "name_i18n": {
+            "fi-FI": "Ammatillinen kehittyminen",
+            "en-US": "Professional development",
+            "sv-SE": "Yrkesmässig utveckling"
+          },
+          "type": "CATEGORY"
+        },
+        "taxonomyCategoryId": 31925,
+        "taxonomyCategoryName": "Ammatillinen kehittyminen",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "ohjaaja-study-program-parent-category",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "f7d6a0bc-f5cc-40cd-7d2d-d721616a4555",
+          "id": 37957,
+          "name": "Ammatillisen kehittymisen työkalut",
+          "name_i18n": {
+            "fi-FI": "Ammatillisen kehittymisen työkalut",
+            "en-US": "Professional development tools",
+            "sv-SE": "Verktyg för yrkesmässig utveckling"
+          },
+          "type": "CATEGORY"
+        },
+        "taxonomyCategoryId": 37957,
+        "taxonomyCategoryName": "Ammatillisen kehittymisen työkalut",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "f7d6a0bc-f5cc-40cd-7d2d-d721616a4555",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "314cf2c9-b49e-39f9-52d4-158d1b05e50b",
+          "id": 46939,
+          "name": "Ohjausosaaminen",
+          "name_i18n": {
+            "fi-FI": "Ohjausosaaminen",
+            "en-US": "Guidance competency",
+            "sv-SE": "Vägledningskompetens"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 46939,
+        "taxonomyCategoryName": "Ohjausosaaminen",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "314cf2c9-b49e-39f9-52d4-158d1b05e50b",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "3d8f0b40-3d55-6596-aa26-cb2005fe995f",
+          "id": 49953,
+          "name": "Toimintaympäristön tunteminen",
+          "name_i18n": {
+            "fi-FI": "Toimintaympäristön tunteminen",
+            "en-US": "Knowledge of the operating environment",
+            "sv-SE": "Kännedom om verksamhetsmiljön"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 49953,
+        "taxonomyCategoryName": "Toimintaympäristön tunteminen",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "3d8f0b40-3d55-6596-aa26-cb2005fe995f",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "ecc044e1-d98e-b502-602a-de0f91215fa9",
+          "id": 50040,
+          "name": "Ohjauksen arviointi",
+          "name_i18n": {
+            "fi-FI": "Ohjauksen arviointi",
+            "en-US": "Assessment of guidance",
+            "sv-SE": "Bedömning av vägledning"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 50040,
+        "taxonomyCategoryName": "Ohjauksen arviointi",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "ecc044e1-d98e-b502-602a-de0f91215fa9",
+          "siteKey": "Guest"
+        }
+      }
+    ],
+    "title": "Ohjausosaamista yhteistyössä"
+  },
+  {
+    "availableLanguages": ["en-US", "fi-FI", "sv-SE"],
+    "contentFields": [
+      {
+        "contentFieldValue": {
+          "data": "Materiaalia oman ohjaustyön arviointiin"
+        },
+        "dataType": "string",
+        "fieldReference": "ingress",
+        "inputControl": "text",
+        "label": "Tiivistelmä",
+        "name": "Text06331573",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "data": "<p lang=\"FI-FI\" paraeid=\"{a9a53356-14a9-4e2a-bbb6-264ae4fe18ab}{163}\" paraid=\"1115792258\" xml:lang=\"FI-FI\">Ohjausalan ammattilaisten osaamiskuvaukset kertovat, mistä ohjausosaaminen koostuu. Osaamiskuvauksia voi hyödyntää oman ohjausosaamisensa itsearvioinnissa tai ohjauksen kehittämisessä omassa organisaatiossa tai ohjausalan verkostoissa. Osaamiskuvausten&nbsp;verkkoversiot ja työvälineet -sivustolta löytyvät ohjausalan ammattilaisten osaamiskuvaukset ja niihin perustuvat<a href=\"http://urn.fi/URN:ISBN:978-951-39-9818-9\" rel=\"noreferrer noopener\" target=\"_blank\">&nbsp;</a>arviointilomakkeet.&nbsp;</p>\n\n<p lang=\"FI-FI\" paraeid=\"{a9a53356-14a9-4e2a-bbb6-264ae4fe18ab}{170}\" paraid=\"1226882086\" xml:lang=\"FI-FI\">Materiaali on tuotettu osana Jyväskylän yliopiston Koulutuksen tutkimuslaitoksen toteuttamaa Ohjaustyön osaamiskuvausten selvitystä ja yhteiskehittämisprosessia. Ohjausalan osaamiskuvausten laadinta oli yksi osa työ- ja elinkeinoministeriön ja KEHA-keskuksen koordinoimaa elinikäisen ohjauksen valtakunnallista kehittämiskokonaisuutta.&nbsp;Osaamiskuvaukset on toteutettu EU:n elpymis- ja palautumistukivälineen (RRF) rahoituksella.&nbsp;</p>\n\n<p lang=\"FI-FI\" paraeid=\"{a9a53356-14a9-4e2a-bbb6-264ae4fe18ab}{177}\" paraid=\"932133567\" xml:lang=\"FI-FI\">Materiaalit löytyvät suomeksi, englanniksi ja osittain ruotsiksi.&nbsp;&nbsp;</p>"
+        },
+        "dataType": "string",
+        "fieldReference": "content",
+        "label": "Sisältö",
+        "name": "RichText28658582",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "image": {
+            "contentType": "Document",
+            "contentUrl": "/ohjaaja/cms/documents/20117/0/Keksi_KLe_Osaamispolku_3-1062%7E3.jpg/8abc9f94-7622-00c9-46c6-1b0616a7256a?version=1.0&t=1758536414541",
+            "description": "Kuvituskuva",
+            "encodingFormat": "image/jpeg",
+            "externalReferenceCode": "8abc9f94-7622-00c9-46c6-1b0616a7256a",
+            "fileExtension": "jpg",
+            "id": 89107,
+            "scopeExternalReferenceCode": "L_GUEST",
+            "sizeInBytes": 17462793,
+            "title": "Osaamisalan ammattilaisten osaamiskuvaukset"
+          }
+        },
+        "dataType": "image",
+        "fieldReference": "image",
+        "label": "Kuva",
+        "name": "Image59796823",
+        "nestedContentFields": [],
+        "repeatable": false
+      },
+      {
+        "contentFieldValue": {
+          "document": {
+            "contentType": "Document",
+            "contentUrl": "/ohjaaja/cms/documents/20117/0/Ohjausalan_ammattilaisten_osaamiskuvaukset_FI+%281%29.pdf/89a59767-09de-a9fb-6ba1-44ec58786cba?version=1.2&t=1762333049548",
+            "description": "",
+            "encodingFormat": "application/pdf",
+            "externalReferenceCode": "89a59767-09de-a9fb-6ba1-44ec58786cba",
+            "fileExtension": "pdf",
+            "id": 65187,
+            "scopeExternalReferenceCode": "L_GUEST",
+            "sizeInBytes": 2102541,
+            "title": "Ohjausalan ammattilaisten osaamiskuvaukset (pdf)"
+          }
+        },
+        "dataType": "document",
+        "fieldReference": "document",
+        "label": "Tiedosto",
+        "name": "DocumentLibrary22581947",
+        "nestedContentFields": [],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {
+          "document": {
+            "contentType": "Document",
+            "contentUrl": "/ohjaaja/cms/documents/20117/0/Ohjausalan_ammattilaisten_osaamiskuvaukset_arviointilomakkeet_FI.pdf/b3f09b1b-6235-980e-0588-9e4dad66cb4f?version=1.2&t=1762333078006",
+            "description": "",
+            "encodingFormat": "application/pdf",
+            "externalReferenceCode": "b3f09b1b-6235-980e-0588-9e4dad66cb4f",
+            "fileExtension": "pdf",
+            "id": 65198,
+            "scopeExternalReferenceCode": "L_GUEST",
+            "sizeInBytes": 2606849,
+            "title": "Ohjausalan ammattilaisten osaamiskuvaukset - arviointilomakkeet (pdf)"
+          }
+        },
+        "dataType": "document",
+        "fieldReference": "document",
+        "label": "Tiedosto",
+        "name": "DocumentLibrary22581947",
+        "nestedContentFields": [],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {
+          "document": {
+            "contentType": "Document",
+            "contentUrl": "/ohjaaja/cms/documents/20117/0/Ohjausty%C3%B6n+osaamiskuvausten+selvitys+ja+yhteiskehitt%C3%A4misprosessi.pdf/8b07b3c5-524f-1bd2-49e7-0bb99b206e4f?version=1.1&t=1762333157839",
+            "description": "",
+            "encodingFormat": "application/pdf",
+            "externalReferenceCode": "8b07b3c5-524f-1bd2-49e7-0bb99b206e4f",
+            "fileExtension": "pdf",
+            "id": 65209,
+            "scopeExternalReferenceCode": "L_GUEST",
+            "sizeInBytes": 1966727,
+            "title": "Ohjaustyön osaamiskuvausten selvitys ja yhteiskehittämisprosessi (pdf)"
+          }
+        },
+        "dataType": "document",
+        "fieldReference": "document",
+        "label": "Tiedosto",
+        "name": "DocumentLibrary22581947",
+        "nestedContentFields": [],
+        "repeatable": true
+      },
+      {
+        "contentFieldValue": {},
+        "dataType": "",
+        "fieldReference": "link",
+        "label": "Linkki",
+        "name": "Fieldset73641796",
+        "nestedContentFields": [
+          {
+            "contentFieldValue": {
+              "data": "Osaamiskuvausten verkkoversiot ja työvälineet"
+            },
+            "dataType": "string",
+            "fieldReference": "linktext",
+            "inputControl": "text",
+            "label": "Kuvaus",
+            "name": "Text16501757",
+            "nestedContentFields": [],
+            "repeatable": false
+          },
+          {
+            "contentFieldValue": {
+              "data": "https://peda.net/ohjausosaaminen/ohjausalan-ammattilaisten-osaamiskuvaukset"
+            },
+            "dataType": "string",
+            "fieldReference": "linkurl",
+            "inputControl": "text",
+            "label": "Linkki",
+            "name": "Text50201893",
+            "nestedContentFields": [],
+            "repeatable": false
+          }
+        ],
+        "repeatable": true
+      }
+    ],
+    "contentStructureId": 31886,
+    "dateCreated": "2025-04-28T05:21:48Z",
+    "dateModified": "2026-10-05T12:24:49Z",
+    "externalReferenceCode": "4a204c94-38fb-bdce-912b-e608ce218029",
+    "id": 50944,
+    "siteId": 20117,
+    "taxonomyCategoryBriefs": [
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "264ae348-b614-f585-6846-28f30fcbfed3",
+          "id": 31901,
+          "name": "Ohjaajan tietosisällöt",
+          "name_i18n": {
+            "fi-FI": "Ohjaajan tietosisällöt",
+            "en-US": "Guidance practitioner's information content",
+            "sv-SE": "Vägledarens informationsinnehåll"
+          },
+          "type": "CATEGORY"
+        },
+        "taxonomyCategoryId": 31901,
+        "taxonomyCategoryName": "Ohjaajan tietosisällöt",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "264ae348-b614-f585-6846-28f30fcbfed3",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "9a3d8185-239d-5d36-1064-244bea456548",
+          "id": 44908,
+          "name": "Elinikäinen ohjaus",
+          "name_i18n": {
+            "fi-FI": "Elinikäinen ohjaus",
+            "en-US": "Lifelong guidance",
+            "sv-SE": "Livslång vägledning"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 44908,
+        "taxonomyCategoryName": "Elinikäinen ohjaus",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "9a3d8185-239d-5d36-1064-244bea456548",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "314cf2c9-b49e-39f9-52d4-158d1b05e50b",
+          "id": 46939,
+          "name": "Ohjausosaaminen",
+          "name_i18n": {
+            "fi-FI": "Ohjausosaaminen",
+            "en-US": "Guidance competency",
+            "sv-SE": "Vägledningskompetens"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 46939,
+        "taxonomyCategoryName": "Ohjausosaaminen",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "314cf2c9-b49e-39f9-52d4-158d1b05e50b",
+          "siteKey": "Guest"
+        }
+      },
+      {
+        "embeddedTaxonomyCategory": {
+          "externalReferenceCode": "ecc044e1-d98e-b502-602a-de0f91215fa9",
+          "id": 50040,
+          "name": "Ohjauksen arviointi",
+          "name_i18n": {
+            "fi-FI": "Ohjauksen arviointi",
+            "en-US": "Assessment of guidance",
+            "sv-SE": "Bedömning av vägledning"
+          },
+          "type": "TAG"
+        },
+        "taxonomyCategoryId": 50040,
+        "taxonomyCategoryName": "Ohjauksen arviointi",
+        "taxonomyCategoryReference": {
+          "externalReferenceCode": "ecc044e1-d98e-b502-602a-de0f91215fa9",
+          "siteKey": "Guest"
+        }
+      }
+    ],
+    "title": "Ohjausalan ammattilaisten osaamiskuvaukset"
+  }
+]
