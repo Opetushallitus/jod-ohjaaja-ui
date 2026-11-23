@@ -1,0 +1,189 @@
+[
+  {
+    "id": 44908,
+    "externalReferenceCode": "9a3d8185-239d-5d36-1064-244bea456548",
+    "name": "Elinikäinen ohjaus",
+    "name_i18n": {
+      "fi-FI": "Elinikäinen ohjaus",
+      "en-US": "Lifelong guidance",
+      "sv-SE": "Livslång vägledning"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 52184,
+    "externalReferenceCode": "c82a0089-0455-b6f4-bdd1-64fee55881fa",
+    "name": "Erityinen tuki",
+    "name_i18n": {
+      "fi-FI": "Erityinen tuki",
+      "en-US": "Special support",
+      "sv-SE": "Särskilt stöd"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 44909,
+    "externalReferenceCode": "1df145e5-ae1c-095c-c388-b3a9036a2950",
+    "name": "Itsetuntemus",
+    "name_i18n": {
+      "fi-FI": "Itsetuntemus",
+      "en-US": "Self-knowledge",
+      "sv-SE": "Självkännedom"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 51332,
+    "externalReferenceCode": "63614b69-5601-a22e-33dd-ed48901378ef",
+    "name": "Kansainvälisyys",
+    "name_i18n": {
+      "fi-FI": "Kansainvälisyys",
+      "en-US": "Internationality",
+      "sv-SE": "Internationalism"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 51331,
+    "externalReferenceCode": "3e5e250b-832a-178f-0515-5df1f86217f6",
+    "name": "Kotoutuminen",
+    "name_i18n": {
+      "fi-FI": "Kotoutuminen",
+      "en-US": "Integration",
+      "sv-SE": "Integration"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 68875,
+    "externalReferenceCode": "ohjaaja-study-program-tag-category",
+    "name": "Koulutus",
+    "name_i18n": {
+      "fi-FI": "Koulutus",
+      "en-US": "Education",
+      "sv-SE": "Utbildning"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 47796,
+    "externalReferenceCode": "cc1e5ee5-a03d-b418-b021-48302e2e0934",
+    "name": "Monialaisuus",
+    "name_i18n": {
+      "fi-FI": "Monialaisuus",
+      "en-US": "Multidisciplinary approach",
+      "sv-SE": "Mångsidighet"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 51231,
+    "externalReferenceCode": "0fc5a955-6d85-0fa2-f3de-777fc0d2716d",
+    "name": "Monikulttuurisuus",
+    "name_i18n": {
+      "fi-FI": "Monikulttuurisuus",
+      "en-US": "Multiculturality",
+      "sv-SE": "Kulturell mångfald"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 50040,
+    "externalReferenceCode": "ecc044e1-d98e-b502-602a-de0f91215fa9",
+    "name": "Ohjauksen arviointi",
+    "name_i18n": {
+      "fi-FI": "Ohjauksen arviointi",
+      "en-US": "Assessment of guidance",
+      "sv-SE": "Bedömning av vägledning"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 46939,
+    "externalReferenceCode": "314cf2c9-b49e-39f9-52d4-158d1b05e50b",
+    "name": "Ohjausosaaminen",
+    "name_i18n": {
+      "fi-FI": "Ohjausosaaminen",
+      "en-US": "Guidance competency",
+      "sv-SE": "Vägledningskompetens"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 47795,
+    "externalReferenceCode": "74d6e41b-82d3-313c-4953-e29224dd8d8d",
+    "name": "Osaamisidentiteetti",
+    "name_i18n": {
+      "fi-FI": "Osaamisidentiteetti",
+      "en-US": "Competence identity",
+      "sv-SE": "Kompetensidentitet"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 49953,
+    "externalReferenceCode": "3d8f0b40-3d55-6596-aa26-cb2005fe995f",
+    "name": "Toimintaympäristön tunteminen",
+    "name_i18n": {
+      "fi-FI": "Toimintaympäristön tunteminen",
+      "en-US": "Knowledge of the operating environment",
+      "sv-SE": "Kännedom om verksamhetsmiljön"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 47680,
+    "externalReferenceCode": "7984eca7-b45c-a6ce-064a-657013403b06",
+    "name": "Tulevaisuuden hahmottaminen",
+    "name_i18n": {
+      "fi-FI": "Tulevaisuuden hahmottaminen",
+      "en-US": "Understanding the future",
+      "sv-SE": "Föreställning av framtiden"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 46940,
+    "externalReferenceCode": "bee965cb-7a57-5459-81a5-9fa34b5e7cd2",
+    "name": "Työkalu",
+    "name_i18n": {
+      "fi-FI": "Työkalu",
+      "en-US": "Tool",
+      "sv-SE": "Verktyg"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 44910,
+    "externalReferenceCode": "21027725-1828-43b9-4819-b0f3965b9a11",
+    "name": "Urasuunnittelutaidot",
+    "name_i18n": {
+      "fi-FI": "Urasuunnittelutaidot",
+      "en-US": "Career management skills",
+      "sv-SE": "Färdigheter i karriärplanering"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 189908,
+    "externalReferenceCode": "43d9b06f-a4f0-9e63-2fdc-190a85f8775b",
+    "name": "Verkkosivu",
+    "name_i18n": {
+      "fi-FI": "Verkkosivu",
+      "en-US": "Website",
+      "sv-SE": "Webbplats"
+    },
+    "type": "TAG"
+  },
+  {
+    "id": 62108,
+    "externalReferenceCode": "fabd38fc-0143-4681-9248-050a8b7ba226",
+    "name": "Yhdenvertaisuus",
+    "name_i18n": {
+      "fi-FI": "Yhdenvertaisuus",
+      "en-US": "Equality",
+      "sv-SE": "Jämlikhet"
+    },
+    "type": "TAG"
+  }
+]

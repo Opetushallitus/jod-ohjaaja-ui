@@ -14,6 +14,8 @@ dist-ssr
 /assets
 coverage
 /test-results/
+/playwright-report/
+/playwright/.cache/
 /blob-report/
 *.local
 
