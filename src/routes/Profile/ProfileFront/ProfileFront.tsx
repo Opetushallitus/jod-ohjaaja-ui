@@ -51,17 +51,10 @@ const ProfileFront = () => {
           <Trans
             i18nKey="profile.front.data-processing-info"
             components={{
-              Link: (
-                <ExternalLink
-                  href={t('profile.front.href')}
-                  className="font-poppins"
-                  data-testid="profile-front-finlex-link"
-                />
-              ),
+              Link: <ExternalLink href={t('profile.front.href')} data-testid="profile-front-finlex-link" />,
               Link2: (
                 <ExternalLink
                   href={`/${language}/${t('common:slugs.privacy-and-cookies')}`}
-                  className="font-poppins"
                   data-testid="profile-front-privacy-link"
                 />
               ),

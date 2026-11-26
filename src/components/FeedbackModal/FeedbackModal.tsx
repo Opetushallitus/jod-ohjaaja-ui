@@ -182,7 +182,7 @@ export const FeedbackModal = ({ isOpen, onClose, section, area, language }: Feed
           data-testid="feedback-form"
           className="box-content max-w-modal-content px-5 md:px-9"
         >
-          <p className="mb-9 text-body-md-mobile sm:text-body-md">
+          <p className="mb-9 font-arial text-body-md-mobile sm:text-body-md">
             {t('common:feedback.intro-1')} {t('common:feedback.intro-2')}
             <br />
             <br />
@@ -264,7 +264,7 @@ export const FeedbackModal = ({ isOpen, onClose, section, area, language }: Feed
             </div>
           )}
           <hr className="mb-7 h-1 bg-border-gray text-border-gray" />
-          <div className="text-body-md-mobile sm:text-body-md">
+          <div className="font-arial text-body-md-mobile sm:text-body-md">
             <p>{t('common:feedback.footer-info-1')}</p>
             <br />
             <p>{t('common:feedback.footer-info-heading')}</p>

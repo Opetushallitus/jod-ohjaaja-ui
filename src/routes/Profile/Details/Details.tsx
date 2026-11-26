@@ -75,7 +75,7 @@ const Details = () => {
           <h2 className="mb-6 text-heading-2" data-testid="profile-details-intro-title">
             {t('profile.details.introduction.title')}
           </h2>
-          <p className="mb-6 text-body-md" data-testid="profile-details-intro-description">
+          <p className="mb-6 font-arial text-body-md" data-testid="profile-details-intro-description">
             {t('profile.details.introduction.description')}
           </p>
           <Select
@@ -104,7 +104,7 @@ const Details = () => {
           >
             {t('profile.details.interest.title')}
           </h2>
-          <p className="mb-6 text-body-md" data-testid="profile-details-interests-description">
+          <p className="mb-6 font-arial text-body-md" data-testid="profile-details-interests-description">
             {t('profile.details.interest.description')}
           </p>
           <div

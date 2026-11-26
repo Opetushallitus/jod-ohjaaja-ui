@@ -141,7 +141,7 @@ const Favorites = () => {
         </p>
         {suosikit.length > 0 && (
           <div className="mb-5 grid grid-cols-2 gap-5">
-            <p className="col-span-2 text-body-md lg:col-span-1" data-testid="favorites-count">
+            <p className="col-span-2 font-arial text-body-md lg:col-span-1" data-testid="favorites-count">
               {t('profile.favorites.favorite-count', { count: suosikit.length })}
             </p>
             {visibleArticlesByCategory && (

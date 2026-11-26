@@ -13,7 +13,7 @@ export const ExternalLink = ({ href, children, className = '', ...rest }: Extern
   return (
     <a
       href={href}
-      className={`inline-flex text-accent ${className}`}
+      className={`inline-flex text-accent underline ${className}`}
       target="_blank"
       rel="noopener noreferrer"
       {...rest}

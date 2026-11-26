@@ -72,7 +72,7 @@ const Preferences = () => {
         <p className="mb-8 text-body-lg">{t('profile.preferences.ingress')}</p>
         <section className="mb-8" data-testid="preferences-download">
           <h2 className="mb-3 text-heading-2-mobile sm:text-heading-2">{t('profile.preferences.download.title')}</h2>
-          <p className="mb-5 text-body-md">{t('profile.preferences.download.description')}</p>
+          <p className="mb-5 font-arial text-body-md">{t('profile.preferences.download.description')}</p>
           <Button
             variant="accent"
             serviceVariant="ohjaaja"
@@ -85,7 +85,7 @@ const Preferences = () => {
           <h2 className="mb-3 text-heading-2-mobile sm:text-heading-2">
             {t('profile.preferences.delete-profile.title')}
           </h2>
-          <p className="mb-5 text-body-md">{t('profile.preferences.delete-profile.description')}</p>
+          <p className="mb-5 font-arial text-body-md">{t('profile.preferences.delete-profile.description')}</p>
 
           <Button
             variant="red-delete"

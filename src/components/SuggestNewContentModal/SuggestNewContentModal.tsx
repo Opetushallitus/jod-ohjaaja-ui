@@ -225,13 +225,12 @@ const SuggestNewContentForm = ({ onClose, isLoading, formId, errors, methods }: 
           </div>
 
           <hr className="mb-7 h-1 bg-border-gray text-border-gray" />
-          <div className="mb-5 text-body-md-mobile sm:mb-9 sm:text-body-md">
+          <div className="mb-5 font-arial text-body-md-mobile sm:mb-9 sm:text-body-md">
             <p>{t('suggest-new-content.footer-info-1')}</p>
             <br />
             <p>
               <ExternalLink
                 href={t('suggest-new-content.keha-privacy-policy-href')}
-                className="font-poppins"
                 data-testid="suggest-new-content-privacy-link"
               >
                 {t('suggest-new-content.keha-privacy-policy-href-link-text')}

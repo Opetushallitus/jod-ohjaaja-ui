@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useLoaderData, useLocation } from 'react-router';
 import { useShallow } from 'zustand/react/shallow';
 
-import { CookieConsentGuard, tidyClasses as tc } from '@jod/design-system';
+import { CookieConsentGuard, cx } from '@jod/design-system';
 import {
   JodDownload,
   JodFavorite,
@@ -40,8 +40,9 @@ export const ActionButton = ({ label, icon, className = '', onClick, ...rest }: 
   return (
     <button
       aria-label={label}
-      className={tc(
-        `flex cursor-pointer items-center gap-x-3 p-2 text-button-sm text-nowrap focus:outline-accent ${className}`,
+      className={cx(
+        'flex cursor-pointer items-center gap-x-3 p-2 text-button-sm text-nowrap focus:outline-accent',
+        className,
       )}
       onClick={onClick}
       type="button"
@@ -195,7 +196,7 @@ const ContentDetails = () => {
           </div>
         </div>
         {contentSegments.length > 0 && (
-          <div className={getRichTextClasses('article')} data-testid="content-body">
+          <div className={cx(getRichTextClasses('article'), 'font-arial')} data-testid="content-body">
             {contentSegments.map((segment) =>
               segment.type === 'html' ? (
                 <div key={segment.html} dangerouslySetInnerHTML={{ __html: segment.html }} />
