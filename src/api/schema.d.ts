@@ -165,7 +165,7 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** Gets the last viewed article Ercs */
+    /** Gets the last viewed content Ercs */
     get: operations['artikkelinKatseluGetMostRecentViewedArtikkeliIds'];
     put?: never;
     post?: never;
@@ -202,7 +202,7 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** Gets the most viewed article Ercs */
+    /** Gets the most viewed content Ercs */
     get: operations['artikkelinKatseluGetMostViewedArtikkeliIds'];
     put?: never;
     post?: never;
@@ -343,7 +343,7 @@ export interface components {
     };
     FeatureFlagDto: {
       /** @enum {string} */
-      feature?: 'COMMENTS';
+      feature?: 'COMMENTS' | 'NEWS';
       enabled?: boolean;
     };
     SivuDtoString: {
@@ -717,7 +717,7 @@ export interface operations {
       query?: never;
       header?: never;
       path: {
-        feature: 'COMMENTS';
+        feature: 'COMMENTS' | 'NEWS';
       };
       cookie?: never;
     };
@@ -737,6 +737,8 @@ export interface operations {
   artikkelinKatseluGetMostRecentViewedArtikkeliIds: {
     parameters: {
       query?: {
+        /** @description Content types to include (repeatable). Defaults to ARTIKKELI. */
+        tyyppi?: ('ARTIKKELI' | 'UUTINEN')[];
         koko?: number;
       };
       header?: never;
@@ -782,7 +784,9 @@ export interface operations {
   artikkelinKatseluGetMostViewedArtikkeliIds: {
     parameters: {
       query?: {
-        filterByArtikkeliErcs?: string[];
+        filterByArtikkeliErcs?: string[] | null;
+        /** @description Content types to include (repeatable). Defaults to ARTIKKELI. */
+        tyyppi?: ('ARTIKKELI' | 'UUTINEN')[];
         koko?: number;
       };
       header?: never;

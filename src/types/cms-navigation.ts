@@ -1,6 +1,12 @@
 import { LangCode } from '@/i18n/config';
 
-export const NavigationItemTypeArray = ['Article', 'CategoryListing', 'CategoryMain', 'StudyProgramsListing'] as const;
+export const NavigationItemTypeArray = [
+  'Article',
+  'CategoryListing',
+  'CategoryMain',
+  'NewsListing',
+  'StudyProgramsListing',
+] as const;
 export type NavigationItemType = (typeof NavigationItemTypeArray)[number];
 export const isNavigationItemType = (value: unknown): value is NavigationItemType =>
   value !== undefined && typeof value === 'string' && NavigationItemTypeArray.includes(value as NavigationItemType);
