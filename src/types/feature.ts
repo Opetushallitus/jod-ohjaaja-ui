@@ -1,1 +1,3 @@
-export type Feature = 'COMMENTS';
+import { type components } from '@/api/schema';
+
+export type Feature = NonNullable<components['schemas']['FeatureFlagDto']['feature']>;
